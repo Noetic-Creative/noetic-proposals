@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agwa × Noetic — From Storage to System</title>
+<!-- Plausible Analytics — change data-domain to match your deployed subdomain -->
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --noetic-purple: #6C5CE7;
+  --noetic-purple-light: #8B7FF5;
+  --noetic-purple-dark: #4A3BC4;
+  --noetic-purple-soft: #EFEAFF;
+  --cyan-accent: #5DDDD3;
+  --teal-mist: #B8F0E9;
+  --lavender-tint: #F4F0FF;
+
+  --bg-dark: #0a0a0a;
+  --bg-dark-2: #141414;
+  --bg-light: #FAFAFA;
+  --bg-white: #FFFFFF;
+  --bg-lavender: #F8F4FF;
+  --bg-cream: #FBF9F4;
+
+  --text-dark: #0a0a0a;
+  --text-mid: #4A4A4A;
+  --text-light: #8A8A8A;
+  --text-on-dark: #F0F0F0;
+  --text-on-dark-mid: #9A9A9A;
+  --text-on-dark-soft: #6A6A6A;
+
+  --border-light: #EAEAEA;
+  --border-mid: #D0D0D0;
+  --border-dark: #2A2A2A;
+  --border-dark-soft: #1F1F1F;
+
+  --agwa-green: #4F7B47;
+  --agwa-green-soft: #C8DEC2;
+  --agwa-green-tint: #EAF3E7;
+  --warning: #E89B3F;
+  --success: #4CAF50;
+  --danger: #E74C3C;
+
+  --shadow-soft: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-lift: 0 4px 8px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background: var(--bg-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   SLIDE / SECTION SHELL
+   ============================================ */
+.slide {
+  min-height: 100vh;
+  padding: 4rem 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide.dark { background: var(--bg-dark); color: var(--text-on-dark); }
+.slide.light { background: var(--bg-light); color: var(--text-dark); }
+.slide.lavender { background: var(--bg-lavender); color: var(--text-dark); }
+.slide.cream { background: var(--bg-cream); color: var(--text-dark); }
+
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+}
+
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  border: 1px solid currentColor;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.slide-title-block {
+  margin-top: 0.75rem;
+}
+
+.slide h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 1200px;
+}
+
+.slide h2.slide-heading {
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 1100px;
+}
+
+.slide-subhead {
+  margin-top: 0.75rem;
+  color: var(--text-mid);
+  font-size: 1.125rem;
+  max-width: 800px;
+  font-weight: 400;
+}
+
+.slide.dark .slide-subhead { color: var(--text-on-dark-mid); }
+
+/* ============================================
+   BRAND STRIP (top-right of each slide)
+   ============================================ */
+.brand-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.brand-logo-agwa {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.brand-logo-noetic {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+/* On dark slides, invert the noetic logo to white */
+.slide.dark .brand-logo-noetic {
+  filter: brightness(0) invert(1);
+}
+
+/* On dark slides, agwa logo green still reads — minor brightness lift only */
+.slide.dark .brand-logo-agwa {
+  filter: brightness(1.05);
+}
+
+.brand-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--border-mid);
+}
+.slide.dark .brand-divider { background: var(--border-dark); }
+
+/* ============================================
+   COVER SLIDE
+   ============================================ */
+.cover {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ECEDF5 0%, #F0F1F8 35%, #F4EFFF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--teal-mist) 0%, rgba(184, 240, 233, 0) 60%);
+  bottom: -200px;
+  left: -200px;
+  filter: blur(40px);
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--noetic-purple-soft) 0%, rgba(239, 234, 255, 0) 65%);
+  top: -150px;
+  right: -100px;
+  filter: blur(30px);
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 1100px;
+}
+
+.cover-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 1.25rem;
+}
+
+.cover h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  color: var(--text-dark);
+}
+
+.cover h1 em {
+  font-style: italic;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  color: var(--noetic-purple);
+  font-size: 0.95em;
+  letter-spacing: -0.01em;
+}
+
+.cover-subhead {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-mid);
+  max-width: 720px;
+  line-height: 1.4;
+}
+
+.cover-footer {
+  position: absolute;
+  bottom: 3rem;
+  left: 5rem;
+  right: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  z-index: 2;
+}
+
+.cover-footer-right { display: flex; gap: 2rem; }
+
+.cover-noetic-logo {
+  position: absolute;
+  top: 4rem;
+  left: 5rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--noetic-purple);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.cover-noetic-logo .brand-noetic-mark { width: 30px; height: 30px; font-size: 0.95rem; border-radius: 6px;}
+
+/* ============================================
+   STORY / NARRATIVE SLIDES
+   ============================================ */
+.prose {
+  max-width: 780px;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--text-mid);
+}
+
+.prose p { margin-bottom: 1.25rem; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--text-dark); font-weight: 600; }
+.slide.dark .prose strong { color: var(--text-on-dark); }
+.slide.dark .prose { color: var(--text-on-dark-mid); }
+
+.prose-pull {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text-dark);
+  border-left: 4px solid var(--noetic-purple);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  letter-spacing: -0.01em;
+  max-width: 720px;
+}
+.slide.dark .prose-pull { color: var(--text-on-dark); }
+
+.handnote {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--noetic-purple);
+  line-height: 1.2;
+}
+
+/* ============================================
+   MEETING RECAP — 4 columns
+   ============================================ */
+.recap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.recap-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  position: relative;
+}
+
+.recap-card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--noetic-purple);
+  margin-bottom: 0.5rem;
+}
+
+.recap-card-content {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.recap-card-content strong { color: var(--text-dark); font-weight: 600; }
+
+/* ============================================
+   COMPARISON TABLE
+   ============================================ */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 1rem;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.compare-row {
+  display: contents;
+}
+
+.compare-cell {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text-mid);
+  display: flex;
+  align-items: flex-start;
+}
+
+.compare-row:last-child .compare-cell { border-bottom: none; }
+
+.compare-row-header .compare-cell {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  font-weight: 700;
+  padding: 1.5rem 1.5rem;
+  border-bottom: none;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.compare-row-header .tier-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+.compare-row-header .tier-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--noetic-purple-light);
+  margin-bottom: 0.25rem;
+}
+
+.compare-row-header.recommended .compare-cell {
+  background: var(--noetic-purple);
+}
+.compare-row-header.recommended .tier-tag { color: white; opacity: 0.85; }
+
+.compare-cell.recommended-cell {
+  background: var(--noetic-purple);
+}
+.compare-cell.recommended-cell .tier-price { color: white; }
+
+.compare-cell.label {
+  background: var(--bg-light);
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  text-transform: none;
+}
+
+.compare-cell.center { justify-content: center; text-align: center; }
+
+.tier-recommended-banner {
+  position: absolute;
+  top: -12px;
+  right: 1rem;
+  background: var(--cyan-accent);
+  color: var(--bg-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.checkmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--noetic-purple);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.x-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border-mid);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  opacity: 0.5;
+}
+
+.partial-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--noetic-purple);
+  color: var(--noetic-purple);
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  position: relative;
+}
+.partial-mark::after {
+  content: '';
+  position: absolute;
+  inset: 2px 50% 2px 2px;
+  background: var(--noetic-purple);
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+}
+
+/* ============================================
+   TIER DETAIL SLIDES
+   ============================================ */
+.tier-detail-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+  margin-top: 1.5rem;
+}
+
+.tier-card-side {
+  background: var(--bg-dark);
+  color: white;
+  border-radius: 24px;
+  padding: 2rem 1.75rem;
+  align-self: flex-start;
+  position: sticky;
+  top: 2rem;
+}
+
+.tier-card-side.recommended {
+  background: var(--noetic-purple);
+}
+
+.tier-card-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--noetic-purple-light);
+  margin-bottom: 0.5rem;
+}
+.tier-card-side.recommended .tier-card-tag { color: white; opacity: 0.85; }
+
+.tier-card-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.tier-card-tagline {
+  font-size: 0.95rem;
+  color: var(--text-on-dark-mid);
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+}
+.tier-card-side.recommended .tier-card-tagline { color: rgba(255,255,255,0.85); }
+
+.tier-card-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tier-card-price-meta {
+  font-size: 0.85rem;
+  color: var(--text-on-dark-mid);
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+.tier-card-side.recommended .tier-card-price-meta { color: rgba(255,255,255,0.7); }
+
+.tier-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-dark);
+  font-size: 0.85rem;
+  color: var(--text-on-dark-mid);
+}
+.tier-card-side.recommended .tier-card-meta {
+  border-top-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+}
+
+.tier-card-meta-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.tier-card-meta-row strong { color: white; font-weight: 600; text-align: right; }
+
+.deliverables-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.deliverable {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+
+.deliverable-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.deliverable-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--noetic-purple-soft);
+  color: var(--noetic-purple);
+  font-size: 0.8rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+}
+
+.deliverable-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.deliverable-body {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+  padding-left: 2.25rem;
+}
+
+.deliverable-body ul {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+.deliverable-body ul li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.3rem;
+}
+.deliverable-body ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--noetic-purple);
+  font-weight: 700;
+}
+
+.tier-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--noetic-purple);
+}
+
+.tier-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.tier-not-included {
+  background: #FFF8F0;
+  border: 1px dashed var(--warning);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.tier-not-included strong {
+  color: var(--warning);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   COVERAGE AUDIT MATRIX
+   ============================================ */
+.coverage-grid {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  margin-top: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.coverage-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.6fr;
+  border-bottom: 1px solid var(--border-light);
+}
+.coverage-row:last-child { border-bottom: none; }
+
+.coverage-row.header {
+  background: var(--bg-dark);
+  color: white;
+}
+.coverage-row.header > div {
+  padding: 1.25rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.coverage-row.header > div.tier-col {
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.coverage-row.header > div.tier-col strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.01em;
+}
+
+.coverage-row > div {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border-light);
+}
+.coverage-row > div:last-child { border-right: none; }
+
+.coverage-row > div.item-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.coverage-row > div.item-name small {
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+
+.coverage-row > div.tier-col {
+  justify-content: center;
+}
+
+.coverage-row > div.note {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+.cov-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cov-full {
+  background: var(--noetic-purple-soft);
+  color: var(--noetic-purple);
+}
+.cov-partial {
+  background: #FFF4E0;
+  color: #B57400;
+}
+.cov-none {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* ============================================
+   ARCHITECTURE DIAGRAM
+   ============================================ */
+.arch-diagram {
+  margin-top: 2rem;
+  background: var(--bg-dark-2);
+  border: 1px solid var(--border-dark);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  position: relative;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.arch-layer {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-dark);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.arch-layer-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--noetic-purple-light);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arch-tier-marker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--noetic-purple);
+  color: white;
+}
+.arch-tier-marker.t1 { background: var(--cyan-accent); color: var(--bg-dark); }
+.arch-tier-marker.t2 { background: var(--noetic-purple); }
+.arch-tier-marker.t3 { background: linear-gradient(135deg, var(--noetic-purple), var(--cyan-accent)); }
+
+.arch-layer-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.arch-layer-items {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text-on-dark-mid);
+  line-height: 1.6;
+}
+
+.arch-layer-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.arch-layer-items li .arch-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--noetic-purple);
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.arch-layer-items li.t1 .arch-dot { background: var(--cyan-accent); }
+.arch-layer-items li.t2 .arch-dot { background: var(--noetic-purple); }
+.arch-layer-items li.t3 .arch-dot { background: linear-gradient(135deg, var(--noetic-purple), var(--cyan-accent)); }
+
+.arch-layer-items li .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  background: rgba(255,255,255,0.05);
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+  color: var(--text-on-dark-soft);
+}
+.arch-layer-items li.t1 .tag { color: var(--cyan-accent); background: rgba(93, 221, 211, 0.1); }
+.arch-layer-items li.t2 .tag { color: var(--noetic-purple-light); background: rgba(108, 92, 231, 0.15); }
+.arch-layer-items li.t3 .tag {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(93, 221, 211, 0.15));
+  color: white;
+}
+
+.arch-foundation {
+  grid-column: 1 / -1;
+  background: rgba(108, 92, 231, 0.05);
+  border-color: rgba(108, 92, 231, 0.3);
+}
+.arch-foundation .arch-layer-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem 1.5rem;
+}
+
+.arch-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-dark);
+  font-size: 0.8rem;
+  color: var(--text-on-dark-mid);
+}
+
+.arch-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.arch-legend-item .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+/* ============================================
+   ROADMAP / TIMELINE
+   ============================================ */
+.roadmap-block {
+  margin-top: 2rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.roadmap-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.roadmap-row:last-child { border-bottom: none; }
+
+.roadmap-week {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--noetic-purple);
+  text-transform: uppercase;
+  padding-top: 0.25rem;
+}
+
+.roadmap-week strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.01em;
+  margin-top: 0.15rem;
+}
+
+.roadmap-bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.roadmap-bar {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  position: relative;
+  color: var(--text-mid);
+}
+
+.roadmap-bar.active-t1 {
+  background: rgba(93, 221, 211, 0.08);
+  border-color: var(--cyan-accent);
+  color: var(--text-dark);
+}
+.roadmap-bar.active-t2 {
+  background: var(--noetic-purple-soft);
+  border-color: var(--noetic-purple);
+  color: var(--text-dark);
+  font-weight: 500;
+}
+.roadmap-bar.active-t3 {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.12), rgba(93, 221, 211, 0.08));
+  border-color: var(--noetic-purple);
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.roadmap-bar.dim { opacity: 0.4; }
+
+.roadmap-bar-label {
+  position: absolute;
+  top: -8px;
+  left: 0.75rem;
+  background: white;
+  padding: 0 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.roadmap-bar.active-t1 .roadmap-bar-label { color: #008B82; background: var(--bg-light); }
+.roadmap-bar.active-t2 .roadmap-bar-label { color: var(--noetic-purple); background: var(--bg-light); }
+.roadmap-bar.active-t3 .roadmap-bar-label { color: var(--noetic-purple); background: var(--bg-light); }
+
+.roadmap-headers {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--bg-dark);
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-headers-bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.roadmap-headers-bars > div {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-dark);
+  padding-bottom: 0.5rem;
+}
+
+/* ============================================
+   PRICING CARDS (3-column)
+   ============================================ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 2.25rem 2rem;
+  position: relative;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card.featured {
+  background: var(--bg-dark);
+  color: white;
+  border-color: var(--noetic-purple);
+  transform: translateY(-12px);
+  box-shadow: 0 24px 60px rgba(108, 92, 231, 0.25);
+}
+
+.pricing-card.featured::before {
+  content: '★ RECOMMENDED';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cyan-accent);
+  color: var(--bg-dark);
+  padding: 0.4rem 1.25rem;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.pricing-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--noetic-purple);
+  margin-bottom: 0.5rem;
+}
+.pricing-card.featured .pricing-tag { color: var(--cyan-accent); }
+
+.pricing-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-tagline {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.45;
+  margin-bottom: 1.75rem;
+  min-height: 2.7em;
+}
+.pricing-card.featured .pricing-tagline { color: rgba(255,255,255,0.75); }
+
+.pricing-price {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.pricing-price-meta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+.pricing-card.featured .pricing-price-meta { color: rgba(255,255,255,0.7); }
+
+.pricing-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin-bottom: 1.5rem;
+}
+.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.15); }
+
+.pricing-features {
+  list-style: none;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  color: var(--text-mid);
+}
+.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+
+.pricing-features li.bold {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.pricing-card.featured .pricing-features li.bold { color: white; }
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--noetic-purple);
+  font-weight: 800;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--noetic-purple-soft);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-top: 0.15rem;
+}
+.pricing-card.featured .pricing-features li::before {
+  background: rgba(108, 92, 231, 0.3);
+  color: var(--cyan-accent);
+}
+
+.pricing-card-footer {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  border-top: 1px dashed var(--border-light);
+  padding-top: 1rem;
+}
+.pricing-card.featured .pricing-card-footer {
+  color: rgba(255,255,255,0.65);
+  border-top-color: rgba(255,255,255,0.2);
+}
+.pricing-card-footer strong {
+  color: var(--text-dark);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.pricing-card.featured .pricing-card-footer strong { color: white; }
+
+/* ============================================
+   RECOMMENDATION SLIDE
+   ============================================ */
+.recommendation-block {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.95) 0%, rgba(74, 59, 196, 0.9) 100%);
+  border-radius: 28px;
+  padding: 3.5rem 3rem;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-block::before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(93, 221, 211, 0.4) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  filter: blur(40px);
+}
+
+.recommendation-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.recommendation-left h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1rem;
+}
+
+.recommendation-left h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.recommendation-left p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.rec-stat-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.rec-stat {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+}
+.rec-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: white;
+  margin-bottom: 0.4rem;
+}
+.rec-stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.3;
+}
+
+/* ============================================
+   RISKS / DEPENDENCIES TABLE
+   ============================================ */
+.risks-grid {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.risk-row {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto 1.5fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.risk-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.risk-icon.high { background: #FFEFE9; color: #C24218; }
+.risk-icon.med { background: #FFF4E0; color: #B57400; }
+.risk-icon.low { background: #EAF3E7; color: #4F7B47; }
+
+.risk-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+.risk-name small {
+  display: block;
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 0.82rem;
+  margin-top: 0.15rem;
+}
+
+.risk-likelihood {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.risk-likelihood.high { background: #FFEFE9; color: #C24218; }
+.risk-likelihood.med { background: #FFF4E0; color: #B57400; }
+.risk-likelihood.low { background: #EAF3E7; color: #4F7B47; }
+
+.risk-mitigation {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-mid);
+}
+
+/* ============================================
+   NEXT STEPS SLIDE
+   ============================================ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  position: relative;
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--noetic-purple);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.step-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-mid);
+}
+
+/* ============================================
+   CLOSING SLIDE
+   ============================================ */
+.closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.25) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.closing-content {
+  position: relative;
+  z-index: 2;
+}
+
+.closing h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.closing h1 em {
+  font-family: 'Caveat', cursive;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--cyan-accent);
+}
+
+.closing-sig {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: var(--text-on-dark-mid);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.row { display: flex; gap: 1rem; align-items: center; }
+.row-end { margin-left: auto; }
+.text-purple { color: var(--noetic-purple); }
+.text-cyan { color: var(--cyan-accent); }
+.text-mono { font-family: 'JetBrains Mono', monospace; }
+.text-script { font-family: 'Caveat', cursive; font-weight: 500; }
+
+@media (max-width: 1024px) {
+  .slide { padding: 3rem 2rem; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-cell { border-right: none !important; }
+  .tier-detail-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .recap-grid { grid-template-columns: 1fr; }
+  .arch-grid { grid-template-columns: 1fr; }
+  .recommendation-content { grid-template-columns: 1fr; }
+  .roadmap-row { grid-template-columns: 1fr; }
+  .roadmap-headers { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .coverage-row { grid-template-columns: 1fr; }
+  .risk-row { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     SLIDE 1: COVER
+     ============================================ -->
+<section class="slide cover">
+  <div class="cover-noetic-logo">
+    <img src="assets/noetic-logo.png" alt="Noetic" style="height: 38px; width: auto;">
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-meta">A LIFECYCLE PROPOSAL FOR AGWA — APRIL 2026</div>
+    <h1>From storage<br>to <em>system.</em></h1>
+    <div class="cover-subhead">
+      Three tiers for turning your HubSpot from a contact database into a marketing engine that runs while you sleep.
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div>PREPARED FOR GILLY · AGWA</div>
+    <div class="cover-footer-right">
+      <span>NOETIC.IO</span>
+      <span>HELLO@NOETIC.IO</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 2: THE STORY (NARRATIVE)
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">The setup</div>
+      <div class="slide-title-block">
+        <h1>Your cabinet grows lettuce<br>autonomously. Your HubSpot<br>doesn't grow anything <em style="font-family: 'Caveat'; color: var(--noetic-purple); font-style: normal; font-weight: 500;">— yet.</em></h1>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top: 1rem;">
+    <p>Here's the thing that struck us about Agwa during our conversation: <strong>your entire product is a story about systems that run themselves.</strong> The cabinet handles the water, the nutrients, the pH. The crew on the ship doesn't have to think about it. They just open the door and pick lettuce.</p>
+
+    <p>Right now, your HubSpot is the opposite of that. It's a closed cabinet with the lights off. You have Deals. You have Contacts. You have Accounts. And nothing — no leads, no signal, no pipeline — flows through it autonomously. Eli is doing his thing. The BDR firm is doing their thing. Your creative person is making beautiful work that nobody can systematically measure. The CEO is pushing weekly to move faster.</p>
+
+    <div class="prose-pull">
+      The product Agwa sells should be the model for the marketing system Agwa runs. Both should grow things on a schedule, without anyone watching.
+    </div>
+
+    <p>You asked for three tiers because you want a real choice — not just three prices for the same thing. So that's what we built. Each tier is a meaningfully different version of the system. Each one solves for a different version of "we need this to work."</p>
+
+    <p>The math behind the tiers is simple: <strong>Tier 1 turns the lights on. Tier 2 makes the system useful. Tier 3 makes it run by itself.</strong> Which one is right for you depends on a few things we'll walk through. First, let's recap what we heard.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 3: WHAT WE HEARD
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">What we heard</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">A new HubSpot, a CEO with a stopwatch,<br>and a creative team that doesn't speak ops.</h2>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="recap-grid">
+    <div class="recap-card">
+      <div class="recap-card-label">The Starting Point</div>
+      <div class="recap-card-content">
+        HubSpot CRM was installed <strong>2–3 months ago</strong>. It currently holds Deals, Contacts, and Accounts — and that's it. <strong>No website integration, no forms, no automations, no segmentation, no lifecycle definition.</strong> Functionally, it's a clean slate.
+      </div>
+    </div>
+
+    <div class="recap-card">
+      <div class="recap-card-label">The Pressure</div>
+      <div class="recap-card-content">
+        The new CEO is pushing weekly. He's pre-fundraising, scaling maritime, prepping the Gen 2 cabinet for a six-month launch window. <strong>Speed matters.</strong> Whatever we ship needs to be inheritable, not bespoke.
+      </div>
+    </div>
+
+    <div class="recap-card">
+      <div class="recap-card-label">The Team Reality</div>
+      <div class="recap-card-content">
+        One creative-leaning marketer who's "all about Figma, not HubSpot." Eli on sales. Excel BDR firm doing outbound. <strong>No internal HubSpot owner.</strong> Long term, you want this in-house. Short term, you need a builder.
+      </div>
+    </div>
+
+    <div class="recap-card">
+      <div class="recap-card-label">The Audience Map</div>
+      <div class="recap-card-content">
+        Maritime today (~15 customers). <strong>Offshore next</strong> (similar messaging, oil rigs &amp; remote facilities). Senior care &amp; government inspectors on the horizon. Within Maritime alone there are at least three personas: captain, ops, and the agriculture compliance officer. Segmentation is not optional.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 4: THREE TIERS COMPARISON
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">The three tiers</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Same foundation, three depths of system.</h2>
+        <div class="slide-subhead">Each tier is a complete, self-contained version of the build. There are no hidden upsells; what's in the tier is what you get. Pick by what you need to be able to do on day 1.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-row compare-row-header">
+      <div class="compare-cell">
+        <div class="tier-tag">&nbsp;</div>
+        <div style="font-size: 1.15rem;">What you can do</div>
+        <div style="font-size: 0.85rem; color: var(--text-on-dark-mid); font-weight: 400;">on the day we hand off</div>
+      </div>
+      <div class="compare-cell">
+        <div class="tier-tag">Tier 1 — Foundation</div>
+        <div class="tier-price">$7,500</div>
+        <div style="font-size: 0.8rem; color: var(--text-on-dark-mid); font-weight: 400;">4 weeks · entry point</div>
+      </div>
+      <div class="compare-cell recommended-cell" style="background: var(--bg-dark) !important;">
+        <div class="tier-tag">Tier 2 — Activation</div>
+        <div class="tier-price">$12,000</div>
+        <div style="font-size: 0.8rem; color: var(--text-on-dark-mid); font-weight: 400;">5–6 weeks · activated system</div>
+      </div>
+      <div class="compare-cell">
+        <div class="tier-tag">Tier 3 — Lifecycle Engine</div>
+        <div class="tier-price">$24,000</div>
+        <div style="font-size: 0.8rem; color: var(--text-on-dark-mid); font-weight: 400;">8 weeks · full system</div>
+      </div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">See where every lead came from</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Source attribution + lifecycle funnel dashboard</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Plus segment-performance dashboard</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Plus 3 dashboards including pipeline contribution</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">Send the right message to the right ICP</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Not in scope</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>5 templates + 8–10 modular blocks + ICP segmentation</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Plus 3 fully-built nurture flows (14 emails)</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">Run automated nurtures while you sleep</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Not in scope</div>
+      <div class="compare-cell"><span class="partial-mark">◐</span>3 foundational automations (welcome, alerts, handoff)</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Plus Maritime + Offshore + Re-engagement nurtures</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">Score leads automatically and route to Eli</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Manual only</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Manual only</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Multi-attribute scoring with score-based routing</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">Identify ABM-ready accounts when they engage</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Not in scope</div>
+      <div class="compare-cell"><span class="partial-mark">◐</span>Account tier lists prepared, not yet active</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Account-level alerts + multi-contact engagement triggers</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-cell label">Connect offline conversions back to source</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Not in scope</div>
+      <div class="compare-cell"><span class="x-mark">✕</span>Not in scope</div>
+      <div class="compare-cell"><span class="checkmark">✓</span>Offline conversion import (Eli's phone deals → HubSpot)</div>
+    </div>
+
+      <div class="compare-row">
+        <div class="compare-cell label">Best for...</div>
+        <div class="compare-cell" style="font-size: 0.88rem;">Budget-constrained start. Plan to come back in 60 days.</div>
+        <div class="compare-cell" style="font-size: 0.88rem;">Companies that need to operate independently for 6+ months.</div>
+        <div class="compare-cell" style="font-size: 0.88rem;">Pre-funding companies that want a real engine on day 1.</div>
+      </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 5: TIER 1 DETAIL
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill" style="color: #008B82;">Tier 1 — Foundation</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Turn HubSpot from a database<br>into a working pipeline.</h2>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="tier-detail-grid">
+    <div class="tier-card-side">
+      <div class="tier-card-tag">Tier 1</div>
+      <div class="tier-card-name">Foundation</div>
+      <div class="tier-card-tagline">The minimum viable version. Wires HubSpot to your website and gives you visibility — nothing more, nothing less.</div>
+      <div class="tier-card-price">$7,500</div>
+      <div class="tier-card-price-meta">One-time, all-in</div>
+      <div class="tier-card-meta">
+        <div class="tier-card-meta-row"><span>Timeline</span><strong>4 weeks</strong></div>
+        <div class="tier-card-meta-row"><span>Team</span><strong>2 specialists</strong></div>
+        <div class="tier-card-meta-row"><span>Training</span><strong>1 session, 90 min</strong></div>
+        <div class="tier-card-meta-row"><span>Support</span><strong>30-day async</strong></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tier-section-divider">Foundation Layer</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">01</span>
+            <span class="deliverable-title">HubSpot Marketing Hub configuration</span>
+          </div>
+          <div class="deliverable-body">
+            Brand kit (derived from agwafarm.com since no brand book exists), sender identity, subscription types (Newsletter, Product Updates, Sales Outreach), legal-compliant unsubscribe preferences page.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">02</span>
+            <span class="deliverable-title">Domain &amp; deliverability setup</span>
+          </div>
+          <div class="deliverable-body">
+            Full SPF / DKIM / DMARC enforcement on the sending domain. Tracking domain configured (links + opens). SSL verified. Blacklist screening with remediation if flagged.
+            <div class="handnote" style="font-size: 1.1rem; margin-top: 0.5rem; color: var(--text-light);">Deliverability is a performance ceiling, not a footnote.</div>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">03</span>
+            <span class="deliverable-title">Lifecycle stage architecture</span>
+          </div>
+          <div class="deliverable-body">
+            Stages defined: Subscriber → Lead → MQL → SQL → Opportunity → Customer. Entry/exit criteria for each. Sales handoff threshold documented in a 1-page playbook for Eli.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">04</span>
+            <span class="deliverable-title">Contact property schema</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li>Maritime ICP: Vessel Type, Fleet Size, Crew Size, Role, Region</li>
+              <li>Placeholder properties for Offshore, Senior Care, Government inspector</li>
+              <li>Source tracking: Original Source, Most Recent Source, UTM capture</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Capture &amp; Tracking Layer</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">05</span>
+            <span class="deliverable-title">Website ↔ HubSpot integration</span>
+          </div>
+          <div class="deliverable-body">
+            Replace 3–5 existing forms on agwafarm.com with HubSpot forms (Contact, Demo Request, Newsletter, Resource Download — exact count locked during the discovery audit). HubSpot tracking script installed site-wide. Page-level visit tracking. UTM capture on every form submission.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">06</span>
+            <span class="deliverable-title">Conversion event mapping</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li>Form submitted, priority page viewed (pricing/demo/specs)</li>
+              <li>Email open, email click, demo booked</li>
+              <li>Conversion values set per event — foundation for Tier 3 lead scoring inheritance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">07</span>
+            <span class="deliverable-title">First-touch &amp; last-touch attribution</span>
+          </div>
+          <div class="deliverable-body">
+            Default HubSpot attribution reports configured. You'll be able to answer "where did this lead come from?" the day we go live.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Reporting &amp; Handoff</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">08</span>
+            <span class="deliverable-title">Lifecycle funnel dashboard</span>
+          </div>
+          <div class="deliverable-body">
+            Source attribution by channel, lifecycle stage counts, form submission performance, traffic-to-lead conversion. One dashboard, four answers.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">09</span>
+            <span class="deliverable-title">Training &amp; documentation</span>
+          </div>
+          <div class="deliverable-body">
+            One 90-minute training session with you. Every system shipped with a 1-page "how it works" doc your eventual in-house hire can read on day one. 30-day async support window for questions.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-not-included">
+        <strong>Not in this tier</strong>
+        No email templates beyond a transactional confirmation. No segmentation logic. No automations. No nurture flows. No lead scoring. You'll see leads but you won't yet have the system to act on them at scale. We expect to revisit Tier 2 work within 60 days if you start here.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 6: TIER 2 DETAIL
+     ============================================ -->
+<section class="slide lavender">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill" style="color: var(--noetic-purple);">Tier 2 — Activation</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">The system can now segment, send,<br>and signal — without us in the loop.</h2>
+        <div class="slide-subhead">Tier 1 + the layer that turns HubSpot into something your creative person can actually use.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="tier-detail-grid">
+    <div class="tier-card-side recommended">
+      <div class="tier-card-tag">Tier 2</div>
+      <div class="tier-card-name">Activation</div>
+      <div class="tier-card-tagline">Foundation + segmentation + working email system. The most common starting point at Agwa's stage.</div>
+      <div class="tier-card-price">$12,000</div>
+      <div class="tier-card-price-meta">One-time, all-in</div>
+      <div class="tier-card-meta">
+        <div class="tier-card-meta-row"><span>Timeline</span><strong>5–6 weeks</strong></div>
+        <div class="tier-card-meta-row"><span>Team</span><strong>2 specialists + designer</strong></div>
+        <div class="tier-card-meta-row"><span>Training</span><strong>2 sessions</strong></div>
+        <div class="tier-card-meta-row"><span>Support</span><strong>60-day async</strong></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tier-section-divider" style="color: var(--text-mid);">Includes everything in Tier 1, plus...</div>
+
+      <div class="tier-section-divider">Segmentation Architecture</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">10</span>
+            <span class="deliverable-title">ICP segmentation system</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li>Map all current + near-term ICPs: Maritime Captain, Maritime Operations, Offshore Operator, Senior Care (placeholder), Government / Dept of Agriculture (placeholder)</li>
+              <li>Dynamic, auto-updating contact lists per ICP</li>
+              <li>Static account-tier lists (Tier 1 / 2 / 3 named accounts) — ready when Eli wants to push them in</li>
+              <li>Sales exclusion logic: contacts active with Eli are removed from automation</li>
+              <li>Re-entry rules when sales activity ends</li>
+              <li>1-page CRM Segmentation Architecture doc — your in-house hire reads this on day one</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Email Template System</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">11</span>
+            <span class="deliverable-title">5 modular HubSpot templates</span>
+          </div>
+          <div class="deliverable-body">
+            Newsletter (multi-section), Product Update (image hero), Sales Outreach (plain-text feel for Eli), Resource Download (gated PDF/video), Event &amp; Demo Invite (RSVP). Modular structure designed to be inherited by your future in-house marketer.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">12</span>
+            <span class="deliverable-title">8–10 reusable content blocks</span>
+          </div>
+          <div class="deliverable-body">
+            Hero, stat callout, testimonial card, image+text, video embed, CTA button, divider, multiple footer variants. Your creative person can mix and match without a designer.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Foundational Automations</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">13</span>
+            <span class="deliverable-title">Three workflows that run themselves</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li>Form submission → confirmation email + internal alert to Eli</li>
+              <li>Lifecycle stage trigger (MQL reached → owner assigned, Eli notified in HubSpot + Slack)</li>
+              <li>Newsletter welcome (single-email, not a full nurture)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">14</span>
+            <span class="deliverable-title">Sales handoff playbook</span>
+          </div>
+          <div class="deliverable-body">
+            1-page doc: when a contact becomes MQL → SQL → Opportunity, what data passes to Eli, where Eli updates. We'll interview Eli for 30 minutes during discovery to make sure deal stages match how he actually sells.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Reporting</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">15</span>
+            <span class="deliverable-title">Segment performance dashboard</span>
+          </div>
+          <div class="deliverable-body">
+            Tier 1's lifecycle funnel + a second dashboard for Maritime vs. Offshore vs. general performance. Answers "is the maritime push actually working?" without a custom report.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">16</span>
+            <span class="deliverable-title">Two training sessions</span>
+          </div>
+          <div class="deliverable-body">
+            One for you on the marketing tools. One for Eli on contact and deal hygiene. 60-day async support.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-not-included">
+        <strong>Not in this tier</strong>
+        No multi-touch nurture flows beyond the welcome email. No lead scoring. No predictive proxy metrics. No account-level alerts. You can run well-segmented one-offs but you don't yet have a system that runs while you sleep.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 7: TIER 3 DETAIL
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">Tier 3 — Lifecycle Engine</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">HubSpot becomes the marketing engine<br>that runs while you sleep.</h2>
+        <div class="slide-subhead">Tier 2 + the layer that makes HubSpot a true revenue tool: multi-touch nurtures, lead scoring, account-level intelligence, predictive proxy metrics.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="tier-detail-grid">
+    <div class="tier-card-side">
+      <div class="tier-card-tag">Tier 3</div>
+      <div class="tier-card-name">Lifecycle Engine</div>
+      <div class="tier-card-tagline">The full system. Three nurtures, lead scoring, account-level tracking, offline conversion import. Mid-market scope at one-off pricing.</div>
+      <div class="tier-card-price">$24,000</div>
+      <div class="tier-card-price-meta">One-time, all-in</div>
+      <div class="tier-card-meta">
+        <div class="tier-card-meta-row"><span>Timeline</span><strong>8 weeks</strong></div>
+        <div class="tier-card-meta-row"><span>Team</span><strong>2 specialists + designer + copywriter</strong></div>
+        <div class="tier-card-meta-row"><span>Training</span><strong>3 sessions</strong></div>
+        <div class="tier-card-meta-row"><span>Support</span><strong>90-day async + Day-60 optimization</strong></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tier-section-divider" style="color: var(--text-mid);">Includes everything in Tiers 1 + 2, plus...</div>
+
+      <div class="tier-section-divider">Multi-Touch Nurture Flows</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">17</span>
+            <span class="deliverable-title">Three nurture flows, fully built</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li><strong>Maritime New Lead Nurture</strong> — 6 emails over 4 weeks (welcome → use-case story → operational benefits → customer story → ROI/TCO → demo CTA)</li>
+              <li><strong>Offshore New Lead Nurture</strong> — 5 emails over 3 weeks, same architecture, adapted messaging for oil rigs / remote facilities</li>
+              <li><strong>Re-engagement / Dormant Lead</strong> — 3 emails over 2 weeks, triggered after 90 days inactivity</li>
+            </ul>
+            <p style="margin-top: 0.75rem;">Every email ships with the four required elements: <strong>strategic insight</strong> (why this email at this moment), <strong>content blocks</strong>, <strong>design direction</strong>, <strong>segment specificity</strong>. Copy written by Noetic using your messaging doc as the source of truth.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Lead Scoring System</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">18</span>
+            <span class="deliverable-title">Multi-attribute scoring with score-based routing</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li><strong>Behavioral signals:</strong> visited pricing page (+10), downloaded spec sheet (+15), attended demo (+25), opened 3+ emails (+5), replied (+30)</li>
+              <li><strong>Demographic signals:</strong> matches Maritime ICP (+10), decision-maker title (+15), Tier-1 named account (+20)</li>
+              <li><strong>Negative signals:</strong> unsubscribed (−50), hard-bounced (−20), competitor email (−50)</li>
+              <li><strong>Routing:</strong> 50+ = MQL alert, 75+ = SQL alert to Eli, 100+ = priority alert to all three of you</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Account-Level Intelligence</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">19</span>
+            <span class="deliverable-title">Account associations &amp; multi-contact alerts</span>
+          </div>
+          <div class="deliverable-body">
+            Deals roll up to ship operators, not individual captains. Account-level alerts when multiple contacts at the same account engage simultaneously — the key signal for an ABM follow-up. Account-tier lists monitored continuously.
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">20</span>
+            <span class="deliverable-title">Predictive proxy metrics</span>
+          </div>
+          <div class="deliverable-body">
+            Custom events: "Demo page viewed 2+ times," "Spec sheet downloaded," "Pricing inquiry submitted," "Multi-contact account engagement." Plus an offline conversion import workflow — Eli closes a deal from a phone call, it flows back into HubSpot for proper attribution. Critical given Excel BDR is making outbound calls.
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-section-divider">Reporting &amp; Optimization</div>
+      <div class="deliverables-list">
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">21</span>
+            <span class="deliverable-title">Three-dashboard reporting suite</span>
+          </div>
+          <div class="deliverable-body">
+            <ul>
+              <li>Source dashboard (attribution by channel, content, campaign — first-touch, last-touch, multi-touch)</li>
+              <li>Lifecycle funnel + lead scoring health</li>
+              <li>Sales pipeline contribution from marketing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-head">
+            <span class="deliverable-num">22</span>
+            <span class="deliverable-title">Day-60 optimization round (included)</span>
+          </div>
+          <div class="deliverable-body">
+            At day 60 we come back, review actual data, tune scoring thresholds, refine flow timing based on real engagement. Not an upsell — built into the engagement.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 8: COVERAGE AUDIT
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">Coverage audit</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Every system requirement, mapped to a tier.</h2>
+        <div class="slide-subhead">A clean view of which tier covers which capability — so you can pick by what you need to be able to do, not by feature count.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="coverage-grid">
+    <div class="coverage-row header">
+      <div>System Requirement</div>
+      <div class="tier-col"><strong>Tier 1</strong>$7.5K</div>
+      <div class="tier-col"><strong>Tier 2</strong>$12K</div>
+      <div class="tier-col"><strong>Tier 3</strong>$24K</div>
+      <div>Notes</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Forms + website integration<small>Replace site forms with HubSpot forms; install tracking</small></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="note">3–5 forms, tracking script site-wide, page-level visit tracking, UTM capture.</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Contact segmentation<small>ICP-based dynamic lists, account-tier lists, exclusion logic</small></div>
+      <div class="tier-col"><span class="cov-cell cov-none">○&nbsp;Not in scope</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="note">Maritime, Offshore, future Senior Care &amp; Government — built once, reusable forever.</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Domain send setup<small>SPF, DKIM, DMARC, SSL, blacklist</small></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="note">Non-negotiable per Noetic standing rules. Deliverability is the performance ceiling.</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Conversion tracking<small>Form submits, page views, email opens/clicks, demos</small></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Full + custom events</span></div>
+      <div class="note">Tier 3 adds high-intent custom events that train your future ad algorithms.</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Reporting<small>Dashboards covering source, funnel, segments, pipeline</small></div>
+      <div class="tier-col"><span class="cov-cell cov-partial">◐&nbsp;1 dashboard</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;2 dashboards</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;3 dashboards</span></div>
+      <div class="note">Each tier adds one. Tier 3 includes pipeline contribution from marketing.</div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="item-name">Attribution<small>First-touch, last-touch, multi-touch + offline imports</small></div>
+      <div class="tier-col"><span class="cov-cell cov-partial">◐&nbsp;First/last-touch</span></div>
+      <div class="tier-col"><span class="cov-cell cov-partial">◐&nbsp;First/last + segment</span></div>
+      <div class="tier-col"><span class="cov-cell cov-full">●&nbsp;Multi-touch + offline import</span></div>
+      <div class="note">Offline conversion import (Eli's phone deals → HubSpot) is the Tier 3 unlock.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 2rem; margin-top: 1.5rem; align-items: center; font-size: 0.85rem; color: var(--text-light);">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span class="cov-cell cov-full" style="padding: 0.25rem 0.6rem;">●&nbsp;Full</span> Capability is fully built and live on day 1
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span class="cov-cell cov-partial" style="padding: 0.25rem 0.6rem;">◐&nbsp;Partial</span> Capability is present at a useful level but not max depth
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span class="cov-cell cov-none" style="padding: 0.25rem 0.6rem;">○&nbsp;None</span> Not in scope at this tier
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 9: ARCHITECTURE DIAGRAM
+     ============================================ -->
+<section class="slide dark">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">What we're building</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading" style="color: white;">The full HubSpot architecture,<br>colored by tier.</h2>
+        <div class="slide-subhead">Each layer of the system, what's in it, and which tier it belongs to. Read top-to-bottom: data flows in at the top, gets processed in the middle, gets activated and reported on at the bottom.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="arch-diagram">
+    <div class="arch-grid">
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Capture <span class="arch-tier-marker t1">T1</span></div>
+        <div class="arch-layer-title">Where leads enter</div>
+        <ul class="arch-layer-items">
+          <li class="t1"><span class="arch-dot"></span>Website forms (3–5)<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>Tracking script site-wide<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>UTM parameter capture<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>Conversion event mapping<span class="tag">T1</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Data <span class="arch-tier-marker t2">T1+T2</span></div>
+        <div class="arch-layer-title">How leads are organized</div>
+        <ul class="arch-layer-items">
+          <li class="t1"><span class="arch-dot"></span>Lifecycle stages<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>Custom contact properties<span class="tag">T1</span></li>
+          <li class="t2"><span class="arch-dot"></span>ICP segmentation lists<span class="tag">T2</span></li>
+          <li class="t2"><span class="arch-dot"></span>Account-tier lists<span class="tag">T2</span></li>
+          <li class="t3"><span class="arch-dot"></span>Lead scoring model<span class="tag">T3</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Activation <span class="arch-tier-marker t3">T2+T3</span></div>
+        <div class="arch-layer-title">What goes out</div>
+        <ul class="arch-layer-items">
+          <li class="t2"><span class="arch-dot"></span>5 modular email templates<span class="tag">T2</span></li>
+          <li class="t2"><span class="arch-dot"></span>3 foundational automations<span class="tag">T2</span></li>
+          <li class="t2"><span class="arch-dot"></span>Sales handoff workflow<span class="tag">T2</span></li>
+          <li class="t3"><span class="arch-dot"></span>Maritime nurture (6 emails)<span class="tag">T3</span></li>
+          <li class="t3"><span class="arch-dot"></span>Offshore nurture (5 emails)<span class="tag">T3</span></li>
+          <li class="t3"><span class="arch-dot"></span>Re-engagement flow (3 emails)<span class="tag">T3</span></li>
+          <li class="t3"><span class="arch-dot"></span>Account-level alerts<span class="tag">T3</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer arch-foundation">
+        <div class="arch-layer-label">Foundation <span class="arch-tier-marker t1">All Tiers</span></div>
+        <div class="arch-layer-title">The infrastructure underneath everything</div>
+        <ul class="arch-layer-items">
+          <li class="t1"><span class="arch-dot"></span>Domain auth: SPF / DKIM / DMARC<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>SSL + tracking domain<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>Brand kit + sender identity<span class="tag">T1</span></li>
+          <li class="t1"><span class="arch-dot"></span>Subscription types + preferences<span class="tag">T1</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Reporting <span class="arch-tier-marker t1">All Tiers</span></div>
+        <div class="arch-layer-title">What you can see</div>
+        <ul class="arch-layer-items">
+          <li class="t1"><span class="arch-dot"></span>Lifecycle funnel dashboard<span class="tag">T1</span></li>
+          <li class="t2"><span class="arch-dot"></span>Segment performance dashboard<span class="tag">T2</span></li>
+          <li class="t3"><span class="arch-dot"></span>Pipeline contribution dashboard<span class="tag">T3</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Attribution <span class="arch-tier-marker t1">All Tiers</span></div>
+        <div class="arch-layer-title">Where credit lands</div>
+        <ul class="arch-layer-items">
+          <li class="t1"><span class="arch-dot"></span>First-touch + last-touch<span class="tag">T1</span></li>
+          <li class="t2"><span class="arch-dot"></span>Segment-level source tracking<span class="tag">T2</span></li>
+          <li class="t3"><span class="arch-dot"></span>Multi-touch attribution<span class="tag">T3</span></li>
+          <li class="t3"><span class="arch-dot"></span>Offline conversion import<span class="tag">T3</span></li>
+        </ul>
+      </div>
+
+      <div class="arch-layer">
+        <div class="arch-layer-label">Integration <span class="arch-tier-marker t2">T2+T3</span></div>
+        <div class="arch-layer-title">Where humans plug in</div>
+        <ul class="arch-layer-items">
+          <li class="t2"><span class="arch-dot"></span>Eli notification on MQL/SQL<span class="tag">T2</span></li>
+          <li class="t2"><span class="arch-dot"></span>Sales handoff playbook<span class="tag">T2</span></li>
+          <li class="t3"><span class="arch-dot"></span>Score-based routing rules<span class="tag">T3</span></li>
+          <li class="t3"><span class="arch-dot"></span>Multi-contact engagement triggers<span class="tag">T3</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="arch-legend">
+      <div class="arch-legend-item"><span class="swatch" style="background: var(--cyan-accent);"></span>Tier 1 — Foundation</div>
+      <div class="arch-legend-item"><span class="swatch" style="background: var(--noetic-purple);"></span>Tier 2 — Activation</div>
+      <div class="arch-legend-item"><span class="swatch" style="background: linear-gradient(135deg, var(--noetic-purple), var(--cyan-accent));"></span>Tier 3 — Lifecycle Engine</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 10: ROADMAP / TIMELINE
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">Roadmap</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Eight weeks, three paths.</h2>
+        <div class="slide-subhead">Every tier shares the same Week 1–4 foundation. Where they diverge is what gets layered on top — and how long it takes.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="roadmap-block">
+    <div class="roadmap-headers">
+      <div></div>
+      <div class="roadmap-headers-bars">
+        <div>Tier 1 · $7.5K</div>
+        <div>Tier 2 · $12K</div>
+        <div>Tier 3 · $24K</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Week 1<strong>Discovery</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar active-t1"><span class="roadmap-bar-label">Active</span>Kickoff · audit existing HubSpot · website + form audit · domain/deliverability check · access provisioning</div>
+        <div class="roadmap-bar active-t2"><span class="roadmap-bar-label">Active</span>Plus 30-min interview with Eli on his sales process</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Active</span>Plus messaging-doc deep-read for nurture flow content</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Weeks 2–3<strong>Foundation Build</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar active-t1"><span class="roadmap-bar-label">Active</span>Marketing Hub config · domain auth · lifecycle stages · contact properties · forms + tracking · conversion events</div>
+        <div class="roadmap-bar active-t2"><span class="roadmap-bar-label">Active</span>Same foundation work, in parallel with template &amp; segmentation design</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Active</span>Same foundation work, in parallel with flow architecture &amp; lead scoring design</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Week 4<strong>QA + Handoff (T1)</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar active-t1"><span class="roadmap-bar-label">Active</span>Dashboard build · 90-min training · documentation · go-live</div>
+        <div class="roadmap-bar active-t2"><span class="roadmap-bar-label">Active</span>Templates designed · segmentation lists built · automations configured</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Active</span>Templates designed · segmentation lists built · scoring model built</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Weeks 5–6<strong>Activation</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar dim"><span class="roadmap-bar-label">N/A</span>Engagement complete</div>
+        <div class="roadmap-bar active-t2"><span class="roadmap-bar-label">Active</span>Sales handoff playbook · 2 dashboards · 2 training sessions · go-live</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Active</span>Flow copy written · designed · QA'd · 3 dashboards configured</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Weeks 7–8<strong>Engine Live (T3)</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar dim"><span class="roadmap-bar-label">N/A</span>Engagement complete</div>
+        <div class="roadmap-bar dim"><span class="roadmap-bar-label">N/A</span>Engagement complete</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Active</span>Flows live · scoring active · account alerts configured · 3 training sessions · go-live</div>
+      </div>
+    </div>
+
+    <div class="roadmap-row">
+      <div class="roadmap-week">Day 60<strong>Optimization</strong></div>
+      <div class="roadmap-bars">
+        <div class="roadmap-bar dim"><span class="roadmap-bar-label">N/A</span>—</div>
+        <div class="roadmap-bar dim"><span class="roadmap-bar-label">N/A</span>—</div>
+        <div class="roadmap-bar active-t3"><span class="roadmap-bar-label">Included</span>Review actual data · tune scoring · refine flow timing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 11: RISKS & DEPENDENCIES
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">Honest read</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">What could slow this down<br>— and how we plan around it.</h2>
+        <div class="slide-subhead">We'd rather flag the risks now than discover them mid-build. None of these are blockers, but each one needs an answer in Week 1.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="risks-grid">
+    <div class="risk-row">
+      <div class="risk-icon high">⚠</div>
+      <div class="risk-name">HubSpot license tier<small>You may currently have CRM Free, not Marketing Hub Pro</small></div>
+      <div class="risk-likelihood high">High</div>
+      <div class="risk-mitigation">All tiers require Marketing Hub Pro minimum (~$890/mo). We'll confirm in kickoff. If an upgrade is needed, it's a prerequisite handled before our work begins.</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-icon high">⚠</div>
+      <div class="risk-name">HubSpot access provisioning<small>You mentioned access is hard to get internally</small></div>
+      <div class="risk-likelihood high">High</div>
+      <div class="risk-mitigation">We'll work with your HubSpot admin to get a Noetic seat in Week 1. If unresolved by end of Week 1, we pause the engagement rather than build blind.</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-icon med">◐</div>
+      <div class="risk-name">Website CMS<small>We don't yet know if agwafarm.com runs on WordPress, Webflow, or custom</small></div>
+      <div class="risk-likelihood med">Medium</div>
+      <div class="risk-mitigation">Discovery audit clarifies in Week 1. Standard HubSpot embeds work on most platforms; if custom dev is needed, we'll flag a small scope adjustment immediately.</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-icon med">◐</div>
+      <div class="risk-name">Messaging doc completeness<small>Tier 3 nurture copy depends on your existing messaging</small></div>
+      <div class="risk-likelihood med">Medium (T3 only)</div>
+      <div class="risk-mitigation">We review the messaging doc in Week 1. If gaps exist, we either narrow the flow scope or add a copywriting line item — your call.</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-icon low">○</div>
+      <div class="risk-name">No brand book<small>Templates designed from agwafarm.com aesthetic inference</small></div>
+      <div class="risk-likelihood low">Low</div>
+      <div class="risk-mitigation">Templates built in line with your site. One round of your review built into the timeline. If you want a proper brand book later, that's a separate engagement.</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-icon low">○</div>
+      <div class="risk-name">Eli's availability<small>Sales handoff playbook needs 30–60 min of his time</small></div>
+      <div class="risk-likelihood low">Low</div>
+      <div class="risk-mitigation">Scheduled in Week 1. A focused 30-minute conversation is enough — we know exactly what to ask.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 12: HOW TO CHOOSE
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">How to choose</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">A framework, not a recommendation.</h2>
+        <div class="slide-subhead">Each tier solves a different problem. Here's how to know which problem is yours.</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+
+    <div style="background: white; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem 1.75rem; box-shadow: var(--shadow-soft);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; color: var(--noetic-purple); text-transform: uppercase; margin-bottom: 0.5rem;">Pick Tier 1 if</div>
+      <div style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 1.25rem;">You need to start, not finish.</div>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.55; color: var(--text-mid);">
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>Budget is the binding constraint and you can revisit fuller scope in 60 days.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>You want to validate HubSpot is the right tool before deeper investment.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0;"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>An in-house HubSpot owner is starting soon and they'll build the rest.</span></li>
+      </ul>
+      <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: var(--text-light);">
+        <strong style="color: var(--text-dark); display: block; margin-bottom: 0.15rem;">Trade-off</strong>
+        You'll see leads but you won't yet have the system to act on them at scale.
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem 1.75rem; box-shadow: var(--shadow-soft);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; color: var(--noetic-purple); text-transform: uppercase; margin-bottom: 0.5rem;">Pick Tier 2 if</div>
+      <div style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 1.25rem;">You want a working system, not a project.</div>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.55; color: var(--text-mid);">
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>You need to talk to a Maritime captain differently from a Senior Care administrator.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>Your creative person needs templates that actually let them send things.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0;"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>You want it operational and self-sufficient before you bring HubSpot in-house.</span></li>
+      </ul>
+      <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: var(--text-light);">
+        <strong style="color: var(--text-dark); display: block; margin-bottom: 0.15rem;">Trade-off</strong>
+        Well-segmented one-offs, not yet automated nurtures running in the background.
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem 1.75rem; box-shadow: var(--shadow-soft);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; color: var(--noetic-purple); text-transform: uppercase; margin-bottom: 0.5rem;">Pick Tier 3 if</div>
+      <div style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 1.25rem;">You want the engine running before Gen 2 lands.</div>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.55; color: var(--text-mid);">
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>The CEO is pushing on velocity and you want everything live now, not in stages.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>Eli's outbound calls need to flow back into HubSpot for proper attribution.</span></li>
+        <li style="display: flex; gap: 0.6rem; padding: 0.5rem 0;"><span style="color: var(--noetic-purple); font-weight: 700;">→</span><span>Pre-funding visibility — you want a real revenue engine in due-diligence decks.</span></li>
+      </ul>
+      <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: var(--text-light);">
+        <strong style="color: var(--text-dark); display: block; margin-bottom: 0.15rem;">Trade-off</strong>
+        Mid-market scope at one-off pricing — biggest ROI long-term, biggest investment upfront.
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 2.5rem; max-width: 900px;">
+    <p style="font-size: 1rem; color: var(--text-mid); line-height: 1.6;">If two of these sound right, you're probably in that tier. If you're between two, the lower one is usually the safer bet — we can always extend scope mid-engagement, but we can't unbuild what's already shipped. Happy to talk through any of this on a call.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 13: PRICING CARDS
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">Investment</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Three numbers, three systems.</h2>
+        <div class="slide-subhead">All-inclusive, one-time pricing. No hidden retainers, no extras. The HubSpot license is a separate prerequisite (~$890/mo for Marketing Hub Pro, billed by HubSpot directly).</div>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tag">Tier 1</div>
+      <div class="pricing-name">Foundation</div>
+      <div class="pricing-tagline">Turn HubSpot from a database into a working pipeline.</div>
+      <div class="pricing-price">$7,500</div>
+      <div class="pricing-price-meta">One-time · 4 weeks</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li class="bold">HubSpot Marketing Hub configuration</li>
+        <li>Domain auth (SPF / DKIM / DMARC)</li>
+        <li>Lifecycle stage architecture</li>
+        <li>Contact property schema</li>
+        <li>Website forms + tracking script</li>
+        <li>Conversion event mapping</li>
+        <li>First-touch + last-touch attribution</li>
+        <li>1 lifecycle funnel dashboard</li>
+        <li>1× 90-min training + 30-day support</li>
+      </ul>
+      <div class="pricing-card-footer">
+        <strong>Best for</strong>
+        Budget-constrained start. Plan to revisit Tier 2 work within 60 days.
+      </div>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tag">Tier 2</div>
+      <div class="pricing-name">Activation</div>
+      <div class="pricing-tagline">The system can segment, send, and signal — without us in the loop.</div>
+      <div class="pricing-price">$12,000</div>
+      <div class="pricing-price-meta">One-time · 5–6 weeks</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li class="bold">Everything in Tier 1, plus...</li>
+        <li>ICP segmentation architecture (5 ICPs)</li>
+        <li>5 modular email templates</li>
+        <li>8–10 reusable content blocks</li>
+        <li>3 foundational automations</li>
+        <li>Sales handoff playbook (with Eli)</li>
+        <li>Segment performance dashboard</li>
+        <li>2 training sessions + 60-day support</li>
+      </ul>
+      <div class="pricing-card-footer">
+        <strong>Best for</strong>
+        Most companies at Agwa's stage. The version that lets you operate independently for 6+ months.
+      </div>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tag">Tier 3</div>
+      <div class="pricing-name">Lifecycle Engine</div>
+      <div class="pricing-tagline">HubSpot becomes the marketing engine that runs while you sleep.</div>
+      <div class="pricing-price">$24,000</div>
+      <div class="pricing-price-meta">One-time · 8 weeks</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li class="bold">Everything in Tiers 1 + 2, plus...</li>
+        <li>Maritime nurture (6 emails / 4 weeks)</li>
+        <li>Offshore nurture (5 emails / 3 weeks)</li>
+        <li>Re-engagement flow (3 emails)</li>
+        <li>Multi-attribute lead scoring</li>
+        <li>Account-level alerts &amp; tracking</li>
+        <li>Predictive proxy metrics</li>
+        <li>Offline conversion import (Eli's calls)</li>
+        <li>Multi-touch attribution + 3 dashboards</li>
+        <li>3 training sessions + Day-60 optimization</li>
+      </ul>
+      <div class="pricing-card-footer">
+        <strong>Best for</strong>
+        Pre-funding companies that want a real engine. Mid-range scope at one-off pricing.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2.5rem; background: var(--noetic-purple-soft); border-radius: 16px; padding: 1.5rem 2rem; max-width: 1000px;">
+    <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--noetic-purple); margin-bottom: 0.5rem;">What's not included in any tier</div>
+    <div style="font-size: 0.95rem; line-height: 1.55; color: var(--text-mid);">
+      HubSpot license cost · Brand book creation · Original copywriting beyond messaging-doc-derived flow content · Paid media management · Excel BDR ↔ HubSpot integration (deferred per your call) · Custom API integrations · Multi-language · Sales sequences/playbooks beyond the handoff doc · Ongoing maintenance retainer · Website redesign or CRO work · Content production (whitepapers, blog posts, lead magnets).
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 14: NEXT STEPS
+     ============================================ -->
+<section class="slide light">
+  <div class="slide-header">
+    <div>
+      <div class="section-pill">If you say yes</div>
+      <div class="slide-title-block">
+        <h2 class="slide-heading">Here's what happens<br>in the first 7 days.</h2>
+      </div>
+    </div>
+    <div class="brand-strip">
+      <img src="assets/agwa-logo.png" alt="Agwa" class="brand-logo-agwa">
+      <span class="brand-divider"></span>
+      <img src="assets/noetic-logo.png" alt="Noetic" class="brand-logo-noetic">
+    </div>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-name">Counter-sign &amp; kickoff</div>
+      <div class="step-desc">PNC signed. We schedule a 60-min kickoff with you, the CEO if he wants in, and Eli for 30 minutes. Slack channel created for day-to-day.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-name">Access &amp; license check</div>
+      <div class="step-desc">We verify your HubSpot license tier. If you're on CRM Free, we walk you through the Marketing Hub Pro upgrade path (Solutions Partner discount may apply). We get our seat provisioned.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-name">Discovery audit</div>
+      <div class="step-desc">We audit your existing HubSpot, your website forms, your domain auth status, and your messaging doc. You get a 1-page findings memo by end of Week 1.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-name">Build begins</div>
+      <div class="step-desc">Foundation work starts in Week 2. You see weekly progress updates in Slack. You can interrupt anytime. We don't disappear until handoff.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem; background: white; border: 1px solid var(--border-light); border-radius: 20px; padding: 2rem 2.5rem; max-width: 1100px; box-shadow: var(--shadow-soft);">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+      <div>
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--noetic-purple); margin-bottom: 0.75rem;">Your Noetic Team</div>
+        <div style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Tamir Alush</div>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem;">Founder · Strategy Lead</div>
+        <div style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Nicole Luna</div>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem;">Account Director · Day-to-day</div>
+        <div style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Natalia Ramirez + Daniela Benfele</div>
+        <div style="font-size: 0.85rem; color: var(--text-light);">Lifecycle Marketing &amp; Email Automation Specialists</div>
+      </div>
+      <div>
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--noetic-purple); margin-bottom: 0.75rem;">Working Model</div>
+        <div style="font-size: 0.95rem; line-height: 1.6; color: var(--text-mid);">
+          <strong style="color: var(--text-dark);">Hours:</strong> 9am–6pm CT (we accommodate Israel timezone for early calls)<br>
+          <strong style="color: var(--text-dark);">Cadence:</strong> Weekly 30-min check-in + Slack for everything else<br>
+          <strong style="color: var(--text-dark);">Languages:</strong> English &amp; Hebrew fluent — write to us in either<br>
+          <strong style="color: var(--text-dark);">Communication:</strong> Slack channel + Gmail + Loom for async walkthroughs
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 15: CLOSING
+     ============================================ -->
+<section class="slide dark closing">
+  <div class="closing-content">
+    <h1>Let's <em>plant</em> the system.</h1>
+    <div style="font-size: 1.2rem; color: var(--text-on-dark-mid); max-width: 600px; margin: 0 auto;">
+      Reply to this proposal with the tier you want, or hop on a 15-minute call to talk through any of it. We can have the PNC counter-signed by end of week.
+    </div>
+
+    <div class="closing-sig">
+      <div class="cover-noetic-logo" style="position: static;">
+        <img src="assets/noetic-logo.png" alt="Noetic" style="height: 32px; width: auto; filter: brightness(0) invert(1);">
+      </div>
+      <span class="brand-divider"></span>
+      <span>NOETIC.IO · HELLO@NOETIC.IO</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
