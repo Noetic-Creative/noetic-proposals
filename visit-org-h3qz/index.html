@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit.org &#8212; Recap &amp; Capabilities Brief | Noetic Creative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+  <style>
+    :root {
+      --paper:#FAFAF7;--paper-warm:#F2F0EA;--paper-cool:#F0F0F4;
+      --ink:#0A0A0E;--ink-soft:#1A1A1F;--ink-mute:#6B6B7B;--ink-faint:#A8A8B5;
+      --card:#FFFFFF;--purple:#6C5CE7;--purple-deep:#4D3FC9;--purple-soft:#EFEDFE;
+      --purple-glow:rgba(108,92,231,0.18);--mint:#00D4B4;--coral:#FF6B6B;--amber:#F5B400;
+      --rule:rgba(10,10,14,0.08);--rule-strong:rgba(10,10,14,0.16);
+      --max:1240px;--max-narrow:920px;
+      --font-display:'Fraunces','Times New Roman',serif;
+      --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+      --font-mono:'JetBrains Mono',monospace;
+    }
+    ::selection{background:var(--purple);color:white;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+    body{background:var(--paper);color:var(--ink-soft);font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em;overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px;}
+    section{position:relative;}
+    .section{padding:clamp(80px,12vh,160px) 0;}
+    .section-head{margin-bottom:clamp(48px,6vw,80px);}
+    .display-xl{font-family:var(--font-display);font-size:clamp(52px,8.5vw,116px);font-weight:600;line-height:0.95;letter-spacing:-0.035em;}
+    .display-lg{font-family:var(--font-display);font-size:clamp(40px,5.5vw,76px);font-weight:600;line-height:1;letter-spacing:-0.03em;}
+    .display-md{font-family:var(--font-display);font-size:clamp(30px,3.8vw,54px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;}
+    .italic{font-style:italic;font-weight:400;}
+    .lede{font-size:clamp(17px,1.55vw,21px);line-height:1.52;color:var(--ink-soft);font-weight:400;max-width:60ch;}
+    .client-bar{background:var(--ink);padding:11px 32px;display:flex;align-items:center;justify-content:space-between;}
+    .client-bar-logos{display:flex;align-items:center;gap:18px;}
+    .client-bar-divider{width:1px;height:22px;background:rgba(255,255,255,0.2);}
+    .noetic-mark-bar{width:22px;height:22px;border-radius:6px;background:var(--purple);display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:14px;color:white;flex-shrink:0;}
+    .noetic-name-bar{font-family:var(--font-sans);font-size:14px;font-weight:700;color:white;letter-spacing:-0.01em;}
+    .visit-logo-bar{height:20px;width:auto;opacity:0.92;}
+    .client-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.4);}
+    @media(max-width:600px){.client-bar-meta{display:none;}}
+    .nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:13px 32px;background:rgba(250,250,247,0.88);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid transparent;transition:border-color 0.3s;}
+    .nav.scrolled{border-bottom-color:var(--rule);}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{display:flex;align-items:center;gap:10px;}
+    .nav-brand img{height:28px;width:auto;}
+    .nav-links{display:flex;gap:24px;list-style:none;align-items:center;}
+    .nav-links a{font-size:13px;font-weight:500;color:var(--ink-mute);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-cta{background:var(--ink)!important;color:white!important;padding:8px 15px;border-radius:999px;font-size:12px!important;font-weight:600!important;display:inline-flex;align-items:center;gap:5px;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--purple)!important;}
+    @media(max-width:860px){.nav-links li:not(:last-child){display:none;}}
+    .eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px;}
+    .eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%;}
+    .eyebrow.dark{color:rgba(255,255,255,0.55);}
+    .eyebrow.dark::before{background:var(--mint);}
+    .hero{padding-top:clamp(100px,14vh,180px);padding-bottom:clamp(80px,12vh,130px);position:relative;overflow:hidden;}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,14,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,0.04) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none;}
+    .hero-blob{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(108,92,231,0.2),transparent 60%);filter:blur(80px);pointer-events:none;top:-200px;right:-200px;z-index:0;}
+    .hero-blob-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(0,212,180,0.12),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-150px;left:-100px;z-index:0;}
+    .hero-inner{position:relative;z-index:1;}
+    .hero-meta{display:flex;gap:16px;align-items:center;margin-bottom:30px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);}
+    .hero-meta-divider{width:22px;height:1px;background:var(--rule-strong);}
+    .hero h1{margin-bottom:26px;color:var(--ink);}
+    .hero-lede{font-size:clamp(17px,1.65vw,21px);line-height:1.52;color:var(--ink-soft);max-width:54ch;font-weight:400;}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(56px,8vh,96px);border-top:1px solid var(--rule);}
+    .hero-stat{padding:30px 22px 0 0;border-right:1px solid var(--rule);}
+    .hero-stat:not(:first-child){padding-left:22px;}
+    .hero-stat:last-child{border-right:none;padding-right:0;}
+    .hero-stat-num{font-family:var(--font-display);font-size:clamp(32px,4vw,56px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:8px;}
+    .hero-stat-num .accent{color:var(--purple);}
+    .hero-stat-label{font-size:13px;color:var(--ink-mute);font-weight:500;line-height:1.4;max-width:21ch;}
+    @media(max-width:800px){.hero-stats{grid-template-columns:repeat(2,1fr);}.hero-stat:nth-child(2n){border-right:none;}.hero-stat{padding:22px 14px 22px 0;}.hero-stat:not(:first-child){padding-left:0;}}
+    .belief-list{list-style:none;}
+    .belief-item{padding:26px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:50px 1fr;gap:22px;align-items:start;}
+    .belief-item:last-child{border-bottom:1px solid var(--rule);}
+    .belief-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;letter-spacing:0.05em;padding-top:4px;}
+    .belief-content h3{font-family:var(--font-display);font-size:clamp(19px,1.9vw,26px);font-weight:600;margin-bottom:8px;letter-spacing:-0.02em;color:var(--ink);}
+    .belief-content p{color:var(--ink-mute);font-size:15px;line-height:1.6;max-width:58ch;}
+    .frame-section{background:var(--ink);color:white;padding:clamp(80px,12vh,140px) 0;}
+    .frame-section h2{color:white;}
+    .frame-intro{font-size:clamp(17px,1.7vw,21px);color:rgba(255,255,255,0.68);max-width:58ch;margin-top:22px;line-height:1.55;}
+    .frame-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:58px;border-top:1px solid rgba(255,255,255,0.12);}
+    .frame-col{padding:52px 44px;border-right:1px solid rgba(255,255,255,0.12);}
+    .frame-col:last-child{border-right:none;}
+    .frame-col-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:18px;}
+    .frame-col h3{font-family:var(--font-display);font-size:clamp(24px,2.8vw,38px);font-weight:600;color:white;margin-bottom:16px;line-height:1.05;letter-spacing:-0.02em;}
+    .frame-col p{color:rgba(255,255,255,0.68);font-size:15px;line-height:1.6;max-width:42ch;}
+    .frame-spec{display:flex;gap:24px;flex-wrap:wrap;padding-top:26px;margin-top:26px;border-top:1px solid rgba(255,255,255,0.12);}
+    .frame-spec-item .label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:5px;}
+    .frame-spec-item .value{font-size:14px;color:white;font-weight:500;}
+    .frame-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:52px;border-top:1px solid rgba(255,255,255,0.12);}
+    .frame-stat{padding:30px 22px 0 0;border-right:1px solid rgba(255,255,255,0.12);}
+    .frame-stat:not(:first-child){padding-left:22px;}
+    .frame-stat:last-child{border-right:none;}
+    .frame-stat-num{font-family:var(--font-display);font-size:clamp(40px,4.8vw,68px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--mint);margin-bottom:10px;}
+    .frame-stat-label{font-size:13px;color:rgba(255,255,255,0.5);font-weight:500;line-height:1.4;max-width:24ch;}
+    @media(max-width:800px){.frame-grid{grid-template-columns:1fr;}.frame-col{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12);}.frame-stats{grid-template-columns:repeat(2,1fr);}}
+    .service-deep{border-top:1px solid var(--rule);padding:clamp(80px,11vh,130px) 0;background:var(--paper);}
+    .service-deep.warm{background:var(--paper-warm);}
+    .service-deep-grid{display:grid;grid-template-columns:1fr 1.42fr;gap:clamp(40px,6vw,88px);align-items:start;}
+    @media(max-width:900px){.service-deep-grid{grid-template-columns:1fr;}}
+    .service-deep-meta{position:sticky;top:88px;}
+    .service-deep-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;margin-bottom:12px;letter-spacing:0.05em;}
+    .service-deep-title{font-family:var(--font-display);font-size:clamp(30px,3.8vw,50px);font-weight:600;line-height:1.02;letter-spacing:-0.025em;margin-bottom:16px;color:var(--ink);}
+    .service-deep-tag{font-size:15px;color:var(--purple-deep);font-weight:500;margin-bottom:18px;font-style:italic;font-family:var(--font-display);}
+    .service-deep-tag::before{content:"— ";}
+    .service-deep-desc{color:var(--ink-mute);font-size:15px;line-height:1.6;}
+    .approach-list{list-style:none;margin-top:26px;}
+    .approach-list li{padding:12px 0;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-soft);display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;}
+    .approach-list li:last-child{border-bottom:1px solid var(--rule);}
+    .approach-list li::before{content:"→";color:var(--purple);font-weight:600;font-size:13px;}
+    .case-card{background:white;border:1px solid var(--rule);border-radius:16px;padding:30px;margin-bottom:20px;transition:transform 0.3s,box-shadow 0.3s;}
+    .case-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,0.12);}
+    .case-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--purple-deep);background:var(--purple-soft);padding:5px 10px;border-radius:999px;font-weight:500;margin-bottom:18px;}
+    .case-card-tag.alt{background:rgba(0,212,180,0.12);color:#006B5C;}
+    .case-card-name{font-family:var(--font-display);font-size:26px;font-weight:600;letter-spacing:-0.02em;margin-bottom:3px;color:var(--ink);}
+    .case-card-industry{font-size:11px;color:var(--ink-mute);margin-bottom:20px;font-family:var(--font-mono);}
+    .case-card-block{margin-bottom:14px;}
+    .case-card-block-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-faint);font-weight:500;margin-bottom:5px;}
+    .case-card-block p{font-size:14px;color:var(--ink-soft);line-height:1.55;}
+    .case-card-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);}
+    .result-pop{padding:0 14px 0 0;border-right:1px solid var(--rule);}
+    .result-pop:last-child{border-right:none;}
+    .result-pop-num{font-family:var(--font-display);font-size:clamp(24px,2.8vw,36px);font-weight:600;letter-spacing:-0.025em;line-height:1;color:var(--purple);margin-bottom:5px;}
+    .result-pop-num.green{color:#00A18A;}
+    .result-pop-label{font-size:11px;color:var(--ink-mute);line-height:1.35;font-weight:500;}
+    .aha-quote{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--ink);line-height:1.4;}
+    .aha-quote::before{content:"Aha! moment — ";font-style:normal;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--purple);font-weight:600;display:block;margin-bottom:7px;}
+    .featured-section{background:var(--ink);color:white;padding:clamp(80px,12vh,140px) 0;}
+    .featured-section h2{color:white;}
+    .featured-cs{border-top:1px solid rgba(255,255,255,0.1);padding:60px 0;}
+    .featured-cs-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start;}
+    @media(max-width:900px){.featured-cs-grid{grid-template-columns:1fr;}}
+    .featured-cs-meta-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:18px;}
+    .featured-cs-meta h3{font-family:var(--font-display);font-size:clamp(34px,4.2vw,56px);font-weight:600;letter-spacing:-0.025em;line-height:1;margin-bottom:14px;color:white;}
+    .featured-cs-meta p{color:rgba(255,255,255,0.62);font-size:15px;line-height:1.55;max-width:38ch;margin-bottom:22px;}
+    .featured-cs-channels{display:flex;flex-wrap:wrap;gap:7px;}
+    .channel-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;padding:5px 11px;border:1px solid rgba(255,255,255,0.18);border-radius:999px;color:rgba(255,255,255,0.82);}
+    .featured-cs-narrative{display:flex;flex-direction:column;gap:22px;}
+    .featured-cs-narrative h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--purple);font-weight:500;margin-bottom:9px;}
+    .featured-cs-narrative h4.mint{color:var(--mint);}
+    .featured-cs-narrative p{font-size:16px;line-height:1.55;color:rgba(255,255,255,0.82);}
+    .featured-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-top:26px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.12);}
+    .featured-result{padding:0 22px 0 0;border-right:1px solid rgba(255,255,255,0.1);}
+    .featured-result:last-child{border-right:none;}
+    .featured-result-num{font-family:var(--font-display);font-size:clamp(30px,3.8vw,50px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:var(--mint);margin-bottom:7px;}
+    .featured-result-num.purple{color:#B8AEFF;}
+    .featured-result-label{font-size:12px;color:rgba(255,255,255,0.48);font-weight:500;line-height:1.4;max-width:22ch;}
+    .differentiators{background:var(--paper-cool);}
+    .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:54px;background:var(--rule);border:1px solid var(--rule);}
+    @media(max-width:900px){.diff-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:560px){.diff-grid{grid-template-columns:1fr;}}
+    .diff-card{background:var(--paper-cool);padding:34px 26px;transition:background 0.3s;}
+    .diff-card:hover{background:white;}
+    .diff-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:0.1em;margin-bottom:16px;font-weight:600;}
+    .diff-card h4{font-family:var(--font-display);font-size:clamp(18px,1.8vw,22px);font-weight:600;letter-spacing:-0.02em;margin-bottom:9px;line-height:1.1;color:var(--ink);}
+    .diff-card p{font-size:14px;color:var(--ink-mute);line-height:1.55;}
+    .clients{background:var(--paper-warm);}
+    .clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin-top:54px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+    @media(max-width:1100px){.clients-grid{grid-template-columns:repeat(5,1fr);}}
+    @media(max-width:800px){.clients-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:480px){.clients-grid{grid-template-columns:repeat(2,1fr);}}
+    .client-cell{background:var(--paper-warm);padding:24px 14px;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;min-height:86px;transition:background 0.3s,color 0.3s;cursor:default;line-height:1.2;}
+    .client-cell:hover{background:var(--ink);color:white;}
+    .client-cell.highlight{background:var(--purple-soft);color:var(--purple-deep);}
+    .process-track{margin-top:54px;}
+    .process-step{display:grid;grid-template-columns:76px 1fr;gap:30px;padding:34px 0;border-top:1px solid var(--rule);align-items:start;}
+    .process-step:last-child{border-bottom:1px solid var(--rule);}
+    .process-num{font-family:var(--font-display);font-size:58px;font-weight:600;line-height:0.9;letter-spacing:-0.04em;color:var(--purple);}
+    .process-content h4{font-family:var(--font-display);font-size:clamp(19px,1.9vw,27px);font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;color:var(--ink);}
+    .process-content p{color:var(--ink-mute);font-size:15px;line-height:1.55;max-width:58ch;}
+    @media(max-width:580px){.process-step{grid-template-columns:46px 1fr;gap:14px;}.process-num{font-size:38px;}}
+    .cta-section{background:var(--ink);color:white;padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px);position:relative;overflow:hidden;}
+    .cta-section::before{content:"";position:absolute;bottom:-20%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.32),transparent 70%);filter:blur(100px);pointer-events:none;}
+    .cta-section .container{position:relative;z-index:1;}
+    .cta-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:26px;}
+    .cta-title{font-family:var(--font-display);font-size:clamp(42px,6.2vw,90px);font-weight:600;line-height:0.98;letter-spacing:-0.03em;color:white;margin-bottom:32px;max-width:14ch;}
+    .cta-title .italic{color:var(--purple);font-style:italic;font-weight:400;}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:56px;}
+    .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:-0.01em;transition:all 0.2s;border:1px solid transparent;}
+    .btn-primary{background:var(--purple);color:white;}
+    .btn-primary:hover{background:white;color:var(--ink);}
+    .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,0.2);}
+    .btn-ghost:hover{border-color:white;}
+    .btn svg{width:14px;height:14px;}
+    .footer-meta{margin-top:76px;padding-top:34px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:22px;}
+    .footer-meta-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;line-height:1.7;}
+    .footer-meta-block span{display:block;color:white;font-size:13px;text-transform:none;letter-spacing:-0.01em;margin-top:4px;font-family:var(--font-sans);font-weight:500;}
+    body.anim-ready .fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.75s ease,transform 0.75s ease;}
+    body.anim-ready .fade-in.visible{opacity:1;transform:translateY(0);}
+    @media print{.nav,.client-bar{display:none;}body{background:white;}.case-card,.featured-cs,.process-step{break-inside:avoid;}}
+  </style>
+</head>
+<body>
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <img class="visit-logo-bar" src="data:image/png;base64,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" alt="Visit.org">
+  </div>
+  <span class="client-bar-meta">Recap &amp; Capabilities Brief &middot; April 2026 &middot; Confidential</span>
+</div>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#recap">What we discussed</a></li>
+      <li><a href="#enterprise">Enterprise ABM</a></li>
+      <li><a href="#smb">Project in a Box</a></li>
+      <li><a href="#work">Proof</a></li>
+      <li><a href="#next-steps">Next steps</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Let's get started →</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Recap &amp; Capabilities</span>
+      <span class="hero-meta-divider"></span>
+      <span>April 2026</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Visit.org</span>
+    </div>
+    <h1 class="display-xl">
+      Two engines.<br>
+      <span class="italic" style="color:var(--purple)">Built together.</span>
+    </h1>
+    <p class="hero-lede" style="margin-top:16px;">
+      Three conversations, a clear strategic picture, and one conclusion: Visit.org has two distinct growth opportunities that each require a completely different playbook. This brief shows what both look like in practice.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">2,000+</span></div>
+        <div class="hero-stat-label">Volunteer experiences in the Visit.org catalog</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Distinct go-to-market motions, one agency system</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$4.9M</div>
+        <div class="hero-stat-label">Pipeline influenced for a comparable ABM client</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Months to meaningful data and a clear path to scale</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="recap" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 — What we discussed</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;color:var(--ink);">
+        Three meetings, one clear <em class="italic" style="color:var(--purple)">picture</em>.
+      </h2>
+    </div>
+    <ul class="belief-list">
+      <li class="belief-item">
+        <div class="belief-num">/01</div>
+        <div class="belief-content">
+          <h3>A company at an inflection point in its marketing</h3>
+          <p>Visit.org has operated for ten years on outbound outreach, conferences, and word of mouth. That approach brought in significant enterprise clients. What comes next requires a more systematic, always-on marketing engine. The infrastructure and the strategy are both being built in parallel, and the opportunity ahead is considerable.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/02</div>
+        <div class="belief-content">
+          <h3>Two products, two markets, two completely different motions</h3>
+          <p>The enterprise platform is a multi-year SaaS relationship sold through outbound sequences to named accounts and over long sales cycles. Project in a Box is a self-serve e-commerce product with a $65 average order value. It needs paid acquisition, emotional creative, and a Shopify funnel built to convert. Treating these two products with the same approach would mean underperforming on both.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/03</div>
+        <div class="belief-content">
+          <h3>Goodera is real competition, and also a gap to exploit</h3>
+          <p>The main enterprise competitor has significant headcount, a strong social presence, and aggressive pricing. Critically, Goodera does not actually deliver kits to non-profits. Visit.org is the authentic option, the product with real impact. That story can be told powerfully through creative. It simply has not been told systematically yet.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/04</div>
+        <div class="belief-content">
+          <h3>Enterprise ABM is a natural fit for Visit.org's go-to-market motion</h3>
+          <p>ABM is well-suited to Visit.org's enterprise business: a defined universe of target accounts, long sales cycles, and decision-makers who respond to personalized, relevant outreach rather than broadcast advertising. The named-account approach, combined with LinkedIn outreach and sequenced email, maps directly onto how enterprise CSR and HR leaders evaluate vendors.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/05</div>
+        <div class="belief-content">
+          <h3>Pilot budget should be calibrated to generate real signal</h3>
+          <p>A budget that is too low will not provide a real picture of the business potential. Paid acquisition campaigns need sufficient media spend to move through the learning phase and generate statistically meaningful conversion data. The goal of a pilot is not just to run ads; it is to build a data foundation that makes every decision afterward more confident and more accurate.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/06</div>
+        <div class="belief-content">
+          <h3>The pixel needs training before results can happen</h3>
+          <p>The first four to six weeks of any paid campaign are about feeding the algorithm, not closing deals. That is not a caveat. It is a structural fact of performance marketing that every honest agency tells you upfront. The sooner the pixel starts learning, the sooner costs come down and conversions become predictable.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="frame-section" id="frame">
+  <div class="container">
+    <span class="eyebrow dark">02 — The frame</span>
+    <h2 class="display-lg" style="margin-top:18px;max-width:22ch;">
+      Precision for enterprise.<br>
+      <em class="italic" style="color:var(--mint);font-weight:400;">Scale for everyone else.</em>
+    </h2>
+    <p class="frame-intro">
+      The reason most companies struggle to serve two markets at once is that they apply the same tools to both. Visit.org has a structural advantage: a premium enterprise product that builds credibility, and a simple self-serve product that builds volume. Done right, they reinforce each other.
+    </p>
+    <div class="frame-grid">
+      <div class="frame-col">
+        <div class="frame-col-tag">Motion A — Enterprise ABM</div>
+        <h3>Named accounts. Warm relationships. Long cycles.</h3>
+        <p>You know who you want as customers. ABM makes reaching them systematic: a list of up to 100 target companies, personalized touchpoints at the right titles, LinkedIn sequences that feel human, and a pipeline that compounds over months. One enterprise deal can be worth hundreds of thousands of dollars.</p>
+        <div class="frame-spec">
+          <div class="frame-spec-item"><span class="label">Primary channels</span><span class="value">LinkedIn + Email</span></div>
+          <div class="frame-spec-item"><span class="label">Target titles</span><span class="value">CSR, HR, Social Impact leads</span></div>
+          <div class="frame-spec-item"><span class="label">Sales cycle</span><span class="value">3 to 12 months</span></div>
+        </div>
+      </div>
+      <div class="frame-col">
+        <div class="frame-col-tag">Motion B — SMB / Project in a Box</div>
+        <h3>Emotional creative. Fast funnel. Self-serve conversion.</h3>
+        <p>Project in a Box is priced to sell. HR managers at mid-size companies understand the value the moment they see it. Paid social with UGC content, a clean Shopify funnel, and retargeting built around the team's emotional response to volunteering. Volume-oriented. Margin-positive per kit.</p>
+        <div class="frame-spec">
+          <div class="frame-spec-item"><span class="label">Primary channels</span><span class="value">Meta, LinkedIn Ads, Google</span></div>
+          <div class="frame-spec-item"><span class="label">Audience</span><span class="value">HR, Office Managers, Team Leads</span></div>
+          <div class="frame-spec-item"><span class="label">Target CPA</span><span class="value">$100 to $200 by month 4</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="frame-stats">
+      <div class="frame-stat"><div class="frame-stat-num">100</div><div class="frame-stat-label">Named enterprise accounts in the initial ABM target list</div></div>
+      <div class="frame-stat"><div class="frame-stat-num">60+</div><div class="frame-stat-label">UGC creators in our network ready to produce B2B content</div></div>
+      <div class="frame-stat"><div class="frame-stat-num">$65</div><div class="frame-stat-label">Average order value per person, Project in a Box</div></div>
+    </div>
+  </div>
+</section>
+<section class="service-deep" id="enterprise">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 01</div>
+        <h3 class="service-deep-title">Enterprise ABM</h3>
+        <div class="service-deep-tag">The right people. The right message. No spray, no pray.</div>
+        <p class="service-deep-desc">ABM means choosing who you want to work with, building a short list of target accounts, and creating personalized outreach that reaches decision-makers across multiple channels simultaneously. For Visit.org, the targets are HR leaders, CSR managers, and Social Impact directors at companies with 500 to 10,000 employees. They are reachable. They are motivated. A well-run ABM system gets them into the pipeline.</p>
+        <ul class="approach-list">
+          <li>Named account list of up to 100 enterprise targets, researched and scored by ICP fit</li>
+          <li>LinkedIn outreach connecting organically with HR and CSR titles, warming them toward a demo conversation</li>
+          <li>Paid LinkedIn campaigns running alongside outbound for multi-touchpoint exposure to the same accounts</li>
+          <li>Intent data via ZoomInfo or Apollo to surface companies actively researching employee engagement</li>
+          <li>Email sequences personalized to company size and the CSR maturity of each account</li>
+          <li>HubSpot pipeline setup to track every touchpoint from first connection to closed contract</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · Israeli B2B Enterprise</span>
+          <div class="case-card-name">Sapiens International</div>
+          <div class="case-card-industry">Insurance Technology · Enterprise SaaS · Nasdaq-listed</div>
+          <div class="case-card-block"><div class="case-card-block-label">The challenge</div><p>Sapiens needed to reach insurance enterprise buyers in North America: a narrow market where the same 200 accounts make the decisions. Cold outreach was not moving the needle and conferences alone were not generating enough pipeline to justify the budget.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">What we built</div><p>An integrated ABM system combining named-account LinkedIn campaigns, a webinar engine that positioned Sapiens as a thought leader in insurance tech, and HubSpot lifecycle sequences that kept warm contacts engaged between live touchpoints. The webinar series became a recurring pipeline source rather than a one-time event.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">50%</div><div class="result-pop-label">Better deal closure from webinar engine</div></div>
+            <div class="result-pop"><div class="result-pop-num">$4.9M</div><div class="result-pop-label">Pipeline influenced over 12 months</div></div>
+            <div class="result-pop"><div class="result-pop-num green">3x</div><div class="result-pop-label">Growth in qualified meeting pipeline</div></div>
+          </div>
+          <div class="aha-quote">A webinar is not a webinar. It is a recurring touchpoint with a named account that already raised their hand.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Companion · B2B Defense Tech</span>
+          <div class="case-card-name">TSG</div>
+          <div class="case-card-industry">Defense Technology · B2B Enterprise · Israeli HQ</div>
+          <div class="case-card-block"><div class="case-card-block-label">The challenge</div><p>TSG makes systems that go into aircraft and defense platforms. Their buyers sit inside Raytheon, Boeing, and Lockheed Martin. Reaching them through standard lead gen does not work. Named-account ABM with LinkedIn targeting was the only motion that made sense.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">What we built</div><p>LinkedIn paid campaigns running against a handpicked list of procurement and engineering contacts at Tier 1 defense contractors, with an outreach layer added for organic connection building. Tier 1 names appeared in the pipeline within the first quarter.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">Tier 1</div><div class="result-pop-label">Defense contractors in active pipeline</div></div>
+            <div class="result-pop"><div class="result-pop-num">90</div><div class="result-pop-label">Days from launch to first qualified meeting</div></div>
+          </div>
+          <div class="aha-quote">If you can reach a Boeing procurement lead through LinkedIn, you can reach any CSR director in the Fortune 500.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="service-deep warm" id="smb">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 02</div>
+        <h3 class="service-deep-title">Project in a Box Acquisition</h3>
+        <div class="service-deep-tag">Emotional products need emotional creative. That is where most paid teams fall short.</div>
+        <p class="service-deep-desc">Project in a Box sells itself once the right person sees it. The challenge is getting it in front of HR managers at mid-size companies before they default to a generic team event instead. That is a paid media problem, and it is one we know how to solve. The Shopify site provides a clean funnel. The product provides a story. UGC provides the creative to tell it in a way no competitor can easily replicate.</p>
+        <ul class="approach-list">
+          <li>UGC creative network (60+ creators) producing authentic B2B content targeting HR and office manager personas</li>
+          <li>Meta and LinkedIn paid campaigns with a full-funnel structure: Awareness, Consideration, Education, Conversion</li>
+          <li>Google Ads for high-intent searches around employee engagement, team volunteering, and corporate giving</li>
+          <li>Shopify funnel optimization including intake quiz, abandoned-cart flows, and post-purchase impact emails</li>
+          <li>Conversions API and server-side tracking for accurate attribution</li>
+          <li>Retargeting sequences for visitors who viewed but did not purchase, with social proof and team impact angles</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B SaaS Paid Acquisition</span>
+          <div class="case-card-name">FlexFactor</div>
+          <div class="case-card-industry">Payments Technology · Merchant Demand Generation</div>
+          <div class="case-card-block"><div class="case-card-block-label">The challenge</div><p>FlexFactor needed to reach online merchants losing revenue to failed payments. The product had a clear ROI story but required demand generation working across both warm outbound and paid channels simultaneously.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">What we built</div><p>AI-driven lead enrichment creating a highly filtered target list of 2,240 merchants from 15,000 contacts. UGC content showing real merchant pain points. Paid social demand gen running in parallel with ABM for Tier 1 targets. Multi-channel messaging calibrated to the core pain: revenue loss at checkout.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">2,240</div><div class="result-pop-label">High-fit leads from 15,000 contacts via AI enrichment</div></div>
+            <div class="result-pop"><div class="result-pop-num">2</div><div class="result-pop-label">Parallel channel tracks running simultaneously</div></div>
+          </div>
+          <div class="aha-quote">The creative is not an ad. It is a mirror. When HR managers see their challenge reflected back, they engage.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Companion · B2B UGC at Enterprise Scale</span>
+          <div class="case-card-name">AudioCodes</div>
+          <div class="case-card-industry">Enterprise Communications · Israeli B2B · Nasdaq-listed</div>
+          <div class="case-card-block"><div class="case-card-block-label">The challenge</div><p>AudioCodes needed to reach IT decision-makers at enterprise scale without looking like every other vendor running generic LinkedIn copy. UGC and authentic video gave them differentiation that static ads could not provide.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">What we built</div><p>UGC video content showing real use cases, paired with paid social demand generation and a LinkedIn outreach layer. Creative differentiation drove down cost per lead and improved qualified meeting rates significantly compared to prior static creative.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+88%</div><div class="result-pop-label">Demos booked versus prior period</div></div>
+            <div class="result-pop"><div class="result-pop-num">-22%</div><div class="result-pop-label">CPL versus benchmark</div></div>
+          </div>
+          <div class="aha-quote">UGC in B2B is not about going viral. It is about being the first ad that did not feel like one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="featured-section" id="work" style="padding:clamp(80px,12vh,140px) 0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">05 — A closer look</span>
+      <h2 class="display-lg" style="margin-top:18px;color:white;max-width:24ch;">
+        The work most relevant <em class="italic" style="color:var(--mint);font-weight:400;">to where you are headed</em>.
+      </h2>
+    </div>
+    <div class="featured-cs">
+      <div class="featured-cs-grid">
+        <div class="featured-cs-meta">
+          <div class="featured-cs-meta-tag">Israeli B2B · Enterprise Insurance SaaS</div>
+          <h3>Sapiens</h3>
+          <p>A narrow market. 200 enterprise accounts that matter globally. A company that needed to show up like a market leader before it was widely perceived as one. The closest parallel to Visit.org's enterprise motion: a world where broadcast does not work and precision is everything.</p>
+          <div class="featured-cs-channels">
+            <span class="channel-chip">ABM</span>
+            <span class="channel-chip">LinkedIn Ads</span>
+            <span class="channel-chip">Webinar Engine</span>
+            <span class="channel-chip">Email Lifecycle</span>
+            <span class="channel-chip">HubSpot</span>
+          </div>
+        </div>
+        <div class="featured-cs-narrative">
+          <div><h4>The challenge</h4><p>Sapiens relied on conferences and manual outreach. Both are slow and expensive per touch. With a long enterprise sales cycle, waiting 12 months to discover a strategy is not working is a serious business risk.</p></div>
+          <div><h4 class="mint">What we built</h4><p>An always-on ABM system: named-account LinkedIn campaigns, a webinar series that became a recurring pipeline source, and HubSpot lifecycle sequences that kept warm contacts engaged between live touchpoints. Every piece fed the next.</p></div>
+          <div class="featured-results-grid">
+            <div class="featured-result"><div class="featured-result-num">50%</div><div class="featured-result-label">Better deal closure from systematic webinar engagement</div></div>
+            <div class="featured-result"><div class="featured-result-num">$4.9M</div><div class="featured-result-label">Pipeline influenced in a 12-month window</div></div>
+            <div class="featured-result"><div class="featured-result-num purple">3x</div><div class="featured-result-label">Growth in qualified meeting pipeline</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="differentiators section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 — Why Noetic</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;">
+        Six things that make this different from a <em class="italic" style="color:var(--purple)">generic agency</em>.
+      </h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-num">/ 01</div><h4>We own both the strategy and the creative</h4><p>Most performance agencies treat creative as someone else's problem. We built an in-house UGC operation precisely because the quality of creative determines the quality of results. The brief, the creator, the edit, and the A/B test are all ours.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 02</div><h4>We know HR and CSR buyers specifically</h4><p>HR and CSR professionals respond to impact narratives, not feature lists. We have been running campaigns to this persona for years across multiple clients. We know what drives engagement and what gets scrolled past.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 03</div><h4>ABM is a core capability, not a premium add-on</h4><p>Named-account targeting, outreach automation, intent data, and LinkedIn mechanics are things we run every day for Sapiens, TSG, and AudioCodes. For Visit.org, it is the same motion applied to a product with a more emotionally compelling story.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 04</div><h4>Both channels run under one roof</h4><p>Enterprise ABM and SMB paid acquisition share the same HubSpot, the same pixel infrastructure, and the same creative pipeline. Running both with one agency means learnings from each motion feed the other, with no coordination overhead between teams.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 05</div><h4>Native English speakers from day one</h4><p>Our team is based in Miami and Latin America. Every copywriter and strategist working on Visit.org produces English-native content. No translation layer. No tone drift. The messaging that gets approved is exactly what goes out.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 06</div><h4>We are transparent about what the first 90 days look like</h4><p>Pixel training, creative testing, audience refinement. That is the first phase, and we explain it upfront. Agencies that do not explain this clearly are the ones clients find themselves replacing a few months later.</p></div>
+    </div>
+  </div>
+</section>
+<section class="clients section" id="roster">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">07 — Selected clients</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;">
+        The companies that trust us with the <em class="italic" style="color:var(--purple)">hard problems</em>.
+      </h2>
+      <p class="lede" style="margin-top:14px;color:var(--ink-mute);font-size:14px;">Highlighted clients share the closest overlap with Visit.org's target market, sales motion, or go-to-market lane.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-cell highlight">Sapiens</div>
+      <div class="client-cell highlight">AudioCodes</div>
+      <div class="client-cell highlight">TSG</div>
+      <div class="client-cell highlight">WSC Sports</div>
+      <div class="client-cell highlight">FlexFactor</div>
+      <div class="client-cell">Lumenis</div>
+      <div class="client-cell">NICE</div>
+      <div class="client-cell highlight">Oasis Security</div>
+      <div class="client-cell">Datumate</div>
+      <div class="client-cell">Rail Europe</div>
+      <div class="client-cell">Tabit</div>
+      <div class="client-cell">Hazera</div>
+      <div class="client-cell highlight">Valley Bank</div>
+      <div class="client-cell">Priority</div>
+      <div class="client-cell">Tipa</div>
+      <div class="client-cell">Squadron</div>
+      <div class="client-cell">Caesarstone</div>
+      <div class="client-cell">Opmed</div>
+    </div>
+  </div>
+</section>
+<section class="section" id="next-steps" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">08 — How we get started</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">
+        A phased path that builds <em class="italic" style="color:var(--purple)">momentum from week one</em>.
+      </h2>
+      <p class="lede" style="margin-top:14px;color:var(--ink-mute);">Each phase has a clear purpose and clear outputs. Nothing starts until the foundation is right.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step"><div class="process-num">01</div><div class="process-content"><h4>Foundation and setup (Weeks 1 to 2)</h4><p>HubSpot setup, Shopify pixel and Conversions API installation, competitive landscape review of Goodera and the broader employee engagement market, ICP definition for both verticals, and creative brief for the first UGC batch. No campaigns running yet. Just the infrastructure that makes the campaigns worth running.</p></div></div>
+      <div class="process-step"><div class="process-num">02</div><div class="process-content"><h4>Pilot launch: SMB acquisition (Weeks 3 to 8)</h4><p>First UGC creative batch live. Paid social on Meta and LinkedIn targeting HR managers at companies with 50 to 5,000 employees. LinkedIn outreach beginning to connect with enterprise targets in parallel. Pixel learning. First conversion data coming in. Weekly reports, no surprises.</p></div></div>
+      <div class="process-step"><div class="process-num">03</div><div class="process-content"><h4>Enterprise ABM layer activated (Months 2 to 3)</h4><p>Named account list finalized. LinkedIn ABM campaigns running. Email sequences launched against the account list. Intent data identifying companies actively researching employee engagement solutions. First enterprise meetings being booked.</p></div></div>
+      <div class="process-step"><div class="process-num">04</div><div class="process-content"><h4>Scale decision (Month 4 onward)</h4><p>By this point there is real data. Cost per kit purchase for SMB. Number of enterprise meetings booked and the channels that drove them. Creative performance by format. The question of where to invest more aggressively answers itself, because the data is in the room with us.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">Sharon, Gal, Michal — let's build this.</div>
+    <h2 class="cta-title">
+      Thank you<br>for the <span class="italic">trust</span>.
+    </h2>
+    <p style="color:rgba(255,255,255,0.68);font-size:17px;line-height:1.6;max-width:50ch;margin-bottom:38px;">Three candid conversations, a clear shared picture of the opportunity, and a team ready to go. We look forward to building this with you.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">tamir@noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Prepared for<span>Visit.org — Sharon Goren, Gal Leibovich, Michal Alter</span></div>
+      <div class="footer-meta-block">Prepared by<span>Noetic Creative · Miami, Florida · April 2026</span></div>
+      <div class="footer-meta-block">© 2026 Noetic Creative<span>Confidential — do not distribute</span></div>
+    </div>
+  </div>
+</section>
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  document.body.classList.add('anim-ready');
+  const els = document.querySelectorAll('.case-card, .diff-card, .process-step, .belief-item');
+  els.forEach(el => el.classList.add('fade-in'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+  setTimeout(() => { document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')); }, 4000);
+}
+</script>
+</body>
+</html>
