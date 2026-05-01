@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexFactor — Recap & Capabilities Brief · April 2026 · Noetic Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+:root{
+  --paper:#FAFAF7;
+  --paper-warm:#F2F0EA;
+  --paper-cool:#F0F0F4;
+  --ink:#0A0A0E;
+  --ink-soft:#1A1A1F;
+  --ink-mute:#6B6B7B;
+  --ink-faint:#A8A8B5;
+  --card:#FFFFFF;
+  --purple:#6C5CE7;
+  --purple-deep:#4D3FC9;
+  --purple-soft:#EFEDFE;
+  --purple-glow:rgba(108,92,231,0.18);
+  --mint:#00D4B4;
+  --coral:#FF6B6B;
+  --amber:#F5B400;
+  --rule:rgba(10,10,14,0.08);
+  --rule-strong:rgba(10,10,14,0.16);
+  --max:1240px;
+  --max-narrow:920px;
+  --font-display:'Fraunces','Times New Roman',serif;
+  --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+::selection{background:var(--purple);color:white;}
+body{font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em;background:var(--paper);color:var(--ink-soft);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px;}
+.container-narrow{width:100%;max-width:var(--max-narrow);margin:0 auto;padding:0 32px;}
+section{position:relative;}
+.section{padding:clamp(80px,12vh,160px) 0;}
+.section-tight{padding:clamp(60px,9vh,110px) 0;}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:0;}
+.display-xl{font-family:var(--font-display);font-size:clamp(52px,8vw,118px);font-weight:600;line-height:0.95;letter-spacing:-0.035em;}
+.display-lg{font-family:var(--font-display);font-size:clamp(40px,5.5vw,80px);font-weight:600;line-height:1;letter-spacing:-0.03em;}
+.display-md{font-family:var(--font-display);font-size:clamp(30px,4vw,54px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;}
+.display-sm{font-family:var(--font-display);font-size:clamp(22px,2.5vw,36px);font-weight:600;line-height:1.1;letter-spacing:-0.02em;}
+h1,h2,h3,h4{color:var(--ink);letter-spacing:-0.022em;line-height:1.05;font-weight:700;}
+.italic{font-style:italic;font-weight:400;}
+.lede{font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--ink-soft);font-weight:400;max-width:60ch;}
+.lede-lg{font-size:clamp(20px,2vw,28px);line-height:1.4;color:var(--ink);font-weight:400;letter-spacing:-0.01em;max-width:34ch;}
+.mono{font-family:var(--font-mono);}
+.client-bar{background:var(--ink);padding:11px 32px;display:flex;align-items:center;justify-content:space-between;}
+.client-bar-logos{display:flex;align-items:center;gap:18px;}
+.client-bar-divider{width:1px;height:22px;background:rgba(255,255,255,0.2);}
+.client-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.4);}
+@media(max-width:600px){.client-bar-meta{display:none;}}
+.nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:14px 32px;background:rgba(250,250,247,0.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid transparent;transition:border-color 0.3s ease;}
+.nav.scrolled{border-bottom-color:var(--rule);}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-mute);transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--ink);color:white !important;padding:9px 16px;border-radius:999px;font-size:13px !important;font-weight:600 !important;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;}
+.nav-cta:hover{background:var(--purple) !important;}
+@media(max-width:820px){.nav-links li:not(:last-child){display:none;}}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%;}
+.eyebrow.dark{color:rgba(255,255,255,0.6);}
+.eyebrow.dark::before,.lanes .eyebrow::before,.frame .eyebrow::before,.featured-section .eyebrow::before{background:var(--mint);}
+.hero{padding-top:clamp(130px,17vh,210px);padding-bottom:clamp(70px,10vh,130px);position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,14,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,0.04) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none;}
+.hero-blob{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(108,92,231,0.22),transparent 60%);filter:blur(80px);pointer-events:none;top:-200px;right:-200px;z-index:0;}
+.hero-blob-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(0,212,180,0.15),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-150px;left:-100px;z-index:0;}
+.hero-inner{position:relative;z-index:1;}
+.hero-meta{display:flex;gap:18px;align-items:center;margin-bottom:28px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);}
+.hero-meta-divider{width:24px;height:1px;background:var(--rule-strong);}
+.hero h1{margin-bottom:28px;}
+.hero h1 .accent-line{display:block;color:var(--purple);font-style:italic;font-weight:400;}
+.hero-lede{font-size:clamp(18px,1.7vw,23px);line-height:1.5;color:var(--ink-soft);max-width:58ch;margin-top:8px;font-weight:400;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(56px,8vh,96px);border-top:1px solid var(--rule);}
+.hero-stat{padding:32px 24px 0 0;border-right:1px solid var(--rule);}
+.hero-stat:not(:first-child){padding-left:24px;}
+.hero-stat:last-child{border-right:none;padding-right:0;}
+.hero-stat-num{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:8px;}
+.hero-stat-num .accent{color:var(--purple);}
+.hero-stat-label{font-size:13px;color:var(--ink-mute);font-weight:500;line-height:1.4;max-width:22ch;}
+@media(max-width:800px){.hero-stats{grid-template-columns:repeat(2,1fr);}.hero-stat:nth-child(2n){border-right:none;}.hero-stat{padding:24px 16px 0 0;padding-bottom:24px;border-bottom:1px solid var(--rule);}.hero-stat:not(:first-child){padding-left:0;}.hero-stat:last-child,.hero-stat:nth-last-child(2){border-bottom:none;}}
+.belief-list{list-style:none;display:flex;flex-direction:column;}
+.belief-item{padding:28px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:54px 1fr;gap:24px;align-items:start;}
+.belief-item:last-child{border-bottom:1px solid var(--rule);}
+.belief-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;letter-spacing:0.05em;padding-top:6px;}
+.belief-content h3{font-family:var(--font-display);font-size:clamp(20px,2vw,28px);font-weight:600;margin-bottom:10px;letter-spacing:-0.02em;}
+.belief-content p{color:var(--ink-mute);font-size:16px;line-height:1.6;max-width:58ch;}
+.frame{background:var(--ink);color:white;padding:clamp(80px,12vh,140px) 0;position:relative;overflow:hidden;}
+.frame::before{content:"";position:absolute;top:-50%;right:-20%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.28),transparent 70%);filter:blur(80px);}
+.frame .container{position:relative;z-index:1;}
+.frame h2{color:white;}
+.frame-lede{font-size:clamp(17px,1.5vw,20px);color:rgba(255,255,255,0.72);line-height:1.65;max-width:60ch;margin-top:24px;font-weight:400;}
+.frame-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid rgba(255,255,255,0.12);}
+@media(max-width:700px){.frame-stats{grid-template-columns:1fr 1fr;}}
+.frame-stat{padding:32px 24px 0 0;border-right:1px solid rgba(255,255,255,0.12);}
+.frame-stat:not(:first-child){padding-left:24px;}
+.frame-stat:last-child{border-right:none;padding-right:0;}
+.frame-stat-num{font-family:var(--font-display);font-size:clamp(44px,5.5vw,72px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--mint);margin-bottom:10px;}
+.frame-stat-label{font-size:13px;color:rgba(255,255,255,0.55);font-weight:500;line-height:1.4;max-width:26ch;}
+.service-deep{border-top:1px solid var(--rule);padding:clamp(72px,10vh,120px) 0;background:var(--paper);position:relative;}
+.service-deep:nth-child(even){background:var(--paper-warm);}
+.service-deep-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,88px);align-items:start;}
+@media(max-width:900px){.service-deep-grid{grid-template-columns:1fr;}}
+.service-deep-meta{position:sticky;top:100px;}
+.service-deep-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;margin-bottom:12px;letter-spacing:0.05em;}
+.service-deep-title{font-family:var(--font-display);font-size:clamp(32px,4vw,50px);font-weight:600;line-height:1.02;letter-spacing:-0.025em;margin-bottom:16px;color:var(--ink);}
+.service-deep-tag{font-size:16px;color:var(--purple-deep);font-weight:500;margin-bottom:20px;font-style:italic;font-family:var(--font-display);}
+.service-deep-tag::before{content:"— ";}
+.service-deep-desc{color:var(--ink-mute);font-size:16px;line-height:1.65;}
+.approach-list{list-style:none;margin-top:28px;}
+.approach-list li{padding:12px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-soft);display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;}
+.approach-list li:last-child{border-bottom:1px solid var(--rule);}
+.approach-list li::before{content:"→";color:var(--purple);font-weight:600;font-size:14px;}
+.case-card{background:white;border:1px solid var(--rule);border-radius:16px;padding:30px;margin-bottom:18px;position:relative;transition:transform 0.3s,box-shadow 0.3s;}
+.case-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,0.12);}
+.case-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--purple-deep);background:var(--purple-soft);padding:5px 10px;border-radius:999px;font-weight:500;margin-bottom:18px;}
+.case-card-tag.alt{background:rgba(0,212,180,0.12);color:#006B5C;}
+.case-card-name{font-family:var(--font-display);font-size:28px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;color:var(--ink);}
+.case-card-industry{font-size:13px;color:var(--ink-mute);margin-bottom:22px;font-family:var(--font-mono);}
+.case-card-block{margin-bottom:16px;}
+.case-card-block-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-faint);font-weight:500;margin-bottom:5px;}
+.case-card-block p{font-size:15px;color:var(--ink-soft);line-height:1.55;}
+.case-card-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0;margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);}
+.result-pop{padding:0 14px 0 0;border-right:1px solid var(--rule);}
+.result-pop:last-child{border-right:none;}
+.result-pop-num{font-family:var(--font-display);font-size:clamp(26px,2.8vw,38px);font-weight:600;letter-spacing:-0.025em;line-height:1;color:var(--purple);margin-bottom:5px;}
+.result-pop-num.green{color:#00A18A;}
+.result-pop-label{font-size:11px;color:var(--ink-mute);line-height:1.35;font-weight:500;}
+.aha-quote{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--ink);line-height:1.45;}
+.aha-quote::before{content:"Aha! moment — ";font-style:normal;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--purple);font-weight:600;display:block;margin-bottom:7px;}
+.featured-section{background:var(--ink);color:white;padding:clamp(80px,11vh,130px) 0;}
+.featured-section h2,.featured-section h3{color:white;}
+.featured-cs{border-top:1px solid rgba(255,255,255,0.1);padding:60px 0;}
+.featured-cs:last-child{border-bottom:1px solid rgba(255,255,255,0.1);}
+.featured-cs-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start;}
+@media(max-width:900px){.featured-cs-grid{grid-template-columns:1fr;}}
+.featured-cs-meta-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:18px;}
+.featured-cs-meta h3{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);font-weight:600;letter-spacing:-0.025em;line-height:1;margin-bottom:14px;}
+.featured-cs-meta p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.6;max-width:38ch;margin-bottom:22px;}
+.featured-cs-channels{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;}
+.channel-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;padding:6px 12px;border:1px solid rgba(255,255,255,0.18);border-radius:999px;color:rgba(255,255,255,0.85);}
+.featured-cs-narrative{display:flex;flex-direction:column;gap:22px;}
+.featured-cs-narrative h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--purple);font-weight:500;margin-bottom:8px;}
+.featured-cs-narrative p{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.85);}
+.featured-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:26px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.12);}
+.featured-result{padding:0 22px 0 0;border-right:1px solid rgba(255,255,255,0.1);}
+.featured-result:last-child{border-right:none;padding-right:0;}
+.featured-result-num{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:var(--mint);margin-bottom:7px;}
+.featured-result-num.purple{color:#B8AEFF;}
+.featured-result-label{font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;line-height:1.4;max-width:22ch;}
+.differentiators{background:var(--paper-cool);}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:54px;background:var(--rule);border:1px solid var(--rule);}
+@media(max-width:760px){.diff-grid{grid-template-columns:repeat(2,1fr);}}
+.diff-card{background:var(--paper-cool);padding:34px 26px;transition:background 0.3s;position:relative;}
+.diff-card:hover{background:white;}
+.diff-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:0.1em;margin-bottom:16px;font-weight:600;}
+.diff-card h4{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:9px;line-height:1.15;}
+.diff-card p{font-size:14px;color:var(--ink-mute);line-height:1.55;}
+.clients{background:var(--paper-warm);}
+.section-head{margin-bottom:clamp(44px,6vw,76px);}
+.clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin-top:54px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+@media(max-width:1100px){.clients-grid{grid-template-columns:repeat(5,1fr);}}
+@media(max-width:800px){.clients-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:480px){.clients-grid{grid-template-columns:repeat(2,1fr);}}
+.client-cell{background:var(--paper-warm);padding:26px 16px;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-0.015em;min-height:90px;transition:background 0.3s,color 0.3s;cursor:default;}
+.client-cell:hover{background:var(--ink);color:white;}
+.client-cell.highlight{background:var(--purple-soft);color:var(--purple-deep);}
+.clients-caption{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;margin-top:18px;}
+.clients-caption span{color:var(--purple);}
+.process-track{margin-top:54px;position:relative;}
+.process-step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--rule);align-items:start;}
+.process-step:last-child{border-bottom:1px solid var(--rule);}
+.process-num{font-family:var(--font-display);font-size:60px;font-weight:600;line-height:0.9;letter-spacing:-0.04em;color:var(--purple);}
+.process-content h4{font-family:var(--font-display);font-size:clamp(20px,2vw,28px);font-weight:600;letter-spacing:-0.02em;margin-bottom:7px;}
+.process-content p{color:var(--ink-mute);font-size:15px;line-height:1.6;max-width:58ch;}
+.process-timeline{font-family:var(--font-mono);font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;font-weight:500;}
+@media(max-width:600px){.process-step{grid-template-columns:50px 1fr;gap:16px;}.process-num{font-size:40px;}}
+.cta-section{background:var(--ink);color:white;padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px);position:relative;overflow:hidden;}
+.cta-section::before{content:"";position:absolute;bottom:-20%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.32),transparent 70%);filter:blur(100px);}
+.cta-section .container{position:relative;z-index:1;}
+.cta-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:26px;}
+.cta-title{font-family:var(--font-display);font-size:clamp(44px,6.5vw,90px);font-weight:600;line-height:0.98;letter-spacing:-0.03em;color:white;margin-bottom:32px;max-width:16ch;}
+.cta-title .italic{color:var(--purple);font-style:italic;font-weight:500;}
+.cta-note{font-size:18px;color:rgba(255,255,255,0.65);max-width:50ch;line-height:1.6;margin-bottom:40px;}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:60px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-0.01em;transition:all 0.2s;border:1px solid transparent;}
+.btn-primary{background:var(--purple);color:white;}
+.btn-primary:hover{background:white;color:var(--ink);}
+.btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,0.2);}
+.btn-ghost:hover{border-color:white;}
+.btn svg{width:16px;height:16px;}
+.footer-meta{margin-top:80px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;}
+.footer-meta-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.1em;line-height:1.7;}
+.footer-meta-block span{display:block;color:white;font-size:13px;text-transform:none;letter-spacing:-0.01em;margin-top:5px;font-family:var(--font-sans);font-weight:500;}
+body.anim-ready .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+body.anim-ready .fade-in.visible{opacity:1;transform:translateY(0);}
+@media print{
+  .nav,.client-bar{display:none;}
+  body{background:white;}
+  .case-card,.featured-cs,.process-step{break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <img src="assets/flexfactor-logo.png" alt="FlexFactor" style="height:28px;width:auto;opacity:0.95;filter:brightness(0) invert(1);">
+  </div>
+  <span class="client-bar-meta">Recap &amp; Capabilities Brief &middot; April 2026 &middot; Confidential</span>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand" style="display:flex;align-items:center;gap:14px;">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:26px;width:auto;">
+      <div style="width:1px;height:22px;background:var(--rule-strong);"></div>
+      <img src="assets/flexfactor-logo.png" alt="FlexFactor" style="height:32px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#recap">Recap</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#proposal">Proposal</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Let's go →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Recap &amp; Capabilities</span>
+      <span class="hero-meta-divider"></span>
+      <span>April 2026</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for FlexFactor</span>
+    </div>
+    <h1 class="display-xl">
+      The intelligence exists.<br>
+      The partners are lined up.<br>
+      <span class="accent-line">Now let's build the engine.</span>
+    </h1>
+    <p class="hero-lede" style="margin-top:28px;">
+      Two conversations. A lot of honesty about where the bandwidth runs dry. And a very clear picture of what's at stake: 2,240 merchants who are quietly losing revenue to a problem FlexFactor already knows how to solve. This brief is about how we build the engine that gets you in front of them.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2,240</div>
+        <div class="hero-stat-label">Named accounts in your qualified Braintree TAM</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$<span class="accent">145B</span></div>
+        <div class="hero-stat-label">Lost globally each year to false payment declines</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">55%</div>
+        <div class="hero-stat-label">Of false-declined shoppers abandon the transaction entirely</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">50%</div>
+        <div class="hero-stat-label">Lead-to-close rate from our webinar engine (Sapiens)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="recap" style="background:var(--paper);">
+  <div class="container">
+    <span class="eyebrow">01 — What we discussed</span>
+    <h2 class="display-md" style="margin-top:18px;max-width:24ch;">
+      Two conversations that covered a lot of<br>
+      <em class="italic" style="color:var(--purple);">honest ground.</em>
+    </h2>
+    <ul class="belief-list" style="margin-top:56px;">
+      <li class="belief-item">
+        <div class="belief-num">/01</div>
+        <div class="belief-content">
+          <h3>The checkout is where the money disappears</h3>
+          <p>FlexFactor intercepts false payment declines at the last mile — the exact moment a transaction should have cleared. $145B disappears this way every year. 55% of affected shoppers leave immediately, and 40% never come back to that brand. The problem is measurable, documented, and yours to solve.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/02</div>
+        <div class="belief-content">
+          <h3>A tiered account list, built from scratch</h3>
+          <p>Brennen has already done the heavy lifting: 15,000 Braintree contacts in ZoomInfo, filtered down to 2,240 US-qualified merchants, AI-enriched across transaction type and revenue band, sorted into six tiers. The raw intelligence is ready. What's missing is the marketing layer that makes those accounts aware of FlexFactor before the sales call lands.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/03</div>
+        <div class="belief-content">
+          <h3>Messaging needs to speak to three different kinds of pain</h3>
+          <p>Not every person on the list cares about the same thing. Revenue recovery speaks to CFOs and CROs. Wasted customer acquisition spend speaks to CMOs and VPs of Marketing. Brand loyalty and LTV erosion speaks to brand-focused leaders. The same FlexFactor story, told three different ways, to the right three people per account — that's what ABM makes possible.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/04</div>
+        <div class="belief-content">
+          <h3>Webinars work best when you borrow the audience</h3>
+          <p>Brennen had already started building relationships with the Merchant Risk Council (200 payment professionals) and was aligned with Braintree on a joint webinar series. The key insight from our conversation: FlexFactor doesn't need to build a webinar audience — they need to appear inside the audiences that already trust their integration partners. Production, content, and structure are where Noetic comes in.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/05</div>
+        <div class="belief-content">
+          <h3>The Braintree motion needs to replicate</h3>
+          <p>Braintree is the proof of concept. The larger opportunity is a GTM machine that runs the same play across PayPal (who recently gave Brennen full marketing control), Worldpay, Aurus, Nuve, and eventually Stripe. Every asset we build for Braintree is infrastructure for the next ten partners. That framing shapes how we scope and prioritize the work from day one.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/06</div>
+        <div class="belief-content">
+          <h3>The bottleneck is time, not strategy</h3>
+          <p>Brennen and Zeev have the vision, the industry depth, and a clear picture of where FlexFactor needs to go. What they asked for wasn't another agency — it was an execution partner that can operate independently, bring ideas to the table, and make the sales team's outreach land harder. That's the role Noetic is here to play.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="frame" id="frame">
+  <div class="container">
+    <span class="eyebrow dark">02 — The frame</span>
+    <h2 class="display-lg" style="margin-top:18px;max-width:20ch;">
+      Integration-dependent.<br>
+      <em class="italic" style="color:var(--mint);font-weight:400;">Precision-ready.</em>
+    </h2>
+    <p class="frame-lede">
+      What looks like a constraint — only being able to prospect within partner ecosystems — is actually a strategic advantage. You don't need a broad market. You need a named one. The list exists. The buyers are identifiable. The problem they have is documented and costly. What this engagement is about is building the marketing engine that makes those 2,240 merchants aware of FlexFactor before the sales call, during the sales call, and long after it.
+    </p>
+    <div class="frame-stats">
+      <div class="frame-stat">
+        <div class="frame-stat-num">3</div>
+        <div class="frame-stat-label">Distinct buyer personas, each with a unique pain point and message</div>
+      </div>
+      <div class="frame-stat">
+        <div class="frame-stat-num">4</div>
+        <div class="frame-stat-label">Core channels: ABM, LinkedIn outreach, email lifecycle, partner webinars</div>
+      </div>
+      <div class="frame-stat">
+        <div class="frame-stat-num">8+</div>
+        <div class="frame-stat-label">Integration partners in the pipeline — each one a replication opportunity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="capabilities" style="background:var(--paper-warm);border-top:1px solid var(--rule);">
+  <div class="container">
+    <span class="eyebrow">03 — How we execute</span>
+    <h2 class="display-md" style="margin-top:18px;max-width:26ch;">
+      Four channels. One mission:<br>
+      <em class="italic" style="color:var(--purple);">make the sales call inevitable.</em>
+    </h2>
+    <p class="lede" style="margin-top:24px;max-width:60ch;">
+      Below is a breakdown of the four capabilities we're recommending for FlexFactor. Each one was surfaced directly from what Brennen, Abe, and Zeev described in our conversations — the channels where the biggest gaps exist between strategy and bandwidth.
+    </p>
+  </div>
+</section>
+
+<section class="service-deep" id="svc-abm">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 01</div>
+        <h3 class="service-deep-title">Account-Based Marketing</h3>
+        <div class="service-deep-tag">Marketing that speaks to a company of three, not a market of thousands.</div>
+        <p class="service-deep-desc">We build buying-committee coverage across your named accounts — champion, finance, operations — with persona-specific messaging and content that keeps FlexFactor visible while the sales team works the relationship. Goal: the prospects should recognize FlexFactor's name before Brennen's team ever dials.</p>
+        <ul class="approach-list">
+          <li>Tier your 2,240 Braintree accounts into campaign waves based on Brennen's scoring framework</li>
+          <li>Map three buying committee members per target company (champion, finance, ops)</li>
+          <li>Build persona-specific ad creative and landing pages — including interactive revenue calculators</li>
+          <li>Run campaigns on LinkedIn, and Meta for the mid-funnel SMB layer</li>
+          <li>Flag engagement signals back to the sales team in real time via HubSpot</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B Enterprise Tech</span>
+          <div class="case-card-name">AudioCodes</div>
+          <div class="case-card-industry">Israeli B2B Telecom · Enterprise · Named Account Motion</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>AudioCodes needed to break into a defined set of enterprise telecom accounts across the US and Europe — but their sales team was thin and the buying cycle was long. Marketing needed to do the heavy lifting of building familiarity before the outreach.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>We built a named-account ABM program across LinkedIn and programmatic display, targeting three personas per account with tailored messaging. Interactive ROI tools and gated case studies ran alongside the sales outreach cadence, tracked through HubSpot with live sales alerts.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop">
+              <div class="result-pop-num">+88%</div>
+              <div class="result-pop-label">Demos booked vs. prior period</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num">$4.9M</div>
+              <div class="result-pop-label">Pipeline influenced by ABM activity</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num green">−22%</div>
+              <div class="result-pop-label">Cost per qualified lead</div>
+            </div>
+          </div>
+          <div class="aha-quote">Marketing didn't close the deals. It made the sales team feel like they were walking into a room where people already knew them.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep" id="svc-linkedin">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 02</div>
+        <h3 class="service-deep-title">LinkedIn Outreach</h3>
+        <div class="service-deep-tag">A sales tool, not a marketing tool. That's what makes it work.</div>
+        <p class="service-deep-desc">We run automated LinkedIn outreach using FlexFactor employee profiles — real people, real connection requests, personalized message sequences. The goal is to extend Brennen's reach without extending Brennen's hours. Warm conversations start in LinkedIn; the sales team takes over when the moment is right.</p>
+        <ul class="approach-list">
+          <li>Configure outreach sequences across 2-4 FlexFactor employee profiles</li>
+          <li>Build Sales Navigator audience filters matching Braintree merchant contacts by title and revenue band</li>
+          <li>Write 3-step message sequences addressing revenue recovery, CAC waste, and brand loyalty angles</li>
+          <li>Define the sales handoff protocol: when Noetic backs off and Brennen's team takes over</li>
+          <li>Monitor reply rates and A/B test messaging continuously</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B SaaS Outbound</span>
+          <div class="case-card-name">Noetic Client: B2B SaaS</div>
+          <div class="case-card-industry">Enterprise Software · Named Account Outreach</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>A B2B SaaS client with a thin sales team needed to reach 300+ named accounts across the US financial sector without a significant paid media budget. Cold email was saturated. LinkedIn was untapped.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>We ran automated outreach using three company employee profiles via Sales Navigator, with persona-specific 3-step message sequences. Messages avoided product pitches in the first two touchpoints, focusing on relevant industry data and connection before the ask.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop">
+              <div class="result-pop-num">34%</div>
+              <div class="result-pop-label">Connection acceptance rate</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num">18%</div>
+              <div class="result-pop-label">Reply rate on step-2 messages</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num green">6×</div>
+              <div class="result-pop-label">More conversations vs. cold email alone</div>
+            </div>
+          </div>
+          <div class="aha-quote">The key was removing the pitch from the first two messages entirely. By the time the ask came, people felt like they knew us.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep" id="svc-email">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 03</div>
+        <h3 class="service-deep-title">Email Lifecycle</h3>
+        <div class="service-deep-tag">Your email infrastructure is healthy. Now let's use it.</div>
+        <p class="service-deep-desc">Natalia audited FlexFactor's email infrastructure as part of our preparation. Domain health, DMARC configuration, and sender reputation are all confirmed strong. What's missing is the workflow layer — segmented sequences that fire based on intent signals from ZoomInfo, LinkedIn engagement, and CRM activity.</p>
+        <ul class="approach-list">
+          <li>Segment the Braintree list by persona (revenue, CAC, LTV) and tier (1-3 priority)</li>
+          <li>Build signal-triggered sequences: ZoomInfo engagement, LinkedIn connection, HubSpot lead score threshold</li>
+          <li>Write persona-specific email content for each stage — awareness, consideration, decision</li>
+          <li>Align email timing with LinkedIn and paid media touches to create coordinated pressure</li>
+          <li>Report weekly on open rates, reply rates, and handoff events to the sales team</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B Fintech</span>
+          <div class="case-card-name">Sapiens International</div>
+          <div class="case-card-industry">Enterprise Insurance Tech · B2B · Global</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>Sapiens had a large CRM database but no lifecycle logic. Contacts were being nurtured with generic newsletters. Intent signals from web visits and event attendance weren't being captured or acted on.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>Natalia and team built a full behavioral email workflow — entry triggered by intent signals, branched by persona and stage, with follow-up sequences for event attendees vs. no-shows and automated handoff alerts to the sales team at defined lead score thresholds.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop">
+              <div class="result-pop-num">41%</div>
+              <div class="result-pop-label">Average open rate on triggered sequences</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num">3.2×</div>
+              <div class="result-pop-label">MQL-to-SQL conversion vs. prior workflows</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num green">50%</div>
+              <div class="result-pop-label">Webinar attendees that went on to close</div>
+            </div>
+          </div>
+          <div class="aha-quote">Email didn't sell anything. It made every sales conversation feel warmer — like the prospect had already met Sapiens before the call.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep" id="svc-webinars">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 04</div>
+        <h3 class="service-deep-title">Partner Webinars</h3>
+        <div class="service-deep-tag">Don't build an audience. Borrow one that already trusts you.</div>
+        <p class="service-deep-desc">The webinar strategy Brennen described is exactly the right one: appear inside the audiences that Braintree, PayPal, and the Merchant Risk Council have already spent years building. Noetic handles the production, content architecture, pre-show promotion, live broadcast, and post-show follow-up. FlexFactor brings the expertise and the story.</p>
+        <ul class="approach-list">
+          <li>Co-produce webinars with Braintree and Merchant Risk Council under their brand umbrella</li>
+          <li>Build full pre-show email sequence (7 emails from calendar invite to day-of reminder)</li>
+          <li>Produce the live event: branded experience, tech rehearsals, professional broadcast setup</li>
+          <li>Segment post-show follow-up: attendees get one flow, no-shows get another</li>
+          <li>Repurpose recordings into social clips, email assets, and sales enablement content</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B Enterprise SaaS</span>
+          <div class="case-card-name">Sapiens International</div>
+          <div class="case-card-industry">Enterprise Insurance Software · Acquired for $2.5B</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">The program</div>
+            <p>We built and ran Sapiens' entire webinar program from the ground up — from platform setup to branding system to content calendar. Over 12 months we produced 20 webinars, each with a branded pre-show, dedicated tech team, and behavioral post-show email flows. Sapiens never had to worry about a single technical detail.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">The results</div>
+            <p>The webinar funnel became Sapiens' highest-converting channel. Opportunities influenced by a webinar touch were 50% more likely to close. The program continued after Sapiens' acquisition, which tells you something about how embedded it became in their go-to-market.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop">
+              <div class="result-pop-num">50%</div>
+              <div class="result-pop-label">Probability to close for webinar-touched leads</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num">95%</div>
+              <div class="result-pop-label">Attendee satisfaction rate</div>
+            </div>
+            <div class="result-pop">
+              <div class="result-pop-num green">20</div>
+              <div class="result-pop-label">Webinars produced in year one</div>
+            </div>
+          </div>
+          <div class="aha-quote">A webinar isn't a lead gen tactic. It's the highest-quality touch point in a B2B buyer's journey — if you produce it right.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Context · Paid Acquisition</span>
+          <div class="case-card-name">Demand gen, when the time is right</div>
+          <div class="case-card-industry">SMB Merchants · LinkedIn + Meta · Phased recommendation</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Our recommendation</div>
+            <p>Paid social — LinkedIn and Meta targeting SMB merchants and operators — is in scope and was covered in our April 6 presentation. We recommend phasing it in at month two, once ABM messaging has been tested and the creative angles are proven. Running paid before you know what message works is expensive. Proof first, then scale.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">The setup</div>
+            <p>LinkedIn for mid-funnel: ecommerce operators, payment-adjacent titles, Shopify and WooCommerce signals. Meta for scale: demand generation and retargeting against the ABM audiences already warming. Google Search to capture high-intent queries from accounts already in the funnel. All routed to landing pages built around the three messaging pillars: revenue, CAC, and brand loyalty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">04 — Closest reference</span>
+      <h2 class="display-lg" style="margin-top:18px;color:white;">
+        This is what we built for <em class="italic" style="color:var(--mint);">a company with a similar motion.</em>
+      </h2>
+    </div>
+    <div class="featured-cs">
+      <div class="featured-cs-grid">
+        <div class="featured-cs-meta">
+          <div class="featured-cs-meta-tag">B2B Tech · Outbound-Led Growth</div>
+          <h3>TSG</h3>
+          <p>A B2B technology company with a highly targeted buyer profile and a sales team that was doing the right things — but without a marketing engine running in parallel. Like FlexFactor, the product was strong and the ICP was clear. The gap was awareness and coordination between sales and marketing.</p>
+          <div class="featured-cs-channels">
+            <span class="channel-chip">ABM</span>
+            <span class="channel-chip">LinkedIn Outreach</span>
+            <span class="channel-chip">Email Lifecycle</span>
+            <span class="channel-chip">HubSpot</span>
+            <span class="channel-chip">Paid Social</span>
+          </div>
+        </div>
+        <div class="featured-cs-narrative">
+          <div>
+            <h4>The situation</h4>
+            <p>TSG's sales team was outreaching into a well-defined set of accounts, but the marketing layer was absent. Prospects received a cold call before ever seeing a piece of content. There was no signal from marketing to tell the sales team who was warm and who was cold. Every call was a cold call.</p>
+          </div>
+          <div>
+            <h4>What we built</h4>
+            <p>A coordinated ABM and lifecycle program that ran content and ads against the same named accounts the sales team was working. LinkedIn outreach sequences from company profiles complemented the sales cadence. HubSpot was configured to surface engagement signals — account score thresholds, page visits, email opens — as live alerts for the reps. The sales team stopped calling cold.</p>
+          </div>
+          <div class="featured-results-grid">
+            <div class="featured-result">
+              <div class="featured-result-num">+64%</div>
+              <div class="featured-result-label">Pipeline generated within 90 days of launch</div>
+            </div>
+            <div class="featured-result">
+              <div class="featured-result-num">3.1×</div>
+              <div class="featured-result-label">Increase in reply rate on sales outreach</div>
+            </div>
+            <div class="featured-result">
+              <div class="featured-result-num purple">−31%</div>
+              <div class="featured-result-label">Reduction in time-to-first-meeting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="differentiators section" id="why-noetic">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 — Why Noetic</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">
+        Six things that are specific to<br>
+        <em class="italic" style="color:var(--purple);">what FlexFactor actually needs.</em>
+      </h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">/ 01</div>
+        <h4>We don't replace sales teams. We make them land harder.</h4>
+        <p>Brennen said it directly: marketing's job is to make the sales team feel like they're walking into a room where people already know them. That's exactly how we think about our role here.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 02</div>
+        <h4>Partner marketing is native to how we work.</h4>
+        <p>We've built webinar programs through partner audiences, co-branded campaigns with integration partners, and ABM motions that run across multiple ecosystem channels. The Braintree-first, replicate-everywhere model is one we know how to build.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 03</div>
+        <h4>Content that converts, not content that impresses.</h4>
+        <p>Calculators, ROI tools, gated content that actually gates — we build assets designed to generate and qualify leads, not win design awards. That's what "performance-driven" means to us.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 04</div>
+        <h4>A webinar engine that's already running.</h4>
+        <p>Monique and the team have produced 20+ webinars in the past year. The infrastructure, the pre-show email sequences, the post-show behavioral flows — all of it is built and operational. You'd be plugging into something that already works.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 05</div>
+        <h4>Fintech and B2B SaaS experience on the lifecycle side.</h4>
+        <p>Natalia spent her last corporate role inside fintech. She knows how payment-adjacent buyers think, what language they respond to, and what a healthy HubSpot workflow actually looks like. The audit she ran on FlexFactor's email infrastructure confirmed the foundation is solid.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 06</div>
+        <h4>KPI-first. Always.</h4>
+        <p>We heard Tamir and Brennen say the same thing independently: everything needs a number attached to it. We agree. Scope, reporting, and optimization are all structured around agreed KPIs from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="next-steps" style="background:var(--paper);border-top:1px solid var(--rule);">
+  <div class="container">
+    <span class="eyebrow">06 — What happens next</span>
+    <h2 class="display-md" style="margin-top:18px;max-width:26ch;">
+      A 90-day path from<br>
+      <em class="italic" style="color:var(--purple);">standing start to running machine.</em>
+    </h2>
+    <p class="lede" style="margin-top:24px;max-width:58ch;">
+      We agreed that the next step is a scoped engagement with defined KPIs and a clear start date. Here's how the first three months take shape. Everything before month two is discovery, access, and build. Month two is launch. Month three is proof and replication prep.
+    </p>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-content">
+          <div class="process-timeline">Weeks 1–2</div>
+          <h4>Discovery &amp; Access</h4>
+          <p>HubSpot access, Brennen's contact lists, ZoomInfo enrichment data. Segmentation analysis across the 2,240 accounts. Messaging audit of existing sales sequences. Competitive positioning review (Checkout.com, Signifyd). KPI definitions and reporting structure agreed. No deliverables start until we know the territory.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-content">
+          <div class="process-timeline">Weeks 3–4</div>
+          <h4>Content &amp; Configuration</h4>
+          <p>Persona messaging matrix (revenue, CAC waste, brand loyalty). First wave of ABM ad creatives and landing pages. LinkedIn profile setup and sequence copy for 2-4 FlexFactor employees. Email sequence architecture in HubSpot, staged by tier and trigger. Interactive revenue calculator scoped and built.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-content">
+          <div class="process-timeline">Month 2</div>
+          <h4>Launch</h4>
+          <p>ABM campaigns go live on LinkedIn and Meta. LinkedIn outreach automation activates across the Braintree tier-1 and tier-2 accounts. Email sequences begin flowing to segmented lists. First HubSpot alert triggers for the sales team. Weekly reporting rhythm established. First webinar scoped with Merchant Risk Council or Braintree contact.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-content">
+          <div class="process-timeline">Month 3 and beyond</div>
+          <h4>Optimize &amp; Replicate</h4>
+          <p>Prove the Braintree motion: which messages convert, which personas engage, which content assets earn the reply. Document the playbook. Begin scoping the replication of the same motion for PayPal, Worldpay, and Nuve. Every asset built in month two becomes infrastructure for the next integration partner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:white;padding:clamp(80px,11vh,130px) 0;position:relative;overflow:hidden;" id="proposal">
+  <div style="position:absolute;top:-40%;right:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,180,0.15),transparent 70%);filter:blur(80px);pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <span class="eyebrow dark">07 — Proposal</span>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:18px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.12);">
+      <div>
+        <h2 class="display-lg" style="color:white;max-width:18ch;">
+          Scope of work &amp; <em class="italic" style="color:var(--mint);font-weight:400;">investment.</em>
+        </h2>
+        <p style="color:rgba(255,255,255,0.6);font-size:15px;margin-top:16px;max-width:48ch;line-height:1.65;">Proposal #NC26/27 · Prepared for Abe Knell · April 2026 · Valid 30 days</p>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.45);margin-bottom:8px;">Monthly retainer</div>
+        <div style="font-family:var(--font-display);font-size:clamp(52px,6vw,80px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:white;">$13,500</div>
+        <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,0.45);margin-top:6px;">/month · 12-month commitment</div>
+      </div>
+    </div>
+    <div style="margin-top:56px;">
+      <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.45);margin-bottom:28px;">What's included</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);">
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">01 / Discovery</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Growth system audit</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Map inflow sources, outbound motion, Tier 1–6 scoring logic, and ZoomInfo/Clay enrichment. Identify where leads are entering, leaking, and stalling before any acquisition spend is scaled.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">02 / Data &amp; Segmentation</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Monthly list refresh</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">AI-driven enrichment with intent signals alongside firmographic data. Segmentation by revenue band, transaction type, and partner integration. Buying committee coverage beyond a single role per account.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">03 / ABM</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Coordinated multi-touch campaigns</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Tier 1 and Tier 2 account groups with lifecycle tracks per tier. Multi-touch sequences across LinkedIn, email, and landing pages. Account-specific pages for Stripe, Adyen, and Braintree. Sales handoff triggered by engagement signals.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">04 / Outbound Enablement</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Playbooks, sequences, and LinkedIn automation</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Role-based messaging frameworks by persona. LinkedIn 3-touch automation with automatic handoff to manual SDR on reply. BDR onboarding support with structured ramp sequences so new hires are productive faster.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">05 / Messaging &amp; Content</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Pain-point frameworks and proof assets</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Revenue-leakage messaging for CFOs. False-decline framing for VP Payments. Checkout conversion angle for Growth and Ecommerce. Revenue-loss calculator, ROI benchmarks, case studies, and campaign copy across all channels.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">06 / Lifecycle Infrastructure</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Up to 6 automated HubSpot flows</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Lead warming, post-engagement nurture, partner GTM playbooks, stalled opportunity reactivation, BDR support sequences, and webinar lifecycle flows. No pipeline left behind.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">07 / Paid Media</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Meta, LinkedIn, and ASO</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Meta full-funnel demand gen for Shopify/WooCommerce merchants. LinkedIn mid and bottom-funnel for larger SMBs and ABM targets. App Store Optimization for Shopify marketplace. All paid campaigns feed into lifecycle sequences.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">08 / Webinars</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Partner-hosted, end-to-end production</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Partner audience identification and slot securing. Full production: branded pre/post show, recording, 3 social clips. Post-event flows segmented by engagement level. Webinar analytics integrated into monthly KPI reporting as a pipeline source.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">09 / Reporting</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Monthly dashboards and KPI tracking</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Performance reports covering all active channels. KPI tracking aligned with agreed business objectives. Insights, trends, and optimization recommendations. Regular alignment with internal stakeholders on performance and next steps.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:28px 26px;transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:12px;font-weight:600;">10 / Account Management</div>
+          <h4 style="font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:10px;letter-spacing:-0.015em;">Dedicated account manager</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Single point of contact overseeing all workstreams, timelines, and deliverables. Regular check-ins, reporting reviews, and strategic discussions. Proactive identification of optimization opportunities. Accountable for quality and on-time execution.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.12);">
+      <div style="padding:32px 28px;background:rgba(255,255,255,0.05);">
+        <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.4);margin-bottom:16px;">Investment</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">
+            <span style="font-size:15px;color:rgba(255,255,255,0.8);">Monthly retainer (full scope)</span>
+            <span style="font-family:var(--font-display);font-size:22px;font-weight:600;color:white;letter-spacing:-0.02em;">$13,500</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">
+            <span style="font-size:15px;color:rgba(255,255,255,0.8);">Media commission (above $20K spend)</span>
+            <span style="font-family:var(--font-display);font-size:22px;font-weight:600;color:white;letter-spacing:-0.02em;">5%</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:4px;">
+            <span style="font-size:15px;font-weight:600;color:white;">Total monthly</span>
+            <span style="font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--mint);letter-spacing:-0.025em;">$13,500</span>
+          </div>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:16px;font-family:var(--font-mono);">Pricing excludes cost of software and third-party platforms. Media commission applies only when total monthly paid spend exceeds $20,000.</p>
+      </div>
+      <div style="padding:32px 28px;background:rgba(255,255,255,0.05);">
+        <div style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.4);margin-bottom:16px;">Terms</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px;"></div>
+            <div><div style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">Commitment period</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">12 months from confirmed start date</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px;"></div>
+            <div><div style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">Payment terms</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Monthly, in advance</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px;"></div>
+            <div><div style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">Proposal validity</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">30 days from date of presentation</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px;"></div>
+            <div><div style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">Acceptance</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Via email confirmation. Project starts after first payment is confirmed.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px;"></div>
+            <div><div style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">Client responsibilities</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Timely delivery of requested materials. Copyright for client-supplied content remains the client's responsibility.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <span style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.15em;">Proposal #NC26/27 · Noetic Creative · noetic.io</span>
+      <a href="mailto:tamir@noetic.io" style="font-family:var(--font-mono);font-size:11px;color:var(--mint);text-transform:uppercase;letter-spacing:0.15em;text-decoration:none;">Accept via email →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">08 — Let's get started</div>
+    <h2 class="cta-title">
+      Abe, Brennen, Zeev &mdash; <span class="italic">thank you.</span>
+    </h2>
+    <p class="cta-note">
+      The transparency in both conversations was rare and appreciated. You gave us exactly what we needed to build something that actually fits. Tamir and the team are ready to move when you are.
+    </p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">
+        tamir@noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+      </a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">
+        noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Headquarters<span>Miami, Florida — Remote-first operations across the Americas</span></div>
+      <div class="footer-meta-block">Prepared for<span>FlexFactor · April 2026 · Confidential</span></div>
+      <div class="footer-meta-block">&copy; 2026 Noetic Creative<span>noetic.io &middot; hello@noetic.io</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  document.body.classList.add('anim-ready');
+  const els = document.querySelectorAll('.case-card, .diff-card, .belief-item, .process-step, .frame-stat');
+  els.forEach(el => el.classList.add('fade-in'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => observer.observe(el));
+  setTimeout(() => { document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')); }, 4000);
+}
+</script>
+</body>
+</html>
