@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nayax × Noetic — Recap &amp; Capabilities Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+  <style>
+    :root {
+      --paper: #FAFAF7; --paper-warm: #F2F0EA; --paper-cool: #F0F0F4;
+      --ink: #0A0A0E; --ink-soft: #1A1A1F; --ink-mute: #6B6B7B; --ink-faint: #A8A8B5;
+      --card: #FFFFFF; --purple: #6C5CE7; --purple-deep: #4D3FC9;
+      --purple-soft: #EFEDFE; --purple-glow: rgba(108,92,231,0.18);
+      --mint: #00D4B4; --coral: #FF6B6B; --amber: #F5B400;
+      --rule: rgba(10,10,14,0.08); --rule-strong: rgba(10,10,14,0.16);
+      --max: 1240px; --max-narrow: 920px;
+      --font-display: 'Fraunces','Times New Roman',serif;
+      --font-sans: 'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+      --font-mono: 'JetBrains Mono',monospace;
+    }
+    ::selection{background:var(--purple);color:white}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{background:var(--paper);color:var(--ink-soft);overflow-x:hidden;font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
+    section{position:relative}
+    .section{padding:clamp(80px,12vh,160px) 0}
+    .section-head{margin-bottom:clamp(48px,6vw,80px)}
+    .display-xl{font-family:var(--font-display);font-size:clamp(56px,9vw,122px);font-weight:600;line-height:.95;letter-spacing:-.035em}
+    .display-lg{font-family:var(--font-display);font-size:clamp(44px,6vw,88px);font-weight:600;line-height:1;letter-spacing:-.03em}
+    .display-md{font-family:var(--font-display);font-size:clamp(34px,4.5vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.025em}
+    h1,h2,h3,h4{color:var(--ink);letter-spacing:-.022em;line-height:1.05;font-weight:700}
+    .italic{font-style:italic;font-weight:400}
+    .lede{font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--ink-soft);font-weight:400;max-width:60ch}
+    .eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px}
+    .eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%}
+    .eyebrow.dark{color:rgba(255,255,255,.6)}
+    .eyebrow.dark::before{background:var(--mint)}
+    .client-bar{background:var(--ink);padding:11px 32px;display:flex;align-items:center;justify-content:space-between}
+    .client-bar-logos{display:flex;align-items:center;gap:18px}
+    .client-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.4)}
+    @media(max-width:600px){.client-bar-meta{display:none}}
+    .nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:14px 32px;background:rgba(250,250,247,.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid transparent;transition:border-color .3s ease}
+    .nav.scrolled{border-bottom-color:var(--rule)}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center}
+    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--ink-mute);transition:color .2s}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-cta{background:var(--ink);color:white!important;padding:10px 18px;border-radius:999px;font-size:13px!important;font-weight:600!important;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+    .nav-cta:hover{background:var(--purple)!important}
+    @media(max-width:820px){.nav-links li:not(:last-child){display:none}}
+    .hero{padding-top:clamp(140px,18vh,220px);padding-bottom:clamp(80px,12vh,140px);position:relative;overflow:hidden}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,14,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,.04) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none}
+    .hero-blob{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(108,92,231,.22),transparent 60%);filter:blur(80px);pointer-events:none;top:-200px;right:-200px;z-index:0}
+    .hero-blob-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(0,212,180,.15),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-150px;left:-100px;z-index:0}
+    .hero-inner{position:relative;z-index:1}
+    .hero-meta{display:flex;gap:18px;align-items:center;margin-bottom:28px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute)}
+    .hero-meta-divider{width:24px;height:1px;background:var(--rule-strong)}
+    .hero h1{margin-bottom:28px}
+    .hero h1 .accent-line{display:block;color:var(--purple);font-style:italic;font-weight:400}
+    .hero-lede{font-size:clamp(19px,1.8vw,24px);line-height:1.45;color:var(--ink-soft);max-width:56ch;margin-top:8px;font-weight:400}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(60px,8vh,100px);border-top:1px solid var(--rule)}
+    .hero-stat{padding:32px 24px 0 0;border-right:1px solid var(--rule)}
+    .hero-stat:not(:first-child){padding-left:24px}
+    .hero-stat:last-child{border-right:none;padding-right:0}
+    .hero-stat-num{font-family:var(--font-display);font-size:clamp(38px,5vw,60px);font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--ink);margin-bottom:8px}
+    .hero-stat-num .accent{color:var(--purple)}
+    .hero-stat-label{font-size:13px;color:var(--ink-mute);font-weight:500;line-height:1.4;max-width:22ch}
+    @media(max-width:800px){.hero-stats{grid-template-columns:repeat(2,1fr)}.hero-stat:nth-child(2n){border-right:none}.hero-stat{padding:24px 16px 0 0;padding-bottom:24px;border-bottom:1px solid var(--rule)}.hero-stat:not(:first-child){padding-left:0}.hero-stat:last-child,.hero-stat:nth-last-child(2){border-bottom:none}}
+    .belief-list{list-style:none;display:flex;flex-direction:column}
+    .belief-item{padding:28px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:50px 1fr;gap:24px;align-items:start}
+    .belief-item:last-child{border-bottom:1px solid var(--rule)}
+    .belief-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;letter-spacing:.05em;padding-top:6px}
+    .belief-content h3{font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);font-weight:600;margin-bottom:8px;letter-spacing:-.02em}
+    .belief-content p{color:var(--ink-mute);font-size:16px;line-height:1.6;max-width:60ch}
+    .lanes{background:var(--ink);color:white}
+    .lanes h2{color:white}
+    .lanes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:60px;border-top:1px solid rgba(255,255,255,.12)}
+    .lane{padding:56px 48px;border-right:1px solid rgba(255,255,255,.12);position:relative}
+    .lane:last-child{border-right:none}
+    .lane-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint);margin-bottom:20px}
+    .lane h3{font-family:var(--font-display);font-size:clamp(26px,3vw,38px);font-weight:600;color:white;margin-bottom:18px;line-height:1.05}
+    .lane p{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;max-width:42ch;margin-bottom:24px}
+    .lane-spec{display:flex;gap:28px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+    .lane-spec-item .label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.15em;display:block;margin-bottom:6px}
+    .lane-spec-item .value{font-size:15px;color:white;font-weight:500}
+    @media(max-width:768px){.lanes-grid{grid-template-columns:1fr}.lane{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:40px 24px}.lane:last-child{border-bottom:none}}
+    .service-deep{border-top:1px solid var(--rule);padding:clamp(80px,11vh,130px) 0;background:var(--paper);position:relative}
+    .service-deep.warm{background:var(--paper-warm)}
+    .service-deep.cool{background:var(--paper-cool)}
+    .service-deep-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,90px);align-items:start}
+    @media(max-width:900px){.service-deep-grid{grid-template-columns:1fr}}
+    .service-deep-meta{position:sticky;top:100px}
+    .service-deep-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;margin-bottom:12px;letter-spacing:.05em}
+    .service-deep-title{font-family:var(--font-display);font-size:clamp(34px,4.5vw,52px);font-weight:600;line-height:1.02;letter-spacing:-.025em;margin-bottom:18px;color:var(--ink)}
+    .service-deep-tag{font-size:17px;color:var(--purple-deep);font-weight:500;margin-bottom:22px;font-style:italic;font-family:var(--font-display)}
+    .service-deep-tag::before{content:"— "}
+    .service-deep-desc{color:var(--ink-mute);font-size:16px;line-height:1.6}
+    .approach-list{list-style:none;margin-top:30px}
+    .approach-list li{padding:14px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-soft);display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+    .approach-list li:last-child{border-bottom:1px solid var(--rule)}
+    .approach-list li::before{content:"→";color:var(--purple);font-weight:600;font-size:14px}
+    .case-card{background:white;border:1px solid var(--rule);border-radius:16px;padding:32px;margin-bottom:20px;position:relative;transition:transform .3s,box-shadow .3s}
+    .case-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,.12)}
+    .case-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--purple-deep);background:var(--purple-soft);padding:5px 10px;border-radius:999px;font-weight:500;margin-bottom:20px}
+    .case-card-tag.alt{background:rgba(0,212,180,.12);color:#006B5C}
+    .case-card-name{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;color:var(--ink)}
+    .case-card-industry{font-size:13px;color:var(--ink-mute);margin-bottom:24px;font-family:var(--font-mono)}
+    .case-card-block{margin-bottom:18px}
+    .case-card-block-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-faint);font-weight:500;margin-bottom:6px}
+    .case-card-block p{font-size:15px;color:var(--ink-soft);line-height:1.55}
+    .case-card-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0;margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+    .result-pop{padding:0 16px 0 0;border-right:1px solid var(--rule)}
+    .result-pop:last-child{border-right:none;padding-right:0}
+    .result-pop-num{font-family:var(--font-display);font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1;color:var(--purple);margin-bottom:6px}
+    .result-pop-num.green{color:#00A18A}
+    .result-pop-label{font-size:11px;color:var(--ink-mute);line-height:1.35;font-weight:500}
+    .aha-quote{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule);font-family:var(--font-display);font-style:italic;font-size:17px;color:var(--ink);line-height:1.4}
+    .aha-quote::before{content:"Aha! moment — ";font-style:normal;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--purple);font-weight:600;display:block;margin-bottom:8px}
+    .featured-section{background:var(--ink);color:white;padding:clamp(80px,12vh,130px) 0}
+    .featured-section h2{color:white}
+    .featured-cs{border-top:1px solid rgba(255,255,255,.1);padding:64px 0}
+    .featured-cs:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+    .featured-cs-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+    @media(max-width:900px){.featured-cs-grid{grid-template-columns:1fr}}
+    .featured-cs-meta-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--mint);margin-bottom:20px}
+    .featured-cs-meta h3{font-family:var(--font-display);font-size:clamp(38px,5vw,60px);font-weight:600;letter-spacing:-.025em;line-height:1;margin-bottom:16px;color:white}
+    .featured-cs-meta p{color:rgba(255,255,255,.65);font-size:15px;line-height:1.55;max-width:38ch;margin-bottom:24px}
+    .featured-cs-channels{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .channel-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:rgba(255,255,255,.85)}
+    .featured-cs-narrative{display:flex;flex-direction:column;gap:24px}
+    .featured-cs-narrative h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint);font-weight:500;margin-bottom:10px}
+    .featured-cs-narrative p{font-size:17px;line-height:1.55;color:rgba(255,255,255,.85)}
+    .featured-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+    .featured-result{padding:0 24px 0 0;border-right:1px solid rgba(255,255,255,.1)}
+    .featured-result:last-child{border-right:none;padding-right:0}
+    .featured-result-num{font-family:var(--font-display);font-size:clamp(34px,4.5vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--mint);margin-bottom:8px}
+    .featured-result-num.purple{color:#B8AEFF}
+    .featured-result-label{font-size:12px;color:rgba(255,255,255,.55);font-weight:500;line-height:1.4;max-width:22ch}
+    .differentiators{background:var(--paper-cool)}
+    .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--rule);border:1px solid var(--rule)}
+    @media(max-width:760px){.diff-grid{grid-template-columns:repeat(2,1fr)}}
+    .diff-card{background:var(--paper-cool);padding:36px 28px;transition:background .3s;position:relative}
+    .diff-card:hover{background:white}
+    .diff-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:.1em;margin-bottom:18px;font-weight:600}
+    .diff-card h4{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+    .diff-card p{font-size:14px;color:var(--ink-mute);line-height:1.55}
+    .process-section{background:var(--paper);padding:clamp(80px,12vh,160px) 0}
+    .process-track{margin-top:56px}
+    .process-step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--rule);align-items:start}
+    .process-step:last-child{border-bottom:1px solid var(--rule)}
+    .process-num{font-family:var(--font-display);font-size:64px;font-weight:600;line-height:.9;letter-spacing:-.04em;color:var(--purple)}
+    .process-content h4{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+    .process-content p{color:var(--ink-mute);font-size:15px;line-height:1.55;max-width:60ch}
+    @media(max-width:600px){.process-step{grid-template-columns:50px 1fr;gap:16px}.process-num{font-size:40px}}
+    .cta-section{background:var(--ink);color:white;padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px);position:relative;overflow:hidden}
+    .cta-section::before{content:"";position:absolute;bottom:-20%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,.32),transparent 70%);filter:blur(100px)}
+    .cta-section .container{position:relative;z-index:1}
+    .cta-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint);margin-bottom:28px}
+    .cta-title{font-family:var(--font-display);font-size:clamp(48px,7vw,100px);font-weight:600;line-height:.98;letter-spacing:-.03em;color:white;margin-bottom:24px;max-width:16ch}
+    .cta-title .italic{color:var(--purple);font-style:italic;font-weight:500}
+    .cta-subtitle{color:rgba(255,255,255,.7);font-size:18px;max-width:52ch;margin-bottom:40px;line-height:1.55}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:60px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-.01em;transition:all .2s;border:1px solid transparent}
+    .btn-primary{background:var(--purple);color:white}
+    .btn-primary:hover{background:white;color:var(--ink)}
+    .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,.2)}
+    .btn-ghost:hover{border-color:white}
+    .btn svg{width:16px;height:16px}
+    .footer-meta{margin-top:80px;padding-top:36px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px}
+    .footer-meta-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;line-height:1.7}
+    .footer-meta-block span{display:block;color:white;font-size:13px;text-transform:none;letter-spacing:-.01em;margin-top:6px;font-family:var(--font-sans);font-weight:500}
+    body.anim-ready .fade-in{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+    body.anim-ready .fade-in.visible{opacity:1;transform:translateY(0)}
+    @media print{.nav,.client-bar{display:none}body{background:white}.case-card{break-inside:avoid}.process-step{break-inside:avoid}.hero-blob,.hero-blob-2,.cta-section::before{display:none}}
+    @media(max-width:600px){.container{padding:0 20px}.client-bar{padding:11px 20px}}
+  </style>
+</head>
+<body>
+
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:.9;">
+  </div>
+  <span class="client-bar-meta">Recap &amp; Capabilities Brief &middot; May 2026 &middot; Confidential</span>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="#top" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:28px;width:auto;">
+      </a>
+      <div style="width:1px;height:24px;background:var(--rule-strong);flex-shrink:0;"></div>
+      <img src="assets/nayax-logo.jpg" alt="Nayax" style="height:30px;width:auto;opacity:.88;">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#recap">Recap</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#latam">LATAM</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Start Working →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Recap &amp; Capabilities</span>
+      <span class="hero-meta-divider"></span>
+      <span>May 2026</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Nayax</span>
+    </div>
+    <h1 class="display-xl">
+      Operators decide
+      <span class="accent-line">with their eyes.</span>
+    </h1>
+    <p class="hero-lede">Nayax serves over a million devices across 120 countries. The operators running those devices need to see the product working before they buy it. That is the creative gap. And it is exactly where this partnership starts.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">10</span></div>
+        <div class="hero-stat-label">UGC units greenlit, awaiting Alex's brief</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">120+</div>
+        <div class="hero-stat-label">Countries Nayax operates in today</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$1.5M</div>
+        <div class="hero-stat-label">Annual media budget to support and scale</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">LATAM</div>
+        <div class="hero-stat-label">Strategic expansion frontier. Noetic's home ground.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="recap" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 — What we discussed</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;">Two meetings. A clear picture of <em class="italic" style="color:var(--purple)">where to begin</em>.</h2>
+      <p class="lede" style="margin-top:24px;">From the April 2 call with Michal to the April 16 session with Michal, Edan, and Alex, here is what we walked away understanding.</p>
+    </div>
+    <ul class="belief-list">
+      <li class="belief-item"><div class="belief-num">/01</div><div class="belief-content"><h3>Nayax wants partners, not vendors</h3><p>Michal was direct about this from the first conversation: the team is substantial and capable, but the goal is to remove execution friction and bring in partners who think like owners. The scope on the table is not a backfill. It is a relationship built around trusted external execution.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/02</div><div class="belief-content"><h3>UGC is the immediate priority. Ten units, $1,500 each.</h3><p>Edan and Alex confirmed a 10-unit UGC package at $1,500 per unit as the starting engagement. Alex is preparing the brief and messaging document. The first batch is targeting US operator acquisition, with Mexico as the next market as volume scales.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/03</div><div class="belief-content"><h3>Retargeting is offline. Meta blocked the pixel.</h3><p>Meta blocked Nayax's pixel, which means retargeting to site visitors and warm audiences is currently not running. With a US media budget of $30 to 40K, this is a meaningful gap. Rebuilding the retargeting motion requires new creative assets alongside resolving the pixel issue through a clean account and domain setup.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/04</div><div class="belief-content"><h3>LATAM is a real strategic expansion, not a side market</h3><p>Michal flagged Brazil and LATAM explicitly as markets where Nayax needs localized user acquisition and messaging support. Mexico is active but underfunded at $2K media spend. Nayax has made acquisitions in Brazil specifically to anchor LATAM infrastructure, and the expectation is that marketing investment follows.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/05</div><div class="belief-content"><h3>Payter flagged as a competitor worth targeting in EV charging</h3><p>Tamir raised Payter's EV charging vertical as a displacement opportunity. The play is straightforward: content and paid campaigns that intercept operators researching payment solutions for EV stations, positioned against Payter's specific limitations. Michal was receptive to this framing.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/06</div><div class="belief-content"><h3>The budget signals this is a long-term engagement</h3><p>Total marketing budget excluding headcount is $5M. Media budget is $1.5M annually. This is not a trial. The investment level tells us Nayax is building a serious, multi-channel demand generation operation, and the right partner earns access to a substantial recurring scope across channels and markets.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="lanes section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">02 — The frame</span>
+      <h2 class="display-lg" style="margin-top:18px;color:white;max-width:22ch;">Operator-first. Content-led. <em class="italic" style="color:var(--mint)">Built for two continents.</em></h2>
+      <p class="lede" style="color:rgba(255,255,255,.72);margin-top:24px;max-width:58ch;">Most fintech companies market to enterprise finance teams. Nayax sells to operators. Laundromat owners. Vending route managers. EV charging network builders. That is a different buyer, a different trust signal, and a fundamentally different creative brief.</p>
+    </div>
+    <div class="lanes-grid">
+      <div class="lane">
+        <div class="lane-tag">The challenge</div>
+        <h3>A media machine with a content and pixel gap</h3>
+        <p>$1.5M in annual media budget. A Meta pixel that is offline. Operators across 120 countries who need to see the product in context before they convert. The infrastructure is real. The creative supply chain feeding it is not yet there.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">Primary gap</span><span class="value">UGC + retargeting rebuild</span></div>
+          <div class="lane-spec-item"><span class="label">US media spend</span><span class="value">$30–40K active</span></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-tag">The opportunity</div>
+        <h3>Nayax is going south. Noetic is already there.</h3>
+        <p>Brazil, Mexico, Colombia, Argentina. Nayax acquired VMtecnologia and UPPay to anchor LATAM infrastructure. Marketing has to match that ambition. Noetic has seven native Spanish and Portuguese-speaking team members already producing in those markets today.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">Nayax LATAM acquisitions</span><span class="value">VMtecnologia, UPPay (Brazil)</span></div>
+          <div class="lane-spec-item"><span class="label">Noetic LATAM bench</span><span class="value">7 native team members</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep cool" id="ugc">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 01</div>
+        <h2 class="service-deep-title">UGC &amp; Creative Production</h2>
+        <div class="service-deep-tag">Real operators. Real machines. Real proof.</div>
+        <p class="service-deep-desc">The first 10 units are already in scope. For an operator-focused product, UGC has a specific brief: it must show the hardware in the real environment where operators encounter it, and it must close the question of "does this actually work for someone like me?" in under 30 seconds.</p>
+        <ul class="approach-list">
+          <li>Operator-cast UGC in vending, laundry, EV, and car wash settings</li>
+          <li>10 to 14 day brief-to-delivery per batch, scalable to 20 to 30 units per month</li>
+          <li>Meta, TikTok, LinkedIn, and YouTube format cuts from each shoot</li>
+          <li>Full rights transfer, raw files delivered alongside final edits</li>
+          <li>Bilingual production (English and Spanish) for simultaneous US and Mexico deployment</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · MedTech Consumer</span>
+          <div class="case-card-name">Lumenis</div>
+          <div class="case-card-industry">MedTech · Aesthetic devices · Florida based</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Lumenis needed content that showed real practitioners using the device in clinical settings. Brand-produced video was not converting. They needed authentic proof-of-result UGC that practitioners trusted and shared.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic cast authentic KOLs and practitioners, produced a library of AI-enhanced UGC at scale, and integrated with the paid social calendar to ensure creative freshness aligned with each campaign window and event.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">3×</div><div class="result-pop-label">Content volume on same budget</div></div>
+            <div class="result-pop"><div class="result-pop-num">+40%</div><div class="result-pop-label">Engagement vs. brand-produced content</div></div>
+            <div class="result-pop"><div class="result-pop-num green">6wk</div><div class="result-pop-label">Brief to first live assets</div></div>
+          </div>
+          <div class="aha-quote">Authentic operator or practitioner content converts faster because it removes the single biggest objection: will this work for someone in my situation?</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Reference · Consumer Travel</span>
+          <div class="case-card-name">Rail Europe</div>
+          <div class="case-card-industry">Consumer Travel · UGC programme launch</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Needed a high-volume UGC operation to replace expensive, slow brand video. Previous attempts produced stiff, unconvincing assets at high cost and long turnaround.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic built end-to-end UGC infrastructure: creator outreach, contract management, brief writing, creative direction, and editing. Delivered 20 units in the first six weeks of engagement.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">20</div><div class="result-pop-label">Units in first 6 weeks</div></div>
+            <div class="result-pop"><div class="result-pop-num green">−35%</div><div class="result-pop-label">Cost per unit vs. prior agency</div></div>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2C Fintech</span>
+          <div class="case-card-name">Sorbet</div>
+          <div class="case-card-industry">B2C Financial Services · PTO liquidation · North America</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Sorbet's campaigns were fragmented across eight states, hobbled by iOS14+ visibility issues and Meta's credit-category restrictions. Static creative was failing to engage and conversion rates were declining despite growing spend.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic rebuilt the creative supply chain around dynamic, scenario-based content highlighting real PTO liquidation moments. New assets bypassed category restrictions through a context-first storytelling approach, while media structure was consolidated around a single high-signal conversion event.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">−20%</div><div class="result-pop-label">Acquisition cost reduction</div></div>
+            <div class="result-pop"><div class="result-pop-num">+50%</div><div class="result-pop-label">Increase in converted leads</div></div>
+            <div class="result-pop"><div class="result-pop-num green">+20%</div><div class="result-pop-label">Lift from new creative assets alone</div></div>
+          </div>
+          <div class="aha-quote">Creative variety is not a nice-to-have. When ad content is the only variable you can test inside a restricted category, it becomes the entire strategy.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Reference · Israeli B2B SaaS</span>
+          <div class="case-card-name">Tabit</div>
+          <div class="case-card-industry">Hospitality Tech · POS SaaS · US market entry</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Tabit entered the US POS market dominated by a competitor valued at $20B. They needed a predictable pipeline of qualified restaurant and hospitality operators, without overspending in a cost-heavy, high-demand category.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic built acquisition funnels with a distinct visual language to separate Tabit from the incumbent, combined with inbound strategies and a zero-touch onboarding flow that converted prospects without sales rep involvement.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+15%</div><div class="result-pop-label">Qualified inbound leads</div></div>
+            <div class="result-pop"><div class="result-pop-num">22%</div><div class="result-pop-label">Lead-to-customer conversion rate</div></div>
+            <div class="result-pop"><div class="result-pop-num green">19</div><div class="result-pop-label">New customers from zero-touch funnel</div></div>
+          </div>
+          <div class="aha-quote">A new-market entry is not about outspending the incumbent. It is about outpositioning them with buyers who do not yet know a better option exists.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep warm" id="webinars">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 02</div>
+        <h2 class="service-deep-title">Webinar Operations</h2>
+        <div class="service-deep-tag">Education that generates pipeline long after the session ends.</div>
+        <p class="service-deep-desc">For an operator audience, the webinar is the highest-leverage content format available. It lets Nayax demonstrate the management platform live, answer objections in real time, and reach mid-market operators who would never respond to a cold ad. Done right, each session produces eight months of content.</p>
+        <ul class="approach-list">
+          <li>Full production ops: landing pages, registration flows, and reminder sequences</li>
+          <li>Vertical tracks: one for vending and laundry, one for EV charging operators</li>
+          <li>LATAM bilingual webinar series for Brazil and Mexico operator markets</li>
+          <li>Post-webinar repurposing: clips, email sequences, and LinkedIn assets from each session</li>
+          <li>HubSpot integration for attendee scoring, lead handoff, and nurture enrollment</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · Israeli InsurTech</span>
+          <div class="case-card-name">Sapiens</div>
+          <div class="case-card-industry">Israeli B2B · Insurance Technology</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Sapiens needed to reach insurance technology decision-makers in the US without depending on expensive trade conferences. The audience was difficult to reach via standard paid social. They needed a thought-leadership channel that built trust over repeated touchpoints.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic built a quarterly webinar programme with two vertical tracks, full production and moderation, HubSpot registration automation, and a clip repurposing engine that turned each session into eight additional content assets distributed across email and social.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">500+</div><div class="result-pop-label">Registrations per webinar at peak</div></div>
+            <div class="result-pop"><div class="result-pop-num">+50%</div><div class="result-pop-label">Deal closure rate for webinar-touched accounts</div></div>
+            <div class="result-pop"><div class="result-pop-num green">8×</div><div class="result-pop-label">Content assets per session</div></div>
+          </div>
+          <div class="aha-quote">The webinar does not just generate leads. It generates the proof library that every other channel draws from for the next six months.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Reference · B2B Technology</span>
+          <div class="case-card-name">TSG</div>
+          <div class="case-card-industry">B2B Technology Services · Demand generation</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>TSG needed a repeatable webinar programme to educate a technical B2B buyer audience and generate qualified pipeline without the overhead of a dedicated in-house events function.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic delivered end-to-end production: topic research, speaker coordination, registration infrastructure, live hosting, and post-session repurposing across email and LinkedIn. Each session was engineered to generate multiple content assets with a long shelf life.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">5×</div><div class="result-pop-label">Content assets generated per session</div></div>
+            <div class="result-pop"><div class="result-pop-num green">2×</div><div class="result-pop-label">Pipeline from webinar-sourced leads vs. cold outreach</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep cool" id="abm">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 03</div>
+        <h2 class="service-deep-title">ABM for Operator Segments</h2>
+        <div class="service-deep-tag">Target the 300 accounts that matter. Skip the rest.</div>
+        <p class="service-deep-desc">Nayax's operator base is highly definable. EV charging network operators. Multi-unit vending route operators. Laundromat chains. Micro-market groups. These are named companies with named contacts and identifiable buying triggers. That makes this a strong ABM play.</p>
+        <ul class="approach-list">
+          <li>Target account lists built by vertical: EV operators, vending chains, laundromat groups</li>
+          <li>LinkedIn ABM via Influ2 targeting specific titles across operator buying committees</li>
+          <li>Competitor displacement campaign targeting Payter accounts in EV charging</li>
+          <li>Personalized landing pages per vertical with segment-specific messaging</li>
+          <li>HubSpot lead scoring and ABM attribution for clean pipeline reporting to Edan</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured · B2B Tech Israel</span>
+          <div class="case-card-name">WSC Sports</div>
+          <div class="case-card-industry">Sports Tech · ABM-driven pipeline growth</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>WSC Sports had a well-defined ICP among US sports broadcasters and media rights holders. Broad paid social was not reaching the right titles, and a direct sales motion to named accounts was not scalable at their headcount.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic built a named-account programme: ZoomInfo list of 300 target accounts, LinkedIn ABM to specific job titles within each, intent-signal triggers via third-party data layered with HubSpot scoring to create a warm handoff to sales at the right moment.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">300</div><div class="result-pop-label">Named accounts in active programme</div></div>
+            <div class="result-pop"><div class="result-pop-num">+62%</div><div class="result-pop-label">Meeting rate vs. outbound-only</div></div>
+            <div class="result-pop"><div class="result-pop-num green">2.4×</div><div class="result-pop-label">Pipeline velocity for ABM-touched accounts</div></div>
+          </div>
+          <div class="aha-quote">ABM works when your ICP is narrower than you think it needs to be. The moment you try to target every operator, you're running demand gen, not ABM.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Reference · Israeli B2B Telecom</span>
+          <div class="case-card-name">AudioCodes</div>
+          <div class="case-card-industry">Israeli B2B · Enterprise Communications · US market</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>AudioCodes needed to drive demos and pipeline among US enterprise communications buyers. Broad paid campaigns were missing the right titles, and CPL was trending upward without corresponding quality gains.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic built a named-account programme using LinkedIn and Influ2 for multi-stakeholder targeting within defined enterprise accounts. Messaging was tailored by job function and buying stage, with HubSpot scoring to flag the warmest accounts for sales handoff at the right moment.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+88%</div><div class="result-pop-label">Demos booked</div></div>
+            <div class="result-pop"><div class="result-pop-num">$4.9M</div><div class="result-pop-label">Pipeline influenced</div></div>
+            <div class="result-pop"><div class="result-pop-num green">−22%</div><div class="result-pop-label">CPL vs. baseline</div></div>
+          </div>
+          <div class="aha-quote">ABM for Israeli B2B in the US wins when the IT buyer, the finance buyer, and the procurement team all see the same account — but completely different creative.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Reference · B2B Tech ABM</span>
+          <div class="case-card-name">TSG</div>
+          <div class="case-card-industry">B2B Technology Services · Account-based pipeline</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>TSG's sales team had a defined target account list but no systematic way to warm accounts before outreach. Cold outreach was low-converting, and marketing had no measurable contribution to enterprise pipeline.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>Noetic implemented an ABM programme aligned to TSG's named account list: LinkedIn targeting at the specific title and company level, intent-signal monitoring, and a HubSpot lead scoring model that surfaced accounts showing active buying behavior for priority follow-up.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+40%</div><div class="result-pop-label">Meeting rate from ABM-warmed accounts</div></div>
+            <div class="result-pop"><div class="result-pop-num green">3×</div><div class="result-pop-label">Pipeline vs. outbound-only baseline</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section" id="latam">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:clamp(40px,6vw,64px);">
+      <span class="eyebrow dark">04 — The LATAM advantage</span>
+      <h2 class="display-lg" style="margin-top:18px;color:white;max-width:22ch;">Nayax is going south. <em class="italic" style="color:var(--mint)">Noetic is already there.</em></h2>
+      <p class="lede" style="color:rgba(255,255,255,.72);margin-top:24px;max-width:56ch;">Nayax acquired VMtecnologia and UPPay to anchor Brazil. The marketing infrastructure has to match that ambition. Noetic has a native LATAM team producing in Spanish and Portuguese today, for clients today, without a translation layer.</p>
+    </div>
+    <div class="featured-cs">
+      <div class="featured-cs-grid">
+        <div class="featured-cs-meta">
+          <div class="featured-cs-meta-tag">LATAM Capability · Bilingual Production</div>
+          <h3>Noetic's LATAM bench</h3>
+          <p>Seven native Spanish and Portuguese-speaking team members spanning strategy, paid media, content production, social management, and account leadership. No agency handoffs. No brief translation delays. No cultural mismatch.</p>
+          <div class="featured-cs-channels">
+            <span class="channel-chip">Native Spanish</span>
+            <span class="channel-chip">Native Portuguese</span>
+            <span class="channel-chip">Brazil</span>
+            <span class="channel-chip">Mexico</span>
+            <span class="channel-chip">Colombia / Argentina / Peru</span>
+          </div>
+        </div>
+        <div class="featured-cs-narrative">
+          <div><h4>Why this matters for Nayax specifically</h4><p>Operator acquisition in LATAM requires market-native messaging. The same UGC brief that converts a vending route operator in Ohio will not convert one in Monterrey or São Paulo. Language, creative format, platform behavior, and cultural register all change. Getting this wrong means spending LATAM budget on US-market assets.</p></div>
+          <div><h4>What Noetic brings</h4><p>Noetic runs simultaneous US and LATAM campaigns from a single brief, with parallel creative tracks, localized landing pages, and market-specific media buying. One partner. Two continents. A fraction of the coordination overhead of running two separate agencies.</p></div>
+          <div class="featured-results-grid">
+            <div class="featured-result"><div class="featured-result-num">7</div><div class="featured-result-label">Native LATAM team members in-house</div></div>
+            <div class="featured-result"><div class="featured-result-num">5+</div><div class="featured-result-label">LATAM markets in active production today</div></div>
+            <div class="featured-result"><div class="featured-result-num purple">2</div><div class="featured-result-label">Languages produced natively, without translators</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.12);margin-top:48px;">
+      <div style="padding:32px 24px 0 0;border-right:1px solid rgba(255,255,255,.12);"><div style="font-family:var(--font-display);font-size:clamp(40px,5vw,66px);font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--mint);margin-bottom:10px;">2</div><div style="font-size:13px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.4;max-width:24ch;">Nayax acquisitions in Brazil in 2024 and 2025</div></div>
+      <div style="padding:32px 24px 0 24px;border-right:1px solid rgba(255,255,255,.12);"><div style="font-family:var(--font-display);font-size:clamp(40px,5vw,66px);font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--mint);margin-bottom:10px;">$2K</div><div style="font-size:13px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.4;max-width:24ch;">Current Mexico media spend, room to scale significantly</div></div>
+      <div style="padding:32px 24px 0 24px;border-right:1px solid rgba(255,255,255,.12);"><div style="font-family:var(--font-display);font-size:clamp(40px,5vw,66px);font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--mint);margin-bottom:10px;">5+</div><div style="font-size:13px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.4;max-width:24ch;">LATAM markets where Noetic is in active production today</div></div>
+      <div style="padding:32px 0 0 24px;"><div style="font-family:var(--font-display);font-size:clamp(40px,5vw,66px);font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--mint);margin-bottom:10px;">1×</div><div style="font-size:13px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.4;max-width:24ch;">Partner who speaks both markets without a translator or handoff</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="differentiators section" id="why-us">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 — Why Noetic</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">Six reasons this is the <em class="italic" style="color:var(--purple)">right fit</em>.</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-num">/ 01</div><h4>Operator-audience experience</h4><p>We have produced campaigns for B2B and B2B2C companies selling hardware and software to SMB operators, from medtech devices to fintech platforms. We know the buyer and the creative brief.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 02</div><h4>UGC at production scale</h4><p>Not a two-creator pilot. A full production operation: outreach, briefing, casting, shooting, editing, rights, delivery. We scale to 30 units per month without quality degradation.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 03</div><h4>Native LATAM bench in-house</h4><p>Spanish and Portuguese-speaking strategists and producers. No outside translation agencies. No briefing delay. US and LATAM campaigns run simultaneously from a single engagement.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 04</div><h4>ABM track record in Israeli B2B</h4><p>We have run ABM programmes for AudioCodes, Sapiens, Oasis Security, and WSC Sports. We understand how Israeli B2B GTM motions translate to US buyer behavior and pipeline.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 05</div><h4>Webinar operations, not advice</h4><p>We produce webinars end to end: landing page, registration, live moderation, post-event clips, and HubSpot lead handoff. One team handles all of it. No subcontracting.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 06</div><h4>Partner model, not vendor model</h4><p>Michal said she wants partners who take logistics off her plate. Noetic is built for that. Dedicated team leads, predictable output, and proactive creative direction on every account.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="next-steps">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 — Recommended path forward</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch;">Start fast. <em class="italic" style="color:var(--purple)">Build toward the full scope.</em></h2>
+      <p class="lede" style="margin-top:24px;">The UGC package is the right entry point. It moves immediately, proves the production process, and creates the creative library that feeds every other channel.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step"><div class="process-num">01</div><div class="process-content"><h4>UGC brief receipt and kickoff</h4><p>Alex sends the brief and messaging document. Noetic reviews, aligns on tone and operator personas, and proposes talent profiles for the first 10-unit US batch. Kickoff call confirms Mexico as the next deployment market and sets delivery milestones.</p></div></div>
+      <div class="process-step"><div class="process-num">02</div><div class="process-content"><h4>First 10 units delivered</h4><p>Production completes within 3 to 4 weeks of brief receipt. Each unit ships with vertical short-form (Reels, TikTok), horizontal YouTube, and LinkedIn-native cuts. Bilingual English/Spanish versions available for Mexico at marginal cost.</p></div></div>
+      <div class="process-step"><div class="process-num">03</div><div class="process-content"><h4>Scope expansion conversation</h4><p>Following delivery, we sit down with Michal, Edan, and Alex to review results and plan scope expansion across organic social, ABM, webinars, and the LATAM activation track. Not a pitch. A planning session with work on the table.</p></div></div>
+      <div class="process-step"><div class="process-num">04</div><div class="process-content"><h4>Full partnership engagement</h4><p>Monthly retainer covering UGC production, organic social, webinar operations, and bilingual LATAM activation. Dedicated team. Single point of contact. Reporting and HubSpot integration from day one.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">Michal, Edan, Alex</div>
+    <h2 class="cta-title">Thank you for the <span class="italic">time.</span></h2>
+    <p class="cta-subtitle">The brief is coming. We are ready to move. Within a week of receiving Alex's messaging document, Noetic will have the first 10 units scoped, cast, and in pre-production.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">tamir@noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Prepared for<span>Nayax Ltd. · Michal Sever (CMO), Edan (Director of Growth), Alex (Performance)</span></div>
+      <div class="footer-meta-block">Document type<span>Recap &amp; Capabilities Brief · May 2026 · Confidential</span></div>
+      <div class="footer-meta-block">© 2026 Noetic Creative<span>Miami, FL · noetic.io · hello@noetic.io</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+  const rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!rm&&'IntersectionObserver' in window){
+    document.body.classList.add('anim-ready');
+    const els=document.querySelectorAll('.case-card,.belief-item,.diff-card,.process-step');
+    els.forEach(el=>el.classList.add('fade-in'));
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.05,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>obs.observe(el));
+    setTimeout(()=>document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>el.classList.add('visible')),4000);
+  }
+</script>
+</body>
+</html>
