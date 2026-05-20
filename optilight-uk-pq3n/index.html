@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptiLight UK — Full Funnel Campaign Creative Deck · Noetic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --purple-glow: rgba(108, 92, 231, 0.18);
+  --mint: #00D4B4;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ol-blue: #578fff;
+  --ol-blue-soft: #f4f7ff;
+  --ol-blue-mid: rgba(87, 143, 255, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+::selection { background: var(--ol-blue); color: white; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.slide {
+  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: 5vh 7vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+.slide.dark { background: var(--ink); color: rgba(255,255,255,0.85); }
+.slide.cool { background: var(--paper-cool); }
+.slide.warm { background: var(--paper-warm); }
+.slide.ol-light { background: var(--ol-blue-soft); }
+
+.slide::after {
+  content: attr(data-slide);
+  position: absolute;
+  bottom: 24px; right: 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+.slide.dark::after { color: rgba(255,255,255,0.35); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.slide.dark h1,.slide.dark h2,.slide.dark h3,.slide.dark h4 { color: white; }
+
+.display-xl { font-size: clamp(48px, 8vw, 110px); line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-size: clamp(36px, 5.5vw, 72px); line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-size: clamp(26px, 3.5vw, 50px); line-height: 1.05; }
+.display-sm { font-size: clamp(20px, 2.4vw, 32px); line-height: 1.1; }
+
+em { font-style: italic; font-weight: 400; }
+.slide.dark em { color: var(--ol-blue); }
+
+.lede { font-size: clamp(16px, 1.4vw, 20px); max-width: 62ch; line-height: 1.55; }
+.lede-lg { font-size: clamp(20px, 1.8vw, 26px); max-width: 34ch; line-height: 1.4; color: var(--ink); }
+.slide.dark .lede,.slide.dark .lede-lg { color: rgba(255,255,255,0.75); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--ol-blue);
+  border-radius: 50%;
+}
+.slide.dark .eyebrow { color: rgba(255,255,255,0.55); }
+
+.meta-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.slide.dark .meta-line { color: rgba(255,255,255,0.45); }
+
+.brand-mark {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 700; font-size: 15px; color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 6vh;
+}
+.brand-mark img { height: 28px; width: auto; }
+.slide.dark .brand-mark { color: white; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 28px;
+}
+.slide.dark .card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+.slide.ol-light .card { background: white; border-color: rgba(87,143,255,0.15); }
+.card h4 { font-size: clamp(16px, 1.5vw, 20px); margin-top: 6px; }
+.card p { font-size: 14px; margin-top: 10px; color: var(--ink-mute); line-height: 1.5; }
+
+.asset-preview {
+  background: var(--paper-cool);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  position: relative;
+  flex-shrink: 0;
+}
+.asset-preview.tall { min-height: 260px; }
+.asset-preview-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 16px;
+}
+.asset-icon {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1;
+  text-align: center;
+}
+
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ol-blue);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.field-placeholder {
+  background: var(--ol-blue-soft);
+  border: 1.5px dashed rgba(87,143,255,0.4);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.45;
+  font-style: italic;
+  min-height: 48px;
+}
+.field-placeholder.tall { min-height: 80px; }
+.field-placeholder.cta {
+  background: rgba(87,143,255,0.08);
+  border-color: rgba(87,143,255,0.5);
+  display: flex; align-items: center; gap: 8px;
+  min-height: auto; padding: 10px 14px;
+  font-style: normal; font-weight: 600; color: var(--ol-blue);
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--ol-blue-soft);
+  border: 1.5px solid rgba(87,143,255,0.3);
+  border-radius: 100px;
+  padding: 5px 14px 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ol-blue);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.location-badge::before { content: "📍"; font-size: 12px; }
+.slide.dark .location-badge {
+  background: rgba(87,143,255,0.15);
+  border-color: rgba(87,143,255,0.4);
+  color: rgba(87,143,255,0.9);
+}
+
+.funnel-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.funnel-badge.awareness { background: rgba(0,212,180,0.12); color: #008a75; border: 1px solid rgba(0,212,180,0.3); }
+.funnel-badge.consideration { background: rgba(87,143,255,0.12); color: var(--ol-blue); border: 1px solid rgba(87,143,255,0.3); }
+.funnel-badge.conversion { background: rgba(108,92,231,0.1); color: var(--purple); border: 1px solid rgba(108,92,231,0.25); }
+
+.asset-type-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(10,10,14,0.05);
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+.funnel-step-num {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: rgba(10,10,14,0.06);
+  line-height: 1;
+}
+
+.rays-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.rays-deco.top-right { top: 0; right: 0; }
+.slide > *:not(.rays-deco) { position: relative; z-index: 1; }
+
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--ol-blue);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1000;
+  transition: transform 100ms linear;
+}
+
+.carousel-frames {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  margin-top: 8px;
+}
+.carousel-frame {
+  flex: 1;
+  background: var(--paper-cool);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  text-align: center;
+  gap: 6px;
+  min-height: 80px;
+}
+.carousel-frame:first-child { min-height: 90px; }
+.carousel-frame.active {
+  background: var(--ol-blue-soft);
+  border-color: rgba(87,143,255,0.4);
+  color: var(--ol-blue);
+}
+
+.blob-bg { position: relative; }
+.blob-bg::before, .blob-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-bg::before {
+  width: 40vw; height: 40vw;
+  background: radial-gradient(circle, rgba(87,143,255,0.18) 0%, transparent 70%);
+  bottom: -10%; left: -8%;
+}
+.blob-bg::after {
+  width: 32vw; height: 32vw;
+  background: radial-gradient(circle, rgba(0,212,180,0.15) 0%, transparent 70%);
+  top: -8%; right: 4%;
+}
+.blob-bg > * { position: relative; z-index: 1; }
+
+.nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 500;
+}
+.nav-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  cursor: pointer;
+  transition: background 200ms, transform 200ms;
+  border: none;
+  padding: 0;
+}
+.nav-dot.active { background: var(--ol-blue); transform: scale(1.5); }
+.nav-dot:hover { background: var(--ol-blue); }
+
+.video-frame {
+  background: var(--ink);
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.video-frame .play-btn {
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: white;
+}
+.video-frame-label {
+  position: absolute; bottom: 12px; left: 12px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+}
+
+:focus-visible { outline: 2px solid var(--ol-blue); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<nav class="nav-dots" aria-label="Slide navigation" id="nav-dots"></nav>
+
+<!-- SLIDE 1 — COVER -->
+<section class="slide dark blob-bg" data-slide="01">
+  <svg class="rays-deco top-right" width="320" height="260" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="320,0 160,0 320,140" fill="#578fff" opacity="0.25"/>
+    <line x1="320" y1="0" x2="0" y2="260" stroke="#578fff" stroke-width="1" opacity="0.15"/>
+    <line x1="320" y1="0" x2="60" y2="260" stroke="#578fff" stroke-width="1" opacity="0.12"/>
+    <line x1="320" y1="0" x2="140" y2="260" stroke="#578fff" stroke-width="1.5" opacity="0.1"/>
+    <line x1="320" y1="0" x2="220" y2="260" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div class="brand-mark">
+    <svg height="28" viewBox="0 0 423 114" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Noetic"><rect width="114" height="114" rx="10" fill="#f2f2f2" opacity="0.15"/><text x="130" y="82" font-family="sans-serif" font-size="72" font-weight="700" fill="white" letter-spacing="-2">noetic</text></svg>
+    <span>NOETIC CREATIVE</span>
+  </div>
+  <p class="meta-line" style="margin-bottom:16px;">May 2026 · Campaign Creative Skeleton</p>
+  <h1 class="display-xl">OptiLight UK<br><em>Full Funnel</em><br>Creative Deck</h1>
+  <p class="lede-lg" style="margin-top:32px; color:rgba(255,255,255,0.7);">Glasgow · Dry Eye &nbsp;|&nbsp; Newcastle · Aesthetics</p>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:36px;">
+    <span class="funnel-badge awareness">Awareness</span>
+    <span class="funnel-badge consideration">Consideration</span>
+    <span class="funnel-badge conversion">Conversion</span>
+  </div>
+</section>
+
+<!-- SLIDE 2 — SCOPE OVERVIEW -->
+<section class="slide blob-bg" data-slide="02">
+  <span class="eyebrow">Campaign Overview</span>
+  <h2 class="display-md">Scope &amp; Asset <em>Breakdown</em></h2>
+  <div class="two-col" style="margin-top:40px; align-items:start;">
+    <div>
+      <p class="meta-line" style="margin-bottom:14px;">Total deliverables</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card" style="padding:18px 20px; display:flex; align-items:center; gap:14px;">
+          <span style="font-size:1.8em;">🎬</span>
+          <div>
+            <div style="font-weight:700; font-size:15px; color:var(--ink);">2 Videos</div>
+            <div style="font-size:12px; color:var(--ink-mute); margin-top:2px;">Same video used for both locations — counts as 1 production</div>
+          </div>
+        </div>
+        <div class="card" style="padding:18px 20px; display:flex; align-items:center; gap:14px;">
+          <span style="font-size:1.8em;">🖼️</span>
+          <div>
+            <div style="font-weight:700; font-size:15px; color:var(--ink);">2 Carousels</div>
+            <div style="font-size:12px; color:var(--ink-mute); margin-top:2px;">1 per location · Glasgow Dry Eye + Newcastle Aesthetics</div>
+          </div>
+        </div>
+        <div class="card" style="padding:18px 20px; display:flex; align-items:center; gap:14px;">
+          <span style="font-size:1.8em;">📸</span>
+          <div>
+            <div style="font-weight:700; font-size:15px; color:var(--ink);">4 Single Statics</div>
+            <div style="font-size:12px; color:var(--ink-mute); margin-top:2px;">2 per location · Consideration + Conversion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="meta-line" style="margin-bottom:14px;">Distribution by funnel stage</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="card" style="padding:16px 20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <span class="funnel-badge awareness" style="margin:0;">Awareness</span>
+          </div>
+          <p style="font-size:13px;">📍 Glasgow — Video A (Dry Eye)<br>📍 Newcastle — Video A (Aesthetics)</p>
+          <p style="font-size:12px; color:var(--ink-faint); margin-top:4px;">1 video × 2 location cuts</p>
+        </div>
+        <div class="card" style="padding:16px 20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <span class="funnel-badge consideration" style="margin:0;">Consideration</span>
+          </div>
+          <p style="font-size:13px;">📍 Glasgow — Carousel 1 + Static 1<br>📍 Newcastle — Carousel 2 + Static 2</p>
+          <p style="font-size:12px; color:var(--ink-faint); margin-top:4px;">2 carousels + 2 statics</p>
+        </div>
+        <div class="card" style="padding:16px 20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <span class="funnel-badge conversion" style="margin:0;">Conversion</span>
+          </div>
+          <p style="font-size:13px;">📍 Glasgow — Static 3<br>📍 Newcastle — Static 4</p>
+          <p style="font-size:12px; color:var(--ink-faint); margin-top:4px;">2 statics</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — AWARENESS DIVIDER -->
+<section class="slide dark" data-slide="03">
+  <svg class="rays-deco top-right" width="380" height="320" viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="380,0 200,0 380,180" fill="#578fff" opacity="0.2"/>
+    <line x1="380" y1="0" x2="0" y2="320" stroke="#578fff" stroke-width="1.5" opacity="0.12"/>
+    <line x1="380" y1="0" x2="80" y2="320" stroke="#578fff" stroke-width="1" opacity="0.1"/>
+    <line x1="380" y1="0" x2="180" y2="320" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <span class="eyebrow">Funnel Stage 01</span>
+  <div style="display:flex; align-items:baseline; gap:24px;">
+    <span style="font-family:var(--font-display); font-size:clamp(80px,12vw,160px); font-weight:700; letter-spacing:-0.04em; color:rgba(0,212,180,0.2); line-height:1;">01</span>
+    <div>
+      <h2 class="display-lg" style="color:white;">Awareness</h2>
+      <p class="lede" style="margin-top:16px; color:rgba(255,255,255,0.65);">Introduce OptiLight to cold audiences.<br>Drive reach &amp; brand recognition.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;">
+    <div style="background:rgba(0,212,180,0.1); border:1px solid rgba(0,212,180,0.25); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(0,212,180,0.7); margin-bottom:6px;">Asset Format</div>
+      <div style="font-weight:600; color:white; font-size:15px;">🎬 Video — 1 creative, 2 location variants</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:6px;">Objective</div>
+      <div style="font-weight:500; color:rgba(255,255,255,0.8); font-size:15px;">Reach · Brand recall · Curiosity</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — AWARENESS · GLASGOW · VIDEO -->
+<section class="slide ol-light" data-slide="04">
+  <svg class="rays-deco top-right" width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="220,0 110,0 220,100" fill="#578fff" opacity="0.12"/>
+    <line x1="220" y1="0" x2="0" y2="180" stroke="#578fff" stroke-width="1" opacity="0.1"/>
+    <line x1="220" y1="0" x2="60" y2="180" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px; flex-wrap:wrap;">
+    <span class="funnel-badge awareness">Awareness</span>
+    <span class="location-badge" style="margin:0;">Glasgow · Dry Eye</span>
+    <span class="asset-type-tag">🎬 Video</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 1 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Video A<br><em>Glasgow Cut</em></h2>
+      <p class="lede" style="margin-top:14px; font-size:15px; color:var(--ink-mute);">Dry Eye awareness video. Same master creative as Newcastle — localised with Glasgow-specific messaging, clinic name, and geo-targeted CTA.</p>
+      <div style="margin-top:20px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Specs</div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5 / Story 9:16</span>
+          <span>⏱ Duration: [copywriter to confirm]</span>
+          <span>🔇 Captions required (auto + review)</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="video-frame" style="min-height:160px;">
+        <div class="play-btn">▶</div>
+        <div class="video-frame-label">Video Asset Placeholder</div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy / Headline</span>
+        <div class="field-placeholder tall">[ Copywriter to add headline / hook copy for the video — e.g. "Tired eyes? There's a light-based treatment for that." ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder tall">[ Copywriter to add social media caption — Glasgow / Dry Eye focus. Include clinic mention, condition education, soft CTA. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA text — e.g. "Learn more" / "Book a consultation" / "Find out if OptiLight is right for you" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — AWARENESS · NEWCASTLE · VIDEO -->
+<section class="slide ol-light" data-slide="05">
+  <svg class="rays-deco top-right" width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="220,0 110,0 220,100" fill="#578fff" opacity="0.12"/>
+    <line x1="220" y1="0" x2="0" y2="180" stroke="#578fff" stroke-width="1" opacity="0.1"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px; flex-wrap:wrap;">
+    <span class="funnel-badge awareness">Awareness</span>
+    <span class="location-badge" style="margin:0;">Newcastle · Aesthetics</span>
+    <span class="asset-type-tag">🎬 Video</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 2 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Video A<br><em>Newcastle Cut</em></h2>
+      <p class="lede" style="margin-top:14px; font-size:15px; color:var(--ink-mute);">Aesthetics-focused awareness video. Same master production as Glasgow cut — Newcastle clinic-specific localisation, aesthetics angle messaging.</p>
+      <div style="margin-top:20px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Specs</div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5 / Story 9:16</span>
+          <span>⏱ Duration: [copywriter to confirm]</span>
+          <span>🔇 Captions required (auto + review)</span>
+        </div>
+      </div>
+      <div style="margin-top:14px; background:rgba(108,92,231,0.06); border:1px solid rgba(108,92,231,0.15); border-radius:10px; padding:12px 16px;">
+        <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:5px;">Note</div>
+        <p style="font-size:13px; color:var(--ink-mute);">Same video as Glasgow — 1 production unit, 2 deployment variants. Aesthetics messaging emphasis for Newcastle audience.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="video-frame" style="min-height:160px;">
+        <div class="play-btn">▶</div>
+        <div class="video-frame-label">Video Asset Placeholder</div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy / Headline</span>
+        <div class="field-placeholder tall">[ Copywriter to add headline / hook copy — Newcastle / Aesthetics focus. e.g. "OptiLight light therapy — skin &amp; eye treatment in one." ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder tall">[ Copywriter to add social media caption — Newcastle / Aesthetics focus. Include clinic mention, aesthetics benefit, soft CTA. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA text — e.g. "Discover OptiLight" / "Book your free consultation" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — CONSIDERATION DIVIDER -->
+<section class="slide dark" data-slide="06">
+  <svg class="rays-deco top-right" width="380" height="320" viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="380,0 200,0 380,180" fill="#578fff" opacity="0.2"/>
+    <line x1="380" y1="0" x2="0" y2="320" stroke="#578fff" stroke-width="1.5" opacity="0.12"/>
+    <line x1="380" y1="0" x2="80" y2="320" stroke="#578fff" stroke-width="1" opacity="0.1"/>
+  </svg>
+  <span class="eyebrow">Funnel Stage 02</span>
+  <div style="display:flex; align-items:baseline; gap:24px;">
+    <span style="font-family:var(--font-display); font-size:clamp(80px,12vw,160px); font-weight:700; letter-spacing:-0.04em; color:rgba(87,143,255,0.15); line-height:1;">02</span>
+    <div>
+      <h2 class="display-lg" style="color:white;">Consideration</h2>
+      <p class="lede" style="margin-top:16px; color:rgba(255,255,255,0.65);">Educate warm audiences. Build trust &amp; intent.<br>Carousel storytelling + static education.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;">
+    <div style="background:rgba(87,143,255,0.1); border:1px solid rgba(87,143,255,0.25); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(87,143,255,0.8); margin-bottom:6px;">Assets</div>
+      <div style="font-weight:600; color:white; font-size:15px;">🖼️ 2 Carousels &nbsp;+&nbsp; 📸 2 Statics</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:6px;">Objective</div>
+      <div style="font-weight:500; color:rgba(255,255,255,0.8); font-size:15px;">Education · Trust · Treatment intent</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — CONSIDERATION · GLASGOW · CAROUSEL -->
+<section class="slide" data-slide="07">
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge consideration">Consideration</span>
+    <span class="location-badge" style="margin:0;">Glasgow · Dry Eye</span>
+    <span class="asset-type-tag">🖼️ Carousel</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 3 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Carousel 1<br><em>Glasgow Dry Eye</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Multi-frame carousel educating the Glasgow audience on dry eye symptoms, causes, and how light-based treatment (OptiLight) fits into a treatment regime.</p>
+      <div style="margin-top:18px;">
+        <span class="field-label">Carousel Structure (suggested)</span>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="background:var(--ol-blue-soft); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong style="color:var(--ol-blue);">Frame 1 (Hook)</strong> — [ Opening statement / question about dry eye symptoms ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 2</strong> — [ What is dry eye / MGD? Short education ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 3</strong> — [ How does OptiLight light therapy work? ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 4 (CTA)</strong> — [ Available at [Clinic Name], Glasgow — book a consultation ]
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="carousel-frames">
+        <div class="carousel-frame active">🔵<br/>Frame 1<br/>Hook</div>
+        <div class="carousel-frame">Frame 2<br/>Edu</div>
+        <div class="carousel-frame">Frame 3<br/>How</div>
+        <div class="carousel-frame">Frame 4<br/>CTA</div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (per frame)</span>
+        <div class="field-placeholder tall">[ Copywriter to add individual frame headlines and body copy. Each frame should be readable as a standalone image. Max 2–3 lines per frame. ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption (overall post)</span>
+        <div class="field-placeholder tall">[ Caption for the overall carousel post — Glasgow / Dry Eye tone. Swipe prompt, education hook, Glasgow clinic reference. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA — e.g. "Book a dry eye assessment in Glasgow" / "Ask about OptiLight" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — CONSIDERATION · NEWCASTLE · CAROUSEL -->
+<section class="slide" data-slide="08">
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge consideration">Consideration</span>
+    <span class="location-badge" style="margin:0;">Newcastle · Aesthetics</span>
+    <span class="asset-type-tag">🖼️ Carousel</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 4 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Carousel 2<br><em>Newcastle Aesthetics</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Multi-frame carousel showcasing the dual benefit of OptiLight — skin-enhancing aesthetic results alongside eye health. Newcastle clinic focus.</p>
+      <div style="margin-top:18px;">
+        <span class="field-label">Carousel Structure (suggested)</span>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="background:var(--ol-blue-soft); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong style="color:var(--ol-blue);">Frame 1 (Hook)</strong> — [ Aesthetic hook — skin tone, redness, radiance angle ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 2</strong> — [ Dual benefit: aesthetics + eye health in one treatment ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 3</strong> — [ What to expect: the experience / minimal discomfort ]
+          </div>
+          <div style="background:var(--paper-cool); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--ink-soft);">
+            <strong>Frame 4 (CTA)</strong> — [ Available at [Clinic Name], Newcastle — book consultation ]
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="carousel-frames">
+        <div class="carousel-frame active">🔵<br/>Frame 1<br/>Hook</div>
+        <div class="carousel-frame">Frame 2<br/>Dual</div>
+        <div class="carousel-frame">Frame 3<br/>Exp.</div>
+        <div class="carousel-frame">Frame 4<br/>CTA</div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (per frame)</span>
+        <div class="field-placeholder tall">[ Copywriter to add per-frame headlines and body copy. Aesthetics-first language. Use "light-based treatment" not just "IPL". Max 2–3 lines per frame. ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption (overall post)</span>
+        <div class="field-placeholder tall">[ Caption for the carousel post — Newcastle / Aesthetics tone. Swipe prompt, skin + eye dual angle, Newcastle clinic reference. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA — e.g. "Book your OptiLight consultation in Newcastle" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — CONSIDERATION · GLASGOW · STATIC 1 -->
+<section class="slide cool" data-slide="09">
+  <svg class="rays-deco top-right" width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="180,0 90,0 180,80" fill="#578fff" opacity="0.1"/>
+    <line x1="180" y1="0" x2="0" y2="150" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge consideration">Consideration</span>
+    <span class="location-badge" style="margin:0;">Glasgow · Dry Eye</span>
+    <span class="asset-type-tag">📸 Single Static</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 5 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Static 1<br><em>Glasgow — Education</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Single image static for consideration stage. Educational tone — reinforces dry eye awareness, positions OptiLight as part of a treatment regime.</p>
+      <div style="margin-top:18px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Placement</div>
+        <div style="display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5</span>
+          <span>📍 Placement: Feed, stories optional</span>
+          <span>🎯 Audience: Warm / retargeted</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="asset-preview tall" style="border-radius:14px; border:1px solid var(--rule);">
+        <div>
+          <span class="asset-icon">📸</span>
+          <div class="asset-preview-label">Image / Visual Placeholder<br><span style="font-size:10px; opacity:0.6;">Drop asset here</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (on image)</span>
+        <div class="field-placeholder tall">[ Copywriter to add on-image headline — dry eye education angle. E.g. "More than just dry eyes — it could be MGD." Max 1–2 lines. ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder tall">[ Caption — Glasgow / Dry Eye. Educational, trustworthy tone. Reference OptiLight as light therapy (not IPL alone). Include location mention. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA — e.g. "Learn more" / "Ask your specialist" / Link to landing page ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — CONSIDERATION · NEWCASTLE · STATIC 2 -->
+<section class="slide cool" data-slide="10">
+  <svg class="rays-deco top-right" width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="180,0 90,0 180,80" fill="#578fff" opacity="0.1"/>
+    <line x1="180" y1="0" x2="0" y2="150" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge consideration">Consideration</span>
+    <span class="location-badge" style="margin:0;">Newcastle · Aesthetics</span>
+    <span class="asset-type-tag">📸 Single Static</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 6 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Static 2<br><em>Newcastle — Aesthetics</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Single image static for consideration stage. Aesthetics-first tone — skin rejuvenation, dual-benefit positioning, results-oriented language.</p>
+      <div style="margin-top:18px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Placement</div>
+        <div style="display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5</span>
+          <span>📍 Placement: Feed, stories optional</span>
+          <span>🎯 Audience: Warm / retargeted</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="asset-preview tall" style="border-radius:14px; border:1px solid var(--rule);">
+        <div>
+          <span class="asset-icon">📸</span>
+          <div class="asset-preview-label">Image / Visual Placeholder<br><span style="font-size:10px; opacity:0.6;">Drop asset here</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (on image)</span>
+        <div class="field-placeholder tall">[ Copywriter to add on-image headline — aesthetics angle. E.g. "Light therapy that improves more than you think." Max 1–2 lines. ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder tall">[ Caption — Newcastle / Aesthetics. Confident, results-led tone. Dual benefit angle (skin + eye health). Include Newcastle clinic name. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA</span>
+        <div class="field-placeholder cta">
+          <span style="font-size:16px;">→</span>
+          [ CTA — e.g. "See the results" / "Book in Newcastle" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — CONVERSION DIVIDER -->
+<section class="slide dark" data-slide="11">
+  <svg class="rays-deco top-right" width="380" height="320" viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="380,0 200,0 380,180" fill="#578fff" opacity="0.2"/>
+    <line x1="380" y1="0" x2="0" y2="320" stroke="#578fff" stroke-width="1.5" opacity="0.12"/>
+    <line x1="380" y1="0" x2="80" y2="320" stroke="#578fff" stroke-width="1" opacity="0.1"/>
+  </svg>
+  <span class="eyebrow">Funnel Stage 03</span>
+  <div style="display:flex; align-items:baseline; gap:24px;">
+    <span style="font-family:var(--font-display); font-size:clamp(80px,12vw,160px); font-weight:700; letter-spacing:-0.04em; color:rgba(108,92,231,0.15); line-height:1;">03</span>
+    <div>
+      <h2 class="display-lg" style="color:white;">Conversion</h2>
+      <p class="lede" style="margin-top:16px; color:rgba(255,255,255,0.65);">Drive action from high-intent audiences.<br>Direct booking CTAs &amp; clinic-specific offers.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;">
+    <div style="background:rgba(108,92,231,0.12); border:1px solid rgba(108,92,231,0.3); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(108,92,231,0.85); margin-bottom:6px;">Assets</div>
+      <div style="font-weight:600; color:white; font-size:15px;">📸 2 Single Statics — 1 per location</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px 20px;">
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:6px;">Objective</div>
+      <div style="font-weight:500; color:rgba(255,255,255,0.8); font-size:15px;">Booking · Consultation enquiry · Direct action</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — CONVERSION · GLASGOW · STATIC 3 -->
+<section class="slide warm" data-slide="12">
+  <svg class="rays-deco top-right" width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="180,0 90,0 180,80" fill="#578fff" opacity="0.1"/>
+    <line x1="180" y1="0" x2="0" y2="150" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge conversion">Conversion</span>
+    <span class="location-badge" style="margin:0;">Glasgow · Dry Eye</span>
+    <span class="asset-type-tag">📸 Single Static</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 7 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Static 3<br><em>Glasgow — Convert</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Conversion-stage static for high-intent audiences. Direct, action-oriented. Glasgow clinic booking push.</p>
+      <div style="margin-top:18px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Targeting</div>
+        <div style="display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5</span>
+          <span>🎯 Audience: Hot / engaged / retargeted</span>
+          <span>🏥 Clinic: [Glasgow Clinic Name TBC]</span>
+          <span>📞 Booking mechanic: [phone / form / DM]</span>
+        </div>
+      </div>
+      <div style="margin-top:14px; background:rgba(108,92,231,0.06); border:1px solid rgba(108,92,231,0.15); border-radius:10px; padding:12px 16px;">
+        <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:5px;">Copy Direction</div>
+        <p style="font-size:13px; color:var(--ink-mute);">Urgency &amp; specificity. Clinic name + location prominent. Booking frictionless. Dry eye benefit reminder — "reduces dependency on eye drops".</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="asset-preview tall" style="border-radius:14px; border:1px solid var(--rule);">
+        <div>
+          <span class="asset-icon">📸</span>
+          <div class="asset-preview-label">Image / Visual Placeholder<br><span style="font-size:10px; opacity:0.6;">Drop conversion asset here</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (on image)</span>
+        <div class="field-placeholder tall">[ Copywriter to add conversion headline — clear, direct, clinic-specific. E.g. "OptiLight light therapy — now available at [Clinic], Glasgow. Book your assessment." ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder">[ Short, punchy caption. Clear next step. Glasgow location + clinic name. Booking CTA prominent. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA (Primary)</span>
+        <div class="field-placeholder cta" style="border-color:rgba(108,92,231,0.5); background:rgba(108,92,231,0.08); color:var(--purple);">
+          <span style="font-size:16px;">→</span>
+          [ Strong CTA — "Book Now" / "Call [Clinic]" / "Request a Consultation" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — CONVERSION · NEWCASTLE · STATIC 4 -->
+<section class="slide warm" data-slide="13">
+  <svg class="rays-deco top-right" width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="180,0 90,0 180,80" fill="#578fff" opacity="0.1"/>
+    <line x1="180" y1="0" x2="0" y2="150" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span class="funnel-badge conversion">Conversion</span>
+    <span class="location-badge" style="margin:0;">Newcastle · Aesthetics</span>
+    <span class="asset-type-tag">📸 Single Static</span>
+    <span class="asset-type-tag" style="background:rgba(87,143,255,0.1); color:var(--ol-blue);">Asset 8 of 8</span>
+  </div>
+  <div class="two-col" style="align-items:start; gap:4vw;">
+    <div>
+      <h2 class="display-md">Static 4<br><em>Newcastle — Convert</em></h2>
+      <p class="lede" style="margin-top:12px; font-size:15px; color:var(--ink-mute);">Conversion-stage static for high-intent Newcastle aesthetics audiences. Direct booking push. Aesthetics results + clinic urgency.</p>
+      <div style="margin-top:18px; background:white; border:1px solid var(--rule); border-radius:12px; padding:16px 18px;">
+        <div class="field-label">Format &amp; Targeting</div>
+        <div style="display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--ink-mute);">
+          <span>📐 Format: Square 1:1 / Feed 4:5</span>
+          <span>🎯 Audience: Hot / engaged / retargeted</span>
+          <span>🏥 Clinic: [Newcastle Clinic Name TBC]</span>
+          <span>📞 Booking mechanic: [phone / form / DM]</span>
+        </div>
+      </div>
+      <div style="margin-top:14px; background:rgba(108,92,231,0.06); border:1px solid rgba(108,92,231,0.15); border-radius:10px; padding:12px 16px;">
+        <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:5px;">Copy Direction</div>
+        <p style="font-size:13px; color:var(--ink-mute);">Results-confidence. Aesthetic outcomes front-and-centre. "Minimal discomfort" if experience addressed. Newcastle geo-specificity.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="asset-preview tall" style="border-radius:14px; border:1px solid var(--rule);">
+        <div>
+          <span class="asset-icon">📸</span>
+          <div class="asset-preview-label">Image / Visual Placeholder<br><span style="font-size:10px; opacity:0.6;">Drop conversion asset here</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="field-label">Asset Copy (on image)</span>
+        <div class="field-placeholder tall">[ Copywriter to add conversion headline — aesthetics results + action. E.g. "Brighter skin. Healthier eyes. Book your OptiLight treatment at [Clinic], Newcastle." ]</div>
+      </div>
+      <div>
+        <span class="field-label">Caption</span>
+        <div class="field-placeholder">[ Short, confident caption. Aesthetic outcome + clinic name. Newcastle location. Direct booking CTA. ]</div>
+      </div>
+      <div>
+        <span class="field-label">CTA (Primary)</span>
+        <div class="field-placeholder cta" style="border-color:rgba(108,92,231,0.5); background:rgba(108,92,231,0.08); color:var(--purple);">
+          <span style="font-size:16px;">→</span>
+          [ Strong CTA — "Book Now" / "Call [Clinic]" / "Enquire about OptiLight Newcastle" ]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — COPYWRITER NOTES -->
+<section class="slide" data-slide="14">
+  <span class="eyebrow">Copywriter Notes</span>
+  <h2 class="display-md">Brand &amp; Messaging <em>Guidelines</em></h2>
+  <div class="three-col" style="margin-top:36px;">
+    <div class="card">
+      <span style="font-size:1.6em; display:block; margin-bottom:8px;">✅</span>
+      <h4 style="color:var(--ink); font-size:16px; margin-bottom:10px;">Approved language</h4>
+      <div style="font-size:13px; color:var(--ink-mute); display:flex; flex-direction:column; gap:6px;">
+        <span>→ "light-based treatment"</span>
+        <span>→ "light therapy"</span>
+        <span>→ "improve signs of dry eye"</span>
+        <span>→ "minimal discomfort"</span>
+        <span>→ "reduces dependency on eye drops"</span>
+        <span>→ "part of a treatment regime"</span>
+      </div>
+    </div>
+    <div class="card">
+      <span style="font-size:1.6em; display:block; margin-bottom:8px;">❌</span>
+      <h4 style="color:var(--ink); font-size:16px; margin-bottom:10px;">Avoid</h4>
+      <div style="font-size:13px; color:var(--ink-mute); display:flex; flex-direction:column; gap:6px;">
+        <span>→ "IPL" alone as the product name</span>
+        <span>→ "treat symptoms" / "provide relief"</span>
+        <span>→ "zero pain"</span>
+        <span>→ "eliminate the need for drops"</span>
+        <span>→ Positioning as standalone cure</span>
+        <span>→ Text placed on device image</span>
+      </div>
+    </div>
+    <div class="card">
+      <span style="font-size:1.6em; display:block; margin-bottom:8px;">📌</span>
+      <h4 style="color:var(--ink); font-size:16px; margin-bottom:10px;">Always include</h4>
+      <div style="font-size:13px; color:var(--ink-mute); display:flex; flex-direction:column; gap:6px;">
+        <span>→ <strong>OptiLight</strong> (O + L capitalised)</span>
+        <span>→ Location-specific clinic name</span>
+        <span>→ Disclaimer if clinical claims made</span>
+        <span>→ Goggles on patient in treatment photos</span>
+        <span>→ Handpiece on malar area only</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — CLOSE -->
+<section class="slide dark" data-slide="15">
+  <svg class="rays-deco top-right" width="420" height="360" viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="420,0 220,0 420,200" fill="#578fff" opacity="0.22"/>
+    <line x1="420" y1="0" x2="0" y2="360" stroke="#578fff" stroke-width="2" opacity="0.12"/>
+    <line x1="420" y1="0" x2="100" y2="360" stroke="#578fff" stroke-width="1.5" opacity="0.1"/>
+    <line x1="420" y1="0" x2="220" y2="360" stroke="#578fff" stroke-width="1" opacity="0.08"/>
+    <line x1="420" y1="0" x2="340" y2="360" stroke="#578fff" stroke-width="1" opacity="0.06"/>
+  </svg>
+  <div class="brand-mark">
+    <svg height="28" viewBox="0 0 423 114" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="114" height="114" rx="10" fill="white" opacity="0.15"/><text x="130" y="82" font-family="sans-serif" font-size="72" font-weight="700" fill="white" letter-spacing="-2">noetic</text></svg>
+    <span>NOETIC CREATIVE</span>
+  </div>
+  <h1 class="display-xl">Ready to <em>fill in</em><br>the blanks.</h1>
+  <p class="lede" style="margin-top:28px; color:rgba(255,255,255,0.65); max-width:48ch;">This skeleton is built for your copywriter. Every placeholder field is waiting for your campaign copy, captions, and CTAs.</p>
+  <div style="margin-top:40px; display:grid; grid-template-columns: repeat(3,1fr); gap:16px; max-width:580px;">
+    <div style="text-align:center;">
+      <div style="font-family:var(--font-display); font-size:36px; font-weight:700; color:white; letter-spacing:-0.03em;">8</div>
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px;">Total Assets</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:var(--font-display); font-size:36px; font-weight:700; color:white; letter-spacing:-0.03em;">2</div>
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px;">Locations</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:var(--font-display); font-size:36px; font-weight:700; color:white; letter-spacing:-0.03em;">3</div>
+      <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px;">Funnel Stages</div>
+    </div>
+  </div>
+  <p class="meta-line" style="margin-top:8vh;">© Noetic Creative · OptiLight UK · May 2026</p>
+</section>
+
+<script>
+const progress = document.getElementById('progress');
+const updateProgress = () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = max > 0 ? window.scrollY / max : 0;
+  progress.style.transform = `scaleX(${pct})`;
+};
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dotsContainer = document.getElementById('nav-dots');
+slides.forEach((slide, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-dot';
+  btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+  btn.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  dotsContainer.appendChild(btn);
+});
+
+const updateDots = () => {
+  const y = window.scrollY + window.innerHeight / 2;
+  const activeIdx = slides.findIndex((el, i) => {
+    const next = slides[i + 1];
+    return el.offsetTop <= y && (!next || next.offsetTop > y);
+  });
+  document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIdx);
+  });
+};
+window.addEventListener('scroll', updateDots, { passive: true });
+updateDots();
+
+const goTo = (idx) => {
+  const clamped = Math.max(0, Math.min(slides.length - 1, idx));
+  slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+const currentIndex = () => {
+  const y = window.scrollY + window.innerHeight / 2;
+  return slides.findIndex((el, i) => {
+    const next = slides[i + 1];
+    return el.offsetTop <= y && (!next || next.offsetTop > y);
+  });
+};
+document.addEventListener('keydown', (e) => {
+  if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(currentIndex() + 1); }
+  else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); goTo(currentIndex() - 1); }
+  else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+  else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+});
+</script>
+</body>
+</html>
