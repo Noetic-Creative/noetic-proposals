@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurami Medical × Noetic Creative — Webinar Operations Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<style>
+:root{
+--paper:#FAFAF7;--paper-warm:#F2F0EA;--paper-cool:#F0F0F4;
+--ink:#0A0A0E;--ink-soft:#1A1A1F;--ink-mute:#6B6B7B;--ink-faint:#A8A8B5;
+--card:#FFFFFF;--purple:#6C5CE7;--purple-deep:#4D3FC9;--purple-soft:#EFEDFE;--purple-glow:rgba(108,92,231,0.18);
+--mint:#00D4B4;--coral:#FF6B6B;--amber:#F5B400;
+--rule:rgba(10,10,14,0.08);--rule-strong:rgba(10,10,14,0.16);
+--max:1240px;--max-narrow:920px;
+--font-display:'Fraunces','Times New Roman',serif;--font-sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+::selection{background:var(--purple);color:#fff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{background:var(--paper);color:var(--ink-soft);overflow-x:hidden;font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px;}
+.container-narrow{width:100%;max-width:var(--max-narrow);margin:0 auto;padding:0 32px;}
+section{position:relative;}
+.section{padding:clamp(80px,12vh,160px) 0;}
+.section-tight{padding:clamp(60px,9vh,110px) 0;}
+.section-head{margin-bottom:clamp(48px,6vw,80px);}
+.section-head .display-md{margin-top:18px;max-width:24ch;}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:0;}
+.display-xl{font-family:var(--font-display);font-size:clamp(56px,9vw,132px);font-weight:600;line-height:0.95;letter-spacing:-0.035em;}
+.display-lg{font-family:var(--font-display);font-size:clamp(44px,6vw,88px);font-weight:600;line-height:1;letter-spacing:-0.03em;}
+.display-md{font-family:var(--font-display);font-size:clamp(34px,4.5vw,60px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;}
+.display-sm{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:600;line-height:1.1;letter-spacing:-0.02em;}
+h1,h2,h3,h4{color:var(--ink);letter-spacing:-0.022em;line-height:1.05;font-weight:700;}
+.italic{font-style:italic;font-weight:400;}
+.lede{font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--ink-soft);font-weight:400;max-width:60ch;}
+.mono{font-family:var(--font-mono);}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%;}
+.eyebrow.dark{color:rgba(255,255,255,0.6);}
+.client-bar{background:var(--ink);padding:11px 32px;display:flex;align-items:center;justify-content:space-between;}
+.client-bar-logos{display:flex;align-items:center;gap:18px;}
+.client-bar-divider{width:1px;height:22px;background:rgba(255,255,255,0.2);}
+.client-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.4);}
+@media(max-width:600px){.client-bar-meta{display:none;}}
+.nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:14px 32px;background:rgba(250,250,247,0.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid transparent;transition:border-color 0.3s ease;}
+.nav.scrolled{border-bottom-color:var(--rule);}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:14px;}
+.nav-brand .divider{width:1px;height:22px;background:var(--rule-strong);}
+.nav-links{display:flex;gap:26px;list-style:none;align-items:center;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-mute);transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--ink);color:#fff !important;padding:10px 18px;border-radius:999px;font-size:13px !important;font-weight:600 !important;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s;}
+.nav-cta:hover{background:var(--purple) !important;}
+@media(max-width:900px){.nav-links li:not(:last-child){display:none;}}
+.hero{padding-top:clamp(140px,18vh,220px);padding-bottom:clamp(80px,12vh,140px);position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,14,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,0.04) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none;}
+.hero-blob{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(108,92,231,0.22),transparent 60%);filter:blur(80px);pointer-events:none;top:-200px;right:-200px;z-index:0;}
+.hero-blob-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(0,212,180,0.15),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-150px;left:-100px;z-index:0;}
+.hero-inner{position:relative;z-index:1;}
+.hero-meta{display:flex;gap:18px;align-items:center;margin-bottom:28px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);flex-wrap:wrap;}
+.hero-meta-divider{width:24px;height:1px;background:var(--rule-strong);}
+.hero h1{margin-bottom:28px;}
+.hero h1 .accent-line{display:block;color:var(--purple);font-style:italic;font-weight:400;}
+.hero-lede{font-size:clamp(19px,1.8vw,24px);line-height:1.45;color:var(--ink-soft);max-width:56ch;margin-top:8px;font-weight:400;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(60px,8vh,100px);border-top:1px solid var(--rule);}
+.hero-stat{padding:32px 24px 0 0;border-right:1px solid var(--rule);}
+.hero-stat:not(:first-child){padding-left:24px;}
+.hero-stat:last-child{border-right:none;padding-right:0;}
+.hero-stat-num{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:8px;}
+.hero-stat-num .small{font-size:0.55em;vertical-align:super;}
+.hero-stat-num .accent{color:var(--purple);}
+.hero-stat-label{font-size:13px;color:var(--ink-mute);font-weight:500;line-height:1.4;max-width:22ch;}
+@media(max-width:800px){.hero-stats{grid-template-columns:repeat(2,1fr);}.hero-stat:nth-child(2n){border-right:none;}.hero-stat{padding:24px 16px 0 0;padding-bottom:24px;border-bottom:1px solid var(--rule);}.hero-stat:not(:first-child){padding-left:0;}.hero-stat:last-child,.hero-stat:nth-last-child(2){border-bottom:none;}}
+.belief-list{list-style:none;display:flex;flex-direction:column;}
+.belief-item{padding:28px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:50px 1fr;gap:24px;align-items:start;}
+.belief-item:last-child{border-bottom:1px solid var(--rule);}
+.belief-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;letter-spacing:0.05em;padding-top:6px;}
+.belief-content h3{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;margin-bottom:8px;letter-spacing:-0.02em;}
+.belief-content p{color:var(--ink-mute);font-size:16px;line-height:1.55;max-width:58ch;}
+.verticals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+@media(max-width:760px){.verticals-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.verticals-grid{grid-template-columns:1fr;}}
+.vertical-card{padding:32px 28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,0.4);transition:background 0.3s,transform 0.3s;}
+.vertical-card:hover{background:#fff;transform:translateY(-2px);}
+.vertical-icon{width:36px;height:36px;border-radius:8px;background:var(--purple-soft);display:grid;place-items:center;margin-bottom:18px;color:var(--purple-deep);}
+.vertical-icon svg{width:18px;height:18px;}
+.vertical-card h4{font-size:18px;font-weight:700;margin-bottom:6px;}
+.vertical-card p{font-size:14px;color:var(--ink-mute);line-height:1.5;}
+.vertical-card .examples{margin-top:14px;font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.04em;text-transform:uppercase;}
+.lanes{background:var(--ink);color:#fff;}
+.lanes h2{color:#fff;}
+.lanes .eyebrow::before{background:var(--mint);}
+.lanes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:60px;border-top:1px solid rgba(255,255,255,0.12);}
+@media(max-width:760px){.lanes-grid{grid-template-columns:1fr;}}
+.lane{padding:56px 48px;border-right:1px solid rgba(255,255,255,0.12);}
+.lane:last-child{border-right:none;}
+@media(max-width:760px){.lane{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12);padding:40px 28px;}.lane:last-child{border-bottom:none;}}
+.lane-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:20px;}
+.lane h3{font-family:var(--font-display);font-size:clamp(28px,3vw,40px);font-weight:600;color:#fff;margin-bottom:18px;line-height:1.05;}
+.lane p{color:rgba(255,255,255,0.72);font-size:16px;line-height:1.6;max-width:42ch;margin-bottom:24px;}
+.lane-spec{display:flex;gap:28px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);}
+.lane-spec-item .label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;}
+.lane-spec-item .value{font-size:15px;color:#fff;font-weight:500;}
+.service-deep{border-top:1px solid var(--rule);padding:clamp(80px,11vh,130px) 0;background:var(--paper);}
+.service-deep-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,90px);align-items:start;}
+@media(max-width:900px){.service-deep-grid{grid-template-columns:1fr;}}
+.service-deep-meta{position:sticky;top:100px;}
+@media(max-width:900px){.service-deep-meta{position:static;}}
+.service-deep-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;margin-bottom:12px;letter-spacing:0.05em;}
+.service-deep-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,56px);font-weight:600;line-height:1.02;letter-spacing:-0.025em;margin-bottom:18px;color:var(--ink);}
+.service-deep-tag{font-size:17px;color:var(--purple-deep);font-weight:500;margin-bottom:22px;font-style:italic;font-family:var(--font-display);}
+.service-deep-tag::before{content:"\2014 ";}
+.service-deep-desc{color:var(--ink-mute);font-size:16px;line-height:1.6;}
+.approach-list{list-style:none;margin-top:30px;}
+.approach-list li{padding:14px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-soft);display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;}
+.approach-list li:last-child{border-bottom:1px solid var(--rule);}
+.approach-list li::before{content:"\2192";color:var(--purple);font-weight:600;font-size:14px;}
+.case-card{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:32px;margin-bottom:20px;transition:transform 0.3s,box-shadow 0.3s;}
+.case-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,0.12);}
+.case-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--purple-deep);background:var(--purple-soft);padding:5px 10px;border-radius:999px;font-weight:500;margin-bottom:20px;}
+.case-card-tag.alt{background:rgba(0,212,180,0.12);color:#006B5C;}
+.case-card-name{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;color:var(--ink);}
+.case-card-industry{font-size:13px;color:var(--ink-mute);margin-bottom:24px;font-family:var(--font-mono);}
+.case-card-block{margin-bottom:18px;}
+.case-card-block-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-faint);font-weight:500;margin-bottom:6px;}
+.case-card-block p{font-size:15px;color:var(--ink-soft);line-height:1.55;}
+.case-card-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0;margin-top:22px;padding-top:22px;border-top:1px solid var(--rule);}
+.result-pop{padding:0 16px 0 0;border-right:1px solid var(--rule);}
+.result-pop:last-child{border-right:none;}
+.result-pop-num{font-family:var(--font-display);font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-0.025em;line-height:1;color:var(--purple);margin-bottom:6px;}
+.result-pop-num.green{color:#00A18A;}
+.result-pop-label{font-size:11px;color:var(--ink-mute);line-height:1.35;font-weight:500;}
+.aha-quote{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule);font-family:var(--font-display);font-style:italic;font-size:17px;color:var(--ink);line-height:1.4;}
+.aha-quote::before{content:"Aha! moment \2014 ";font-style:normal;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--purple);font-weight:600;display:block;margin-bottom:8px;}
+.featured-section{background:var(--ink);color:#fff;}
+.featured-section h2,.featured-section h3{color:#fff;}
+.featured-section .eyebrow::before{background:var(--mint);}
+.featured-cs{border-top:1px solid rgba(255,255,255,0.1);padding:64px 0;}
+.featured-cs:last-child{border-bottom:1px solid rgba(255,255,255,0.1);}
+.featured-cs-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;}
+@media(max-width:900px){.featured-cs-grid{grid-template-columns:1fr;gap:32px;}}
+.featured-cs-meta-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--mint);margin-bottom:20px;}
+.featured-cs-meta h3{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:600;letter-spacing:-0.025em;line-height:1;margin-bottom:16px;}
+.featured-cs-meta p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.55;max-width:38ch;margin-bottom:24px;}
+.featured-cs-channels{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.channel-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;padding:6px 12px;border:1px solid rgba(255,255,255,0.18);border-radius:999px;color:rgba(255,255,255,0.85);}
+.featured-cs-narrative{display:flex;flex-direction:column;gap:24px;}
+.featured-cs-narrative h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);font-weight:500;margin-bottom:10px;}
+.featured-cs-narrative p{font-size:17px;line-height:1.55;color:rgba(255,255,255,0.85);}
+.featured-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.12);}
+.featured-result{padding:0 24px 0 0;border-right:1px solid rgba(255,255,255,0.1);}
+.featured-result:last-child{border-right:none;}
+.featured-result-num{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:var(--mint);margin-bottom:8px;}
+.featured-result-num.purple{color:#B8AEFF;}
+.featured-result-label{font-size:12px;color:rgba(255,255,255,0.55);font-weight:500;line-height:1.4;max-width:22ch;}
+.process-track{margin-top:56px;}
+.process-step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--rule);align-items:start;}
+.process-step:last-child{border-bottom:1px solid var(--rule);}
+.process-num{font-family:var(--font-display);font-size:64px;font-weight:600;line-height:0.9;letter-spacing:-0.04em;color:var(--purple);}
+.process-content h4{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;}
+.process-content p{color:var(--ink-mute);font-size:15px;line-height:1.55;max-width:60ch;}
+@media(max-width:600px){.process-step{grid-template-columns:50px 1fr;gap:16px;}.process-num{font-size:40px;}}
+.differentiators{background:var(--paper-cool);}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--rule);border:1px solid var(--rule);}
+@media(max-width:800px){.diff-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.diff-grid{grid-template-columns:1fr;}}
+.diff-card{background:var(--paper-cool);padding:36px 28px;transition:background 0.3s;}
+.diff-card:hover{background:#fff;}
+.diff-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:0.1em;margin-bottom:18px;font-weight:600;}
+.diff-card h4{font-family:var(--font-display);font-size:24px;font-weight:600;letter-spacing:-0.02em;margin-bottom:10px;line-height:1.1;}
+.diff-card p{font-size:14px;color:var(--ink-mute);line-height:1.55;}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:var(--rule);border:1px solid var(--rule);}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:620px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+.team-card{background:var(--paper);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:background 0.3s;min-height:210px;}
+.team-card:hover{background:#fff;}
+.team-photo{width:64px;height:64px;border-radius:14px;object-fit:cover;}
+.team-info h5{font-size:16px;font-weight:700;margin-bottom:3px;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;}
+.team-info .role{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;color:var(--purple-deep);letter-spacing:0.1em;line-height:1.4;margin-bottom:8px;}
+.team-info .loc{font-size:12px;color:var(--ink-mute);}
+.clients{background:var(--paper-warm);}
+.clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin-top:56px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+@media(max-width:1100px){.clients-grid{grid-template-columns:repeat(5,1fr);}}
+@media(max-width:800px){.clients-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:480px){.clients-grid{grid-template-columns:repeat(2,1fr);}}
+.client-cell{background:var(--paper-warm);padding:36px 24px;display:grid;place-items:center;min-height:236px;transition:background 0.3s;}
+.client-cell img{width:82%;height:148px;object-fit:contain;object-position:center;opacity:0.85;transition:opacity 0.3s;}
+.client-cell:hover{background:#fff;}
+.client-cell:hover img{opacity:1;}
+.funnel-wrap{margin-top:56px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(32px,5vw,72px);align-items:center;}
+@media(max-width:860px){.funnel-wrap{grid-template-columns:1fr;}}
+.funnel{display:flex;flex-direction:column;gap:10px;}
+.funnel-stage{border-radius:12px;padding:22px 26px;color:#fff;display:flex;justify-content:space-between;align-items:center;}
+.funnel-stage .stage-label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.85;display:block;margin-bottom:4px;}
+.funnel-stage .stage-title{font-family:var(--font-display);font-size:19px;font-weight:600;letter-spacing:-0.01em;}
+.funnel-stage .stage-num{font-family:var(--font-display);font-size:clamp(30px,4vw,44px);font-weight:600;letter-spacing:-0.03em;line-height:1;}
+.fs-1{background:linear-gradient(135deg,#2C2C40,#0A0A0E);width:100%;}
+.fs-2{background:linear-gradient(135deg,#4D3FC9,#3A2F9E);width:86%;}
+.fs-3{background:linear-gradient(135deg,#6C5CE7,#4D3FC9);width:68%;}
+.fs-4{background:linear-gradient(135deg,#8B7BF0,#6C5CE7);width:50%;}
+.fs-5{background:linear-gradient(135deg,#00D4B4,#008C75);width:34%;}
+.funnel-arrow{text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink-faint);letter-spacing:0.1em;}
+.funnel-notes{display:flex;flex-direction:column;gap:22px;}
+.funnel-note{border-left:2px solid var(--purple);padding-left:18px;}
+.funnel-note h4{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:6px;}
+.funnel-note p{font-size:14px;color:var(--ink-mute);line-height:1.55;}
+.funnel-note .pct{font-family:var(--font-mono);font-size:11px;color:var(--purple-deep);letter-spacing:0.08em;text-transform:uppercase;}
+.raci{margin-top:56px;border-top:1px solid var(--rule);}
+.raci-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:start;}
+.raci-row.head{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint);}
+.raci-row .area{font-family:var(--font-display);font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+.raci-row .who{font-size:14px;color:var(--ink-soft);line-height:1.5;}
+.tagpill{display:inline-block;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;padding:3px 8px;border-radius:999px;margin-bottom:6px;}
+.tagpill.noetic{background:var(--purple-soft);color:var(--purple-deep);}
+.tagpill.nurami{background:rgba(0,212,180,0.14);color:#006B5C;}
+@media(max-width:700px){.raci-row{grid-template-columns:1fr;gap:8px;}.raci-row.head{display:none;}}
+.channel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:56px;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+@media(max-width:720px){.channel-grid{grid-template-columns:1fr;}}
+.channel-card{padding:36px 32px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,0.4);transition:background 0.3s;}
+.channel-card:hover{background:#fff;}
+.channel-card .ch-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:0.1em;font-weight:600;margin-bottom:14px;}
+.channel-card h4{font-family:var(--font-display);font-size:26px;font-weight:600;letter-spacing:-0.02em;margin-bottom:12px;}
+.channel-card p{font-size:14px;color:var(--ink-mute);line-height:1.6;margin-bottom:16px;}
+.channel-card ul{list-style:none;}
+.channel-card ul li{font-size:13.5px;color:var(--ink-soft);padding:8px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:18px 1fr;gap:10px;}
+.channel-card ul li::before{content:"\2192";color:var(--purple);font-weight:600;}
+.arch{background:var(--paper-warm);}
+.arch-stack{margin-top:56px;display:flex;flex-direction:column;gap:14px;}
+.arch-layer{border:1px solid var(--rule);border-radius:16px;background:#fff;padding:28px 30px;display:grid;grid-template-columns:230px 1fr;gap:30px;align-items:start;}
+@media(max-width:760px){.arch-layer{grid-template-columns:1fr;gap:16px;}}
+.arch-layer-head .al-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--purple);font-weight:600;margin-bottom:10px;}
+.arch-layer-head h4{font-family:var(--font-display);font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.1;margin-bottom:6px;}
+.arch-layer-head p{font-size:13px;color:var(--ink-mute);line-height:1.5;}
+.arch-chips{display:flex;flex-wrap:wrap;gap:10px;align-content:start;}
+.arch-chip{font-size:13px;font-weight:500;color:var(--ink-soft);background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:9px 16px;display:inline-flex;align-items:center;gap:8px;}
+.arch-chip .dot{width:7px;height:7px;border-radius:50%;}
+.arch-chip .ph{font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;color:var(--ink-faint);text-transform:uppercase;margin-left:2px;}
+.dot-acq{background:var(--purple);}.dot-eng{background:var(--mint);}.dot-conv{background:var(--amber);}.dot-rep{background:var(--coral);}
+.arch-legend{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);text-transform:uppercase;}
+.arch-legend span{display:inline-flex;align-items:center;gap:8px;}
+.arch-legend .dot{width:9px;height:9px;border-radius:50%;}
+.roadmap{background:var(--paper);}
+.rm-track{margin-top:56px;border-top:1px solid var(--rule);}
+.rm-phase{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:30px 0;border-bottom:1px solid var(--rule);align-items:start;}
+@media(max-width:760px){.rm-phase{grid-template-columns:1fr;gap:14px;}}
+.rm-when{display:flex;flex-direction:column;gap:6px;}
+.rm-when .wk{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-0.02em;color:var(--ink);}
+.rm-when .phase-name{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--purple-deep);font-weight:500;}
+.rm-when .month-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-faint);}
+.rm-items{display:flex;flex-wrap:wrap;gap:10px;}
+.rm-item{font-size:13px;color:var(--ink-soft);background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px 14px;line-height:1.4;display:inline-flex;gap:8px;align-items:flex-start;max-width:340px;}
+.rm-item .ic{color:var(--purple);font-weight:700;}
+.rm-item.live{background:var(--ink);color:#fff;border-color:var(--ink);}
+.rm-item.live .ic{color:var(--mint);}
+.invest{background:var(--paper-cool);}
+.invest-grid{margin-top:56px;display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,56px);align-items:start;}
+@media(max-width:880px){.invest-grid{grid-template-columns:1fr;}}
+.invest-box{position:sticky;top:100px;background:var(--ink);border-radius:20px;padding:clamp(32px,4vw,48px);color:#fff;overflow:hidden;}
+@media(max-width:880px){.invest-box{position:static;}}
+.invest-box::before{content:"";position:absolute;top:-40%;right:-20%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.34),transparent 70%);filter:blur(80px);}
+.invest-box-inner{position:relative;z-index:1;}
+.invest-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:22px;}
+.invest-figure{font-family:var(--font-display);font-size:clamp(58px,8vw,92px);font-weight:600;line-height:0.9;letter-spacing:-0.04em;color:#fff;}
+.invest-figure .cur{color:var(--mint);}
+.invest-sub{font-size:15px;color:rgba(255,255,255,0.7);margin-top:16px;line-height:1.5;}
+.invest-meta{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.14);display:flex;flex-direction:column;gap:18px;}
+.invest-meta-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.invest-meta-row .k{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.5);}
+.invest-meta-row .v{font-size:15px;color:#fff;font-weight:600;text-align:right;}
+.invest-meta-row .v small{display:block;font-weight:400;font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;}
+.invest-note{margin-top:24px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;}
+.deliv-col{display:flex;flex-direction:column;gap:16px;}
+.deliv-card{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:28px 30px;transition:transform 0.3s,box-shadow 0.3s;}
+.deliv-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,0.1);}
+.deliv-card-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.deliv-icon{width:40px;height:40px;border-radius:10px;background:var(--purple-soft);display:grid;place-items:center;color:var(--purple-deep);flex-shrink:0;}
+.deliv-icon svg{width:20px;height:20px;}
+.deliv-card-head h4{font-family:var(--font-display);font-size:23px;font-weight:600;letter-spacing:-0.02em;}
+.deliv-card-head .num{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);margin-left:auto;letter-spacing:0.08em;}
+.deliv-list{list-style:none;}
+.deliv-list li{font-size:14px;color:var(--ink-soft);line-height:1.5;padding:10px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:20px 1fr;gap:10px;}
+.deliv-list li:first-child{border-top:none;}
+.deliv-list li::before{content:"\2713";color:var(--purple);font-weight:700;}
+.closing{min-height:100vh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:clamp(60px,10vh,120px) 0;}
+.closing::before{content:"";position:absolute;bottom:-25%;left:-10%;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.34),transparent 70%);filter:blur(110px);}
+.closing::after{content:"";position:absolute;top:-20%;right:-15%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,180,0.18),transparent 70%);filter:blur(100px);}
+.closing .container{position:relative;z-index:1;}
+.closing-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:32px;}
+.closing-title{font-family:var(--font-display);font-size:clamp(52px,9vw,128px);font-weight:600;line-height:0.96;letter-spacing:-0.035em;color:#fff;margin-bottom:40px;max-width:14ch;}
+.closing-title .italic{color:var(--purple);font-style:italic;font-weight:500;}
+.closing-lede{font-size:clamp(18px,1.8vw,22px);line-height:1.5;color:rgba(255,255,255,0.75);max-width:54ch;margin-bottom:48px;}
+.closing-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:80px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;border-radius:999px;font-size:16px;font-weight:600;letter-spacing:-0.01em;transition:all 0.2s;border:1px solid transparent;}
+.btn-primary{background:var(--purple);color:#fff;}
+.btn-primary:hover{background:#fff;color:var(--ink);}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.25);}
+.btn-ghost:hover{border-color:#fff;}
+.btn svg{width:17px;height:17px;}
+.closing-foot{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.14);}
+.closing-foot-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;line-height:1.7;}
+.closing-foot-block span{display:block;color:#fff;font-size:13px;text-transform:none;letter-spacing:-0.01em;margin-top:6px;font-family:var(--font-sans);font-weight:500;}
+.closing-logos{display:flex;align-items:center;gap:16px;margin-bottom:48px;}
+.closing-logos .divider{width:1px;height:26px;background:rgba(255,255,255,0.2);}
+body.anim-ready .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+body.anim-ready .fade-in.visible{opacity:1;transform:translateY(0);}
+@media print{.nav,.client-bar{display:none;}body{background:#fff;}.hero-blob,.hero-blob-2,.invest-box::before,.closing::before,.closing::after{display:none;}.case-card,.featured-cs,.process-step,.deliv-card,.arch-layer,.rm-phase{break-inside:avoid;}}
+</style>
+</head>
+<body id="top">
+
+<!-- CLIENT BAR -->
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <img src="assets/nurami-mark.png" alt="Nurami Medical" style="height:26px;width:auto;opacity:0.95;">
+  </div>
+  <span class="client-bar-meta">Webinar Operations Proposal &middot; June 2026 &middot; Confidential</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:28px;width:auto;">
+      <span class="divider"></span>
+      <img src="assets/nurami-nav.png" alt="Nurami Medical" style="height:30px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#recap">Recap</a></li>
+      <li><a href="#audience">Audience</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#architecture">System</a></li>
+      <li><a href="#funnel">Goals</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Let's build it &rarr;</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Proposal &middot; June 2026</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Mor Benita</span>
+      <span class="hero-meta-divider"></span>
+      <span>Webinar Operations</span>
+    </div>
+    <h1 class="display-xl">Two surgeons. Sixty minutes.<br><span class="accent-line">One pipeline.</span></h1>
+    <p class="hero-lede">A single clinical conversation between two neurosurgeons, engineered end to end into measurable demand. Not a broadcast. A precision event built to put the right specialists in one virtual room, then turn that room into pipeline Nurami can act on.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="accent">45</span></div><div class="hero-stat-label">Registration target for the October session</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label">Live attendees, the show-up goal that defines success</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3<span class="small">mo</span></div><div class="hero-stat-label">Runway, July through the October webinar</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Channels in concert: organic, email, paid, platform</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 RECAP -->
+<section class="section" id="recap" style="background:var(--paper);">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">01 &mdash; Where we landed today</span>
+      <h2 class="display-md" style="margin-top:18px;">A short recap of <em class="italic" style="color:var(--purple)">our conversation</em>.</h2>
+    </div>
+    <div class="prose">
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:var(--ink-soft);margin-bottom:20px;max-width:64ch;">Mor, thank you for the time today. Here is what we heard, written back so you have something concrete to take to your management team.</p>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:var(--ink-soft);margin-bottom:20px;max-width:64ch;">Nurami wants to run one webinar in early October: a 60-minute discussion between two neurosurgeons, with the clinical content owned by them. You do not need us to manufacture the substance. You need a partner to run the machinery around it, the platform, the promotion, and the follow-up, so the right surgeons actually register and show up.</p>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:var(--ink-soft);margin-bottom:20px;max-width:64ch;">The raw material is already in the building. You hold conference lists of more than a thousand contacts. You have a VP Commercial who can host and MC the session, someone we would coach into a confident moderator. What is missing is the operational layer: there is no webinar platform in place today, the CRM is Pipedrive, and there is no marketing engine currently turning that audience into registrations.</p>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:var(--ink-soft);margin-bottom:0;max-width:64ch;">You asked for four things working together: organic LinkedIn posts with a kit your employees can amplify, an email campaign spanning the weeks before and after the event, paid LinkedIn to extend reach beyond the known list, and clean reporting so the result is defensible. The goal is specific, and we like that it is specific: 45 registrations, with at least 15 live attendees. This proposal is built backward from those two numbers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 AUDIENCE -->
+<section class="section" id="audience" style="background:var(--paper-warm);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">02 &mdash; Who we are talking to</span>
+      <h2 class="display-md" style="margin-top:18px;">The people on the other side of <em class="italic" style="color:var(--purple)">the durotomy</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Before tactics, we did our homework on who specifies a dural repair graft and what they care about. This is the audience the webinar has to earn.</p>
+    </div>
+    <div class="verticals-grid">
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5c0 1 .3 1.8.8 2.5C6.2 10.7 5 12.6 5 15a7 7 0 0 0 14 0c0-2.4-1.2-4.3-2.8-5.5.5-.7.8-1.5.8-2.5a5 5 0 0 0-5-5z"/></svg></div><h4>Neurosurgeons</h4><p>The hands in the OR. They decide what touches the dura, and care about suturability, watertight closure, and a graft thin enough to mimic native dura without slowing the workflow.</p><div class="examples">Primary specifier &middot; Cranial &amp; spinal</div></div>
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div><h4>Value-analysis &amp; procurement</h4><p>The committees that approve a new material onto the shelf. They weigh complication rates, total cost, and the disease-transmission profile of animal-derived alternatives.</p><div class="examples">Economic buyer &middot; VAC committees</div></div>
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h4>Distributors &amp; specialty reps</h4><p>The field force carrying the product into accounts. They need credible clinical proof and KOL validation they can put in front of a skeptical surgeon quickly.</p><div class="examples">Channel &middot; Surgical specialty</div></div>
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Residents &amp; fellows</h4><p>Tomorrow's specifiers, forming preferences now. An educational session with two respected surgeons is exactly the format that shapes which materials they reach for later.</p><div class="examples">Influence &middot; Long-horizon</div></div>
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg></div><h4>KOLs &amp; academic chairs</h4><p>The voices whose endorsement de-risks adoption for everyone downstream. Two surgeons in discussion is a KOL play in its own right, and a magnet for their peers.</p><div class="examples">Validation &middot; Peer influence</div></div>
+      <div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l2 4-3 2a12 12 0 0 0 6 6l2-3 4 2v6a2 2 0 0 1-2 2A18 18 0 0 1 2 5a2 2 0 0 1 0-2z"/></svg></div><h4>The known list</h4><p>More than 1,000 contacts already gathered at conferences. Warm, relevant, and underworked. This audience is the spine of the registration target before a dollar of paid spend.</p><div class="examples">Owned &middot; 1,000+ contacts</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PAIN POINTS -->
+<section class="section" id="pain" style="background:var(--paper);">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">03 &mdash; The problem Nurami solves</span>
+      <h2 class="display-md" style="margin-top:18px;">Why this <em class="italic" style="color:var(--purple)">conversation matters</em> to a surgeon.</h2>
+      <p class="lede" style="margin-top:22px;">The webinar only works if it speaks to a real clinical tension. Here is the one Nurami sits on top of, in the surgeon's own terms.</p>
+    </div>
+    <ul class="belief-list">
+      <li class="belief-item"><div class="belief-num">/01</div><div class="belief-content"><h3>CSF leakage is a real and costly complication</h3><p>Cerebrospinal fluid leaks are a major post-neurosurgical complication, with reported rates spanning a wide range by surgical site, driving infections, longer hospital stays, and a heavy economic burden on health systems.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/02</div><div class="belief-content"><h3>The incumbents carry trade-offs surgeons quietly dislike</h3><p>Many widely used grafts are derived from bovine or other animal tissue. That introduces sourcing constraints and a disease-transmission question, and some options still require added sealants to achieve watertight closure.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/03</div><div class="belief-content"><h3>Watertight closure is hard exactly when it matters most</h3><p>Surgeons describe sealing the dura as genuinely difficult in the hardest cases: large defects, minimally invasive approaches, or where there is little viable tissue. The need for a thin, pliable, sutureable substitute is well documented.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/04</div><div class="belief-content"><h3>Nurami's answer is a genuinely different material</h3><p>ArtiFascia is an FDA-cleared, fully synthetic, sutureable dural repair graft built from electrospun nanofibers, with no animal- or human-sourced materials. In its clinical study it showed a markedly lower CSF leakage rate than the control group, the exact proof point a webinar can dramatize.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/05</div><div class="belief-content"><h3>The pipeline is a story, not just a product</h3><p>With ArtiFix, a sutureless, adhesive sealing-and-healing patch advancing through its clinical pathway, Nurami has the narrative of a platform, not a one-off. That arc is what makes two surgeons want to spend an hour in conversation.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 STRATEGIC FRAME -->
+<section class="lanes section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">04 &mdash; The strategic frame</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">Precision over reach, and <em class="italic" style="color:var(--mint)">proof over noise</em>.</h2>
+    </div>
+    <div class="lanes-grid">
+      <div class="lane"><div class="lane-tag">THE BET</div><h3>One room, the right people</h3><p>A small, qualified audience of surgeons and specifiers beats a large, indifferent one. We are not chasing a headcount. We are chasing 15 people who matter, in a room with two surgeons they respect, on a problem they live with.</p><div class="lane-spec"><div class="lane-spec-item"><span class="label">Format</span><span class="value">60-min surgeon discussion</span></div><div class="lane-spec-item"><span class="label">Win condition</span><span class="value">15 live, qualified attendees</span></div></div></div>
+      <div class="lane"><div class="lane-tag">THE MOTION</div><h3>Owned list first, paid to extend</h3><p>The 1,000+ conference contacts carry the registration target before paid spend enters. Organic and email do the heavy lifting with people who already know Nurami. Paid LinkedIn extends to look-alike specialists. Every channel points at the same calendar date.</p><div class="lane-spec"><div class="lane-spec-item"><span class="label">Spine</span><span class="value">Owned conference list</span></div><div class="lane-spec-item"><span class="label">Amplifier</span><span class="value">Paid LinkedIn + employee kit</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SCOPE -->
+<section class="section" id="scope" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 &mdash; Scope of work</span>
+      <h2 class="display-md" style="margin-top:18px;">What we will <em class="italic" style="color:var(--purple)">actually do</em>.</h2>
+      <p class="lede" style="margin-top:22px;">One webinar, run end to end. Six workstreams, each with a clear owner and a clear deliverable. This is the full operational layer wrapped around the surgeons' content.</p>
+    </div>
+    <ul class="belief-list">
+      <li class="belief-item"><div class="belief-num">/01</div><div class="belief-content"><h3>Research &amp; audience strategy</h3><p>Define the target segments, sharpen the topic and title with the two surgeons, and map the conference list into usable, compliant audiences. The strategic groundwork that makes every downstream channel land.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/02</div><div class="belief-content"><h3>Platform setup &amp; host enablement</h3><p>Stand up a webinar platform from scratch, since none exists today. Configure registration, reminders, and the live room, then coach your VP Commercial into a confident host, including a dry run before the live date.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/03</div><div class="belief-content"><h3>Organic LinkedIn: 10 posts + employee amplification kit</h3><p>Ten organic posts across the campaign window, written to build anticipation and credibility, plus a ready-to-share kit so Nurami employees and the two surgeons amplify to their own networks at zero media cost.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/04</div><div class="belief-content"><h3>Email campaign: ~10 emails, pre and post</h3><p>A full lifecycle of around ten emails: invitation and reminder sequences to the conference list before the event, and a follow-up flow after it that delivers the recording and routes engaged contacts toward a conversation. Built to work with Pipedrive.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/05</div><div class="belief-content"><h3>Paid LinkedIn &amp; registration management</h3><p>A focused paid LinkedIn program to extend reach to look-alike specialists and retarget warm non-registrants, plus active management of the registration list: deduping, segmenting, and keeping data clean for handoff.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/06</div><div class="belief-content"><h3>Reporting &amp; post-event readout</h3><p>A single source of truth tracking the funnel from reach to registration to attendance, plus a post-event readout you can take to management: what happened, what it cost, who showed up, and what to do with them next.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 06 CHANNELS -->
+<section class="section" style="background:var(--paper-warm);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 &mdash; The channels</span>
+      <h2 class="display-md" style="margin-top:18px;">Four channels, <em class="italic" style="color:var(--purple)">one calendar date</em>.</h2>
+    </div>
+    <div class="channel-grid">
+      <div class="channel-card"><div class="ch-num">CH / 01</div><h4>LinkedIn organic</h4><p>The credibility layer. Surgeon-led, educational, and built to be amplified by the people who already trust Nurami.</p><ul><li>10 posts across the July&ndash;October window</li><li>Employee &amp; KOL amplification kit</li><li>Speaker spotlights for the two surgeons</li><li>Countdown and last-call posts near the date</li></ul></div>
+      <div class="channel-card"><div class="ch-num">CH / 02</div><h4>LinkedIn ads</h4><p>The reach extender. Targeted at look-alike specialists beyond the known list, with retargeting for warm non-registrants.</p><ul><li>Audience targeting on specialty and seniority</li><li>Registration-driving conversion ads</li><li>Retargeting for engaged non-registrants</li><li>Spend optimized against cost per registration</li></ul></div>
+      <div class="channel-card"><div class="ch-num">CH / 03</div><h4>Email marketing &amp; automation</h4><p>The workhorse. The owned conference list is where most registrations come from, activated through a disciplined sequence.</p><ul><li>Invitation + reminder sequence pre-event</li><li>Calendar holds and day-of nudges</li><li>Post-event recording + nurture flow</li><li>Wired to Pipedrive for routing</li></ul></div>
+      <div class="channel-card"><div class="ch-num">CH / 04</div><h4>Platform &amp; host enablement</h4><p>The foundation. A working webinar platform and a host who feels in command on the day.</p><ul><li>Platform selection and full setup</li><li>Registration page and confirmations</li><li>VP Commercial host coaching</li><li>Technical rehearsal before go-live</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ARCHITECTURE MAP -->
+<section class="arch section" id="architecture">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">07 &mdash; What we are building</span>
+      <h2 class="display-md" style="margin-top:18px;">The full webinar engine, <em class="italic" style="color:var(--purple)">colored by workstream</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Every moving part of the engagement, grouped into the four jobs it does. Read top to bottom: audience comes in at the top, gets engaged and converted in the middle, gets measured at the bottom.</p>
+    </div>
+    <div class="arch-stack">
+      <div class="arch-layer">
+        <div class="arch-layer-head"><div class="al-tag">Layer 01 &middot; Acquisition</div><h4>Filling the room</h4><p>Everything that drives a qualified person toward the registration page.</p></div>
+        <div class="arch-chips">
+          <span class="arch-chip"><span class="dot dot-acq"></span>Audience &amp; segment strategy<span class="ph">Research</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>10 organic LinkedIn posts<span class="ph">Organic</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>Employee amplification kit<span class="ph">Organic</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>Paid LinkedIn campaign<span class="ph">Paid</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>Look-alike + retargeting audiences<span class="ph">Paid</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>Invitation email sequence<span class="ph">Email</span></span>
+          <span class="arch-chip"><span class="dot dot-acq"></span>Branded registration page<span class="ph">Platform</span></span>
+        </div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-head"><div class="al-tag">Layer 02 &middot; Engagement</div><h4>Earning the show-up</h4><p>Everything that turns a registrant into a live attendee, and keeps them in the room.</p></div>
+        <div class="arch-chips">
+          <span class="arch-chip"><span class="dot dot-eng"></span>Reminder + calendar-hold sequence<span class="ph">Email</span></span>
+          <span class="arch-chip"><span class="dot dot-eng"></span>Day-of nudges<span class="ph">Email</span></span>
+          <span class="arch-chip"><span class="dot dot-eng"></span>Platform setup &amp; live-room config<span class="ph">Platform</span></span>
+          <span class="arch-chip"><span class="dot dot-eng"></span>Host coaching for VP Commercial<span class="ph">Enablement</span></span>
+          <span class="arch-chip"><span class="dot dot-eng"></span>Run-of-show + dry run<span class="ph">Enablement</span></span>
+          <span class="arch-chip"><span class="dot dot-eng"></span>Polls, Q&amp;A, interaction setup<span class="ph">Platform</span></span>
+        </div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-head"><div class="al-tag">Layer 03 &middot; Conversion</div><h4>Turning the room into pipeline</h4><p>Everything that carries attention after the live hour into something sales can act on.</p></div>
+        <div class="arch-chips">
+          <span class="arch-chip"><span class="dot dot-conv"></span>Registration list management<span class="ph">Ops</span></span>
+          <span class="arch-chip"><span class="dot dot-conv"></span>Attendee / no-show segmentation<span class="ph">Ops</span></span>
+          <span class="arch-chip"><span class="dot dot-conv"></span>Post-event recording delivery<span class="ph">Email</span></span>
+          <span class="arch-chip"><span class="dot dot-conv"></span>Behavior-based nurture flow<span class="ph">Email</span></span>
+          <span class="arch-chip"><span class="dot dot-conv"></span>Pipedrive routing<span class="ph">CRM</span></span>
+          <span class="arch-chip"><span class="dot dot-conv"></span>On-demand replay page<span class="ph">Platform</span></span>
+        </div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-head"><div class="al-tag">Layer 04 &middot; Measurement</div><h4>Proving what happened</h4><p>The reporting layer underneath everything, so the result is defensible to management.</p></div>
+        <div class="arch-chips">
+          <span class="arch-chip"><span class="dot dot-rep"></span>Funnel dashboard: reach &rarr; attend<span class="ph">Reporting</span></span>
+          <span class="arch-chip"><span class="dot dot-rep"></span>Channel-level performance<span class="ph">Reporting</span></span>
+          <span class="arch-chip"><span class="dot dot-rep"></span>Cost per registration tracking<span class="ph">Reporting</span></span>
+          <span class="arch-chip"><span class="dot dot-rep"></span>Post-event management readout<span class="ph">Reporting</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="arch-legend">
+      <span><span class="dot dot-acq"></span>Acquisition</span>
+      <span><span class="dot dot-eng"></span>Engagement</span>
+      <span><span class="dot dot-conv"></span>Conversion</span>
+      <span><span class="dot dot-rep"></span>Measurement</span>
+    </div>
+  </div>
+</section>
+
+<!-- 08 RESPONSIBILITIES -->
+<section class="section" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">08 &mdash; Areas of responsibility</span>
+      <h2 class="display-md" style="margin-top:18px;">Who owns <em class="italic" style="color:var(--purple)">what</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Clear lines, no ambiguity. Noetic runs the machine; Nurami owns the clinical substance and the relationships.</p>
+    </div>
+    <div class="raci">
+      <div class="raci-row head"><div>Area</div><div>Noetic leads</div><div>Nurami leads</div></div>
+      <div class="raci-row"><div class="area">Clinical content</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Surgeons own the discussion topic, talking points, and any clinical claims.</div><div class="who"><span class="tagpill noetic">Noetic supports</span><br>Run-of-show, prompts, and moderation structure for the host.</div></div>
+      <div class="raci-row"><div class="area">Webinar platform</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Selection, setup, registration, reminders, live-room configuration.</div><div class="who"><span class="tagpill nurami">Nurami approves</span><br>Final platform sign-off and brand assets.</div></div>
+      <div class="raci-row"><div class="area">Host &amp; speakers</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Host coaching for the VP Commercial, dry run, technical rehearsal.</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Secures the two surgeons and the host's time.</div></div>
+      <div class="raci-row"><div class="area">Organic LinkedIn</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Writes 10 posts, builds the amplification kit, schedules.</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Posts from company page; employees amplify via the kit.</div></div>
+      <div class="raci-row"><div class="area">Email campaign</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Designs and writes ~10 emails, builds automation, reports.</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Provides the conference list and Pipedrive access.</div></div>
+      <div class="raci-row"><div class="area">Paid LinkedIn</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Targeting, ad creative, optimization, retargeting.</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Funds the media budget; approves creative.</div></div>
+      <div class="raci-row"><div class="area">Reporting</div><div class="who"><span class="tagpill noetic">Noetic</span><br>Funnel tracking and the post-event readout for management.</div><div class="who"><span class="tagpill nurami">Nurami</span><br>Acts on qualified attendees post-event.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 FUNNEL -->
+<section class="section" id="funnel" style="background:var(--paper-cool);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">09 &mdash; The goal, as a funnel</span>
+      <h2 class="display-md" style="margin-top:18px;">How we get to <em class="italic" style="color:var(--purple)">45 and 15</em>.</h2>
+      <p class="lede" style="margin-top:22px;">The targets are 45 registrations and at least 15 live attendees. Working backward, here is the math the whole campaign is engineered to deliver. The percentages are planning assumptions we refine as real data comes in.</p>
+    </div>
+    <div class="funnel-wrap">
+      <div class="funnel">
+        <div class="funnel-stage fs-1"><div><span class="stage-label">Reach</span><span class="stage-title">Audience reached</span></div><div class="stage-num">5,000+</div></div>
+        <div class="funnel-arrow">&#9660; owned list + paid extension</div>
+        <div class="funnel-stage fs-2"><div><span class="stage-label">Engaged</span><span class="stage-title">Clicked / viewed</span></div><div class="stage-num">500</div></div>
+        <div class="funnel-arrow">&#9660; landing page + reminders</div>
+        <div class="funnel-stage fs-3"><div><span class="stage-label">Page visits</span><span class="stage-title">Registration page</span></div><div class="stage-num">220+</div></div>
+        <div class="funnel-arrow">&#9660; low-friction registration</div>
+        <div class="funnel-stage fs-4"><div><span class="stage-label">Registered</span><span class="stage-title">Registration target</span></div><div class="stage-num">45</div></div>
+        <div class="funnel-arrow">&#9660; reminder sequence + day-of nudges</div>
+        <div class="funnel-stage fs-5"><div><span class="stage-label">Attended</span><span class="stage-title">Live attendees</span></div><div class="stage-num">15+</div></div>
+      </div>
+      <div class="funnel-notes">
+        <div class="funnel-note"><div class="pct">5,000+ &rarr; 500 engaged &middot; ~10%</div><h4>Reach is broad, then it narrows fast</h4><p>Between the 1,000+ warm conference contacts worked multiple times and paid extension to look-alike specialists, total reach clears 5,000. Around 10% engage by clicking or viewing, which is a healthy rate for a clinical B2B audience.</p></div>
+        <div class="funnel-note"><div class="pct">500 &rarr; 220+ page visits &middot; ~44%</div><h4>The landing page does real work</h4><p>Nearly half of engaged contacts reach the registration page. A focused, single-purpose page with the two surgeons front and center is what holds that rate.</p></div>
+        <div class="funnel-note"><div class="pct">220+ &rarr; 45 register &middot; ~20%</div><h4>Registration is a disciplined ask</h4><p>About one in five page visitors registers. With a low-friction form and a credible clinical hook, 45 registrations is realistic, not a stretch. Email to the owned list is the single biggest driver.</p></div>
+        <div class="funnel-note"><div class="pct">45 &rarr; 15+ attend &middot; ~33%</div><h4>Show-up rate is where events are won</h4><p>A 33%+ live attendance rate on a B2B webinar is healthy and achievable with a tight reminder sequence, calendar holds, and day-of nudges. Hitting 15 of 45 is the real target, and the reminder engine is built for it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 SERVICE DEEP DIVE -->
+<section class="service-deep" id="service">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / WEBINAR OPS</div>
+        <h3 class="service-deep-title">Webinar Operations</h3>
+        <div class="service-deep-tag">Where a great conversation becomes a measurable pipeline.</div>
+        <p class="service-deep-desc">We run the entire machine around an expert conversation: the platform, the promotion across owned and paid channels, the host coaching, and the follow-up. You bring the surgeons and the substance. We make sure the right people are in the room and that the room turns into something your sales team can use.</p>
+        <ul class="approach-list">
+          <li>Platform stood up from zero, configured for registration and reminders</li>
+          <li>Owned-list activation as the primary registration engine</li>
+          <li>Paid LinkedIn to extend reach and retarget warm non-registrants</li>
+          <li>Host coaching so your VP Commercial owns the room</li>
+          <li>Funnel reporting from reach all the way to routed pipeline</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured &middot; Webinar engine</span>
+          <div class="case-card-name">Sapiens</div>
+          <div class="case-card-industry">Insurance software &middot; Enterprise InsureTech</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>Sapiens struggled to generate enough registrations, keep audiences engaged live, and measure what their webinars actually produced.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>End-to-end Webinar Ops: GoToWebinar setup and management, pre-event speaker coordination, interactive content, segmented email campaigns, paid and organic promotion, branded landing pages, and real-time dashboards.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+30%</div><div class="result-pop-label">Webinar attendance rate</div></div>
+            <div class="result-pop"><div class="result-pop-num">+25%</div><div class="result-pop-label">Qualified leads generated</div></div>
+            <div class="result-pop"><div class="result-pop-num green">28%</div><div class="result-pop-label">Of attendees converted to leads</div></div>
+          </div>
+          <div class="aha-quote">The webinar was never the goal. Treating it as a repeatable system, with the follow-up engineered as carefully as the promotion, is what turned it into consistent lead generation.</div>
+        </div>
+        <div class="case-card">
+          <span class="case-card-tag alt">Companion &middot; ABM + events</span>
+          <div class="case-card-name">AudioCodes</div>
+          <div class="case-card-industry">Enterprise communications &middot; Israeli B2B telecom</div>
+          <div class="case-card-block"><div class="case-card-block-label">Challenge</div><p>A named-account, high-value enterprise sale where the buying group is small, senior, and hard to reach through broadcast tactics.</p></div>
+          <div class="case-card-block"><div class="case-card-block-label">Method</div><p>An ABM-led program pairing LinkedIn and targeted outreach with marketing orchestration, the same precision logic this webinar runs on: right people, not most people.</p></div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+88%</div><div class="result-pop-label">Demos booked</div></div>
+            <div class="result-pop"><div class="result-pop-num">$4.9M</div><div class="result-pop-label">Pipeline influenced</div></div>
+            <div class="result-pop"><div class="result-pop-num green">&minus;22%</div><div class="result-pop-label">Cost per lead vs. benchmark</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ROADMAP -->
+<section class="roadmap section" id="roadmap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">10 &mdash; The roadmap</span>
+      <h2 class="display-md" style="margin-top:18px;">Twelve weeks to <em class="italic" style="color:var(--purple)">a full room</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Marketing runs July through the October live date. The schedule front-loads setup so the back half is pure promotion and momentum. Activities shown by phase, week over week.</p>
+    </div>
+    <div class="rm-track">
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Weeks 1&ndash;2</span><span class="phase-name">Foundation</span><span class="month-tag">Early July</span></div>
+        <div class="rm-items">
+          <div class="rm-item"><span class="ic">&rarr;</span>Kickoff + access to Pipedrive &amp; the conference list</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Audience &amp; segment strategy</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Topic + title locked with the two surgeons</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Webinar platform selected</div>
+        </div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Weeks 3&ndash;4</span><span class="phase-name">Build</span><span class="month-tag">Late July</span></div>
+        <div class="rm-items">
+          <div class="rm-item"><span class="ic">&rarr;</span>Platform configured: registration, reminders, live room</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Branded registration page built</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Email automation built around Pipedrive</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Creative direction + ad concepts approved</div>
+        </div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Weeks 5&ndash;6</span><span class="phase-name">Launch</span><span class="month-tag">Early August</span></div>
+        <div class="rm-items">
+          <div class="rm-item"><span class="ic">&rarr;</span>Registration opens; first invites to owned list</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>First organic LinkedIn posts live</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Employee amplification kit distributed</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Paid LinkedIn campaign launched</div>
+        </div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Weeks 7&ndash;9</span><span class="phase-name">Momentum</span><span class="month-tag">Sept</span></div>
+        <div class="rm-items">
+          <div class="rm-item"><span class="ic">&rarr;</span>Full promotional push across all four channels</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Speaker spotlights + countdown content</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Paid optimization vs. cost per registration</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Registration list management + segmentation</div>
+        </div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Weeks 10&ndash;11</span><span class="phase-name">Rehearse &amp; remind</span><span class="month-tag">Late Sept</span></div>
+        <div class="rm-items">
+          <div class="rm-item"><span class="ic">&rarr;</span>Host coaching for the VP Commercial</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Technical rehearsal + dry run</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Final reminder sequence + calendar holds</div>
+          <div class="rm-item"><span class="ic">&rarr;</span>Day-of nudges prepared</div>
+        </div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-when"><span class="wk">Week 12</span><span class="phase-name">Live + follow-up</span><span class="month-tag">Early Oct</span></div>
+        <div class="rm-items">
+          <div class="rm-item live"><span class="ic">&#9733;</span>The live 60-minute webinar</div>
+          <div class="rm-item live"><span class="ic">&#9733;</span>Recording distributed; nurture flow fires</div>
+          <div class="rm-item live"><span class="ic">&#9733;</span>Attendee / no-show segmentation</div>
+          <div class="rm-item live"><span class="ic">&#9733;</span>Post-event readout to management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 FEATURED WORK -->
+<section class="featured-section section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark" style="color:var(--mint)">11 &mdash; Proof in medtech</span>
+      <h2 class="display-lg" style="margin-top:18px;color:#fff;">Where we have done <em class="italic" style="color:var(--mint)">work like this</em>.</h2>
+    </div>
+    <div class="featured-cs">
+      <div class="featured-cs-grid">
+        <div class="featured-cs-meta">
+          <div class="featured-cs-meta-tag">Medical device &middot; Aesthetic &amp; surgical</div>
+          <h3>Lumenis</h3>
+          <p>A global medical and aesthetic device leader, and one of our key medtech accounts. The closest analog to Nurami's world: clinical audiences, regulated claims, and KOL-driven adoption.</p>
+          <div class="featured-cs-channels"><span class="channel-chip">Organic social</span><span class="channel-chip">Webinars</span><span class="channel-chip">UGC + video</span><span class="channel-chip">Paid media</span><span class="channel-chip">Doctor testimonials</span></div>
+        </div>
+        <div class="featured-cs-narrative">
+          <div><h4>Challenge</h4><p>Reaching clinicians and patients with content that respects regulatory lines while still driving real engagement and demand across multiple regions.</p></div>
+          <div><h4>Method</h4><p>A multi-channel program spanning organic social, webinars, doctor testimonials, and paid media, with messaging tuned to a clinical audience and built to be defensible under regulatory review.</p></div>
+          <div class="featured-results-grid">
+            <div class="featured-result"><div class="featured-result-num">Multi-region</div><div class="featured-result-label">Programs across US and UK markets</div></div>
+            <div class="featured-result"><div class="featured-result-num purple">KOL-led</div><div class="featured-result-label">Doctor-fronted content driving engagement</div></div>
+            <div class="featured-result"><div class="featured-result-num">Compliant</div><div class="featured-result-label">Built to clear regulatory review</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-cs">
+      <div class="featured-cs-grid">
+        <div class="featured-cs-meta">
+          <div class="featured-cs-meta-tag">Insurance software &middot; Enterprise InsureTech</div>
+          <h3>Sapiens</h3>
+          <p>Our reference Webinar Ops account: a complex enterprise sale where webinars became a repeatable, lead-generating engine rather than a vanity metric.</p>
+          <div class="featured-cs-channels"><span class="channel-chip">Platform management</span><span class="channel-chip">Email + lifecycle</span><span class="channel-chip">Paid + organic</span><span class="channel-chip">Landing pages</span><span class="channel-chip">Dashboards</span></div>
+        </div>
+        <div class="featured-cs-narrative">
+          <div><h4>Challenge</h4><p>Turn webinars from occasional events into a system that reliably contributed to pipeline, with the data to prove it.</p></div>
+          <div><h4>Method</h4><p>End-to-end webinar operations: platform, segmented promotion, interactive live content, behavior-based follow-up, on-demand repurposing, and real-time reporting.</p></div>
+          <div class="featured-results-grid">
+            <div class="featured-result"><div class="featured-result-num">+30%</div><div class="featured-result-label">Attendance rate increase</div></div>
+            <div class="featured-result"><div class="featured-result-num">+25%</div><div class="featured-result-label">Qualified leads generated</div></div>
+            <div class="featured-result"><div class="featured-result-num purple">26%</div><div class="featured-result-label">Of registrants attended live</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 TEAM -->
+<section class="section" id="team" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">12 &mdash; Who's on this account</span>
+      <h2 class="display-md" style="margin-top:18px;">A focused pod, <em class="italic" style="color:var(--purple)">close to the work</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Senior specialists, no layers, direct access to the founder. The people who will actually run your webinar.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/TAMIR/TAMIR_color.png" alt="Tamir Alush" loading="lazy"><div class="team-info"><h5>Tamir Alush</h5><div class="role">Founder &amp; CEO</div><div class="loc">Account lead &middot; Hollywood, FL</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VANESSA/VANESSA_color.png" alt="Vanessa Soria" loading="lazy"><div class="team-info"><h5>Vanessa Soria</h5><div class="role">Account Manager</div><div class="loc">Day-to-day lead &middot; Quito, EC</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MONIQUE/MONIQUE_color.png" alt="Monique Johnson" loading="lazy"><div class="team-info"><h5>Monique Johnson</h5><div class="role">Webinar Operations</div><div class="loc">Platform &amp; live production &middot; Atlanta, GA</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/DANIELA/DANIELA_color.png" alt="Daniela Benfele" loading="lazy"><div class="team-info"><h5>Daniela Benfele</h5><div class="role">Automations &amp; Email</div><div class="loc">Email campaign &amp; flows &middot; Madrid, ES</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/GONZALO/GONZALO_color.png" alt="Gonzalo Mazzoni" loading="lazy"><div class="team-info"><h5>Gonzalo Mazzoni</h5><div class="role">Media Buyer</div><div class="loc">Paid LinkedIn &middot; C&oacute;rdoba, AR</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VAL/VAL_color.png" alt="Val Parra" loading="lazy"><div class="team-info"><h5>Val Parra</h5><div class="role">Social Media Manager</div><div class="loc">Organic LinkedIn &middot; Barcelona, ES</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/CAROLINA/CAROLINA_color.png" alt="Carolina Fallu" loading="lazy"><div class="team-info"><h5>Carolina Fallu</h5><div class="role">Strategic Planner</div><div class="loc">Audience &amp; messaging &middot; Quito, EC</div></div></div>
+      <div class="team-card"><img class="team-photo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/FRANCISCO/FRANCISCO_color.png" alt="Francisco Sica" loading="lazy"><div class="team-info"><h5>Francisco Sica</h5><div class="role">Data Analyst</div><div class="loc">Reporting &amp; funnel &middot; Argentina</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 CLIENTS -->
+<section class="clients section" id="clients">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">13 &mdash; The companies we work with</span>
+      <h2 class="display-md" style="margin-top:18px;">Selected <em class="italic" style="color:var(--purple)">client roster</em>.</h2>
+      <p class="lede" style="margin-top:22px;">A cross-section of the brands we partner with, spanning medtech, regulated clinical audiences, and B2B precision plays close to Nurami's world.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/LUM/LUM_logo_grey.png" alt="Lumenis" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SAP/SAP_logo_grey.png" alt="Sapiens" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/AUD/AUD_logo_grey.png" alt="AudioCodes" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/OPM/OPM_logo_grey.png" alt="Opmed" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/QUA/QUA_logo_grey.png" alt="Quantal X" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NICE/NICE_logo_grey.png" alt="NICE" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/WSC/WSC_logo_grey.png" alt="WSC Sports" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/PRT/PRT_logo_grey.png" alt="Priority" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TSG/TSG_logo_grey.png" alt="TSG" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/OAS/OAS_logo_grey.png" alt="Oasis Security" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/HAZ/HAZ_logo_grey.png" alt="Hazera" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TAB/TAB_logo_grey.png" alt="Tabit" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NCH/NCH_logo_grey.png" alt="Notch" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SRB/SRB_logo_grey.png" alt="Sorbet" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/RAIL/RAIL_logo_grey.png" alt="Rail Europe" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/VMZ/VMZ_logo_grey.png" alt="Viewz" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SLP/SLP_logo_grey.png" alt="SleePare" loading="lazy"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/INT/INT_logo_grey.png" alt="Interlight" loading="lazy"></div>
+    </div>
+    <p style="margin-top:24px;font-size:13px;color:var(--ink-faint);font-family:var(--font-mono);letter-spacing:0.04em;">Closest to Nurami's world: medtech &amp; clinical audiences (Lumenis, Opmed, Quantal X) and our Webinar Ops / enterprise references (Sapiens, AudioCodes).</p>
+  </div>
+</section>
+
+<!-- 15 INVESTMENT -->
+<section class="invest section" id="investment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">14 &mdash; Investment</span>
+      <h2 class="display-md" style="margin-top:18px;">One project, <em class="italic" style="color:var(--purple)">one number</em>, everything included.</h2>
+      <p class="lede" style="margin-top:22px;">A single all-in fee for the full webinar operation, July through October. On the right, everything that fee covers. Media is separate and runs through Nurami's budget.</p>
+    </div>
+    <div class="invest-grid">
+      <div class="invest-box">
+        <div class="invest-box-inner">
+          <div class="invest-eyebrow">Project fee &middot; Webinar operations</div>
+          <div class="invest-figure"><span class="cur">$</span>18,000</div>
+          <div class="invest-sub">All-in fee for research, platform, organic LinkedIn, email campaign and automation, paid LinkedIn management, registration management, host enablement, and reporting, across the full three-month engagement.</div>
+          <div class="invest-meta">
+            <div class="invest-meta-row"><span class="k">Payment terms</span><span class="v">50% / 50%<small>50% in advance, 50% on completion</small></span></div>
+            <div class="invest-meta-row"><span class="k">Media budget</span><span class="v">$6,000<small>Separate &middot; paid LinkedIn, at cost</small></span></div>
+            <div class="invest-meta-row"><span class="k">Term</span><span class="v">~3 months<small>July &rarr; October live date</small></span></div>
+            <div class="invest-meta-row"><span class="k">Deliverable</span><span class="v">1 webinar<small>Two surgeons &middot; 60 minutes</small></span></div>
+          </div>
+          <div class="invest-note">Media spend of $6,000 is billed at cost through Nurami and is not part of the project fee. The fee is fixed for the scope described; any net-new scope is quoted separately before work begins.</div>
+        </div>
+      </div>
+      <div class="deliv-col">
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h4>Research &amp; strategy</h4><span class="num">01</span></div><ul class="deliv-list"><li>Audience &amp; segment strategy</li><li>Topic and title development with the surgeons</li><li>Conference-list mapping into usable audiences</li><li>Messaging and positioning for the event</li></ul></div>
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Platform &amp; host enablement</h4><span class="num">02</span></div><ul class="deliv-list"><li>Webinar platform selection and full setup</li><li>Branded registration page + confirmations</li><li>Live-room config: polls, Q&amp;A, interaction</li><li>Host coaching for the VP Commercial + dry run</li><li>Technical rehearsal before go-live</li></ul></div>
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><h4>Organic LinkedIn</h4><span class="num">03</span></div><ul class="deliv-list"><li>10 organic posts across the campaign window</li><li>Employee &amp; KOL amplification kit</li><li>Speaker spotlights for the two surgeons</li><li>Countdown and last-call content</li></ul></div>
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></div><h4>Email marketing &amp; automation</h4><span class="num">04</span></div><ul class="deliv-list"><li>~10 emails across pre- and post-event</li><li>Invitation + reminder sequences</li><li>Calendar holds and day-of nudges</li><li>Behavior-based post-event nurture flow</li><li>Built and wired to work with Pipedrive</li></ul></div>
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-5"/></svg></div><h4>Paid LinkedIn &amp; registration mgmt</h4><span class="num">05</span></div><ul class="deliv-list"><li>Paid LinkedIn targeting, creative &amp; optimization</li><li>Look-alike audiences + retargeting</li><li>Registration list management &amp; deduping</li><li>Attendee / no-show segmentation</li></ul></div>
+        <div class="deliv-card"><div class="deliv-card-head"><div class="deliv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16v-7M16 16v-2"/></svg></div><h4>Reporting</h4><span class="num">06</span></div><ul class="deliv-list"><li>Funnel dashboard: reach &rarr; registration &rarr; attendance</li><li>Channel-level performance + cost per registration</li><li>Post-event readout for management</li><li>Recommendations for the next session</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 CLOSING -->
+<section class="closing" id="contact">
+  <div class="container">
+    <div class="closing-eyebrow">15 &mdash; Next steps</div>
+    <div class="closing-logos">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:30px;width:auto;filter:brightness(0) invert(1);opacity:0.95;">
+      <span class="divider"></span>
+      <img src="assets/nurami-closing.png" alt="Nurami Medical" style="height:34px;width:auto;opacity:0.95;">
+    </div>
+    <h2 class="closing-title">Two surgeons are ready.<br>Let's <span class="italic">fill the room.</span></h2>
+    <p class="closing-lede">Reply to this proposal to greenlight, or grab 15 minutes and we will walk through any of it. With a 50% deposit we can start the platform build and list work in July, and have registration open by early August.</p>
+    <div class="closing-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">tamir@noetic.io<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="closing-foot">
+      <div class="closing-foot-block">Prepared for<span>Mor Benita &middot; Nurami Medical</span></div>
+      <div class="closing-foot-block">Engagement<span>Webinar Operations &middot; ~3 months</span></div>
+      <div class="closing-foot-block">&copy; 2026 Noetic Creative<span>Confidential &middot; noetic.io</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled');});
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduceMotion&&'IntersectionObserver' in window){
+  document.body.classList.add('anim-ready');
+  const els=document.querySelectorAll('.case-card,.vertical-card,.belief-item,.diff-card,.team-card,.process-step,.channel-card,.funnel-note,.raci-row,.arch-layer,.rm-phase,.deliv-card');
+  els.forEach(el=>el.classList.add('fade-in'));
+  const ob=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target);}});},{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>ob.observe(el));
+  setTimeout(()=>{document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>el.classList.add('visible'));},4000);
+}
+</script>
+</body>
+</html>
