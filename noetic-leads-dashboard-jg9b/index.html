@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noetic — Paid Leads Analysis 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#F9F8F6;color:#1A1916;min-height:100vh}
+.shell{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem}
+.hdr-title{font-size:1.375rem;font-weight:600;letter-spacing:-.02em}
+.hdr-sub{font-size:12px;color:#888;margin-top:3px}
+.tabs{display:flex;gap:2px;border-bottom:1.5px solid #E8E6E1;margin-bottom:1.75rem}
+.tab{padding:8px 18px;font-size:13px;font-weight:500;color:#888;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1.5px;transition:color .15s}
+.tab.active{color:#1A1916;border-bottom-color:#1A1916}
+.tc{display:none}.tc.active{display:block}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:1.5rem}
+.metric{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #EEECE8}
+.metric-label{font-size:11px;color:#888;margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.metric-value{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.metric-sub{font-size:11px;color:#AAA;margin-top:3px}
+.card{background:#fff;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;border:1px solid #EEECE8}
+.sec-title{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem}
+.bw{margin-bottom:7px}
+.bl{font-size:12px;color:#555;margin-bottom:3px;display:flex;justify-content:space-between}
+.bbg{background:#F0EEE9;border-radius:4px;height:8px;overflow:hidden}
+.bf{height:8px;border-radius:4px}
+.note{font-size:11px;color:#AAA;margin-top:6px;font-style:italic}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F0EEE9;font-size:13px}
+.ir:last-child{border-bottom:none}
+.ir-val{font-weight:600;font-size:14px}
+.badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:500}
+.bg{background:#E6F1FB;color:#0C447C}.bm{background:#EEEDFE;color:#3C3489}
+.bb{background:#EAF3DE;color:#27500A}.bc{background:#FAEEDA;color:#633806}
+.bn2{background:#E1F5EE;color:#085041}.bco{background:#DDEFFF;color:#003D82}
+.bfu{background:#FFF3CD;color:#856404}.bconv{background:#D1FAE5;color:#065F46}
+.brej{background:#FCEBEB;color:#791F1F}.bu{background:#F1EFE8;color:#5F5E5A}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px;font-weight:600;font-size:11px;color:#888;border-bottom:1.5px solid #E8E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+td{padding:7px 8px;border-bottom:1px solid #F0EEE9;color:#1A1916;vertical-align:middle}
+tr:hover td{background:#FAFAF8}
+tr:last-child td{border-bottom:none}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;align-items:center}
+select,button{font-family:inherit}
+select{font-size:12px;padding:6px 10px;border:1px solid #DDDBD6;border-radius:7px;background:#fff;color:#1A1916;cursor:pointer}
+.trange{display:flex;gap:8px;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap}
+.fl{font-size:12px;color:#888;white-space:nowrap}
+.corr-tag{display:inline-block;background:#FFF3CD;color:#856404;border-radius:4px;padding:1px 5px;font-size:10px;font-weight:600;margin-left:4px}
+.tc-count{font-size:11px;color:#AAA;margin-top:8px}
+.grp-mql{background:#EAF3DE;color:#27500A}
+.grp-b2cc{background:#FEE2E2;color:#991B1B}
+.grp-b2ca{background:#FAEEDA;color:#633806}
+.grp-unq{background:#FCEBEB;color:#791F1F}
+.grp-np{background:#F1EFE8;color:#5F5E5A}
+.np-bar-wrap{margin-bottom:8px}
+.loading{text-align:center;padding:60px;color:#888;font-size:14px}
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid #E8E6E1;border-top-color:#1A1916;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr}.mgrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="hdr">
+    <div>
+      <div class="hdr-title">Noetic — Paid Leads Analysis</div>
+      <div class="hdr-sub" id="hdr-sub">Loading data...</div>
+    </div>
+  </div>
+  <div id="loading" class="loading"><span class="spinner"></span>Loading leads from database...</div>
+  <div id="app" style="display:none">
+    <div class="tabs">
+      <div class="tab active" onclick="sw('paid')">Paid analysis</div>
+      <div class="tab" onclick="sw('table')">Full table</div>
+      <div class="tab" onclick="sw('nonpaid')">Non-paid</div>
+    </div>
+    <div id="t-paid" class="tc active">
+      <div class="trange">
+        <span class="fl">View:</span>
+        <select id="view-mode" onchange="onModeChange()">
+          <option value="all">All months</option>
+          <option value="month">Single month</option>
+          <option value="range">Date range</option>
+        </select>
+        <div id="month-picker" style="display:none"><select id="sel-month" onchange="renderPaid()"></select></div>
+        <div id="range-picker" style="display:none;gap:8px;align-items:center" class="trange">
+          <span class="fl">From</span><select id="range-from" onchange="renderPaid()"></select>
+          <span class="fl">to</span><select id="range-to" onchange="renderPaid()"></select>
+        </div>
+      </div>
+      <div class="mgrid" id="top-metrics"></div>
+      <div class="two-col">
+        <div class="card"><div class="sec-title" id="g-title">Google — B2B MQL</div><div id="g-bars"></div><div class="note" id="g-note"></div></div>
+        <div class="card"><div class="sec-title" id="m-title">Meta — B2B MQL</div><div id="m-bars"></div><div class="note" id="m-note"></div></div>
+      </div>
+      <div class="three-col">
+        <div class="card"><div class="sec-title">B2C Campaign</div><div style="font-size:11px;color:#AAA;margin-bottom:10px">clientType B2C · B2C-specific campaigns</div><div id="b2cc-block"></div></div>
+        <div class="card"><div class="sec-title">B2C Assisted</div><div style="font-size:11px;color:#AAA;margin-bottom:10px">clientType B2C · arrived via B2B campaigns</div><div id="b2ca-block"></div></div>
+        <div class="card"><div class="sec-title">B2B Unqualified</div><div style="font-size:11px;color:#AAA;margin-bottom:10px">B2B rejected — not valid / irrelevant</div><div id="unq-block"></div></div>
+      </div>
+      <div class="card">
+        <div class="sec-title">Source corrections</div>
+        <div style="font-size:11px;color:#AAA;margin-bottom:10px">Leads where Salesforce recorded "Web site NYC" but gclid/fbclid identified them as paid</div>
+        <div id="corr-block"></div>
+      </div>
+    </div>
+    <div id="t-table" class="tc">
+      <div class="filters">
+        <select id="fs" onchange="rt()"><option value="">All statuses</option><option>New</option><option>Contact</option><option>Followup</option><option>Converted</option><option>Rejected</option></select>
+        <select id="fch" onchange="rt()"><option value="">All channels</option><option>Google</option><option>Meta</option><option value="np">Non-paid</option></select>
+        <select id="fbk" onchange="rt()"><option value="">All breakdowns</option><option>Branded</option><option>Non-branded</option><option>Pmax</option><option>B2C</option><option>Workshop</option><option>Team Building</option><option>Unclassified</option></select>
+        <select id="fct" onchange="rt()"><option value="">All types</option><option value="B2B">B2B</option><option value="B2C">B2C</option></select>
+        <select id="fmo" onchange="rt()"><option value="">All months</option></select>
+        <select id="fgrp" onchange="rt()"><option value="">All groups</option><option value="mql">B2B MQL</option><option value="b2cc">B2C Campaign</option><option value="b2ca">B2C Assisted</option><option value="unq">B2B Unqualified</option><option value="corr">Corrected source</option><option value="np">Non-paid</option></select>
+      </div>
+      <div style="overflow-x:auto">
+        <table><thead><tr><th>Name</th><th>Month</th><th>Day</th><th>Status</th><th>Type</th><th>Channel</th><th>Breakdown</th><th>Group</th><th>Original source</th><th>Corrected source</th><th>Owner</th></tr></thead><tbody id="tb"></tbody></table>
+      </div>
+      <div class="tc-count" id="tc-count"></div>
+    </div>
+    <div id="t-nonpaid" class="tc">
+      <div style="font-size:13px;color:#888;margin-bottom:1.25rem">Non-paid leads — informational only.</div>
+      <div class="mgrid" id="np-metrics"></div>
+      <div class="card"><div class="sec-title">Top non-paid sources</div><div id="np-bars"></div></div>
+    </div>
+  </div>
+</div>
+<script>
+const SUPABASE_URL="https://jswduasfnwidfxgvkrdh.supabase.co";
+const ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impzd2R1YXNmbndpZGZ4Z3ZrcmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1MTU3MjMsImV4cCI6MjA5NjA5MTcyM30.QQpokcqTcoYcg_3mJ7L9gYYisEHQpukdUMF67EVrQe0";
+const stCls={New:'bn2',Contact:'bco',Followup:'bfu',Converted:'bconv',Rejected:'brej'};
+const chCls={Google:'bg',Meta:'bm'};
+const bkCls={Branded:'bn2','Non-branded':'bg',Pmax:'bm',B2C:'bc',Workshop:'bb','Team Building':'bb',Unclassified:'bu'};
+const MNAMES={1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+let ALL=[],MONTHS=[];
+async function fetchAll(){
+  const h={'apikey':ANON_KEY,'Authorization':`Bearer ${ANON_KEY}`};
+  let all=[],offset=0;
+  while(true){
+    const r=await fetch(`${SUPABASE_URL}/rest/v1/leads?select=*&order=month_num.asc&limit=1000&offset=${offset}`,{headers:h});
+    if(!r.ok)throw new Error(await r.text());
+    const b=await r.json();
+    all=all.concat(b);
+    if(b.length<1000)break;
+    offset+=1000;
+  }
+  return all;
+}
+function grpLabel(r){if(!r.is_paid)return'Non-paid';if(r.is_mql)return'B2B MQL';if(r.is_b2cc)return'B2C Campaign';if(r.is_b2ca)return'B2C Assisted';if(r.is_unq)return'B2B Unq';return'Other';}
+const grpCls={'B2B MQL':'grp-mql','B2C Campaign':'grp-b2cc','B2C Assisted':'grp-b2ca','B2B Unq':'grp-unq','Non-paid':'grp-np','Other':'grp-np'};
+function getRange(){const m=document.getElementById('view-mode').value;if(m==='month'){const v=parseInt(document.getElementById('sel-month').value);return[v,v];}if(m==='range'){const f=parseInt(document.getElementById('range-from').value),t=parseInt(document.getElementById('range-to').value);return[Math.min(f,t),Math.max(f,t)];}return[MONTHS[0],MONTHS[MONTHS.length-1]];}
+function onModeChange(){const m=document.getElementById('view-mode').value;document.getElementById('month-picker').style.display=m==='month'?'block':'none';document.getElementById('range-picker').style.display=m==='range'?'flex':'none';renderPaid();}
+function bar(label,val,total,color){const pct=total>0?Math.round(val/total*100):0;return`<div class="bw"><div class="bl"><span>${label}</span><span>${val} (${pct}%)</span></div><div class="bbg"><div class="bf" style="width:${Math.max(pct,1)}%;background:${color}"></div></div></div>`;}
+function mkIR(label,val){return`<div class="ir"><span>${label}</span><span class="ir-val">${val}</span></div>`;}
+function renderPaid(){
+  const[lo,hi]=getRange();
+  const paid=ALL.filter(r=>r.is_paid&&r.month_num>=lo&&r.month_num<=hi);
+  const mql=paid.filter(r=>r.is_mql),unq=paid.filter(r=>r.is_unq),b2cc=paid.filter(r=>r.is_b2cc),b2ca=paid.filter(r=>r.is_b2ca),corr=paid.filter(r=>r.is_corr);
+  const mqlG=mql.filter(r=>r.channel==='Google'),mqlM=mql.filter(r=>r.channel==='Meta');
+  document.getElementById('top-metrics').innerHTML=[{l:'Total paid',v:paid.length,s:'all groups combined'},{l:'B2B MQL',v:mql.length,s:'B2B qualified pipeline'},{l:'B2C Campaign',v:b2cc.length,s:'B2C from B2C campaigns'},{l:'B2C Assisted',v:b2ca.length,s:'B2C from B2B campaigns'},{l:'B2B Unqualified',v:unq.length,s:'not valid / irrelevant'},{l:'Source corrections',v:corr.length,s:'"Web site NYC" → paid'},].map(m=>`<div class="metric"><div class="metric-label">${m.l}</div><div class="metric-value">${m.v}</div>${m.s?`<div class="metric-sub">${m.s}</div>`:''}</div>`).join('');
+  const gT=mqlG.length;document.getElementById('g-title').textContent=`Google — B2B MQL (${gT})`;
+  document.getElementById('g-bars').innerHTML=[{k:'Non-branded',c:'#2563EB'},{k:'Pmax',c:'#7C3AED'},{k:'Branded',c:'#059669'},{k:'Workshop',c:'#D97706'},{k:'B2C',c:'#DC2626'},{k:'Unclassified',c:'#9CA3AF'}].map(({k,c})=>bar(k,mqlG.filter(r=>r.breakdown===k).length,gT,c)).join('');
+  const gUnc=mqlG.filter(r=>r.breakdown==='Unclassified').length;document.getElementById('g-note').textContent=gUnc?`${gUnc} leads: gclid present but no UTM campaign — tracking gap`:'';
+  const mT=mqlM.length;document.getElementById('m-title').textContent=`Meta — B2B MQL (${mT})`;
+  document.getElementById('m-bars').innerHTML=[{k:'Workshop',c:'#059669'},{k:'Team Building',c:'#7C3AED'},{k:'B2C',c:'#DC2626'},{k:'Unclassified',c:'#9CA3AF'}].map(({k,c})=>bar(k,mqlM.filter(r=>r.breakdown===k).length,mT,c)).join('');
+  const mUnc=mqlM.filter(r=>r.breakdown==='Unclassified').length;document.getElementById('m-note').textContent=mUnc?`${mUnc} leads: fbclid present but no UTM campaign`:'';
+  document.getElementById('b2cc-block').innerHTML=`<div style="font-size:26px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px">${b2cc.length}</div>`+mkIR('Google',b2cc.filter(r=>r.channel==='Google').length)+mkIR('Meta',b2cc.filter(r=>r.channel==='Meta').length);
+  document.getElementById('b2ca-block').innerHTML=`<div style="font-size:26px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px">${b2ca.length}</div>`+mkIR('Google',b2ca.filter(r=>r.channel==='Google').length)+mkIR('Meta',b2ca.filter(r=>r.channel==='Meta').length);
+  document.getElementById('unq-block').innerHTML=unq.length===0?'<div style="font-size:13px;color:#AAA">None in this period.</div>':`<div style="font-size:26px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px">${unq.length}</div>`+mkIR('Google',unq.filter(r=>r.channel==='Google').length)+mkIR('Meta',unq.filter(r=>r.channel==='Meta').length);
+  const corrG=corr.filter(r=>r.corr_source&&r.corr_source.toLowerCase().includes('google')).length;
+  const corrM=corr.filter(r=>r.corr_source&&r.corr_source.toLowerCase().includes('facebook')).length;
+  document.getElementById('corr-block').innerHTML=`<div style="font-size:26px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px">${corr.length} total</div>`+mkIR('→ Google Landing Page - Web site NYC',corrG)+mkIR('→ Facebook Landing Page - Web site NYC',corrM);
+}
+function sw(n){document.querySelectorAll('.tab').forEach((t,i)=>{const ns=['paid','table','nonpaid'];t.classList.toggle('active',ns[i]===n);});document.querySelectorAll('.tc').forEach(t=>t.classList.remove('active'));document.getElementById('t-'+n).classList.add('active');if(n==='table')rt();}
+function rt(){
+  const fs=document.getElementById('fs').value,fch=document.getElementById('fch').value,fbk=document.getElementById('fbk').value,fct=document.getElementById('fct').value,fmo=document.getElementById('fmo').value,fgrp=document.getElementById('fgrp').value;
+  let rows=ALL.filter(r=>{if(fs&&r.status!==fs)return false;if(fch){if(fch==='np'&&r.channel)return false;if(fch!=='np'&&r.channel!==fch)return false;}if(fbk&&r.breakdown!==fbk)return false;if(fct&&r.client_type!==fct)return false;if(fmo&&r.month_num!==parseInt(fmo))return false;if(fgrp==='mql'&&!r.is_mql)return false;if(fgrp==='b2cc'&&!r.is_b2cc)return false;if(fgrp==='b2ca'&&!r.is_b2ca)return false;if(fgrp==='unq'&&!r.is_unq)return false;if(fgrp==='corr'&&!r.is_corr)return false;if(fgrp==='np'&&r.is_paid)return false;return true;});
+  document.getElementById('tb').innerHTML=rows.slice(0,400).map(r=>{const fixed=r.is_corr,g=grpLabel(r);return`<tr><td style="white-space:nowrap;font-weight:500">${r.first_name} ${r.last_name}</td><td>${r.month||'—'}</td><td>${r.day||'—'}</td><td><span class="badge ${stCls[r.status]||'bu'}">${r.status}</span></td><td><span class="badge ${r.client_type==='B2B'?'bb':r.client_type==='B2C'?'bc':'bu'}">${r.client_type||'—'}</span></td><td>${r.channel?`<span class="badge ${chCls[r.channel]||'bu'}">${r.channel}</span>`:'<span style="color:#AAA;font-size:11px">non-paid</span>'}</td><td>${r.breakdown?`<span class="badge ${bkCls[r.breakdown]||'bu'}">${r.breakdown}</span>`:'—'}</td><td><span class="badge ${grpCls[g]||'bu'}">${g}</span></td><td style="color:#888;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.orig_source}">${r.orig_source||'—'}</td><td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;${fixed?'color:#1D4ED8;font-weight:500':''}" title="${r.corr_source}">${r.corr_source||'—'}${fixed?'<span class="corr-tag">✦</span>':''}</td><td style="color:#888;white-space:nowrap">${r.owner||'—'}</td></tr>`;}).join('');
+  document.getElementById('tc-count').textContent=`Showing ${Math.min(rows.length,400)} of ${rows.length} leads`;
+}
+function renderNonPaid(){
+  const np=ALL.filter(r=>!r.is_paid);
+  const srcCount={};np.forEach(r=>{srcCount[r.orig_source||'Unknown']=(srcCount[r.orig_source||'Unknown']||0)+1;});
+  const sorted=Object.entries(srcCount).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const max=sorted[0]?.[1]||1;
+  document.getElementById('np-metrics').innerHTML=[{l:'Non-paid total',v:np.length,s:''},{l:'Organic web',v:np.filter(r=>r.orig_source==='Web site NYC').length,s:'Web site NYC'},{l:'Chatbox',v:np.filter(r=>r.orig_source==='Chatbox').length,s:''},{l:'Instagram',v:np.filter(r=>r.orig_source==='Instagram').length,s:''}].map(m=>`<div class="metric"><div class="metric-label">${m.l}</div><div class="metric-value">${m.v}</div></div>`).join('');
+  document.getElementById('np-bars').innerHTML=sorted.map(([src,n])=>`<div class="np-bar-wrap"><div class="bl"><span>${src}</span><span>${n}</span></div><div class="bbg"><div class="bf" style="width:${Math.round(n/max*100)}%;background:#888780"></div></div></div>`).join('');
+}
+function buildMonthSelectors(){
+  const monthNums=[...new Set(ALL.filter(r=>r.is_paid).map(r=>r.month_num))].sort((a,b)=>a-b);
+  MONTHS=monthNums;
+  ['sel-month','range-from','range-to','fmo'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const isF=id==='fmo';if(isF)el.innerHTML='<option value="">All months</option>';else el.innerHTML='';
+    monthNums.forEach(mo=>{const opt=document.createElement('option');opt.value=mo;opt.textContent=`${MNAMES[mo]} 2026`;el.appendChild(opt);});
+    if(id==='range-to'&&monthNums.length>0)el.value=monthNums[monthNums.length-1];
+  });
+}
+(async()=>{
+  try{
+    ALL=await fetchAll();
+    document.getElementById('hdr-sub').textContent=`Jan – Jun 2026 · ${ALL.length} leads · test leads excluded`;
+    document.getElementById('loading').style.display='none';
+    document.getElementById('app').style.display='block';
+    buildMonthSelectors();renderPaid();renderNonPaid();
+  }catch(e){document.getElementById('loading').innerHTML=`<span style="color:#791F1F">Error: ${e.message}</span>`;}
+})();
+</script>
+</body>
+</html>
