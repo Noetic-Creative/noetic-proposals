@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Noetic Creative × Caesarstone — Services &amp; Capabilities</title>
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --purple-glow: rgba(108, 92, 231, 0.18);
+  --mint: #00D4B4;
+  --coral: #FF6B6B;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --max: 1240px;
+  --max-narrow: 920px;
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+::selection { background: var(--purple); color: white; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { background: var(--paper); color: var(--ink-soft); overflow-x: hidden; font-family: var(--font-sans); font-size: 17px; line-height: 1.55; letter-spacing: -0.005em; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+section { position: relative; }
+.section { padding: clamp(80px, 12vh, 160px) 0; }
+.section-tight { padding: clamp(60px, 9vh, 110px) 0; }
+.section-head { margin-bottom: clamp(48px, 6vw, 80px); }
+.section-head .display-md { margin-top: 18px; max-width: 24ch; }
+
+h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.022em; line-height: 1.05; font-weight: 700; }
+.italic { font-style: italic; font-weight: 400; }
+.display-xl { font-family: var(--font-display); font-size: clamp(56px, 9vw, 132px); font-weight: 600; line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-family: var(--font-display); font-size: clamp(44px, 6vw, 88px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
+.display-sm { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+.lede { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-soft); font-weight: 400; max-width: 60ch; }
+
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; }
+.eyebrow.dark { color: rgba(255,255,255,0.6); }
+.eyebrow.dark::before { background: var(--mint); }
+
+/* ---------- Client bar ---------- */
+.client-bar { background: var(--ink); padding: 11px 32px; display: flex; align-items: center; justify-content: space-between; }
+.client-bar-logos { display: flex; align-items: center; gap: 18px; }
+.client-bar-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
+.client-bar-meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.4); }
+@media (max-width: 600px) { .client-bar-meta { display: none; } }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 14px 32px;
+  background: rgba(250, 250, 247, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.nav.scrolled { border-bottom-color: var(--rule); }
+.nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-mute); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--ink); color: white !important;
+  padding: 10px 18px; border-radius: 999px;
+  font-size: 13px !important; font-weight: 600 !important;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--purple) !important; }
+@media (max-width: 820px) { .nav-links li:not(:last-child) { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { padding-top: clamp(120px, 16vh, 200px); padding-bottom: clamp(80px, 12vh, 140px); position: relative; overflow: hidden; }
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(10,10,14,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,14,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+  pointer-events: none;
+}
+.hero-blob {
+  position: absolute; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(108,92,231,0.22), transparent 60%);
+  filter: blur(80px); pointer-events: none;
+  top: -200px; right: -200px; z-index: 0;
+}
+.hero-blob-2 {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle at 70% 70%, rgba(0,212,180,0.15), transparent 60%);
+  filter: blur(80px); pointer-events: none;
+  bottom: -150px; left: -100px; z-index: 0;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-meta {
+  display: flex; gap: 18px; align-items: center; margin-bottom: 28px;
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-mute);
+  flex-wrap: wrap;
+}
+.hero-meta-divider { width: 24px; height: 1px; background: var(--rule-strong); }
+.hero h1 { margin-bottom: 28px; }
+.hero h1 .accent-line { display: block; color: var(--purple); font-style: italic; font-weight: 400; }
+.hero-lede { font-size: clamp(19px, 1.8vw, 24px); line-height: 1.45; color: var(--ink-soft); max-width: 56ch; margin-top: 8px; font-weight: 400; }
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: clamp(60px, 8vh, 100px); border-top: 1px solid var(--rule); }
+.hero-stat { padding: 32px 24px 0 0; border-right: 1px solid var(--rule); }
+.hero-stat:not(:first-child) { padding-left: 24px; }
+.hero-stat:last-child { border-right: none; padding-right: 0; }
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px); font-weight: 600;
+  line-height: 1; letter-spacing: -0.03em;
+  color: var(--ink); margin-bottom: 8px;
+}
+.hero-stat-num .accent { color: var(--purple); }
+.hero-stat-label { font-size: 13px; color: var(--ink-mute); font-weight: 500; line-height: 1.4; max-width: 22ch; }
+@media (max-width: 800px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stat:nth-child(2n) { border-right: none; }
+  .hero-stat { padding: 24px 16px 24px 0; border-bottom: 1px solid var(--rule); }
+  .hero-stat:not(:first-child) { padding-left: 0; }
+  .hero-stat:last-child, .hero-stat:nth-last-child(2) { border-bottom: none; }
+}
+
+/* ---------- Marquee ---------- */
+.marquee-band { background: var(--ink); color: white; padding: 22px 0; overflow: hidden; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.marquee { display: flex; width: max-content; animation: scroll 48s linear infinite; gap: 56px; }
+.marquee-item { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; display: flex; align-items: center; gap: 56px; }
+.marquee-item::after { content: "✦"; color: var(--purple); font-size: 18px; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ---------- Index grid ---------- */
+.index-section { background: var(--paper); }
+.index-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  margin-top: 56px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+@media (max-width: 900px) { .index-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .index-grid { grid-template-columns: 1fr; } }
+.index-cell {
+  background: var(--paper);
+  padding: 26px 24px;
+  display: flex; align-items: baseline; gap: 16px;
+  transition: background 0.25s, color 0.25s;
+}
+.index-cell:hover { background: var(--ink); }
+.index-cell:hover .index-name { color: white; }
+.index-cell:hover .index-num { color: var(--mint); }
+.index-num { font-family: var(--font-mono); font-size: 11px; color: var(--purple); font-weight: 600; letter-spacing: 0.08em; transition: color 0.25s; }
+.index-name { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); line-height: 1.15; transition: color 0.25s; }
+
+/* ---------- Service deep dives (sticky left, scrolling right) ---------- */
+.service-deep { border-top: 1px solid var(--rule); padding: clamp(80px, 11vh, 130px) 0; background: var(--paper); position: relative; }
+.service-deep.warm { background: var(--paper-warm); }
+.service-deep-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 90px); align-items: start; }
+@media (max-width: 900px) { .service-deep-grid { grid-template-columns: 1fr; } .service-deep-meta { position: static; } }
+.service-deep-meta { position: sticky; top: 100px; }
+.service-deep-num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); font-weight: 500; margin-bottom: 12px; letter-spacing: 0.05em; }
+.service-deep-title { font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 56px); font-weight: 600; line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 18px; color: var(--ink); }
+.service-deep-tag { font-size: 17px; color: var(--purple-deep); font-weight: 500; margin-bottom: 22px; font-style: italic; font-family: var(--font-display); }
+.service-deep-tag::before { content: "— "; }
+.service-deep-desc { color: var(--ink-mute); font-size: 16px; line-height: 1.6; max-width: 44ch; }
+
+.svc-list { list-style: none; border-top: 1px solid var(--rule); }
+.svc-list li {
+  padding: 18px 0; border-bottom: 1px solid var(--rule);
+  font-size: 16.5px; color: var(--ink-soft); font-weight: 500;
+  display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: start;
+  line-height: 1.45;
+}
+.svc-list li::before { content: "→"; color: var(--purple); font-weight: 600; font-size: 15px; padding-top: 1px; }
+.svc-list li span.sub { display: block; grid-column: 2; font-size: 14px; color: var(--ink-mute); font-weight: 400; margin-top: 3px; }
+
+/* ---------- Team capabilities (dark) ---------- */
+.team-cap { background: var(--ink); color: white; padding: clamp(90px, 13vh, 160px) 0; position: relative; overflow: hidden; }
+.team-cap::before {
+  content: ""; position: absolute; top: -30%; right: -15%;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,92,231,0.28), transparent 70%);
+  filter: blur(90px);
+}
+.team-cap .container { position: relative; z-index: 1; }
+.team-cap h2 { color: white; }
+.team-cap .lede { color: rgba(255,255,255,0.7); }
+
+.cap-feature {
+  margin-top: 64px;
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: clamp(36px, 5vw, 56px);
+  background: rgba(108,92,231,0.08);
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+@media (max-width: 900px) { .cap-feature { grid-template-columns: 1fr; } }
+.cap-feature-tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 18px; }
+.cap-feature h3 { font-family: var(--font-display); font-size: clamp(28px, 3.4vw, 44px); font-weight: 600; color: white; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cap-feature p.cap-feature-lede { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.6; max-width: 40ch; }
+
+.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); border-top: none; }
+@media (max-width: 800px) { .cap-grid { grid-template-columns: 1fr; } }
+.cap-cell { background: var(--ink); padding: clamp(32px, 4vw, 48px); }
+.cap-cell-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 20px; }
+.cap-list { list-style: none; }
+.cap-list li {
+  padding: 12px 0; font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.5;
+  display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cap-list li:first-child { border-top: none; padding-top: 0; }
+.cap-list li::before { content: "→"; color: var(--purple); font-weight: 600; font-size: 13px; padding-top: 2px; }
+.cap-feature .cap-list li::before { color: var(--mint); }
+
+/* ---------- CTA ---------- */
+.cta-section {
+  background: var(--ink); color: white;
+  padding: clamp(100px, 14vh, 180px) 0 clamp(60px, 9vh, 100px);
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.cta-section::before {
+  content: ""; position: absolute; bottom: -20%; left: -10%;
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,92,231,0.32), transparent 70%);
+  filter: blur(100px);
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-eyebrow { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 28px; }
+.cta-title { font-family: var(--font-display); font-size: clamp(48px, 7vw, 100px); font-weight: 600; line-height: 0.98; letter-spacing: -0.03em; color: white; margin-bottom: 36px; max-width: 16ch; }
+.cta-title .italic { color: var(--purple); font-style: italic; font-weight: 500; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 60px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  transition: all 0.2s; border: 1px solid transparent;
+}
+.btn-primary { background: var(--purple); color: white; }
+.btn-primary:hover { background: white; color: var(--ink); }
+.btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.2); }
+.btn-ghost:hover { border-color: white; }
+.btn svg { width: 16px; height: 16px; }
+.footer-meta {
+  margin-top: 80px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex; justify-content: space-between; align-items: end;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-meta-block { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.7; }
+.footer-meta-block span { display: block; color: white; font-size: 13px; text-transform: none; letter-spacing: -0.01em; margin-top: 6px; font-family: var(--font-sans); font-weight: 500; }
+
+/* ---------- Animation ---------- */
+body.anim-ready .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+body.anim-ready .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- Print ---------- */
+@media print {
+  .nav, .client-bar { display: none; }
+  body { background: white; }
+  .marquee-band, .cta-section::before, .team-cap::before, .hero-blob, .hero-blob-2 { display: none; }
+  .service-deep { break-inside: avoid; }
+  .cap-cell, .cap-feature { break-inside: avoid; }
+  .service-deep-meta { position: static; }
+}
+</style>
+</head>
+<body>
+
+<!-- Client bar -->
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png"
+         alt="Noetic Creative"
+         style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <img src="assets/caesarstone-logo.png" alt="Caesarstone"
+         style="height:18px; width:auto; filter:brightness(0) invert(1); opacity:0.92;">
+  </div>
+  <span class="client-bar-meta">Services &amp; Capabilities &middot; June 2026 &middot; Confidential</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png"
+           alt="Noetic Creative" style="height:28px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">The menu</a></li>
+      <li><a href="#svc-01">Services</a></li>
+      <li><a href="#team-cap">The team</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Start the conversation →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Services &amp; Capabilities</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Caesarstone</span>
+      <span class="hero-meta-divider"></span>
+      <span>June 2026</span>
+    </div>
+    <h1 class="display-xl">
+      The full stack,<br>
+      <span class="accent-line">under one roof.</span>
+    </h1>
+    <p class="hero-lede">Caesarstone asked a direct question: what does Noetic actually do? This is the complete answer. Sixteen service categories and the team behind them, built to run as one integrated system rather than a roster of vendors. From the homeowner scrolling Pinterest to the fabricator quoting the job, every step of the journey has an owner here.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">16</span></div>
+        <div class="hero-stat-label">Service categories, one accountable team</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">22<span style="font-size:0.5em;">+13</span></div>
+        <div class="hero-stat-label">Full-time specialists plus vetted freelance experts</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">16</div>
+        <div class="hero-stat-label">Years taking global brands into the US market</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Video deliverables shipped in 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-band">
+  <div class="marquee">
+    <div class="marquee-item">Paid Social</div>
+    <div class="marquee-item">Paid Search</div>
+    <div class="marquee-item">Programmatic</div>
+    <div class="marquee-item">ABM &amp; Demand Gen</div>
+    <div class="marquee-item">Content Production</div>
+    <div class="marquee-item">Organic Social</div>
+    <div class="marquee-item">Data &amp; Attribution</div>
+    <div class="marquee-item">Email &amp; Lifecycle</div>
+    <div class="marquee-item">Webinars</div>
+    <div class="marquee-item">Strategy &amp; Brand</div>
+    <div class="marquee-item">Web &amp; Landing Pages</div>
+    <div class="marquee-item">SEO + GEO</div>
+    <div class="marquee-item">Events</div>
+    <div class="marquee-item">Trade &amp; Channel</div>
+    <div class="marquee-item">AI Infrastructure</div>
+    <div class="marquee-item">Paid Social</div>
+    <div class="marquee-item">Paid Search</div>
+    <div class="marquee-item">Programmatic</div>
+    <div class="marquee-item">ABM &amp; Demand Gen</div>
+    <div class="marquee-item">Content Production</div>
+    <div class="marquee-item">Organic Social</div>
+    <div class="marquee-item">Data &amp; Attribution</div>
+    <div class="marquee-item">Email &amp; Lifecycle</div>
+    <div class="marquee-item">Webinars</div>
+    <div class="marquee-item">Strategy &amp; Brand</div>
+    <div class="marquee-item">Web &amp; Landing Pages</div>
+    <div class="marquee-item">SEO + GEO</div>
+    <div class="marquee-item">Events</div>
+    <div class="marquee-item">Trade &amp; Channel</div>
+    <div class="marquee-item">AI Infrastructure</div>
+  </div>
+</div>
+
+<!-- Index -->
+<section class="index-section section" id="menu">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 — The menu at a glance</span>
+      <h2 class="display-md" style="margin-top:18px;">
+        Sixteen disciplines. One <em class="italic" style="color:var(--purple)">integrated</em> team.
+      </h2>
+      <p class="lede" style="margin-top:24px;">Every category below is a working practice inside Noetic today, not a partner referral with a markup. Where we extend through specialists (PR media relations, large-scale event production), they operate under Noetic management, inside Noetic process, on Noetic timelines.</p>
+    </div>
+
+    <div class="index-grid">
+      <a class="index-cell" href="#svc-01"><span class="index-num">/01</span><span class="index-name">Paid Social</span></a>
+      <a class="index-cell" href="#svc-02"><span class="index-num">/02</span><span class="index-name">Paid Search</span></a>
+      <a class="index-cell" href="#svc-03"><span class="index-num">/03</span><span class="index-name">Programmatic</span></a>
+      <a class="index-cell" href="#svc-04"><span class="index-num">/04</span><span class="index-name">ABM &amp; Demand Gen Paid Media</span></a>
+      <a class="index-cell" href="#svc-05"><span class="index-num">/05</span><span class="index-name">Content Production</span></a>
+      <a class="index-cell" href="#svc-06"><span class="index-num">/06</span><span class="index-name">Organic Social &amp; Community</span></a>
+      <a class="index-cell" href="#svc-07"><span class="index-num">/07</span><span class="index-name">Data, Analytics &amp; Attribution</span></a>
+      <a class="index-cell" href="#svc-08"><span class="index-num">/08</span><span class="index-name">Email &amp; Lifecycle</span></a>
+      <a class="index-cell" href="#svc-09"><span class="index-num">/09</span><span class="index-name">Webinars</span></a>
+      <a class="index-cell" href="#svc-10"><span class="index-num">/10</span><span class="index-name">PR &amp; Communications</span></a>
+      <a class="index-cell" href="#svc-11"><span class="index-num">/11</span><span class="index-name">Strategy &amp; Brand</span></a>
+      <a class="index-cell" href="#svc-12"><span class="index-num">/12</span><span class="index-name">Website &amp; Landing Pages</span></a>
+      <a class="index-cell" href="#svc-13"><span class="index-num">/13</span><span class="index-name">SEO &amp; GEO</span></a>
+      <a class="index-cell" href="#svc-14"><span class="index-num">/14</span><span class="index-name">Events</span></a>
+      <a class="index-cell" href="#svc-15"><span class="index-num">/15</span><span class="index-name">Trade &amp; Channel Marketing</span></a>
+      <a class="index-cell" href="#svc-16"><span class="index-num">/16</span><span class="index-name">AI Infrastructure</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Paid Social -->
+<section class="service-deep" id="svc-01">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 01</div>
+        <h3 class="service-deep-title">Paid Social</h3>
+        <div class="service-deep-tag">Creative is the variable, not the constraint.</div>
+        <p class="service-deep-desc">Certified, hands-on buyers across every platform that matters for a design-led brand, with creative testing velocity that keeps the account learning faster than the auction changes.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Meta (Facebook &amp; Instagram) ad management</li>
+        <li>TikTok ads</li>
+        <li>Pinterest ads</li>
+        <li>YouTube ads</li>
+        <li>LinkedIn ads <span class="sub">B2B layer for trade and A&amp;D audiences</span></li>
+        <li>Audience segmentation and targeting</li>
+        <li>A/B creative testing</li>
+        <li>Retargeting campaigns</li>
+        <li>Influencer paid amplification</li>
+        <li>Affiliate and partnership marketing</li>
+        <li>UGC ad sourcing and testing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Paid Search -->
+<section class="service-deep warm" id="svc-02">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 02</div>
+        <h3 class="service-deep-title">Paid Search</h3>
+        <div class="service-deep-tag">Capture intent the moment it forms.</div>
+        <p class="service-deep-desc">From "quartz vs granite" research queries to high-intent dealer searches, search is where consideration becomes a lead. We run it with brand protection and conquest discipline built in.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Google Search campaigns</li>
+        <li>Bing Ads</li>
+        <li>Google Shopping / Performance Max</li>
+        <li>Google Display Network</li>
+        <li>Keyword research and strategy</li>
+        <li>Search retargeting / RLSA</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 Programmatic -->
+<section class="service-deep" id="svc-03">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 03</div>
+        <h3 class="service-deep-title">Programmatic</h3>
+        <div class="service-deep-tag">Reach, with rules.</div>
+        <p class="service-deep-desc">Premium reach across screens and speakers, governed by audience data, brand safety standards, and frequency discipline so the brand shows up everywhere without wearing out its welcome.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Programmatic display</li>
+        <li>CTV / streaming ads</li>
+        <li>Programmatic audio</li>
+        <li>Native advertising</li>
+        <li>Data-driven audience targeting and lookalikes</li>
+        <li>Brand safety and inventory management</li>
+        <li>Cross-channel frequency capping</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ABM -->
+<section class="service-deep warm" id="svc-04">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 04</div>
+        <h3 class="service-deep-title">ABM &amp; Demand Gen Paid Media</h3>
+        <div class="service-deep-tag">Precision over broadcast.</div>
+        <p class="service-deep-desc">For named-account audiences like builders, multifamily developers, and large fabrication networks, we run person-level ABM with the platforms built for it. A market of hundreds gets treated like a market of hundreds.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Account-based marketing programs <span class="sub">Influ2, 6sense</span></li>
+        <li>LinkedIn automated outreach</li>
+        <li>Tiered account approach <span class="sub">1:1, 1:few, 1:many program design</span></li>
+        <li>Personalized messaging and ad creative by account tier</li>
+        <li>Account-specific landing pages and gated content</li>
+        <li>Lead scoring and meaningful touchpoint orchestration</li>
+        <li>Data enrichment <span class="sub">Account and contact data enrichment, intent data, list building</span></li>
+        <li>Outbound and lead gen support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Content Production -->
+<section class="service-deep" id="svc-05">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 05</div>
+        <h3 class="service-deep-title">Content Production</h3>
+        <div class="service-deep-tag">Volume, without losing the brand.</div>
+        <p class="service-deep-desc">An in-house design and production team that takes creative from brief to delivery: concepting, scripting, and the creator relationships that feed the pipeline. AI multiplies our output; creative judgment stays human.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Content production <span class="sub">Ad creative, brand content, multi-format asset production</span></li>
+        <li>AI-assisted video and creative at scale</li>
+        <li>Creative briefing and concept development</li>
+        <li>Scriptwriting and storyboarding</li>
+        <li>Influencer outreach and management</li>
+        <li>Content creator outreach, vetting, and briefing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Organic Social -->
+<section class="service-deep warm" id="svc-06">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 06</div>
+        <h3 class="service-deep-title">Organic Social &amp; Community</h3>
+        <div class="service-deep-tag">The brand, in the feed, every day.</div>
+        <p class="service-deep-desc">Surfaces are chosen on inspiration platforms long before anyone visits a showroom. We run the daily presence, the community, and the voices that influence the choice: designers, architects, and fabricators.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Organic social strategy and publishing</li>
+        <li>Community monitoring and engagement</li>
+        <li>Working with KOLs on content <span class="sub">Key opinion leaders: designers, architects, fabricator voices</span></li>
+        <li>UGC and creator content <span class="sub">Sourcing through delivery</span></li>
+        <li>Influencer and celebrity designer partnerships</li>
+        <li>Designer ambassador programs <span class="sub">e.g., a Caesarstone Circle concept</span></li>
+        <li>LinkedIn thought leadership</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Data -->
+<section class="service-deep" id="svc-07">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 07</div>
+        <h3 class="service-deep-title">Data, Analytics &amp; Attribution</h3>
+        <div class="service-deep-tag">Evidence over opinions.</div>
+        <p class="service-deep-desc">A brand that sells through dealers and fabricators cannot live on last-click attribution. We design measurement that connects brand investment to trade outcomes, and we report it in plain language every month.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Reporting, dashboards, and monthly performance reviews</li>
+        <li>Attribution framework <span class="sub">Brand lift, lead journey, MMM, incrementality testing</span></li>
+        <li>Conversion tracking and analytics implementation <span class="sub">GA4, GTM, server-side</span></li>
+        <li>Custom conversion event design and implementation</li>
+        <li>Proxy metric conversion modeling <span class="sub">Measuring what matters when the sale happens offline</span></li>
+        <li>Custom BI dashboards and data warehousing</li>
+        <li>UTM governance and tracking hygiene</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Email -->
+<section class="service-deep warm" id="svc-08">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 08</div>
+        <h3 class="service-deep-title">Email &amp; Lifecycle</h3>
+        <div class="service-deep-tag">The channel you own outright.</div>
+        <p class="service-deep-desc">Homeowner journeys are long; trade relationships are longer. Lifecycle marketing keeps both moving between touchpoints, with HubSpot implementation and marketing ops expertise in-house.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Email and lifecycle marketing <span class="sub">Flows, newsletters, persona and lifecycle segmentation</span></li>
+        <li>Marketing automation and CDP implementation</li>
+        <li>HubSpot / CRM implementation and marketing ops</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Webinars -->
+<section class="service-deep" id="svc-09">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 09</div>
+        <h3 class="service-deep-title">Webinars</h3>
+        <div class="service-deep-tag">An engine, not an event.</div>
+        <p class="service-deep-desc">End-to-end webinar operations as a repeatable system: the promotion that fills the room, the production that runs it, and the follow-up that converts it. A proven Noetic engine for trade and A&amp;D education.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Production and platform management</li>
+        <li>Promotional, confirmation, and post-webinar emails</li>
+        <li>Webinar promotional and post-webinar landing pages</li>
+        <li>Webinar ads</li>
+        <li>Webinar execution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PR -->
+<section class="service-deep warm" id="svc-10">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 10</div>
+        <h3 class="service-deep-title">PR &amp; Communications</h3>
+        <div class="service-deep-tag">Earned attention, on a schedule.</div>
+        <p class="service-deep-desc">PR that works in tandem with the creative strategy rather than beside it: launches, media relations, executive visibility, and the design-award circuit that matters in this category.</p>
+      </div>
+      <ul class="svc-list">
+        <li>PR strategy that works in tandem with our creative strategy</li>
+        <li>Year-round pitching to media outlets</li>
+        <li>Consumer and trade PR <span class="sub">Ongoing media relations</span></li>
+        <li>Product launch PR <span class="sub">Collections, color launches</span></li>
+        <li>Executive thought leadership and speaker placement</li>
+        <li>Awards submissions <span class="sub">Design and industry awards</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11 Strategy & Brand -->
+<section class="service-deep" id="svc-11">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 11</div>
+        <h3 class="service-deep-title">Strategy &amp; Brand</h3>
+        <div class="service-deep-tag">Every channel decision starts here.</div>
+        <p class="service-deep-desc">Before a dollar moves, we map the business: goals, competitors, personas, and the journey from homeowner inspiration to trade conversion. Strategy is a standing discipline at Noetic, not a kickoff deliverable that gathers dust.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Discovery and strategy <span class="sub">Business goals, competitive benchmarking, personas</span></li>
+        <li>Brand strategy and positioning</li>
+        <li>Brand identity and design systems</li>
+        <li>ICP development</li>
+        <li>Creative platform and campaign development</li>
+        <li>Market research and consumer insights <span class="sub">A&amp;D panels, homeowner journey mapping</span></li>
+        <li>Messaging and positioning audits</li>
+        <li>Messaging strategy and talking points</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 12 Web -->
+<section class="service-deep warm" id="svc-12">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 12</div>
+        <h3 class="service-deep-title">Website &amp; Landing Page Production</h3>
+        <div class="service-deep-tag">Where every campaign lands.</div>
+        <p class="service-deep-desc">Copy, design, and implementation under one roof, including the conversion surfaces specific to this category: visualizers, sample ordering, and campaign pages built to match the creative that drove the click.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Website development <span class="sub">Copy, design, and implementation</span></li>
+        <li>Visualizer tools <span class="sub">Room visualizers, countertop configurators, AR apps</span></li>
+        <li>E-commerce and sample ordering UX</li>
+        <li>CRO and personalization programs</li>
+        <li>Campaign-focused landing pages</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 13 SEO & GEO -->
+<section class="service-deep" id="svc-13">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 13</div>
+        <h3 class="service-deep-title">SEO &amp; GEO</h3>
+        <div class="service-deep-tag">Found by people. Found by AI.</div>
+        <p class="service-deep-desc">Search is splitting in two: classic rankings and AI-generated answers. We optimize for both, including the local layer that routes a ready homeowner to the nearest dealer.</p>
+      </div>
+      <ul class="svc-list">
+        <li>SEO <span class="sub">Technical audits, on-page optimization</span></li>
+        <li>GEO / AI search visibility optimization</li>
+        <li>Content articles</li>
+        <li>Backlinks</li>
+        <li>Dealer locator optimization and local SEO</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 14 Events -->
+<section class="service-deep warm" id="svc-14">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 14</div>
+        <h3 class="service-deep-title">Events</h3>
+        <div class="service-deep-tag">The booth is the beginning.</div>
+        <p class="service-deep-desc">A trade show is three days; the pipeline it should produce lasts quarters. We wrap events in content capture, lead generation, and the email motion before and after that turns attendance into revenue.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Content production at conferences</li>
+        <li>Lead generation for events</li>
+        <li>Email campaigns before and after the event</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 15 Trade -->
+<section class="service-deep" id="svc-15">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 15</div>
+        <h3 class="service-deep-title">Trade &amp; Channel Marketing</h3>
+        <div class="service-deep-tag">Demand means nothing if the channel can't convert it.</div>
+        <p class="service-deep-desc">The B2C2B reality of this category: consumer demand has to land in dealer showrooms, fabricator quotes, and builder specs. We build the programs and the enablement that make the channel an amplifier.</p>
+      </div>
+      <ul class="svc-list">
+        <li>Channel and partner marketing programs <span class="sub">Co-op management, dealer toolkits</span></li>
+        <li>Sales enablement content</li>
+        <li>B2B demand gen for the builder / multifamily segment</li>
+        <li>Multicultural and Spanish-language marketing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 16 AI -->
+<section class="service-deep warm" id="svc-16">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 16</div>
+        <h3 class="service-deep-title">AI Infrastructure</h3>
+        <div class="service-deep-tag">We build the tools we use.</div>
+        <p class="service-deep-desc">Not AI as a feature on a slide. Noetic ships its own internal systems, agents, and automations, and can build the same for clients: content engines, workflow automation, and visibility monitoring across the martech stack.</p>
+      </div>
+      <ul class="svc-list">
+        <li>AI infrastructure <span class="sub">Internal AI systems, agents, and automation for marketing ops</span></li>
+        <li>AI content engines <span class="sub">Briefing-to-asset pipelines, variation at scale</span></li>
+        <li>AI-powered workflow automation <span class="sub">n8n-style integrations across the martech stack</span></li>
+        <li>Custom internal tools <span class="sub">Dashboards, SOP systems, deliverable generators</span></li>
+        <li>AI search visibility monitoring</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Team Capabilities -->
+<section class="team-cap" id="team-cap">
+  <div class="container">
+    <div class="section-head" style="margin-bottom: 0;">
+      <span class="eyebrow dark">02 — Beyond the menu</span>
+      <h2 class="display-lg" style="margin-top:18px; max-width:20ch;">
+        The team behind <em class="italic" style="color:var(--mint)">the checklist</em>.
+      </h2>
+      <p class="lede" style="margin-top:24px; max-width:58ch;">A service list tells you what an agency sells. It doesn't tell you who shows up, how they work, or what they're unusually good at. This is that part.</p>
+    </div>
+
+    <div class="cap-feature">
+      <div>
+        <div class="cap-feature-tag">The differentiator</div>
+        <h3>AI &amp; engineering, in-house.</h3>
+        <p class="cap-feature-lede">Most agencies use martech. Noetic builds it. An in-house software engineering capability means the agency designs and ships its own production tools, and can do the same on the client side.</p>
+      </div>
+      <ul class="cap-list">
+        <li>AI-first operations: every department runs AI-augmented workflows as standard practice, not as an experiment</li>
+        <li>In-house engineering: we design and ship our own production tools, from ATS and SOP hubs to proposal generators and GEO monitoring</li>
+        <li>Workflow automation engineering: n8n-based integrations across QuickBooks, Hubstaff, Fireflies, Slack, Gmail, and a Supabase data warehouse</li>
+        <li>Custom MCP and agent infrastructure connecting agency data to AI systems for deliverable generation</li>
+        <li>Practical ability to build client-facing tools and automations, not just operate off-the-shelf martech</li>
+      </ul>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-cell">
+        <div class="cap-cell-label">Structure &amp; Model</div>
+        <ul class="cap-list">
+          <li>22 full-time team members plus 13 specialized freelancers; specialists over generalists by design</li>
+          <li>Remote-first, LatAm-rooted talent model: senior specialist quality at sustainable economics</li>
+          <li>Boutique discipline: a capped account roster (15 to 18 max) so senior people stay hands-on</li>
+          <li>Functional leads across every discipline: Accounts, Paid Media, Design, Strategy, Copy, Social/UGC, Ops, HR</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <div class="cap-cell-label">Language &amp; Market Fluency</div>
+        <ul class="cap-list">
+          <li>Fully bilingual English/Spanish team; native-level Spanish content and community capability</li>
+          <li>16 years of taking global companies into the US market; cross-cultural GTM translation as a core skill</li>
+          <li>US market fluency across both B2B and consumer-to-trade segments</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <div class="cap-cell-label">Channel &amp; Platform Expertise</div>
+        <ul class="cap-list">
+          <li>Certified, hands-on buyers across Meta, Google, TikTok, LinkedIn, Pinterest, and YouTube</li>
+          <li>HubSpot implementation and administration expertise in-house</li>
+          <li>ABM platform experience: Influ2, 6sense</li>
+          <li>Analytics engineering: GA4, GTM, server-side tracking, UTM governance, and dashboarding</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <div class="cap-cell-label">Creative &amp; Content</div>
+        <ul class="cap-list">
+          <li>In-house design team with full brand and performance creative capability, Figma-based</li>
+          <li>Senior copywriting across B2B and consumer registers</li>
+          <li>UGC operations as a repeatable system: creator sourcing, vetting, briefing, contracts, and delivery</li>
+          <li>AI-assisted production at scale: 200+ video deliverables shipped in 2025</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <div class="cap-cell-label">Strategy &amp; Measurement</div>
+        <ul class="cap-list">
+          <li>Full-funnel strategic planning across B2C2B models: consumer demand driving trade conversion</li>
+          <li>Attribution design beyond last-click: brand lift, lead journey tracking, MMM, incrementality frameworks</li>
+          <li>Competitive and market intelligence as a standing discipline, not a one-off deliverable</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <div class="cap-cell-label">Operations &amp; Process</div>
+        <ul class="cap-list">
+          <li>Documented SOP culture: playbook-driven delivery for repeatable quality</li>
+          <li>Structured project management in Asana with workflows per service line</li>
+          <li>Proven ability to scale: 65% team growth in 2025 without quality loss</li>
+          <li>Vendor and freelancer network management: 13 vetted specialists under active management, a model that extends naturally to white-label PR and events partners</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">03 — Next steps</div>
+    <h2 class="cta-title">
+      Everything here is one <span class="italic">conversation</span> away.
+    </h2>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">
+        tamir@noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+      </a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">
+        noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-meta">
+      <div class="footer-meta-block">
+        Prepared for
+        <span>Caesarstone · June 2026 · Confidential</span>
+      </div>
+      <div class="footer-meta-block">
+        Headquarters
+        <span>Miami, Florida — Remote-first operations across the Americas</span>
+      </div>
+      <div class="footer-meta-block">
+        © 2026 Noetic Creative
+        <span>noetic.io · tamir@noetic.io</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  document.body.classList.add('anim-ready');
+  const els = document.querySelectorAll('.svc-list li, .index-cell, .cap-cell, .cap-feature, .hero-stat');
+  els.forEach(el => el.classList.add('fade-in'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => observer.observe(el));
+
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 4000);
+}
+</script>
+</body>
+</html>
