@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="A standalone Account-Based Marketing proposal for Pollogen: reaching tier-1 OEM and white-label buyers. June 2026.">
+<title>Pollogen × Noetic — ABM Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --card: #FFFFFF;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --purple-glow: rgba(108, 92, 231, 0.18);
+  --mint: #00D4B4;
+  --coral: #FF6B6B;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --max: 1240px;
+  --max-narrow: 920px;
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+::selection { background: var(--purple); color: white; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { background: var(--paper); color: var(--ink-soft); overflow-x: hidden; font-family: var(--font-sans); font-size: 17px; line-height: 1.55; letter-spacing: -0.005em; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.container-narrow { width: 100%; max-width: var(--max-narrow); margin: 0 auto; padding: 0 32px; }
+section { position: relative; }
+.section { padding: clamp(80px, 12vh, 160px) 0; }
+.section-tight { padding: clamp(60px, 9vh, 110px) 0; }
+.section-head { margin-bottom: clamp(48px, 6vw, 80px); }
+.section-head .display-md { margin-top: 18px; max-width: 24ch; }
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+.display-xl { font-family: var(--font-display); font-size: clamp(56px, 9vw, 132px); font-weight: 600; line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-family: var(--font-display); font-size: clamp(44px, 6vw, 88px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
+.display-sm { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.022em; line-height: 1.05; font-weight: 700; }
+.italic { font-style: italic; font-weight: 400; }
+.lede { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-soft); font-weight: 400; max-width: 62ch; }
+.lede-lg { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.4; color: var(--ink); font-weight: 400; letter-spacing: -0.01em; max-width: 34ch; }
+.mono { font-family: var(--font-mono); }
+
+.eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; }
+.eyebrow.dark { color: rgba(255,255,255,0.6); }
+
+/* Client bar */
+.client-bar { background: var(--ink); padding: 11px 32px; display: flex; align-items: center; justify-content: space-between; }
+.client-bar-logos { display: flex; align-items: center; gap: 18px; }
+.client-bar-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
+.client-bar-meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.4); }
+@media (max-width: 600px) { .client-bar-meta { display: none; } }
+
+/* Nav */
+.nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 32px; background: rgba(250, 250, 247, 0.85); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+.nav.scrolled { border-bottom-color: var(--rule); }
+.nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 16px; }
+.nav-divider { width: 1px; height: 22px; background: var(--rule-strong); }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-mute); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--ink); color: white !important; padding: 10px 18px; border-radius: 999px; font-size: 13px !important; font-weight: 600 !important; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+.nav-cta:hover { background: var(--purple) !important; }
+@media (max-width: 920px) { .nav-links li:not(:last-child) { display: none; } }
+
+/* Hero */
+.hero { padding-top: clamp(90px, 13vh, 150px); padding-bottom: clamp(70px, 11vh, 130px); position: relative; overflow: hidden; }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(10,10,14,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,14,0.04) 1px, transparent 1px); background-size: 80px 80px; background-position: -1px -1px; mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent); pointer-events: none; }
+.hero-blob { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(108,92,231,0.22), transparent 60%); filter: blur(80px); pointer-events: none; top: -200px; right: -200px; z-index: 0; }
+.hero-blob-2 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle at 70% 70%, rgba(0,212,180,0.15), transparent 60%); filter: blur(80px); pointer-events: none; bottom: -150px; left: -100px; z-index: 0; }
+.hero-inner { position: relative; z-index: 1; }
+.hero-meta { display: flex; gap: 18px; align-items: center; margin-bottom: 28px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-mute); flex-wrap: wrap; }
+.hero-meta-divider { width: 24px; height: 1px; background: var(--rule-strong); }
+.hero h1 { margin-bottom: 28px; }
+.hero h1 .accent-line { display: block; color: var(--purple); font-style: italic; font-weight: 400; }
+.hero-lede { font-size: clamp(19px, 1.8vw, 24px); line-height: 1.45; color: var(--ink-soft); max-width: 60ch; margin-top: 8px; font-weight: 400; }
+
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: clamp(56px, 8vh, 96px); border-top: 1px solid var(--rule); }
+.hero-stat { padding: 32px 24px 0 0; border-right: 1px solid var(--rule); }
+.hero-stat:not(:first-child) { padding-left: 24px; }
+.hero-stat:last-child { border-right: none; padding-right: 0; }
+.hero-stat-num { font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 8px; }
+.hero-stat-num .small { font-size: 0.5em; vertical-align: super; }
+.hero-stat-num .accent { color: var(--purple); }
+.hero-stat-label { font-size: 13px; color: var(--ink-mute); font-weight: 500; line-height: 1.4; max-width: 24ch; }
+@media (max-width: 800px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stat:nth-child(2n) { border-right: none; }
+  .hero-stat { padding: 24px 16px 24px 0; border-bottom: 1px solid var(--rule); }
+  .hero-stat:not(:first-child) { padding-left: 0; }
+  .hero-stat:last-child, .hero-stat:nth-last-child(2) { border-bottom: none; }
+}
+
+/* Generic dark section */
+.dark { background: var(--ink); color: rgba(255,255,255,0.92); }
+.dark h1, .dark h2, .dark h3, .dark h4 { color: #fff; }
+.dark .lede { color: rgba(255,255,255,0.7); }
+.dark .eyebrow { color: rgba(255,255,255,0.6); }
+.dark .eyebrow::before { background: var(--mint); }
+.dark .accent-italic { color: var(--mint); }
+.accent-italic { color: var(--purple); font-style: italic; font-weight: 400; }
+
+/* Belief / numbered list */
+.belief-list { list-style: none; display: flex; flex-direction: column; }
+.belief-item { padding: 30px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start; }
+.belief-item:last-child { border-bottom: 1px solid var(--rule); }
+.belief-num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); font-weight: 500; letter-spacing: 0.05em; padding-top: 6px; }
+.belief-content h3 { font-size: clamp(20px, 2.2vw, 27px); font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.15; }
+.belief-content p { color: var(--ink-mute); max-width: 70ch; }
+.dark .belief-item { border-color: rgba(255,255,255,0.12); }
+.dark .belief-num { color: rgba(255,255,255,0.5); }
+.dark .belief-content p { color: rgba(255,255,255,0.7); }
+@media (max-width: 640px) { .belief-item { grid-template-columns: 1fr; gap: 8px; } }
+
+/* Two-column lanes */
+.lanes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid rgba(255,255,255,0.14); }
+.lane { padding: clamp(32px, 4vw, 52px); }
+.lane:first-child { border-right: 1px solid rgba(255,255,255,0.14); }
+.lane-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 20px; }
+.lane h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 600; margin-bottom: 24px; letter-spacing: -0.02em; }
+.lane ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.lane li { color: rgba(255,255,255,0.72); padding-left: 20px; position: relative; line-height: 1.45; }
+.lane li::before { content: ""; position: absolute; left: 0; top: 11px; width: 7px; height: 7px; background: var(--mint); border-radius: 50%; }
+.lane li strong { color: #fff; font-weight: 600; }
+.lane-foot { margin-top: 28px; font-style: italic; font-family: var(--font-display); font-size: 18px; color: rgba(255,255,255,0.8); }
+@media (max-width: 760px) { .lanes-grid { grid-template-columns: 1fr; } .lane:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.14); } }
+</style>
+</head>
+<body>
+
+<!-- CLIENT BAR -->
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <img src="https://proposals.noetic.io/pollogen-9gu9/assets/pollogen-logo.png" alt="Pollogen" style="height:18px; width:auto; opacity:0.92; filter:brightness(0) invert(1);">
+  </div>
+  <span class="client-bar-meta">ABM Proposal &middot; June 2026 &middot; Confidential</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:26px; width:auto;">
+      <span class="nav-divider"></span>
+      <img src="https://proposals.noetic.io/pollogen-9gu9/assets/pollogen-logo.png" alt="Pollogen" style="height:20px; width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#setup">The brief</a></li>
+      <li><a href="#abm">What ABM is</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#assets">Assets</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Reply to Tamir →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>ABM Proposal</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Yael Gilboa, Pollogen</span>
+      <span class="hero-meta-divider"></span>
+      <span>June 2026</span>
+    </div>
+    <h1 class="display-xl">
+      Warm the account<br>
+      <span class="accent-line">before the call.</span>
+    </h1>
+    <p class="hero-lede">Pollogen has the science to be the technology behind the world's biggest beauty and consumer-health brands. This is a six-month account-based program built to reach the executives who decide that, on their terms, in their language, so that when a Pollogen salesperson reaches out, the name is already familiar.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">Months, end to end. A defined program, not an open-ended retainer.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">3</span></div>
+        <div class="hero-stat-label">Channels: LinkedIn, account-based display, and personalized email.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3<span class="small">+</span></div>
+        <div class="hero-stat-label">Persona tracks, each with its own creative, landing pages, and email.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2<span class="small">–3</span></div>
+        <div class="hero-stat-label">Reusable hero assets your sales team keeps using past month six.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — THE BRIEF / SETUP -->
+<section class="section" id="setup" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 — The brief</span>
+      <h2 class="display-md">A different audience than the social work. <span class="accent-italic">A different motion.</span></h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(32px,5vw,72px); align-items:start;">
+      <div>
+        <p class="lede" style="margin-bottom:24px;">Pollogen's organic social program speaks to distributors, aestheticians, and consumers: the people who pull the brand through the market. This proposal is about a separate, higher-stakes conversation entirely.</p>
+        <p style="color:var(--ink-mute); max-width:62ch; margin-bottom:20px;">The goal here is to reach senior executives inside tier-1 accounts, the L'Oréals and Philips of the world, and put a single idea in front of them: Pollogen's technology can sit inside their products, as a white-label or OEM partner. That is not a feed. It is a boardroom. And you do not reach a boardroom by posting more often.</p>
+        <p style="color:var(--ink-mute); max-width:62ch;">You reach it with account-based marketing. A discipline built to identify a small, named set of high-value accounts, map the people inside them who matter, and surround those people with content built specifically for them. This document explains how we would run that program for Pollogen over six months, what it costs, and what it produces month by month.</p>
+      </div>
+      <div style="border:1px solid var(--rule); background:var(--card); padding:clamp(28px,3vw,40px);">
+        <div class="mono" style="font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); margin-bottom:22px;">At a glance</div>
+        <dl style="display:flex; flex-direction:column; gap:18px;">
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">Company serviced</dt><dd style="font-weight:600; color:var(--ink);">Pollogen</dd></div>
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">Service</dt><dd style="font-weight:600; color:var(--ink);">Account-Based Marketing (ABM)</dd></div>
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">The target</dt><dd style="color:var(--ink-soft);">Executives at tier-1 brands (L'Oréal, Philips, and peers) for white-label / OEM partnership</dd></div>
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">Term</dt><dd style="color:var(--ink-soft);">6 months</dd></div>
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">Investment</dt><dd style="color:var(--ink-soft);">$48,000 (retainer). Media budget separate, scoped in three tiers below.</dd></div>
+          <div><dt class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:5px;">Relationship to social work</dt><dd style="color:var(--ink-soft);">Fully standalone. Designed to run alongside the organic social proposal, but dependent on neither.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — WHAT ABM IS -->
+<section class="section dark" id="abm">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">02 — What ABM is</span>
+      <h2 class="display-md">Most marketing casts a wide net. <span class="accent-italic">ABM picks the fish first.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:48px; max-width:70ch;">Account-based marketing flips the usual logic of demand generation. Instead of putting content in front of a broad audience and waiting to see who raises a hand, ABM starts with a short list of specific companies you have decided are worth winning, then works backward to the people inside them.</p>
+    <ul class="belief-list">
+      <li class="belief-item">
+        <div class="belief-num">/01</div>
+        <div class="belief-content">
+          <h3>It starts with named accounts, not audiences</h3>
+          <p>The first move is a defined target account list: a finite set of companies, chosen on fit and reachability, not a demographic. For Pollogen that means the specific tier-1 brands whose product lines could carry Pollogen technology. We treat each one as a market of its own.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/02</div>
+        <div class="belief-content">
+          <h3>Inside each account is a buying committee, not a buyer</h3>
+          <p>A white-label decision at a company like L'Oréal is never made by one person. It moves through a committee: someone who owns innovation, someone who owns the technology, someone who owns the commercial case, sometimes procurement and regulatory too. ABM identifies these roles (the "buyer personas") and speaks to each one differently, because each one cares about something different.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/03</div>
+        <div class="belief-content">
+          <h3>The message is matched to the person</h3>
+          <p>A Chief Innovation Officer wants to see the science. A CTO wants to understand integration and IP. A CFO wants the unit economics. In ABM the creative, the landing page, and the email a person sees are built for their function, not for a generic "audience." That personalization is the entire point. It is what makes a cold account feel like a warm one.</p>
+        </div>
+      </li>
+      <li class="belief-item">
+        <div class="belief-num">/04</div>
+        <div class="belief-content">
+          <h3>Marketing and sales run the play together</h3>
+          <p>ABM is the only marketing discipline designed to hand off cleanly to a salesperson. The whole program exists to make the sales conversation easier: either by generating a direct lead, or by warming the account so thoroughly that when the Pollogen rep makes contact, the brand is already recognized. We will define that handoff explicitly so nothing falls between the two teams.</p>
+        </div>
+      </li>
+    </ul>
+    <div style="margin-top:56px; border-top:1px solid rgba(255,255,255,0.14); padding-top:32px;">
+      <p style="font-family:var(--font-display); font-size:clamp(22px,2.6vw,32px); font-weight:600; line-height:1.25; max-width:30ch; color:#fff;">The function we target is the one open question. <span class="accent-italic">Pollogen helps us answer it.</span></p>
+      <p style="color:rgba(255,255,255,0.7); max-width:64ch; margin-top:18px;">You asked us to leave the exact role to be defined: Chief Innovation Officer, CTO, CFO, Head of Product, or a combination. That is the right call, and it is exactly what a persona-definition workshop in Month 1 is for. We come with the structure and the research. Pollogen confirms which functions actually sign off on an OEM partnership. Everything downstream, every asset and every targeting setting, follows from that decision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — STRATEGY: THREE PILLARS -->
+<section class="section" id="strategy" style="background:var(--paper-warm);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">03 — The strategy</span>
+      <h2 class="display-md">Three pillars. <span class="accent-italic">One direction of travel.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:56px;">The program runs on three pillars in sequence. Define the account and the people in it. Personalize to their function. Then either generate the lead or warm the ground for sales. Each pillar feeds the next.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--rule-strong); background:var(--card);">
+      <div style="padding:clamp(28px,3vw,40px); border-right:1px solid var(--rule);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:var(--purple); margin-bottom:18px;">PILLAR 01</div>
+        <h3 style="font-family:var(--font-display); font-size:clamp(22px,2.4vw,30px); font-weight:600; line-height:1.1; margin-bottom:16px;">Define the account, define the committee</h3>
+        <p style="color:var(--ink-mute); font-size:15px; line-height:1.55;">We build the target account list with Pollogen, tier it by fit and reachability, and run the persona workshop that resolves which functions we are actually selling to. Nothing gets made until we know who it is for.</p>
+      </div>
+      <div style="padding:clamp(28px,3vw,40px); border-right:1px solid var(--rule);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:var(--purple); margin-bottom:18px;">PILLAR 02</div>
+        <h3 style="font-family:var(--font-display); font-size:clamp(22px,2.4vw,30px); font-weight:600; line-height:1.1; margin-bottom:16px;">Personalize to the function</h3>
+        <p style="color:var(--ink-mute); font-size:15px; line-height:1.55;">Every ad, landing page, email, and hero asset is matched to the persona. Scientific framing for innovation and R&D. Technical framing for the CTO. Financial framing for the CFO. The account sees a Pollogen that already understands its world.</p>
+      </div>
+      <div style="padding:clamp(28px,3vw,40px);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:var(--purple); margin-bottom:18px;">PILLAR 03</div>
+        <h3 style="font-family:var(--font-display); font-size:clamp(22px,2.4vw,30px); font-weight:600; line-height:1.1; margin-bottom:16px;">Generate the lead, or warm the ground</h3>
+        <p style="color:var(--ink-mute); font-size:15px; line-height:1.55;">Two ways to win, measured separately. Either the program produces direct top-tier leads, or it builds enough brand familiarity inside the account that the Pollogen salesperson's outreach lands warm. We commit to both and report on both.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03b — THE DUAL GOAL -->
+<section class="section-tight" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">03b — Two ways to win</span>
+      <h2 class="display-sm">Quantity or warmth. <span class="accent-italic">We measure each on its own terms.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:44px;">You framed success two ways, and they are genuinely different goals with different metrics. Rather than blur them, we run a dual-KPI model so the six-month review is never an argument about which one counted.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="border:1px solid var(--rule-strong); padding:clamp(28px,3vw,40px); background:var(--card);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:var(--ink-mute); margin-bottom:16px;">TRACK A — VOLUME</div>
+        <h3 style="font-family:var(--font-display); font-size:clamp(22px,2.4vw,28px); font-weight:600; margin-bottom:16px; line-height:1.1;">Generate top-tier leads</h3>
+        <p style="color:var(--ink-mute); margin-bottom:20px; font-size:15px;">For when the priority is getting names and contact into the pipeline at scale across the account list. Direct response, form fills, asset downloads, meeting requests.</p>
+        <div class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;">What we report</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:9px; font-size:14px; color:var(--ink-soft);">
+          <li>Leads / MQLs generated by account</li>
+          <li>Cost per lead vs. benchmark</li>
+          <li>Asset and calculator completions</li>
+          <li>Meeting requests booked</li>
+        </ul>
+      </div>
+      <div style="border:1px solid var(--rule-strong); padding:clamp(28px,3vw,40px); background:var(--card);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:var(--purple); margin-bottom:16px;">TRACK B — WARMTH</div>
+        <h3 style="font-family:var(--font-display); font-size:clamp(22px,2.4vw,28px); font-weight:600; margin-bottom:16px; line-height:1.1;">Warm the account for sales</h3>
+        <p style="color:var(--ink-mute); margin-bottom:20px; font-size:15px;">For when the priority is air cover: building enough familiarity inside the account that the Pollogen rep's outreach is a warm conversation, not a cold one. This is the higher-value game for a long OEM sales cycle.</p>
+        <div class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;">What we report</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:9px; font-size:14px; color:var(--ink-soft);">
+          <li>Account penetration (people reached per account)</li>
+          <li>Engagement by named account and persona</li>
+          <li>Repeat exposure / frequency per contact</li>
+          <li>Warm-reply rate on sales outreach into engaged accounts</li>
+        </ul>
+      </div>
+    </div>
+    <p style="color:var(--ink-mute); max-width:64ch; margin-top:28px; font-size:15px;">At kickoff we agree which track leads. Most tier-1 OEM programs weight toward Track B, because the deal size justifies patience and the sales cycle is long. We can rebalance at the Month 3 checkpoint once real data exists.</p>
+  </div>
+</section>
+
+<!-- 04 — THE ASSET SYSTEM -->
+<section class="section dark" id="assets">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">04 — The asset system</span>
+      <h2 class="display-md">Same product. <span class="accent-italic">A different argument for every chair in the room.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:48px; max-width:68ch;">Personalization is not a logo swap. Each persona gets creative, a landing page, and an email sequence written to the thing that person is actually accountable for. The Pollogen science stays constant. The argument changes.</p>
+
+    <!-- persona matrix -->
+    <div style="border:1px solid rgba(255,255,255,0.16); overflow:hidden;">
+      <div style="display:grid; grid-template-columns:0.9fr 1.4fr 1.4fr; background:rgba(255,255,255,0.04);">
+        <div style="padding:18px 22px; font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.5); border-right:1px solid rgba(255,255,255,0.12);">Persona (example)</div>
+        <div style="padding:18px 22px; font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.5); border-right:1px solid rgba(255,255,255,0.12);">What they care about</div>
+        <div style="padding:18px 22px; font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.5);">The Pollogen angle we lead with</div>
+      </div>
+      <div style="display:grid; grid-template-columns:0.9fr 1.4fr 1.4fr; border-top:1px solid rgba(255,255,255,0.12);">
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12);"><strong style="color:#fff;">Chief Innovation Officer</strong><div style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:4px;">Innovation / R&D</div></div>
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.72); font-size:15px;">Differentiated, defensible science. Being first to a credible new modality.</div>
+        <div style="padding:22px; color:rgba(255,255,255,0.72); font-size:15px;">Scientific framing: TriPollar RF, OxyGeneo, the clinical proof points. Docuads and a science-led landing page.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:0.9fr 1.4fr 1.4fr; border-top:1px solid rgba(255,255,255,0.12);">
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12);"><strong style="color:#fff;">CTO / Head of Product</strong><div style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:4px;">Technology</div></div>
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.72); font-size:15px;">Integration, IP, manufacturability, time-to-market, technical risk.</div>
+        <div style="padding:22px; color:rgba(255,255,255,0.72); font-size:15px;">Technical framing: how the technology embeds, what is licensable, spec-level confidence. Technical one-pagers and an integration landing page.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:0.9fr 1.4fr 1.4fr; border-top:1px solid rgba(255,255,255,0.12);">
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12);"><strong style="color:#fff;">CFO / Commercial Lead</strong><div style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:4px;">Finance / Commercial</div></div>
+        <div style="padding:22px; border-right:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.72); font-size:15px;">Margin, unit economics, build-vs-license, payback.</div>
+        <div style="padding:22px; color:rgba(255,255,255,0.72); font-size:15px;">Financial framing: white-label margin and value story. The ROI calculator does the heavy lifting here.</div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.55); font-size:13px; margin-top:14px; font-family:var(--font-mono); letter-spacing:0.04em;">Personas shown are illustrative. The Month 1 workshop with Pollogen confirms the real committee and we build to that.</p>
+
+    <!-- what gets produced -->
+    <div style="margin-top:60px; display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid rgba(255,255,255,0.16);">
+      <div class="lane" style="border-right:1px solid rgba(255,255,255,0.14);">
+        <div class="lane-label">Per-persona campaign assets</div>
+        <ul>
+          <li><strong>Ad creatives, including docuads.</strong> Documentary-style creative that earns attention in a feed full of noise, cut per persona.</li>
+          <li><strong>Personalized landing pages.</strong> A dedicated page per persona (and, for top-tier accounts, per account where it is worth it).</li>
+          <li><strong>Personalized email sequences.</strong> Function-specific copy and cadence, built to nurture, not to blast.</li>
+          <li><strong>Display / account-based banners.</strong> The air-cover layer that keeps Pollogen visible across the committee.</li>
+        </ul>
+      </div>
+      <div class="lane">
+        <div class="lane-label">Hero assets (2 to 3, reusable)</div>
+        <ul>
+          <li><strong>A white-label ROI / margin calculator.</strong> The flagship. An interactive tool that lets a commercial buyer model the value of carrying Pollogen technology.</li>
+          <li><strong>A clinical / technical value model.</strong> Translates the science into a credibility asset an innovation or product lead can take into their own internal meeting.</li>
+          <li><strong>Optional third tool.</strong> A comparison or readiness assessment, scoped at kickoff if the persona work calls for it.</li>
+        </ul>
+        <p class="lane-foot">Built once, matched per persona, and yours to keep. These double as sales-enablement collateral well past month six.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — THE STACK -->
+<section class="section" style="background:var(--paper-cool);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 — The stack</span>
+      <h2 class="display-sm">The targeting layer that <span class="accent-italic">puts the work in front of the right names.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:44px;">ABM is only as good as its ability to reach specific people at specific companies. The platform layer is how a named account list becomes real impressions on real decision-makers.</p>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:0; border:1px solid var(--rule-strong); background:var(--card);">
+      <div style="padding:clamp(26px,3vw,38px); border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);">
+        <h3 style="font-family:var(--font-display); font-size:22px; font-weight:600; margin-bottom:12px;">LinkedIn, company and title targeting</h3>
+        <p style="color:var(--ink-mute); font-size:15px;">The core channel for reaching named accounts by company and by job function. Where committee members at tier-1 brands actually are in a professional mindset.</p>
+      </div>
+      <div style="padding:clamp(26px,3vw,38px); border-bottom:1px solid var(--rule);">
+        <h3 style="font-family:var(--font-display); font-size:22px; font-weight:600; margin-bottom:12px;">Account-based display / person-level ads</h3>
+        <p style="color:var(--ink-mute); font-size:15px;">A platform such as Influ2 to serve ads to named individuals, the air-cover layer that builds familiarity across the whole committee, not just whoever clicks.</p>
+      </div>
+      <div style="padding:clamp(26px,3vw,38px); border-right:1px solid var(--rule);">
+        <h3 style="font-family:var(--font-display); font-size:22px; font-weight:600; margin-bottom:12px;">Intent signals</h3>
+        <p style="color:var(--ink-mute); font-size:15px;">Where available, third-party intent data to prioritize accounts already showing interest in OEM, device manufacturing, or beauty-tech, so spend concentrates where it is warmest.</p>
+      </div>
+      <div style="padding:clamp(26px,3vw,38px);">
+        <h3 style="font-family:var(--font-display); font-size:22px; font-weight:600; margin-bottom:12px;">CRM and lead routing</h3>
+        <p style="color:var(--ink-mute); font-size:15px;">Clean handoff into Pollogen's CRM so a generated lead or an engaged account reaches the right salesperson with context attached. We confirm the CRM at kickoff and build routing to match.</p>
+      </div>
+    </div>
+    <p style="color:var(--ink-mute); font-size:14px; margin-top:18px; max-width:70ch;">We have run exactly this stack before, LinkedIn and person-level display layered against CRM intent signals, on a named-account program for an enterprise client. The mechanics are proven. What we tailor here is the account list, the personas, and the science-led creative.</p>
+  </div>
+</section>
+
+<!-- 06 — MONTH BY MONTH TIMELINE -->
+<section class="section" id="timeline" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 — The 6-month plan</span>
+      <h2 class="display-md">Six months, <span class="accent-italic">phase by phase.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:8px;">The arc is simple: build the foundation, launch, then optimize and warm. The three payment milestones (advance, launch, completion) map directly onto the three phases below.</p>
+  </div>
+
+  <div class="container" style="margin-top:48px;">
+    <div class="tl">
+
+      <!-- phase tag: foundation -->
+      <div class="tl-phase"><span>Phase 1 · Foundation</span><span class="tl-phase-pay">50% due in advance</span></div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 1</span><span class="tl-mlabel">Define &amp; design</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Kickoff and ABM working session: confirm objectives, weight Track A vs. Track B, agree definitions of a lead and a "warm" account.</li>
+            <li><strong>Persona-definition workshop.</strong> Resolve the open question: which functions sign off on a white-label / OEM deal. Output is a confirmed buying-committee map.</li>
+            <li><strong>Target account list build.</strong> With Pollogen, assemble and tier the named accounts (Tier A / B / C) by fit and reachability. L'Oréal, Philips, and peers anchor the list.</li>
+            <li>Account research dossiers for Tier-A accounts: org structure, committee names where findable, recent public initiatives and signals.</li>
+            <li>Messaging architecture per persona and the asset production plan.</li>
+            <li>Platform and CRM setup: LinkedIn, account-based display, intent and routing wiring confirmed.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 2</span><span class="tl-mlabel">Build</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Produce the per-persona campaign assets: ad creatives and docuads, personalized landing pages, email sequences.</li>
+            <li>Begin the hero assets: scope, design, and start the build of the white-label ROI / margin calculator and the clinical / technical value model.</li>
+            <li>Stand up tracking, audiences, and account lists inside each platform. Build the lead-routing path into Pollogen's CRM.</li>
+            <li>Internal QA and Pollogen review of all creative and claims before anything goes live (science and IP claims confirmed with Pollogen SMEs).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- phase tag: launch -->
+      <div class="tl-phase"><span>Phase 2 · Launch</span><span class="tl-phase-pay">25% due at launch</span></div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 3</span><span class="tl-mlabel">Go live</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Campaigns launch across LinkedIn and account-based display against the Tier-A list.</li>
+            <li>First hero asset (the ROI / margin calculator) goes live and becomes the centerpiece of the commercial-persona track.</li>
+            <li>Email sequences begin; landing pages live per persona.</li>
+            <li>Baseline data collection: reach, engagement by account, early leads. No targets asserted yet, pure measurement.</li>
+            <li><strong>Month 3 checkpoint:</strong> first real read on which accounts and personas are responding. Rebalance Track A vs. Track B if the data argues for it.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- phase tag: optimize -->
+      <div class="tl-phase"><span>Phase 3 · Optimize &amp; warm</span><span class="tl-phase-pay">25% due on completion</span></div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 4</span><span class="tl-mlabel">Optimize</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Optimize against baseline: shift budget and creative weight toward the accounts and personas showing engagement.</li>
+            <li>Second hero asset (clinical / technical value model) goes live, opening the innovation and product-persona track fully.</li>
+            <li>Creative refresh round one: retire what is not landing, double down on what is.</li>
+            <li>Expand reach within engaged Tier-A accounts to more committee members (deepening penetration for Track B).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 5</span><span class="tl-mlabel">Warm &amp; hand off</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Concentrate spend on the warmest accounts. This is where air cover converts into sales readiness.</li>
+            <li><strong>Sales handoff playbook</strong> delivered to the Pollogen team: which accounts are warm, who has engaged, what they saw, and how to open the conversation.</li>
+            <li>First warm sales outreach into engaged accounts, coordinated with Pollogen, so we can measure warm-reply rate.</li>
+            <li>Optional third hero asset deployed if scoped.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-month"><span class="tl-mnum">Month 6</span><span class="tl-mlabel">Review &amp; recommend</span></div>
+        <div class="tl-body">
+          <ul>
+            <li>Full six-month performance report against both tracks: leads and CPL on Track A, account penetration and warm-reply rate on Track B.</li>
+            <li>Account-by-account read: which tier-1 targets moved, which need a longer runway.</li>
+            <li>Asset library handover: all hero tools, landing pages, and creative documented and transferred for ongoing sales use.</li>
+            <li>Recommendation for Month 7 onward: which accounts to keep pursuing, where to expand the list, whether to scale media.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container" style="margin-top:40px;">
+    <div style="border-top:1px solid var(--rule); padding-top:24px;">
+      <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;">Always on, every month</div>
+      <p style="color:var(--ink-mute); max-width:74ch;">Campaign management and optimization, weekly internal monitoring, a monthly account-level report and review with Pollogen, and a standing point of contact. The rigor is identical in every month; what changes is whether the focus is building, launching, or warming.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.tl { display:flex; flex-direction:column; }
+.tl-phase { display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--ink); color:#fff; padding:14px 24px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-top:8px; }
+.tl-phase:first-child { margin-top:0; }
+.tl-phase-pay { color:var(--mint); }
+.tl-row { display:grid; grid-template-columns:200px 1fr; gap:0; border:1px solid var(--rule); border-top:none; background:var(--card); }
+.tl-phase + .tl-row { border-top:none; }
+.tl-month { padding:26px 24px; border-right:1px solid var(--rule); background:var(--paper-warm); display:flex; flex-direction:column; gap:6px; }
+.tl-mnum { font-family:var(--font-display); font-size:24px; font-weight:600; letter-spacing:-0.02em; color:var(--ink); }
+.tl-mlabel { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); }
+.tl-body { padding:26px 28px; }
+.tl-body ul { list-style:none; display:flex; flex-direction:column; gap:13px; }
+.tl-body li { position:relative; padding-left:20px; color:var(--ink-mute); font-size:15px; line-height:1.5; }
+.tl-body li::before { content:""; position:absolute; left:0; top:9px; width:6px; height:6px; background:var(--purple); border-radius:50%; }
+.tl-body li strong { color:var(--ink); font-weight:600; }
+@media (max-width:680px) { .tl-row { grid-template-columns:1fr; } .tl-month { border-right:none; border-bottom:1px solid var(--rule); flex-direction:row; align-items:baseline; gap:14px; } }
+</style>
+
+<!-- 07 — MEDIA BUDGET TIERS -->
+<section class="section dark" id="media">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">07 — Media budget</span>
+      <h2 class="display-md">The retainer builds the engine. <span class="accent-italic">Media is the fuel.</span></h2>
+    </div>
+    <p class="lede" style="margin-bottom:14px; max-width:70ch;">The $48,000 covers strategy, production, management, and the hero assets. The media spend that puts those assets in front of tier-1 executives sits separately, and it is the lever that decides how many accounts you can credibly reach. Three tiers, so the ambition is yours to set. We recommend and manage; you decide.</p>
+    <p style="color:rgba(255,255,255,0.55); font-size:13px; margin-bottom:44px; font-family:var(--font-mono); letter-spacing:0.04em;">Tier-1 LinkedIn and person-level ABM carries a real cost floor. These ranges are what it takes to be credible at this level. Final number locked at kickoff once the account list and persona count are set.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid rgba(255,255,255,0.16);">
+      <!-- lean -->
+      <div style="padding:clamp(28px,3vw,40px); border-right:1px solid rgba(255,255,255,0.14);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:rgba(255,255,255,0.5); margin-bottom:18px;">TIER 1 · LEAN</div>
+        <div style="font-family:var(--font-display); font-size:clamp(30px,3.4vw,40px); font-weight:600; color:#fff; line-height:1; margin-bottom:6px;">$4K<span style="font-size:0.45em; color:rgba(255,255,255,0.55);"> / mo</span></div>
+        <div class="mono" style="font-size:11px; color:var(--mint); letter-spacing:0.06em; margin-bottom:22px;">Focused air cover</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.5;">A tight Tier-A list, one to two personas in active rotation. Proves the motion on the highest-priority accounts before widening. Best paired with a Track B (warmth) focus.</p>
+      </div>
+      <!-- standard -->
+      <div style="padding:clamp(28px,3vw,40px); border-right:1px solid rgba(255,255,255,0.14); background:rgba(108,92,231,0.12); position:relative;">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--purple);"></div>
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:#fff; margin-bottom:18px;">TIER 2 · STANDARD <span style="color:var(--mint);">· RECOMMENDED</span></div>
+        <div style="font-family:var(--font-display); font-size:clamp(30px,3.4vw,40px); font-weight:600; color:#fff; line-height:1; margin-bottom:6px;">$6K<span style="font-size:0.45em; color:rgba(255,255,255,0.55);"> / mo</span></div>
+        <div class="mono" style="font-size:11px; color:var(--mint); letter-spacing:0.06em; margin-bottom:22px;">Full committee coverage</div>
+        <p style="color:rgba(255,255,255,0.78); font-size:14px; line-height:1.5;">The full Tier-A list with all confirmed personas in rotation, plus a Tier-B layer. Enough frequency to reach a whole buying committee, not just one role. The setting most tier-1 OEM programs need to move the needle.</p>
+      </div>
+      <!-- aggressive -->
+      <div style="padding:clamp(28px,3vw,40px);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:rgba(255,255,255,0.5); margin-bottom:18px;">TIER 3 · AGGRESSIVE</div>
+        <div style="font-family:var(--font-display); font-size:clamp(30px,3.4vw,40px); font-weight:600; color:#fff; line-height:1; margin-bottom:6px;">$9K+<span style="font-size:0.45em; color:rgba(255,255,255,0.55);"> / mo</span></div>
+        <div class="mono" style="font-size:11px; color:var(--mint); letter-spacing:0.06em; margin-bottom:22px;">Full-list saturation</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.5;">Tier A, B, and C active together, sustained frequency across every committee role, and headroom for both volume (Track A) and warmth (Track B) at once. For when speed to a signed OEM conversation is the priority.</p>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.6); font-size:14px; margin-top:24px; max-width:72ch;">Media spend is paid to the platforms, managed transparently by Noetic, and reported in full. It is not a markup. You can move between tiers at a monthly boundary as the program tells us where the warmth is.</p>
+  </div>
+</section>
+
+<!-- 08 — INVESTMENT & TERMS -->
+<section class="section" id="investment" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">08 — Investment &amp; terms</span>
+      <h2 class="display-md">One number for the work. <span class="accent-italic">Paid against milestones.</span></h2>
+    </div>
+    <div style="display:grid; grid-template-columns:0.8fr 1.2fr; gap:clamp(28px,4vw,56px); align-items:start;">
+      <div style="border:1px solid var(--rule-strong); background:var(--ink); color:#fff; padding:clamp(32px,4vw,48px);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; color:rgba(255,255,255,0.55); margin-bottom:14px;">6-MONTH PROGRAM</div>
+        <div style="font-family:var(--font-display); font-size:clamp(48px,7vw,80px); font-weight:600; line-height:1; color:#fff; margin-bottom:8px;">$48,000</div>
+        <div style="color:rgba(255,255,255,0.6); font-size:14px;">Retainer. Media budget separate (see tiers).</div>
+      </div>
+      <div>
+        <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:18px;">Payment schedule</div>
+        <div class="pay-row"><div class="pay-pct">50%</div><div><strong>In advance.</strong> Due on signature. Funds the Foundation phase: persona workshop, account list, research, and the start of asset production.</div></div>
+        <div class="pay-row"><div class="pay-pct">25%</div><div><strong>At launch.</strong> Due when campaigns go live (Month 3). Funds the live program and the first hero asset.</div></div>
+        <div class="pay-row"><div class="pay-pct">25%</div><div><strong>On completion.</strong> Due at the close of Month 6, with the full report and asset-library handover.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="border:1px solid var(--rule); padding:clamp(24px,3vw,34px); background:var(--card);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">What Pollogen provides</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:11px; font-size:15px; color:var(--ink-soft);">
+          <li>Confirmation of the target functions / buying committee in the Month 1 workshop</li>
+          <li>Access to product and technical SMEs to verify science and IP claims</li>
+          <li>Sign-off on the target account list</li>
+          <li>CRM access for lead routing, and sales-team availability for the Month 5 handoff</li>
+          <li>Timely review and approval of creative</li>
+        </ul>
+      </div>
+      <div style="border:1px solid var(--rule); padding:clamp(24px,3vw,34px); background:var(--card);">
+        <div class="mono" style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:16px;">Not included in this scope</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:11px; font-size:15px; color:var(--ink-soft);">
+          <li>The organic social program (separate proposal; this engagement stands alone)</li>
+          <li>Media spend (scoped separately in the tiers above)</li>
+          <li>Full corporate website builds beyond campaign landing pages</li>
+          <li>Third-party software and platform license fees</li>
+          <li>Outbound sales execution itself (we equip the handoff; Pollogen's team runs the conversations)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; border-top:1px solid var(--rule); padding-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div><div class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">Term</div><div style="color:var(--ink-soft); font-size:15px;">6 months</div></div>
+      <div><div class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">Validity</div><div style="color:var(--ink-soft); font-size:15px;">30 days from presentation</div></div>
+      <div><div class="mono" style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;">Acceptance</div><div style="color:var(--ink-soft); font-size:15px;">Via email. Work begins on confirmation of the first payment.</div></div>
+    </div>
+    <p style="color:var(--ink-mute); font-size:13px; margin-top:22px; max-width:78ch;">Pricing does not include software or third-party platform costs. Out-of-scope requests are quoted and approved in writing before work begins. The client is responsible for timely delivery of requested materials and for any copyright or other charges arising from materials supplied for use in the project.</p>
+  </div>
+</section>
+
+<style>
+.pay-row { display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start; padding:16px 0; border-top:1px solid var(--rule); }
+.pay-row:first-of-type { border-top:none; }
+.pay-pct { font-family:var(--font-display); font-size:30px; font-weight:600; color:var(--purple); line-height:1; }
+.pay-row div:last-child { color:var(--ink-mute); font-size:15px; line-height:1.5; }
+.pay-row strong { color:var(--ink); font-weight:600; }
+</style>
+
+<!-- 09 — CLOSING -->
+<section class="section dark" id="close">
+  <div class="container-narrow" style="text-align:center;">
+    <span class="eyebrow dark" style="justify-content:center;">09 — The takeaway</span>
+    <h2 class="display-md" style="margin:22px auto 28px; max-width:20ch;">ABM does not fail because the accounts are too big. <span class="accent-italic">It fails when the message is too generic.</span></h2>
+    <p class="lede" style="margin:0 auto 40px; color:rgba(255,255,255,0.72); max-width:60ch;">Pollogen has the one thing that makes a white-label pitch to L'Oréal or Philips credible: real, defensible science. The work is to put that science in front of the exact people who decide, in the exact language each of them speaks, often enough that the Pollogen name is familiar before the first sales call. That is what this program does.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="mailto:tamir@noetic.io?subject=Pollogen%20ABM%20Proposal" style="background:#fff; color:var(--ink); padding:15px 28px; border-radius:999px; font-weight:600; font-size:15px;">Reply to Tamir →</a>
+      <a href="https://noetic.io" style="border:1px solid rgba(255,255,255,0.3); color:#fff; padding:15px 28px; border-radius:999px; font-weight:600; font-size:15px;">noetic.io</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--ink); border-top:1px solid rgba(255,255,255,0.1); padding:40px 0;">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:0.85;">
+    <div class="mono" style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:right;">
+      ABM Proposal &middot; Prepared for Yael Gilboa, Pollogen<br>
+      June 2026 &middot; Valid 30 days &middot; Confidential &middot; © 2026 Noetic Creative &middot; Miami, Florida
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+</script>
+
+</body>
+</html>
