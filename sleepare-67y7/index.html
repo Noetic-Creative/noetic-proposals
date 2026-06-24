@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SleePare: Paid Social Media Plan (Meta &amp; Reddit)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF7; --paper-warm:#F2F0EA; --paper-cool:#F0F0F4; --card:#FFFFFF;
+  --ink:#0A0A0E; --ink-soft:#1A1A1F; --ink-mute:#6B6B7B; --ink-faint:#A8A8B5;
+  --purple:#6C5CE7; --purple-deep:#4D3FC9; --purple-soft:#EFEDFE;
+  --purple-glow:rgba(108,92,231,.18);
+  --mint:#00D4B4; --coral:#FF6B6B; --amber:#F5B400;
+  --rose:#FDEFF0; --mint-soft:#EFF6EE; --green-text:#38761D;
+  --rule:rgba(10,10,14,.08); --rule-strong:rgba(10,10,14,.16);
+  --font-display:'Fraunces','Times New Roman',serif;
+  --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --motion-fast:200ms; --motion-normal:400ms; --motion-slow:800ms;
+  --container:1100px; --container-narrow:820px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper); color:var(--ink-soft);
+  font-family:var(--font-sans); font-size:17px; line-height:1.6; font-weight:400; -webkit-font-smoothing:antialiased;}
+.display-xl{font-family:var(--font-display);font-weight:700;line-height:1.02;letter-spacing:-.02em;color:var(--ink);font-size:clamp(48px,8vw,104px)}
+.display-lg{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--ink);font-size:clamp(40px,6vw,72px)}
+.display-md{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--ink);font-size:clamp(30px,4vw,52px)}
+.display-sm{font-family:var(--font-display);font-weight:600;line-height:1.12;color:var(--ink);font-size:clamp(24px,3vw,36px)}
+.lede{font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:var(--ink-soft);max-width:60ch}
+.display-xl em,.display-lg em,.display-md em{font-style:italic;font-weight:600}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--purple);flex:0 0 auto}
+.container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.section{padding:clamp(56px,9vh,120px) 0}
+.section-head{margin-bottom:clamp(40px,6vh,64px)}
+.section.warm{background:var(--paper-warm)}
+.section.cool{background:var(--paper-cool)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:28px}
+.kpi{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px}
+.kpi .label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-mute)}
+.kpi .value{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--ink);margin-top:6px;line-height:1}
+.kpi .delta{font-family:var(--font-mono);font-size:13px;margin-top:8px;display:inline-flex;gap:4px}
+.delta.up{color:var(--green-text)} .delta.down{color:var(--coral)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+thead th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-mute);text-align:left;font-weight:500;padding:12px 14px;border-bottom:1px solid var(--rule-strong)}
+tbody td{padding:14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;border-top:2px solid var(--ink);border-bottom:none;font-size:16px}
+.pos{color:var(--green-text)} .neg{color:var(--coral)}
+.noetic-wordmark{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+.noetic-wordmark .dot{color:var(--purple)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:880px){.container{padding:0 24px}}
+@page{ size:A4; margin:16mm 14mm; }
+@media print{
+  html,body{background:#fff!important}
+  body{font-size:11pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important;transition:none!important}
+  .screen-only{display:none!important}
+  .section{padding:24px 0}
+  .container{max-width:none;padding:0}
+  .cover{break-after:page}
+  .card,.kpi,tr,.avoid-break{break-inside:avoid}
+  thead{display:table-header-group}
+  .display-xl{font-size:40pt}.display-lg{font-size:28pt}.display-md{font-size:20pt}.display-sm{font-size:15pt}
+  a{color:inherit;text-decoration:none}
+}
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:64px 40px;background:var(--ink);color:var(--paper)}
+.cover .display-xl{color:var(--paper);max-width:16ch}
+.cover-top{display:flex;justify-content:space-between;align-items:center}
+.cover .noetic-wordmark{color:var(--paper)}
+.cover-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.cover-meta-grid .cm .l{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.cover-meta-grid .cm .v{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--paper);margin-top:6px;line-height:1.1}
+.kpi-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.kpi-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.funnel-row{display:grid;grid-template-columns:140px 1fr;gap:0;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:var(--card);margin-bottom:14px}
+.funnel-row .tag{display:flex;flex-direction:column;justify-content:center;padding:24px 20px;color:#fff;background:var(--purple)}
+.funnel-row .tag.t2{background:var(--purple-deep)}
+.funnel-row .tag.t3{background:var(--ink)}
+.funnel-row .tag b{font-family:var(--font-display);font-size:20px;font-weight:700}
+.funnel-row .tag small{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-top:4px}
+.funnel-row .fb{padding:24px 26px}
+.funnel-row .fb .obj{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);font-weight:500;margin-bottom:8px}
+.funnel-row .fb p{font-size:15px;color:var(--ink-soft);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{font-family:var(--font-mono);font-size:11.5px;background:var(--paper-warm);color:var(--ink-soft);padding:6px 11px;border-radius:8px}
+.geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.geo-grid .g{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;font-weight:600;font-family:var(--font-display);font-size:18px}
+.road-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.road-grid .m{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px 14px;text-align:center}
+.road-grid .m .mn{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple)}
+.road-grid .m .cv{font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--ink);margin:8px 0 2px}
+.road-grid .m .ap{font-family:var(--font-mono);font-size:11px;color:var(--ink-mute)}
+.road-grid .m .ph{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;color:#fff;border-radius:6px;padding:3px 7px;margin-top:10px;display:inline-block}
+.ph-l{background:var(--ink-mute)} .ph-o{background:var(--purple)} .ph-s{background:var(--mint);color:var(--ink)}
+.sticker{background:var(--rose);border-left:3px solid var(--coral);border-radius:12px;padding:16px 18px;margin:0 0 16px;font-size:14px;color:var(--ink-soft)}
+.sticker b{color:var(--ink)}
+.callout{background:var(--purple-soft);border-radius:16px;padding:24px 26px;margin-top:18px;font-size:15px}
+.callout b{color:var(--ink)}
+.srcbar{margin-top:28px;padding:20px 22px;background:var(--card);border:1px solid var(--rule);border-radius:16px;font-size:13.5px;color:var(--ink-soft)}
+.srcbar .tagchip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;font-weight:500;border-radius:6px;padding:3px 8px;margin-right:8px;display:inline-block}
+.tagchip.data{background:var(--mint-soft);color:var(--green-text)}
+.tagchip.bench{background:var(--purple-soft);color:var(--purple-deep)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.tbl-cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:12px}
+.foot{background:var(--ink);color:var(--ink-faint);padding:40px 0;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em}
+.foot .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.foot .noetic-wordmark{color:var(--paper)}
+@media(max-width:880px){
+  .cover-meta-grid,.kpi-3,.kpi-4,.geo-grid,.road-grid{grid-template-columns:repeat(2,1fr)}
+  .funnel-row{grid-template-columns:100px 1fr}
+}
+@media print{ .cover{min-height:auto;padding:40px} }
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="cover-top">
+    <span class="noetic-wordmark">noetic<span class="dot">.</span></span>
+    <span class="eyebrow" style="color:var(--ink-faint)">Paid Social Media Plan</span>
+  </div>
+  <div>
+    <p class="eyebrow" style="color:var(--ink-faint);margin-bottom:18px">SleePare &middot; Meta &amp; Reddit &middot; June 2026</p>
+    <h1 class="display-xl">A 6-month path to <em>predictable</em> appointments.</h1>
+    <p class="lede" style="margin-top:20px;color:var(--ink-faint);max-width:52ch">A full-funnel launch across two new channels, built to step cost-per-appointment down from a realistic cold start toward target, grounded in SleePare's own conversion data.</p>
+  </div>
+  <div class="cover-meta-grid">
+    <div class="cm"><div class="l">Target CPA</div><div class="v">&le; $100</div></div>
+    <div class="cm"><div class="l">Channels</div><div class="v">Meta + Reddit</div></div>
+    <div class="cm"><div class="l">Monthly budget</div><div class="v">$15,000</div></div>
+    <div class="cm"><div class="l">Conversion</div><div class="v">Book Appointment</div></div>
+  </div>
+</header>
+
+<section class="section container">
+  <div class="section-head">
+    <p class="eyebrow">The objective</p>
+    <h2 class="display-lg">Drive in-store appointment <em>bookings</em>.</h2>
+    <p class="lede" style="margin-top:18px">The single conversion that matters is a booked appointment (Calendly scheduled) at one of SleePare's nine US showrooms. The target is a cost-per-appointment at or below $100. These are two brand-new channels with no pixel history, so the plan starts deliberately high and steps down toward target as the algorithms learn, with Meta reaching ~$105 by the sixth month of active delivery.</p>
+  </div>
+  <div class="kpi-4">
+    <div class="kpi"><div class="label">First ad month</div><div class="value">$308</div><div class="delta">cold start, blended</div></div>
+    <div class="kpi"><div class="label">Ad month 3</div><div class="value">$188</div><div class="delta">Meta alone $160</div></div>
+    <div class="kpi"><div class="label">Ad month 5</div><div class="value">$137</div><div class="delta down">Meta alone $118</div></div>
+    <div class="kpi"><div class="label">Ad month 6</div><div class="value">$123</div><div class="delta up">Meta reaches $105</div></div>
+  </div>
+</section>
+
+<section class="section warm">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Where the numbers come from</p>
+      <h2 class="display-md">Anchored to real Google Ads <em>data</em>.</h2>
+      <p class="lede" style="margin-top:16px">There is no Meta or Reddit history to model from, so we anchor the appointment CPA to the warmest signal SleePare owns: Google Search, where users arrive with declared intent. That data sets the floor; cold social channels start above it and converge down.</p>
+    </div>
+    <div class="card avoid-break">
+      <div class="tbl-cap">Google Ads &middot; Book Appointment CPA &middot; 11-month trailing</div>
+      <table>
+        <thead>
+          <tr><th>Month</th><th class="num">Jul</th><th class="num">Aug</th><th class="num">Sep</th><th class="num">Oct</th><th class="num">Nov</th><th class="num">Dec</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Apr</th><th class="num">May</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cost / appointment</td><td class="num">$122</td><td class="num">$111</td><td class="num">$180</td><td class="num">$148</td><td class="num">$139</td><td class="num">$180</td><td class="num">$110</td><td class="num">$109</td><td class="num">$121</td><td class="num">$133</td><td class="num">$126</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Read:</b> Google's appointment CPA averages ~$134 with a range of $109 to $180, and that is the warmest traffic SleePare has, with a mature pixel and months of optimization. A cold channel with no pixel cannot open below this, which is why Meta is modeled to start near $205 and Reddit higher still, then converge as conversion signal accumulates.</div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head">
+    <p class="eyebrow">Channel 1 &middot; 75% of budget &middot; ~$11,250/mo</p>
+    <h2 class="display-md">Meta, the appointment <em>engine</em>.</h2>
+    <p class="lede" style="margin-top:16px">Meta carries the conversion goal because it is the only channel here with a strong appointment-optimizing engine. We run three stages. The funnel stage is defined by the audience we target, not by the campaign objective: both MOFU and BOFU optimize for Book Appointment, but they reach different temperatures of audience.</p>
+  </div>
+  <div class="stack">
+    <div class="funnel-row avoid-break">
+      <div class="tag"><b>TOFU</b><small>Awareness</small></div>
+      <div class="fb">
+        <div class="obj">Objective: Video Views / ThruPlay</div>
+        <p>Warms a cold audience with new video creative edited in-house specifically for Meta. This stage is not judged on CPA; its purpose is to warm the audience so we can retarget those video viewers further down the funnel.</p>
+        <div class="chips"><span>Cost / ThruPlay</span><span>75% video viewed</span><span>Builds VV75% audiences</span><span>CPM $14 to $16</span></div>
+      </div>
+    </div>
+    <div class="funnel-row avoid-break">
+      <div class="tag t2"><b>MOFU</b><small>Prospecting</small></div>
+      <div class="fb">
+        <div class="obj">Objective: Sales &rarr; Book Appointment &middot; cold audience</div>
+        <p>Interest and lookalike targeting against people who don't know SleePare yet. The prospecting motor and main volume driver. If it can't exit learning on appointments early, we optimize for an intermediate event (Calendly page view) for 2 to 3 weeks to feed the pixel, then switch.</p>
+        <div class="chips"><span>CPM $13 to $16</span><span>CTR 0.9% &rarr; 1.35%</span><span>CPC $1.78 &rarr; $0.89</span><span>Freq 2.5 to 3</span><span>CVR ~1%</span><span>CPA $205 &rarr; $122</span></div>
+      </div>
+    </div>
+    <div class="funnel-row avoid-break">
+      <div class="tag t3"><b>BOFU</b><small>Retargeting</small></div>
+      <div class="fb">
+        <div class="obj">Objective: Sales &rarr; Book Appointment &middot; warm audience</div>
+        <p>Same objective, hot audiences: site visitors (180d) and TOFU video viewers (booking-page drop-off retargeting to be confirmed, pending tracking setup). The lowest CPA in the plan. Budget starts small (no one to retarget at first) and grows as TOFU and MOFU fill the pools.</p>
+        <div class="chips"><span>Freq 5 to 6</span><span>CPA $115 &rarr; $72</span><span>Site 180d &middot; VV75% &middot; booking drop-off (TBC)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="callout"><b>Budget shift over time:</b> TOFU starts heavy ($3,375 &rarr; $1,688) to fill audiences fast, MOFU stays steady (~$5.6 to 6.2k), and BOFU climbs ($1,688 &rarr; $3,937) as warm pools grow, which is what pulls the blended CPA down month over month.</div>
+</section>
+
+<section class="section cool">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Channel 2 &middot; 25% of budget &middot; ~$3,750/mo</p>
+      <h2 class="display-md">Reddit, the consideration <em>feeder</em>.</h2>
+      <p class="lede" style="margin-top:16px">Reddit's conversion optimizer is weaker than Meta's, and the platform naturally fits the consideration stage more than the conversion stage. That is exactly why we use it here: consideration-style campaigns on Reddit complement Meta's TOFU and BOFU work, giving us a full-funnel, cross-channel strategy. Reddit also feeds warm audiences into Meta's retargeting.</p>
+    </div>
+    <div class="funnel-row avoid-break">
+      <div class="tag"><b>1&ndash;2</b><small>Traffic</small></div>
+      <div class="fb">
+        <div class="obj">Objective: Traffic &rarr; showroom landing pages</div>
+        <p>Conversation-format ads (native posts, not banners) in high-intent communities: r/Mattress, r/SleepApnea, r/BuyItForLife, r/Sleep. Judged on cost-per-click and landing-page views, not appointment CPA, since there is no pixel signal yet to optimize on. Feeds Meta's retargeting pixel and Reddit's own pixel.</p>
+        <div class="chips"><span>CPM $5.50 to 6</span><span>CTR 0.5% &rarr; 0.6%</span><span>CPC $1.20 &rarr; $0.92</span><span>Freq ~1.5 to 2</span><span>Cost / landing-page view</span></div>
+      </div>
+    </div>
+    <div class="funnel-row avoid-break">
+      <div class="tag t2"><b>3+</b><small>Conversions</small></div>
+      <div class="fb">
+        <div class="obj">Objective: Conversions &rarr; Book Appointment</div>
+        <p>Once the Reddit pixel has accumulated signal, a portion shifts to optimize for appointments. Reddit's direct CPA stays above Meta's throughout, which is expected given its role as a consideration channel rather than a primary conversion driver.</p>
+        <div class="chips"><span>CPM $4.50 to 6</span><span>CTR 0.5% &rarr; 0.9%</span><span>CPC $1.20 &rarr; $0.50</span><span>Freq ~1.5 to 2</span><span>Direct CPA $300 &rarr; $160</span></div>
+      </div>
+    </div>
+    <div class="callout"><b>How we judge Reddit:</b> not on its direct appointment CPA, but on cost of generating warm audience and assisted conversions. The appointment is closed by Meta's BOFU; Reddit and Meta's TOFU make that low BOFU CPA possible.</div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head">
+    <p class="eyebrow">Targeting</p>
+    <h2 class="display-md">Geo-fenced to active <em>showrooms</em>.</h2>
+    <p class="lede" style="margin-top:16px">Because the conversion is an in-person appointment, both channels are hard geo-fenced to a 25 to 40 km radius around each active showroom, not entire states. Seattle is excluded until it opens (currently "coming soon").</p>
+  </div>
+  <div class="geo-grid">
+    <div class="g">New York City</div><div class="g">Chicago</div><div class="g">Los Angeles</div>
+    <div class="g">Tysons Corner</div><div class="g">Boston</div><div class="g">Miami</div>
+    <div class="g">Long Island NY</div><div class="g">Dallas</div><div class="g">San Francisco</div>
+  </div>
+</section>
+
+<section class="section warm">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">The 6-month roadmap</p>
+      <h2 class="display-md">From cold start toward <em>target</em>.</h2>
+      <p class="lede" style="margin-top:16px">Blended cost-per-appointment by month of active delivery. Meta steps down to ~$105 by the sixth ad month; the blended figure keeps trending down as Reddit's consideration spend is offset by Meta's improving efficiency.</p>
+    </div>
+    <div class="road-grid">
+      <div class="m"><div class="mn">Ad month 1</div><div class="cv">$308</div><div class="ap">~49 appts</div><div class="ph ph-l">Learning</div></div>
+      <div class="m"><div class="mn">Ad month 2</div><div class="cv">$239</div><div class="ap">~63 appts</div><div class="ph ph-l">Learning</div></div>
+      <div class="m"><div class="mn">Ad month 3</div><div class="cv">$188</div><div class="ap">~80 appts</div><div class="ph ph-o">Optimize</div></div>
+      <div class="m"><div class="mn">Ad month 4</div><div class="cv">$158</div><div class="ap">~95 appts</div><div class="ph ph-o">Optimize</div></div>
+      <div class="m"><div class="mn">Ad month 5</div><div class="cv">$137</div><div class="ap">~110 appts</div><div class="ph ph-s">Scale</div></div>
+      <div class="m"><div class="mn">Ad month 6</div><div class="cv">$123</div><div class="ap">~122 appts</div><div class="ph ph-s">Scale</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head">
+    <p class="eyebrow">Full KPI model</p>
+    <h2 class="display-md">Month-by-month, by <em>channel</em>.</h2>
+    <p class="lede" style="margin-top:16px">Blended at $15,000/month flat (75% Meta / 25% Reddit). CPA is anchored to SleePare's Google data; CPM, CPC and CTR are industry benchmarks until first-party pixel data replaces them.</p>
+  </div>
+
+  <div class="sticker"><b>On the timeline:</b> "Ad Month 1" is the first month of live ad delivery, not the first month of engagement. Pixel installation, creative production, account setup and audience build typically take the opening weeks, so ad delivery usually begins in the second month of the engagement. All months below refer to months of active delivery.</div>
+
+  <div class="card avoid-break" style="margin-bottom:18px">
+    <div class="tbl-cap">Meta &middot; ~$11,250 / mo</div>
+    <table>
+      <thead><tr><th>Metric</th><th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th><th class="num">M5</th><th class="num">M6</th></tr></thead>
+      <tbody>
+        <tr><td>CPM</td><td class="num">$16.00</td><td class="num">$15.00</td><td class="num">$14.00</td><td class="num">$13.00</td><td class="num">$13.00</td><td class="num">$12.00</td></tr>
+        <tr><td>CTR</td><td class="num">0.90%</td><td class="num">1.00%</td><td class="num">1.15%</td><td class="num">1.25%</td><td class="num">1.30%</td><td class="num">1.35%</td></tr>
+        <tr><td>CPC</td><td class="num">$1.78</td><td class="num">$1.50</td><td class="num">$1.22</td><td class="num">$1.04</td><td class="num">$1.00</td><td class="num">$0.89</td></tr>
+        <tr><td>Frequency (prospecting)</td><td class="num">2.5</td><td class="num">2.6</td><td class="num">2.8</td><td class="num">3.0</td><td class="num">3.0</td><td class="num">3.0</td></tr>
+        <tr><td>Appointments</td><td class="num">45</td><td class="num">57</td><td class="num">70</td><td class="num">83</td><td class="num">95</td><td class="num">107</td></tr>
+        <tr class="total"><td>Effective CPA</td><td class="num">$250</td><td class="num">$198</td><td class="num">$160</td><td class="num">$135</td><td class="num">$118</td><td class="num pos">$105</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sticker"><b>Note on Reddit forecasting:</b> Reddit is a newer, lower-volume ads platform with a weaker conversion optimizer, so these figures should be read as very broad directional estimates only. We expect to evaluate Reddit at a high level (audience and traffic signals) rather than hold it to precise CPA targets, especially in the early months.</div>
+
+  <div class="card avoid-break" style="margin-bottom:18px">
+    <div class="tbl-cap">Reddit &middot; ~$3,750 / mo</div>
+    <table>
+      <thead><tr><th>Metric</th><th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th><th class="num">M5</th><th class="num">M6</th></tr></thead>
+      <tbody>
+        <tr><td>Objective</td><td class="num">Traffic</td><td class="num">Traffic</td><td class="num">Conv.</td><td class="num">Conv.</td><td class="num">Conv.</td><td class="num">Conv.</td></tr>
+        <tr><td>CPM</td><td class="num">$6.00</td><td class="num">$5.50</td><td class="num">$5.00</td><td class="num">$4.80</td><td class="num">$4.50</td><td class="num">$4.50</td></tr>
+        <tr><td>CTR</td><td class="num">0.50%</td><td class="num">0.60%</td><td class="num">0.70%</td><td class="num">0.80%</td><td class="num">0.85%</td><td class="num">0.90%</td></tr>
+        <tr><td>CPC</td><td class="num">$1.20</td><td class="num">$0.92</td><td class="num">$0.71</td><td class="num">$0.60</td><td class="num">$0.53</td><td class="num">$0.50</td></tr>
+        <tr><td>Appointments</td><td class="num">4</td><td class="num">6</td><td class="num">10</td><td class="num">12</td><td class="num">14</td><td class="num">15</td></tr>
+        <tr class="total"><td>Direct CPA (broad estimate)</td><td class="num">$300</td><td class="num">$255</td><td class="num">$215</td><td class="num">$190</td><td class="num">$172</td><td class="num">$160</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card avoid-break">
+    <div class="tbl-cap">Blended &middot; $15,000 / mo</div>
+    <table>
+      <thead><tr><th>Metric</th><th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th><th class="num">M5</th><th class="num">M6</th></tr></thead>
+      <tbody>
+        <tr><td>Total appointments</td><td class="num">49</td><td class="num">63</td><td class="num">80</td><td class="num">95</td><td class="num">110</td><td class="num">122</td></tr>
+        <tr class="total"><td>Blended CPA</td><td class="num">$308</td><td class="num">$239</td><td class="num">$188</td><td class="num">$158</td><td class="num">$137</td><td class="num pos">$123</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="srcbar avoid-break">
+    <b>Data-integrity note.</b><br><br>
+    <span class="tagchip data">Anchored in data</span> The appointment CPA curve is built from SleePare's own Google Ads Book-Appointment cost (Jul 2025 to May 2026). Cold-channel start points are set above Google's range and converge as pixel signal accumulates.<br><br>
+    <span class="tagchip bench">Industry benchmark</span> CPM, CPC, CTR and frequency for Meta and Reddit are market benchmarks for US retail/home verticals; SleePare has no prior Meta or Reddit history. These could be replaced with first-party data after the first 30 to 45 days of live delivery, and the model re-baselined accordingly.
+  </div>
+</section>
+
+<section class="section cool">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Before we spend a dollar</p>
+      <h2 class="display-md">Pre-launch <em>requirements</em>.</h2>
+      <p class="lede" style="margin-top:16px">The model assumes clean conversion tracking from day one. Neither pixel exists yet, so this is the gating item for the timeline above.</p>
+    </div>
+    <div class="kpi-3">
+      <div class="card"><h3 class="display-sm">Meta Pixel + CAPI</h3><p style="margin-top:8px;font-size:15px;color:var(--ink-soft)">Install on site, fire Book Appointment on Calendly schedule confirmation. Server-side CAPI for accuracy.</p></div>
+      <div class="card"><h3 class="display-sm">Reddit Pixel</h3><p style="margin-top:8px;font-size:15px;color:var(--ink-soft)">Install on site, map the same appointment event so Reddit can optimize from ad month 3.</p></div>
+      <div class="card"><h3 class="display-sm">Creative</h3><p style="margin-top:8px;font-size:15px;color:var(--ink-soft)">New in-house video edits for Meta TOFU, comparison and offer statics for MOFU/BOFU, native conversation posts for Reddit.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container">
+    <span class="noetic-wordmark">noetic<span class="dot">.</span></span>
+    <span>SleePare &middot; Meta &amp; Reddit Media Plan &middot; June 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
