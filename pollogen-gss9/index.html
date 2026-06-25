@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pollogen — Marketing Proposal · Noetic Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF7;--paper-warm:#F2F0EA;
+  --ink:#0A0A0E;--ink-soft:#1A1A1F;--ink-mute:#6B6B7B;--ink-faint:#A8A8B5;
+  --card:#FFFFFF;--purple:#6C5CE7;--purple-soft:#EFEDFE;
+  --mint:#00D4B4;--coral:#FF6B6B;
+  --rule:rgba(10,10,14,.08);--rule-strong:rgba(10,10,14,.16);
+  --font-display:'Fraunces',serif;--font-sans:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--font-sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+.nav-brand{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--purple);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:28px;}
+.nav-tabs{display:flex;gap:2px;}
+.nav-tab{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:6px;transition:all .2s;}
+.nav-tab.active{background:var(--purple);color:#fff;}
+.nav-tab:hover:not(.active){background:var(--paper-warm);color:var(--ink);}
+.nav-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);}
+.proposal-panel{display:none;padding-top:56px;}
+.proposal-panel.active{display:block;}
+.cover{padding:72px 48px 64px;border-bottom:1px solid var(--rule-strong);}
+.cover-inner{max-width:860px;}
+.cover-eyebrow{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-mute);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.cover-eyebrow::before{content:'';width:24px;height:1px;background:var(--purple);}
+.cover h1{font-family:var(--font-display);font-size:clamp(36px,5vw,58px);font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:22px;}
+.cover h1 em{font-style:italic;color:var(--purple);}
+.cover-desc{font-size:15px;color:var(--ink-mute);max-width:580px;line-height:1.6;margin-bottom:40px;}
+.cover-stats{display:flex;gap:36px;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--rule);}
+.stat{display:flex;flex-direction:column;gap:4px;}
+.stat-num{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--ink);line-height:1;}
+.stat-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);}
+.sec{padding:52px 48px;border-bottom:1px solid var(--rule);}
+.sec:last-child{border-bottom:none;}
+.sec.warm{background:var(--paper-warm);}
+.sec-inner{max-width:860px;}
+.eyebrow{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.eyebrow::before{content:'●';font-size:7px;}
+.sec h2{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:14px;}
+.sec h2 em{font-style:italic;color:var(--purple);}
+.sec-intro{font-size:14px;color:var(--ink-mute);line-height:1.65;max-width:620px;margin-bottom:32px;}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-strong);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.brand-block{background:var(--card);padding:26px 26px 28px;}
+.brand-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);margin-bottom:8px;}
+.brand-name{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:16px;}
+.channel-rows{display:flex;flex-direction:column;gap:1px;background:var(--rule);border-radius:8px;overflow:hidden;margin-bottom:14px;}
+.channel-row{background:var(--paper-warm);display:flex;align-items:center;justify-content:space-between;padding:9px 13px;}
+.channel-name{font-size:13px;font-weight:600;color:var(--ink);}
+.channel-posts{font-family:var(--font-mono);font-size:11px;color:var(--purple);}
+.brand-note{font-size:12px;color:var(--ink-mute);line-height:1.45;}
+.total-bar{background:var(--ink);border-radius:10px;padding:20px 24px;display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:28px;}
+.total-bar-item{display:flex;flex-direction:column;gap:3px;flex:1;min-width:140px;padding:0 20px;border-right:1px solid rgba(255,255,255,.1);}
+.total-bar-item:first-child{padding-left:0;}
+.total-bar-item:last-child{border-right:none;}
+.total-bar-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.4);}
+.total-bar-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;line-height:1.1;}
+.total-bar-sub{font-size:11px;color:rgba(255,255,255,.35);}
+.scope-rows{display:flex;flex-direction:column;gap:1px;background:var(--rule-strong);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.scope-row{background:var(--card);display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:16px 18px;}
+.scope-row:nth-child(even){background:var(--paper-warm);}
+.scope-row-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;}
+.scope-row-desc{font-size:13px;color:var(--ink-mute);line-height:1.45;}
+.note-box{background:var(--paper-warm);border-radius:10px;padding:16px 18px;font-size:13px;color:var(--ink-mute);line-height:1.55;margin-bottom:24px;}
+.note-box strong{color:var(--ink);}
+.plain-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.plain-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);line-height:1.45;list-style:none;}
+.plain-list li.inc::before{content:'✓';color:var(--mint);font-weight:700;flex-shrink:0;}
+.plain-list li.exc::before{content:'✗';color:var(--coral);flex-shrink:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+.col-block{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:20px 22px;}
+.col-block h4{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
+.col-block h4.inc{color:var(--mint);}
+.col-block h4.exc{color:var(--coral);}
+.tl{display:flex;flex-direction:column;margin-bottom:8px;}
+.tl-row{display:grid;grid-template-columns:130px 1fr;gap:0;}
+.tl-left{padding:18px 22px 18px 0;border-right:2px solid var(--rule-strong);text-align:right;}
+.tl-date{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);}
+.tl-row.p2 .tl-date{color:var(--ink-mute);}
+.tl-right{padding:18px 0 18px 22px;position:relative;border-bottom:1px solid var(--rule);}
+.tl-row:last-child .tl-right{border-bottom:none;}
+.tl-right::before{content:'';position:absolute;left:-7px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--purple);border:2px solid var(--paper);}
+.tl-row.p2 .tl-right::before{background:var(--ink);}
+.tl-right h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.tl-items{display:flex;flex-direction:column;gap:4px;}
+.tl-item{font-size:12px;color:var(--ink-mute);display:flex;gap:8px;line-height:1.4;}
+.tl-item::before{content:'↳';color:var(--ink-faint);flex-shrink:0;}
+.fee-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.fee-table th{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-strong);background:var(--paper-warm);}
+.fee-table th.right{text-align:right;}
+.fee-table td{padding:16px 14px;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--rule);vertical-align:top;}
+.fee-table td.right{text-align:right;font-family:var(--font-mono);font-weight:600;color:var(--ink);white-space:nowrap;}
+.fee-table td .label{font-weight:600;color:var(--ink);margin-bottom:3px;}
+.fee-table td .sub{font-size:12px;color:var(--ink-mute);}
+.fee-table tr.total td{border-top:2px solid var(--rule-strong);border-bottom:none;background:var(--paper-warm);font-weight:700;}
+.fee-table tr.total td.right{font-size:17px;color:var(--purple);}
+.fee-table{background:var(--card);border-radius:10px;overflow:hidden;border:1px solid var(--rule);}
+.fee-note{font-size:12px;color:var(--ink-mute);line-height:1.55;}
+.p2-callout{background:var(--ink);border-radius:12px;padding:26px 30px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
+.p2-callout h3{font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:8px;}
+.p2-callout h3 em{font-style:italic;color:var(--mint);}
+.p2-callout p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;}
+.p2-price-num{font-family:var(--font-display);font-size:30px;font-weight:700;color:#fff;white-space:nowrap;text-align:right;}
+.p2-price-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-top:4px;text-align:right;}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-strong);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.service-card{background:var(--card);padding:26px 26px 28px;}
+.service-card:nth-child(even){background:var(--paper-warm);}
+.service-icon{font-size:22px;margin-bottom:12px;display:block;line-height:1;}
+.service-card h4{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.service-card p{font-size:13px;color:var(--ink-mute);line-height:1.5;margin-bottom:12px;}
+.service-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:100px;background:var(--purple-soft);color:var(--purple);}
+.footer{padding:48px 48px;background:var(--paper-warm);border-top:1px solid var(--rule-strong);}
+.footer-inner{max-width:860px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;}
+.footer-brand{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--purple);}
+.footer-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);line-height:1.9;}
+@media(max-width:780px){
+  .nav{padding:0 20px;}.cover{padding:56px 20px 40px;}.sec{padding:40px 20px;}
+  .brand-grid,.services-grid,.two-col{grid-template-columns:1fr;}
+  .scope-row{grid-template-columns:1fr;}
+  .tl-row{grid-template-columns:90px 1fr;}
+  .p2-callout{grid-template-columns:1fr;}
+  .total-bar{flex-direction:column;gap:12px;}
+  .total-bar-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:0 0 12px;}
+  .total-bar-item:last-child{border-bottom:none;padding-bottom:0;}
+  .nav-meta{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="#">noetic</a>
+  <div class="nav-right">
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="switchProposal('social',this)">Proposal 1 — Social</button>
+      <button class="nav-tab" onclick="switchProposal('aem',this)">Proposal 2 — AEM / SEO</button>
+    </div>
+    <span class="nav-meta">Pollogen · June 2026</span>
+  </div>
+</nav>
+
+<div id="panel-social" class="proposal-panel active">
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-eyebrow">Proposal 1 of 2 · Noetic Creative for Pollogen</div>
+      <h1>Social Media <em>Management</em></h1>
+      <p class="cover-desc">Organic social management for Geneo Global and TriPollar on Instagram. Covers content production, community management, and monthly reporting. A Phase 2 expansion for Pollogen's own channels is included separately, starting September.</p>
+      <div class="cover-stats">
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Brands</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Channels</div></div>
+        <div class="stat"><div class="stat-num">4–6</div><div class="stat-label">Posts / week total</div></div>
+        <div class="stat"><div class="stat-num">$7,500</div><div class="stat-label">/ month</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="eyebrow">Channels & Volume</div>
+      <h2>What's covered, <em>per brand.</em></h2>
+      <p class="sec-intro">Each brand is managed independently — separate content strategy, editorial calendar, and visual identity. Content is never mirrored between Geneo Global and TriPollar.</p>
+      <div class="brand-grid">
+        <div class="brand-block">
+          <div class="brand-label">Brand 01</div>
+          <div class="brand-name">Geneo Global</div>
+          <div class="channel-rows">
+            <div class="channel-row"><span class="channel-name">Instagram</span><span class="channel-posts">2–3 posts / week</span></div>
+          </div>
+          <p class="brand-note">8–12 posts per month. Reels, carousels, and static posts. Up to 50% video content.</p>
+        </div>
+        <div class="brand-block">
+          <div class="brand-label">Brand 02</div>
+          <div class="brand-name">TriPollar</div>
+          <div class="channel-rows">
+            <div class="channel-row"><span class="channel-name">Instagram</span><span class="channel-posts">2–3 posts / week</span></div>
+          </div>
+          <p class="brand-note">8–12 posts per month. Separate content plan and visual identity from Geneo Global.</p>
+        </div>
+      </div>
+      <div class="total-bar">
+        <div class="total-bar-item"><div class="total-bar-label">Posts per week — total</div><div class="total-bar-value">4–6 posts</div><div class="total-bar-sub">across both brands</div></div>
+        <div class="total-bar-item"><div class="total-bar-label">Per brand / month</div><div class="total-bar-value">8–12 posts</div><div class="total-bar-sub">on Instagram</div></div>
+        <div class="total-bar-item"><div class="total-bar-label">Total posts / month</div><div class="total-bar-value">16–24 posts</div><div class="total-bar-sub">across both brands</div></div>
+        <div class="total-bar-item"><div class="total-bar-label">Video content</div><div class="total-bar-value">Up to 50%</div><div class="total-bar-sub">of total output</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec warm">
+    <div class="sec-inner">
+      <div class="eyebrow">Content</div>
+      <h2>What's produced each month.</h2>
+      <p class="sec-intro">Content mix across Reels, carousels, and static posts — up to 50% in video format. All content goes through up to two rounds of revisions before publishing.</p>
+      <div class="scope-rows">
+        <div class="scope-row"><div class="scope-row-title">Content strategy & calendar</div><div class="scope-row-desc">Monthly editorial calendar covering both brands. Topics, format mix, and copy direction aligned per brand before production starts.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Copywriting</div><div class="scope-row-desc">Captions for all posts and Stories copy. Written per brand — tone, length, and hashtag strategy adapted accordingly.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Design — static & carousel</div><div class="scope-row-desc">Art-directed per brand guidelines. Carousels for educational and science-led content; statics for product and campaign moments.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Video editing — Reels & short-form</div><div class="scope-row-desc">Up to 50% of monthly content output in video format. Noetic edits from client-supplied footage. On-site production is not in scope.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Scheduling & publishing</div><div class="scope-row-desc">Content is scheduled and published on the approved calendar.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Community monitoring</div><div class="scope-row-desc">Monitoring across both channels on a regular basis. Comments, DMs, and tags are reviewed and handled per agreed protocol.</div></div>
+        <div class="scope-row"><div class="scope-row-title">Reporting</div><div class="scope-row-desc">Biweekly performance snapshot and full monthly report covering both brands — reach, engagement, content performance, and next-month recommendations.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="eyebrow">Scope</div>
+      <h2>Included and not included.</h2>
+      <div class="two-col">
+        <div class="col-block">
+          <h4 class="inc">Included</h4>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li class="inc">Content strategy and monthly editorial calendar</li>
+            <li class="inc">Copywriting — all posts and Stories</li>
+            <li class="inc">Static and carousel post design</li>
+            <li class="inc">Reel and short-form video editing</li>
+            <li class="inc">Up to 2 revision rounds per content batch</li>
+            <li class="inc">Scheduling and publishing</li>
+            <li class="inc">Community monitoring</li>
+            <li class="inc">Biweekly snapshot and monthly report</li>
+            <li class="inc">Account management</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h4 class="exc">Not included</h4>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li class="exc">Paid media — to be evaluated once organic demand is established</li>
+            <li class="exc">TikTok (Phase 1)</li>
+            <li class="exc">Facebook and LinkedIn (Phase 1)</li>
+            <li class="exc">Pollogen corporate page (Phase 1)</li>
+            <li class="exc">UGC creator fees</li>
+            <li class="exc">On-site production or videography</li>
+            <li class="exc">Long-form branded content</li>
+            <li class="exc">Platform software costs</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-box">Scope changes — adding channels, brands, or services — are handled as amendments at the monthly boundary, not mid-cycle.</div>
+    </div>
+  </div>
+
+  <div class="sec warm">
+    <div class="sec-inner">
+      <div class="eyebrow">Timeline</div>
+      <h2>How this rolls out.</h2>
+      <div class="tl">
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Week 1</div></div>
+          <div class="tl-right">
+            <h4>Onboarding & setup</h4>
+            <div class="tl-items">
+              <div class="tl-item">Platform access received, channels audited</div>
+              <div class="tl-item">Kick-off — brand voice, content direction, community protocols</div>
+              <div class="tl-item">Channel briefs delivered for sign-off, one per brand</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Weeks 2–3</div></div>
+          <div class="tl-right">
+            <h4>Strategy review & content planning</h4>
+            <div class="tl-items">
+              <div class="tl-item">Content strategy presented — topics, format mix, visual direction per brand</div>
+              <div class="tl-item">First content calendar shared for client review</div>
+              <div class="tl-item">Calendar feedback incorporated and signed off before production begins</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Weeks 3–5</div></div>
+          <div class="tl-right">
+            <h4>Content production & revisions</h4>
+            <div class="tl-items">
+              <div class="tl-item">First batch of content produced — copy, design, and video drafts</div>
+              <div class="tl-item">Client review round 1 — feedback on all formats</div>
+              <div class="tl-item">Revisions incorporated within 2–3 business days</div>
+              <div class="tl-item">Second review round if needed before final sign-off</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Week 5–6</div></div>
+          <div class="tl-right">
+            <h4>First posts go live</h4>
+            <div class="tl-items">
+              <div class="tl-item">Approved content scheduled and published on both channels</div>
+              <div class="tl-item">Community monitoring active from day of first publish</div>
+              <div class="tl-item">Production cycle for the following month starts in parallel</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Month 2 onward</div></div>
+          <div class="tl-right">
+            <h4>Active management — steady state</h4>
+            <div class="tl-items">
+              <div class="tl-item">2–3 posts per week per brand on Instagram</div>
+              <div class="tl-item">Community monitoring on a regular basis</div>
+              <div class="tl-item">Biweekly snapshot and monthly report</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row p2">
+          <div class="tl-left"><div class="tl-date">September</div></div>
+          <div class="tl-right">
+            <h4>Phase 2 — Pollogen channels</h4>
+            <div class="tl-items">
+              <div class="tl-item">Pollogen Instagram + LinkedIn onboarded</div>
+              <div class="tl-item">Separate content strategy for Pollogen brand</div>
+              <div class="tl-item">September plan aligned to Maximus Pro launch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="eyebrow">Phase 2</div>
+      <h2>Pollogen Instagram <em>&</em> LinkedIn — September.</h2>
+      <p class="sec-intro">Pollogen Instagram and LinkedIn are added as a separate scope item starting September. Budget and scope are independent from Phase 1.</p>
+      <div class="p2-callout">
+        <div>
+          <h3>Pollogen Instagram <em>&</em> LinkedIn</h3>
+          <p style="margin-top:10px;">Two additional channels with a separate content strategy — independent from Geneo Global and TriPollar. September content aligned to the Maximus Pro launch. Handled as a scope amendment to the current agreement.</p>
+        </div>
+        <div>
+          <div class="p2-price-num">+$3,000</div>
+          <div class="p2-price-label">per month · from September</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec warm">
+    <div class="sec-inner">
+      <div class="eyebrow">Investment — Proposal 1</div>
+      <h2>Fees.</h2>
+      <table class="fee-table">
+        <thead><tr><th>Item</th><th class="right">Amount</th><th class="right">Terms</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="label">Social Media Management — Phase 1</div><div class="sub">Geneo Global + TriPollar · Instagram · 2 channels</div></td>
+            <td class="right">$7,500</td>
+            <td class="right" style="font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);">Monthly</td>
+          </tr>
+          <tr>
+            <td><div class="label">Phase 2 — Pollogen Instagram + LinkedIn</div><div class="sub">Starting September, billed as a scope amendment</div></td>
+            <td class="right">+$3,000</td>
+            <td class="right" style="font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);">From September</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total"><td>Monthly retainer from month 1</td><td class="right">$7,500 / month</td><td></td></tr>
+        </tfoot>
+      </table>
+      <p class="fee-note">Payment terms: monthly, in advance. Valid for 30 days. Pricing excludes third-party platform costs and creator fees. Scope adjustments take effect at the monthly boundary.</p>
+    </div>
+  </div>
+</div>
+
+<div id="panel-aem" class="proposal-panel">
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-eyebrow">Proposal 2 of 2 · Noetic Creative for Pollogen</div>
+      <h1>AEM / Website, SEO <em>& GEO</em></h1>
+      <p class="cover-desc">Landing page production, SEO optimization, GEO content, blog production, and performance tracking. This is a separate budget from the social media proposal. Both can run in parallel with shared account management.</p>
+      <div class="cover-stats">
+        <div class="stat"><div class="stat-num">$4,000</div><div class="stat-label">/ month</div></div>
+        <div class="stat"><div class="stat-num">1–2</div><div class="stat-label">Landing pages / month</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Blog posts / month</div></div>
+        <div class="stat"><div class="stat-num">Up to 5</div><div class="stat-label">Pages optimized / month</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="eyebrow">Monthly Scope</div>
+      <h2>What's delivered <em>each month.</em></h2>
+      <p class="sec-intro">The retainer covers four areas of work running in parallel: SEO optimization, blog content, landing page production, and reporting. All four are included in the monthly fee.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <h4>SEO — On-page Optimization</h4>
+          <p>Up to 5 pages optimized per month — title tags, meta descriptions, heading structure, body copy, internal linking, and image alt text. Priority order based on keyword strategy and traffic potential. Technical monitoring runs in parallel, with issues flagged and resolved as they come up.</p>
+          <span class="service-tag">Up to 5 pages / month</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">✍️</span>
+          <h4>Blog Content</h4>
+          <p>2 blog posts per month. Science-led, approximately 1,000 words each, optimized for target keywords. One round of revisions included per post before publication.</p>
+          <span class="service-tag">2 posts / month</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🖥️</span>
+          <h4>Landing Pages — Design & Build</h4>
+          <p>Up to 2 landing pages per month, built for SEO. Each LP targets a specific keyword, includes copy, desktop and mobile design, development, form integration, GTM tracking, and QA before go-live.</p>
+          <span class="service-tag">Up to 2 / month</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🌐</span>
+          <h4>GEO — Generative Engine Optimization</h4>
+          <p>Ongoing content and entity strategy for AI search surfaces. Identifies which content formats and structures improve brand visibility in AI-generated answers, and integrates those recommendations into blog and LP production each month.</p>
+          <span class="service-tag">Ongoing</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📊</span>
+          <h4>Reporting & Account Management</h4>
+          <p>Monthly performance report covering SEO rankings, organic traffic, LP performance, and blog engagement. One dedicated account manager as the main point of contact for coordination and delivery across both proposals.</p>
+          <span class="service-tag">Monthly</span>
+        </div>
+      </div>
+      <div class="note-box">Both proposals — Social Media and AEM / SEO — share the same account management layer. Pollogen has one point of contact at Noetic for all workstreams.</div>
+    </div>
+  </div>
+
+  <div class="sec warm">
+    <div class="sec-inner">
+      <div class="eyebrow">Scope</div>
+      <h2>Included and not included.</h2>
+      <div class="two-col">
+        <div class="col-block">
+          <h4 class="inc">Included</h4>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li class="inc">SEO on-page optimization — up to 5 pages per month</li>
+            <li class="inc">Technical SEO monitoring and issue resolution</li>
+            <li class="inc">2 blog posts per month — SEO-optimized</li>
+            <li class="inc">Up to 2 landing pages per month (design + copy + dev)</li>
+            <li class="inc">GEO content strategy integrated into production</li>
+            <li class="inc">GA4 and UTM tracking setup and maintenance</li>
+            <li class="inc">Monthly performance report</li>
+            <li class="inc">Account management</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h4 class="exc">Not included</h4>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li class="exc">Paid search campaigns</li>
+            <li class="exc">Full website redesign or CMS migration</li>
+            <li class="exc">Backlink outreach or link building</li>
+            <li class="exc">More than 2 landing pages per month without scope adjustment</li>
+            <li class="exc">More than 2 blog posts without scope adjustment</li>
+            <li class="exc">Long-form branded content or whitepapers</li>
+            <li class="exc">Third-party SEO tool subscriptions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-box">Individual workstreams — number of LPs, blog posts per month — can be adjusted at any monthly boundary.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="eyebrow">Timeline</div>
+      <h2>How this rolls out.</h2>
+      <div class="tl">
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Week 1</div></div>
+          <div class="tl-right">
+            <h4>Kick-off & alignment</h4>
+            <div class="tl-items">
+              <div class="tl-item">Access to site, analytics, and existing assets</div>
+              <div class="tl-item">SEO and content brief reviewed and approved</div>
+              <div class="tl-item">LP priorities confirmed for first production cycle</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Weeks 2–3</div></div>
+          <div class="tl-right">
+            <h4>First deliverables in review</h4>
+            <div class="tl-items">
+              <div class="tl-item">First LP designs delivered for review (when needed)</div>
+              <div class="tl-item">First blog post drafts shared for sign-off</div>
+              <div class="tl-item">SEO optimization work begins on priority pages</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-left"><div class="tl-date">Week 4 onward</div></div>
+          <div class="tl-right">
+            <h4>Active production cycle</h4>
+            <div class="tl-items">
+              <div class="tl-item">LPs approved, built, and live (when applicable)</div>
+              <div class="tl-item">Blog posts published on schedule</div>
+              <div class="tl-item">SEO optimization running on monthly cadence</div>
+              <div class="tl-item">Monthly report delivered at end of each month</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec warm">
+    <div class="sec-inner">
+      <div class="eyebrow">Investment — Proposal 2</div>
+      <h2>Fees.</h2>
+      <table class="fee-table">
+        <thead><tr><th>Item</th><th class="right">Amount</th><th class="right">Terms</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="label">AEM / Website, SEO & GEO — Monthly Retainer</div><div class="sub">SEO optimization · Blog production · Up to 2 LPs (design + dev) · GEO strategy · Reporting</div></td>
+            <td class="right">$4,000</td>
+            <td class="right" style="font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);">Monthly</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total"><td>Monthly retainer</td><td class="right">$4,000 / month</td><td></td></tr>
+        </tfoot>
+      </table>
+      <p class="fee-note">Payment terms: monthly, in advance. Valid for 30 days. Excludes third-party tool and platform costs. Scope adjustments take effect at the monthly boundary.</p>
+      <div class="note-box" style="margin-top:20px;"><strong>Running both proposals together:</strong> The combined investment for Social Media + AEM / SEO is $11,500 per month. Both scopes share the same account management layer — one point of contact at Noetic for all deliverables.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">noetic</div>
+    <div class="footer-meta">Noetic Creative · hello@noetic.io · noetic.io<br>Prepared for Pollogen · June 2026 · Confidential</div>
+  </div>
+</footer>
+
+<script>
+function switchProposal(name, btn) {
+  document.querySelectorAll('.proposal-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
