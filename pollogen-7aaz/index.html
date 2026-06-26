@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Pollogen × Noetic — Marketing Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<style>
+:root {
+  --paper: #FAFAF7; --paper-warm: #F2F0EA; --paper-cool: #F0F0F4;
+  --ink: #0A0A0E; --ink-soft: #1A1A1F; --ink-mute: #6B6B7B; --ink-faint: #A8A8B5;
+  --card: #FFFFFF; --purple: #6C5CE7; --purple-deep: #4D3FC9; --purple-soft: #EFEDFE;
+  --mint: #00D4B4; --coral: #FF6B6B; --amber: #F5B400;
+  --rule: rgba(10,10,14,0.08); --rule-strong: rgba(10,10,14,0.16);
+  --max: 1240px; --max-narrow: 920px;
+  --font-display: 'Fraunces','Times New Roman',serif;
+  --font-sans: 'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono: 'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{background:var(--paper);color:var(--ink-soft);overflow-x:hidden;font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px;}
+.container-narrow{width:100%;max-width:var(--max-narrow);margin:0 auto;padding:0 32px;}
+section{position:relative;}
+.section{padding:clamp(80px,12vh,160px) 0;}
+.section-head{margin-bottom:clamp(48px,6vw,80px);}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:0;}
+.display-xl{font-family:var(--font-display);font-size:clamp(56px,9vw,132px);font-weight:600;line-height:0.95;letter-spacing:-0.035em;}
+.display-lg{font-family:var(--font-display);font-size:clamp(44px,6vw,88px);font-weight:600;line-height:1;letter-spacing:-0.03em;}
+.display-md{font-family:var(--font-display);font-size:clamp(34px,4.5vw,60px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;}
+.display-sm{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:600;line-height:1.1;letter-spacing:-0.02em;}
+h1,h2,h3,h4{color:var(--ink);letter-spacing:-0.022em;line-height:1.05;font-weight:700;}
+.italic{font-style:italic;font-weight:400;}
+.lede{font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--ink-soft);font-weight:400;max-width:60ch;}
+.mono{font-family:var(--font-mono);}
+::selection{background:var(--purple);color:white;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%;}
+.eyebrow.dark{color:rgba(255,255,255,0.6);}
+.eyebrow.dark::before{background:var(--mint);}
+.tab-bar{background:var(--ink);padding:0 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.08);}
+.tab-bar-brand{font-family:var(--font-display);font-size:16px;font-weight:600;color:white;padding:14px 0;}
+.tab-bar-tabs{display:flex;gap:2px;}
+.tab-btn{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.45);background:none;border:none;cursor:pointer;padding:16px 20px;border-bottom:2px solid transparent;transition:all 0.2s;margin-bottom:-1px;}
+.tab-btn.active{color:white;border-bottom-color:var(--mint);}
+.tab-btn:hover:not(.active){color:rgba(255,255,255,0.8);}
+.tab-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);}
+.panel{display:none;}
+.panel.active{display:block;}
+.hero{padding-top:clamp(100px,14vh,180px);padding-bottom:clamp(80px,12vh,140px);position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,10,14,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,0.04) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none;}
+.hero-blob{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(108,92,231,0.22),transparent 60%);filter:blur(80px);pointer-events:none;top:-200px;right:-200px;z-index:0;}
+.hero-blob-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(0,212,180,0.15),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-150px;left:-100px;z-index:0;}
+.hero-inner{position:relative;z-index:1;}
+.hero-meta{display:flex;gap:18px;align-items:center;margin-bottom:28px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);flex-wrap:wrap;}
+.hero-meta-divider{width:24px;height:1px;background:var(--rule-strong);}
+.hero h1{margin-bottom:28px;}
+.hero h1 .accent-line{display:block;color:var(--purple);font-style:italic;font-weight:400;}
+.hero-lede{font-size:clamp(19px,1.8vw,24px);line-height:1.45;color:var(--ink-soft);max-width:60ch;margin-top:8px;font-weight:400;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(60px,8vh,100px);border-top:1px solid var(--rule);}
+.hero-stat{padding:32px 24px 0 0;border-right:1px solid var(--rule);}
+.hero-stat:not(:first-child){padding-left:24px;}
+.hero-stat:last-child{border-right:none;padding-right:0;}
+.hero-stat-num{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:600;line-height:1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:8px;}
+.hero-stat-num .accent{color:var(--purple);}
+.hero-stat-label{font-size:13px;color:var(--ink-mute);font-weight:500;line-height:1.4;max-width:22ch;}
+@media(max-width:800px){.hero-stats{grid-template-columns:repeat(2,1fr);}.hero-stat:nth-child(2n){border-right:none;}.hero-stat{padding:24px 16px 0 0;padding-bottom:24px;border-bottom:1px solid var(--rule);}.hero-stat:not(:first-child){padding-left:0;}.hero-stat:last-child,.hero-stat:nth-last-child(2){border-bottom:none;}}
+.channels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:60px;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+@media(max-width:760px){.channels-grid{grid-template-columns:1fr;}}
+.channel-card{padding:40px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,0.4);transition:background 0.3s;}
+.channel-card:hover{background:white;}
+.channel-brand{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--purple-deep);margin-bottom:14px;}
+.channel-card h4{font-family:var(--font-display);font-size:clamp(26px,3vw,34px);font-weight:600;letter-spacing:-0.02em;margin-bottom:10px;}
+.channel-card p{font-size:15px;color:var(--ink-mute);line-height:1.55;margin-bottom:20px;}
+.channel-platforms{display:flex;gap:8px;flex-wrap:wrap;}
+.platform-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;padding:6px 12px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--ink-soft);}
+.platform-chip.soon{color:var(--ink-faint);border-style:dashed;}
+.mix-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:var(--rule);border:1px solid var(--rule);}
+@media(max-width:760px){.mix-grid{grid-template-columns:repeat(2,1fr);}}
+.mix-cell{background:var(--paper);padding:28px 24px;transition:background 0.3s;}
+.mix-cell:hover{background:white;}
+.mix-icon{width:36px;height:36px;border-radius:8px;background:var(--purple-soft);display:grid;place-items:center;margin-bottom:16px;color:var(--purple-deep);}
+.mix-icon svg{width:18px;height:18px;}
+.mix-cell h4{font-size:17px;font-weight:700;margin-bottom:6px;}
+.mix-cell p{font-size:13px;color:var(--ink-mute);line-height:1.5;}
+.split-viz{margin-top:48px;}
+.split-bar{display:flex;height:56px;border-radius:12px;overflow:hidden;border:1px solid var(--rule);}
+.split-original{background:var(--purple);color:white;display:flex;align-items:center;padding:0 24px;font-weight:600;font-size:15px;flex:0 0 80%;}
+.split-repurposed{background:var(--purple-soft);color:var(--purple-deep);display:flex;align-items:center;padding:0 20px;font-weight:600;font-size:14px;flex:1;}
+.split-legend{margin-top:16px;font-size:14px;color:var(--ink-mute);line-height:1.6;max-width:70ch;}
+.scope-rows{display:flex;flex-direction:column;gap:1px;background:var(--rule-strong);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.scope-row{background:var(--card);display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:start;padding:16px 18px;}
+.scope-row:nth-child(even){background:var(--paper-warm);}
+.scope-row-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;}
+.scope-row-desc{font-size:13px;color:var(--ink-mute);line-height:1.45;}
+@media(max-width:600px){.scope-row{grid-template-columns:1fr;}}
+.approach-list{list-style:none;margin-top:30px;}
+.approach-list li{padding:14px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-soft);display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;}
+.approach-list li:last-child{border-bottom:1px solid var(--rule);}
+.approach-list li::before{content:"→";color:var(--purple);font-weight:600;font-size:14px;}
+.boosting{background:var(--ink);color:white;}
+.boosting h2{color:white;}
+.boost-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,0.12);}
+@media(max-width:820px){.boost-steps{grid-template-columns:repeat(2,1fr);}}
+.boost-step{padding:32px 24px 0 0;border-right:1px solid rgba(255,255,255,0.12);}
+.boost-step:last-child{border-right:none;}
+.boost-num{font-family:var(--font-display);font-size:40px;font-weight:600;color:var(--mint);line-height:1;margin-bottom:14px;letter-spacing:-0.03em;}
+.boost-step h4{color:white;font-size:18px;margin-bottom:8px;}
+.boost-step p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.55;}
+.boost-note{margin-top:48px;padding:28px 32px;border:1px solid rgba(255,255,255,0.14);border-radius:14px;background:rgba(255,255,255,0.03);font-size:15px;color:rgba(255,255,255,0.8);line-height:1.6;max-width:80ch;}
+.boost-note strong{color:white;}
+.process-track{margin-top:56px;}
+.process-step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--rule);align-items:start;}
+.process-step:last-child{border-bottom:1px solid var(--rule);}
+.process-num{font-family:var(--font-display);font-size:64px;font-weight:600;line-height:0.9;letter-spacing:-0.04em;color:var(--purple);}
+.process-content h4{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;}
+.process-content .when{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--purple-deep);margin-bottom:10px;}
+.process-content p{color:var(--ink-mute);font-size:15px;line-height:1.55;max-width:62ch;}
+@media(max-width:600px){.process-step{grid-template-columns:50px 1fr;gap:16px;}.process-num{font-size:40px;}}
+.pricing{background:var(--paper);}
+.pricing-card{margin-top:56px;background:var(--ink);border-radius:20px;padding:clamp(36px,5vw,64px);color:white;position:relative;overflow:hidden;}
+.pricing-card::before{content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.28),transparent 70%);filter:blur(90px);pointer-events:none;}
+.pricing-inner{position:relative;z-index:1;}
+.pricing-top{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.14);}
+@media(max-width:820px){.pricing-top{grid-template-columns:1fr;gap:28px;align-items:start;}}
+.pricing-label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:18px;}
+.pricing-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;color:white;max-width:18ch;}
+.pricing-title .italic{color:var(--purple);font-weight:400;}
+.pricing-amount{text-align:right;}
+@media(max-width:820px){.pricing-amount{text-align:left;}}
+.pricing-amount .num{font-family:var(--font-display);font-size:clamp(52px,8vw,84px);font-weight:600;line-height:0.95;letter-spacing:-0.03em;color:white;}
+.pricing-amount .per{font-family:var(--font-mono);font-size:13px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.55);margin-top:8px;}
+.pricing-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:40px;}
+@media(max-width:820px){.pricing-cols{grid-template-columns:1fr;}}
+.pricing-col{padding:0 28px 0 0;}
+.pricing-col+.pricing-col{border-left:1px solid rgba(255,255,255,0.12);padding-left:28px;}
+@media(max-width:820px){.pricing-col+.pricing-col{border-left:none;border-top:1px solid rgba(255,255,255,0.12);padding-left:0;padding-top:26px;margin-top:26px;}}
+.pricing-col h5{font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:14px;letter-spacing:-0.02em;}
+.pricing-col ul{list-style:none;}
+.pricing-col ul li{font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.5;padding:8px 0;border-top:1px solid rgba(255,255,255,0.1);display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:start;}
+.pricing-col ul li::before{content:"→";color:var(--mint);font-weight:600;font-size:12px;}
+.pricing-note{margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.14);font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:82ch;}
+.pricing-note strong{color:white;font-weight:600;}
+.phase2{margin-top:24px;background:var(--purple-soft);border:1px solid rgba(108,92,231,0.25);border-radius:20px;padding:clamp(32px,4vw,48px);position:relative;}
+.phase2-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+@media(max-width:820px){.phase2-grid{grid-template-columns:1fr;gap:24px;}}
+.phase2-label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--purple-deep);margin-bottom:14px;}
+.phase2 h3{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--ink);margin-bottom:12px;letter-spacing:-0.02em;}
+.phase2 p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+.phase2-amount{text-align:right;}
+@media(max-width:820px){.phase2-amount{text-align:left;}}
+.phase2-amount .plus{font-family:var(--font-mono);font-size:13px;color:var(--purple-deep);letter-spacing:0.06em;}
+.phase2-amount .num{font-family:var(--font-display);font-size:clamp(40px,6vw,60px);font-weight:600;color:var(--purple-deep);line-height:1;letter-spacing:-0.03em;}
+.phase2-amount .per{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-mute);margin-top:6px;}
+.phase2-amount .combined{font-size:13px;color:var(--ink-mute);margin-top:10px;}
+.terms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;background:var(--rule);border:1px solid var(--rule);}
+@media(max-width:900px){.terms-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.terms-grid{grid-template-columns:1fr;}}
+.term-card{background:var(--paper);padding:28px 24px;}
+.term-card .label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-mute);margin-bottom:10px;}
+.term-card h4{font-family:var(--font-display);font-size:clamp(18px,2vw,22px);font-weight:600;margin-bottom:8px;letter-spacing:-0.02em;}
+.term-card p{font-size:13px;color:var(--ink-mute);line-height:1.5;}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--rule);border-left:1px solid var(--rule);}
+@media(max-width:820px){.pillar-grid{grid-template-columns:1fr;}}
+.pillar-card{padding:40px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,0.4);transition:background 0.3s;}
+.pillar-card:hover{background:white;}
+.pillar-icon{width:44px;height:44px;border-radius:10px;background:var(--purple-soft);display:grid;place-items:center;margin-bottom:18px;color:var(--purple-deep);}
+.pillar-icon svg{width:20px;height:20px;}
+.pillar-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--purple-deep);margin-bottom:12px;}
+.pillar-card h4{font-family:var(--font-display);font-size:clamp(22px,2.2vw,28px);font-weight:600;letter-spacing:-0.02em;margin-bottom:10px;}
+.pillar-card p{font-size:15px;color:var(--ink-mute);line-height:1.55;margin-bottom:16px;}
+.pillar-card ul{list-style:none;}
+.pillar-card ul li{font-size:13px;color:var(--ink-soft);padding:7px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:start;line-height:1.4;}
+.pillar-card ul li::before{content:"→";color:var(--purple);font-size:12px;}
+.plan-wrap{margin-top:56px;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:white;}
+.plan-table{width:100%;border-collapse:collapse;font-size:14px;}
+.plan-table th,.plan-table td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top;}
+.plan-table thead th{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-mute);font-weight:500;background:var(--paper-warm);}
+.plan-table tbody td:first-child{font-weight:600;color:var(--ink);}
+.plan-table td.qty{font-family:var(--font-mono);font-size:12px;color:var(--purple-deep);}
+.plan-table tbody tr:last-child td{border-bottom:none;}
+.plan-table tbody tr:hover{background:var(--paper);}
+.kpi-section{background:var(--ink);}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);}
+@media(max-width:820px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+.kpi-cell{background:var(--ink);padding:32px 28px;}
+.kpi-cell h4{font-family:var(--font-display);font-size:20px;font-weight:600;color:white;margin-bottom:8px;letter-spacing:-0.02em;}
+.kpi-cell p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.55;}
+.seo-price-card{margin-top:56px;background:var(--ink);border-radius:20px;padding:clamp(36px,5vw,64px);color:white;position:relative;overflow:hidden;}
+.seo-price-card::before{content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.28),transparent 70%);filter:blur(90px);pointer-events:none;}
+.seo-price-inner{position:relative;z-index:1;}
+.seo-price-top{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.14);}
+@media(max-width:820px){.seo-price-top{grid-template-columns:1fr;gap:24px;}}
+.seo-price-note{margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.14);font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:82ch;}
+.seo-price-note strong{color:white;}
+.cta-section{padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px);background:var(--ink);color:white;position:relative;overflow:hidden;}
+.cta-section::before{content:"";position:absolute;bottom:-20%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.32),transparent 70%);filter:blur(100px);}
+.cta-section .container{position:relative;z-index:1;}
+.cta-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--mint);margin-bottom:28px;}
+.cta-title{font-family:var(--font-display);font-size:clamp(44px,7vw,96px);font-weight:600;color:white;line-height:0.98;letter-spacing:-0.03em;margin-bottom:28px;max-width:16ch;}
+.cta-title .italic{color:var(--purple);font-style:italic;font-weight:500;}
+.cta-lede{font-size:clamp(17px,1.6vw,21px);color:rgba(255,255,255,0.72);max-width:56ch;line-height:1.5;margin-bottom:40px;}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:60px;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:16px 28px;border-radius:999px;transition:all 0.2s;letter-spacing:-0.01em;border:1px solid transparent;}
+.btn svg{width:16px;height:16px;}
+.btn-primary{background:var(--purple);color:white;}
+.btn-primary:hover{background:white;color:var(--ink);}
+.btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,0.2);}
+.btn-ghost:hover{border-color:white;}
+.footer-meta{margin-top:80px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+.footer-meta-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;line-height:1.7;}
+.footer-meta-block span{display:block;color:white;font-size:13px;text-transform:none;letter-spacing:-0.01em;margin-top:6px;font-family:var(--font-sans);font-weight:500;}
+.anim-ready .fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.anim-ready .fade-in.visible{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.fade-in{opacity:1!important;transform:none!important;}}
+@media(max-width:600px){.tab-bar{padding:0 16px;}.tab-bar-meta{display:none;}.tab-btn{padding:14px 12px;font-size:10px;}}
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <span class="tab-bar-brand">noetic × pollogen</span>
+  <div class="tab-bar-tabs">
+    <button class="tab-btn active" onclick="switchTab('social',this)">Social Media</button>
+    <button class="tab-btn" onclick="switchTab('seo',this)">SEO & GEO</button>
+  </div>
+  <span class="tab-bar-meta">Two proposals · June 2026</span>
+</div>
+
+<div id="panel-social" class="panel active">
+<section class="hero" id="social-top">
+  <div class="hero-grid-bg"></div><div class="hero-blob"></div><div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta"><span>Social Media Proposal</span><span class="hero-meta-divider"></span><span>June 2026</span><span class="hero-meta-divider"></span><span>Prepared for Pollogen by Lumenis</span></div>
+    <h1 class="display-xl">Two brands.<br><span class="accent-line">Built natively.</span></h1>
+    <p class="hero-lede">A focused social engine for Geneo and TriPollar on Instagram — with TikTok included in scope and activated when each brand is ready. Each brand gets content made for it, not a single post stretched across feeds.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">2</div><div class="hero-stat-label">Brands: Geneo Global and TriPollar</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2–3</div><div class="hero-stat-label">Posts per week, per channel, per brand</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">50<span style="font-size:0.55em">%</span></div><div class="hero-stat-label">Video content, up to half of monthly output</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">80<span style="font-size:0.55em">%</span></div><div class="hero-stat-label">Original content, tailored per channel</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scope">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 — The scope</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">Two brands, <em class="italic" style="color:var(--purple)">each with its own voice</em>.</h2>
+      <p class="lede" style="margin-top:24px;">Geneo and TriPollar have different audiences, different messaging, and different content needs — run as two separate editorial tracks, not one shared feed. Instagram is the active channel; TikTok is included in scope and will be activated when each brand is ready.</p>
+    </div>
+    <div class="channels-grid">
+      <div class="channel-card fade-in">
+        <div class="channel-brand">Brand 01 · Geneo Global</div>
+        <h4>Geneo</h4>
+        <p>The science-led, professional treatment story. Clinical credibility, treatment results, and the technology narrative made visual for a global audience of clinics and end consumers.</p>
+        <div class="channel-platforms"><span class="platform-chip">Instagram · now</span><span class="platform-chip soon">TikTok · on launch</span></div>
+      </div>
+      <div class="channel-card fade-in">
+        <div class="channel-brand">Brand 02 · TriPollar</div>
+        <h4>TriPollar</h4>
+        <p>The home-device, consumer-beauty story. Routine, results, and aspiration for an at-home audience, with a lighter, faster, more lifestyle-driven creative register than Geneo.</p>
+        <div class="channel-platforms"><span class="platform-chip">Instagram · now</span><span class="platform-chip soon">TikTok · on launch</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper-warm);" id="content">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">02 — Content</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;">What's produced <em class="italic" style="color:var(--purple)">each month</em>.</h2>
+      <p class="lede" style="margin-top:24px;">2–3 posts per week, per channel, per brand — capped at 18 posts per brand per month across all active channels. While only Instagram is active, that means 2–3 posts per week on a single channel. When TikTok launches, the same cap applies across both channels combined. Up to 50% of the total monthly output is in video format. Approximately 80% of content is produced original for each channel; the remaining 20% is repurposed where the format allows.</p>
+    </div>
+    <div class="scope-rows">
+      <div class="scope-row"><div class="scope-row-title">Content strategy &amp; calendar</div><div class="scope-row-desc">Monthly editorial calendar covering both brands. Topics, format mix, and copy direction aligned per brand before production starts.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Copywriting</div><div class="scope-row-desc">Captions for all posts and Stories copy. Written per brand — tone, length, and hashtag strategy adapted accordingly.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Design — static &amp; carousel</div><div class="scope-row-desc">Art-directed per brand guidelines. Carousels for educational and science-led content; statics for product and campaign moments.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Video editing — Reels &amp; short-form</div><div class="scope-row-desc">Up to 50% of monthly content output in video format. Noetic edits from client-supplied footage. On-site production is not in scope.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Scheduling &amp; publishing</div><div class="scope-row-desc">Content is scheduled and published on the approved calendar for each brand.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Community monitoring</div><div class="scope-row-desc">Monitoring across both channels on a regular basis. Comments, DMs, and tags reviewed and handled per agreed protocol.</div></div>
+      <div class="scope-row"><div class="scope-row-title">Reporting</div><div class="scope-row-desc">Biweekly performance snapshot and full monthly report covering both brands — reach, engagement, content performance, and next-month recommendations.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="boosting section" id="boosting">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">03 — Boosting &amp; paid promotion</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;color:white;">Boost what works. <em class="italic" style="color:var(--mint)">Pause what doesn't</em>.</h2>
+      <p class="lede" style="margin-top:24px;color:rgba(255,255,255,0.7);max-width:62ch;">Boosting and paid promotion are part of the scope — not now, but once organic demand is established. We will handle this the same way we run boosting for Lumenis: amplify organic content that is already proving itself, and let performance decide where the budget goes.</p>
+    </div>
+    <div class="boost-steps">
+      <div class="boost-step fade-in"><div class="boost-num">01</div><h4>Boost organic</h4><p>Put paid weight behind organic posts already earning engagement, rather than building separate ad creative from scratch.</p></div>
+      <div class="boost-step fade-in"><div class="boost-num">02</div><h4>Monitor</h4><p>Track performance against engagement and campaign objectives across both brands and both platforms.</p></div>
+      <div class="boost-step fade-in"><div class="boost-num">03</div><h4>Double down</h4><p>Continue investing in the strongest-performing posts, scaling spend behind what the audience is responding to.</p></div>
+      <div class="boost-step fade-in"><div class="boost-num">04</div><h4>Cut the rest</h4><p>Pause underperforming content so budget is never left running behind posts that are not working.</p></div>
+    </div>
+    <div class="boost-note"><strong>Media spend is client-side.</strong> When boosting begins, this retainer covers the strategy, setup, and ongoing management. The boosting budget itself stays with Pollogen and is managed transparently against agreed objectives — the same model we run on the Lumenis account.</div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper-cool);" id="process">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">04 — How we run it</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch;">A rhythm that holds <em class="italic" style="color:var(--purple)">every week</em>.</h2>
+    </div>
+    <div class="process-track">
+      <div class="process-step fade-in"><div class="process-num">01</div><div class="process-content"><div class="when">Week 1 · Setup</div><h4>Brand and channel foundation</h4><p>Platform access received and channels audited. Editorial alignment for Geneo and TriPollar as two distinct tracks. Kick-off to align on brand voice, content direction, and community protocols. Channel briefs delivered for sign-off, one per brand.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">02</div><div class="process-content"><div class="when">Weeks 2–3 · Planning</div><h4>Strategy review &amp; content planning</h4><p>Content strategy presented — topics, format mix, visual direction per brand. First content calendar shared for client review. Calendar feedback incorporated and signed off before production begins.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">03</div><div class="process-content"><div class="when">Weeks 3–6 · Production &amp; review</div><h4>Content produced and reviewed</h4><p>First batch produced — copy, design, and video drafts. Client review round 1. Revisions incorporated within 2–3 business days. A second round is available before final sign-off. First posts go live at the end of this phase.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">04</div><div class="process-content"><div class="when">Month 2 onward · Steady state</div><h4>Active management</h4><p>2–3 posts per week, per channel, per brand. Community monitoring on a regular basis. Biweekly performance snapshot and full monthly report each month.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">05</div><div class="process-content"><div class="when">Ongoing · Compounding</div><h4>Optimize and report</h4><p>Monthly reporting and KPI review. Creative formats refined per channel. The library of original content compounds across all channels over the term.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing section" id="investment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 — The investment</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">Two brands, one <em class="italic" style="color:var(--purple)">monthly retainer</em>.</h2>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-inner">
+        <div class="pricing-top">
+          <div><div class="pricing-label">Social media management · monthly retainer</div><h3 class="pricing-title">Geneo and TriPollar, on <span class="italic">Instagram</span>.</h3></div>
+          <div class="pricing-amount"><div class="num">$7,500</div><div class="per">Per month</div></div>
+        </div>
+        <div class="pricing-cols">
+          <div class="pricing-col">
+            <h5>Content &amp; channels</h5>
+            <ul>
+              <li>Geneo: Instagram now, TikTok on launch</li>
+              <li>TriPollar: Instagram now, TikTok on launch</li>
+              <li>2–3 posts per week, per channel, per brand</li>
+              <li>Cap of 18 posts per brand per month across all active channels</li>
+              <li>Up to 50% video content (Reels and short-form)</li>
+              <li>Reels, carousels, statics, and Stories</li>
+              <li>~80% original per channel, ~20% repurposed</li>
+              <li>Up to 2 revision rounds per content batch</li>
+            </ul>
+          </div>
+          <div class="pricing-col">
+            <h5>Management &amp; reporting</h5>
+            <ul>
+              <li>Community management, both brands</li>
+              <li>Stories resharing and tagged-content support</li>
+              <li>Boosting strategy, setup, and management — when active</li>
+              <li>Biweekly performance snapshot</li>
+              <li>Monthly reporting and KPI review</li>
+              <li>Weekly or biweekly syncs</li>
+            </ul>
+          </div>
+        </div>
+        <p class="pricing-note"><strong>What this includes and excludes.</strong> The retainer covers all content production, publishing, community management, boosting management, and reporting. Paid media and boosting spend stays client-side and will be managed transparently when active. Also excluded at this stage: the Pollogen brand channels (see Phase 2 below), influencer or UGC creator fees, and any third-party tooling or licensing.</p>
+      </div>
+    </div>
+    <div class="phase2">
+      <div class="phase2-grid">
+        <div>
+          <div class="phase2-label">Phase 2 · From September</div>
+          <h3>The Pollogen launch add-on</h3>
+          <p>Ahead of the Maximus Pro launch, we activate the Pollogen brand on its own channels: Instagram and LinkedIn. Two additional channels, following the same content philosophy — roughly 80% original and 20% repurposed. Added as an incremental retainer beginning in September.</p>
+        </div>
+        <div class="phase2-amount">
+          <div class="plus">+ add-on</div>
+          <div class="num">$3,000</div>
+          <div class="per">Per month, from September</div>
+          <div class="combined">Combined: $10,500 / month</div>
+        </div>
+      </div>
+    </div>
+    <div class="terms-grid">
+      <div class="term-card"><div class="label">Commitment period</div><h4>9 months</h4><p>Phase 2 begins in September as an add-on, not a renegotiation. TikTok channels activated when each brand is ready.</p></div>
+      <div class="term-card"><div class="label">Payment terms</div><h4>Monthly, in advance</h4><p>Pricing does not include boosting or paid media spend, software, or third-party platform costs.</p></div>
+      <div class="term-card"><div class="label">Boosting budget</div><h4>Client-side, excluded</h4><p>Boosting spend is set and held by Pollogen. We manage it transparently against agreed objectives when active.</p></div>
+      <div class="term-card"><div class="label">Validity &amp; acceptance</div><h4>30 days from presentation</h4><p>Acceptance via email. Work begins after confirmation of the first payment. Out-of-scope requests are quoted in writing before commencement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="social-contact">
+  <div class="container">
+    <div class="cta-eyebrow">Next steps</div>
+    <h2 class="cta-title">Let's get both brands <span class="italic">moving.</span></h2>
+    <p class="cta-lede">This is one of two proposals. The SEO and GEO project is scoped separately so you can review each on its own budget and merits. Reply with any questions or a yes on the social scope and we will get the calendar built.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io?subject=Pollogen%20Social%20Media%20Proposal" class="btn btn-primary">tamir@noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Prepared for<span>Yael Gilboa · Pollogen by Lumenis</span></div>
+      <div class="footer-meta-block">Proposal 1 of 2<span>Social Media · June 2026 · Valid 30 days · Confidential</span></div>
+      <div class="footer-meta-block">© 2026 Noetic Creative<span>Miami, Florida · hello@noetic.io · noetic.io</span></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="panel-seo" class="panel">
+<section class="hero" id="seo-top">
+  <div class="hero-grid-bg"></div><div class="hero-blob"></div><div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta"><span>SEO &amp; GEO Proposal</span><span class="hero-meta-divider"></span><span>June 2026</span><span class="hero-meta-divider"></span><span>Prepared for Pollogen by Lumenis</span></div>
+    <h1 class="display-xl">Build presence.<br><span class="accent-line">Then scale.</span></h1>
+    <p class="hero-lede">Website and landing pages, SEO, and GEO — built as one foundation. The same content feeds all three. No paid media until the data says so.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">2–3</div><div class="hero-stat-label">Blog posts per month</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2–3</div><div class="hero-stat-label">Landing pages per quarter</div></div>
+      <div class="hero-stat"><div class="hero-stat-num"><span class="accent">GEO</span></div><div class="hero-stat-label">Visibility in AI search surfaces, not just blue links</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">0</div><div class="hero-stat-label">Media spend committed until demand is tested</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">01 — The approach</span>
+      <h2 class="display-md" style="margin-top:18px;">Presence first. Paid <em class="italic" style="color:var(--purple)">when the data says so</em>.</h2>
+    </div>
+    <p class="lede">Before scaling media spend, Pollogen needs a strong digital asset and a real, searchable presence. This project builds that foundation: website and landing pages, SEO, and a GEO layer that ensures the brand shows up when buyers ask AI search surfaces — not only when they type into Google. A structured plan, executed and measured, tells you where the demand is. That evidence is what makes a later paid investment a decision rather than a bet.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper-warm);" id="pillars">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">02 — What's in scope</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">Three pillars, built as <em class="italic" style="color:var(--purple)">one foundation</em>.</h2>
+      <p class="lede" style="margin-top:24px;">Website, SEO, and GEO are not three separate workstreams. They are one digital-presence engine: the site is the asset, SEO makes it findable in search, and GEO makes it citable by AI. The same content feeds all three.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card fade-in">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 6h.01"/></svg></div>
+        <div class="pillar-tag">Pillar 01</div>
+        <h4>Website &amp; Landing Pages</h4>
+        <p>Purpose-built pages that support the SEO and GEO program now, and serve as the conversion layer when paid social is activated.</p>
+        <ul>
+          <li>Landing page design, copy, and build</li>
+          <li>Page structure aligned to content strategy</li>
+          <li>Conversion-oriented layout and CTAs</li>
+          <li>Built clean for performance and crawlability</li>
+        </ul>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="pillar-tag">Pillar 02</div>
+        <h4>SEO Setup &amp; Ongoing</h4>
+        <p>The findability layer. Technical foundation plus a sustained content and optimization program that compounds over the term.</p>
+        <ul>
+          <li>Technical SEO audit and setup</li>
+          <li>Keyword and topic mapping</li>
+          <li>On-page optimization, ongoing</li>
+          <li>Blog and article production program</li>
+        </ul>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
+        <div class="pillar-tag">Pillar 03</div>
+        <h4>GEO &amp; Content Strategy</h4>
+        <p>Generative Engine Optimization. Making sure Pollogen is surfaced and cited when buyers ask AI search surfaces about treatments and devices.</p>
+        <ul>
+          <li>GEO activity and content strategy</li>
+          <li>Content structured for AI citation</li>
+          <li>Authority and entity building</li>
+          <li>Aligned with the SEO content engine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="content-plan">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">03 — The content plan</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:26ch;">A recommended cadence, <em class="italic" style="color:var(--purple)">anchored in the science story</em>.</h2>
+      <p class="lede" style="margin-top:24px;">Content is the engine of both SEO and GEO. The cadence below is the starting point — final volumes confirmed alongside resourcing.</p>
+    </div>
+    <div class="plan-wrap">
+      <table class="plan-table">
+        <thead><tr><th>Content type</th><th>Purpose</th><th>Recommended volume</th></tr></thead>
+        <tbody>
+          <tr><td>Long-form blogs / articles</td><td>Search ranking and AI citation, science-led education</td><td class="qty">2–3 per month</td></tr>
+          <tr><td>Landing pages</td><td>Built for SEO now — ready to support paid social when activated</td><td class="qty">2–3 per quarter</td></tr>
+          <tr><td>On-page optimization passes</td><td>Improving existing pages for search performance</td><td class="qty">Up to 5 pages / month</td></tr>
+          <tr><td>GEO-structured content</td><td>Formatted for AI search surfaces and entity authority</td><td class="qty">Woven into blog program</td></tr>
+          <tr><td>Technical SEO maintenance</td><td>Site health, crawlability, structured data</td><td class="qty">Ongoing, monthly</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">04 — The timeline</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch;">Foundation, then <em class="italic" style="color:var(--purple)">compounding</em>.</h2>
+    </div>
+    <div class="process-track">
+      <div class="process-step fade-in"><div class="process-num">01</div><div class="process-content"><div class="when">Week 1 · Kick-off</div><h4>Audit &amp; setup</h4><p>Access to site, analytics, and existing assets. Technical SEO audit, keyword research, and GEO strategy completed. GA4, UTM, and conversion tracking configured. LP priorities confirmed for the first production cycle.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">02</div><div class="process-content"><div class="when">Weeks 2–3 · First deliverables</div><h4>Content and pages in review</h4><p>First blog drafts shared for client sign-off. LP designs delivered for review (when applicable). On-page optimization begins on priority pages.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">03</div><div class="process-content"><div class="when">Week 4 onward · Active cycle</div><h4>Production running</h4><p>Blog posts published on schedule. LPs approved, built, and live (when applicable). SEO optimization on monthly cadence. Monthly report delivered at end of each month.</p></div></div>
+      <div class="process-step fade-in"><div class="process-num">04</div><div class="process-content"><div class="when">Ongoing · Compounding</div><h4>Optimize and report</h4><p>Rankings and organic traffic tracked monthly. GEO citations monitored. Content and LP strategy refined each quarter based on what the data shows.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="kpi-section section" id="kpis">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">05 — How success is measured</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;color:white;">Leading indicators <em class="italic" style="color:var(--mint)">first</em>.</h2>
+      <p class="lede" style="margin-top:24px;color:rgba(255,255,255,0.7);max-width:62ch;">Foundational programs are measured on leading indicators first and conversion second — the early phase is about building presence and reading demand. Targets are set from the baseline after the first quarter.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-cell fade-in"><h4>Organic visibility</h4><p>Keyword rankings, impressions, and indexed pages growing over the term.</p></div>
+      <div class="kpi-cell fade-in"><h4>AI presence</h4><p>Citations and surfacing in AI search surfaces for target queries.</p></div>
+      <div class="kpi-cell fade-in"><h4>Qualified traffic</h4><p>Organic sessions and engaged visits to the site and landing pages.</p></div>
+      <div class="kpi-cell fade-in"><h4>Conversion signal</h4><p>Form fills, inquiries, and demand signals that inform the paid decision.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing section" id="seo-investment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 — The investment</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch;">One retainer. <em class="italic" style="color:var(--purple)">Everything included</em>.</h2>
+      <p class="lede" style="margin-top:24px;">All four workstreams — SEO, blog content, landing pages, and reporting — covered under a single monthly retainer.</p>
+    </div>
+    <div class="seo-price-card">
+      <div class="seo-price-inner">
+        <div class="seo-price-top">
+          <div><div class="pricing-label">SEO &amp; GEO · Monthly retainer</div><h3 class="pricing-title">Website, SEO, GEO, and content — <span class="italic">one monthly fee</span>.</h3></div>
+          <div class="pricing-amount"><div class="num">$4,000</div><div class="per">Per month</div></div>
+        </div>
+        <div class="pricing-cols" style="margin-top:40px;">
+          <div class="pricing-col">
+            <h5>What's covered</h5>
+            <ul>
+              <li>SEO on-page optimization — up to 5 pages / month</li>
+              <li>Technical SEO monitoring and issue resolution</li>
+              <li>2–3 blog posts per month, SEO-optimized</li>
+              <li>2–3 landing pages per quarter (design, copy, build)</li>
+              <li>GEO content strategy integrated into production</li>
+            </ul>
+          </div>
+          <div class="pricing-col">
+            <h5>Management &amp; reporting</h5>
+            <ul>
+              <li>GA4 and UTM tracking setup and maintenance</li>
+              <li>Monthly performance report — rankings, traffic, LP performance</li>
+              <li>Quarterly strategic review</li>
+              <li>Account management — one point of contact</li>
+            </ul>
+          </div>
+        </div>
+        <p class="seo-price-note"><strong>What this includes and excludes.</strong> The retainer covers all SEO, content, landing page production, GEO strategy, and reporting. It does not include paid search campaigns, full website redesigns, backlink outreach, or third-party tool subscriptions. Individual workstreams — blog volume, landing page count — can be adjusted at any monthly boundary.</p>
+      </div>
+    </div>
+    <div class="terms-grid">
+      <div class="term-card"><div class="label">Commitment period</div><h4>9 months</h4><p>A foundational program needs time to compound. Paid campaign scale-up is decided at the end of the foundation phase, based on demand evidence.</p></div>
+      <div class="term-card"><div class="label">Payment terms</div><h4>Monthly, in advance</h4><p>Pricing does not include paid media spend, software, or third-party platform and tooling costs.</p></div>
+      <div class="term-card"><div class="label">Paid media</div><h4>Deferred by design</h4><p>No media spend is committed until the foundation phase produces demand evidence. Paid is scoped separately when the data supports it.</p></div>
+      <div class="term-card"><div class="label">Validity &amp; acceptance</div><h4>30 days from presentation</h4><p>Acceptance via email. Work begins after confirmation of the first payment. Out-of-scope requests are quoted in writing before commencement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="seo-contact">
+  <div class="container">
+    <div class="cta-eyebrow">Next steps</div>
+    <h2 class="cta-title">Build the <span class="italic">foundation</span> first.</h2>
+    <p class="cta-lede">This is one of two proposals, scoped separately from social media so each can be reviewed on its own. Reply with any questions or to move forward and we will get the foundation underway.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io?subject=Pollogen%20SEO%20GEO%20Proposal" class="btn btn-primary">tamir@noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Prepared for<span>Yael Gilboa · Pollogen by Lumenis</span></div>
+      <div class="footer-meta-block">Proposal 2 of 2<span>SEO · GEO · June 2026 · Valid 30 days · Confidential</span></div>
+      <div class="footer-meta-block">© 2026 Noetic Creative<span>Miami, Florida · hello@noetic.io · noetic.io</span></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'instant'});
+  initAnimations();
+}
+function initAnimations() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  document.body.classList.add('anim-ready');
+  const els = document.querySelectorAll('.panel.active .fade-in:not(.visible)');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => observer.observe(el));
+  setTimeout(() => { document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')); }, 4000);
+}
+initAnimations();
+</script>
+</body>
+</html>
