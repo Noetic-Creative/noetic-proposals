@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Caesarstone × Noetic Creative — Proposal NC26/28</title>
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F4F4F6;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --purple-glow: rgba(108, 92, 231, 0.18);
+  --mint: #00D4B4;
+  --coral: #FF6B6B;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --max: 1240px;
+  --max-narrow: 920px;
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+::selection { background: var(--purple); color: white; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { background: var(--paper); color: var(--ink-soft); overflow-x: hidden; font-family: var(--font-sans); font-size: 17px; line-height: 1.6; letter-spacing: -0.005em; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+section { position: relative; }
+.section { padding: clamp(80px, 12vh, 150px) 0; }
+.section-head { margin-bottom: clamp(44px, 6vw, 72px); }
+h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.022em; line-height: 1.05; font-weight: 700; }
+.display-xl { font-family: var(--font-display); font-size: clamp(52px, 8vw, 116px); font-weight: 600; line-height: 0.97; letter-spacing: -0.035em; }
+.display-md { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
+.italic { font-style: italic; font-weight: 400; }
+.lede { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.55; color: var(--ink-soft); font-weight: 400; max-width: 60ch; }
+.mono { font-family: var(--font-mono); }
+
+.eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; box-shadow: 0 0 10px rgba(108,92,231,0.6), 0 0 20px rgba(108,92,231,0.35); }
+.eyebrow.dark { color: rgba(255,255,255,0.6); }
+.eyebrow.dark::before { background: var(--mint); box-shadow: 0 0 10px rgba(0,212,180,0.7), 0 0 20px rgba(0,212,180,0.4); }
+
+/* Client bar */
+.client-bar { background: var(--ink); padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 5; }
+.client-bar-logos { display: flex; align-items: center; gap: 18px; }
+.client-bar-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
+.client-chip { background: white; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; }
+.client-bar-meta { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.4); }
+@media (max-width: 600px) { .client-bar-meta { display: none; } }
+
+/* Hero — full-viewport dark, bottom-anchored */
+.hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 80px 0 72px; background: var(--ink); position: relative; overflow: hidden; }
+.hero-blob { position: absolute; width: 55vw; height: 75vh; min-width: 500px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(108,92,231,0.30), transparent 65%); filter: blur(70px); pointer-events: none; top: -18%; right: -10%; z-index: 0; will-change: transform; }
+.hero-blob-2 { position: absolute; width: 42vw; height: 55vh; min-width: 400px; border-radius: 50%; background: radial-gradient(circle at 60% 60%, rgba(0,212,180,0.16), transparent 65%); filter: blur(70px); pointer-events: none; bottom: -18%; left: -8%; z-index: 0; will-change: transform; }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 75% 60% at 55% 45%, black, transparent); -webkit-mask-image: radial-gradient(ellipse 75% 60% at 55% 45%, black, transparent); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; }
+.hero-meta { display: flex; gap: 18px; align-items: center; margin-bottom: 30px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); flex-wrap: wrap; }
+.hero-meta-divider { width: 24px; height: 1px; background: rgba(255,255,255,0.18); }
+.hero h1 { color: white; margin-bottom: 26px; }
+.hero h1 .accent-line { display: block; color: var(--mint); font-style: italic; font-weight: 400; }
+.hero-lede { font-size: clamp(17px, 1.6vw, 21px); line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 58ch; }
+.hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; flex-wrap: wrap; margin-top: clamp(48px, 7vh, 84px); }
+.hero-client { display: flex; align-items: center; gap: 16px; padding-bottom: 6px; }
+.hero-client-label { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.14em; }
+.hero-client img { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: 0.75; }
+.hero-stats { display: flex; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; overflow: hidden; backdrop-filter: blur(4px); }
+.h-stat { padding: 18px 30px; border-right: 1px solid rgba(255,255,255,0.09); }
+.h-stat:last-child { border-right: none; }
+.h-stat-n { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; color: white; line-height: 1; letter-spacing: -0.02em; }
+.h-stat-n.accent { color: var(--purple); }
+.h-stat-n.accent-mint { color: var(--mint); }
+.h-stat-l { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); margin-top: 6px; }
+@media (max-width: 800px) {
+  .hero { min-height: auto; padding-top: 64px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; }
+  .hero-stats { flex-direction: column; width: 100%; }
+  .h-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .h-stat:last-child { border-bottom: none; }
+}
+
+/* Sticky section index bar */
+.ov-bar { background: #111014; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.ov-inner { display: flex; align-items: center; max-width: var(--max); margin: 0 auto; padding: 0 32px; gap: 4px; }
+.ov-logos { display: flex; align-items: center; gap: 14px; padding-right: 20px; margin-right: 8px; border-right: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+.ov-logos img.n-logo { height: 18px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+.ov-logos img.cs-logo { height: 14px; width: auto; filter: brightness(0) invert(1); opacity: 0.55; }
+.ov-links { display: flex; overflow-x: auto; scrollbar-width: none; flex-grow: 1; }
+.ov-links::-webkit-scrollbar { display: none; }
+.ov-a { display: flex; align-items: center; gap: 7px; padding: 14px 13px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.15s; }
+.ov-a:hover { border-bottom-color: rgba(255,255,255,0.2); }
+.ov-a.on { border-bottom-color: var(--mint); }
+.ov-n { font-family: var(--font-mono); font-size: 9.5px; color: rgba(255,255,255,0.25); }
+.ov-l { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color 0.15s; }
+.ov-a:hover .ov-l, .ov-a.on .ov-l { color: white; }
+.ov-cta { flex-shrink: 0; margin-left: 12px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: var(--mint); border-radius: 999px; padding: 7px 14px; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+.ov-cta:hover { background: white; }
+@media (max-width: 900px) { .ov-logos { display: none; } .ov-cta { display: none; } .ov-inner { padding: 0 16px; } }
+
+/* Frame prose */
+.frame-prose { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); margin-top: 8px; }
+@media (max-width: 800px) { .frame-prose { grid-template-columns: 1fr; } }
+.frame-prose p { font-size: 17px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 20px; }
+.frame-prose p:last-child { margin-bottom: 0; }
+.prose-pull { border-left: 3px solid var(--purple); border-image: linear-gradient(180deg, var(--purple), var(--mint)) 1; padding: 6px 0 6px 24px; font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; color: var(--ink); margin: 28px 0 8px; }
+
+/* Scope grid */
+.scope-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+@media (max-width: 1000px) { .scope-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .scope-grid { grid-template-columns: 1fr; } }
+.scope-card { padding: 28px 24px 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.4); transition: background 0.3s, transform 0.3s; position: relative; display: flex; flex-direction: column; min-height: 190px; }
+.scope-card:hover { background: white; transform: translateY(-2px); }
+.scope-card::after { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--mint)); opacity: 0; transition: opacity 0.3s; }
+.scope-card:hover::after { opacity: 1; }
+.scope-num { font-family: var(--font-mono); font-size: 11px; color: var(--purple); letter-spacing: 0.1em; font-weight: 600; margin-bottom: 14px; }
+.scope-card h4 { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 8px; line-height: 1.12; }
+.scope-card p { font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; flex-grow: 1; }
+.scope-vol { margin-top: 16px; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+.scope-card .scope-arrow { position: absolute; top: 24px; right: 22px; color: var(--ink-faint); font-size: 14px; transition: color 0.2s, transform 0.2s; }
+.scope-card:hover .scope-arrow { color: var(--purple); transform: translate(2px, -2px); }
+
+/* Strategy process */
+.process-track { margin-top: 56px; position: relative; }
+.process-step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 36px 0; border-top: 1px solid var(--rule); align-items: start; }
+.process-step:last-child { border-bottom: 1px solid var(--rule); }
+.process-num { font-family: var(--font-display); font-size: 64px; font-weight: 600; line-height: 0.9; letter-spacing: -0.04em; background: linear-gradient(160deg, var(--purple) 20%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--purple); }
+.process-content h4 { font-family: var(--font-display); font-size: clamp(22px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+.process-content p { color: var(--ink-mute); font-size: 15px; line-height: 1.6; max-width: 62ch; }
+.process-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.p-chip { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; padding: 6px 12px; border: 1px solid var(--rule-strong); border-radius: 999px; color: var(--ink-soft); background: rgba(255,255,255,0.5); }
+@media (max-width: 600px) { .process-step { grid-template-columns: 50px 1fr; gap: 16px; } .process-num { font-size: 40px; } }
+.strategy-note { margin-top: 40px; border: 1px solid var(--rule-strong); border-left: 3px solid var(--purple); background: rgba(255,255,255,0.55); padding: 22px 26px; display: flex; gap: 16px; align-items: baseline; max-width: 760px; }
+.strategy-note .mono-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--purple); font-weight: 600; white-space: nowrap; }
+.strategy-note p { font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+
+/* Lanes */
+.lanes { background: var(--ink); color: white; }
+.lanes h2 { color: white; }
+.lanes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.12); }
+@media (max-width: 800px) { .lanes-grid { grid-template-columns: 1fr; } .lane { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.12); } }
+.lane { padding: 56px 48px; border-right: 1px solid rgba(255,255,255,0.12); position: relative; }
+.lane:last-child { border-right: none; }
+.lane-tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 20px; }
+.lane h3 { font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px); font-weight: 600; color: white; margin-bottom: 18px; line-height: 1.05; }
+.lane p { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.6; max-width: 42ch; margin-bottom: 24px; }
+.lane-spec { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); }
+.lane-spec-item .label { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
+.lane-spec-item .value { font-size: 15px; color: white; font-weight: 500; }
+@media (max-width: 600px) { .lane { padding: 40px 28px; } }
+
+/* Service deep dives — sticky dark box + open stacked blocks */
+.service-deep { border-top: 1px solid var(--rule); padding: clamp(76px, 10vh, 120px) 0; background: var(--paper); position: relative; }
+.service-deep.warm { background: var(--paper-warm); }
+.service-deep-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
+@media (max-width: 900px) { .service-deep-grid { grid-template-columns: 1fr; } .service-deep-meta { position: static !important; } }
+.service-deep-meta { position: sticky; top: 68px; background: var(--ink); border-radius: 18px; padding: 34px 30px 30px; overflow: hidden; }
+.service-deep-meta::before { content: ""; position: absolute; top: -120px; right: -120px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.55), transparent 70%); filter: blur(50px); pointer-events: none; }
+.service-deep-meta::after { content: ""; position: absolute; bottom: -130px; left: -110px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,180,0.38), transparent 70%); filter: blur(55px); pointer-events: none; }
+.service-deep-meta > * { position: relative; z-index: 1; }
+.service-deep-num { font-family: var(--font-mono); font-size: 12px; color: var(--mint); font-weight: 500; margin-bottom: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+.service-deep-title { font-family: var(--font-display); font-size: clamp(32px, 3.8vw, 46px); font-weight: 600; line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 18px; color: white; }
+.service-deep-tag { font-size: 17px; color: #B8AEFF; font-weight: 500; margin-bottom: 22px; font-style: italic; font-family: var(--font-display); }
+.service-deep-tag::before { content: "\2014 "; }
+.service-deep-desc { color: rgba(255,255,255,0.72); font-size: 14.5px; line-height: 1.65; }
+.service-spec { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.14); }
+.service-spec-item .label { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 5px; }
+.service-spec-item .value { font-size: 14px; color: white; font-weight: 600; }
+
+/* Phase blocks — the open stacked panels */
+.phase-block { border-radius: 16px; padding: 28px 30px; margin-bottom: 18px; border: 1px solid var(--rule-strong); background: var(--card); }
+.phase-block.cool { background: var(--paper-cool); border-color: var(--rule); }
+.service-deep.warm .phase-block { background: white; }
+.service-deep.warm .phase-block.cool { background: rgba(240,240,244,0.75); }
+.phase-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--purple); margin-bottom: 18px; padding-bottom: 13px; border-bottom: 1px solid var(--rule-strong); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.phase-label .cnt { color: var(--ink-faint); letter-spacing: 0.08em; }
+@media (max-width: 600px) { .phase-block { padding: 22px 20px; } }
+
+/* Role pills + tip box */
+.roles-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.role-pill { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--purple-deep); background: var(--purple-soft); border: 1px solid rgba(108,92,231,0.4); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: all 0.15s; line-height: 1.3; }
+.role-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(108,92,231,0.25); }
+.role-pill.active { background: var(--purple); color: white; border-color: var(--purple); box-shadow: 0 4px 14px rgba(108,92,231,0.35); }
+.role-pill.shared { background: rgba(255,255,255,0.6); color: var(--ink-mute); border-color: var(--rule-strong); }
+.role-pill.shared:hover { box-shadow: 0 4px 12px rgba(10,10,14,0.1); }
+.role-pill.shared.active { background: var(--ink); color: white; border-color: var(--ink); box-shadow: 0 4px 14px rgba(10,10,14,0.3); }
+.role-tip-box { display: none; background: var(--ink); color: rgba(255,255,255,0.85); border-radius: 12px; padding: 14px 18px; margin-top: 14px; font-size: 13.5px; line-height: 1.6; }
+.role-tip-box.visible { display: block; }
+.role-tip-box .who { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mint); display: block; margin-bottom: 5px; }
+.roles-hint { font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 14px; }
+
+/* Covers cards — masonry-ish columns */
+.covers-cols { columns: 2; column-gap: 14px; }
+@media (max-width: 680px) { .covers-cols { columns: 1; } }
+.cover-card { background: var(--card); border: 1px solid var(--rule-strong); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; break-inside: avoid; }
+.phase-block .cover-card { background: rgba(255,255,255,0.85); }
+.service-deep.warm .phase-block .cover-card { background: var(--paper); }
+.cover-card h4 { font-family: var(--font-display); font-size: 18.5px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 12px; line-height: 1.15; }
+.cover-card ul { list-style: none; }
+.cover-card ul li { font-size: 13.5px; color: var(--ink-mute); line-height: 1.6; padding: 7px 0 7px 16px; position: relative; border-top: 1px solid var(--rule); }
+.cover-card ul li:first-child { border-top: none; padding-top: 0; }
+.cover-card ul li::before { content: "\2192"; position: absolute; left: 0; top: 7px; color: var(--purple); font-size: 11px; }
+.cover-card ul li:first-child::before { top: 0; }
+.cover-card ul li strong { color: var(--ink); font-weight: 700; }
+
+/* Receive list */
+.receive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+@media (max-width: 640px) { .receive-grid { grid-template-columns: 1fr; } }
+.receive-grid > div { padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--ink-soft); display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; line-height: 1.55; }
+.receive-grid > div::before { content: "\2713"; color: var(--mint); font-weight: 700; font-size: 13px; font-family: var(--font-mono); }
+.receive-grid > div strong { color: var(--ink); font-weight: 700; }
+.phase-note { font-size: 13px; color: var(--ink-mute); margin-top: 16px; line-height: 1.6; }
+
+/* Success — dark gradient block with chips */
+.success-block { background: linear-gradient(135deg, #0A0A0E 0%, #1A1240 100%); border-radius: 16px; padding: 32px 34px; position: relative; overflow: hidden; margin-bottom: 0; }
+.success-block::before { content: ""; position: absolute; top: -30%; right: -10%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.3) 0%, transparent 70%); pointer-events: none; }
+.success-block > * { position: relative; z-index: 1; }
+.success-label { font-family: var(--font-mono); font-size: 10px; color: var(--mint); text-transform: uppercase; letter-spacing: 0.16em; font-weight: 600; margin-bottom: 14px; }
+.success-block p { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 68ch; }
+.success-block p + p { margin-top: 12px; }
+.success-block em { font-family: var(--font-display); font-style: italic; color: white; }
+.kpi-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+.kpi-chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 7px 14px; font-size: 11.5px; color: rgba(255,255,255,0.75); font-family: var(--font-mono); letter-spacing: 0.02em; }
+.kpi-chip.hi { border-color: rgba(0,212,180,0.4); color: var(--mint); background: rgba(0,212,180,0.08); }
+
+/* Inline stat trio (SEO) */
+.svc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 18px; }
+@media (max-width: 560px) { .svc-stats { grid-template-columns: 1fr; } .svc-stat { border-right: none !important; border-bottom: 1px solid var(--rule); } .svc-stat:last-child { border-bottom: none; } }
+.svc-stat { padding: 24px 20px 24px 0; border-right: 1px solid var(--rule); }
+.svc-stat:not(:first-child) { padding-left: 20px; }
+.svc-stat:last-child { border-right: none; }
+.svc-stat-num { font-family: var(--font-display); font-size: clamp(30px, 3.2vw, 44px); font-weight: 600; letter-spacing: -0.025em; line-height: 1; color: var(--purple); margin-bottom: 8px; }
+.svc-stat-num.mint { color: #00A18A; }
+.svc-stat-label { font-size: 12px; color: var(--ink-mute); line-height: 1.4; font-weight: 500; }
+.svc-intro { font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 22px; }
+.svc-intro strong { color: var(--ink); }
+
+/* Timeline */
+.tl-section { background: var(--paper-cool); border-top: 1px solid var(--rule-strong); }
+.tl-track { position: relative; padding-left: 58px; max-width: 720px; margin-top: 56px; }
+.tl-track::before { content: ""; position: absolute; left: 17px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--purple), var(--mint)); border-radius: 2px; opacity: 0.25; }
+.tl-item { position: relative; margin-bottom: 40px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: -48px; top: 5px; width: 13px; height: 13px; border-radius: 50%; background: var(--purple); border: 3px solid var(--paper-cool); box-shadow: 0 0 0 2px var(--purple), 0 0 14px rgba(108,92,231,0.45); }
+.tl-dot.m { background: var(--mint); box-shadow: 0 0 0 2px var(--mint), 0 0 14px rgba(0,212,180,0.45); }
+.tl-dot.a { background: var(--amber); box-shadow: 0 0 0 2px var(--amber), 0 0 14px rgba(245,180,0,0.4); }
+.tl-ph { font-family: var(--font-mono); font-size: 10px; color: var(--purple); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 5px; font-weight: 600; }
+.tl-ph.m { color: #00A18A; }
+.tl-ph.a { color: #8A6400; }
+.tl-ti { font-family: var(--font-display); font-size: clamp(20px, 2vw, 25px); font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.015em; }
+.tl-de { font-size: 14px; color: var(--ink-mute); line-height: 1.65; max-width: 60ch; }
+
+/* Investment */
+.investment { background: var(--paper); }
+.fee-table { margin-top: 56px; border: 1px solid var(--rule-strong); background: white; border-radius: 16px; overflow: hidden; }
+.fee-row { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 22px 32px; border-bottom: 1px solid var(--rule); }
+.fee-row:last-child { border-bottom: none; }
+.fee-service { font-family: var(--font-display); font-size: clamp(18px, 1.8vw, 23px); font-weight: 600; letter-spacing: -0.015em; color: var(--ink); display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.fee-service .fee-sub { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); font-weight: 500; }
+.fee-amount { font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--ink); text-align: right; white-space: nowrap; }
+.fee-amount .per { color: var(--ink-faint); font-weight: 400; font-size: 12px; }
+.fee-tbd { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8A6400; background: rgba(245,180,0,0.14); border: 1px solid rgba(245,180,0,0.35); padding: 6px 12px; border-radius: 999px; }
+.fee-row.total { background: var(--ink); }
+.fee-row.total .fee-service { color: white; }
+.fee-row.total .fee-amount { color: var(--mint); font-size: 20px; }
+.fee-row.total .fee-amount .per { color: rgba(255,255,255,0.5); }
+@media (max-width: 560px) { .fee-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 22px; } .fee-amount { text-align: left; } }
+.fee-note { margin-top: 16px; font-size: 13px; color: var(--ink-mute); max-width: 72ch; line-height: 1.55; }
+.terms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 40px; border: 1px solid var(--rule); background: var(--rule); border-radius: 14px; overflow: hidden; }
+@media (max-width: 700px) { .terms-grid { grid-template-columns: 1fr; } }
+.term-cell { background: var(--paper); padding: 26px 28px; }
+.term-cell .label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint); margin-bottom: 10px; }
+.term-cell .value { font-size: 15.5px; color: var(--ink); font-weight: 600; line-height: 1.45; }
+.term-cell .value span { display: block; font-weight: 400; color: var(--ink-mute); font-size: 13.5px; margin-top: 4px; }
+.fineprint { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); border-top: 1px solid var(--rule); padding-top: 32px; }
+@media (max-width: 700px) { .fineprint { grid-template-columns: 1fr; } }
+.fineprint h5 { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint); font-weight: 600; margin-bottom: 10px; }
+.fineprint p { font-size: 13px; color: var(--ink-mute); line-height: 1.6; }
+
+/* CTA */
+.cta-section { background: var(--ink); color: white; padding: clamp(100px, 14vh, 180px) 0 clamp(60px, 9vh, 100px); position: relative; overflow: hidden; }
+.cta-section::before { content: ""; position: absolute; bottom: -20%; left: -10%; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.32), transparent 70%); filter: blur(100px); }
+.cta-section .container { position: relative; z-index: 1; }
+.cta-eyebrow { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 28px; }
+.cta-title { font-family: var(--font-display); font-size: clamp(48px, 7vw, 100px); font-weight: 600; line-height: 0.98; letter-spacing: -0.03em; color: white; margin-bottom: 36px; max-width: 16ch; }
+.cta-title .italic { color: var(--purple); font-style: italic; font-weight: 500; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 24px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; transition: all 0.2s; border: 1px solid transparent; }
+.btn-primary { background: var(--purple); color: white; }
+.btn-primary:hover { background: white; color: var(--ink); }
+.btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.2); }
+.btn-ghost:hover { border-color: white; }
+.btn svg { width: 16px; height: 16px; }
+.cta-validity { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; }
+.next-steps { margin-top: 72px; border-top: 1px solid rgba(255,255,255,0.12); display: grid; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .next-steps { grid-template-columns: 1fr; } .next-step { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); } }
+.next-step { padding: 32px 28px 32px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+.next-step:not(:first-child) { padding-left: 28px; }
+.next-step .ns-num { font-family: var(--font-display); font-size: 40px; font-weight: 600; color: var(--mint); line-height: 1; margin-bottom: 12px; }
+.next-step h5 { color: white; font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+.next-step p { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.footer-meta { margin-top: 80px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; }
+.footer-meta-block { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.7; }
+.footer-meta-block span { display: block; color: white; font-size: 13px; text-transform: none; letter-spacing: -0.01em; margin-top: 6px; font-family: var(--font-sans); font-weight: 500; }
+
+/* Animation */
+body.anim-ready .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+body.anim-ready .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Print */
+@media print {
+  .ov-bar, .client-bar { display: none; }
+  body { background: white; }
+  .hero { min-height: auto; }
+  .hero-blob, .hero-blob-2, .cta-section::before { display: none; }
+  .service-deep, .process-step, .fee-table, .lane, .cover-card, .phase-block, .tl-item { break-inside: avoid; }
+  .service-deep-meta { position: static; background: white; border: 1px solid var(--rule); }
+  .service-deep-meta::before, .service-deep-meta::after { display: none; }
+  .service-deep-meta .service-deep-title { color: var(--ink); }
+  .service-deep-meta .service-deep-desc { color: var(--ink-mute); }
+  .service-deep-meta .service-spec-item .value { color: var(--ink); }
+  .success-block { background: white; border: 1px solid var(--rule-strong); }
+  .success-block p { color: var(--ink-soft); }
+  .success-block em { color: var(--ink); }
+  .kpi-chip { color: var(--ink-mute); border-color: var(--rule-strong); }
+  .role-tip-box { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Client bar -->
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <div class="client-chip"><img src="data:image/png;base64,PLACEHOLDER_LOGO" alt="Caesarstone" style="height:16px; width:auto;"></div>
+  </div>
+  <span class="client-bar-meta">Proposal NC26/28 &middot; June 2026 &middot; Confidential</span>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob" id="blob1"></div>
+  <div class="hero-blob-2" id="blob2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Proposal NC26/28</span>
+      <span class="hero-meta-divider"></span>
+      <span>June 19, 2026 &middot; Valid 30 days</span>
+      <span class="hero-meta-divider"></span>
+      <span>Confidential</span>
+    </div>
+    <h1 class="display-xl">
+      Engineered surfaces.<br>
+      <span class="accent-line">Engineered demand.</span>
+    </h1>
+    <p class="hero-lede">Caesarstone engineers materials to exacting tolerances. This proposal applies the same discipline to demand: a dedicated Research &amp; Strategy phase, followed by ongoing execution across paid media, organic social, UGC, website &amp; content, SEO/GEO, and event marketing, run as one system, by one team, against one set of KPIs.</p>
+
+    <div class="hero-bottom">
+      <div class="hero-client">
+        <span class="hero-client-label">Prepared for</span>
+        <img src="data:image/png;base64,PLACEHOLDER_LOGO" alt="Caesarstone">
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-n">8</div>
+          <div class="h-stat-l">Workstreams</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n accent-mint">6 wks</div>
+          <div class="h-stat-l">Strategy first</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">12 mo</div>
+          <div class="h-stat-l">Partnership</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n accent">1</div>
+          <div class="h-stat-l">Integrated team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky section index -->
+<div class="ov-bar" id="ovbar">
+  <div class="ov-inner">
+    <div class="ov-logos">
+      <img class="n-logo" src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative">
+      <img class="cs-logo" src="data:image/png;base64,PLACEHOLDER_LOGO" alt="Caesarstone">
+    </div>
+    <div class="ov-links">
+      <a class="ov-a" href="#strategy"><span class="ov-n">S</span><span class="ov-l">Strategy</span></a>
+      <a class="ov-a" href="#svc-paid-media"><span class="ov-n">2.1</span><span class="ov-l">Paid Media</span></a>
+      <a class="ov-a" href="#svc-organic"><span class="ov-n">2.2</span><span class="ov-l">Organic</span></a>
+      <a class="ov-a" href="#svc-ugc"><span class="ov-n">2.3</span><span class="ov-l">UGC &amp; KOL</span></a>
+      <a class="ov-a" href="#svc-seo"><span class="ov-n">2.4</span><span class="ov-l">SEO/GEO</span></a>
+      <a class="ov-a" href="#svc-web"><span class="ov-n">2.5</span><span class="ov-l">Website</span></a>
+      <a class="ov-a" href="#svc-events"><span class="ov-n">2.6</span><span class="ov-l">Events</span></a>
+      <a class="ov-a" href="#svc-reporting"><span class="ov-n">2.7</span><span class="ov-l">Reporting</span></a>
+      <a class="ov-a" href="#svc-am"><span class="ov-n">2.8</span><span class="ov-l">Acct Mgmt</span></a>
+      <a class="ov-a" href="#timeline"><span class="ov-n">T</span><span class="ov-l">Timeline</span></a>
+      <a class="ov-a" href="#investment"><span class="ov-n">$</span><span class="ov-l">Investment</span></a>
+    </div>
+    <a class="ov-cta" href="mailto:tamir@noetic.io?subject=Proposal%20NC26%2F28%20%E2%80%94%20Caesarstone%20%C3%97%20Noetic">Accept &rarr;</a>
+  </div>
+</div>
+
+<!-- 01 The frame -->
+<section class="section" style="background: var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 &mdash; The frame</span>
+      <h2 class="display-md" style="margin-top:18px; max-width:24ch;">A brand built on precision deserves a demand system built <em class="italic" style="color:var(--purple)">the same way</em>.</h2>
+    </div>
+    <div class="frame-prose">
+      <div>
+        <p>Every Caesarstone surface is the product of controlled inputs: engineered composition, exact tolerances, finishes that behave predictably at scale. Your marketing should be held to the same standard. Not a collection of vendors each optimizing their own channel, but one system where research feeds strategy, strategy feeds media and content, and every output reports into a single set of KPIs.</p>
+        <p>Your category has a structural reality most brands never have to manage: homeowners need to want Caesarstone, and the designers, fabricators, and showrooms who influence the final decision need to feel confident recommending it. Every workstream in this proposal serves one of those two jobs, and most serve both at once.</p>
+      </div>
+      <div>
+        <p>That is why this engagement begins with six weeks of research and strategy before a single campaign goes live, and why the eight workstreams that follow are staffed by one team, coordinated by one account lead, and measured in one unified report. Performance breaks at the seams. This system doesn't leave seams.</p>
+        <div class="prose-pull">One team, one strategy, one set of KPIs, defined once and never quietly renegotiated.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Scope at a glance -->
+<section class="section" id="scope" style="background: var(--paper-warm);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">02 &mdash; Scope at a glance</span>
+      <h2 class="display-md" style="margin-top:18px;">Eight workstreams. <em class="italic" style="color:var(--purple)">One system.</em></h2>
+      <p class="lede" style="margin-top:22px;">Every service below is detailed in full further down the page: what it actually is, who staffs it, what the work covers, what you receive every month, and what success looks like.</p>
+    </div>
+    <div class="scope-grid">
+      <a class="scope-card fade-in" href="#svc-paid-media">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.1</div>
+        <h4>Paid Media</h4>
+        <p>Search, social &amp; programmatic. A full demand engine, owned end to end.</p>
+        <div class="scope-vol">Full-funnel &middot; All platforms</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-organic">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.2</div>
+        <h4>Organic Social &amp; Content</h4>
+        <p>A content operation: original IP, in-house production, community management.</p>
+        <div class="scope-vol">Up to 24 pieces / mo</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-ugc">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.3</div>
+        <h4>UGC &amp; KOL</h4>
+        <p>A managed creator operation with creator and KOL fees inside the price.</p>
+        <div class="scope-vol">5 pieces / mo &middot; Fees included</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-seo">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.4</div>
+        <h4>SEO + GEO</h4>
+        <p>Organic search and AI search visibility, run as one program across both sites.</p>
+        <div class="scope-vol">5&ndash;10 pages + 4 articles / mo</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-web">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.5</div>
+        <h4>Website &amp; Content</h4>
+        <p>Pages, tools, and conversion, built directly on your existing sites.</p>
+        <div class="scope-vol">Up to 2 pages / mo</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-events">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.6</div>
+        <h4>Events</h4>
+        <p>KBIS 2027 as a six-month activation, plus two customer site visits per year.</p>
+        <div class="scope-vol">6-mo activation &middot; 2 visits / yr</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-reporting">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.7</div>
+        <h4>Reporting &amp; Dashboards</h4>
+        <p>One monthly report, one live dashboard, one set of KPIs. Board-grade visibility.</p>
+        <div class="scope-vol">4 in-person QBRs / yr</div>
+      </a>
+      <a class="scope-card fade-in" href="#svc-am">
+        <span class="scope-arrow">&#8599;</span>
+        <div class="scope-num">2.8</div>
+        <h4>Account Management</h4>
+        <p>A named, dedicated AM backed by an Account Director and the founder.</p>
+        <div class="scope-vol">9am&ndash;6pm CT &middot; Weekly cadence</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 03 Strategy phase -->
+<section class="section" id="strategy" style="background: var(--paper);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">03 &mdash; Research &amp; Strategy &middot; Weeks 1&ndash;6</span>
+      <h2 class="display-md" style="margin-top:18px;">Before anything ships, <em class="italic" style="color:var(--purple)">everything gets defined</em>.</h2>
+      <p class="lede" style="margin-top:22px;">Before a single campaign goes live, we invest six weeks in the research and strategy that makes all execution sharper. The deliverable of this phase is a complete, board-ready strategy document. No execution deliverables (campaigns, content, pages, or creatives) are produced during this phase. Everything in the sections below begins in Month 2, once the strategy has been reviewed and approved.</p>
+    </div>
+
+    <div class="process-track">
+      <div class="process-step fade-in">
+        <div class="process-num">01</div>
+        <div class="process-content">
+          <h4>Discovery &amp; Deep Research</h4>
+          <p>We audit everything before we build anything: your existing channels, paid social accounts (Meta, LinkedIn, Pinterest, YouTube), search campaigns, organic social presence, and both US digital properties, benchmarked against the competitive landscape across the quartz and premium surfaces category. We map two distinct buyer personas with full buyer journey documentation for each.</p>
+          <div class="process-chips">
+            <span class="p-chip">Paid social audit</span>
+            <span class="p-chip">Paid search audit + keyword landscape</span>
+            <span class="p-chip">Organic social audit, all channels</span>
+            <span class="p-chip">2-persona buyer journey map</span>
+            <span class="p-chip">Competitive digital benchmarking</span>
+            <span class="p-chip">Messaging &amp; positioning audit</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-num">02</div>
+        <div class="process-content">
+          <h4>Digital Strategy</h4>
+          <p>Everything we learn about Caesarstone's audiences, competitors, product lines, and commercial goals, translated into a clear, actionable direction for every channel: a working blueprint organized by channel, by product line, and by message intent, with enough tactical depth that execution begins with confidence.</p>
+          <div class="process-chips">
+            <span class="p-chip">Market sizing &amp; opportunity assessment</span>
+            <span class="p-chip">Competitive positioning analysis</span>
+            <span class="p-chip">Messaging framework per persona, incl. the California Quartz track</span>
+            <span class="p-chip">Conversion tracking architecture, no data gaps from Day 1</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-num">03</div>
+        <div class="process-content">
+          <h4>Paid Media Strategy</h4>
+          <p>A channel-by-channel plan defining where we spend, who we target, and what we show across every paid platform, including the role of each channel in delivering Caesarstone's full messaging priorities. The innovation story gets a defined home, format, and intent per platform, not just a brand claim.</p>
+          <div class="process-chips">
+            <span class="p-chip">Channel mix &amp; budget allocation</span>
+            <span class="p-chip">Audience architecture per platform</span>
+            <span class="p-chip">KPIs tied to lead quality &amp; engagement</span>
+            <span class="p-chip">Creative format direction per channel</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="process-num">04</div>
+        <div class="process-content">
+          <h4>Content &amp; Organic Social Strategy</h4>
+          <p>A channel-by-channel organic presence built around where each audience actually lives and what moves them. Platform strategies, content pillars, tone of voice, and the monthly production workflow are all defined here, with content pillars mapped per persona and a workflow covering brief, approval, and scheduling cycles.</p>
+          <div class="process-chips">
+            <span class="p-chip">Channel jobs defined: inspire vs. educate</span>
+            <span class="p-chip">LinkedIn deep dive, B2B as the main focus</span>
+            <span class="p-chip">UGC &amp; KOL strategy</span>
+            <span class="p-chip">Persona&ndash;channel mapping</span>
+            <span class="p-chip">Content pillar framework, 2 personas</span>
+            <span class="p-chip">Tone of voice + guidelines per channel</span>
+            <span class="p-chip">Content calendar framework + workflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-note fade-in">
+      <span class="mono-tag">Note</span>
+      <p>The retainer runs from day one, and this entire phase is covered inside it. Where volumes in the execution sections are noted as flexible, final quantities are confirmed after strategy sign-off, based on what the strategy reveals and what performs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Two audiences (dark lanes) -->
+<section class="lanes section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">04 &mdash; The two audiences</span>
+      <h2 class="display-md" style="margin-top:18px; max-width:24ch;">Two audiences moving <em class="italic" style="color:var(--mint)">at once</em>.</h2>
+    </div>
+    <div class="lanes-grid">
+      <div class="lane">
+        <div class="lane-tag">Audience A</div>
+        <h3>Homeowners</h3>
+        <p>Homeowners need to want Caesarstone. Desire is built in aspirational spaces, real projects, and content worth saving and sharing, long before a showroom visit.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">The job</span><span class="value">Desire</span></div>
+          <div class="lane-spec-item"><span class="label">Where it's won</span><span class="value">Instagram &middot; Pinterest &middot; Facebook</span></div>
+          <div class="lane-spec-item"><span class="label">The proof</span><span class="value">Saves, shares, sample requests</span></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-tag">Audience B</div>
+        <h3>The Trade</h3>
+        <p>Designers, fabricators, and showrooms influence the final decision. They need to feel confident recommending Caesarstone, with the specs, proof, and authority to back it.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">The job</span><span class="value">Confidence</span></div>
+          <div class="lane-spec-item"><span class="label">Where it's won</span><span class="value">LinkedIn &middot; Search &middot; Trade content</span></div>
+          <div class="lane-spec-item"><span class="label">The proof</span><span class="value">Spec downloads, partner sign-ups</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:36px; color: rgba(255,255,255,0.55); font-size:14.5px; max-width:64ch;">Every piece of content, every campaign, and every page in the eight workstreams below serves one of these two jobs. Most serve both at once.</p>
+  </div>
+</section>
+
+<!-- SERVICE 2.1 Paid Media -->
+<section class="service-deep" id="svc-paid-media">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.1</div>
+        <h3 class="service-deep-title">Paid Media: Search, Social &amp; Programmatic</h3>
+        <div class="service-deep-tag">Performance breaks at the seams. We don't leave seams.</div>
+        <p class="service-deep-desc">Paid media at Noetic is not campaign management. It is a full demand engine: the research, the strategy, the media buying, the creative that fills the campaigns, the landing pages that convert the clicks, the tracking infrastructure that proves what worked, and the analysis that decides what happens next. Most agencies sell you the middle of that chain and leave the rest to you. We own the chain end to end.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Channels</span><span class="value">Search &middot; Social &middot; Programmatic</span></div>
+          <div class="service-spec-item"><span class="label">Cadence</span><span class="value">Weekly check-ins &middot; Monthly reports</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">5 dedicated + 6 shared</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="Owner of Google Ads, Bing, and programmatic. Keyword architecture, bid strategy, query mining, placement strategy, and budget efficiency across search and display.">Paid Search Lead</button>
+            <button type="button" class="role-pill" data-tip="Owner of demand generation across Meta, LinkedIn, and TikTok. Audience architecture, campaign structure, platform-specific creative direction, and scaling decisions.">Paid Social Lead</button>
+            <button type="button" class="role-pill" data-tip="Day-to-day operations. Campaign builds, launches, pacing, QA, budget monitoring, and in-platform hygiene across every active account.">Paid Media Specialist</button>
+            <button type="button" class="role-pill" data-tip="Owner of the measurement backbone. Conversion tracking implementation (including server-side), custom event architecture, attribution setup, data pipelines, and the reporting infrastructure every decision runs on.">Data Engineer</button>
+            <button type="button" class="role-pill" data-tip="Dedicated to finding what the platforms won't tell you: performance gaps, audience opportunities, creative fatigue signals, competitive movements, and cross-channel patterns that shape the next media plan.">Media/Data Analyst</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Media planning and messaging strategy; defines how each channel serves the funnel.">Strategist / Planner</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Briefing, routing, and quality control across every creative asset feeding paid campaigns.">Creative Lead</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Ad copy, hooks, and messaging variants per persona and platform.">Copywriter</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Static ad assets, carousels, and platform-adapted visuals.">Statics Designer</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Video ads, reels, and motion graphics for all paid placements.">Video Editor + Motion</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Single point of contact; coordinates all workstreams, feedback loops, and reporting.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Research and intelligence</h4>
+              <ul>
+                <li><strong>Audience research and segmentation:</strong> persona-level audience mapping, first-party and platform data analysis, segment definitions per funnel stage, and ongoing refinement as behavioral data accumulates</li>
+                <li><strong>Competitive landscape monitoring:</strong> continuous tracking of competitor ad activity, messaging angles, creative approaches, channel presence, and estimated spend patterns, so Caesarstone's positioning responds to the market rather than guessing at it</li>
+                <li><strong>Insights and analysis:</strong> structured analysis of campaign, audience, creative, and channel performance, translated into decisions and actions rather than dashboards nobody reads</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Planning and buying</h4>
+              <ul>
+                <li><strong>Media planning and buying:</strong> monthly media plan, budget allocation across channels and funnel stages, placement strategy, rate and inventory decisions in programmatic, and reallocation as performance data comes in</li>
+                <li><strong>Budget management:</strong> daily pacing, spend controls, efficiency monitoring, and mid-flight shifts between channels and campaigns when the data justifies it</li>
+                <li><strong>Full-funnel campaign architecture:</strong> prospecting, retargeting, remarketing, and lookalike programs built across awareness, consideration, and conversion, spanning paid social, paid search, and programmatic</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Channels</h4>
+              <ul>
+                <li>Meta (Facebook + Instagram), Google Ads + Bing</li>
+                <li>Pinterest, YouTube, and programmatic display</li>
+                <li>LinkedIn, aligned with Global</li>
+                <li>TikTok evaluated in the strategy phase before anything is committed</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Creative and conversion</h4>
+              <ul>
+                <li><strong>Concept, messaging, and creative direction:</strong> campaign concepts and messaging frameworks per persona and funnel stage, developed with the strategy and creative teams</li>
+                <li><strong>Ad creative development:</strong> in-house production of the full spectrum of ad formats, including static visuals, video ads, carousels, motion graphics, and interactive media formats where platforms support them, each version adapted to the platform's specs and the audience's intent</li>
+                <li><strong>Ad type coverage:</strong> search ads, display, performance max, demand gen, lead gen forms, conversation ads, document ads, and the platform-native formats each channel rewards, chosen deliberately per objective rather than defaulting to one type</li>
+                <li><strong>Landing pages:</strong> campaign-specific pages designed and built to convert the traffic we buy, tested and iterated alongside the ads driving to them</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Measurement and optimization</h4>
+              <ul>
+                <li><strong>Conversion tracking:</strong> end-to-end tracking implementation and maintenance across every platform, including server-side tracking where it protects data quality against privacy and browser changes</li>
+                <li><strong>Custom events:</strong> definition and implementation of custom conversion events that match Caesarstone's actual funnel (quote requests, dealer locator usage, sample orders, high-intent page behavior), not just generic form fills</li>
+                <li><strong>Attribution:</strong> attribution model setup and maintenance so credit is assigned honestly across channels and touchpoints, giving you a defensible answer to "which dollar produced which result"</li>
+                <li><strong>Extensive A/B and multivariate testing:</strong> a standing experimentation program across messaging, hooks, creative formats, audiences, placements, bidding strategies, and landing pages, run with proper controls and documented so learnings compound instead of evaporating</li>
+                <li><strong>Campaign execution and continuous optimization:</strong> builds, launches, bid and budget adjustments, negative keyword and placement hygiene, creative rotation against fatigue, and structural improvements, performed as a daily discipline rather than a monthly check-in</li>
+                <li><strong>Performance reporting and continuous improvement:</strong> reporting built on the tracking infrastructure above, reviewed by the analyst, and converted into a concrete action list every cycle</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive every month</span></div>
+          <div class="receive-grid">
+            <div><span>Updated <strong>media plan and budget allocation</strong> with rationale</span></div>
+            <div><span><strong>Competitive landscape brief:</strong> what competitors launched, changed, or abandoned, and what we're doing about it</span></div>
+            <div><span><strong>New ad concepts and creative iterations</strong> entering the account, across formats (volume set at strategy sign-off, reviewed monthly)</span></div>
+            <div><span><strong>Campaign builds, launches, and optimizations</strong> across all active platforms</span></div>
+            <div><span><strong>Testing roadmap</strong> with results from the prior cycle, documented learnings, and hypotheses for the next</span></div>
+            <div><span><strong>Tracking and attribution health check:</strong> events firing correctly, data gaps closed, attribution holding up</span></div>
+            <div><span><strong>Analyst insight brief:</strong> gaps found, opportunities identified, actions taken</span></div>
+            <div><span><strong>Full performance readout</strong> tied to lead volume, lead quality, engagement depth, and cost efficiency</span></div>
+            <div><span><strong>Weekly check-ins</strong> on performance and monthly reports with learnings, insights, and action plans</span></div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>Two things, measured together. First, <em>qualified leads at a declining blended cost per lead</em>, with attribution clear enough that you know which dollar produced which result. Second, valuable engagement and meaningful touchpoints across your audiences: the right people seeing the right message at the right stage, interacting with content, returning to the site, and moving closer to a decision even before they convert. Demand is built in those touchpoints; the lead is just where it becomes visible.</p>
+          <p>Within the first quarter of execution: tracking with zero data gaps, custom events live against your real funnel actions, a validated creative direction per persona, and a media mix backed by evidence rather than assumption. Success is measured against the KPIs locked in during the strategy phase, and reported against them every month without exception.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">Blended CPL declining quarter over quarter</div>
+            <div class="kpi-chip">Zero tracking gaps from day one</div>
+            <div class="kpi-chip">Attribution you can defend</div>
+            <div class="kpi-chip">Validated creative direction per persona within 90 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.2 Organic Social -->
+<section class="service-deep warm" id="svc-organic">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.2</div>
+        <h3 class="service-deep-title">Organic Social &amp; Content</h3>
+        <div class="service-deep-tag">We invent the content, produce it, and run the community it builds.</div>
+        <p class="service-deep-desc">Organic social at Noetic is not scheduling posts. It is a content operation: original concept development, creative direction, full in-house production, partner activation, community management, and platform-specific distribution across the four channels Caesarstone lives on today, Instagram, Facebook, Pinterest, and LinkedIn, with TikTok evaluated in the strategy phase before anything is committed.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Volume</span><span class="value">Up to 24 pieces / mo</span></div>
+          <div class="service-spec-item"><span class="label">Video</span><span class="value">Up to 30% of volume</span></div>
+          <div class="service-spec-item"><span class="label">Channels</span><span class="value">IG &middot; FB &middot; Pinterest &middot; LinkedIn</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="svc-intro fade-in">It's all built around one strategic reality of your category: <strong>homeowners need to want Caesarstone, and designers, fabricators, and showrooms need to feel confident recommending it.</strong> Every piece of content serves one of those two jobs. We don't take your assets, add three lines of copy, and hit publish. We invent the content, produce it, and run the community it builds. That is a different service at a different weight class, and the gap between Caesarstone's social presence and competitors like Cambria, who built the category's strongest lifestyle-led presence, is exactly the gap this operation exists to close. Every month we review the last month's content, analyze data, see what worked and change what didn't, review constantly what competitors are doing, and go over new ideas.</p>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">4 dedicated + 4 shared</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="Owner of the channel operation. Content calendar, platform strategy, publishing cadence, format decisions per platform, and the adaptation of every concept to the platform it lives on, because a Pinterest pin, an Instagram reel, and a LinkedIn post built from the same idea are three different pieces of work.">Social Media Lead</button>
+            <button type="button" class="role-pill" data-tip="Owner of the conversation. Comments, DMs, and brand mentions monitored and answered, community building through Q&amp;As and engagement loops, reputation protection on negative threads, and the outreach engine: identifying potential partners, initiating collabs, and coordinating mutual amplification programs.">Community Manager</button>
+            <button type="button" class="role-pill" data-tip="Owner of the thinking. Content pillars, the B2C2B balance between homeowner desire and trade confidence, campaign concepts, series development, and the alignment of social with everything paid media and email are doing.">Strategist / Planner</button>
+            <button type="button" class="role-pill" data-tip="Owner of the production pipeline. Briefing, routing, and quality control across every designer, editor, and writer touching the account, so 24 concepts become 24 finished pieces on schedule, every month.">Creative Lead</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Captions, scripts, and series copy adapted per platform and buyer persona.">Copywriter</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Statics, carousels, and platform-adapted visuals.">Graphic Designers</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Reels, short-form video, and AI-assisted video for organic distribution.">Video Editor</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Single point of contact; coordinates all workstreams, feedback loops, and reporting.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Strategy and ideation</h4>
+              <ul>
+                <li><strong>Content strategy and pillars:</strong> a documented strategy built on three pillars, Inspiration (aspirational spaces), Education (materials, use cases, comparisons), and Proof (real projects, real homes), calibrated per platform: Instagram for curated inspiration, Pinterest for searchable planning, Facebook for community reach, LinkedIn for trade authority and credibility</li>
+                <li><strong>Original concept and series development per buyer persona:</strong> branded content IP invented for Caesarstone, not adapted from stock. Concepts like stories behind the surface names, "What your countertop says about you," "Same kitchen, two completely different moods," comic-style series, and repeatable formats designed to build recognition and shares over time</li>
+                <li><strong>Benchmarking and audience analysis:</strong> competitor social monitoring (what Cambria, MSI, and Cosentino publish, what works for them, where the white space is), audience behavior analysis, and content gap identification feeding every monthly calendar</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Content creation</h4>
+              <ul>
+                <li><strong>Full creative production, up to 24 pieces per month:</strong> posts, stories, carousels, and short-form video (up to 30% of monthly volume in video format), concepted, written, designed, and edited in-house by the creative bench, with creative direction that holds a premium brand standard, distributed across platforms based on strategy priorities</li>
+                <li><strong>AI-scaled creative:</strong> AI-assisted video and imagery production used to multiply output on concepts that work, letting one validated idea become a family of variations without a linear cost increase</li>
+                <li><strong>Platform adaptation:</strong> every concept re-cut, re-formatted, and re-written per platform, sometimes tailored specifically, sometimes adapted from a strong piece that earns its place on more than one channel, always driven by what serves the audience and performs</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Partners, sales enablement, and community</h4>
+              <ul>
+                <li><strong>Monthly sales representative post list:</strong> a curated monthly package of ready-to-share posts for Caesarstone's sales reps, built from content already produced that month, so your field team extends organic reach with zero effort on their side</li>
+                <li><strong>Partner and retailer content package:</strong> a separate version with adapted creative for stone suppliers and retailers, giving your distribution network branded content they'd never produce themselves</li>
+                <li><strong>Partnership and co-marketing programs:</strong> outreach to potential partners, collab development, and loyalty programs built on mutual amplification: shout-out exchanges, shared content, and cross-audience exposure that grows reach without media spend</li>
+                <li><strong>Community management, via Caesarstone's Sprout Social (no new tools):</strong> monitoring and responding to comments, messages, and brand mentions within 2 to 3 business days, active engagement with relevant audiences, creators, and industry accounts, complaint and negative comment handling, and identification and amplification of customer and partner content</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Measurement and optimization</h4>
+              <ul>
+                <li><strong>Performance tracking and insight:</strong> engagement rate, reach, shares and saves, video retention, follower growth versus brand content, monitored continuously and translated into calendar decisions</li>
+                <li><strong>Format experimentation:</strong> structured testing of new content formats, hooks, and series, with documented learnings that compound month over month</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive every month</span></div>
+          <div class="receive-grid">
+            <div><span><strong>Unified content calendar</strong> with concepts, formats per buyer persona, and platform mapping across all four channels, delivered two weeks in advance for review and approval</span></div>
+            <div><span><strong>Up to 24 content pieces</strong> produced and published via Caesarstone's Sprout Social, up to 30% in video format, distributed across Instagram, Facebook, Pinterest, and LinkedIn based on strategy priorities</span></div>
+            <div><span><strong>Sales representative post list</strong>, ready to share, plus the adapted partner and retailer version</span></div>
+            <div><span><strong>New concept and series development</strong> entering the pipeline</span></div>
+            <div><span><strong>Partnership and outreach report:</strong> partners contacted, collabs in motion, co-marketing activity</span></div>
+            <div><span><strong>Community management, continuous:</strong> response handling within 2 to 3 business days, engagement activity, escalations flagged</span></div>
+            <div><span><strong>Performance readout:</strong> what ran, what worked, what we're changing, benchmarked against competitors' social activity</span></div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p><em>Two audiences moving at once.</em> Homeowners engaging with Caesarstone as an object of desire: saves, shares, video completion, and a following that grows because the content earns it. And trade professionals, the designers, fabricators, and showrooms who influence the final decision, seeing a brand confident enough to recommend, and a sales force and partner network equipped with content that extends every month's production far beyond Caesarstone's own accounts.</p>
+          <p>Concretely: engagement rate and share-of-attention climbing against the competitive set, the follower and engagement gap versus Cambria and MSI narrowing quarter over quarter, and a growing library of owned content IP that competitors can't replicate by posting product shots. Success is measured against the KPIs locked in during the strategy phase, and reported against them every month without exception.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">Engagement gap vs. Cambria and MSI narrowing quarterly</div>
+            <div class="kpi-chip">Saves and shares climbing month over month</div>
+            <div class="kpi-chip">Video completion above category benchmark</div>
+            <div class="kpi-chip">Owned content IP compounding</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.3 UGC & KOL -->
+<section class="service-deep" id="svc-ugc">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.3</div>
+        <h3 class="service-deep-title">UGC &amp; KOL</h3>
+        <div class="service-deep-tag">We manufacture credibility at a predictable monthly cadence.</div>
+        <p class="service-deep-desc">UGC at Noetic is not reposting whatever customers happen to tag you in. It is a managed creator operation: we source the creators, negotiate and carry their fees, write the briefs and scripts, direct the shoots, edit the footage, and deliver finished, platform-formatted content, five pieces every month, with the creator and KOL fees already inside the price.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Volume</span><span class="value">5 pieces / mo</span></div>
+          <div class="service-spec-item"><span class="label">Creator fees</span><span class="value">Included</span></div>
+          <div class="service-spec-item"><span class="label">Formats</span><span class="value">UGC &middot; KOL &middot; Mix, flexes monthly</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="svc-intro fade-in">In a category where the final decision is influenced by fabricators, designers, and showrooms, the most persuasive content is <strong>a professional saying "this is what I recommend and here's why"</strong> and a homeowner living with the result. We manufacture that credibility at a predictable monthly cadence, something Caesarstone could not replicate internally without building a creator sourcing, contracting, and production function from scratch.</p>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">3 dedicated + 4 shared</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="Owner of creative direction. Concept quality, storytelling standards, and the bar every piece must clear before it ships.">Creative Lead</button>
+            <button type="button" class="role-pill" data-tip="Manages the entire process, sources and curates creators.">UGC Manager</button>
+            <button type="button" class="role-pill" data-tip="Owner of post-production. Cuts, captions, pacing, platform-native formatting, and versioning per channel.">Video Editor</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Creator outreach: identifying creators and trade voices and handling direct contact.">Community Manager</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Creator briefs, scripts, and hooks for every activation.">Copywriter</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Aligns creator content with the monthly channel calendar and distribution strategy.">Social Media Lead</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Single point of contact; coordinates all workstreams, feedback loops, and reporting.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Sourcing and matching</h4>
+              <ul>
+                <li><strong>Creator and KOL sourcing:</strong> activation of our existing creator network, plus proactive identification of designers and fabricators already sharing relevant work on Houzz, Instagram, and LinkedIn, with direct outreach and negotiation handled end to end</li>
+                <li><strong>Persona-matched format selection:</strong> UGC creators for homeowner desire, KOLs for trade credibility, or a mix, determined by which buyer persona each month's content targets and confirmed in the strategy phase</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Production and iteration</h4>
+              <ul>
+                <li><strong>End-to-end production management:</strong> briefing, scripting, shoot coordination, editing, revisions, and delivery, with creator and KOL fees included in the retainer, no pass-through surprises</li>
+                <li><strong>Theme development:</strong> content themes built from design trends, audience interests, and platform performance data, with briefs constructed around storytelling and real-world application rather than product showcase</li>
+                <li><strong>Performance iteration:</strong> monthly review of every piece's performance, with underperforming creator relationships and formats replaced rather than renewed</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive every month</span></div>
+          <div class="receive-grid">
+            <div><span><strong>5 finished creator or KOL content pieces</strong>, formatted per channel based on the strategy, creator fees included. (On KOL we provide the script and the KOLs produce the content.)</span></div>
+            <div><span><strong>Creator pipeline report:</strong> who's active, who's being onboarded, who's being replaced and why</span></div>
+            <div><span><strong>Performance review</strong> of published creator content versus brand content, feeding the next month's briefs</span></div>
+          </div>
+          <p class="phase-note">The UGC/KOL split and total volume can flex monthly based on campaign priorities. These pieces are distributed and amplified through the Organic Social workstream (2.2) and are available as creative assets to Paid Media (2.1), so one piece of creator content routinely works three jobs.</p>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>Creator content earning engagement <em>at or above brand content benchmarks</em>, a growing bench of proven creators and trade voices attached to Caesarstone, and a measurable share of paid media's best-performing ads originating from creator footage, because authentic content that also converts is the whole point of carrying this line.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">Creator content at or above brand benchmarks</div>
+            <div class="kpi-chip">Share of top paid ads sourced from creator footage growing</div>
+            <div class="kpi-chip">Proven creator and trade-voice bench compounding</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.4 SEO + GEO -->
+<section class="service-deep warm" id="svc-seo">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.4</div>
+        <h3 class="service-deep-title">SEO + GEO: Organic Search &amp; AI Search Visibility</h3>
+        <div class="service-deep-tag">Written for the search engine and the answer engine.</div>
+        <p class="service-deep-desc">SEO at Noetic is two disciplines run as one program. The first is classic organic search: rankings, technical health, content authority, and link equity. The second is GEO, generative engine optimization, which is the work of making Caesarstone the source that AI engines like ChatGPT, Perplexity, and Google's AI results cite when someone asks "what's the best countertop material" or "how do I clean quartz." Most agencies are still selling 2019 SEO. We audit, structure, and write for both, because your buyers are already asking both.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Pages</span><span class="value">5&ndash;10 optimized / mo</span></div>
+          <div class="service-spec-item"><span class="label">Content</span><span class="value">4 authority articles / mo</span></div>
+          <div class="service-spec-item"><span class="label">Coverage</span><span class="value">Both sites &middot; Consumer + Trade</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="svc-intro fade-in">This second discipline is where the market is moving fastest: AI-referred sessions grew over 500% in under half a year across the web, and the traffic arriving from AI engines carries the highest intent and session value of any channel. It's also where the work is most measurable from day one. <strong>Our audit already identified the specific gap</strong>, and it is not a generic promise. It is a page-by-page plan with the fixes already scoped. Where Caesarstone already holds recent audit data, we build on existing findings rather than billing you to repeat work already done.</p>
+
+        <div class="svc-stats fade-in">
+          <div class="svc-stat">
+            <div class="svc-stat-num">~16<span style="font-size:0.5em"> /mo</span></div>
+            <div class="svc-stat-label">AI citations today across Caesarstone's five priority pages, combined</div>
+          </div>
+          <div class="svc-stat">
+            <div class="svc-stat-num mint">170&ndash;275</div>
+            <div class="svc-stat-label">Projected monthly citations for the same pages, restructured for citation</div>
+          </div>
+          <div class="svc-stat">
+            <div class="svc-stat-num">90<span style="font-size:0.5em"> days</span></div>
+            <div class="svc-stat-label">Projection window from the start of implementation</div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">2 dedicated + 5 shared</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="Owner of the program. Technical SEO, GEO strategy, AI citation optimization, keyword and query architecture, competitive search intelligence, and the prioritization logic that decides which pages get rebuilt first and why.">SEO/GEO Lead</button>
+            <button type="button" class="role-pill" data-tip="Owner of the authority content. Pillar guides at 2,500 to 3,200 words, comparison and definitional pages, application-specific articles, and trade-facing specification content, written to the structural standards AI engines cite: data tables, clear heading hierarchy, extractable facts, and sourced claims.">Content Writer</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Schema markup, structured data, FAQ schema, and page-level technical implementation.">Front End Developer</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Rewrites priority page openings so pages that win visibility also convert.">CRO &amp; Copy Strategist</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. GA4 AI referral channel configuration, citation tracking, and measurement infrastructure.">Conversion Tracking Specialist</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Aligns SEO priorities with broader campaign and content strategy.">Strategist / Planner</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Single point of contact; coordinates all workstreams, feedback loops, and reporting.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span><span class="cnt">Both sites &middot; Separate consumer and trade tracks</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Audit and intelligence</h4>
+              <ul>
+                <li><strong>Full technical and content audit:</strong> site structure, crawlability, page speed, indexation, content quality, and the AI-citability of every priority page, scored and prioritized by traffic and revenue potential, building on Caesarstone's existing audit data where it exists</li>
+                <li><strong>AI citation baselining and tracking:</strong> measuring where Caesarstone is cited today across ChatGPT, Perplexity, and AI-powered search results, tracked against a priority query set and monitored monthly so gains are visible and attributable</li>
+                <li><strong>Competitive search intelligence:</strong> where Cambria, MSI, Cosentino, and the aggregators (Houzz, HGTV, This Old House) win citations and rankings you should own, and the structural reasons they win them. This includes exploiting position bias inversion: when all sources optimize, challenger brands gain AI visibility while top-ranked aggregators lose it, which makes Caesarstone's proprietary product data (hardness ratings, porosity, certifications) an asymmetric advantage no aggregator can replicate</li>
+                <li><strong>AI interception analysis:</strong> identifying the queries where Caesarstone ranks well on Google but loses the click because AI answers the question directly, and flipping those pages from AI's competitor to AI's source, so the engines quote Caesarstone instead of replacing it</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Page and content work</h4>
+              <ul>
+                <li><strong>Priority page optimization, 5 to 10 pages per month:</strong> rewriting page openings with extractable, citable facts, adding material comparison data tables, rebuilding heading hierarchies, optimizing metadata, internal linking, and site structure, and implementing content freshness signals, prioritized by traffic and business impact</li>
+                <li><strong>Authority content, 4 articles per month:</strong> pillar guides, head-to-head material comparisons, trade and commercial specification guides, application-specific articles (kitchens, bathrooms, outdoor, commercial), and sustainability and certification content, split across consumer and trade tracks for the Consumer and Studio sites, each piece optimized for both traditional search and AI discovery, and coordinated with Caesarstone's team for publishing</li>
+                <li><strong>Definitional authority pages:</strong> owning the questions the category asks, so when a homeowner or designer asks an AI engine to compare materials, Caesarstone is the answer's source</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Technical implementation</h4>
+              <ul>
+                <li><strong>Schema markup and structured data:</strong> FAQ schema across priority pages, dateModified implementation, and the structured data layer that makes content machine-readable and citation-eligible</li>
+                <li><strong>Measurement infrastructure:</strong> GA4 AI referral channel configuration so AI-driven traffic is visible as its own channel, plus citation scoring against the priority query set</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Authority building</h4>
+              <ul>
+                <li><strong>Link building program:</strong> structured outreach waves to Tier 1 design and architecture publications, targeting the domains whose authority transfers, with competitive gap analysis steering each subsequent wave</li>
+                <li><strong>Internal linking architecture:</strong> hub pages and internal link structures that concentrate authority where it converts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive every month</span></div>
+          <div class="receive-grid">
+            <div><span><strong>5 to 10 priority pages optimized</strong>, with a log of exactly what changed on each and why it was prioritized</span></div>
+            <div><span><strong>4 authority articles published</strong>, split across consumer and trade tracks on both sites, optimized for search and AI discovery</span></div>
+            <div><span><strong>Schema and technical implementations shipped</strong> that cycle, itemized</span></div>
+            <div><span><strong>AI citation report:</strong> citations gained across the priority query set, benchmarked against the ~16/month baseline and the 90-day projection</span></div>
+            <div><span><strong>SEO performance report:</strong> organic traffic, keyword rankings, and page performance, with separate consumer and trade views, and the GA4 AI referral channel as a distinct line, tied back to business outcomes: spec downloads, partner sign-ups, and sample requests</span></div>
+            <div><span><strong>Link building update:</strong> pitches sent, placements earned, authority gained</span></div>
+            <div><span><strong>Competitive search brief:</strong> movements by competitors and aggregators, and what we're doing about them</span></div>
+            <div><span><strong>Next-cycle priorities with rationale</strong>, so you always know what's being built and why</span></div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>Caesarstone visible in <em>both places buyers now search</em>. In classic search: priority pages climbing on commercial keywords, organic clicks growing on the pages that feed the funnel, and authority content pulling qualified research-stage traffic. In AI search: citation volume moving from the current baseline of roughly 16 per month toward the projected 170 to 275 within the first 90 days of implementation, with Caesarstone becoming the cited source for category questions instead of watching aggregators take that position.</p>
+          <p>And underneath both, the measure that matters: organic and AI-driven visitors turning into spec downloads, partner sign-ups, and sample requests you can count. Success is measured against the KPIs locked in during the strategy phase, and reported against them every month without exception.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">~16 &rarr; 170&ndash;275 AI citations / mo within 90 days</div>
+            <div class="kpi-chip">Priority keywords climbing on commercial terms</div>
+            <div class="kpi-chip">AI referral traffic tracked as its own channel</div>
+            <div class="kpi-chip">Spec downloads and sample requests from organic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.5 Website & Content -->
+<section class="service-deep" id="svc-web">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.5</div>
+        <h3 class="service-deep-title">Website &amp; Content: Pages, Tools, and Conversion</h3>
+        <div class="service-deep-tag">Every campaign needs somewhere to land. Every page needs to convert.</div>
+        <p class="service-deep-desc">An active web development and content function building directly on Caesarstone's existing sites, not a new website project with its own timeline and politics. Every campaign we run needs somewhere to land, every event needs a page, every product line needs a story told at the right depth for the right audience, and every one of those pages needs to convert. This workstream is the connective tissue: up to 2 new pages per month, designed, written, built, and then iterated based on what the conversion data says, tied directly to the campaigns driving traffic to them.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Volume</span><span class="value">Up to 2 pages / mo</span></div>
+          <div class="service-spec-item"><span class="label">Platform</span><span class="value">Caesarstone's existing CMS</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">3 dedicated + 5 shared</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="Designs the landing pages.">UI Designer</button>
+            <button type="button" class="role-pill" data-tip="Owner of the build. Page development on Caesarstone's existing CMS, interactive tools, responsive behavior, page speed, and technical quality.">Front End Developer</button>
+            <button type="button" class="role-pill" data-tip="Owner of conversion. Page structure, copy hierarchy, CTA logic, A/B test design, and the monthly iteration loop tied to paid media performance.">CRO &amp; Copy Strategist</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Page design assets and visual elements.">Graphic Designer</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Page copy per audience; homeowners and trade professionals require different language and CTAs.">Copywriter</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Event tracking on every new page from day one so no conversion data is lost.">Conversion Tracking Specialist</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Defines which page types to prioritize each cycle based on campaign priorities.">Strategist / Planner</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Single point of contact; coordinates all workstreams, feedback loops, and reporting.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Campaign and landing pages</h4>
+              <ul>
+                <li>Campaign pages, product-line pages (Porcelain, ICON, Quartz), regional and geo-targeted pages</li>
+                <li>Event and conference pages (KBIS and others)</li>
+                <li>Lead-generation infrastructure: forms, gated content, thank-you and confirmation pages</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Brand and inspiration pages</h4>
+              <ul>
+                <li>Project galleries, customer case studies, and before/after showcases</li>
+                <li>Structured differently for homeowners and trade professionals, each with the CTAs that fit that audience's next step</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Interactive and rich content</h4>
+              <ul>
+                <li>Cost estimators, slab and square-footage calculators, project budget tools</li>
+                <li>Product finders and quizzes ("Find your Caesarstone")</li>
+                <li>Interactive lookbooks, comparison tables, and before/after sliders, the tools that drive time on site and capture qualified leads</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Conversion optimization</h4>
+              <ul>
+                <li>A/B testing of copy, layout, and CTAs, iterated monthly and tied directly to active paid campaigns</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive every month</span></div>
+          <div class="receive-grid">
+            <div><span><strong>Up to 2 new pages designed, written, built, and launched</strong>, with volume reviewed monthly based on complexity (an interactive calculator is not a thank-you page, and the scope breathes accordingly)</span></div>
+            <div><span><strong>CRO test results:</strong> what was tested, what won, what's being rolled out</span></div>
+            <div><span><strong>Page performance report:</strong> conversion rates per page, tied to the campaigns feeding them</span></div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>Every active campaign landing on <em>a page built for it</em>, conversion rates climbing on the pages that matter, a growing library of interactive tools that competitors link to and AI engines cite, and a lead-capture infrastructure that turns the traffic every other workstream generates into names, spec downloads, and sample requests.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">Landing page conversion improving month over month</div>
+            <div class="kpi-chip">Every campaign lands on a page built for it</div>
+            <div class="kpi-chip">Tools competitors link to and AI engines cite</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.6 Events -->
+<section class="service-deep warm" id="svc-events">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.6</div>
+        <h3 class="service-deep-title">Events: KBIS 2027 &amp; On-Site Content Production</h3>
+        <div class="service-deep-tag">A six-month campaign, not three days of booth photos.</div>
+        <p class="service-deep-desc">Event marketing treated as a six-month campaign. KBIS is the category's biggest stage, and most brands walk away from it with a highlight reel nobody watches. We build the audience before the show, capture professionally during it, and spend three months afterward distributing what we captured across paid and organic, so the investment Caesarstone already makes in being there gets multiplied instead of archived.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">KBIS 2027</span><span class="value">6-month activation</span></div>
+          <div class="service-spec-item"><span class="label">Site visits</span><span class="value">2 per year</span></div>
+          <div class="service-spec-item"><span class="label">Pricing</span><span class="value">Quoted per activation</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">Staffed per activation</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill" data-tip="2 to 3 Noetic team members on the show floor capturing content, managing logistics, and coordinating with Caesarstone's event team.">On-Site Production Team</button>
+            <button type="button" class="role-pill" data-tip="Documents keynote moments, booth activity, product reactions, and partner interviews during KBIS and site visits.">Professional Videographer</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Post-production for all captured footage: highlight video, social clips, and channel-ready cuts.">Video Editor</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Pre- and post-event organic content distribution across all channels.">Social Media Lead</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Pre-event teaser campaigns and post-event paid amplification of captured content.">Paid Media Squad</button>
+            <button type="button" class="role-pill shared" data-tip="Shared across the account. Coordinates with Caesarstone's event team on logistics, timelines, and approvals.">Account Manager</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account &middot; Purple = dedicated, grey = shared</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span><span class="cnt">KBIS 2027 &middot; A 6-month activation</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Three months before &middot; Build the audience</h4>
+              <ul>
+                <li>Event strategy and content planning</li>
+                <li>Pre-event teaser campaign across paid and organic, audience warm-up</li>
+                <li>Dedicated event landing page: copy, design, and development</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Three days on site &middot; Capture everything</h4>
+              <ul>
+                <li>A Noetic production team of 2 to 3 people plus a professional videographer</li>
+                <li>Keynote moments, booth activity, product reactions, partner interviews, and the raw material for months of content</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Three months after &middot; Multiply the investment</h4>
+              <ul>
+                <li>Post-production and distribution of everything captured across organic and paid channels</li>
+                <li>Professional highlight video plus 8 social clips</li>
+                <li>Photo culling and retouching</li>
+                <li>Post-event follow-up campaign</li>
+                <li>Event recap with PR write-up</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Customer &amp; KOL site visits &middot; 2 per year</h4>
+              <ul>
+                <li>On-site visits to customer, partner, or KOL locations for UGC capture, testimonial filming, and project documentation</li>
+                <li>Each visit: 1 Noetic team member plus a professional videographer, 1 full day of production</li>
+                <li>Content from each visit feeds directly into paid and organic channels</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive</span></div>
+          <div class="receive-grid">
+            <div><span><strong>KBIS package:</strong> teaser campaign, event landing page, 3 days of on-site production, highlight video, 8 social clips, retouched photo library, follow-up campaign, and recap with PR write-up</span></div>
+            <div><span><strong>2 site-visit content packages per year:</strong> testimonial and project footage, edited and channel-ready</span></div>
+          </div>
+          <p class="phase-note">Event production is scoped and quoted per activation. See Investment below.</p>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>Caesarstone arriving at KBIS with <em>an audience already primed</em>, leaving with a content library that fuels a quarter of paid and organic material, and turning two customer locations per year into proof: real installations, real professionals, real testimonials that no studio shoot can fake.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">Audience primed before the show floor opens</div>
+            <div class="kpi-chip">A quarter of content fueled per activation</div>
+            <div class="kpi-chip">Real installations and real professionals as proof</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.7 Reporting -->
+<section class="service-deep" id="svc-reporting">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.7</div>
+        <h3 class="service-deep-title">Reporting, Dashboards &amp; Strategic Reviews</h3>
+        <div class="service-deep-tag">The layer that makes everything else accountable.</div>
+        <p class="service-deep-desc">Every workstream in this proposal reports into one unified view: one monthly report, one live dashboard, one set of KPIs defined in the strategy phase and never quietly renegotiated. Marketing spend at this level deserves board-grade visibility, and your team should never have to assemble the picture themselves from six different exports.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Reports</span><span class="value">1 unified / mo</span></div>
+          <div class="service-spec-item"><span class="label">Dashboard</span><span class="value">Live, continuous</span></div>
+          <div class="service-spec-item"><span class="label">QBRs</span><span class="value">4 / yr, in person in Charlotte</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>The team on this workstream</span><span class="cnt">Shared across the account</span></div>
+          <div class="roles-wrap">
+            <button type="button" class="role-pill shared" data-tip="Analysis and insight: finds what the platforms won't tell you and converts it into decisions.">Media/Data Analyst</button>
+            <button type="button" class="role-pill shared" data-tip="Data integrity across every platform so the report reflects reality.">Conversion Tracking Specialist</button>
+            <button type="button" class="role-pill shared" data-tip="Stakeholder alignment, working sessions, and keeping every workstream on track.">Account Manager</button>
+            <button type="button" class="role-pill shared" data-tip="Oversight on every monthly report and QBR; accountable for the quality of what gets delivered.">Account Director</button>
+          </div>
+          <div class="role-tip-box"></div>
+          <div class="roles-hint">Tap any role to see what they do on this account</div>
+        </div>
+
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Monthly multi-channel report</h4>
+              <ul>
+                <li>Paid social, paid search, organic social, UGC, website, and SEO/GEO performance in one document, tracked against the KPIs set at strategy sign-off, with insights, trends, and the optimization actions being taken, not just charts</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Live dashboard access</h4>
+              <ul>
+                <li>Continuous visibility into performance across channels, so Caesarstone's team can answer questions between reports without waiting for us</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Ongoing stakeholder alignment</h4>
+              <ul>
+                <li>Structured communication with internal stakeholders on performance, priorities, and next steps</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>Quarterly in-person review</h4>
+              <ul>
+                <li>Once per quarter, the Noetic account team travels to Charlotte for a face-to-face strategic review: full QBR presentation, strategic alignment for the next quarter, and team coordination</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block fade-in">
+          <div class="phase-label"><span>What you receive</span></div>
+          <div class="receive-grid">
+            <div><span><strong>1 unified monthly performance report</strong> across all active channels, tied to business outcomes</span></div>
+            <div><span><strong>Continuous dashboard access</strong> for Caesarstone's team</span></div>
+            <div><span><strong>4 in-person QBRs per year in Charlotte</strong></span></div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>A CMO who can answer <em>"what is this spend producing"</em> in one screen, a leadership team that sees the same numbers we see, and a quarterly rhythm where strategy is adjusted in person, on evidence, with the people accountable for it in the room.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">One screen answers what the spend produces</div>
+            <div class="kpi-chip">Same numbers for every stakeholder</div>
+            <div class="kpi-chip">Strategy adjusted in person, quarterly</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2.8 Account Management -->
+<section class="service-deep warm" id="svc-am">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 2.8</div>
+        <h3 class="service-deep-title">Account Management</h3>
+        <div class="service-deep-tag">One relationship instead of nine.</div>
+        <p class="service-deep-desc">A named, dedicated Account Manager as the single point of contact, backed by an Account Director and direct founder involvement, running the day-to-day of every workstream so Caesarstone's team manages one relationship instead of nine. The structure is deliberate: weekly or bi-weekly working sessions, monthly KPI reviews, and optimization overviews, with working hours of 9am to 6pm CT and a team fully experienced working with Israeli companies and global headquarters time zones.</p>
+        <div class="service-spec">
+          <div class="service-spec-item"><span class="label">Hours</span><span class="value">9am&ndash;6pm CT</span></div>
+          <div class="service-spec-item"><span class="label">Cadence</span><span class="value">Weekly / bi-weekly sessions</span></div>
+          <div class="service-spec-item"><span class="label">Backed by</span><span class="value">Account Director + founder</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-block cool fade-in">
+          <div class="phase-label"><span>What the work covers</span></div>
+          <div class="covers-cols">
+            <div class="cover-card">
+              <h4>Oversight and coordination</h4>
+              <ul>
+                <li>Oversight of all deliverables, timelines, and priorities across every workstream in this proposal</li>
+                <li>Coordination across the full Noetic team, so internal handoffs are never Caesarstone's problem</li>
+              </ul>
+            </div>
+            <div class="cover-card">
+              <h4>The operating rhythm</h4>
+              <ul>
+                <li>Management of requests, feedback loops, and approvals with clear turnaround expectations</li>
+                <li>Weekly or bi-weekly check-ins, monthly KPI reviews, and continuous identification of opportunities beyond the current scope</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="success-block fade-in">
+          <div class="success-label">What success looks like</div>
+          <p>One conversation that reaches <em>the entire specialist team</em>. Deliverables that arrive when promised, escalations that get answered the same day, and an agency team that behaves like an extension of Caesarstone's marketing department rather than a vendor waiting for briefs.</p>
+          <div class="kpi-chips">
+            <div class="kpi-chip hi">One conversation reaches the entire team</div>
+            <div class="kpi-chip">Escalations answered same day</div>
+            <div class="kpi-chip">Deliverables on time, every cycle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Engagement timeline -->
+<section class="section tl-section" id="timeline">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 &mdash; Engagement timeline</span>
+      <h2 class="display-md" style="margin-top:18px;">The first <em class="italic" style="color:var(--purple)">12 months</em>.</h2>
+    </div>
+    <div class="tl-track">
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-ph">Week 1 &middot; Kickoff</div>
+        <div class="tl-ti">Technical setup</div>
+        <div class="tl-de">Platform access, tracking architecture, Sprout Social integration, and a 2-month contractor transition plan. All scaffolding in place from day one so the strategy phase works with real data.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-ph">Weeks 1&ndash;6 &middot; Phase 0</div>
+        <div class="tl-ti">Research &amp; Strategy</div>
+        <div class="tl-de">Deep discovery, competitor benchmarking, persona mapping, paid media strategy, content and organic social strategy, and the SEO audit. No execution begins until the strategy is reviewed and signed off. Full detail in the Research &amp; Strategy section above.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot m"></div>
+        <div class="tl-ph m">Month 2 &middot; Launch</div>
+        <div class="tl-ti">Execution begins</div>
+        <div class="tl-de">All paid channels live. First content calendar delivered two weeks in advance via the approval workflow. First UGC and KOL briefs sent. First SEO articles published. First pages built on Caesarstone's existing sites.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot m"></div>
+        <div class="tl-ph m">Month 3</div>
+        <div class="tl-ti">First quarterly review, Charlotte</div>
+        <div class="tl-de">First in-person QBR. Full performance review across all channels, strategy refinement based on early data, and next-quarter priorities locked.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot m"></div>
+        <div class="tl-ph m">Months 4&ndash;10 &middot; Full cadence</div>
+        <div class="tl-ti">Full execution + quarterly reviews</div>
+        <div class="tl-de">All channels running. Monthly reports and live dashboard. Q2 and Q3 in-person reviews in Charlotte. Two customer and KOL site visits activated. Scope adjustments as the strategy evolves.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot a"></div>
+        <div class="tl-ph a">November &middot; KBIS prep begins</div>
+        <div class="tl-ti">KBIS activation launches</div>
+        <div class="tl-de">Three months out: event strategy, dedicated landing page, teaser campaign, and audience warm-up begin. Content and paid ramp up through December and January. Quoted per activation.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot a"></div>
+        <div class="tl-ph a">February &middot; KBIS 2027</div>
+        <div class="tl-ti">On-site production</div>
+        <div class="tl-de">2 to 3 Noetic team members and a professional videographer on the show floor for three days. Everything captured feeds organic and paid distribution for the following three months.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment -->
+<section class="section investment" id="investment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 &mdash; Investment</span>
+      <h2 class="display-md" style="margin-top:18px;">One system. <em class="italic" style="color:var(--purple)">One number.</em></h2>
+      <p class="lede" style="margin-top:22px;">We propose the following pricing schedule based on the discussed scope of work and the volume of resources required. The retainer runs from day one and covers the six-week Research &amp; Strategy phase in full. Pricing does not include the cost of software or other platforms.</p>
+    </div>
+
+    <div class="fee-table fade-in">
+      <div class="fee-row">
+        <div class="fee-service">Paid Media <span class="fee-sub">Social + Search + Programmatic</span></div>
+        <div class="fee-amount">13% media commission, min. $8,500 <span class="per">/ month</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="fee-service">Organic Social &amp; Content <span class="fee-sub">Up to 24 pieces / mo + community management</span></div>
+        <div class="fee-amount">$13,500 <span class="per">/ month</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="fee-service">UGC &amp; KOL Content <span class="fee-sub">5 pieces / mo, creator fees included</span></div>
+        <div class="fee-amount">$7,500 <span class="per">/ month</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="fee-service">SEO / GEO <span class="fee-sub">5&ndash;10 pages + 4 articles / mo, both sites</span></div>
+        <div class="fee-amount">$5,250 <span class="per">/ month</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="fee-service">Website &amp; Content <span class="fee-sub">Up to 2 pages / mo</span></div>
+        <div class="fee-amount">$5,000 <span class="per">/ month</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="fee-service">Events <span class="fee-sub">KBIS 2027 + 2 site visits / yr</span></div>
+        <div class="fee-amount"><span class="fee-tbd">TBD &middot; Quoted on demand</span></div>
+      </div>
+      <div class="fee-row total">
+        <div class="fee-service">Total monthly retainer</div>
+        <div class="fee-amount">$39,750 <span class="per">/ month</span></div>
+      </div>
+    </div>
+    <p class="fee-note">Reporting, dashboards, quarterly in-person reviews, and account management are included across the retainer. Event production is quoted per activation and is not included in the monthly total.</p>
+
+    <div class="terms-grid fade-in">
+      <div class="term-cell">
+        <div class="label">Payment terms</div>
+        <div class="value">Net+30 for retainer fees <span>Media billed in advance</span></div>
+      </div>
+      <div class="term-cell">
+        <div class="label">Commitment period</div>
+        <div class="value">12 months <span>With a 60-day early termination notice exit clause</span></div>
+      </div>
+    </div>
+
+    <div class="fineprint">
+      <div>
+        <h5>Responsibilities and guarantees</h5>
+        <p>The client is responsible for the timely delivery of all materials that may be requested. Copyright or other charges arising from the use of content supplied and intended to be inserted in the project are also the client's responsibility. Noetic will not be liable for any unauthorized use of said materials.</p>
+      </div>
+      <div>
+        <h5>Acceptance and validity</h5>
+        <p>This proposal is valid for 30 days following its presentation. Acceptance is made via email. The project starts after the valid confirmation of the first payment described in this proposal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">07 &mdash; Next steps</div>
+    <h2 class="cta-title">Let's engineer the <span class="italic">demand side</span>.</h2>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io?subject=Proposal%20NC26%2F28%20%E2%80%94%20Caesarstone%20%C3%97%20Noetic%20%E2%80%94%20Acceptance" class="btn btn-primary">
+        Accept via email
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+      </a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">
+        noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+    <div class="cta-validity">Valid 30 days from presentation &middot; Acceptance via email</div>
+
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="ns-num">01</div>
+        <h5>Acceptance</h5>
+        <p>Confirm via email. The engagement starts after valid confirmation of the first payment described in this proposal.</p>
+      </div>
+      <div class="next-step">
+        <div class="ns-num">02</div>
+        <h5>Weeks 1&ndash;6: Research &amp; Strategy</h5>
+        <p>Kickoff, technical setup, audits, personas, competitive benchmarking, and the board-ready strategy document that everything else runs on.</p>
+      </div>
+      <div class="next-step">
+        <div class="ns-num">03</div>
+        <h5>Month 2: Execution begins</h5>
+        <p>All eight workstreams go live against the KPIs locked at strategy sign-off, reported monthly without exception.</p>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <div class="footer-meta-block">
+        Prepared for
+        <span>Caesarstone US &middot; Idit Maayan-Zohar</span>
+      </div>
+      <div class="footer-meta-block">
+        Proposal
+        <span>NC26/28 &middot; June 19, 2026 &middot; Confidential</span>
+      </div>
+      <div class="footer-meta-block">
+        &copy; 2026 Noetic Creative
+        <span>Miami, Florida &middot; noetic.io &middot; tamir@noetic.io</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll reveals */
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    document.body.classList.add('anim-ready');
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el) { observer.observe(el); });
+    setTimeout(function() {
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
+    }, 4000);
+  }
+
+  /* Hero blob parallax */
+  if (!reduceMotion) {
+    var b1 = document.getElementById('blob1');
+    var b2 = document.getElementById('blob2');
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var y = window.scrollY;
+          if (b1) b1.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+          if (b2) b2.style.transform = 'translateY(' + (y * -0.12) + 'px)';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  /* Role pills: tap to reveal description */
+  document.querySelectorAll('.roles-wrap').forEach(function(wrap) {
+    var block = wrap.closest('.phase-block');
+    var tip = block ? block.querySelector('.role-tip-box') : null;
+    if (!tip) return;
+    wrap.addEventListener('click', function(e) {
+      var pill = e.target.closest('.role-pill');
+      if (!pill) return;
+      var wasActive = pill.classList.contains('active');
+      wrap.querySelectorAll('.role-pill').forEach(function(p) { p.classList.remove('active'); });
+      if (wasActive) {
+        tip.classList.remove('visible');
+        tip.innerHTML = '';
+      } else {
+        pill.classList.add('active');
+        tip.innerHTML = '<span class="who">' + pill.textContent + '</span>' + pill.getAttribute('data-tip');
+        tip.classList.add('visible');
+      }
+    });
+  });
+
+  /* Scroll-spy for the section index bar */
+  var spyLinks = document.querySelectorAll('.ov-a');
+  var spyMap = {};
+  spyLinks.forEach(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    spyMap[id] = a;
+  });
+  var spyTargets = Object.keys(spyMap).map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  if ('IntersectionObserver' in window && spyTargets.length) {
+    var spyObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          spyLinks.forEach(function(a) { a.classList.remove('on'); });
+          var link = spyMap[entry.target.id];
+          if (link) {
+            link.classList.add('on');
+            if (link.scrollIntoView) {
+              link.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            }
+          }
+        }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    spyTargets.forEach(function(t) { spyObserver.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
