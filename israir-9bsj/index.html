@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Israir &amp; Noetic Creative &middot; Capabilities Brief</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<style>
+:root {
+  --paper:#FAFAF7; --paper-warm:#F2F0EA; --paper-cool:#F0F0F4;
+  --ink:#0A0A0E; --ink-soft:#1A1A1F; --ink-mute:#6B6B7B; --ink-faint:#A8A8B5;
+  --card:#FFFFFF;
+  --purple:#6C5CE7; --purple-deep:#4D3FC9; --purple-soft:#EFEDFE; --purple-glow:rgba(108,92,231,0.18);
+  --mint:#00D4B4; --coral:#FF6B6B; --amber:#F5B400;
+  --rule:rgba(10,10,14,0.08); --rule-strong:rgba(10,10,14,0.16);
+  --max:1240px; --max-narrow:920px;
+  --font-display:'Fraunces','Times New Roman',serif;
+  --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+::selection { background:var(--purple); color:#fff; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body { background:var(--paper); color:var(--ink-soft); overflow-x:hidden; font-family:var(--font-sans); font-size:17px; line-height:1.55; letter-spacing:-0.005em; }
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+.container { width:100%; max-width:var(--max); margin:0 auto; padding:0 32px; }
+section { position:relative; }
+.section { padding:clamp(80px,12vh,160px) 0; }
+.section-tight { padding:clamp(60px,9vh,110px) 0; }
+.section-head { margin-bottom:clamp(48px,6vw,80px); }
+h1,h2,h3,h4 { color:var(--ink); letter-spacing:-0.022em; line-height:1.05; font-weight:700; }
+.display-xl { font-family:var(--font-display); font-size:clamp(56px,9vw,132px); font-weight:600; line-height:0.95; letter-spacing:-0.035em; }
+.display-lg { font-family:var(--font-display); font-size:clamp(44px,6vw,88px); font-weight:600; line-height:1; letter-spacing:-0.03em; }
+.display-md { font-family:var(--font-display); font-size:clamp(34px,4.5vw,60px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; }
+.italic { font-style:italic; font-weight:400; }
+.lede { font-size:clamp(18px,1.6vw,22px); line-height:1.5; color:var(--ink-soft); font-weight:400; max-width:60ch; }
+
+/* Client bar */
+.client-bar { background:var(--ink); padding:11px 32px; display:flex; align-items:center; justify-content:space-between; }
+.client-bar-logos { display:flex; align-items:center; gap:18px; }
+.client-bar-divider { width:1px; height:22px; background:rgba(255,255,255,0.2); }
+.client-bar-chip { background:#fff; border-radius:6px; padding:5px 10px; display:flex; align-items:center; }
+.client-bar-meta { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.18em; color:rgba(255,255,255,0.4); }
+@media (max-width:600px) { .client-bar-meta { display:none; } }
+
+/* Nav */
+.nav { position:sticky; top:0; left:0; right:0; z-index:100; padding:14px 32px; background:rgba(250,250,247,0.85); backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%); border-bottom:1px solid transparent; transition:border-color .3s ease; }
+.nav.scrolled { border-bottom-color:var(--rule); }
+.nav-inner { max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.nav-brand { display:flex; align-items:center; gap:16px; }
+.nav-divider { width:1px; height:24px; background:var(--rule-strong); }
+.nav-links { display:flex; gap:28px; list-style:none; align-items:center; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--ink-mute); transition:color .2s; }
+.nav-links a:hover { color:var(--ink); }
+.nav-cta { background:var(--ink); color:#fff !important; padding:10px 18px; border-radius:999px; font-size:13px !important; font-weight:600 !important; display:inline-flex; align-items:center; gap:8px; transition:background .2s; }
+.nav-cta:hover { background:var(--purple) !important; }
+@media (max-width:820px) { .nav-links li:not(:last-child) { display:none; } }
+
+/* Eyebrow */
+.eyebrow { font-family:var(--font-mono); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-mute); display:inline-flex; align-items:center; gap:8px; }
+.eyebrow::before { content:""; width:6px; height:6px; background:var(--purple); border-radius:50%; }
+.eyebrow.dark { color:rgba(255,255,255,0.6); }
+.eyebrow.dark::before { background:var(--mint); }
+
+/* Hero */
+.hero { padding-top:clamp(90px,13vh,150px); padding-bottom:clamp(80px,12vh,140px); position:relative; overflow:hidden; }
+.hero-grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(10,10,14,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,14,0.04) 1px,transparent 1px); background-size:80px 80px; background-position:-1px -1px; mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent); -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent); pointer-events:none; }
+.hero-blob { position:absolute; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle at 30% 30%,rgba(108,92,231,0.22),transparent 60%); filter:blur(80px); pointer-events:none; top:-200px; right:-200px; z-index:0; }
+.hero-blob-2 { position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle at 70% 70%,rgba(0,212,180,0.15),transparent 60%); filter:blur(80px); pointer-events:none; bottom:-150px; left:-100px; z-index:0; }
+.hero-inner { position:relative; z-index:1; }
+.hero-meta { display:flex; gap:18px; align-items:center; margin-bottom:28px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.2em; color:var(--ink-mute); flex-wrap:wrap; }
+.hero-meta-divider { width:24px; height:1px; background:var(--rule-strong); }
+.hero h1 { margin-bottom:28px; }
+.hero h1 .accent-line { display:block; color:var(--purple); font-style:italic; font-weight:400; }
+.hero-lede { font-size:clamp(19px,1.8vw,24px); line-height:1.45; color:var(--ink-soft); max-width:56ch; margin-top:8px; font-weight:400; }
+.hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:clamp(60px,8vh,100px); border-top:1px solid var(--rule); }
+.hero-stat { padding:32px 24px 0 0; border-right:1px solid var(--rule); }
+.hero-stat:not(:first-child) { padding-left:24px; }
+.hero-stat:last-child { border-right:none; padding-right:0; }
+.hero-stat-num { font-family:var(--font-display); font-size:clamp(40px,5vw,64px); font-weight:600; line-height:1; letter-spacing:-0.03em; color:var(--ink); margin-bottom:8px; }
+.hero-stat-num .accent { color:var(--purple); }
+.hero-stat-label { font-size:13px; color:var(--ink-mute); font-weight:500; line-height:1.4; max-width:22ch; }
+@media (max-width:800px) {
+  .hero-stats { grid-template-columns:repeat(2,1fr); }
+  .hero-stat:nth-child(2n) { border-right:none; }
+  .hero-stat { padding:24px 16px 24px 0; border-bottom:1px solid var(--rule); }
+  .hero-stat:not(:first-child) { padding-left:0; }
+  .hero-stat:last-child, .hero-stat:nth-last-child(2) { border-bottom:none; }
+}
+
+/* Belief list */
+.belief-list { list-style:none; display:flex; flex-direction:column; }
+.belief-item { padding:28px 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:50px 1fr; gap:24px; align-items:start; }
+.belief-item:last-child { border-bottom:1px solid var(--rule); }
+.belief-num { font-family:var(--font-mono); font-size:12px; color:var(--ink-mute); font-weight:500; letter-spacing:0.05em; padding-top:6px; }
+.belief-content h3 { font-family:var(--font-display); font-size:clamp(22px,2.2vw,30px); font-weight:600; margin-bottom:8px; letter-spacing:-0.02em; }
+.belief-content p { color:var(--ink-mute); font-size:16px; line-height:1.55; max-width:56ch; }
+.recap-dark { background:var(--ink); color:#fff; }
+.recap-dark h2 { color:#fff; }
+.recap-dark .lede { color:rgba(255,255,255,0.7); }
+.recap-dark .belief-item { border-top-color:rgba(255,255,255,0.12); }
+.recap-dark .belief-item:last-child { border-bottom-color:rgba(255,255,255,0.12); }
+.recap-dark .belief-num { color:var(--mint); }
+.recap-dark .belief-content h3 { color:#fff; }
+.recap-dark .belief-content p { color:rgba(255,255,255,0.7); }
+
+/* Lanes (dark) */
+.lanes { background:var(--ink); color:#fff; }
+.lanes h2 { color:#fff; }
+.lanes .lede { color:rgba(255,255,255,0.7); margin-top:24px; }
+.lanes-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:60px; border-top:1px solid rgba(255,255,255,0.12); }
+.lanes-grid.three { grid-template-columns:repeat(3,1fr); }
+@media (max-width:860px) { .lanes-grid, .lanes-grid.three { grid-template-columns:1fr; } .lane { border-right:none !important; border-bottom:1px solid rgba(255,255,255,0.12); } }
+.lane { padding:56px 48px; border-right:1px solid rgba(255,255,255,0.12); position:relative; }
+.lane:last-child { border-right:none; }
+.lanes-grid.three .lane { padding:48px 36px; }
+.lane-tag { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:var(--mint); margin-bottom:20px; }
+.lane h3 { font-family:var(--font-display); font-size:clamp(26px,3vw,38px); font-weight:600; color:#fff; margin-bottom:18px; line-height:1.05; }
+.lane p { color:rgba(255,255,255,0.72); font-size:16px; line-height:1.6; max-width:44ch; margin-bottom:24px; }
+.lane-spec { display:flex; gap:28px; flex-wrap:wrap; padding-top:24px; border-top:1px solid rgba(255,255,255,0.12); }
+.lane-spec-item .label { font-family:var(--font-mono); font-size:10px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.15em; display:block; margin-bottom:6px; }
+.lane-spec-item .value { font-size:15px; color:#fff; font-weight:500; }
+
+/* Segment grid */
+.segments { background:var(--ink); color:#fff; }
+.segments h2 { color:#fff; }
+.segments .lede { color:rgba(255,255,255,0.7) !important; }
+.segments .verticals-grid { border-top-color:rgba(255,255,255,0.12); border-left-color:rgba(255,255,255,0.12); }
+.segments .vertical-card { background:rgba(255,255,255,0.03); border-right-color:rgba(255,255,255,0.12); border-bottom-color:rgba(255,255,255,0.12); }
+.segments .vertical-card:hover { background:rgba(255,255,255,0.07); transform:translateY(-2px); }
+.segments .vertical-card h4 { color:#fff; }
+.segments .vertical-card p { color:rgba(255,255,255,0.68); }
+.segments .vertical-icon { background:rgba(0,212,180,0.14); color:var(--mint); }
+.segments .seg-spec { border-top-color:rgba(255,255,255,0.12); }
+.segments .seg-spec-item .label { color:rgba(255,255,255,0.42); }
+.segments .seg-spec-item .value { color:rgba(255,255,255,0.92); }
+.verticals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:60px; border-top:1px solid var(--rule); border-left:1px solid var(--rule); }
+@media (max-width:980px) { .verticals-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:620px) { .verticals-grid { grid-template-columns:1fr; } }
+.vertical-card { padding:32px 28px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:rgba(255,255,255,0.4); transition:background .3s,transform .3s; position:relative; cursor:default; }
+.vertical-card:hover { background:#fff; transform:translateY(-2px); }
+.vertical-icon { width:36px; height:36px; border-radius:8px; background:var(--purple-soft); display:grid; place-items:center; margin-bottom:18px; color:var(--purple-deep); }
+.vertical-icon svg { width:18px; height:18px; }
+.vertical-card h4 { font-size:19px; font-weight:700; margin-bottom:8px; }
+.vertical-card p { font-size:14px; color:var(--ink-mute); line-height:1.55; }
+.seg-spec { margin-top:20px; padding-top:16px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:12px; }
+.seg-spec-item .label { font-family:var(--font-mono); font-size:9px; text-transform:uppercase; letter-spacing:0.15em; color:var(--ink-faint); display:block; margin-bottom:3px; }
+.seg-spec-item .value { font-size:13.5px; color:var(--ink-soft); font-weight:500; line-height:1.45; }
+
+/* Service deep */
+.service-deep { border-top:1px solid var(--rule); padding:clamp(80px,11vh,130px) 0; background:var(--paper); position:relative; }
+.service-deep.cool { background:var(--paper-cool); }
+.service-deep.white { background:#FFFFFF; }
+.service-deep.cool .case-card { background:#fff; }
+.service-deep.white .case-card { background:var(--paper-cool); border-color:rgba(10,10,14,0.10); }
+.service-deep-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:clamp(40px,6vw,90px); align-items:start; }
+@media (max-width:900px) { .service-deep-grid { grid-template-columns:1fr; } .service-deep-meta { position:static !important; } }
+.service-deep-meta { position:sticky; top:100px; }
+.service-deep-num { font-family:var(--font-mono); font-size:12px; color:var(--ink-mute); font-weight:500; margin-bottom:12px; letter-spacing:0.05em; }
+.service-deep-title { font-family:var(--font-display); font-size:clamp(34px,4.2vw,52px); font-weight:600; line-height:1.02; letter-spacing:-0.025em; margin-bottom:18px; color:var(--ink); }
+.service-deep-tag { font-size:17px; color:var(--purple-deep); font-weight:500; margin-bottom:22px; font-style:italic; font-family:var(--font-display); }
+.service-deep-tag::before { content:"/ "; }
+.service-deep-desc { color:var(--ink-mute); font-size:16px; line-height:1.6; }
+.approach-list { list-style:none; margin-top:30px; }
+.approach-list li { padding:14px 0; border-top:1px solid var(--rule); font-size:15px; color:var(--ink-soft); display:grid; grid-template-columns:22px 1fr; gap:12px; align-items:start; }
+.approach-list li:last-child { border-bottom:1px solid var(--rule); }
+.approach-list li::before { content:"\2192"; color:var(--purple); font-weight:600; font-size:14px; }
+
+/* Cards */
+.case-card { background:#fff; border:1px solid var(--rule); border-radius:16px; padding:32px; margin-bottom:20px; position:relative; transition:transform .3s,box-shadow .3s; }
+.case-card:hover { transform:translateY(-2px); box-shadow:0 14px 40px -16px rgba(10,10,14,0.12); }
+.case-card-tag { display:inline-block; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.15em; color:var(--purple-deep); background:var(--purple-soft); padding:5px 10px; border-radius:999px; font-weight:500; margin-bottom:20px; }
+.case-card-tag.alt { background:rgba(0,212,180,0.12); color:#006B5C; }
+.case-card-name { font-family:var(--font-display); font-size:28px; font-weight:600; letter-spacing:-0.02em; margin-bottom:4px; color:var(--ink); }
+.case-card-industry { font-size:13px; color:var(--ink-mute); margin-bottom:24px; font-family:var(--font-mono); }
+.case-card-block { margin-bottom:18px; }
+.case-card-block-label { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.18em; color:var(--ink-faint); font-weight:500; margin-bottom:6px; }
+.case-card-block p { font-size:15px; color:var(--ink-soft); line-height:1.55; }
+
+/* Charts */
+.chart-wrap { margin-top:52px; border-top:1px solid var(--rule); padding-top:36px; }
+.chart-title { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.16em; color:var(--ink-mute); margin-bottom:22px; }
+.chart-note { margin-top:18px; font-size:13px; color:var(--ink-faint); line-height:1.5; max-width:64ch; }
+.chart svg { width:100%; height:auto; overflow:visible; }
+.dark-chart .chart-title { color:rgba(255,255,255,0.55); }
+.dark-chart .chart-note { color:rgba(255,255,255,0.45); }
+
+/* Requirement cards */
+.req-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:56px; border-top:1px solid var(--rule); border-left:1px solid var(--rule); }
+@media (max-width:820px) { .req-grid { grid-template-columns:1fr; } }
+.req-card { padding:34px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:rgba(255,255,255,0.5); }
+.req-num { font-family:var(--font-display); font-size:44px; font-weight:600; color:var(--purple); line-height:1; margin-bottom:16px; letter-spacing:-0.03em; }
+.req-card h4 { font-family:var(--font-display); font-size:23px; font-weight:600; letter-spacing:-0.02em; margin-bottom:10px; line-height:1.1; }
+.req-card p { font-size:14.5px; color:var(--ink-mute); line-height:1.55; }
+
+/* AI answer simulation */
+.ai-sim { margin-top:26px; border-radius:14px; overflow:hidden; background:var(--ink); border:1px solid rgba(10,10,14,0.12); }
+.ai-sim-chrome { display:flex; align-items:center; gap:12px; padding:11px 16px; background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.09); }
+.ai-sim-lights { display:flex; gap:6px; }
+.ai-sim-lights i { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.18); }
+.ai-sim-name { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.18em; color:rgba(255,255,255,0.45); }
+.ai-sim-replay { margin-left:auto; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--mint); background:none; border:1px solid rgba(0,212,180,0.35); border-radius:999px; padding:5px 12px; cursor:pointer; transition:background .2s; }
+.ai-sim-replay:hover { background:rgba(0,212,180,0.12); }
+.ai-sim-screen { padding:22px 20px 6px; min-height:290px; }
+.ai-sim-row { display:grid; grid-template-columns:34px 1fr; gap:12px; margin-bottom:20px; }
+.ai-sim-role { font-family:var(--font-mono); font-size:9px; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.4); padding-top:4px; }
+.ai-sim-role.alt { color:var(--mint); }
+.ai-sim .ai-sim-q { font-size:15px; color:#fff; font-weight:500; line-height:1.5; margin:0; }
+.ai-sim .ai-sim-typed { color:#fff; }
+.ai-sim-caret { display:inline-block; width:2px; height:15px; background:var(--mint); vertical-align:-2px; margin-left:1px; }
+.ai-sim.typing .ai-sim-caret { animation:aiblink .9s steps(1) infinite; }
+@keyframes aiblink { 0%,50% { opacity:1; } 51%,100% { opacity:0; } }
+.ai-sim.done .ai-sim-caret, .ai-sim.answering .ai-sim-caret { display:none; }
+.ai-sim-think { display:none; gap:5px; padding-top:7px; }
+.ai-sim.thinking .ai-sim-think { display:flex; }
+.ai-sim-think i { width:6px; height:6px; border-radius:50%; background:var(--mint); opacity:0.35; animation:aipulse 1.1s ease-in-out infinite; }
+.ai-sim-think i:nth-child(2) { animation-delay:0.16s; }
+.ai-sim-think i:nth-child(3) { animation-delay:0.32s; }
+@keyframes aipulse { 0%,100% { opacity:0.25; transform:translateY(0); } 50% { opacity:1; transform:translateY(-3px); } }
+.ai-sim-text .ai-p { font-size:13.5px; line-height:1.6; color:rgba(255,255,255,0.78); margin-bottom:11px; }
+.ai-sim-text .ai-h { font-size:13.5px; line-height:1.5; color:#fff; font-weight:700; margin-bottom:3px; }
+.ai-sim-text .w { opacity:0; transition:opacity .18s ease; }
+.ai-sim-text .w.on { opacity:1; }
+.ai-sim-foot { padding:12px 16px 14px; background:rgba(255,255,255,0.04); border-top:1px solid rgba(255,255,255,0.08); font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:0.13em; color:rgba(255,255,255,0.38); }
+@media (max-width:520px) { .ai-sim-row { grid-template-columns:1fr; gap:5px; } .ai-sim-screen { min-height:340px; } }
+
+/* Mini stat strip */
+.mini-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:24px 0 4px; border-top:1px solid var(--rule); }
+@media (max-width:620px) { .mini-stats { grid-template-columns:repeat(2,1fr); } }
+.mini-stat { padding:20px 14px 0 0; border-right:1px solid var(--rule); }
+.mini-stat:not(:first-child) { padding-left:16px; }
+.mini-stat:last-child { border-right:none; }
+.mini-stat-num { font-family:var(--font-display); font-size:clamp(26px,3vw,36px); font-weight:600; line-height:1; letter-spacing:-0.03em; color:var(--purple); margin-bottom:7px; }
+.mini-stat-label { font-size:11.5px; color:var(--ink-mute); font-weight:500; line-height:1.35; }
+
+/* Season calendar */
+.season-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:4px; margin-top:20px; }
+@media (max-width:760px) { .season-grid { grid-template-columns:repeat(6,1fr); } }
+.season-cell { border:1px solid var(--rule); border-radius:6px; padding:12px 6px; text-align:center; background:rgba(255,255,255,0.5); min-height:88px; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:flex-start; }
+.season-cell.peak { background:var(--purple-soft); border-color:rgba(108,92,231,0.35); }
+.season-m { font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; color:var(--ink-faint); text-transform:uppercase; }
+.season-cell.peak .season-m { color:var(--purple-deep); }
+.season-e { font-size:11px; line-height:1.3; color:var(--purple-deep); font-weight:600; }
+
+/* Instagram reference band */
+.ig-band { background:var(--paper); border-top:1px solid var(--rule); }
+.ig-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:44px; }
+@media (max-width:1000px) { .ig-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:640px) { .ig-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:420px) { .ig-grid { grid-template-columns:1fr; } }
+.ig-cell { position:relative; overflow:hidden; border:1px solid var(--rule); border-radius:14px; background:#fff; height:620px; }
+.ig-cell iframe { position:absolute; top:0; left:0; width:326px; height:620px; border:0; transform-origin:top left; }
+.ig-caption { margin-top:26px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--ink-mute); }
+
+/* Differentiators */
+.differentiators { background:var(--paper-cool); }
+.diff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:56px; background:var(--rule); border:1px solid var(--rule); }
+@media (max-width:900px) { .diff-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px) { .diff-grid { grid-template-columns:1fr; } }
+.diff-card { background:var(--paper-cool); padding:36px 28px; transition:background .3s; position:relative; }
+.diff-card:hover { background:#fff; }
+.diff-num { font-family:var(--font-mono); font-size:11px; color:var(--purple); letter-spacing:0.1em; margin-bottom:18px; font-weight:600; }
+.diff-card h4 { font-family:var(--font-display); font-size:24px; font-weight:600; letter-spacing:-0.02em; margin-bottom:10px; line-height:1.1; }
+.diff-card p { font-size:14px; color:var(--ink-mute); line-height:1.55; }
+.differentiators.dark { background:var(--ink); color:#fff; }
+.differentiators.dark h2 { color:#fff; }
+.differentiators.dark .diff-grid { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.12); }
+.differentiators.dark .diff-card { background:var(--ink); }
+.differentiators.dark .diff-card:hover { background:#15151d; }
+.differentiators.dark .diff-num { color:var(--mint); }
+.differentiators.dark .diff-card h4 { color:#fff; }
+.differentiators.dark .diff-card p { color:rgba(255,255,255,0.65); }
+
+/* Team */
+.team-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; margin-top:56px; background:var(--rule); border:1px solid var(--rule); }
+@media (max-width:1100px) { .team-grid { grid-template-columns:repeat(4,1fr); } }
+@media (max-width:800px) { .team-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:520px) { .team-grid { grid-template-columns:1fr; } }
+.team-card { background:var(--paper); padding:18px 18px; display:flex; flex-direction:row; align-items:center; gap:14px; transition:background .3s; min-height:96px; }
+.team-card:hover { background:#fff; }
+.team-avatar { width:42px; height:42px; border-radius:10px; display:grid; place-items:center; font-family:var(--font-display); font-weight:600; font-size:16px; color:#fff; letter-spacing:-0.02em; flex-shrink:0; }
+.team-info { min-width:0; }
+.team-info h5 { font-size:14.5px; font-weight:700; margin-bottom:2px; color:var(--ink); letter-spacing:-0.01em; line-height:1.2; }
+.team-info .role { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; color:var(--ink-mute); letter-spacing:0.1em; line-height:1.4; }
+.av-1 { background:linear-gradient(135deg,#6C5CE7,#4D3FC9); }
+.av-2 { background:linear-gradient(135deg,#00D4B4,#008C75); }
+.av-3 { background:linear-gradient(135deg,#FF6B6B,#C73E3E); }
+.av-4 { background:linear-gradient(135deg,#F5B400,#C68C00); }
+.av-5 { background:linear-gradient(135deg,#2C2C40,#0A0A0E); }
+.av-6 { background:linear-gradient(135deg,#9B7BFF,#6C5CE7); }
+.av-7 { background:linear-gradient(135deg,#5DDFC4,#00D4B4); }
+.av-8 { background:linear-gradient(135deg,#FF9966,#FF6B6B); }
+.av-9 { background:linear-gradient(135deg,#4D3FC9,#1A1A40); }
+.av-10 { background:linear-gradient(135deg,#00B894,#00684A); }
+
+/* Clients */
+.clients { background:var(--paper-warm); }
+.clients-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; margin-top:56px; background:var(--rule); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+@media (max-width:1100px) { .clients-grid { grid-template-columns:repeat(4,1fr); } }
+@media (max-width:700px) { .clients-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:460px) { .clients-grid { grid-template-columns:repeat(2,1fr); } }
+.client-cell { background:var(--paper-warm); padding:26px 12px; display:grid; place-items:center; text-align:center; min-height:150px; transition:background .3s; cursor:default; }
+.client-cell img { width:70%; height:auto; max-height:96px; object-fit:contain; mix-blend-mode:multiply; opacity:0.85; transition:opacity .3s; }
+.client-cell:hover { background:#fff; }
+.client-cell:hover img { opacity:1; }
+
+/* Process */
+.process-track { margin-top:56px; position:relative; }
+.process-step { display:grid; grid-template-columns:80px 1fr; gap:32px; padding:36px 0; border-top:1px solid var(--rule); align-items:start; }
+.process-step:last-child { border-bottom:1px solid var(--rule); }
+.process-num { font-family:var(--font-display); font-size:64px; font-weight:600; line-height:0.9; letter-spacing:-0.04em; color:var(--purple); }
+.process-content h4 { font-family:var(--font-display); font-size:clamp(22px,2.2vw,30px); font-weight:600; letter-spacing:-0.02em; margin-bottom:8px; }
+.process-content p { color:var(--ink-mute); font-size:15px; line-height:1.55; max-width:62ch; }
+@media (max-width:600px) { .process-step { grid-template-columns:50px 1fr; gap:16px; } .process-num { font-size:40px; } }
+
+/* CTA */
+.cta-section { background:var(--ink); color:#fff; padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px); position:relative; overflow:hidden; }
+.cta-section::before { content:""; position:absolute; bottom:-20%; left:-10%; width:800px; height:800px; border-radius:50%; background:radial-gradient(circle,rgba(108,92,231,0.32),transparent 70%); filter:blur(100px); }
+.cta-section .container { position:relative; z-index:1; }
+.cta-eyebrow { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:var(--mint); margin-bottom:28px; }
+.cta-title { font-family:var(--font-display); font-size:clamp(48px,7vw,100px); font-weight:600; line-height:0.98; letter-spacing:-0.03em; color:#fff; margin-bottom:28px; max-width:14ch; }
+.cta-title .italic { color:var(--purple); font-style:italic; font-weight:500; }
+.cta-note { color:rgba(255,255,255,0.7); font-size:18px; line-height:1.5; max-width:52ch; margin-bottom:36px; }
+.cta-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:60px; }
+.btn { display:inline-flex; align-items:center; gap:10px; padding:16px 28px; border-radius:999px; font-size:15px; font-weight:600; letter-spacing:-0.01em; transition:all .2s; border:1px solid transparent; }
+.btn-primary { background:var(--purple); color:#fff; }
+.btn-primary:hover { background:#fff; color:var(--ink); }
+.btn-ghost { background:transparent; color:#fff; border-color:rgba(255,255,255,0.2); }
+.btn-ghost:hover { border-color:#fff; }
+.btn svg { width:16px; height:16px; }
+.footer-meta { margin-top:80px; padding-top:36px; border-top:1px solid rgba(255,255,255,0.12); display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:24px; }
+.footer-meta-block { font-family:var(--font-mono); font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; line-height:1.7; }
+.footer-meta-block span { display:block; color:#fff; font-size:13px; text-transform:none; letter-spacing:-0.01em; margin-top:6px; font-family:var(--font-sans); font-weight:500; }
+
+/* Animation */
+body.anim-ready .fade-in { opacity:0; transform:translateY(20px); transition:opacity .8s ease,transform .8s ease; }
+body.anim-ready .fade-in.visible { opacity:1; transform:translateY(0); }
+
+@media print {
+  .nav, .client-bar { display:none; }
+  body { background:#fff; }
+  .cta-section::before, .hero-blob, .hero-blob-2, .ig-grid, .ai-sim-replay { display:none; }
+  .ai-sim-text .w { opacity:1 !important; }
+  .ai-sim { break-inside:avoid; }
+  .case-card, .process-step, .vertical-card { break-inside:avoid; }
+}
+
+/* merged: warm alias */
+.warm2{background:var(--paper-warm)}
+/* merged: geo cards */
+.geo-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule);margin-top:52px}
+@media(max-width:960px){.geo-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.geo-grid{grid-template-columns:1fr}}
+.geo-card{padding:30px 26px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,0.5)}
+.geo-stat{font-family:var(--font-display);font-size:46px;font-weight:600;line-height:1;letter-spacing:-0.035em;color:var(--purple);margin-bottom:14px}
+.geo-stat span{font-size:0.5em;vertical-align:super;margin-left:1px}
+.geo-card h4{font-size:19px;font-weight:700;margin-bottom:3px}
+.geo-loc{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:12px}
+.geo-card p{font-size:14px;color:var(--ink-mute);line-height:1.55}
+/* merged: pull quote */
+.pull{margin-top:52px;padding:34px 38px;border-left:3px solid var(--purple);background:#fff;border-radius:0 14px 14px 0}
+.pull p{font-family:var(--font-display);font-size:clamp(21px,2.3vw,30px);line-height:1.28;letter-spacing:-0.02em;color:var(--ink);font-weight:600}
+.pull p em{font-style:italic;font-weight:400;color:var(--purple)}
+/* merged: flyer */
+.flyer-block{display:grid;grid-template-columns:340px 1fr;gap:clamp(32px,5vw,64px);align-items:start;margin-top:56px}
+@media(max-width:900px){.flyer-block{grid-template-columns:1fr}}
+.flyer-frame{border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:#fff;padding:14px}
+.flyer-frame img{border-radius:6px;width:100%}
+.flyer-cap{margin-top:14px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);line-height:1.6}
+.fnote-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+@media(max-width:700px){.fnote-list{grid-template-columns:1fr}}
+.fnote{padding:20px 22px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fnote h5{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px;line-height:1.15;color:var(--ink)}
+.fnote p{font-size:13.5px;color:var(--ink-mute);line-height:1.5}
+/* merged: outlets */
+.out-group{margin-top:44px}
+.out-group-title{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-mute);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.out-group-title::after{content:"";height:1px;background:var(--rule);flex:1}
+.out-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:1000px){.out-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.out-grid{grid-template-columns:1fr}}
+.out-card{background:var(--paper-warm);padding:24px 22px;transition:background .3s}
+.out-card:hover{background:#fff}
+.out-logo{height:56px;display:flex;align-items:center;margin-bottom:16px;position:relative}
+.out-logo img{max-height:44px;max-width:85%;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.out-masthead{display:none;font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.out-logo.noimg img{display:none}
+.out-logo.noimg .out-masthead{display:block}
+.out-card h4{font-size:15.5px;font-weight:700;margin-bottom:4px}
+.out-meta{font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.13em;color:var(--ink-faint);margin-bottom:10px}
+.out-card p{font-size:13px;color:var(--ink-mute);line-height:1.5}
+.out-note{margin-top:34px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-faint);line-height:1.8;max-width:80ch}
+/* merged: whatsapp */
+.wa-block{display:grid;grid-template-columns:300px 1fr;gap:clamp(36px,6vw,80px);align-items:start;margin-top:56px}
+@media(max-width:880px){.wa-block{grid-template-columns:1fr}.wa-phone{margin:0 auto}}
+.wa-phone{width:300px}
+.wa-screen{background:var(--ink);border-radius:28px;border:1px solid rgba(10,10,14,0.2);padding:22px 18px 26px;box-shadow:0 20px 50px -24px rgba(10,10,14,0.35)}
+.wa-head{font-family:var(--font-sans);font-size:20px;font-weight:800;color:#fff;margin-bottom:18px;letter-spacing:-0.02em}
+.wa-mine{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:12px}
+.wa-sub{font-family:var(--font-mono);font-size:9px;letter-spacing:0.16em;color:rgba(255,255,255,0.4);margin:8px 0 6px}
+.wa-row{display:flex;align-items:center;gap:12px;padding:9px 0}
+.wa-ring{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--mint);display:grid;place-items:center;color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;background:rgba(255,255,255,0.08);flex-shrink:0}
+.wa-ring.me{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-size:22px;font-family:var(--font-sans);font-weight:400}
+.wa-row-name{font-size:14.5px;font-weight:600;color:#fff;line-height:1.2}
+.wa-row-time{font-size:11.5px;color:rgba(255,255,255,0.45);margin-top:2px}
+.wa-cap{margin-top:14px;text-align:center;font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
+.wa-mech{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);margin-bottom:30px}
+@media(max-width:560px){.wa-mech{grid-template-columns:1fr}}
+.wa-mech-item{padding:20px 18px 20px 0;border-bottom:1px solid var(--rule)}
+.wa-mech-item:nth-child(odd){border-right:1px solid var(--rule);padding-right:18px}
+.wa-mech-item:nth-child(even){padding-left:18px}
+.wa-mech-num{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--purple);letter-spacing:-0.02em;margin-bottom:7px}
+.wa-mech-label{font-size:13px;color:var(--ink-mute);line-height:1.5}
+.wa-para{font-size:15.5px;color:var(--ink-soft);line-height:1.6;max-width:58ch;margin-bottom:16px}
+.wa-ops-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ink-mute);margin:26px 0 14px}
+.wa-chips{display:flex;flex-wrap:wrap;gap:9px}
+.wa-chip{font-family:var(--font-mono);font-size:12px;background:#fff;color:var(--ink-soft);padding:8px 14px;border-radius:999px;border:1px solid var(--rule-strong)}
+/* merged: pillar chips */
+.pillar-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;margin-top:20px;padding-top:20px;border-top:1px solid var(--rule)}
+@media(max-width:640px){.pillar-mini-grid{grid-template-columns:1fr}}
+.pillar-mini-t{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--purple-deep);font-weight:600;margin-bottom:9px}
+.pillar-mini-chips{display:flex;flex-wrap:wrap;gap:6px}
+.p-chip{font-size:11.5px;background:var(--paper);color:var(--ink-mute);padding:5px 10px;border-radius:999px;border:1px solid var(--rule);line-height:1.3}
+/* merged: sim dots */
+.ai-dots{display:flex;gap:7px;margin-left:14px}
+.ai-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.22);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+.ai-dot.on{background:var(--mint);transform:scale(1.25)}
+
+/* merged: investment */
+.cool2{background:var(--paper-cool)}
+.inv-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-top:8px;padding:34px 0 30px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.inv-hero-num{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);font-weight:600;line-height:0.95;letter-spacing:-0.035em;color:var(--ink)}
+.inv-hero-num span{font-size:0.28em;font-weight:500;color:var(--ink-mute);margin-left:10px;letter-spacing:-0.01em;font-family:var(--font-sans)}
+.inv-hero-side{display:flex;gap:9px;flex-wrap:wrap;padding-bottom:10px}
+.inv-chip{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--rule-strong);color:var(--ink-soft)}
+.inv-chip.il{background:var(--purple-soft);border-color:rgba(108,92,231,0.3);color:var(--purple-deep)}
+.inv-chip.ha{background:rgba(0,212,180,0.1);border-color:rgba(0,212,180,0.3);color:#006B5C}
+.inv-group{margin-top:44px}
+.inv-group-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.inv-group-head h3{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-0.02em}
+.inv-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule)}
+.inv-row-main{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
+.inv-item{font-size:15px;color:var(--ink-soft);line-height:1.4}
+.inv-tag{font-family:var(--font-mono);font-size:8.5px;text-transform:uppercase;letter-spacing:0.12em;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#fff;border:1px solid var(--rule);color:var(--ink-faint)}
+.inv-tag.il{background:var(--purple-soft);border-color:rgba(108,92,231,0.25);color:var(--purple-deep)}
+.inv-tag.ha{background:rgba(0,212,180,0.1);border-color:rgba(0,212,180,0.25);color:#006B5C}
+.inv-total{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:44px;padding:24px 28px;background:var(--ink);border-radius:14px}
+.inv-total span:first-child{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.6)}
+.inv-total-num{font-family:var(--font-display);font-size:clamp(28px,3.4vw,40px);font-weight:600;color:#fff;letter-spacing:-0.025em}
+.inv-note{margin-top:26px;font-size:13.5px;color:var(--ink-mute);line-height:1.6;max-width:72ch}
+.dark-invest{background:var(--ink);color:#fff}
+.dark-invest h2{color:#fff}
+.dark-invest .lede{color:rgba(255,255,255,0.7)}
+.dark-invest .inv-hero{border-color:rgba(255,255,255,0.16)}
+.dark-invest .inv-hero-num{color:#fff}
+.dark-invest .inv-hero-num span{color:rgba(255,255,255,0.55)}
+.dark-invest .inv-chip{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.85)}
+.dark-invest .inv-chip.il{background:rgba(108,92,231,0.2);border-color:rgba(108,92,231,0.45);color:#B8AEFF}
+.dark-invest .inv-chip.ha{background:rgba(0,212,180,0.16);border-color:rgba(0,212,180,0.4);color:var(--mint)}
+.dark-invest .inv-group-head{border-bottom-color:rgba(255,255,255,0.28)}
+.dark-invest .inv-group-head h3{color:#fff}
+.dark-invest .inv-row{border-bottom-color:rgba(255,255,255,0.12)}
+.dark-invest .inv-item{color:rgba(255,255,255,0.82)}
+.dark-invest .inv-tag{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18);color:rgba(255,255,255,0.5)}
+.dark-invest .inv-tag.il{background:rgba(108,92,231,0.2);border-color:rgba(108,92,231,0.45);color:#B8AEFF}
+.dark-invest .inv-tag.ha{background:rgba(0,212,180,0.16);border-color:rgba(0,212,180,0.4);color:var(--mint)}
+.dark-invest .inv-total{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16)}
+.dark-invest .inv-total span:first-child{color:rgba(255,255,255,0.55)}
+.dark-invest .inv-total-num{color:var(--mint)}
+.dark-invest .inv-note{color:rgba(255,255,255,0.5)}
+</style>
+</head>
+<body>
+
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.9;">
+    <div class="client-bar-divider"></div>
+    <span class="client-bar-chip"><img src="data:image/png;base64,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" alt="Israir" style="height:16px;width:auto;"></span>
+  </div>
+  <span class="client-bar-meta">Capabilities Brief &middot; August 2026 &middot; Confidential</span>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:28px;width:auto;">
+      <span class="nav-divider"></span>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAA/CAMAAAD6x6IcAAAA/1BMVEUAAAAWU5329ff0dh2QqNDx7/JMdrQDOpInaK2brMyprOT6nV3+iS1vc7QDE3ZnibpmhrZukMWsrbH9qG39pKL4sJGbqsvX2eULMJ1/f39Td68AAP+r4Od4e/QlU55qpK9on9YHc3kDMY75tZD9e3coU5wA//9wi7r+5a3+dBD/AwD2ll+4w9i4xNv7tIgHLIz7x61XdK//93sZcuX5yLF////2mWfc2eFQe8F1lMGzw97lteb8x6byaxXybR7/pCsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABqL7R+AAAAQHRSTlMA/A3981z09QigCvD8Bwrnr/EFBgZnXpsNAqkBCgKkCgYCn6sEYgFpDQcBoWuh412jXgIDYgJuzf+p7Q7Xe4UEWlwhNQAADs9JREFUeNrtW4lS47oS7TReYju2YyckcRaSQAg7DAzb7P//V69lSy3Jdph5cy9U3ar0qzcXbGs76j69SAD8N+X8BR82sJf3l9vnb7/2KLy/YHSAexQ+Aujbgx842OPwEUBHjzDcA/EB1HHQ26v0xwB9sIHB5eXFnqvfHeiownhPIO8NNEnvijT6YY/HewN99SM6iM73Ov3+QANeHfTc4T5JfGege48AVwcRXOwReWeOjvCCfjzcB3r/TIaDXaKAPniG4Y/eT1OlL/fx3r8ptxLog3N4Jr1mdLEZgqAU60kR5nloP+UPG983v3hjBNzRDe5QAGti1b95+1v1OoT87b7Uf8xWUsqWOK91ffj8fLhDlEYf/BQkjSrwEG1deNs3hrhrnbbE87De8m9UYskjdLtxJct8bkIV0/NurH7sdktAym+rn5UUogf5KOa+wjnafelGa9FxUv28NUYRnxldP8DjbdTbIQrngx/wQwM9BHS/n8DgLS0Mq0cv4/GLaypcm0aHO1R3lyW0KDTKDWps6JMc1nihFdJ4Zv2sXtfnZfdVdoCF2+xBvsLGixPW3B3S+0QBXsXRojm+RL0hXJp6CeCUArCQeLqO43kdIV7muHI4xMCxZeS6VRtejcvv7vULaq+eIo22chrdYDlsP+v3pyT9fj8IxvSwqEx5RM+F5DQF8Um/nwWAwbR6mgW4UkZ/7Uzlo8Dqa4zVbGKQfTkjerCE/hf6qJ/26UUB4ZeqcQjxU1B+lvXZRIkC8HvUewvoCMkv/oRfFYRj2pcTKwTJwe34pRzDpERlnHodvyPF77wGZFYAMwD6xdcitsELzE2PsS8/6PgeztSLsqV8CAncWb2Ibl7TsZgbj1lK6pRd0z9e9SKjHwP5kqYU8pcxVEbehSP55Awz3+7LrZBGp3r+irAsumrEKXymxkn1ixfSz/JFiYiKO0j/3tTqEzgkrSZl2NCXt70D0zEKWUGfZz+HeYJOpy7TPN7Slo86LeLlrLqx+UUqFRKEzo/kxO/ExJ22bghVaHQ9py5mEKtZ4ISRxO2KQe8cYUmstLOeep00+nLJQ1Jn3KRLjc7kbyMxDva5N7xmRAynI/za426lJnambcBzLHVfUMnQdoUTvFPTKzXIa4EhIJUO2xHqeLgolFMznyeQsM2olqekLNjaS+cepi1dF5jjDcMxQQm0RyoIwDP9AquS50fqCUNo9lU6B9ZhMgBUI1bTNOZ4Kq255tspv8ZPu6A+xCH9S1xBn8ikfGh7CTYzETZh1gqDZZg1SUC558B46o8YaG756goN8dv3C7Lmiz4sJrwB+JmRdOjnHK75OyICMYzSGGeRNgeYYlcb71j4YLXWtHR+Lr9KtGXU3PMl4djOH71bgJ8lXYzlTlCmOLAjolAb+0obf/p1BIEa0KcPEzxWr0g8z1B36YpsXXVARUq6JRksj+DZvXSAnaPe6yNM1qrXI02jxMoJ4EKTHIFYErD8tQtpsy8f1glq6ik9hyQ0TEgBvsjPqCtMFSKztjgcozbiGLoV4Erhn9Gu5CU8+4DG5r2clgFOoIGmLffU6kvJakAXkEkAJZCFVPQ5uozVxPAIZS83GmiXhYcl/8d6G5Dz6jMNkF9YJKFpcdr46bXuS7sNImXWYVrqkrf8jLZwAsfqVQKTBvsZMrhoAbpHyms/jert1oxmYgwhZr5cQs6kJ9RTKbTcW5s62BMGSmsUo3xWlNcJNiEvSJllavdqc5CHzAclX8rHxzipKKnPHEMebDv3lSZMjL4UXfuodYpsg1qrod0ZOUqlYgFxd8BM1yK/KP9r6DMFG59s5BvVpTWPR9BqlkWaSI5zp08GLsJWES4ouLb5doYr5Vc8wThQsHoptSNORckcCvox6AUJNtrOwpWjlFcnMmFXbSKFV8pj0TBMo/el8ysjPzXfa1wy7NdAaaWSrjLEYwJXLW9JFsGENiUMutDlPehy+IOToqnQ54dtqUqdTyIcbOpAS8Ayl/xL3wy3LG5KtI8mlxlqrcsIc8EPjrJD9eJG5jmmt+2yvaZhiKKbDscUZt7DHK2CO19MqM8qGJZRBr6w00u1y02FJzD68tQXE8W9IsZfsKqPReVEBdgU6MQ6NIkbOD9smsRBwXMd554L5/XU1NX2GBsRnOeI/JugWYRxHFN4p7THq9rJ+fu0PyhCZVZoHLPelQH2FnLtbU2PUHYTsO2bDkfvFW+MiLqOTVKagGtGSCPeYNfEZ8EdjMhgffYVtP1HFmcZw3B4jU8NoDdw0sD5BC7wu/3sqo4zaaKa3xRWMWcWKv2+cWWdYMYIpWOSG+XOs2sRseXsZkbawO+qtIpaKg3BzwkTSyB6CRwOUQzhOJYIbKa+cAvWTaeIy3jMjkTHnppBbvaF99rrqKWO5qHe4pFwkpyWjsgcjiwPW9PLYa+pzxdw2KsRx6Z+eKiDz2sxwUa64nGpg+MDz9NRmVPqs96uVCTr1Zz9tGoY8/oE8sp6rV6yAI3UoOCIzgPOBY+J406NCL3byFM9RV2xnSVITqDZqL6Ee+BwJxDfh8xKEJvhdQPnId42/eAA3KiOfb2tDs79qq5200gMPQfDAmJs5gCpc42l+qAKQTx3GXI4UgVhpFOpScN+s3/H9u4xLLWjUObxBSd4ylF0kTPOL3ZvowavKk5A9n4eouuwh8nJbNhf91EH66dl+mnDtXFrCh2NsYGzyMablUiOhx8q3MdZax0iYYI0cH4poz7AWBFCH5eUNeu4bw1GS09o/7i5XV/HsMqtyD7gCACk4fsuUVC1Yf4Uk5w3ILAKA0Rki9oKR+wx2FzTwPEYZwFJN1e0PCEbGnFosqoDfQlNSDcNnCmoHjSj6K7Nkp8Bx07aSMBpB9ry5lToA4SFa7GaZybhuDZitRCDtuw7sL2O2ntRnrgTFpClwmOFpTFkzj2Ea4XZF1hrthOlxFo8tuBAw53xUk1jLS1S7aEYsVtNPxPvvtXQOsfDWt4tyvx1nA+uWg5oE/Y79yIvFAdYgkFenNRUbApMjcKCXW1KxGo8pdClpLx3azCy+j6uJk27aLqdLeclIuryHFGbFs7v5jVzgpsxob/CM44wCr1399DQZx7wyMzGFMzjCud85nKOSEpMe+mIYdoYOqrRBgUXDZyboZ0AephpM7U6Hd+kBpwxbwitOwgyXQpKKGq6Nxyc4eO8fC2Wesf0qTORjuiFCxGk+0/GaRjzMoQLPqlBCPnMcYYcPW/152RfMdYPyVze9K4FdJoKmEsDIFqeGrUY8uxYxVlN4rBCu1tXFKkfGzg/Q8uNg0Rpj0hXEL+h+H+ICZg1GgE0mpmw8QrWIYdddfFJowmU1FfeNgb31dBhRsGq+6542a50KXN9FluCvUY16y6BxA6CGiwWdWY8NYJrBXR55sIHY+HEKMgv9dlbU6EHaHjC6ISo5BIOo2Z5qeVPWnCrQ4QERlmlkf25ODQKOdEg6tBhWYLLcGnURNYrnHZ2CHWPuiUaAbKDeRjqlNEEesK1PkFLeT5XS17k8oAyUV7AE6ZfwFynh0t7eTMjKdXU0ZcHP+X2zXV4Pa283yKfF+1FDmCgexEKeq4VOOSNpfO2+HtsFCFPecBuSDAwI3QE1+rsjrxKkXR0Bf5mF86EH+pEJyuPsZgME6J2huFGh0O6GuJg0npo/gSGey1t/EhXaJ5qtXZP5UpJl49qOiEs50QQ81DsC37hCcZvXXjZwKPFzoMB4G3zECCCtiuln3mO4oTzlE3QTLJplucJe7Q7oWYJZ6kphcneTqBPzRRYtNR2QXtX6PTI1Q6+CzqVW7dfcmBu6ZcqqFt0ztByNfoYjHKlcz2cZxztj1ODPN+6FKGLHNEJllehx20nALcutlwpZTP1cauP0ChTo/xY18xDWo95GAX63I+CQlVd+8qF+6+eLp+smM7vjQJgJuIwfeTgW2ro8CHpU+sVGD7QkiQ+5wCyk9qZQl5IVvBE3LTSZO4Fo6pYrd2648KbF7gGcCVPTm6J388vAHec1EbfqZ8Le89yrWLEWBzklPGDQQAYrpXme27FpjqCc606fiXHum4fG952zjafUlxuxPB+3JLKHZlFODOS0DlW43i5E1tnIok+zC37MozPE6cvmbnIGr/X9Vl5wog09oLY+a1jWqHxD+3Jrsjru9Dq1b6iSFd8a8Z8Lurw3M1pHusknHMZahmy2yntwghsE6PahrbtNETnyFzKRT5qmZqNdNFkWmbTIbn7do7Lxr+7ZIXVFbvokzjK2jy0sbPhEKPHcjeM6EfO2RdFS0qevWYlgmi/0BHckbzooOAN9HHQshmfCQCvtbfVtwWuoczqJ34DaLUZvjg/3bHovowXz/ikSU/cneVGoDiq7qf44/IuHdlaayQqbn28zRsiXhYnr99Jnc8RHi7wN7eWolsKPYbYmHN1HIWUfTdqd2IKOiBRZTZl845ciSeqdqrySlj5vH+6JRoeYb0oTyvl6H5iNpanqrhoX3OhvnC6+p7DmXIPZqCYg3o8ZxxRHDgbt4M6r564E5X/5g70JV4ReOJGVXnH66LlOKsO9ZUrcvb6nEMs5E2mIFNBapbeyEtsK56x8syNW13G/c65vhh2A8ZaKaCSP6cieqXRl+qoOjYjMnmqukvH+Avt+J64kVu7lCefPjDHALjXTiaO3+l/KeX0Lv7B3UyEk17kAiN3ifi7m3iSZnbMWXgS4YxJrl2XLwcaq5fC62pZn/kazJa6m+qyownP38jsb+7nyxuc6I6/qQuWxZ9c6yfUjL8jHJjlpV23TCNynPW76Fuex9K6vtuoX//RavKdivEHMt99+dq+m5rvuq761sVvWlQIf3Ypuf6VlfAZ5BHtujh9+KwVsHXOlBYuxdHpbPeM1e/F2/fOsf0Kev72rfV3/6sTki3m2+3/M/KgtoWb8x5fbtzLv7g5zSdKpU+Gg2G7DHD/Ryz/WCj6YI3e/yHW+8rzHugP0uloD/RHyHD42NsD/RH+8aLyh3ug3587cA/0h8gvfN4D/SEsfSlKHnug3182cLEH+mN0Gq72QH+ISl+e9/ZAf4Q8YBTtgf6IYBrcT/DfKh39D3Y98AruXewmAAAAAElFTkSuQmCC" alt="Israir" style="height:20px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#market">The market</a></li>
+      <li><a href="#segments">Segments</a></li>
+      <li><a href="#svc-social">Media</a></li>
+      <li><a href="#svc-geo">AI Visibility</a></li>
+      <li><a href="#outlets">Channels</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="mailto:tamir@noetic.io" class="nav-cta">Talk to us &rarr;</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Prepared for Israir</span>
+      <span class="hero-meta-divider"></span>
+      <span>Hila Hermolin</span>
+      <span class="hero-meta-divider"></span>
+      <span>August 2026</span>
+    </div>
+    <h1 class="display-xl">You&rsquo;ve opened the routes.<span class="accent-line">Now open the market.</span></h1>
+    <p class="hero-lede">Your aircraft flies in two directions. In Israel you already have very good agencies covering the mass market, and we are not here to touch that. The American side is a different job. The people who will fill those seats are six separate communities that share a destination and almost nothing else. That is the part we would like to help you win.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">6</span></div>
+        <div class="hero-stat-label">Distinct US audiences the New York route needs to reach</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">400K</div>
+        <div class="hero-stat-label">US visitors to Israel in 2025, its largest source market</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">+73%</div>
+        <div class="hero-stat-label">US and Canada arrivals in June 2026 against last year</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2&ndash;3M</div>
+        <div class="hero-stat-label">Visitors Israel's Tourism Ministry expects in 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recap-dark section" id="talked">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">01 &middot; What we talked about</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">A quick record of the <em class="italic" style="color:var(--mint)">conversation</em>.</h2>
+    </div>
+    <ul class="belief-list">
+      <li class="belief-item"><div class="belief-num">/01</div><div class="belief-content">
+        <h3>The American side is a different market</h3>
+        <p>Israir is putting two A330 widebodies on Tel Aviv to New York, with up to six flights a week. Half of those seats have to be sold to people sitting in the United States, and that is a very different marketing job from selling in Israel.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/02</div><div class="belief-content">
+        <h3>Five communities, plus business travel</h3>
+        <p>Israeli-Americans, Jewish-Americans, Jewish-Latin families, Orthodox families, and pro-Israel Christian and Evangelical travelers. Each one needs its own message, its own talking points, its own call to action and its own landing page. On top of that sits business travel.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/03</div><div class="belief-content">
+        <h3>A second lane: the companies in the middle</h3>
+        <p>You mentioned the Israeli-American companies whose people are on this route constantly. Those are not single tickets, they are annual volume. Reaching them is an account based motion, not an advertising one.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/04</div><div class="belief-content">
+        <h3>AI visibility is the gap you named</h3>
+        <p>You said it directly. An Israeli agency cannot really do American SEO and AI visibility, because it is a different search culture with different communities and different sources. This came up as the clearest opening for us.</p></div></li>
+      <li class="belief-item"><div class="belief-num">/05</div><div class="belief-content">
+        <h3>What happens after the booking</h3>
+        <p>Someone buys a ticket today. The next six months of email, offers and news should already be written and waiting. That is a CRM and lifecycle job, and it is one of the cheapest ways to get a second booking.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="section" id="market">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">02 &middot; The job in front of you</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">You are not just opening a route. You are launching a <em class="italic" style="color:var(--purple)">brand in a new country</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">In Israel, everyone knows Israir. In the United States, almost nobody does. That is the real distance to cover, and it is a marketing problem more than an aviation one. Here is what the market looks like today.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Share of Israeli carrier traffic on United States routes</div>
+      <div class="chart">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="El Al share of Israeli carrier traffic on United States routes">
+  <text x="0" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--ink-mute)" letter-spacing="1">Q2 2025</text>
+  <rect x="118" y="22" width="437.5" height="46" fill="var(--ink)" opacity="0.88" rx="2"/>
+  <rect x="555.5" y="22" width="140.5" height="46" fill="var(--purple)" rx="2"/>
+  <text x="134" y="51" font-family="Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">El Al 75.7%</text>
+  <text x="569.5" y="51" font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="#fff">24.3%</text>
+
+  <text x="0" y="138" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--ink-mute)" letter-spacing="1">Q2 2026</text>
+  <rect x="118" y="114" width="533.5" height="46" fill="var(--ink)" opacity="0.88" rx="2"/>
+  <rect x="651.5" y="114" width="44.5" height="46" fill="var(--purple)" rx="2"/>
+  <text x="134" y="143" font-family="Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">El Al 92.3%</text>
+
+  <line x1="673.5" y1="137" x2="696.0" y2="137" stroke="var(--rule-strong)" stroke-width="1"/>
+  <line x1="696.0" y1="137" x2="696.0" y2="188" stroke="var(--rule-strong)" stroke-width="1"/>
+  <text x="696.0" y="206" text-anchor="end" font-family="Manrope, sans-serif" font-size="15" font-weight="700" fill="var(--purple)">7.7%</text>
+  <text x="696.0" y="226" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-faint)" letter-spacing="1.4">EVERYONE ELSE</text>
+</svg>
+</div>
+      <p class="chart-note">El Al&rsquo;s share of the United States market grew from 75.7 percent to 92.3 percent over the past year, while foreign carriers stayed away. Almost every American flying to Tel Aviv on an Israeli airline right now is flying El Al, largely out of habit. Habits are the thing marketing can change. Source: Israeli carrier second quarter results, August 2026.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">When the rest of the competition comes back</div>
+      <div class="chart">
+<svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of competitor return dates on the Tel Aviv to United States market">
+  <rect x="70" y="60" width="122" height="38" fill="var(--purple)" opacity="0.12" rx="3"/>
+  <line x1="70" y1="98" x2="680" y2="98" stroke="var(--rule-strong)" stroke-width="1.5"/>
+  <line x1="70" y1="98" x2="70" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="70" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">AUG 2026</text><line x1="192" y1="98" x2="192" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="192" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">SEP</text><line x1="314" y1="98" x2="314" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="314" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">OCT</text><line x1="436" y1="98" x2="436" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="436" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">NOV</text><line x1="558" y1="98" x2="558" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="558" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">DEC</text><line x1="680" y1="98" x2="680" y2="108" stroke="var(--rule-strong)" stroke-width="1"/><text x="680" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)" letter-spacing="1.2">JAN 2027</text>
+  <circle cx="70" cy="98" r="7" fill="var(--purple)"/>
+  <text x="70" y="46" font-family="Manrope, sans-serif" font-size="14.5" font-weight="700" fill="var(--ink)">Israir opens Tel Aviv to New York</text>
+  <circle cx="192" cy="98" r="6" fill="none" stroke="var(--ink-mute)" stroke-width="2"/>
+  <text x="192" y="168" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13.5" font-weight="600" fill="var(--ink-soft)">United and Delta, earliest return</text>
+  <circle cx="680" cy="98" r="6" fill="none" stroke="var(--ink-mute)" stroke-width="2"/>
+  <text x="680" y="168" text-anchor="end" font-family="Manrope, sans-serif" font-size="13.5" font-weight="600" fill="var(--ink-soft)">American, earliest return</text>
+</svg>
+</div>
+      <p class="chart-note">United and Delta have suspended their Tel Aviv service until at least September, and American until January. The route is unusually quiet for a launch. Every month spent building recognition now is a month of advantage later.</p>
+    </div>
+
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="req-num">01</div>
+        <h4>Be known</h4>
+        <p>Most Americans booking this route have never seen the Israir name. Before anyone compares your price, they have to believe you are a real, safe, established airline. That is awareness work, and it takes months, not weeks.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-num">02</div>
+        <h4>Give a reason</h4>
+        <p>Being cheaper is not enough on a route people care about. Each community needs its own reason to choose you, and the reason that convinces an Orthodox family is not the one that convinces a church group.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-num">03</div>
+        <h4>Come back</h4>
+        <p>These are repeat travelers. Most fly this route again within a year. Winning someone once is worth far more if the second and third booking are already being worked on from the day they land.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="segments section" id="segments">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">03 &middot; The six segments</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch">Same aircraft. Six completely <em class="italic" style="color:var(--mint)">different reasons</em> to be on it.</h2>
+      <p class="lede" style="margin-top:22px">One ad cannot speak to all of these people. The words change, the images change, the offer changes, and the page they land on changes. This is the core of what we would build.</p>
+    </div>
+    <div class="verticals-grid"><div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.6L20 9l-4 4.2.9 6.3L12 16.8 7.1 19.5 8 13.2 4 9l5.6-1.4z"/></svg></div><h4>Israeli-Americans</h4><p>Between 200,000 and 500,000 people, mostly around New York, Los Angeles and Miami. They fly home often, they know every airline on the route, and they compare prices carefully.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">An Israeli airline, Israeli crew, Israeli food. It already feels like home before you land.</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Book the whole family</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Hebrew and English, family fares up front</span></div></div></div>
+<div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 00-7.1 0L12 8.3l-1.7-1.7a5 5 0 10-7.1 7.1L12 22l8.8-8.3a5 5 0 000-7.1z"/></svg></div><h4>Jewish-Americans</h4><p>The largest group by far, around 7 million people. Many have been meaning to take the trip for years. Holidays, family events and bar mitzvah trips are the moments that turn intent into a booking.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">The trip you keep saying you will take. This year it is easy.</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Plan your family trip</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Holiday calendar, multi-passenger pricing</span></div></div></div>
+<div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg></div><h4>Jewish-Latin communities</h4><p>Concentrated in Miami and parts of New York. Spanish is the language at home, and Miami is a city Israir has already named as a future destination.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">Spanish-first creative, warm and family-led</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Reserva tu vuelo</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Full Spanish version, not a translation</span></div></div></div>
+<div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a3 3 0 013 3v13a2.5 2.5 0 00-2.5-2.5H4z"/><path d="M20 4h-3a3 3 0 00-3 3v13a2.5 2.5 0 012.5-2.5H20z"/></svg></div><h4>Orthodox and Haredi families</h4><p>Brooklyn, Lakewood, Monsey and Miami Beach. Large families, group travel, and a calendar built around yeshiva, seminary and the holidays. Practical details matter more than mood.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">Kosher, schedule and group pricing, said plainly</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Ask about group fares</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Community-appropriate creative and imagery</span></div></div></div>
+<div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M9 5h6M6 22V11l6-4 6 4v11z"/><path d="M10 22v-5h4v5"/></svg></div><h4>Christian and Evangelical travelers</h4><p>Pilgrimage is one of the fastest growing parts of Israel's inbound tourism. Christian visitors went from 5 percent of tourists in 2024 to 9 percent in the first half of 2025. Most travel in organized church groups.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">The Holy Land, and a straightforward way to get there</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Group and pastor inquiries</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Group booking form, itinerary partners</span></div></div></div>
+<div class="vertical-card"><div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div><h4>Business travelers</h4><p>People at companies with offices in both countries. They are not buying one ticket, they are buying twenty a year, and it calls for a different motion entirely.</p><div class="seg-spec"><div class="seg-spec-item"><span class="label">Message</span><span class="value">A reliable seat on the corridor you already live on</span></div><div class="seg-spec-item"><span class="label">CTA</span><span class="value">Talk to us about corporate fares</span></div><div class="seg-spec-item"><span class="label">Landing page</span><span class="value">Corporate portal, travel manager focused</span></div></div></div></div>
+  </div>
+</section>
+
+
+<section class="section" id="cohort-start">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">04 &middot; Where we would start</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:23ch">The only American travel market that <em class="italic" style="color:var(--purple)">grows every year</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">Of the six segments, one stands out as the place to begin, and Israir has already pointed at it: the Hasidic and Haredi communities of the tri-state area. Most audiences you can advertise to are flat or shrinking. This one compounds. Families are large, the neighborhoods are dense and mapped, and the reasons to fly repeat on a fixed calendar. Here is the map, with numbers.</p>
+    </div>
+    <div class="geo-grid"><div class="geo-card"><div class="geo-stat">462K</div><h4>Brooklyn</h4><div class="geo-loc">NEW YORK CITY</div><p>462,000 Jews, the largest Jewish community of any US county, and 52 percent of Jewish adults are Orthodox. Borough Park alone holds 96,000 Jews and Williamsburg 68,000. In Borough Park, children outnumber adults. Source: UJA-Federation 2023 study.</p></div><div class="geo-card"><div class="geo-stat">52K</div><h4>Lakewood</h4><div class="geo-loc">OCEAN COUNTY, NJ</div><p>From 92,843 to 135,158 people between 2010 and 2020, up 45.6 percent, with a 2025 estimate of 143,765. Roughly two thirds Orthodox, around 95,000 people and 18,000 households (est.). 52,000 children attend 164 Jewish schools, and the township records over 5,000 births a year.</p></div><div class="geo-card"><div class="geo-stat">90K<span>+</span></div><h4>Monsey &amp; Ramapo</h4><div class="geo-loc">ROCKLAND COUNTY, NY</div><p>Ramapo grew 17.6 percent in a decade, adding 22,214 people, and the Monsey CDP counted 26,954 with a median age around 15. Rockland's Jewish population is estimated at 90,000 or more, the highest Jewish share of any US county (est.). Jewish school enrollment in the county rose 67 percent in ten years.</p></div><div class="geo-card"><div class="geo-stat">+39<span>%</span></div><h4>New Square</h4><div class="geo-loc">ROCKLAND COUNTY, NY</div><p>Up 39.3 percent between 2010 and 2020, to roughly 9,700 people in about 1,700 households (est.). A single Hasidic community, Skver, with among the largest average household sizes in the country.</p></div><div class="geo-card"><div class="geo-stat">47K</div><h4>Kiryas Joel</h4><div class="geo-loc">ORANGE COUNTY, NY</div><p>32,954 at the 2020 census, up 63.3 percent in a decade, and the 2025 estimate is 47,147. Median age around 13, routinely cited as the youngest municipality in the United States. Over 5,700 households (est.), essentially all Satmar.</p></div><div class="geo-card"><div class="geo-stat"><span style="font-size:0.55em;vertical-align:middle;margin-right:2px">≈</span>700K</div><h4>All of it together</h4><div class="geo-loc">WITHIN ~90 MIN OF JFK</div><p>Taken together, roughly 700,000 Jewish residents across Brooklyn, Lakewood, Rockland and Kiryas Joel (est.), concentrated in dense, mapped, walkable communities. Not a scattered audience. A set of neighborhoods.</p></div></div>
+  </div>
+</section>
+
+
+<section class="section warm2" id="proof">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 &middot; Proof the demand is already there</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">When seats got scarce, this community <em class="italic" style="color:var(--purple)">chartered its own aircraft</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">A Brooklyn travel company ran seven round trip charters between Tel Aviv and New York around the Tishrei holidays, roughly 380 seats, from $1,650, at a time when El Al and Delta fares on the route had pushed past $2,600. The advertisement ran in Haredi newspapers. Their clients include Satmar and Bobov.</p>
+    </div>
+    <div class="flyer-block">
+      <div>
+        <div class="flyer-frame"><img src="data:image/webp;base64,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" alt="Advertisement for chartered flights between New York and Israel, placed in Haredi print media"></div>
+        <div class="flyer-cap">Competitive analysis &middot; Lalechet charter advertisement<br>Haredi print media &middot; Reproduced for internal review</div>
+      </div>
+      <div>
+        <p class="lede" style="color:var(--ink-mute);margin-bottom:30px;font-size:17px">This page is worth reading closely. Every choice on it is a decision an outside agency would not make, and together they are a working brief for how to speak to this cohort.</p>
+        <div class="fnote-list"><div class="fnote"><h5>Written from inside</h5><p>Hebrew abbreviations appear without translation or explanation. The reader is assumed, not addressed.</p></div><div class="fnote"><h5>Dated by the Jewish calendar</h5><p>One departure is listed as Motzei Yom Tov rather than a weekday. The reader knows exactly when that is.</p></div><div class="fnote"><h5>Times set by halacha</h5><p>Departures at 11:30PM, 11:55PM and 2:00AM. These windows exist because of when Yom Tov ends, not because of aircraft scheduling convenience.</p></div><div class="fnote"><h5>Phone number, not a funnel</h5><p>The largest element in the bottom third is a phone number. This audience transacts by voice.</p></div><div class="fnote"><h5>Groups and agents separated</h5><p>Two distinct contact addresses. Group travel and agent intermediation are primary channels here, not edge cases.</p></div><div class="fnote"><h5>No people in the image</h5><p>Architecture only. Modesty is designed in from the start rather than corrected later.</p></div><div class="fnote"><h5>Problem named first</h5><p>The opening line is about the limited number of flights. It leads with the reader&rsquo;s frustration.</p></div><div class="fnote"><h5>No price on the page</h5><p>Fares come on the call. The advertisement sells the phone call, not the seat.</p></div></div>
+      </div>
+    </div>
+    <div class="pull">
+      <p>The demand is proven, the price point is Israir&rsquo;s, and the channel is <em>already known</em>. What is missing is an airline showing up in it.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="service-deep" id="svc-social">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 01</div>
+        <h3 class="service-deep-title">Paid Social &amp; UGC</h3>
+        <div class="service-deep-tag">Real people, real trips, one community at a time.</div>
+        <p class="service-deep-desc">This is where the six segments become visible. Instead of one airline film, we produce a steady stream of short vertical videos made by creators who actually belong to each community. It looks like a friend showing you their trip, because it is.</p>
+        <ul class="approach-list"><li>Creator casting per segment, so the person on screen is someone that audience recognizes</li><li>Short vertical video, filmed end to end: home, airport, cabin, arrival</li><li>Meta, Instagram, TikTok and YouTube Shorts, with separate campaigns per segment</li><li>Hebrew, English and Spanish versions, written properly rather than translated</li><li>Constant new creative, because volume is what keeps social costs down</li></ul>
+      </div>
+      <div>
+<div class="case-card">
+  <span class="case-card-tag alt">Concepts for Israir</span>
+  <div class="case-card-name">Three creators, three trips</div>
+  <div class="case-card-industry">One per audience, filmed end to end</div>
+  <div class="case-card-block"><div class="case-card-block-label">Miami to Tel Aviv</div>
+    <p>An Israeli family packing, boarding, and landing. Hebrew at home, Hebrew on the plane. The whole point is that it does not feel like a foreign airline.</p></div>
+  <div class="case-card-block"><div class="case-card-block-label">New York to Tel Aviv</div>
+    <p>A religious woman traveling for a family event. Quiet, warm, practical. Kosher meal, timing around Shabbat, what to expect on board.</p></div>
+  <div class="case-card-block"><div class="case-card-block-label">Los Angeles to Tel Aviv</div>
+    <p>A church group on their first trip to the Holy Land. Shot as a group diary, from the gate to Jerusalem.</p></div>
+</div>
+<div class="case-card">
+  <span class="case-card-tag">How it runs</span>
+  <div class="case-card-name">Always something new</div>
+  <div class="case-card-industry">Volume is what keeps social costs down</div>
+  <div class="case-card-block"><div class="case-card-block-label">Cadence</div>
+    <p>A steady flow of new videos every month rather than one big shoot a year. Social audiences burn through creative fast, and fresh material is the single biggest lever on cost per booking.</p></div>
+  <div class="case-card-block"><div class="case-card-block-label">Casting</div>
+    <p>We find and manage the creators. Real people from each community, briefed properly, paid properly, filming on their own phones.</p></div>
+  <div class="case-card-block"><div class="case-card-block-label">Ownership</div>
+    <p>Everything produced belongs to Israir and can run as paid ads, on your own channels, and inside email.</p></div>
+</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ig-band section-tight" id="ugc-examples">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow">Reference work</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">This is what it looks like when it <em class="italic" style="color:var(--purple)">works</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">Five pieces from our Rail Europe work. Travel content that looks like a real person filmed it, not a brand. Same approach, built for each of your six audiences.</p>
+    </div>
+    <div class="ig-grid"><div class="ig-cell"><iframe src="https://www.instagram.com/p/DR_0wMGDm8I/embed" scrolling="no" allowtransparency="true" loading="lazy" title="Rail Europe Instagram post"></iframe></div><div class="ig-cell"><iframe src="https://www.instagram.com/p/DZxZFqFlUuC/embed" scrolling="no" allowtransparency="true" loading="lazy" title="Rail Europe Instagram post"></iframe></div><div class="ig-cell"><iframe src="https://www.instagram.com/p/DWEqRR3CaIo/embed" scrolling="no" allowtransparency="true" loading="lazy" title="Rail Europe Instagram post"></iframe></div><div class="ig-cell"><iframe src="https://www.instagram.com/p/DUGnav_lV4U/embed" scrolling="no" allowtransparency="true" loading="lazy" title="Rail Europe Instagram post"></iframe></div><div class="ig-cell"><iframe src="https://www.instagram.com/p/DXrdfwglCCy/embed" scrolling="no" allowtransparency="true" loading="lazy" title="Rail Europe Instagram post"></iframe></div></div>
+    <div class="ig-caption">Rail Europe &middot; Instagram &middot; Produced by Noetic Creative</div>
+  </div>
+</section>
+
+<section class="service-deep cool" id="svc-geo">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 02</div>
+        <h3 class="service-deep-title">SEO &amp; AI Visibility</h3>
+        <div class="service-deep-tag">When someone asks an AI how to fly to Tel Aviv, you should be in the answer.</div>
+        <p class="service-deep-desc">This is the part you said your Israeli agency cannot really help with, and we agree. American search is its own world. People ask ChatGPT, they read Reddit threads, they check DansDeals, they trust community forums more than airline websites. Being visible there is now as important as ranking on Google.</p>
+        <ul class="approach-list"><li>Understand what AI assistants currently say about Israir, then work to improve it</li><li>English language SEO for the route, the destination and the practical questions people ask</li><li>Presence in the places these communities actually read: Reddit, travel forums, community sites and deal blogs</li><li>Content shaped as answers, because that is what AI systems pull from</li><li>Clean technical foundations: structured data, fast pages, correct information everywhere</li><li>Monthly monitoring, so you can see visibility moving rather than guessing</li></ul>
+      </div>
+      <div><div class="case-card"><span class="case-card-tag">What we build</span><div class="case-card-name">Being found the American way</div><div class="case-card-industry">Search, forums, and AI answers</div><div class="case-card-block"><div class="case-card-block-label">The audit</div><p>We ask the major AI assistants the questions your customers ask, and record what they say about Israir today. It is usually eye-opening.</p></div><div class="case-card-block"><div class="case-card-block-label">The sources</div><p>AI answers are built from sources. We work on the sources: Reddit threads, forum presence, community publications, review sites and accurate listings everywhere Israir appears.</p></div><div class="case-card-block"><div class="case-card-block-label">The content</div><p>Pages that directly answer real questions about flying to Tel Aviv, the route, baggage, kosher meals, group travel and holiday timing.</p></div><div class="case-card-block"><div class="case-card-block-label">The tracking</div><p>A monthly report showing where Israir appears in AI answers and organic search, and where the gaps still are.</p><div class="ai-sim">
+  <div class="ai-sim-chrome">
+    <span class="ai-sim-lights"><i></i><i></i><i></i></span>
+    <span class="ai-sim-name">AI assistant</span>
+    <span class="ai-dots"><button type="button" class="ai-dot on" data-q="0" aria-label="Question 1"></button><button type="button" class="ai-dot" data-q="1" aria-label="Question 2"></button><button type="button" class="ai-dot" data-q="2" aria-label="Question 3"></button></span>
+    <button type="button" class="ai-sim-replay" aria-label="Replay the examples">Replay</button>
+  </div>
+  <div class="ai-sim-screen">
+    <div class="ai-sim-row"><span class="ai-sim-role">You</span>
+      <p class="ai-sim-q"><span class="ai-sim-typed"></span><span class="ai-sim-caret"></span></p></div>
+    <div class="ai-sim-row"><span class="ai-sim-role alt">AI</span>
+      <div><div class="ai-sim-think"><i></i><i></i><i></i></div><div class="ai-sim-text" data-q="0"><div class="ai-p"><span class="w">A </span><span class="w">few </span><span class="w">airlines </span><span class="w">fly </span><span class="w">nonstop </span><span class="w">between </span><span class="w">New </span><span class="w">York </span><span class="w">and </span><span class="w">Tel </span><span class="w">Aviv. </span></div><div class="ai-h"><span class="w">Israir </span></div><div class="ai-p"><span class="w">Israel&rsquo;s </span><span class="w">second </span><span class="w">largest </span><span class="w">airline, </span><span class="w">operating </span><span class="w">Tel </span><span class="w">Aviv </span><span class="w">to </span><span class="w">JFK </span><span class="w">with </span><span class="w">Airbus </span><span class="w">A330 </span><span class="w">widebodies </span><span class="w">in </span><span class="w">three </span><span class="w">cabin </span><span class="w">classes. </span><span class="w">Usually </span><span class="w">the </span><span class="w">more </span><span class="w">economical </span><span class="w">of </span><span class="w">the </span><span class="w">Israeli </span><span class="w">carriers, </span><span class="w">and </span><span class="w">an </span><span class="w">established </span><span class="w">operator </span><span class="w">rather </span><span class="w">than </span><span class="w">a </span><span class="w">new </span><span class="w">entrant. </span></div><div class="ai-h"><span class="w">El </span><span class="w">Al </span></div><div class="ai-p"><span class="w">Israel&rsquo;s </span><span class="w">flag </span><span class="w">carrier, </span><span class="w">with </span><span class="w">the </span><span class="w">most </span><span class="w">frequencies </span><span class="w">on </span><span class="w">the </span><span class="w">route. </span></div><div class="ai-h"><span class="w">Delta </span></div><div class="ai-p"><span class="w">A </span><span class="w">US </span><span class="w">carrier </span><span class="w">on </span><span class="w">the </span><span class="w">route, </span><span class="w">with </span><span class="w">Tel </span><span class="w">Aviv </span><span class="w">service </span><span class="w">returning </span><span class="w">as </span><span class="w">schedules </span><span class="w">normalize. </span></div><div class="ai-p"><span class="w">If </span><span class="w">you </span><span class="w">want </span><span class="w">a </span><span class="w">full </span><span class="w">service </span><span class="w">Israeli </span><span class="w">carrier </span><span class="w">without </span><span class="w">the </span><span class="w">flag </span><span class="w">carrier </span><span class="w">price, </span><span class="w">Israir </span><span class="w">is </span><span class="w">the </span><span class="w">one </span><span class="w">to </span><span class="w">check </span><span class="w">first. </span></div></div><div class="ai-sim-text" data-q="1" style="display:none"><div class="ai-p"><span class="w">It </span><span class="w">depends </span><span class="w">on </span><span class="w">whether </span><span class="w">kosher </span><span class="w">is </span><span class="w">the </span><span class="w">default </span><span class="w">or </span><span class="w">a </span><span class="w">special </span><span class="w">request. </span></div><div class="ai-h"><span class="w">Israir </span></div><div class="ai-p"><span class="w">Kosher </span><span class="w">meals </span><span class="w">are </span><span class="w">the </span><span class="w">standard </span><span class="w">on </span><span class="w">board, </span><span class="w">not </span><span class="w">an </span><span class="w">add-on. </span><span class="w">Nothing </span><span class="w">to </span><span class="w">request, </span><span class="w">nothing </span><span class="w">to </span><span class="w">confirm </span><span class="w">at </span><span class="w">the </span><span class="w">gate. </span></div><div class="ai-h"><span class="w">El </span><span class="w">Al </span></div><div class="ai-p"><span class="w">Kosher </span><span class="w">catering </span><span class="w">as </span><span class="w">standard, </span><span class="w">with </span><span class="w">long </span><span class="w">experience </span><span class="w">serving </span><span class="w">observant </span><span class="w">travelers. </span></div><div class="ai-h"><span class="w">Delta </span></div><div class="ai-p"><span class="w">Kosher </span><span class="w">meals </span><span class="w">are </span><span class="w">available </span><span class="w">as </span><span class="w">a </span><span class="w">special </span><span class="w">meal, </span><span class="w">ordered </span><span class="w">in </span><span class="w">advance. </span></div><div class="ai-p"><span class="w">If </span><span class="w">kosher </span><span class="w">by </span><span class="w">default </span><span class="w">matters </span><span class="w">to </span><span class="w">you, </span><span class="w">the </span><span class="w">Israeli </span><span class="w">carriers </span><span class="w">are </span><span class="w">the </span><span class="w">safe </span><span class="w">choice, </span><span class="w">and </span><span class="w">Israir </span><span class="w">pairs </span><span class="w">it </span><span class="w">with </span><span class="w">the </span><span class="w">lower </span><span class="w">fare. </span></div></div><div class="ai-sim-text" data-q="2" style="display:none"><div class="ai-p"><span class="w">For </span><span class="w">eight </span><span class="w">or </span><span class="w">nine </span><span class="w">seats </span><span class="w">on </span><span class="w">one </span><span class="w">booking, </span><span class="w">how </span><span class="w">the </span><span class="w">airline </span><span class="w">handles </span><span class="w">groups </span><span class="w">matters </span><span class="w">more </span><span class="w">than </span><span class="w">the </span><span class="w">fare. </span></div><div class="ai-h"><span class="w">Israir </span></div><div class="ai-p"><span class="w">Multi-passenger </span><span class="w">and </span><span class="w">group </span><span class="w">bookings </span><span class="w">handled </span><span class="w">by </span><span class="w">phone, </span><span class="w">family </span><span class="w">seating </span><span class="w">together </span><span class="w">on </span><span class="w">the </span><span class="w">A330, </span><span class="w">and </span><span class="w">fares </span><span class="w">that </span><span class="w">stay </span><span class="w">reasonable </span><span class="w">when </span><span class="w">multiplied </span><span class="w">by </span><span class="w">nine. </span></div><div class="ai-h"><span class="w">El </span><span class="w">Al </span></div><div class="ai-p"><span class="w">The </span><span class="w">most </span><span class="w">frequencies, </span><span class="w">which </span><span class="w">helps </span><span class="w">when </span><span class="w">a </span><span class="w">large </span><span class="w">group </span><span class="w">needs </span><span class="w">a </span><span class="w">specific </span><span class="w">date. </span></div><div class="ai-h"><span class="w">Delta </span></div><div class="ai-p"><span class="w">Standard </span><span class="w">group </span><span class="w">booking </span><span class="w">through </span><span class="w">its </span><span class="w">US </span><span class="w">channels. </span></div><div class="ai-p"><span class="w">For </span><span class="w">a </span><span class="w">family </span><span class="w">booking, </span><span class="w">call </span><span class="w">the </span><span class="w">airline </span><span class="w">directly. </span><span class="w">Israir&rsquo;s </span><span class="w">group </span><span class="w">desk </span><span class="w">is </span><span class="w">built </span><span class="w">for </span><span class="w">exactly </span><span class="w">this. </span></div></div></div></div>
+  </div>
+  <div class="ai-sim-foot">Illustration of the answers we would be working toward, not live results</div>
+</div></div></div><div class="case-card"><span class="case-card-tag alt">The content behind the answer</span><div class="case-card-name">Six clusters, about thirty pages</div><div class="case-card-industry">Written as direct answers to real questions</div><div class="case-card-block"><p>Assistants answer from indexed, specific content. These clusters make the answer above possible. All of it is additive to the existing site, which keeps speaking to everyone. The cohort-specific message lives in ads and landing pages, never in the site&rsquo;s core positioning.</p></div><div class="pillar-mini-grid"><div class="pillar-mini"><div class="pillar-mini-t">Kosher &amp; food</div><div class="pillar-mini-chips"><span class="p-chip">Glatt kosher meals TLV to JFK</span><span class="p-chip">Ordering a kosher meal</span><span class="p-chip">Bringing your own food</span></div></div><div class="pillar-mini"><div class="pillar-mini-t">Schedule &amp; halacha</div><div class="pillar-mini-chips"><span class="p-chip">Motzei Shabbos departures</span><span class="p-chip">Landing before Shabbos</span><span class="p-chip">Chol HaMoed windows</span></div></div><div class="pillar-mini"><div class="pillar-mini-t">Aircraft &amp; cabin</div><div class="pillar-mini-chips"><span class="p-chip">A330 seat map</span><span class="p-chip">Family seating and bassinets</span><span class="p-chip">Overnight comfort</span></div></div><div class="pillar-mini"><div class="pillar-mini-t">Price &amp; value</div><div class="pillar-mini-chips"><span class="p-chip">Cheapest months to fly</span><span class="p-chip">How far ahead to book for Pesach</span><span class="p-chip">Holiday fares vs off-peak</span></div></div><div class="pillar-mini"><div class="pillar-mini-t">Family &amp; groups</div><div class="pillar-mini-chips"><span class="p-chip">Booking a family of eight</span><span class="p-chip">Group blocks for simchas</span><span class="p-chip">Strollers, car seats, baggage</span></div></div><div class="pillar-mini"><div class="pillar-mini-t">Route practicalities</div><div class="pillar-mini-chips"><span class="p-chip">JFK terminal and check-in</span><span class="p-chip">Baggage allowance</span><span class="p-chip">Changing a booking</span></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep white" id="svc-search">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 03</div>
+        <h3 class="service-deep-title">Paid Search</h3>
+        <div class="service-deep-tag">Be there at the exact moment someone is already looking.</div>
+        <p class="service-deep-desc">Search does not create the trip, it catches it. Someone types flights to Tel Aviv and there is a small window where they choose an airline. Our job is making sure Israir is in that window, in the right language, at the right price point.</p>
+        <ul class="approach-list"><li>Full coverage of route terms in English, Hebrew and Spanish</li><li>Brand protection, so people searching for Israir actually reach you</li><li>Seasonal peaks built in advance: Passover, the High Holidays, Sukkot, Christmas pilgrimage season</li><li>Separate campaigns for group and corporate inquiries</li><li>Clean measurement, so every booking is traced back to what produced it</li></ul>
+      </div>
+      <div><div class="case-card"><span class="case-card-tag">What we build</span><div class="case-card-name">Search that maps to the six</div><div class="case-card-industry">Not one account, six sets of intent</div><div class="case-card-block"><div class="case-card-block-label">The setup</div><p>Separate campaign structures per segment, because a Brooklyn family, a church group organizer and a travel manager are typing very different things into Google.</p></div><div class="case-card-block"><div class="case-card-block-label">The calendar</div><p>Israel travel is driven by holidays. We build budget plans around the calendar months ahead, so you are not bidding late into a peak.</p><div class="season-grid"><div class="season-cell"><span class="season-m">Jan</span></div><div class="season-cell"><span class="season-m">Feb</span></div><div class="season-cell peak"><span class="season-m">Mar</span><span class="season-e">Passover</span></div><div class="season-cell peak"><span class="season-m">Apr</span><span class="season-e">Passover</span></div><div class="season-cell"><span class="season-m">May</span></div><div class="season-cell"><span class="season-m">Jun</span></div><div class="season-cell peak"><span class="season-m">Jul</span><span class="season-e">Summer</span></div><div class="season-cell peak"><span class="season-m">Aug</span><span class="season-e">Summer</span></div><div class="season-cell peak"><span class="season-m">Sep</span><span class="season-e">High Holidays</span></div><div class="season-cell peak"><span class="season-m">Oct</span><span class="season-e">Sukkot</span></div><div class="season-cell"><span class="season-m">Nov</span></div><div class="season-cell peak"><span class="season-m">Dec</span><span class="season-e">Hanukkah &amp; Christmas</span></div></div></div><div class="case-card-block"><div class="case-card-block-label">The measurement</div><p>Proper conversion tracking from click through to booking, plus a view of assisted bookings from social and email.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="service-deep cool" id="svc-lifecycle">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">SERVICE / 04</div>
+        <h3 class="service-deep-title">Lifecycle &amp; CRM</h3>
+        <div class="service-deep-tag">Someone books today. The next six months are already written.</div>
+        <p class="service-deep-desc">Most airlines send a confirmation and then go quiet until the flight. That is a lot of wasted attention. We would run your CRM and build the whole arc: before the flight, during the trip, after they get home, and into the next booking.</p>
+        <ul class="approach-list"><li>CRM setup and clean-up, so the data is usable and segmented from day one</li><li>A six month flow that starts the moment someone books</li><li>Pre-flight practical emails: baggage, kosher meals, timing, what to expect on board</li><li>Post-return sequences that lead into the next trip and the next holiday</li><li>Promotions timed to each community's calendar, not one generic newsletter</li><li>Language and content branching per segment, all from one system</li></ul>
+      </div>
+      <div><div class="case-card"><span class="case-card-tag">What we build</span><div class="case-card-name">The six months after checkout</div><div class="case-card-industry">One booking, one relationship</div><div class="case-card-block"><div class="case-card-block-label">The shape of it</div><div class="chart" style="margin-top:8px"><svg viewBox="0 0 620 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The six months after a booking"><line x1="40" y1="60" x2="580" y2="60" stroke="var(--rule-strong)" stroke-width="1.5"/><circle cx="40" cy="60" r="8" fill="var(--purple)" stroke="var(--purple)" stroke-width="2"/><text x="40" y="98" text-anchor="start" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Booking</text><text x="40" y="117" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-faint)" letter-spacing="1.1">DAY ZERO</text><circle cx="175" cy="60" r="8" fill="var(--card)" stroke="var(--purple)" stroke-width="2"/><text x="175" y="98" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Weeks 0 to 2</text><text x="175" y="117" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-faint)" letter-spacing="1.1">USEFUL, PRACTICAL</text><circle cx="310" cy="60" r="8" fill="var(--card)" stroke="var(--purple)" stroke-width="2"/><text x="310" y="98" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Departure</text><text x="310" y="117" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-faint)" letter-spacing="1.1">LIGHT TOUCH</text><circle cx="445" cy="60" r="8" fill="var(--card)" stroke="var(--purple)" stroke-width="2"/><text x="445" y="98" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Return home</text><text x="445" y="117" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-faint)" letter-spacing="1.1">THE GOOD PART</text><circle cx="580" cy="60" r="8" fill="var(--purple)" stroke="var(--purple)" stroke-width="2"/><text x="580" y="98" text-anchor="end" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Months 2 to 6</text><text x="580" y="117" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-faint)" letter-spacing="1.1">TOWARD THE NEXT TRIP</text></svg></div></div><div class="case-card-block"><div class="case-card-block-label">Weeks 0 to 2</div><p>Confirmation, useful information, and a small moment of brand. This is when people are most engaged and most willing to open.</p></div><div class="case-card-block"><div class="case-card-block-label">The trip itself</div><p>Practical help before departure and light content while they are in Israel. Low pressure, genuinely useful.</p></div><div class="case-card-block"><div class="case-card-block-label">Months 1 to 6</div><p>Return-home follow up, holiday offers, route news, referral invitation, and a re-booking nudge at the right point in their cycle.</p></div><div class="case-card-block"><div class="case-card-block-label">Always on</div><p>News and offers segmented by community, so an Orthodox family and an Evangelical church group are never receiving the same email.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section warm2" id="outlets">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">06 &middot; Where this audience reads</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">A media map that does not exist in <em class="italic" style="color:var(--purple)">any planning tool</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">These outlets do not appear in standard media planning platforms, and most cannot be bought programmatically. They are negotiated directly, one relationship at a time, which is exactly why they are still inexpensive relative to the attention they hold. A working sample from a list sourced inside the community.</p>
+    </div>
+    <div class="out-group"><div class="out-group-title">Print weeklies and newspapers</div><div class="out-grid"><div class="out-card"><div class="out-logo"><img src="https://mishpacha.com/wp-content/uploads/2026/05/mishpacha_logo_web.png" alt="Mishpacha" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Mishpacha</span></div><h4>Mishpacha</h4><div class="out-meta">Weekly magazine &middot; Tri-state and national</div><p>The flagship weekly of the Orthodox world. Reaches every community in the tri-state area.</p></div><div class="out-card"><div class="out-logo"><img src="https://amimagazine.org/wp-content/uploads/2024/11/logoAMIMAG.jpg" alt="Ami Magazine" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Ami Magazine</span></div><h4>Ami Magazine</h4><div class="out-meta">Weekly magazine &middot; Tri-state and national</div><p>Weekly news and features magazine with reach across all Orthodox communities.</p></div><div class="out-card"><div class="out-logo noimg"><span class="out-masthead">Binah</span></div><h4>Binah</h4><div class="out-meta">Weekly magazine &middot; Tri-state, women readers</div><p>Weekly magazine for Jewish women. Reaches the reader who plans the family's travel.</p></div><div class="out-card"><div class="out-logo"><img src="https://cdn.prod.website-files.com/66e1532436497f0ab27e7a15/66e1541a5254ef34fa2db8b5_Hamodia%20-%20Logo%20-%20Web%20-%20no%20tagline%20-%20small.png" alt="Hamodia" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Hamodia</span></div><h4>Hamodia</h4><div class="out-meta">Newspaper &middot; Brooklyn and beyond</div><p>The daily and weekly newspaper of Orthodox Jewry, a Borough Park institution.</p></div></div></div>
+    <div class="out-group"><div class="out-group-title">Community news and deal sites</div><div class="out-grid"><div class="out-card"><div class="out-logo"><img src="https://www.theyeshivaworld.com/wp-content/uploads/2019/12/YWNlogo1line.png" alt="The Yeshiva World" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">The Yeshiva World</span></div><h4>The Yeshiva World</h4><div class="out-meta">News site &middot; All communities</div><p>The largest Haredi news site. Read many times a day across every community on this map.</p></div><div class="out-card"><div class="out-logo"><img src="https://collive.com/wp-content/uploads/2015/12/collivelogo.png" alt="COLlive" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">COLlive</span></div><h4>COLlive</h4><div class="out-meta">News site &middot; Crown Heights and Chabad</div><p>Community news for Chabad worldwide, anchored in Crown Heights.</p></div><div class="out-card"><div class="out-logo"><img src="https://i.dansdeals.com/wp-content/uploads/2022/05/23214321/dansdeals-logo-2X-1-1.png" alt="DansDeals" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">DansDeals</span></div><h4>DansDeals</h4><div class="out-meta">Deals and travel &middot; All communities</div><p>The deals site this audience checks before booking any flight. A fare posted here moves seats the same day.</p></div><div class="out-card"><div class="out-logo"><img src="https://www.pzdeals.com/cdn/shop/t/87/assets/logo.png?v=70800974703124073071758775676" alt="PZ Deals" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">PZ Deals</span></div><h4>PZ Deals</h4><div class="out-meta">Deals site &middot; All communities</div><p>High-volume deals platform with a large Orthodox following and its own app and alert lists.</p></div></div></div>
+    <div class="out-group"><div class="out-group-title">Podcasts</div><div class="out-grid"><div class="out-card"><div class="out-logo"><img src="https://meaningfulminute.org/wp-content/uploads/2024/06/Logo.svg" alt="Meaningful Minute" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Meaningful Minute</span></div><h4>Meaningful Minute</h4><div class="out-meta">Podcast network &middot; All communities</div><p>Short-form inspiration network with one of the largest followings in the Orthodox world.</p></div><div class="out-card"><div class="out-logo"><img src="https://qe92mtntkq.ufs.sh/f/6t4LHJFFo09ZRVv9GATmdJcNQwUSG86zpqOovkiEW0uTjZ4Y" alt="Living Lchaim" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Living Lchaim</span></div><h4>Living Lchaim</h4><div class="out-meta">Podcast network &middot; All communities</div><p>The leading Orthodox podcast network. Host-read ads reach commuters and homes alike.</p></div><div class="out-card"><div class="out-logo"><img src="https://lkbiotrotuzslnmmsiio.supabase.co/storage/v1/object/public/show-images/main/37b54161-94aa-4c4b-9c54-e9b33a07630a-main.jpg" alt="Kosher Money" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="out-masthead">Kosher Money</span></div><h4>Kosher Money</h4><div class="out-meta">Podcast &middot; All communities</div><p>Living Lchaim's personal finance flagship. The exact audience weighing what nine tickets cost.</p></div></div></div>
+    <p class="out-note">Logos shown belong to their respective publishers and load from the publishers&rsquo; own sites. Shown here as a media planning reference. The full outlet list, rates and placements get named per campaign.</p>
+  </div>
+</section>
+
+
+<section class="section" id="whatsapp">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">07 &middot; WhatsApp statuses</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">The feed nobody outside the community <em class="italic" style="color:var(--purple)">can see</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">In these communities, WhatsApp statuses work the way stories and reels work everywhere else. News operators and publishers post all day into a vertical, full-screen, 24-hour format, and tens of thousands of people check them the way others check Instagram. There is no ad platform on top of it. Placements are bought directly from each operator, at flat rates, one conversation at a time.</p>
+    </div>
+    <div class="wa-block">
+      <div class="wa-phone">
+        <div class="wa-screen">
+          <div class="wa-head">Status</div>
+          <div class="wa-mine"><div class="wa-ring me">+</div><div class="wa-row-info"><div class="wa-row-name">My status</div><div class="wa-row-time">Add to my status</div></div></div>
+          <div class="wa-sub">RECENT UPDATES</div>
+          <div class="wa-row"><div class="wa-ring">K</div><div class="wa-row-info"><div class="wa-row-name">Kol Haolam</div><div class="wa-row-time">Today, 9:41 AM</div></div></div><div class="wa-row"><div class="wa-ring">Y</div><div class="wa-row-info"><div class="wa-row-name">YWN Status</div><div class="wa-row-time">Today, 9:12 AM</div></div></div><div class="wa-row"><div class="wa-ring">B</div><div class="wa-row-info"><div class="wa-row-name">BP 24</div><div class="wa-row-time">Today, 8:55 AM</div></div></div><div class="wa-row"><div class="wa-ring">B</div><div class="wa-row-info"><div class="wa-row-name">Belaaz</div><div class="wa-row-time">Today, 8:30 AM</div></div></div>
+        </div>
+        <div class="wa-cap">Status inbox, illustrative</div>
+      </div>
+      <div class="wa-copy">
+        <div class="wa-mech">
+          <div class="wa-mech-item"><div class="wa-mech-num">24h</div><div class="wa-mech-label">Each status lives for one day, then disappears. Constant fresh inventory.</div></div>
+          <div class="wa-mech-item"><div class="wa-mech-num">Direct</div><div class="wa-mech-label">No auction, no platform, no targeting fees. A flat rate agreed with the operator.</div></div>
+          <div class="wa-mech-item"><div class="wa-mech-num">Vertical</div><div class="wa-mech-label">Full-screen 9:16 creative. The same format as reels, built once, used everywhere.</div></div>
+          <div class="wa-mech-item"><div class="wa-mech-num">Forwarded</div><div class="wa-mech-label">Good placements get screenshotted and passed between family chats. Earned reach on top of paid.</div></div>
+        </div>
+        <p class="wa-para">The operators are news brands in their own right. Each has an audience in the tens of thousands that opens their status through the day, every day. Because there is no marketplace, there is no bid competition, and because most national advertisers have never heard of the format, rates are still set by conversation rather than demand.</p>
+        <p class="wa-para">For a launch that needs fast, repeated, trusted exposure inside exactly these neighborhoods, this is the closest thing to an open market this audience has.</p>
+        <div class="wa-ops-label">Operators on the working list</div>
+        <div class="wa-chips"><span class="wa-chip">Kol Haolam</span><span class="wa-chip">YWN Status</span><span class="wa-chip">BP 24</span><span class="wa-chip">Belaaz</span><span class="wa-chip">LNN</span><span class="wa-chip">Breaking Jewish News</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="differentiators dark section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">09 &middot; Why us</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch">What we bring that is <em class="italic" style="color:var(--mint)">hard to buy locally</em>.</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-num">/ 01</div><h4>We are based in the US</h4>
+        <p>Noetic is headquartered in Miami, with people across the United States, Israel and Latin America. We are not reading about the American market, we live in it.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 02</div><h4>Three languages, natively</h4>
+        <p>English, Hebrew and Spanish inside the same team. That matters a lot when three of your six segments do not think in the same language.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 03</div><h4>We are not competing with your agency</h4>
+        <p>Israel stays with the people already doing it well. We take the American side. Two lanes, no overlap, no awkward conversations.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 04</div><h4>We build per segment</h4>
+        <p>Most agencies build one campaign and change the headline. We build the message, the creative, the offer and the landing page separately for each community, then let the data tell us where to push.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 05</div><h4>AI visibility is already our work</h4>
+        <p>We work on this every week for clients in the US. It is not a new service line we are inventing for this conversation.</p></div>
+      <div class="diff-card"><div class="diff-num">/ 06</div><h4>One team, every channel</h4>
+        <p>Paid, creative, email, SEO, web and data sit in the same team. Nothing gets lost between three suppliers, and the whole thing moves at one speed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="team">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">10 &middot; The team</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch">The people who would <em class="italic" style="color:var(--purple)">actually do the work</em>.</h2>
+      <p class="lede" style="margin-top:22px;color:var(--ink-mute)">This is everyone. Specialists, not generalists, across the United States, Israel and Latin America. A team for Israir would be built from these people.</p>
+    </div>
+    <div class="team-grid"><div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/TAMIR/TAMIR_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Tamir Alush</h5><div class="role">Founder & CEO</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JACKIE/JACKIE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Jackie Frysz</h5><div class="role">Head of Operations</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/NICOLE/NICOLE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Nicole Luna</h5><div class="role">Account Director</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/45130a96-a542-4b94-bf7e-d749406d9515-1785178123009.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Laura Gil</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ANDREA/ANDREA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Andrea Martinez</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VANESSA/VANESSA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Vanessa Soria</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/CAROLINA/CAROLINA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Carolina Fallu</h5><div class="role">Strategic Planner</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/GONZALO/GONZALO_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Gonzalo Mazzoni</h5><div class="role">Media Buyer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/LUNA/LUNA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Luna Murgia</h5><div class="role">Media Buyer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/TIM/TIM_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Tim Newlin</h5><div class="role">Paid Search</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/SAMUEL/SAMUEL_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Samuel Henke</h5><div class="role">Paid Search</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/d8d89fab-70a8-4add-9091-50041f454d4c-1785178179996.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Yoav Chen</h5><div class="role">Paid Search Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/KATHRYN/KATHRYN_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Kathryn Kudra</h5><div class="role">Paid Social Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/FRANCISCO/FRANCISCO_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Francisco Sica</h5><div class="role">Data Analyst</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JOE/JOE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Joe Conroy</h5><div class="role">SEO</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/RUI/RUI_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Rui Kojima</h5><div class="role">CRO</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/DANIELA/DANIELA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Daniela Benfele</h5><div class="role">Automations & Email</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/aafb5932-4552-4680-97c3-f89e19e2dfb6-1782154171949.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Serge Alarcon</h5><div class="role">Email Marketing Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar av-9">EL</div><div class="team-info"><h5>Ed Lopez</h5><div class="role">Lifecycle Marketing Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MONIQUE/MONIQUE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Monique Johnson</h5><div class="role">Webinar Operations</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/bf5418f0-3a9a-4ae3-a068-06bde05c7148-1781280669431.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Danielle Greenberg</h5><div class="role">AI & Marketing Operations</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/9b073f7b-2ccf-4be8-a6cd-3341033b9db9-1782160077180.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Helen Schenck</h5><div class="role">Creative Direction</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ALEX/ALEX_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Alex Heilbronn</h5><div class="role">Copywriter</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VIRGINIA/VIRGINIA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Virginia Mayer</h5><div class="role">Copywriter</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VAL/VAL_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Val Parra</h5><div class="role">Social Media Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/def91a6a-4f50-47e5-97a5-7474e14c2167-1781280597964.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Paula Pinzon</h5><div class="role">Social & Community Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JOSE/JOSE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Jose Cadenas</h5><div class="role">Senior Designer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MAGGIE/MAGGIE_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Maggie Bernal</h5><div class="role">Graphic Designer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/946e1077-9c40-4a98-b28b-3c1ef10d138c-1782159990933.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Angelica Negron</h5><div class="role">Graphic Designer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/DANIEL/DANIEL_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Daniel Rojas</h5><div class="role">Video Editor & Design</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/3150d37e-e41b-4017-ba12-26c03fe65c18-1784228750636.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Andres Coronel</h5><div class="role">Web Developer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ESTEBAN/ESTEBAN_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Esteban Grijalva</h5><div class="role">Developer</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/FLOR/FLOR_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Flor Hasman</h5><div class="role">Talent Acquisition & HR Manager</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MARIA/MARIA_color.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Maria Arevalo</h5><div class="role">Executive Assistant / Admin</div></div></div>
+<div class="team-card"><div class="team-avatar" style="background:url('https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/a3a9a05c-7423-40ef-b7ee-3ae34c514d28-1785178042854.png') center/cover, linear-gradient(135deg,#6C5CE7,#4D3FC9);"></div><div class="team-info"><h5>Ali Caiza</h5><div class="role">Executive Assistant & Admin</div></div></div></div>
+  </div>
+</section>
+
+<section class="clients section" id="clients">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">11 &middot; Selected partnerships</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch">Some of the companies we <em class="italic" style="color:var(--purple)">work with</em>.</h2>
+    </div>
+    <div class="clients-grid"><div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/LUM/LUM_logo_grey.png" alt="Lumenis" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NICE/NICE_logo_grey.png" alt="NICE" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SAP/SAP_logo_grey.png" alt="Sapiens" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/HAZ/HAZ_logo_grey.png" alt="Hazera" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/WSC/WSC_logo_grey.png" alt="WSC Sports" loading="lazy"></div>
+<div class="client-cell"><img src="data:image/png;base64,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" alt="Caesarstone"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/OAS/OAS_logo_grey.png" alt="Oasis" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/AUD/AUD_logo_grey.png" alt="AudioCodes" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/RAIL/RAIL_logo_grey.png" alt="Rail Europe" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TAB/TAB_logo_grey.png" alt="Tabit" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/INT/INT_logo_grey.png" alt="Interlight" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SLP/SLP_logo_grey.png" alt="SleePare" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TIA/TIA_logo_grey.png" alt="TiA Coffee" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/PRT/PRT_logo_grey.png" alt="Priority Software" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SRB/SRB_logo_grey.png" alt="Sorbet" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/ANM/ANM_logo_grey.png" alt="Animalia" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TSG/TSG_logo_grey.png" alt="TSG Systems" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/OPM/OPM_logo_grey.png" alt="Opmed" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/VMZ/VMZ_logo_grey.png" alt="Viewz" loading="lazy"></div>
+<div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NCH/NCH_logo_grey.png" alt="Notch" loading="lazy"></div></div>
+  </div>
+</section>
+
+
+<section class="section dark-invest" id="investment">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">12 &middot; The investment</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:24ch">One program. Two cohorts. <em class="italic" style="color:var(--mint)">One range.</em></h2>
+      <p class="lede" style="margin-top:22px">Everything in this document, run as a single monthly program across the two launch audiences: Israeli-Americans and the Hasidic and Haredi communities of the tri-state area. The fee covers the team, the production and the management. Working media, meaning platform budgets, print insertions, status placements and podcast reads, is billed at cost and planned together each month. Where the program lands inside the range depends on the channel mix and the pace we set together in the working session.</p>
+    </div>
+
+    <div class="inv-hero">
+      <div class="inv-hero-num">$40,000&ndash;55,000<span>/ month</span></div>
+      <div class="inv-hero-side">
+        <span class="inv-chip il">Israeli-Americans</span>
+        <span class="inv-chip ha">Hasidic &amp; Haredi, tri-state</span>
+        <span class="inv-chip">Working media billed at cost</span>
+      </div>
+    </div>
+
+    <div class="inv-group"><div class="inv-group-head"><h3>Paid media</h3></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Paid social management: Meta, Instagram, TikTok, YouTube</span><span class="inv-tag il">Israeli-American</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Paid social and community site placements, permitted surfaces</span><span class="inv-tag ha">Haredi</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Paid search, calendar-native, English, Hebrew and Ashkenazi transliterations</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Landing pages and conversion work per segment</span><span class="inv-tag both">Both cohorts</span></div></div></div><div class="inv-group"><div class="inv-group-head"><h3>SEO &amp; AI visibility</h3></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Assistant answer tracking and monthly visibility report</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Answer-page content: six clusters, six to eight pages a month</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Entity, listings and technical foundations</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Community surfaces: Reddit, forums and deal sites</span><span class="inv-tag both">Both cohorts</span></div></div></div><div class="inv-group"><div class="inv-group-head"><h3>UGC &amp; content</h3></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Creator sourcing, casting and management</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Production: ten to fourteen assets a month</span><span class="inv-tag il">Israeli-American</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Production: four to eight assets a month, modesty rules built in</span><span class="inv-tag ha">Haredi</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Editing, versioning, Hebrew and English cutdowns</span><span class="inv-tag both">Both cohorts</span></div></div></div><div class="inv-group"><div class="inv-group-head"><h3>Haredi community channels</h3></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Print and inserts: planning, negotiation and trafficking</span><span class="inv-tag ha">Haredi</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">WhatsApp status network: operator relationships and placements</span><span class="inv-tag ha">Haredi</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Podcast sponsorships: booking and host-read scripts</span><span class="inv-tag ha">Haredi</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Direct mail program management</span><span class="inv-tag ha">Haredi</span></div></div></div><div class="inv-group"><div class="inv-group-head"><h3>Strategy, data &amp; leadership</h3></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Account leadership and a weekly working cadence</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Tracking, attribution and one unified dashboard</span><span class="inv-tag both">Both cohorts</span></div></div><div class="inv-row"><div class="inv-row-main"><span class="inv-item">Cultural review and copy QA for community-facing creative</span><span class="inv-tag ha">Haredi</span></div></div></div>
+
+    <div class="inv-total">
+      <span>Monthly program range</span>
+      <span class="inv-total-num">$40,000&ndash;55,000</span>
+    </div>
+
+    <p class="inv-note">Scoped for the two launch cohorts only. The other four segments from section 03 can be added as the route matures, each with its own creative, channels and budget line.</p>
+  </div>
+</section>
+
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">13 &middot; Next steps</span>
+      <h2 class="display-md" style="margin-top:18px;max-width:22ch">No pressure. Just a <em class="italic" style="color:var(--purple)">sensible order</em>.</h2>
+    </div>
+    <div class="process-track">
+      <div class="process-step"><div class="process-num">01</div><div class="process-content">
+        <h4>Read this and tell us what is wrong</h4>
+        <p>You know your market better than we do. If a segment is off, or missing, or bigger than we think, tell us. We would rather fix it now.</p></div></div>
+      <div class="process-step"><div class="process-num">02</div><div class="process-content">
+        <h4>A working session on the segments</h4>
+        <p>Ninety minutes with you and whoever you want in the room. We go through the six audiences, size them properly, and agree which two or three to start with.</p></div></div>
+      <div class="process-step"><div class="process-num">03</div><div class="process-content">
+        <h4>A short look at what already exists</h4>
+        <p>We review your site, your English pages, your tracking, your CRM and what AI assistants currently say about Israir. It usually takes about two weeks and it tells us what is worth doing first.</p></div></div>
+      <div class="process-step"><div class="process-num">04</div><div class="process-content">
+        <h4>Tune the number together</h4>
+        <p>The plan and the investment are both in this document. After the working session and the audit we adjust the scope where your read of the market says so, and then we start, with the next holiday peak in mind.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">14 &middot; Thank you</div>
+    <h2 class="cta-title">Hila, <span class="italic">thank you.</span></h2>
+    <p class="cta-note">It was a genuinely good conversation. Congratulations on the route, it is a big move and the timing is right. Whenever you want to go deeper on any part of this, we are here.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">tamir@noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Document<span>Capabilities Brief</span></div>
+      <div class="footer-meta-block">Prepared for<span>Israir &middot; Hila Hermolin, EVP Marketing</span></div>
+      <div class="footer-meta-block">From<span>Tamir Alush, Founder &amp; CEO</span></div>
+      <div class="footer-meta-block">&copy; 2026 Noetic Creative<span>Miami, Florida &middot; noetic.io &middot; Confidential</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){ if(window.scrollY>20){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');} });
+
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.ai-sim').forEach(function(sim){
+    var qs=["What\u2019s the best way to fly between New York and Tel Aviv?", "Which airline has the best kosher food on the JFK to Tel Aviv route?", "Which airline is easiest for a large family flying JFK to Tel Aviv?"];
+    var typed=sim.querySelector('.ai-sim-typed');
+    var blocks=sim.querySelectorAll('.ai-sim-text');
+    var dots=sim.querySelectorAll('.ai-dot');
+    var timers=[];
+    function clearAll(){timers.forEach(clearTimeout);timers=[]}
+    function at(fn,ms){timers.push(setTimeout(fn,ms))}
+    function setDot(i){dots.forEach(function(d,n){d.classList.toggle('on',n===i)})}
+    function showBlock(i){blocks.forEach(function(b,n){b.style.display=n===i?'block':'none'})}
+    function showDone(i){clearAll();sim.className='ai-sim done';setDot(i);showBlock(i);
+      typed.textContent=qs[i];
+      blocks[i].querySelectorAll('.w').forEach(function(w){w.classList.add('on')})}
+    function run(i){clearAll();setDot(i);showBlock(i);sim.className='ai-sim typing';typed.textContent='';
+      var words=blocks[i].querySelectorAll('.w');
+      words.forEach(function(w){w.classList.remove('on')});
+      var q=qs[i],k=0;
+      function type(){if(k<=q.length){typed.textContent=q.slice(0,k);k++;at(type,26)}else{at(think,380)}}
+      function think(){sim.className='ai-sim thinking';at(answer,2000)}
+      function answer(){sim.className='ai-sim answering';
+        words.forEach(function(w,n){at(function(){w.classList.add('on')},n*22)});
+        at(function(){sim.className='ai-sim done';
+          if(i<qs.length-1){at(function(){run(i+1)},3200)}
+        },words.length*22+220)}
+      type()}
+    dots.forEach(function(d,n){d.addEventListener('click',function(){reduce?showDone(n):run(n)})});
+    var rp=sim.querySelector('.ai-sim-replay');
+    if(rp){rp.addEventListener('click',function(){reduce?showDone(0):run(0)})}
+    if(reduce){showDone(0);return}
+    if('IntersectionObserver' in window){
+      var seen=false;
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting&&!seen){seen=true;run(0);io.disconnect()}})},{threshold:0.3});
+      io.observe(sim);
+    }else{showDone(0)}
+  });
+})();
+
+
+function scaleIG(){
+  var cells=document.querySelectorAll('.ig-cell');
+  for(var i=0;i<cells.length;i++){
+    var c=cells[i], f=c.querySelector('iframe');
+    if(!f) continue;
+    var s=c.clientWidth/326;
+    f.style.transform='scale('+s+')';
+    c.style.height=(620*s)+'px';
+  }
+}
+scaleIG();
+window.addEventListener('resize',scaleIG);
+window.addEventListener('load',scaleIG);
+setTimeout(scaleIG,600); setTimeout(scaleIG,2000);
+var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduceMotion&&'IntersectionObserver' in window){
+  document.body.classList.add('anim-ready');
+  var els=document.querySelectorAll('.case-card, .vertical-card, .belief-item, .diff-card, .team-card, .process-step, .lane');
+  els.forEach(function(el){el.classList.add('fade-in');});
+  var ob=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ob.unobserve(e.target); } });
+  },{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ob.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el){el.classList.add('visible');}); },4000);
+}
+</script>
+</body>
+</html>
