@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Build It, Then Sell It</title>
+<meta name="description" content="TSG Systems — cold email strategy for the Production and Lifecycle Support & Knowledge Management offering. Prepared by Noetic.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --mint: #00D4B4;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+::selection { background: var(--purple); color: #fff; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ── SLIDE ───────────────────────────────────────────── */
+.slide {
+  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: 5vh 6vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+.slide.dark { background: var(--ink); color: rgba(255,255,255,0.85); }
+.slide.cool { background: var(--paper-cool); }
+.slide.warm { background: var(--paper-warm); }
+.slide::after {
+  content: attr(data-slide);
+  position: absolute;
+  bottom: 22px; right: 30px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+.slide.dark::after { color: rgba(255,255,255,0.4); }
+
+/* ── TYPE ────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark h4 { color: #fff; }
+.display-xl { font-size: clamp(44px, 7vw, 104px); line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-size: clamp(32px, 4.4vw, 64px); line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-size: clamp(26px, 3.2vw, 46px); line-height: 1.05; }
+.display-sm { font-size: clamp(20px, 2.2vw, 30px); line-height: 1.12; }
+em { font-style: italic; font-weight: 400; color: var(--purple); }
+.slide.dark em { color: var(--mint); }
+.lede { font-size: clamp(16px, 1.35vw, 20px); max-width: 62ch; line-height: 1.5; color: var(--ink-soft); }
+.lede-lg { font-size: clamp(19px, 1.7vw, 25px); max-width: 34ch; line-height: 1.35; color: var(--ink); }
+.slide.dark .lede, .slide.dark .lede-lg { color: rgba(255,255,255,0.82); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; flex: none; }
+.slide.dark .eyebrow { color: rgba(255,255,255,0.62); }
+.slide.dark .eyebrow::before { background: var(--mint); }
+
+.meta-line {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute);
+}
+.slide.dark .meta-line { color: rgba(255,255,255,0.5); }
+
+.brand-mark { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 6vh; }
+.brand-mark img { height: 30px; width: auto; }
+
+/* ── GRID ────────────────────────────────────────────── */
+.stack { display: grid; gap: 26px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: start; }
+.split-58 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 4vw; align-items: start; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; padding-top: 26px; border-top: 1px solid var(--rule); }
+.stat-num { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 3.4vw, 50px); line-height: 1; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat-num small { font-size: 0.45em; letter-spacing: 0; }
+.stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-top: 10px; max-width: 24ch; line-height: 1.5; }
+
+/* ── FINDINGS ────────────────────────────────────────── */
+.finding-list { display: grid; gap: 0; }
+.finding {
+  display: grid; grid-template-columns: 62px 1fr; gap: 18px;
+  padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+.finding:last-child { border-bottom: none; }
+.finding .fnum { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--purple); line-height: 1; font-variant-numeric: tabular-nums; }
+.finding h4 { font-size: 18px; margin-bottom: 5px; }
+.finding p { font-size: 14px; color: var(--ink-mute); line-height: 1.5; }
+.slide.dark .finding { border-bottom-color: rgba(255,255,255,0.12); }
+.slide.dark .finding p { color: rgba(255,255,255,0.65); }
+.slide.dark .finding .fnum { color: var(--mint); }
+
+/* ── PROVIDER CARDS ──────────────────────────────────── */
+.card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 16px; padding: 22px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.card.pick { border-color: var(--purple); box-shadow: 0 8px 30px rgba(108,92,231,0.14); }
+.card .tag {
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-mute);
+}
+.card.pick .tag { color: var(--purple); font-weight: 500; }
+.card h4 { font-size: 21px; }
+.card .price { font-family: var(--font-mono); font-size: 13px; color: var(--ink); font-weight: 500; letter-spacing: -0.01em; }
+.card p { font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; }
+.card .lnk {
+  margin-top: auto; font-family: var(--font-mono); font-size: 11px;
+  color: var(--purple); border-top: 1px solid var(--rule); padding-top: 12px;
+  word-break: break-all;
+}
+.card .lnk:hover { color: var(--purple-deep); text-decoration: underline; }
+
+/* ── CADENCE TABLE ───────────────────────────────────── */
+.cadence { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.cadence th {
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-mute); text-align: left;
+  padding: 0 14px 10px 0; border-bottom: 1px solid var(--rule-strong); font-weight: 500;
+}
+.cadence td { padding: 13px 14px 13px 0; border-bottom: 1px solid var(--rule); font-size: 14px; vertical-align: top; }
+.cadence tr:last-child td { border-bottom: none; }
+.cadence .d { font-family: var(--font-mono); font-size: 13px; color: var(--purple); font-weight: 500; white-space: nowrap; }
+.cadence .nm { font-weight: 700; color: var(--ink); }
+.cadence .ct { color: var(--ink-mute); font-size: 13px; }
+.cadence tfoot td { border-top: 1px solid var(--rule-strong); border-bottom: none; padding-top: 13px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* ── FLOW CARDS (email development) ──────────────────── */
+.flow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.flow-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+}
+.flow-head { padding: 16px 20px; border-bottom: 1px solid var(--rule); background: var(--purple-soft); }
+.flow-head .day { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-deep); }
+.flow-head h4 { font-size: 20px; margin-top: 5px; }
+.flow-rows { display: grid; }
+.frow { display: grid; grid-template-columns: 74px 1fr; gap: 14px; padding: 10px 20px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.frow:last-child { border-bottom: none; }
+.frow .lbl { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-faint); line-height: 1.6; padding-top: 2px; }
+.frow .val { font-size: 13px; line-height: 1.45; color: var(--ink-soft); }
+.frow .val strong { color: var(--ink); font-weight: 700; }
+.frow.subj .val { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink); line-height: 1.7; }
+.frow.tech { background: rgba(245,180,0,0.07); }
+.frow.tech .lbl { color: #8a6400; }
+.frow.tech .val { font-size: 12px; color: #6b5000; }
+.btn-spec {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 15px; border-radius: 999px; background: var(--purple); color: #fff;
+  font-size: 12px; font-weight: 700; letter-spacing: -0.01em;
+}
+.btn-spec.none { background: transparent; color: var(--ink-mute); border: 1px dashed var(--rule-strong); font-weight: 500; }
+
+.side-panel { background: var(--ink); color: rgba(255,255,255,0.8); border-radius: 16px; padding: 20px 22px; }
+.side-panel .eyebrow { color: rgba(255,255,255,0.62); margin-bottom: 12px; }
+.side-panel .eyebrow::before { background: var(--mint); }
+.side-panel p { font-size: 12.5px; line-height: 1.55; }
+.side-panel p + p { margin-top: 8px; }
+.side-panel strong { color: #fff; }
+
+/* ── NEXT STEPS ──────────────────────────────────────── */
+ol.steps { list-style: none; counter-reset: step; }
+ol.steps li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.12); display: grid; grid-template-columns: 46px 1fr 150px; gap: 18px; align-items: baseline; }
+ol.steps li:last-child { border-bottom: none; }
+ol.steps .sn { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--mint); line-height: 1; }
+ol.steps .st { font-weight: 700; font-size: 16px; color: #fff; }
+ol.steps .sd { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 3px; line-height: 1.45; }
+ol.steps .so { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); text-align: right; }
+
+.open-items { border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 18px 20px; }
+.open-items ul { list-style: none; display: grid; gap: 9px; margin-top: 12px; }
+.open-items li { font-size: 12.5px; color: rgba(255,255,255,0.72); display: grid; grid-template-columns: 12px 1fr; gap: 10px; line-height: 1.45; align-items: baseline; }
+.open-items li > span { display: block; }
+.open-items li::before { content: "→"; color: var(--amber); }
+.open-items li strong { color: #fff; }
+
+.note {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--ink-mute); line-height: 1.7; border-left: 2px solid var(--amber);
+  padding-left: 14px;
+}
+.slide.dark .note { color: rgba(255,255,255,0.55); }
+
+/* ── PROGRESS ────────────────────────────────────────── */
+.progress-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--purple); transform-origin: left; transform: scaleX(0); z-index: 1000; transition: transform 100ms linear; }
+
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.slide.dark :focus-visible { outline-color: var(--mint); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+
+@media print {
+  html { scroll-snap-type: none; }
+  .slide { height: auto; min-height: 100vh; page-break-after: always; }
+  .progress-bar { display: none; }
+}
+
+/* ── BLOB BG ─────────────────────────────────────────── */
+.blob-bg { position: relative; }
+.blob-bg::before, .blob-bg::after { content: ''; position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+.blob-bg::before { width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(0,212,180,0.30) 0%, transparent 70%); bottom: -12%; left: -8%; }
+.blob-bg::after { width: 32vw; height: 32vw; background: radial-gradient(circle, rgba(108,92,231,0.24) 0%, transparent 70%); top: -8%; right: 3%; }
+.blob-bg > * { position: relative; z-index: 1; }
+
+/* ── CONSTRAINT / FIX ROWS ───────────────────────────── */
+.cs-head { display: grid; grid-template-columns: 34px 1fr 1fr; gap: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-strong); }
+.cs-head span { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+.csrow { display: grid; grid-template-columns: 34px 1fr 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.csrow:last-child { border-bottom: none; }
+.csrow .fnum { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--purple); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.csrow h4 { font-size: 16px; margin-bottom: 5px; }
+.csrow p { font-size: 12.5px; color: var(--ink-mute); line-height: 1.5; }
+.fix { background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--mint); border-radius: 10px; padding: 12px 14px; }
+.fix .fl { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple-deep); display: block; margin-bottom: 6px; }
+.fix p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+.fix p + p { margin-top: 6px; }
+.cost-tag { display: inline-block; margin-top: 9px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: #7a5900; background: rgba(245,180,0,0.14); border-radius: 999px; padding: 4px 10px; }
+.rank { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--ink-faint); }
+.card.pick .rank { color: var(--purple); }
+
+@media (max-width: 1000px) {
+  .slide { height: auto; min-height: 100vh; padding: 8vh 7vw; }
+  .two-col, .split-58, .flow-grid { grid-template-columns: 1fr; gap: 32px; }
+  .four-col { grid-template-columns: 1fr 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  ol.steps li { grid-template-columns: 40px 1fr; }
+  ol.steps .so { grid-column: 2; text-align: left; }
+  .cs-head { grid-template-columns: 28px 1fr; }
+  .cs-head span:last-child { display: none; }
+  .csrow { grid-template-columns: 28px 1fr; }
+  .csrow .fix { grid-column: 2; margin-top: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+
+<!-- ═══════════ 01 · COVER ═══════════ -->
+<section class="slide blob-bg" data-slide="01 / 07">
+  <div class="stack">
+    <div class="brand-mark"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJ1dWlkLTRlZjI0NGM3LTU3MmUtNGZmMC1hZDBiLTlhNjgzOTVjNWY0NiIgdmlld0JveD0iMCAwIDQyMy4yNSAxMTQuMTMiPjxkZWZzPjxzdHlsZT4udXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjZ7ZmlsbDojNTQ0M2JlO308L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0idXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjYiIGQ9Im02MS4zMSwzOC45M2MtLjE4LS4xMS0uMzYtLjItLjU1LS4yOS0xLjEyLS41My0yLjM4LS44Mi0zLjY5LS44MnMtMi41OS4yOS0zLjcxLjgyYy0uMTguMDktLjM2LjE4LS41My4yOS0zLjExLDEuNy01LjAxLDUuMjgtNC4zMiw5LjE3LjYyLDMuNTEsMy40NCw2LjM0LDYuOTUsNi45Nyw1LjUxLjk5LDEwLjMtMy4yMiwxMC4zLTguNTYsMC0zLjI1LTEuNzktNi4xMS00LjQ1LTcuNThaIj48L3BhdGg+PHBhdGggY2xhc3M9InV1aWQtZGU0NjAzYzUtYzU5MS00MmRhLWFjODgtMmFlOWJjYjNmM2I2IiBkPSJtMCw5Ljk3djk0LjE5QzAsMTA5LjY3LDQuNDYsMTE0LjEzLDkuOTcsMTE0LjEzaDk0LjE5YzUuNTEsMCw5Ljk3LTQuNDYsOS45Ny05Ljk3VjkuOTdjMC01LjUxLTQuNDYtOS45Ny05Ljk3LTkuOTdIOS45N0M0LjQ2LDAsMCw0LjQ2LDAsOS45N1ptMTIuNjYsMzQuODFjMC0uNTEuMDEtMSwuMDYtMS41LDAsMCwwLS4wMS4wMi0uMDMsMC0uMDYuMDEtLjE0LjAxLS4ydi0uMDVjLjMzLTIuMzksMi4zOS00LjI1LDQuODctNC4yNS45MiwwLDEuOC4yNywyLjU0LjczbDE4LjQ3LDExYy4wOCwxLjU5LjM2LDMuMTIuODIsNC41Ni4xMi4zOS4yNi43Ny40MSwxLjE1bC40Mi45OC41OSwxLjM2aC0xNC4zOGMtNy42MSwwLTEzLjgxLTYuMTUtMTMuODMtMTMuNzZabTMwLjc2LDE5Ljc4Yy0uMTUuMjktLjMuNTgtLjQ3Ljg1LS4xNS4yNy0uMzIuNTMtLjUuNzktLjE4LjI3LS4zNi41My0uNTYuNzctLjM5LjUtLjgyLjk3LTEuMjcsMS40MS0uMTguMTgtLjM2LjM1LS41Ni41MS0xLjI0LDEuMDgtMi42OCwxLjk0LTQuMjUsMi41My0uMi4wOC0uMzkuMTUtLjYxLjIxLS43My4yMy0xLjQ3LjQxLTIuMjQuNTEtLjI5LjA1LS41OC4wOC0uODYuMTEtLjM4LjAzLS43Ni4wNS0xLjE1LjA1LS4yNCwwLS41LS4wMS0uNzQtLjAzaC0uMDFjLS4xMSwwLS4yMywwLS4zMy0uMDJoLS4wNmMtLjExLDAtLjE4LS4wMS0uMjctLjAzLS4wMywwLS4wNiwwLS4wOS0uMDEtLjE1LS4wMi0uMjktLjAzLS40NC0uMDYtMi41OS0uNTUtNC41MS0yLjgzLTQuNTEtNS41NywwLTMuMTYsMi41NC01LjcyLDUuNjktNS43MmwxMS42NS0uMDYsMS41OSwzLjc1aDBabTEzLjY1LDI0LjdsLTQuNTEtMTAuNTljMS40OC0uMTIsMy0uMTcsNC41MS0uMTdzMy4wMy4wNSw0LjUxLjE3bC00LjUxLDEwLjU5Wm01LjcxLTEzLjQzYy0xLjg4LS4xNS0zLjc4LS4yMy01LjcxLS4yM3MtMy44My4wOC01LjcyLjI0bC0xLjg5LTQuNDVjMi41LjI2LDUuMDQuMzgsNy42MS4zOHM1LjEtLjEyLDcuNi0uMzhsLTEuODksNC40M1ptMy4xOS03LjQ5Yy0yLjkyLjM2LTUuODkuNTQtOC45LjU0cy01Ljk5LS4xOC04LjkxLS41NGwtMS43NC00LjEyYzMuNDcuNTYsNy4wMi44MywxMC42NS44M3M3LjE3LS4yNywxMC42NC0uODJsLTEuNzQsNC4xWm0tMS4zNS02LjU4Yy0xLjQ4LjE3LTMsLjI5LTQuNTEuMzYtMSwuMDUtMi4wMy4wNi0zLjA0LjA2LTQuMDksMC04LjEtLjM4LTExLjk5LTEuMDlsLTIuMjctNS4zMWMtLjQ1LTEuMDMtLjgtMi4xLTEuMDEtMy4yNC0uMzUtMS40NS0uNTMtMi45OC0uNTMtNC41NiwwLTEuNzcuMjMtMy41LjY1LTUuMTMuMjYtLjkyLjU2LTEuODIuOTItMi42OC4wNi0uMTQuMTItLjI3LjE4LS40MSwxLjM5LTIuODksMy42NS01LjI4LDYuNDUtNi44NGwtMy43Ny02Ljc0cy0uMDQtLjA4LS4wNi0uMTFjLS4wNi0uMTEtLjA5LS4yNC0uMDktLjM4LDAtLjQ1LjM2LS44Mi44My0uODIuMzMsMCwuNjIuMjEuNzQuNWwzLjMxLDcuMDRjMi4wMS0uOTUsNC4yNS0xLjQ4LDYuNjMtMS40OHM0LjYuNTMsNi42MSwxLjQ4bDMuMzEtNy4wNGMuMTItLjI5LjQxLS41Ljc2LS41LjQ1LDAsLjgyLjM2LjgyLjgyLDAsLjE0LS4wMy4yNy0uMDkuMzgtLjAxLjAzLS4wMy4wOC0uMDYuMTFsLTMuNzcsNi43NGMyLjgsMS41Niw1LjA1LDMuOTUsNi40NSw2Ljg0LjA4LjE0LjEyLjI3LjE4LjQxLjM2Ljg2LjY4LDEuNzYuOTIsMi42OC40MiwxLjYzLjY1LDMuMzYuNjUsNS4xMywwLDEuNTctLjE4LDMuMS0uNTEsNC41Ni0uMjMsMS4xNC0uNTcsMi4yMS0xLjAzLDMuMjRsLTIuMjcsNS4zM2MtMS40NS4yNy0yLjk0LjQ4LTQuNDIuNjVabTIwLjUxLDEwLjRjLS4xNS4wMy0uMjkuMDUtLjQ0LjA2LS4wMy4wMS0uMDYuMDEtLjA5LjAxLS4wOS4wMi0uMTcuMDMtLjI3LjAzaC0uMDZjLS4xMS4wMi0uMjMuMDItLjMzLjAyaC0uMDFjLS4yNC4wMS0uNS4wMy0uNzQuMDMtLjM5LDAtLjc3LS4wMS0xLjE1LS4wNS0uMjktLjAzLS41OC0uMDYtLjg2LS4xMS0uNzctLjExLTEuNTEtLjI5LTIuMjQtLjUxLS4yMS0uMDYtLjQxLS4xNC0uNjEtLjIxLTEuNTctLjU5LTMuMDEtMS40NS00LjI1LTIuNTMtLjItLjE3LS4zOC0uMzMtLjU2LS41MS0uNDUtLjQ0LS44OC0uOTEtMS4yNy0xLjQxLS4yLS4yNC0uMzgtLjUtLjU2LS43Ny0uMTgtLjI2LS4zNS0uNTEtLjUtLjc5LS4xNy0uMjctLjMyLS41Ni0uNDctLjg1aDBzMS41OS0zLjc3LDEuNTktMy43N2wxMS42NS4wNmMzLjE1LDAsNS42OSwyLjU2LDUuNjksNS43MiwwLDIuNzQtMS45Miw1LjAyLTQuNTEsNS41N1ptMi41LTEzLjYxaC0xNC4zOHMuNTktMS4zNi41OS0xLjM2bC40Mi0uOThjLjE1LS4zOC4yOS0uNzYuNDEtMS4xNS40NS0xLjQ0Ljc0LTIuOTcuODItNC41NmwxOC40Ny0xMWMuNzQtLjQ1LDEuNjItLjczLDIuNTQtLjczLDIuNDgsMCw0LjU0LDEuODYsNC44Nyw0LjI1di4wNWMwLC4wNi4wMS4xNC4wMS4yLjAyLjAxLjAyLjAzLjAyLjAzLjA1LjQ5LjA2Ljk5LjA2LDEuNS0uMDIsNy42MS02LjIyLDEzLjc2LTEzLjgzLDEzLjc2WiI+PC9wYXRoPjwvZz48Zz48cGF0aCBjbGFzcz0idXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjYiIGQ9Im0zNzcuMTMsNTYuODZjMC00LjEyLjY3LTguMDEsMi4wMS0xMS42NywxLjM0LTMuNjUsMy4yNy02Ljg0LDUuODEtOS41NSwyLjUzLTIuNzEsNS42MS00Ljg3LDkuMjItNi40NiwzLjYyLTEuNTksNy43NC0yLjM5LDEyLjM3LTIuMzksMy4wNCwwLDUuODIuMjcsOC4zNi44MSwyLjUzLjU0LDQuOTksMS4zMiw3LjM4LDIuMzNsLTMuMzYsMTIuOTFjLTEuNTItLjU4LTMuMTktMS4wOC00Ljk5LTEuNTItMS44MS0uNDMtMy44NC0uNjUtNi4wOC0uNjUtNC43OCwwLTguMzQsMS40OC0xMC42OSw0LjQ1LTIuMzUsMi45Ny0zLjUzLDYuODgtMy41MywxMS43MiwwLDUuMTQsMS4xLDkuMTIsMy4zMSwxMS45NCwyLjIxLDIuODIsNi4wNiw0LjIzLDExLjU2LDQuMjMsMS45NSwwLDQuMDUtLjE4LDYuMjktLjU0LDIuMjQtLjM2LDQuMy0uOTQsNi4xOS0xLjc0bDIuMjgsMTMuMjRjLTEuODguOC00LjIzLDEuNDgtNy4wNSwyLjA2LTIuODIuNTgtNS45My44Ny05LjMzLjg3LTUuMjEsMC05LjctLjc4LTEzLjQ2LTIuMzMtMy43Ni0xLjU2LTYuODYtMy42Ny05LjI4LTYuMzUtMi40Mi0yLjY4LTQuMi01Ljg0LTUuMzItOS41LTEuMTItMy42NS0xLjY4LTcuNjEtMS42OC0xMS44OFoiPjwvcGF0aD48cGF0aCBjbGFzcz0idXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjYiIGQ9Im0xMjguMzksMzAuNDhjMi43NS0uNzksNi4yOS0xLjU0LDEwLjY0LTIuMjMsNC4zNC0uNjksOC45LTEuMDMsMTMuNjctMS4wM3M4Ljg4LjYzLDEyLjEsMS45YzMuMjIsMS4yNyw1Ljc3LDMuMDYsNy42NSw1LjM3LDEuODgsMi4zMiwzLjIyLDUuMDYsNC4wMiw4LjI1LjgsMy4xOCwxLjE5LDYuNzMsMS4xOSwxMC42NHYzMi4yM2gtMTYuMTd2LTMwLjI4YzAtNS4yMS0uNjktOC45LTIuMDYtMTEuMDctMS4zOC0yLjE3LTMuOTQtMy4yNi03LjcxLTMuMjYtMS4xNiwwLTIuMzkuMDUtMy42OS4xNi0xLjMuMTEtMi40Ni4yMy0zLjQ3LjM4djQ0LjA2aC0xNi4xN1YzMC40OFoiPjwvcGF0aD48cGF0aCBjbGFzcz0idXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjYiIGQ9Im0yNDAuNjcsNTYuOTZjMCw0LjQ1LS42NSw4LjUzLTEuOTQsMTIuMjMtMS4yOSwzLjctMy4xNiw2Ljg2LTUuNiw5LjQ4LTIuNDQsMi42Mi01LjM3LDQuNjUtOC43OCw2LjA5LTMuNDEsMS40NC03LjI0LDIuMTYtMTEuNDgsMi4xNnMtNy45Ni0uNzItMTEuMzctMi4xNmMtMy40MS0xLjQ0LTYuMzQtMy40Ni04Ljc4LTYuMDktMi40NC0yLjYyLTQuMzUtNS43OC01LjcxLTkuNDgtMS4zNy0zLjctMi4wNS03Ljc3LTIuMDUtMTIuMjNzLjctOC41MSwyLjEtMTIuMThjMS40LTMuNjYsMy4zNC02Ljc5LDUuODItOS4zNywyLjQ4LTIuNTksNS40Mi00LjYsOC44NC02LjAzLDMuNDEtMS40NCw3LjEzLTIuMTYsMTEuMTUtMi4xNnM3Ljg1LjcyLDExLjI2LDIuMTZjMy40MSwxLjQ0LDYuMzQsMy40NSw4Ljc4LDYuMDMsMi40NCwyLjU5LDQuMzUsNS43MSw1LjcxLDkuMzcsMS4zNiwzLjY2LDIuMDUsNy43MiwyLjA1LDEyLjE4Wm0tMTYuMzgsMGMwLTQuOTYtLjk5LTguODUtMi45Ni0xMS42OS0xLjk4LTIuODQtNC44LTQuMjYtOC40Ni00LjI2cy02LjUsMS40Mi04LjUxLDQuMjZjLTIuMDEsMi44NC0zLjAyLDYuNzMtMy4wMiwxMS42OXMxLjAxLDguODksMy4wMiwxMS44YzIuMDEsMi45MSw0Ljg1LDQuMzYsOC41MSw0LjM2czYuNDgtMS40Niw4LjQ2LTQuMzZjMS45Ny0yLjkxLDIuOTYtNi44NCwyLjk2LTExLjhaIj48L3BhdGg+PHBhdGggY2xhc3M9InV1aWQtZGU0NjAzYzUtYzU5MS00MmRhLWFjODgtMmFlOWJjYjNmM2I2IiBkPSJtMjQ2LjY2LDU3LjVjMC01LjAzLjc3LTkuNDMsMi4zMi0xMy4yLDEuNTQtMy43NywzLjU3LTYuOTEsNi4wOS05LjQzLDIuNTEtMi41MSw1LjQtNC40Miw4LjY3LTUuNzEsMy4yNy0xLjI5LDYuNjMtMS45NCwxMC4wNy0xLjk0LDguMDQsMCwxNC40LDIuNDYsMTkuMDcsNy4zOCw0LjY3LDQuOTIsNywxMi4xNiw3LDIxLjcxLDAsLjkzLS4wNCwxLjk2LS4xMSwzLjA3LS4wNywxLjEyLS4xNCwyLjEtLjIyLDIuOTZoLTM2LjQyYy4zNiwzLjMsMS45LDUuOTIsNC42Myw3Ljg2LDIuNzMsMS45NCw2LjM5LDIuOTEsMTAuOTksMi45MSwyLjk0LDAsNS44My0uMjcsOC42Ny0uODEsMi44NC0uNTQsNS4xNS0xLjIsNi45NS0xLjk5bDIuMTUsMTMuMDRjLS44Ni40My0yLjAxLjg2LTMuNDUsMS4yOS0xLjQ0LjQzLTMuMDQuODEtNC43OSwxLjEzLTEuNzYuMzItMy42NS41OS01LjY2LjgxLTIuMDEuMjItNC4wMi4zMi02LjAzLjMyLTUuMSwwLTkuNTMtLjc1LTEzLjMxLTIuMjYtMy43Ny0xLjUxLTYuOS0zLjU3LTkuMzctNi4yLTIuNDgtMi42Mi00LjMxLTUuNzMtNS40OS05LjMyLTEuMTgtMy41OS0xLjc4LTcuNDctMS43OC0xMS42NFptMzcuNzEtNi4xNGMtLjA3LTEuMzYtLjMxLTIuNjktLjctMy45OS0uNC0xLjI5LTEuMDEtMi40NC0xLjgzLTMuNDUtLjgzLTEtMS44Ny0xLjgzLTMuMTItMi40OC0xLjI2LS42NS0yLjgyLS45Ny00LjY5LS45N3MtMy4zNC4zMS00LjYzLjkyYy0xLjI5LjYxLTIuMzcsMS40Mi0zLjIzLDIuNDItLjg2LDEuMDEtMS41MywyLjE3LTEuOTksMy41LS40NywxLjMzLS44MSwyLjY4LTEuMDIsNC4wNGgyMS4yMloiPjwvcGF0aD48cGF0aCBjbGFzcz0idXVpZC1kZTQ2MDNjNS1jNTkxLTQyZGEtYWM4OC0yYWU5YmNiM2YzYjYiIGQ9Im0zMDcuMTgsMTQuMzFsMTYuMTctMi42MXYxNi44MmgxOS40M3YxMy40NmgtMTkuNDN2MjAuMDhjMCwzLjQuNiw2LjExLDEuNzksOC4xNCwxLjE5LDIuMDMsMy42LDMuMDQsNy4yMiwzLjA0LDEuNzQsMCwzLjUzLS4xNiw1LjM3LS40OSwxLjg0LS4zMywzLjUzLS43OCw1LjA1LTEuMzZsMi4yOCwxMi41OWMtMS45NS44LTQuMTIsMS40OC02LjUxLDIuMDYtMi4zOS41OC01LjMyLjg3LTguNzkuODctNC40MSwwLTguMDctLjYtMTAuOTYtMS43OS0yLjg5LTEuMTktNS4yMS0yLjg2LTYuOTUtNC45OS0xLjc0LTIuMTMtMi45NS00LjcyLTMuNjQtNy43Ni0uNjktMy4wNC0xLjAzLTYuNC0xLjAzLTEwLjA5VjE0LjMxWiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJ1dWlkLWRlNDYwM2M1LWM1OTEtNDJkYS1hYzg4LTJhZTliY2IzZjNiNiIgZD0ibTM3MS4xNCwxMS45NWMwLDIuODgtLjkzLDUuMTUtMi44LDYuODEtMS44NiwxLjY1LTQuMDYsMi40OC02LjYsMi40OHMtNC43My0uODItNi42LTIuNDhjLTEuODYtMS42NS0yLjgtMy45Mi0yLjgtNi44MXMuOTMtNS4xNSwyLjgtNi44MWMxLjg2LTEuNjUsNC4wNi0yLjQ4LDYuNi0yLjQ4czQuNzMuODMsNi42LDIuNDhjMS44NiwxLjY1LDIuOCwzLjkyLDIuOCw2LjgxWm0tMS4zLDczLjY2aC0xNi4xN1YyOC41M2gxNi4xN3Y1Ny4wOFoiPjwvcGF0aD48L2c+PC9zdmc+" alt="Noetic"></div>
+    <div class="eyebrow">TSG Systems · Production Offering · Israel</div>
+    <h1 class="display-xl">Build it.<br>Then <em>sell</em> it.</h1>
+    <p class="lede">Cold email strategy for the Production and Lifecycle&nbsp;Support&nbsp;&amp; Knowledge&nbsp;Management offering. Built for mid-size Israeli robotics and autonomous-platform companies.</p>
+    <div class="stat-grid">
+      <div><div class="stat-num">200</div><div class="stat-label">Companies on the source list</div></div>
+      <div><div class="stat-num">~400</div><div class="stat-label">Contacts to find, about two per company</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Emails, one consent gate</div></div>
+      <div><div class="stat-num">15<small> days</small></div><div class="stat-label">Total flow duration</div></div>
+    </div>
+    <p class="meta-line" style="margin-top:8px;">Prepared by Noetic · August 2026 · v2.0 · Email workstream only</p>
+  </div>
+</section>
+
+<!-- ═══════════ 02 · DATA SOURCING ═══════════ -->
+<section class="slide cool" data-slide="02 / 07">
+  <div class="stack" style="gap:20px;">
+    <div>
+      <div class="eyebrow">01 · Data sourcing</div>
+      <h2 class="display-md">You have 200 company names.<br>The campaign needs 200 <em>inboxes</em>.</h2>
+    </div>
+    <p class="lede">Apollo and Lusha have been tried and, in your words, did not deliver for this list. We have not seen that data, so this is not a verdict on either tool. What we can speak to is the job itself: start from a company name with no contact attached, identify the right role, and return a verified business address. These four are built for that, ranked for this list.</p>
+    <div class="four-col">
+      <div class="card pick">
+        <div class="tag"><span class="rank">01</span> · Recommended</div>
+        <h4>FullEnrich</h4>
+        <div class="price">$55/mo · 1,000 credits</div>
+        <p>25+ contact databases queried in sequence in a single waterfall, so one lookup draws on every source rather than one. Verified, or it is free: a miss costs nothing. 1 credit per work email.</p>
+        <a class="lnk" href="https://www.fullenrich.com/pricing">fullenrich.com/pricing</a>
+      </div>
+      <div class="card">
+        <div class="tag"><span class="rank">02</span> · Best fit for a company-only list</div>
+        <h4>Clay</h4>
+        <div class="price">$167/mo · Launch plan</div>
+        <p>150+ provider marketplace plus research agents that read each company's own website, so it can work from a company name alone. The route to companies with a thin public footprint. 15,000 actions.</p>
+        <a class="lnk" href="https://www.clay.com/pricing">clay.com/pricing</a>
+      </div>
+      <div class="card">
+        <div class="tag"><span class="rank">03</span> · Lowest entry cost</div>
+        <h4>BetterContact</h4>
+        <div class="price">$15/mo · 200 credits</div>
+        <p>20+ sources in one waterfall, charged only when valid data comes back. Bouncer verification included at no extra cost and unused credits roll over. $49/mo for 1,000 credits.</p>
+        <a class="lnk" href="https://bettercontact.rocks/pricing">bettercontact.rocks/pricing</a>
+      </div>
+      <div class="card">
+        <div class="tag"><span class="rank">04</span> · Israeli-native research</div>
+        <h4>IVC Research Center</h4>
+        <div class="price">9,950 NIS/yr + 7 NIS/line</div>
+        <p>9,211 active Israeli high-tech companies with key-executive exports carrying name, title and email. A standing research subscription for ongoing list building rather than a one-time enrichment.</p>
+        <a class="lnk" href="https://www.ivc-online.com/Products-and-Solutions">ivc-online.com</a>
+      </div>
+    </div>
+    <p class="meta-line">Sourcing all ~400 contacts costs under $100 once · TSG buys and manages the subscription · Noetic specifies the tool and runs the campaign</p>
+  </div>
+</section>
+
+<!-- ═══════════ 03 · CONSTRAINTS AND FIXES ═══════════ -->
+<section class="slide" data-slide="03 / 07">
+  <div class="stack" style="gap:20px;">
+    <div>
+      <div class="eyebrow">02 · Before the first send</div>
+      <h2 class="display-md">Three things to solve first.<br>Each one has a <em>fix</em>.</h2>
+    </div>
+    <div>
+      <div class="cs-head"><span></span><span>Current state</span><span>What we do about it</span></div>
+      <div class="csrow">
+        <div class="fnum">01</div>
+        <div>
+          <h4>Israel is an opt-in jurisdiction</h4>
+          <p>Section 30A of the Communications Law permits one message to a business address, and only if its purpose is to request consent for further contact. Statutory damages run up to NIS 1,000 per message with no proof of damage required. Rules vary by country and Israel sits among the stricter regimes.</p>
+        </div>
+        <div class="fix">
+          <span class="fl">The fix</span>
+          <p>Email 1 does one job: it asks permission. A reply is what opens Emails 2 to 4. Non-repliers exit the flow and stay covered by Google search and the bot track.</p>
+        </div>
+      </div>
+      <div class="csrow">
+        <div class="fnum">02</div>
+        <div>
+          <h4>This list cannot send from HubSpot</h4>
+          <p>HubSpot's Anti-Spam Policy §2.1.1 names enrichment-sourced lists among those you may not contact through HubSpot. That is a terms rule, not a missing feature or a permission that can be requested. Portal 147248395 also runs the existing nurture, so an action against the cold wave would take that flow down with it.</p>
+        </div>
+        <div class="fix">
+          <span class="fl">The fix</span>
+          <p>Email 1 sends from a purpose-built cold-email platform on a separate warmed domain. Once a contact replies, consent is documented and Emails 2 to 4 run inside HubSpot as normal.</p>
+          <span class="cost-tag">Additional cost · Instantly $47/mo or Smartlead $39/mo entry plan · TSG</span>
+        </div>
+      </div>
+      <div class="csrow">
+        <div class="fnum">03</div>
+        <div>
+          <h4>The 200 are company names, not contacts</h4>
+          <p>No verified contact exists for the list today. Roughly a third carries a manufacturer, integrator, sensor and payload, C-UAS, or command-and-control tag; the rest needs a fit pass against production as well as manufacturing before it is worth sending to.</p>
+        </div>
+        <div class="fix">
+          <span class="fl">The fix</span>
+          <p>Source first, then extend. The tool on the previous slide turns the 200 into contacts, and a lookalike extension, as Einat proposed, adds volume without diluting the send into non-buyers.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Israeli legal figures come from law-firm commentary on Section 30A, not from primary statute text. TSG counsel signs off on the consent mechanic before the first send.</p>
+  </div>
+</section>
+
+<!-- ═══════════ 04 · THE FLOW ═══════════ -->
+<section class="slide cool" data-slide="04 / 07">
+  <div class="stack" style="gap:24px;">
+    <div>
+      <div class="eyebrow">03 · The flow</div>
+      <h2 class="display-md">Four emails. Only <em>one</em> of them is cold.</h2>
+      <p class="lede" style="margin-top:16px;">A reply to Email 1 is what opens the rest. The sequence earns the meeting instead of asking for it: who we are, then the problem, then the conversation.</p>
+    </div>
+    <div class="split-58">
+      <table class="cadence">
+        <thead><tr><th>Day</th><th>Email</th><th>CTA intensity</th></tr></thead>
+        <tbody>
+          <tr><td class="d">Day 0</td><td><span class="nm">Permission</span></td><td class="ct">Reply only. No link, no meeting.</td></tr>
+          <tr><td class="d">Day 4</td><td><span class="nm">Focus over features</span></td><td class="ct">Light → who TSG is, and what it does not do</td></tr>
+          <tr><td class="d">Day 9</td><td><span class="nm">The RFP wall</span></td><td class="ct">Moderate → capability overview</td></tr>
+          <tr><td class="d">Day 15</td><td><span class="nm">The open door</span></td><td class="ct">Direct → 30 min or a site visit</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">15-day flow · CTA ladder: permission → credibility → problem → conversation</td></tr></tfoot>
+      </table>
+      <div class="side-panel">
+        <div class="eyebrow">Trigger, gate, exit</div>
+        <p><strong>Trigger.</strong> Manual enrollment, wave 1 only, once the sending domain is warmed.</p>
+        <p><strong>Gate.</strong> Emails 2 to 4 send only to contacts who replied to Email 1. No reply, no send.</p>
+        <p><strong>Exit.</strong> Reply, booking or unsubscribe exits immediately. Replies route to a named human the same day. No re-entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 05 · EMAILS 1 & 2 ═══════════ -->
+<section class="slide warm" data-slide="05 / 07">
+  <div class="stack" style="gap:20px;">
+    <div>
+      <div class="eyebrow">03 · The flow · Emails 1 and 2</div>
+      <h2 class="display-sm">Email 1 asks. Email 2 <em>introduces</em>.</h2>
+    </div>
+    <div class="flow-grid">
+      <article class="flow-card">
+        <div class="flow-head"><div class="day">Email 1 · Day 0 · cold</div><h4>Permission</h4></div>
+        <div class="flow-rows">
+          <div class="frow"><div class="lbl">Purpose</div><div class="val">Establish relevance in three lines and ask one yes-or-no question. This is the single lawful cold touch, and the consent gate for everything after it.</div></div>
+          <div class="frow"><div class="lbl">Content</div><div class="val">Name the moment in their language: moving from three units to serial production, or an RFP asking for documentation and training they do not have. Capabilities named at a high level in one line, three production sites in Israel, defense-tech robotics and autonomous platforms only. No capability list, no attachment.</div></div>
+          <div class="frow"><div class="lbl">Tone</div><div class="val">Peer to peer. Plain lowercase subject line, sent from a named TSG engineer rather than from marketing.</div></div>
+          <div class="frow"><div class="lbl">CTA</div><div class="val"><strong>Reply-based.</strong> "Worth sending you more on how we work?"</div></div>
+          <div class="frow"><div class="lbl">Button</div><div class="val"><span class="btn-spec none">No button · reply only</span></div></div>
+          <div class="frow tech"><div class="lbl">Tech note</div><div class="val">Every token carries a tested fallback, and a missing <span style="font-family:var(--font-mono)">first_name</span> suppresses the contact rather than sending a generic greeting. Sending domain separate from the corporate domain, with its own SPF, DKIM and DMARC, warmed to 30–40 sends a day before wave 1.</div></div>
+        </div>
+      </article>
+      <article class="flow-card">
+        <div class="flow-head"><div class="day">Email 2 · Day 4 · consented only</div><h4>Focus over features</h4></div>
+        <div class="flow-rows">
+          <div class="frow"><div class="lbl">Purpose</div><div class="val">Show who TSG is before naming any problem. Turnkey manufacturing is not proprietary, so the differentiator is focus and track record, stated plainly.</div></div>
+          <div class="frow"><div class="lbl">Content</div><div class="val">TSG does not do medical and does not do pharma. Defense-tech, autonomous platforms and robotics only. 50+ years, three production sites in Israel, delivered to the IDF, Home Front Command and global air forces. One worked example along the chain, from system architecture through serial production to global delivery.</div></div>
+          <div class="frow"><div class="lbl">Tone</div><div class="val">Confident and concrete. No superlatives, no "best-in-class", no pitch.</div></div>
+          <div class="frow"><div class="lbl">CTA</div><div class="val"><strong>Light → proof.</strong> A production-site walkthrough or one customer journey.</div></div>
+          <div class="frow"><div class="lbl">Button</div><div class="val"><span class="btn-spec">See a line in operation</span></div></div>
+          <div class="frow tech"><div class="lbl">Tech note</div><div class="val">This is the email that needs an asset from TSG. A site video or one anonymised customer journey. The DroneWeaver videos do not transfer, since this is a different audience and reusing them would break message match. If nothing lands in time, Email 2 runs on the written focus argument alone.</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 06 · EMAILS 3 & 4 ═══════════ -->
+<section class="slide warm" data-slide="06 / 07">
+  <div class="stack" style="gap:20px;">
+    <div>
+      <div class="eyebrow">03 · The flow · Emails 3 and 4</div>
+      <h2 class="display-sm">Email 3 names the problem. Email 4 <em>opens the door</em>.</h2>
+    </div>
+    <div class="flow-grid">
+      <article class="flow-card">
+        <div class="flow-head"><div class="day">Email 3 · Day 9 · consented only</div><h4>The RFP wall</h4></div>
+        <div class="flow-rows">
+          <div class="frow"><div class="lbl">Purpose</div><div class="val">Name the pain that makes the offering urgent, now that the reader knows who TSG is, and deliver the capability asset.</div></div>
+          <div class="frow"><div class="lbl">Content</div><div class="val">Einat's RFP story, generalised. You win the deal, and then the buyer's RFP asks for manufacturing documentation, training material, in-country support and a quality system. A 15-person company cannot answer it. That gap, not the technology, is what loses the contract. Close on the value chain: R&amp;D, DFM with full manufacturing documentation, prototype, serial production, QC, integration and global delivery.</div></div>
+          <div class="frow"><div class="lbl">Tone</div><div class="val">Diagnostic and specific. Describes their situation before describing TSG.</div></div>
+          <div class="frow"><div class="lbl">CTA</div><div class="val"><strong>Moderate → content.</strong> Production capability overview: concept to delivery.</div></div>
+          <div class="frow"><div class="lbl">Button</div><div class="val"><span class="btn-spec">Get the capability overview</span></div></div>
+          <div class="frow tech"><div class="lbl">Tech note</div><div class="val">The production offering is not on the website and does not arrive until the October redesign. The flow does not wait for it. The asset is a standalone one-page capability overview built from the production chain Einat presented, so wave 1 can launch before the redesign.</div></div>
+        </div>
+      </article>
+      <article class="flow-card">
+        <div class="flow-head"><div class="day">Email 4 · Day 15 · consented only</div><h4>The open door</h4></div>
+        <div class="flow-rows">
+          <div class="frow"><div class="lbl">Purpose</div><div class="val">One direct ask with an explicit release valve. In the existing sequence the highest reply rate, 7.5%, came from its lowest-pressure email. The audience showed where it prefers to answer.</div></div>
+          <div class="frow"><div class="lbl">Content</div><div class="val">Two short paragraphs. Where are you on the value chain, and what is the next thing that has to scale. Then the release valve: if the timing is not right, no problem, we will be here when the volume arrives.</div></div>
+          <div class="frow"><div class="lbl">Tone</div><div class="val">Low pressure, short, from a named human. No urgency language.</div></div>
+          <div class="frow"><div class="lbl">CTA</div><div class="val"><strong>Direct → conversation.</strong> A 30-minute production feasibility review, or a visit to a TSG site.</div></div>
+          <div class="frow"><div class="lbl">Button</div><div class="val"><span class="btn-spec">Book 30 minutes</span> <span style="font-size:11.5px;color:var(--ink-mute);margin-left:8px;">or come see a line</span></div></div>
+          <div class="frow tech"><div class="lbl">Tech note</div><div class="val">The site visit is the differentiated ask and both parties are in Israel. A plant walkthrough is a lower-commitment, higher-signal meeting than a video call, and no offshore competitor can offer it. Worth testing as the primary CTA against the 30-minute call.</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 07 · NEXT STEPS ═══════════ -->
+<section class="slide dark" data-slide="07 / 07">
+  <div class="stack" style="gap:26px;">
+    <div>
+      <div class="eyebrow">04 · Next steps</div>
+      <h2 class="display-md">One approval unblocks <em>everything</em> else.</h2>
+      <p class="lede" style="margin-top:16px;">The ask on this deck is strategy approval. Two platform purchases and one access request follow from it.</p>
+    </div>
+    <div class="split-58">
+      <ol class="steps">
+        <li><div class="sn">01</div><div><div class="st">Strategy approval</div><div class="sd">Sign off on the four-email structure, the consent gate and the cadence.</div></div><div class="so">TSG</div></li>
+        <li><div class="sn">02</div><div><div class="st">Sourcing tool chosen and purchased</div><div class="sd">Turns the 200 companies into named, verified contacts. Under $100 for the full list.</div></div><div class="so">TSG</div></li>
+        <li><div class="sn">03</div><div><div class="st">Sending platform and domain</div><div class="sd">Cold-email platform from $39/mo, plus a subdomain warmed for two weeks before wave 1.</div></div><div class="so">TSG</div></li>
+        <li><div class="sn">04</div><div><div class="st">HubSpot permissions</div><div class="sd">media@noetic.io on portal 147248395, EU instance, for build and reporting on the consented flow.</div></div><div class="so">TSG</div></li>
+      </ol>
+      <div class="open-items">
+        <div class="eyebrow">Open, and owned by TSG</div>
+        <ul>
+          <li><span><strong>Language.</strong> English, Hebrew, or split by segment. English suits the funded defense-tech names, Hebrew likely lifts reply rate with smaller local operators. This changes the copy brief.</span></li>
+          <li><span><strong>Counsel sign-off</strong> on the Email 1 consent mechanic, before any send.</span></li>
+          <li><span><strong>Product material.</strong> The production presentation or brochure, so copy is written in TSG's own language rather than ours.</span></li>
+          <li><span><strong>Proof asset</strong> for Email 2: a site walkthrough, or one customer journey.</span></li>
+          <li><span><strong>Capability overview</strong> one-pager for Email 3, built from the production chain.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="meta-line">Noetic · Email workstream · Production &amp; Lifecycle Support and Knowledge Management · August 2026</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var progress = document.getElementById('progress');
+  var updateProgress = function () {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? window.scrollY / max : 0;
+    progress.style.transform = 'scaleX(' + pct + ')';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var goTo = function (idx) {
+    var clamped = Math.max(0, Math.min(slides.length - 1, idx));
+    slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  var currentIndex = function () {
+    var y = window.scrollY + window.innerHeight / 2;
+    for (var i = 0; i < slides.length; i++) {
+      var next = slides[i + 1];
+      if (slides[i].offsetTop <= y && (!next || next.offsetTop > y)) return i;
+    }
+    return 0;
+  };
+  document.addEventListener('keydown', function (e) {
+    if (['ArrowDown', 'PageDown', ' '].indexOf(e.key) > -1) { e.preventDefault(); goTo(currentIndex() + 1); }
+    else if (['ArrowUp', 'PageUp'].indexOf(e.key) > -1) { e.preventDefault(); goTo(currentIndex() - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+  });
+})();
+</script>
+</body>
+</html>
