@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pollogen — Media Plan Overview</title>
+<style>
+  :root{
+    --ink:#1c1c1e; --muted:#6b6b70; --line:#e7e7ea; --bg:#fafafa;
+    --geneo:#2f6b5e; --geneo-soft:#eaf2f0;
+    --tri:#8a5a3b; --tri-soft:#f5ede6;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:48px 24px 72px;}
+  header.top{margin-bottom:40px;}
+  .kicker{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  h1{font-size:30px; margin:8px 0 6px; font-weight:700;}
+  .sub{color:var(--muted); font-size:16px; max-width:640px;}
+  .band{display:flex; flex-wrap:wrap; gap:16px; margin:32px 0;}
+  .stat{
+    flex:1; min-width:180px; background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:18px 20px;
+  }
+  .stat .label{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600;}
+  .stat .value{font-size:26px; font-weight:700; margin-top:4px;}
+  .stat .note{font-size:13px; color:var(--muted); margin-top:2px;}
+  .split{display:flex; gap:10px; margin-top:14px;}
+  .split .seg{border-radius:8px; padding:8px 12px; font-size:13px; font-weight:600; color:#fff;}
+  .seg.g{background:var(--geneo);}
+  .seg.t{background:var(--tri);}
+
+  h2.section{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:48px 0 16px; border-top:1px solid var(--line); padding-top:24px;}
+
+  .brand{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:24px; margin-bottom:24px; overflow:hidden;
+  }
+  .brand-head{display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:4px;}
+  .brand-name{font-size:22px; font-weight:700;}
+  .brand.geneo .brand-name{color:var(--geneo);}
+  .brand.tri .brand-name{color:var(--tri);}
+  .brand-budget{font-size:15px; font-weight:600; color:var(--muted);}
+  .brand-tag{font-size:14px; color:var(--muted); margin-bottom:18px;}
+
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:6px;}
+  th{text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--muted); font-weight:600; padding:8px 10px; border-bottom:1px solid var(--line);}
+  td{padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block; font-size:12px; font-weight:600; padding:2px 9px; border-radius:20px;}
+  .geneo .pill{background:var(--geneo-soft); color:var(--geneo);}
+  .tri .pill{background:var(--tri-soft); color:var(--tri);}
+  .num{font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:600;}
+  .foot td{font-weight:700; border-top:2px solid var(--line);}
+
+  .why{margin-top:20px; padding-top:18px; border-top:1px dashed var(--line);}
+  .why h4{margin:0 0 8px; font-size:14px; font-weight:700;}
+  .why ul{margin:0; padding-left:18px;}
+  .why li{margin-bottom:6px; font-size:14px; color:#333;}
+  .why li strong{color:var(--ink);}
+
+  .notes{background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px;}
+  .notes h4{margin:0 0 12px; font-size:15px;}
+  .notes ul{margin:0; padding-left:18px;}
+  .notes li{margin-bottom:8px; font-size:14px;}
+  footer{margin-top:40px; font-size:13px; color:var(--muted); text-align:center;}
+  @media(max-width:560px){
+    h1{font-size:24px;}
+    .stat .value{font-size:22px;}
+    table{font-size:13px;}
+    th,td{padding:7px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">Pollogen · Prepared by Noetic Creative</div>
+    <h1>Paid Media Plan</h1>
+    <p class="sub">A simple overview of where the monthly boosting budget goes across our two brands, and the thinking behind each choice. Full detail lives in the working document.</p>
+  </header>
+
+  <div class="band">
+    <div class="stat">
+      <div class="label">Total monthly budget</div>
+      <div class="value">$14,520</div>
+      <div class="note">$43,560 per quarter</div>
+    </div>
+    <div class="stat">
+      <div class="label">By brand</div>
+      <div class="split">
+        <div class="seg g">Geneo · $7,800</div>
+        <div class="seg t">TriPollar · $6,720</div>
+      </div>
+      <div class="note" style="margin-top:10px;">Two independent brands, run separately.</div>
+    </div>
+    <div class="stat">
+      <div class="label">Channels</div>
+      <div class="value" style="font-size:18px;">Meta + TikTok</div>
+      <div class="note">Boosting starts once organic demand is building.</div>
+    </div>
+  </div>
+
+  <!-- GENEO -->
+  <h2 class="section">The plan by brand</h2>
+
+  <div class="brand geneo">
+    <div class="brand-head">
+      <div class="brand-name">Geneo Global</div>
+      <div class="brand-budget">$7,800 / month</div>
+    </div>
+    <div class="brand-tag">Professional aesthetics. B2B-leaning (clinics and estheticians) with a consumer layer that pulls demand through to clinics.</div>
+
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Goal</th><th>Audience</th><th>Markets</th><th class="num">Monthly</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="pill">Meta</span></td><td>Engagement</td><td>B2B — Clinics &amp; Estheticians</td><td>UK, Germany, Australia, NZ</td><td class="num">$2,760</td></tr>
+        <tr><td><span class="pill">Meta</span></td><td>Engagement</td><td>B2C — Patients &amp; Consumers</td><td>UK, Germany, Australia, NZ</td><td class="num">$1,320</td></tr>
+        <tr><td><span class="pill">Meta</span></td><td>Engagement</td><td>B2C — Patients &amp; Consumers</td><td>US</td><td class="num">$1,320</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Video Views</td><td>B2C — Patients &amp; Consumers</td><td>UK, Germany, Australia, NZ</td><td class="num">$600</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Video Views</td><td>B2C — Patients &amp; Consumers</td><td>US</td><td class="num">$600</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Community</td><td>B2C — Patients &amp; Consumers</td><td>UK, Germany, Australia, NZ</td><td class="num">$600</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Community</td><td>B2C — Patients &amp; Consumers</td><td>US</td><td class="num">$600</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="foot"><td colspan="4">Geneo total</td><td class="num">$7,800</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="why">
+      <h4>Why this shape</h4>
+      <ul>
+        <li><strong>English-speaking markets first.</strong> Geneo distribution is available across the UK, Germany, Australia, New Zealand, and the US. Other markets value content in their local language, so we suggest focusing the budget on the English-speaking countries where one set of content works well for everyone.</li>
+        <li><strong>Meta leans B2B outside the US.</strong> The big US competitors focus their clinic advertising in the US, so B2B is more open and winnable in the other markets.</li>
+        <li><strong>The US stays 100% B2C.</strong> Competitors speak mostly to clinics there, leaving the consumer lane wide open at a lower cost. Consumer demand then pulls through to clinics.</li>
+        <li><strong>Two TikTok campaigns</strong> because the account is new: one to grow followers, one for lower-cost engagement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TRIPOLLAR -->
+  <div class="brand tri">
+    <div class="brand-head">
+      <div class="brand-name">TriPollar</div>
+      <div class="brand-budget">$6,720 / month</div>
+    </div>
+    <div class="brand-tag">Premium home-use device. One consumer audience across markets, restarting after a dormant period.</div>
+
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Goal</th><th>Audience</th><th>Markets</th><th class="num">Monthly</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="pill">Meta</span></td><td>Engagement</td><td>B2C — Premium at-home beauty</td><td>UK</td><td class="num">$1,200</td></tr>
+        <tr><td><span class="pill">Meta</span></td><td>Engagement</td><td>B2C — Premium at-home beauty</td><td>US</td><td class="num">$1,200</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Video Views</td><td>B2C — Premium at-home beauty</td><td>UK</td><td class="num">$1,080</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Video Views</td><td>B2C — Premium at-home beauty</td><td>US</td><td class="num">$1,080</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Community</td><td>B2C — Premium at-home beauty</td><td>UK</td><td class="num">$1,080</td></tr>
+        <tr><td><span class="pill">TikTok</span></td><td>Community</td><td>B2C — Premium at-home beauty</td><td>US</td><td class="num">$1,080</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="foot"><td colspan="4">TriPollar total</td><td class="num">$6,720</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="why">
+      <h4>Why this shape</h4>
+      <ul>
+        <li><strong>English-speaking markets, UK and US.</strong> One set of content works well across both. Other markets value content in their local language, so we suggest focusing the budget on the English-speaking countries, with the US as the growth priority thanks to an active main distributor there.</li>
+        <li><strong>Premium targeting.</strong> As a higher-priced device, we filter for high spending power and, in the US, top-income areas. UK premium targeting relies on prestige-brand interests and price self-selection.</li>
+        <li><strong>Audience age 25 to 49</strong> — established enough to invest in a premium device, without reading too old for the brand.</li>
+        <li><strong>Two TikTok campaigns</strong> because the account is new: one to grow followers, one for lower-cost engagement. TikTok's B2C focus aligns closely with TriPollar, so it carries the larger share of the budget.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <h2 class="section">Good to know</h2>
+  <div class="notes">
+    <h4>How the numbers were set</h4>
+    <ul>
+      <li>Budgets are built on real results from a comparable Lumenis-family brand with a similar target, so the spend levels and channel splits are proven, not guesses.</li>
+      <li><strong>Meta carries the majority</strong> for best cost-per-engagement and reach; TikTok takes a healthy but smaller share.</li>
+      <li><strong>Geneo consumer budget starts even</strong> across English markets and the US. Once we see which converts better, we shift budget toward it.</li>
+      <li><strong>Everything is a starting point.</strong> We watch performance in the first weeks and scale what works before increasing spend.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Pollogen Paid Media Plan · Noetic Creative · Figures are monthly unless noted.
+  </footer>
+
+</div>
+</body>
+</html>
