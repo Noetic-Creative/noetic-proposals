@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opmed · After Nurture · Noetic</title>
+<meta name="description" content="Opmed · After Nurture, v1.1, prepared by Noetic Creative.">
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --mint: #00D4B4;
+  --coral: #FF6B6B;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+::selection { background: var(--purple); color: white; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.slide {
+  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: 6vh 8vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+.slide.dark { background: var(--ink); color: rgba(255,255,255,0.85); }
+.slide.cool { background: var(--paper-cool); }
+.slide.warm { background: var(--paper-warm); }
+
+.slide::after {
+  content: attr(data-slide);
+  position: absolute;
+  bottom: 24px; right: 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+.slide.dark::after { color: rgba(255,255,255,0.4); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark h4 { color: white; }
+
+.display-xl { font-size: clamp(44px, 7.5vw, 108px); line-height: 0.95; letter-spacing: -0.035em; }
+.display-lg { font-size: clamp(34px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em; }
+.display-md { font-size: clamp(26px, 3.6vw, 50px); line-height: 1.08; }
+.display-sm { font-size: clamp(20px, 2.4vw, 32px); line-height: 1.15; }
+
+em { font-style: italic; font-weight: 400; }
+.slide.dark em { color: var(--purple); }
+em.mint { color: var(--mint); font-style: italic; }
+
+.lede { font-size: clamp(16px, 1.3vw, 19px); max-width: 62ch; line-height: 1.55; color: var(--ink-soft); }
+.lede-lg { font-size: clamp(20px, 1.8vw, 25px); max-width: 42ch; line-height: 1.4; color: var(--ink); }
+.slide.dark .lede, .slide.dark .lede-lg { color: rgba(255,255,255,0.8); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; }
+.slide.dark .eyebrow { color: rgba(255,255,255,0.6); }
+
+.meta-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.slide.dark .meta-line { color: rgba(255,255,255,0.5); }
+
+.brand-mark {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 700; font-size: 16px; color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 6vh;
+}
+.brand-mark img { height: 28px; width: auto; }
+.slide.dark .brand-mark { color: white; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 26px;
+}
+.card h4 { font-size: 20px; margin-top: 6px; }
+.card p { font-size: 14.5px; margin-top: 10px; color: var(--ink-soft); }
+.emoji-icon { font-size: 1.8em; display: block; margin-bottom: 8px; line-height: 1; }
+
+/* tier / exit cards */
+.tier-card { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 22px; }
+.tier-card .meta-line { margin-bottom: 4px; color: var(--purple); }
+.tier-card h4 { font-size: 19px; margin: 4px 0 8px; }
+.tier-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
+.tier-card .tier-arrow { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* forecast table */
+.noe-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+.noe-table th { text-align: left; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); padding: 0 16px 10px 0; border-bottom: 1px solid var(--rule-strong); }
+.noe-table td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.noe-table td.num { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--ink); }
+.noe-table tr.total td { font-weight: 700; border-bottom: none; padding-top: 16px; }
+
+/* dependency / process list */
+ol.dep-list { list-style: none; counter-reset: step; max-width: 780px; margin-top: 24px; }
+ol.dep-list li { padding: 16px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: baseline; }
+ol.dep-list li:last-child { border-bottom: none; }
+ol.dep-list .step-num { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--purple); }
+ol.dep-list .step-title { font-weight: 700; font-size: 16px; color: var(--ink); display: block; }
+ol.dep-list .step-body { font-size: 14px; color: var(--ink-mute); margin-top: 4px; display: block; }
+
+/* spec rows for email detail slides */
+.spec-row { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.spec-row:last-child { border-bottom: none; }
+.spec-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+.spec-value { font-size: 15px; color: var(--ink-soft); }
+.spec-value .subject { display: block; margin-bottom: 2px; }
+
+/* flag box */
+.flag-box { border-left: 3px solid var(--coral); background: rgba(255,107,107,0.06); border-radius: 4px; padding: 14px 18px; margin-top: 18px; }
+.flag-box .flag-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); font-weight: 600; }
+.flag-box p { font-size: 14px; margin-top: 6px; color: var(--ink-soft); line-height: 1.5; }
+
+.note-box { border-left: 3px solid var(--purple); background: var(--purple-soft); border-radius: 4px; padding: 14px 18px; margin-top: 18px; }
+.note-box .note-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-deep); font-weight: 600; }
+.note-box p { font-size: 14px; margin-top: 6px; color: var(--ink-soft); line-height: 1.5; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px;
+  font-weight: 600; font-size: 14px;
+  background: var(--purple); color: white;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+.btn:hover { background: var(--purple-deep); }
+.btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.slide.dark .btn:focus-visible { outline-color: white; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+.slide.dark .btn-ghost { color: white; border-color: rgba(255,255,255,0.3); }
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--purple); transform-origin: left; transform: scaleX(0);
+  z-index: 1000; transition: transform 100ms linear;
+}
+
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  html { scroll-snap-type: none; }
+  .slide { height: auto; min-height: 100vh; page-break-after: always; }
+  .progress-bar { display: none; }
+}
+
+.blob-bg { position: relative; }
+.blob-bg::before, .blob-bg::after { content: ''; position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+.blob-bg::before { width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(0,212,180,0.35) 0%, transparent 70%); bottom: -10%; left: -8%; }
+.blob-bg::after { width: 32vw; height: 32vw; background: radial-gradient(circle, rgba(108,92,231,0.28) 0%, transparent 70%); top: -8%; right: 4%; }
+.blob-bg > * { position: relative; z-index: 1; }
+
+@media (max-width: 900px) {
+  .two-col, .three-col, .four-col { grid-template-columns: 1fr; }
+  .spec-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<div class="progress-bar" id="progress"></div>
+
+<!-- 01 - COVER -->
+<section class="slide" data-slide="01 / 12">
+  <div class="brand-mark">
+    <img src="assets/logo-purple.svg" alt="Noetic">
+    <span>NOETIC CREATIVE</span>
+  </div>
+  <p class="meta-line">September 2026 · v1.1 · Strategy presentation</p>
+  <h1 class="display-xl" style="margin-top: 16px;">Opmed<br><em>After Nurture</em></h1>
+  <p class="lede-lg" style="margin-top: 28px;">What happens when a nurture flow ends and nobody has booked a demo.</p>
+  <p class="meta-line" style="margin-top: 6vh;">Forecast model, figures projected from current flow behaviour · revised 2 Sept working session</p>
+</section>
+
+<!-- 02 - THE GOAL -->
+<section class="slide blob-bg" data-slide="02 / 12">
+  <span class="eyebrow">THE GOAL</span>
+  <h2 class="display-lg">Every exit is <em>a next step</em>.</h2>
+  <p class="lede" style="margin-top: 28px;">Two goals, in order. First, every contact leaving Nurture A or B lands in one of two paths instead of stopping cold. Second, the program produces the engagement data Opmed does not have yet, so next quarter gets planned on measurement, not on estimate.</p>
+  <p class="meta-line" style="margin-top: 5vh;">A routing decision and a measurement layer, built at the same time.</p>
+</section>
+
+<!-- 03 - THE FIX (moved ahead of the tier detail, per the two-path decision) -->
+<section class="slide" data-slide="03 / 12">
+  <span class="eyebrow">THE DECISION</span>
+  <h2 class="display-lg">Two paths. <em>Clicks</em> decide, not opens.</h2>
+  <div class="two-col" style="margin-top: 48px;">
+    <div class="card">
+      <span class="emoji-icon">🤝</span>
+      <h4>Engaged goes to a human</h4>
+      <p>A click on a demo CTA, two clicks across the flow, or a second form submission. These contacts get a rep, not another email.</p>
+    </div>
+    <div class="card">
+      <span class="emoji-icon">🔄</span>
+      <h4>Quiet goes to a reset</h4>
+      <p>No clicks means the message is not landing. A short three email flow asks a different question instead of repeating the same one.</p>
+    </div>
+  </div>
+  <p class="meta-line" style="margin-top: 40px;">Clicks and form submissions only. Opens stay out of the rule until deliverability supports them.</p>
+</section>
+
+<!-- 04 - THE RULE (classification explained before the forecast numbers) -->
+<section class="slide cool" data-slide="04 / 12">
+  <span class="eyebrow">THE RULE</span>
+  <h2 class="display-lg">Four exits. <em>Every</em> contact lands in one.</h2>
+  <div class="four-col" style="margin-top: 40px;">
+    <div class="tier-card">
+      <span class="emoji-icon">⭐</span>
+      <p class="meta-line">TIER 1</p>
+      <h4>Sales Ready</h4>
+      <p>Clicked a demo CTA, or clicked twice across the flow, or submitted a second form.</p>
+      <div class="tier-arrow">→ Hand to rep</div>
+    </div>
+    <div class="tier-card">
+      <span class="emoji-icon">🌤️</span>
+      <p class="meta-line">TIER 2</p>
+      <h4>Warm</h4>
+      <p>Exactly one click, and not on a demo CTA. Interested, but not asking.</p>
+      <div class="tier-arrow">→ Rep if capacity, else reset</div>
+    </div>
+    <div class="tier-card">
+      <span class="emoji-icon">💤</span>
+      <p class="meta-line">TIER 3</p>
+      <h4>Passive</h4>
+      <p>Opens recorded across the flow, but no click anywhere.</p>
+      <div class="tier-arrow">→ Re-engagement flow</div>
+    </div>
+    <div class="tier-card">
+      <span class="emoji-icon">🗄️</span>
+      <p class="meta-line">TIER 4</p>
+      <h4>Dormant</h4>
+      <p>No engagement recorded at any point in the sequence.</p>
+      <div class="tier-arrow">→ Suppress, quarterly</div>
+    </div>
+  </div>
+  <div class="note-box" style="max-width: 900px;">
+    <p class="note-label">Decided on the call</p>
+    <p>Tier 1 and Tier 2 do not get their own email track. Their message carries a sales rep's name and reply-to, so it reads as SQL-ready. That is email-level personalization only, not a Salesforce status change. The actual SQL handoff still runs through the lead-score-based process Daniela's team already built with Salesforce, and this sits alongside it, not in place of it.</p>
+  </div>
+  <p class="meta-line" style="margin-top: 24px;">Any hard bounce or unsubscribe exits the program entirely, at any point.</p>
+</section>
+
+<!-- 05 - THE FORECAST -->
+<section class="slide" data-slide="05 / 12">
+  <span class="eyebrow">THE FORECAST</span>
+  <h2 class="display-lg">What the next quarter puts through <em>the exit</em>.</h2>
+  <table class="noe-table">
+    <thead>
+      <tr><th>Exit tier</th><th>Share</th><th>Contacts / quarter</th><th>Next step</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">Tier 1 · Sales Ready</td><td>2 to 3%</td><td>15 to 30</td><td>Rep, within SLA</td></tr>
+      <tr><td class="num">Tier 2 · Warm</td><td>3 to 4%</td><td>20 to 40</td><td>Rep if capacity</td></tr>
+      <tr><td class="num">Tier 3 · Passive</td><td>20 to 25%</td><td>110 to 260</td><td>Re-engagement</td></tr>
+      <tr><td class="num">Tier 4 · Dormant</td><td>70 to 75%</td><td>400 to 820</td><td>Suppress, quarterly</td></tr>
+      <tr class="total"><td>Reaching flow exit</td><td></td><td>545 to 1,150</td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="meta-line" style="margin-top: 28px;">Built from 152 contacts entering Nurture A and B in the week to 26 August · 56% flow completion observed in Nurture A · per-email click rates of 1 to 3.2% · range reflects inflow holding at current rate versus halving after the webinar push.</p>
+  <div class="flag-box" style="max-width: 900px;">
+    <p class="flag-label">Confirm before client share</p>
+    <p>The forecast window runs to 26 August 2026. The exact start date behind "since July" has not been pinned down. Add the confirmed start date here before this leaves internal review.</p>
+  </div>
+</section>
+
+<!-- 06 - RE-ENGAGEMENT, TIER 3 -->
+<section class="slide warm" data-slide="06 / 12">
+  <span class="eyebrow">RE-ENGAGEMENT, TIER 3 ONLY</span>
+  <h2 class="display-lg">Three emails. <em>One question</em>, asked once.</h2>
+  <p class="lede" style="margin-top: 24px;">This is not more nurture. It is a permission and timing reset for Tier 3 contacts specifically, people who opened something in the flow but never clicked. It starts 30 days after the nurture exit so the contact gets a genuine gap, and it runs 60 days from first email to last.</p>
+  <ol class="dep-list" style="margin-top: 8px; max-width: 640px;">
+    <li><span class="step-num">01.</span><span><span class="step-title">Still the right time?</span><span class="step-body">Day 30, captures a timing signal</span></span></li>
+    <li><span class="step-num">02.</span><span><span class="step-title">One proof point</span><span class="step-body">Day 60, strongest single asset</span></span></li>
+    <li><span class="step-num">03.</span><span><span class="step-title">Permission close</span><span class="step-body">Day 90, a clean yes or no</span></span></li>
+  </ol>
+  <div class="note-box" style="max-width: 900px;">
+    <p class="note-label">Decided on the call</p>
+    <p>Three emails, not the fuller version with a separate message per nurture email someone opened. That fits inside the client's cap of up to 4 marketing emails a month, and it folds into the Warm Lead Score nurture cadence rather than shipping as a standalone flow. The per-opened-email variant is a real idea, saved for a later phase once volume justifies it.</p>
+  </div>
+  <p class="meta-line" style="margin-top: 20px;">Each delay carries a delay-status branch, so late joiners exit rather than receive a stale email.</p>
+</section>
+
+<!-- 07 - EMAIL 01 -->
+<section class="slide" data-slide="07 / 12">
+  <span class="eyebrow">EMAIL 01 · DAY 30</span>
+  <h2 class="display-md">Still the right time?</h2>
+  <div style="margin-top: 32px; max-width: 760px;">
+    <div class="spec-row"><span class="spec-label">Purpose</span><span class="spec-value">Restart the conversation and capture a timing signal. Not a sell. Also the cheapest way to start populating the intent data the account is missing.</span></div>
+    <div class="spec-row"><span class="spec-label">Content</span><span class="spec-value">Plain text from Eva. Two sentences of context, then one question with three buttons. Each button writes a contact property, so the answer becomes data that can be routed and forecast on.</span></div>
+    <div class="spec-row"><span class="spec-label">Subject lines</span><span class="spec-value"><span class="subject">Still the right time?</span><span class="subject">Quick one, {{ first_name }}</span><span class="subject">Should we keep you posted?</span></span></div>
+    <div class="spec-row"><span class="spec-label">Tone</span><span class="spec-value">Human and short. No design, no header image. Reads like a note from a person, not a campaign.</span></div>
+    <div class="spec-row"><span class="spec-label">CTA</span><span class="spec-value">Three buttons: Keep me posted / Check back in 6 months / Not relevant.</span></div>
+  </div>
+</section>
+
+<!-- 08 - EMAIL 02 -->
+<section class="slide" data-slide="08 / 12">
+  <span class="eyebrow">EMAIL 02 · DAY 60</span>
+  <h2 class="display-md">One proof point.</h2>
+  <div style="margin-top: 32px; max-width: 760px;">
+    <div class="spec-row"><span class="spec-label">Purpose</span><span class="spec-value">Give one strong reason to look again. Single asset, single ask.</span></div>
+    <div class="spec-row"><span class="spec-label">Content</span><span class="spec-value">The Geisinger case, proposed as the strongest performer in Nurture A. Lead with the outcome number, not the narrative. One link, nothing competing.</span></div>
+    <div class="spec-row"><span class="spec-label">Subject lines</span><span class="spec-value"><span class="subject">How Geisinger changed the way they schedule</span><span class="subject">[X]% fewer overruns. Here is how.</span><span class="subject">One hospital, one change, one number</span></span></div>
+    <div class="spec-row"><span class="spec-label">Tone</span><span class="spec-value">Evidence led. No adjectives. The number carries it.</span></div>
+    <div class="spec-row"><span class="spec-label">CTA</span><span class="spec-value">Read the case. No demo ask at this stage.</span></div>
+  </div>
+  <div class="flag-box" style="max-width: 760px;">
+    <p class="flag-label">Unverified, do not build on this number yet</p>
+    <p>The 7 August 2026 platform audit shows the Geisinger email (Nurture A, Day 10) at zero delivered at that point, not the strongest performer. Pull the live open rate again immediately before copy is finalized, and confirm it actually has volume behind it before it anchors this email.</p>
+  </div>
+</section>
+
+<!-- 09 - EMAIL 03 -->
+<section class="slide" data-slide="09 / 12">
+  <span class="eyebrow">EMAIL 03 · DAY 90</span>
+  <h2 class="display-md">Permission close.</h2>
+  <div style="margin-top: 32px; max-width: 760px;">
+    <div class="spec-row"><span class="spec-label">Purpose</span><span class="spec-value">Force a decision and protect the sending domain. A clean no is worth more than silence, and it frees marketing contact headroom.</span></div>
+    <div class="spec-row"><span class="spec-label">Content</span><span class="spec-value">Three sentences. We have not heard back. We will stop emailing. Unless you would rather hear from us quarterly.</span></div>
+    <div class="spec-row"><span class="spec-label">Subject lines</span><span class="spec-value"><span class="subject">Should we stop?</span><span class="subject">Last one from us</span><span class="subject">Closing the loop</span></span></div>
+    <div class="spec-row"><span class="spec-label">Tone</span><span class="spec-value">Direct and unbothered. No guilt, no false urgency.</span></div>
+    <div class="spec-row"><span class="spec-label">CTA</span><span class="spec-value">Stay on the quarterly list. Non responders are suppressed automatically.</span></div>
+  </div>
+</section>
+
+<!-- 10 - THE HANDOFF -->
+<section class="slide dark" data-slide="10 / 12">
+  <span class="eyebrow">THE HANDOFF</span>
+  <h2 class="display-lg">One rule: <em>a click</em> creates a task.</h2>
+  <div class="two-col" style="margin-top: 44px;">
+    <div class="card">
+      <span class="emoji-icon">💬</span>
+      <h4>Notify through HubSpot, task in Salesforce</h4>
+      <p>When a Tier 1 contact acts, HubSpot sends a notification that opens a call task in Salesforce, so the moment is not lost. The exact mechanism, a native workflow action versus a Slack relay, still needs a technical check. Slack is the fallback path either way, since it sidesteps the seat gap on the two largest Salesforce-synced contact owners, who hold no HubSpot seat at all.</p>
+    </div>
+    <div class="card">
+      <span class="emoji-icon">⏱️</span>
+      <h4>Put a clock on it</h4>
+      <p>Alert to rep touch within 24 business hours. If Lead Status has not moved in three days, the contact drops automatically into Tier 2 treatment. At 15 to 30 Tier 1 contacts a quarter, every one of them can be worked personally.</p>
+    </div>
+  </div>
+  <div class="note-box" style="max-width: 900px; background: rgba(108,92,231,0.15);">
+    <p class="note-label" style="color: #C9C2FF;">Raised on the call, not yet a decision</p>
+    <p style="color: rgba(255,255,255,0.85);">Filter the Tier 3 and Tier 4 lists by existing lead score before any send, and route anyone who takes an after-nurture action straight to a rep with that score attached. Worth doing, needs a yes before it ships.</p>
+  </div>
+</section>
+
+<!-- 11 - DEPENDENCIES -->
+<section class="slide" data-slide="11 / 12">
+  <span class="eyebrow">DEPENDENCIES</span>
+  <h2 class="display-lg">Four things to switch on first.</h2>
+  <ol class="dep-list">
+    <li><span class="step-num">01.</span><span><span class="step-title">Lead Status in active use</span><span class="step-body">Unverified as of the last platform audit. The property was 99.9% blank and the alert built on it had zero enrolments. Confirm current status before treating this as resolved.</span></span></li>
+    <li><span class="step-num">02.</span><span><span class="step-title">Salesforce Activity Sync</span><span class="step-body">A toggle inside the existing integration, no new access required.</span></span></li>
+    <li><span class="step-num">03.</span><span><span class="step-title">Hard bounce under 1%</span><span class="step-body">Currently 2.6%, and required before any re-engagement send goes out.</span></span></li>
+    <li><span class="step-num">04.</span><span><span class="step-title">Tracking script on the form pages</span><span class="step-body">Unlocks page intent and makes "visited pricing" a usable signal.</span></span></li>
+  </ol>
+  <p class="meta-line" style="margin-top: 28px;">NC | Re-Engagement Workflow | 4/2026 already exists in the portal, switched off. We confirm before building.</p>
+</section>
+
+<!-- 12 - HOW WE MEASURE / CTA -->
+<section class="slide dark" data-slide="12 / 12">
+  <span class="eyebrow">HOW WE MEASURE</span>
+  <h1 class="display-xl">Replace every range<br>with <em>a number</em>.</h1>
+  <p class="lede" style="margin-top: 28px;">The forecast on slide 5 is the target to disprove. Ninety days after launch, every range in it should read as a measured figure, and the quarter after that gets planned on Opmed's own data.</p>
+  <div class="two-col" style="margin-top: 40px; max-width: 900px;">
+    <div class="card">
+      <p class="meta-line">METRIC 01</p>
+      <h4>Rep response inside SLA</h4>
+      <p>Share of Tier 1 contacts touched by a rep inside 24 business hours.</p>
+    </div>
+    <div class="card">
+      <p class="meta-line">METRIC 02</p>
+      <h4>Tier 1 to Meeting Booked</h4>
+      <p>Tracked for shared visibility, not held as a Noetic KPI. Noetic's mandate ends at a qualified handoff; what happens after that depends on rep speed and sales process, outside marketing's control.</p>
+    </div>
+  </div>
+  <div style="margin-top: 48px; display: flex; gap: 16px;">
+    <a class="btn" href="https://noetic.io">Approve and we build →</a>
+    <a class="btn btn-ghost" href="https://noetic.io">noetic.io</a>
+  </div>
+  <p class="meta-line" style="margin-top: 6vh;">© Noetic Creative · September 2026 · v1.1</p>
+</section>
+
+<script>
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? window.scrollY / max : 0;
+    progress.style.transform = `scaleX(${pct})`;
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const goTo = (idx) => {
+    const clamped = Math.max(0, Math.min(slides.length - 1, idx));
+    slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const currentIndex = () => {
+    const y = window.scrollY + window.innerHeight / 2;
+    return slides.findIndex((el, i) => {
+      const next = slides[i + 1];
+      return el.offsetTop <= y && (!next || next.offsetTop > y);
+    });
+  };
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); goTo(currentIndex() + 1); }
+    else if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); goTo(currentIndex() - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+  });
+</script>
+</body>
+</html>
