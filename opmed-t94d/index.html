@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opmed, After Nurture, Noetic</title>
+<meta name="description" content="Opmed, After Nurture, v1.2, a strategy presentation from Noetic Creative.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #F7F5F1;
+  --paper-warm: #F1ECE3;
+  --ink: #14131A;
+  --ink-soft: #3A3844;
+  --ink-mute: #7A7787;
+  --ink-faint: #B0ACBC;
+  --purple: #6C5CE7;
+  --purple-deep: #4630B8;
+  --purple-tint: #EEEBFB;
+  --mint: #00A88F;
+  --line: #E1DCEC;
+  --line-strong: #CFC8E3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.slide {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: 7vh 9vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+.slide.dark { background: var(--ink); color: rgba(255,255,255,0.86); }
+.slide.warm { background: var(--paper-warm); }
+
+.slide::after {
+  content: attr(data-slide);
+  position: absolute;
+  bottom: 22px; right: 30px;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.slide.dark::after { color: rgba(255,255,255,0.35); }
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', 'Times New Roman', serif;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark h4 { color: white; }
+
+.display-xl { font-size: clamp(42px, 6.8vw, 96px); line-height: 0.98; letter-spacing: -0.03em; font-weight: 500; }
+.display-lg { font-size: clamp(32px, 4.6vw, 62px); font-weight: 500; }
+.display-md { font-size: clamp(25px, 3.2vw, 42px); font-weight: 500; }
+
+.lede { font-size: clamp(16px, 1.25vw, 19px); max-width: 58ch; line-height: 1.6; color: var(--ink-soft); }
+.slide.dark .lede { color: rgba(255,255,255,0.78); }
+
+.label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple-deep);
+  margin-bottom: 16px;
+  display: block;
+}
+.slide.dark .label { color: #B9AEF7; }
+
+.fine {
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+.slide.dark .fine { color: rgba(255,255,255,0.5); }
+
+code {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  background: var(--purple-tint);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--purple-deep);
+}
+
+.blob-bg { position: relative; }
+.blob-bg::before, .blob-bg::after { content: ''; position: absolute; border-radius: 50%; filter: blur(95px); pointer-events: none; z-index: 0; }
+.blob-bg::before { width: 42vw; height: 42vw; background: radial-gradient(circle, rgba(0,168,143,0.32) 0%, transparent 70%); bottom: -12%; left: -10%; }
+.blob-bg::after { width: 34vw; height: 34vw; background: radial-gradient(circle, rgba(108,92,231,0.3) 0%, transparent 70%); top: -10%; right: 2%; }
+.blob-bg > * { position: relative; z-index: 1; }
+
+/* split layout, two ideas divided by a rule, not a card grid */
+.split { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 6vw; align-items: start; margin-top: 6vh; }
+.split .rule { background: var(--line-strong); }
+.split-item h4 { font-size: 22px; margin-bottom: 10px; }
+.split-item p { font-size: 15px; line-height: 1.55; }
+.split .tag { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--mint); margin-bottom: 10px; }
+.split .tag.reset { color: var(--ink-mute); }
+
+/* the ladder: four stops of declining weight, a real timeline not a card kit */
+.ladder { margin-top: 6vh; position: relative; }
+.ladder::before { content: ''; position: absolute; top: 11px; left: 0; right: 0; height: 1px; background: var(--line-strong); }
+.ladder-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+.stop { position: relative; }
+.stop-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--purple); margin-bottom: 18px; position: relative; z-index: 1; }
+.stop.t2 .stop-dot { background: #9C8EF0; width: 10px; height: 10px; }
+.stop.t3 .stop-dot { background: var(--ink-faint); width: 8px; height: 8px; }
+.stop.t4 .stop-dot { background: transparent; border: 1.5px solid var(--ink-faint); width: 8px; height: 8px; }
+.stop h4 { font-family: 'Fraunces', serif; font-weight: 500; }
+.stop.t1 h4 { font-size: 26px; }
+.stop.t2 h4 { font-size: 22px; color: var(--ink-soft); }
+.stop.t3 h4 { font-size: 19px; color: var(--ink-mute); font-weight: 400; }
+.stop.t4 h4 { font-size: 17px; color: var(--ink-faint); font-weight: 400; }
+.stop p.crit { font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.45; max-width: 22ch; }
+.stop .next { display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 3px; }
+.stop.t1 .next, .stop.t2 .next { background: var(--purple-tint); color: var(--purple-deep); }
+.stop.t3 .next, .stop.t4 .next { background: transparent; color: var(--ink-mute); border: 1px solid var(--line); }
+
+/* forecast: one hero number, then a plain list, not a grid of stat cards */
+.hero-number { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; color: var(--ink); margin: 3vh 0 1vh; }
+.slide.dark .hero-number { color: white; }
+.plain-list { margin-top: 4vh; max-width: 640px; }
+.plain-row { display: grid; grid-template-columns: 1fr auto auto; gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.plain-row:last-child { border-bottom: none; }
+.plain-row .name { font-weight: 600; color: var(--ink); }
+.plain-row .share { color: var(--ink-mute); font-size: 14.5px; }
+.plain-row .count { font-family: 'Fraunces', serif; font-size: 19px; color: var(--ink); }
+.slide.dark .plain-row { border-color: rgba(255,255,255,0.14); }
+.slide.dark .plain-row .name { color: white; }
+.slide.dark .plain-row .share, .slide.dark .plain-row .count { color: rgba(255,255,255,0.75); }
+
+/* spec sheet for the individual emails, a reference table, not decoration */
+.spec { margin-top: 5vh; max-width: 700px; }
+.spec-row { display: grid; grid-template-columns: 140px 1fr; gap: 22px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.spec-row:last-child { border-bottom: none; }
+.spec-key { font-size: 13.5px; font-weight: 700; color: var(--ink-mute); }
+.spec-val { font-size: 15px; color: var(--ink-soft); }
+.spec-val .subj { display: block; margin-bottom: 3px; }
+
+.cadence { display: flex; gap: 40px; margin: 5vh 0 1vh; flex-wrap: wrap; }
+.cadence-item { max-width: 220px; }
+.cadence-item .day { font-family: 'Fraunces', serif; font-size: 15px; color: var(--purple-deep); font-weight: 500; }
+.cadence-item h4 { font-size: 18px; margin-top: 4px; }
+.cadence-item p { font-size: 13px; color: var(--ink-mute); margin-top: 4px; }
+
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .split .rule { display: none; }
+  .ladder-row { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+  .ladder::before { display: none; }
+  .cadence { gap: 24px; }
+}
+
+/* co-brand lockup, Noetic first because Noetic authored this */
+.corner-lockup {
+  position: absolute; top: 34px; right: 38px; z-index: 5;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.corner-lockup .noetic-logo { height: 24px; width: auto; color: var(--purple); fill: currentColor; flex: 0 0 auto; }
+.corner-lockup .opmed-logo  { height: 26px; width: auto; color: #041932;       fill: currentColor; flex: 0 0 auto; }
+.corner-lockup .lockup-rule { width: 1px; height: 22px; background: var(--line-strong); flex: 0 0 auto; }
+.slide.dark .corner-lockup .noetic-logo,
+.slide.dark .corner-lockup .opmed-logo  { color: #FEFEFE; }
+.slide.dark .corner-lockup .lockup-rule { background: rgba(255,255,255,0.22); }
+
+@media (max-width: 900px) {
+  .corner-lockup { top: 20px; right: 22px; gap: 10px; }
+  .corner-lockup .noetic-logo { height: 17px; }
+  .corner-lockup .opmed-logo  { height: 19px; }
+  .corner-lockup .lockup-rule { height: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- brand sprite: Noetic mark + Opmed lockup, both currentColor so they invert on dark grounds -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="noetic-logo" viewBox="0 0 423.25 114.13"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></symbol>
+<symbol id="opmed-logo" viewBox="0 0 640 212.186"><g id="art">
+<path id="Vector" d="M105.76 99.68C105.18 94.82 103.94 90.16 102.12 85.79C100.41 81.68 98.2 77.83 95.56 74.32C92.67 70.48 89.26 67.04 85.45 64.12C83.6 62.7 81.65 61.4 79.62 60.23C79.56 60.2 70.79 75.5 70.79 75.5C72.81 76.66 74.69 78.01 76.43 79.53C77.71 80.65 78.92 81.86 80.03 83.16C82.9 86.5 85.15 90.38 86.6 94.63C87.15 96.23 87.59 97.89 87.91 99.59C88.28 101.57 88.48 103.62 88.5 105.71C88.52 108.13 88.29 110.51 87.84 112.8C87.51 114.49 87.05 116.15 86.48 117.75C84.98 121.97 82.69 125.83 79.79 129.14C78.66 130.43 77.44 131.63 76.15 132.74C72.8 135.6 68.92 137.85 64.66 139.3C63.05 139.85 61.4 140.29 59.7 140.6C57.71 140.97 55.66 141.17 53.57 141.19C51.14 141.21 48.76 140.99 46.46 140.54C46.28 140.5 46.11 140.46 45.93 140.43L42.26 157.66C43.61 157.95 44.98 158.18 46.37 158.36C48.77 158.68 51.22 158.83 53.72 158.81C55.71 158.79 57.67 158.66 59.6 158.43C64.47 157.85 69.14 156.61 73.51 154.8C77.63 153.09 81.49 150.88 85 148.24C88.85 145.36 92.29 141.96 95.22 138.15C97.9 134.67 100.15 130.84 101.91 126.75C103.77 122.4 105.06 117.75 105.69 112.9C106.01 110.5 106.16 108.05 106.14 105.56C106.12 103.57 105.99 101.61 105.76 99.68L105.76 99.68Z" fill="currentColor"/>
+<path id="Vector_2" d="M53.4 70.69C54.35 70.7 55.29 70.75 56.22 70.83L56.31 53.17C55.35 53.11 54.38 53.08 53.4 53.07C53.12 53.07 52.85 53.07 52.57 53.07C51.8 53.08 51.05 53.1 50.29 53.14L50.2 70.8C51.03 70.74 51.87 70.7 52.72 70.69C52.95 70.69 53.17 70.69 53.4 70.69Z" fill="currentColor"/>
+<path id="Vector_3" d="M38.53 73.72L29.75 58.36C27.58 59.41 25.48 60.6 23.49 61.93L32.27 77.3C34.21 75.91 36.31 74.7 38.53 73.72Z" fill="currentColor"/>
+<path id="Vector_4" d="M24.82 84.62L9.49 75.68C7.89 77.97 6.47 80.4 5.24 82.94L20.56 91.88C21.69 89.28 23.12 86.85 24.82 84.62L24.82 84.62Z" fill="currentColor"/>
+<path id="Vector_5" d="M17.65 106.4C17.63 104.61 17.75 102.84 18 101.11L0.24 101.02C0.07 102.84 -0.01 104.69 0 106.56C0.01 107.93 0.08 109.28 0.19 110.63L17.95 110.72C17.76 109.31 17.66 107.87 17.65 106.41V106.4Z" fill="currentColor"/>
+<path id="Vector_6" d="M20.12 118.55L4.66 127.35C6.13 130.67 7.94 133.81 10.03 136.73L25.5 127.93C23.25 125.12 21.43 121.96 20.12 118.55Z" fill="currentColor"/>
+<path id="Vector_7" d="M21.32 148.21C24.52 150.6 28 152.65 31.7 154.28L40.7 138.91C36.88 137.48 33.38 135.41 30.32 132.83L21.32 148.21V148.21Z" fill="currentColor"/>
+<path id="Vector_8" d="M175.71 53.05C146.44 53.05 122.7 76.76 122.67 106.03V212.19H140.9V106.03C140.93 86.38 156.5 70.45 175.71 70.45C194.91 70.45 210.52 86.41 210.52 106.09C210.52 125.78 194.93 141.74 175.71 141.74H157.41V159.14H175.71C205.01 159.14 228.75 135.39 228.75 106.09C228.75 76.8 205.01 53.05 175.71 53.05H175.71Z" fill="currentColor"/>
+<path id="Vector_9" d="M353.93 54.7C340.62 54.7 328.76 60.85 321.01 70.45H320.57C312.82 60.85 300.95 54.7 287.65 54.7C264.56 54.7 245.8 73.21 245.38 96.21V157.48H263.9V95.65C263.9 82.19 274.59 71.28 287.78 71.28C300.96 71.28 311.65 82.19 311.65 95.65V157.48H329.94V95.74C329.94 82.23 340.69 71.28 353.95 71.28C367.21 71.28 377.96 82.23 377.96 95.74V157.48H396.21V96.21C395.79 73.21 377.02 54.7 353.93 54.7H353.93Z" fill="currentColor"/>
+<path id="Vector_10" d="M621.7 -2.11e-06V106.15C621.67 125.81 606.1 141.74 586.89 141.74C567.69 141.74 552.08 125.78 552.08 106.09C552.08 86.41 567.67 70.45 586.89 70.45H605.13V53.05H586.89C557.6 53.05 533.85 76.8 533.85 106.09C533.85 135.39 557.6 159.14 586.89 159.14C616.19 159.14 639.91 135.42 639.94 106.15H640V-2.11e-06H621.7Z" fill="currentColor"/>
+<path id="Vector_11" d="M518.87 112.56L518.9 106.03C518.87 76.76 495.13 53.05 465.86 53.05C436.58 53.05 412.81 76.8 412.81 106.09C412.81 106.28 412.81 106.46 412.82 106.64H412.76C412.76 136.25 437.06 160.25 467.05 160.25C486.81 160.25 504.12 149.81 513.61 134.21L497.41 124.86C490.99 135 479.59 141.75 466.59 141.75C466.34 141.75 465.83 141.74 465.83 141.74C448.81 141.73 434.67 128.85 431.64 112.56H518.87ZM465.86 71.28C481.63 71.28 494.94 81.77 499.22 96.15H432.49C436.78 81.77 450.09 71.28 465.86 71.28Z" fill="currentColor"/>
+</g></symbol>
+</svg>
+
+<!-- 1 COVER -->
+<section class="slide blob-bg" data-slide="1 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <p class="fine">September 2026, v1.2, a strategy presentation from Noetic Creative</p>
+  <h1 class="display-xl" style="margin-top: 18px;">Opmed<br><em>After Nurture</em></h1>
+  <p class="lede" style="margin-top: 26px;">What happens when a nurture flow ends and nobody has booked a demo.</p>
+</section>
+
+<!-- 2 THE GOAL -->
+<section class="slide" data-slide="2 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">The goal</span>
+  <h2 class="display-lg">Every contact who leaves Nurture A or B lands somewhere on purpose.</h2>
+  <p class="lede" style="margin-top: 26px;">Right now the flows just stop. Nobody is routed, nobody is measured. This fixes both at once: a rule that sends every exiting contact down one of two paths, and a way to see, quarter over quarter, whether that rule is working.</p>
+</section>
+
+<!-- 3 THE FIX -->
+<section class="slide warm" data-slide="3 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">The decision</span>
+  <h2 class="display-lg">Two paths. What they clicked decides which one.</h2>
+  <div class="split">
+    <div class="split-item">
+      <span class="tag">Engaged</span>
+      <h4>Goes to a person</h4>
+      <p>Two clicks across the flow, or a second form submission. A real rep follows up, not another email.</p>
+    </div>
+    <div class="rule"></div>
+    <div class="split-item">
+      <span class="tag reset">Quiet</span>
+      <h4>Goes to a reset</h4>
+      <p>No clicks means the message is not landing. A short, three-email flow asks a different question instead of repeating the same one.</p>
+    </div>
+  </div>
+  <p class="fine" style="margin-top: 5vh;">Opens are not counted here. Only clicks and form submissions, until deliverability supports more.</p>
+</section>
+
+<!-- 4 THE RULE -->
+<section class="slide" data-slide="4 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">The rule</span>
+  <h2 class="display-lg">Four stops, ordered by how warm the contact still is.</h2>
+  <div class="ladder">
+    <div class="ladder-row">
+      <div class="stop t1">
+        <div class="stop-dot"></div>
+        <h4>Sales Ready</h4>
+        <p class="crit">Clicked twice across the flow, or submitted a second form.</p>
+        <span class="next">Hand to rep</span>
+      </div>
+      <div class="stop t2">
+        <div class="stop-dot"></div>
+        <h4>Warm</h4>
+        <p class="crit">Exactly one click. Interested, but not asking yet.</p>
+        <span class="next">Rep if there's room</span>
+      </div>
+      <div class="stop t3">
+        <div class="stop-dot"></div>
+        <h4>Passive</h4>
+        <p class="crit">Opened something in the flow, never clicked.</p>
+        <span class="next">Re-engagement</span>
+      </div>
+      <div class="stop t4">
+        <div class="stop-dot"></div>
+        <h4>Dormant</h4>
+        <p class="crit">No engagement recorded anywhere in the sequence.</p>
+        <span class="next">Suppress, quarterly</span>
+      </div>
+    </div>
+  </div>
+  <p class="lede" style="margin-top: 6vh; max-width: 62ch;">Sales Ready and Warm messages carry a rep's name and a real reply-to, so they read like a person is following up, because one is about to. The actual handoff still runs on lead score, the same way it does today. This is not a new process, just a clearer front door to it.</p>
+  <p class="fine" style="margin-top: 3vh;">A hard bounce or unsubscribe ends the sequence immediately, at any stop.</p>
+</section>
+
+<!-- 5 THE FORECAST -->
+<section class="slide dark" data-slide="5 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">The forecast</span>
+  <h2 class="display-lg">What a quarter of nurture exits looks like today.</h2>
+  <p class="hero-number">545<span style="font-size: 0.5em; color: var(--ink-faint);"> to 1,150</span></p>
+  <p class="lede">contacts reaching the end of Nurture A or B each quarter, based on current volume.</p>
+  <div class="plain-list">
+    <div class="plain-row"><span class="name">Sales Ready</span><span class="share">2 to 3%</span><span class="count">15 to 30</span></div>
+    <div class="plain-row"><span class="name">Warm</span><span class="share">3 to 4%</span><span class="count">20 to 40</span></div>
+    <div class="plain-row"><span class="name">Passive</span><span class="share">20 to 25%</span><span class="count">110 to 260</span></div>
+    <div class="plain-row"><span class="name">Dormant</span><span class="share">70 to 75%</span><span class="count">400 to 820</span></div>
+  </div>
+  <p class="fine" style="margin-top: 5vh; max-width: 60ch;">Based on 152 contacts entering Nurture A or B in the week of 26 August, with 56% completing Nurture A and per-email click rates of 1 to 3.2%. The range reflects inflow holding steady against inflow halving once the webinar push ends.</p>
+</section>
+
+<!-- 6 RE-ENGAGEMENT, EMAIL 1 -->
+<section class="slide" data-slide="6 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">Re-engagement, for Passive contacts</span>
+  <h2 class="display-md">Three short emails. One question, asked once.</h2>
+  <p class="lede" style="margin-top: 20px;">This is not more nurture, it is a timing reset. It starts 30 days after the exit, so the contact gets a real gap first, and it closes with a clean answer either way.</p>
+  <div class="cadence">
+    <div class="cadence-item"><span class="day">Day 30</span><h4>Still the right time?</h4><p>a timing signal</p></div>
+    <div class="cadence-item"><span class="day">Day 60</span><h4>One proof point</h4><p>the strongest asset we have</p></div>
+    <div class="cadence-item"><span class="day">Day 90</span><h4>Permission close</h4><p>a clean yes or no</p></div>
+  </div>
+  <div class="spec">
+    <div class="spec-row"><span class="spec-key">Purpose</span><span class="spec-val">Restart the conversation and learn whether timing was the real problem. Not a sell.</span></div>
+    <div class="spec-row"><span class="spec-key">Content</span><span class="spec-val">Open by naming the specific thing they actually opened, not a generic reminder. If their last touch was the email on OR schedule drift, the line says exactly that, "you looked at how OR schedules drift", pulled from whichever of the four nurture emails they engaged with. Two sentences of context in Eva's voice, then one question with three buttons.</span></div>
+    <div class="spec-row"><span class="spec-key">Subject lines</span><span class="spec-val"><span class="subj">Still the right time?</span><span class="subj">Quick one, <code>{{ first_name }}</code></span><span class="subj">Should we keep you posted?</span></span></div>
+    <div class="spec-row"><span class="spec-key">Tone</span><span class="spec-val">Human and short. No design, no header image. Reads like a note, not a campaign.</span></div>
+    <div class="spec-row"><span class="spec-key">The ask</span><span class="spec-val">Keep me posted, check back in 6 months, or not relevant. The answer becomes the timing data this account is missing.</span></div>
+  </div>
+</section>
+
+<!-- 7 EMAIL 2 -->
+<section class="slide warm" data-slide="7 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">Email 2, day 60</span>
+  <h2 class="display-md">One proof point.</h2>
+  <div class="spec">
+    <div class="spec-row"><span class="spec-key">Purpose</span><span class="spec-val">Give one strong reason to look again. A single asset, a single ask.</span></div>
+    <div class="spec-row"><span class="spec-key">Content</span><span class="spec-val">The Geisinger case, our strongest available proof point for this audience. Lead with the outcome number, not the narrative. One link, nothing else competing for attention.</span></div>
+    <div class="spec-row"><span class="spec-key">Subject lines</span><span class="spec-val"><span class="subj">How Geisinger changed the way they schedule</span><span class="subj">Fewer overruns. Here is how.</span><span class="subj">One hospital, one change, one number</span></span></div>
+    <div class="spec-row"><span class="spec-key">Tone</span><span class="spec-val">Evidence led, no adjectives. The number carries it.</span></div>
+    <div class="spec-row"><span class="spec-key">The ask</span><span class="spec-val">Read the case. No demo ask yet.</span></div>
+  </div>
+</section>
+
+<!-- 8 EMAIL 3 -->
+<section class="slide" data-slide="8 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">Email 3, day 90</span>
+  <h2 class="display-md">Permission close.</h2>
+  <div class="spec">
+    <div class="spec-row"><span class="spec-key">Purpose</span><span class="spec-val">Force a clean decision and protect the sending domain. A no is worth more than silence, and it frees up marketing contact room.</span></div>
+    <div class="spec-row"><span class="spec-key">Content</span><span class="spec-val">Three sentences. We have not heard back. We will stop emailing, unless they would rather hear from us quarterly instead.</span></div>
+    <div class="spec-row"><span class="spec-key">Subject lines</span><span class="spec-val"><span class="subj">Should we stop?</span><span class="subj">Last one from us</span><span class="subj">Closing the loop</span></span></div>
+    <div class="spec-row"><span class="spec-key">Tone</span><span class="spec-val">Direct and unbothered. No guilt, no false urgency.</span></div>
+    <div class="spec-row"><span class="spec-key">The ask</span><span class="spec-val">Stay on the quarterly list. Anyone who does not answer is suppressed automatically.</span></div>
+  </div>
+</section>
+
+<!-- 9 HANDOFF, WHAT NEEDS TO LINE UP, MEASURE -->
+<section class="slide dark" data-slide="9 / 9">
+  <div class="corner-lockup"><svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg><span class="lockup-rule" aria-hidden="true"></span><svg class="opmed-logo" viewBox="0 0 640 212.186" role="img" aria-label="Opmed"><use href="#opmed-logo"/></svg></div>
+  <span class="label">Handoff, and how we will measure it</span>
+  <h2 class="display-lg">A click creates a task, and a rep has a clock on it.</h2>
+  <p class="lede" style="margin-top: 20px;">When a Sales Ready contact clicks, HubSpot notifies the account and opens a task in Salesforce, so the moment is not lost. A rep responds inside 24 business hours; if nothing has moved after three days, the contact drops into Warm treatment automatically.</p>
+
+  <div class="plain-list" style="margin-top: 5vh;">
+    <div class="plain-row"><span class="name">Turn on Salesforce Activity Sync</span><span class="share">a toggle in the existing integration, no new cost</span><span class="count"></span></div>
+    <div class="plain-row"><span class="name">Get hard bounce under 1%</span><span class="share">currently 2.6%, before any send goes out</span><span class="count"></span></div>
+    <div class="plain-row"><span class="name">Confirm tracking on the form pages</span><span class="share">so a page visit becomes a usable signal</span><span class="count"></span></div>
+  </div>
+
+  <p class="lede" style="margin-top: 6vh;">Two things we watch from here: the share of Sales Ready contacts a rep reaches inside that 24-hour window, and the rate at which they turn into a booked meeting, tracked for visibility, not held as a Noetic number, since what happens after handoff depends on the rep, not the email.</p>
+</section>
+
+</body>
+</html>
