@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSC Sports · Brand Awareness Proposal · Noetic Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAFAF7;
+  --paper-warm: #F2F0EA;
+  --paper-cool: #F0F0F4;
+  --ink: #0A0A0E;
+  --ink-soft: #1A1A1F;
+  --ink-mute: #6B6B7B;
+  --ink-faint: #A8A8B5;
+  --card: #FFFFFF;
+  --purple: #6C5CE7;
+  --purple-deep: #4D3FC9;
+  --purple-soft: #EFEDFE;
+  --purple-glow: rgba(108, 92, 231, 0.18);
+  --mint: #00D4B4;
+  --coral: #FF6B6B;
+  --amber: #F5B400;
+  --rule: rgba(10, 10, 14, 0.08);
+  --rule-strong: rgba(10, 10, 14, 0.16);
+  --rule-inv: rgba(255, 255, 255, 0.12);
+  --max: 1240px;
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+::selection { background: var(--purple); color: white; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { background: var(--paper); color: var(--ink-soft); overflow-x: hidden; font-family: var(--font-sans); font-size: 17px; line-height: 1.55; letter-spacing: -0.005em; }
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+section { position: relative; }
+.section { padding: clamp(64px, 10vh, 130px) 0; }
+.section-tight { padding: clamp(48px, 7vh, 90px) 0; }
+/* One container for every section, so the left edge of every capsule and
+   headline lands on the same line down the whole document. */
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.section-head { margin-bottom: clamp(40px, 5vw, 64px); }
+.section-head .display-md { margin-top: 18px; max-width: 26ch; }
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+.display-xl { font-family: var(--font-display); font-size: clamp(48px, 7.5vw, 104px); font-weight: 600; line-height: 0.98; letter-spacing: -0.03em; }
+.display-lg { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 72px); font-weight: 600; line-height: 1.02; letter-spacing: -0.03em; }
+.display-md { font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px); font-weight: 600; line-height: 1.08; letter-spacing: -0.025em; }
+h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.022em; line-height: 1.05; font-weight: 700; }
+/* Fraunces has a true italic, so this is a real italic and never a faux slant.
+   On light grounds the italic carries the emphasis on its own — it is not
+   coloured. On dark grounds it takes mint. */
+em.italic, .italic { font-style: italic; font-weight: 400; }
+.services-dark .italic, .cta-section .italic { color: var(--mint); }
+.lede { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--ink-soft); font-weight: 400; max-width: 60ch; }
+.mono { font-family: var(--font-mono); }
+
+/* The section label is a capsule: a bordered pill, top-left, above the
+   headline. Never a bare letterspaced line with a coloured dot. */
+.capsule {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.16em; white-space: nowrap;
+  color: var(--purple); border: 1.5px solid var(--purple); border-radius: 999px;
+  padding: 9px 20px; width: fit-content; max-width: 100%; flex: 0 0 auto;
+}
+.services-dark .capsule, .cta-section .capsule { color: var(--mint); border-color: rgba(0, 212, 180, 0.45); }
+
+.prose p { color: var(--ink-soft); font-size: clamp(17px, 1.3vw, 18.5px); line-height: 1.65; max-width: 64ch; margin-bottom: 18px; }
+.prose p strong { color: var(--ink); font-weight: 700; }
+.prose-pull { margin: 32px 0 4px; padding: 20px 0 20px 26px; border-left: 3px solid var(--purple); font-family: var(--font-display); font-size: clamp(21px, 2vw, 27px); line-height: 1.32; color: var(--ink); font-weight: 500; letter-spacing: -0.015em; max-width: 42ch; }
+
+/* Logo lockup — Noetic first, hairline rule, then the client mark. Noetic
+   leads because Noetic authored the document. Both marks are scaled by WIDTH:
+   scaling a wide wordmark by height is what throws the pair out of balance. */
+.lockup { display: inline-flex; align-items: center; gap: 18px; }
+.lockup .noetic-logo { width: 90px; height: auto; color: #fff; fill: currentColor; flex: 0 0 auto; }
+.lockup .client-logo { width: 138px; height: auto; flex: 0 0 auto; }
+.lockup .lockup-rule { width: 1px; height: 22px; background: var(--rule-inv); flex: 0 0 auto; }
+.lockup--sm .noetic-logo { width: 74px; }
+.lockup--sm .client-logo { width: 114px; }
+.lockup--sm .lockup-rule { height: 18px; }
+
+/* Client bar */
+.client-bar { background: var(--ink); padding: 20px 0; }
+.client-bar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px 24px; }
+.client-bar-meta { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.55); }
+
+/* Hero */
+.hero { padding: clamp(60px, 9vh, 110px) 0 clamp(50px, 7vh, 90px); position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; top: -20%; right: -10%; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.14), transparent 70%); filter: blur(90px); pointer-events: none; }
+.hero::after { content: ""; position: absolute; bottom: -25%; left: -12%; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,180,0.10), transparent 70%); filter: blur(90px); pointer-events: none; }
+.hero .container { position: relative; z-index: 1; }
+.hero .capsule { margin-bottom: 24px; }
+.hero .display-xl { margin-bottom: 22px; }
+.hero .lede { margin-bottom: 8px; }
+.hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: clamp(44px, 6vw, 64px); border-top: 1px solid var(--rule); max-width: 520px; }
+.hero-stat { padding: 22px 26px 0 0; border-right: 1px solid var(--rule); }
+/* Without this the second stat sits flush against the divider hairline. */
+.hero-stat + .hero-stat { padding-left: 26px; }
+.hero-stat:last-child { border-right: none; padding-right: 0; }
+.hero-stat-num { font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 46px); font-weight: 600; letter-spacing: -0.03em; color: var(--purple); line-height: 1; margin-bottom: 8px; }
+.hero-stat-label { font-size: 12.5px; color: var(--ink-mute); font-weight: 500; line-height: 1.4; max-width: 22ch; }
+@media (max-width: 520px) {
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px 0; }
+  .hero-stat + .hero-stat { padding-left: 0; }
+  .hero-stat:last-child { border-bottom: none; }
+}
+
+/* Specification table */
+.cmp { margin-top: 44px; border: 1px solid var(--rule-strong); border-radius: 16px; overflow: hidden; background: white; }
+.cmp-row { display: grid; grid-template-columns: 1fr 1.6fr; }
+.cmp-row > div { padding: 18px 22px; border-bottom: 1px solid var(--rule); font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.cmp-row > div:not(:first-child) { border-left: 1px solid var(--rule); }
+.cmp-row:last-child > div { border-bottom: none; }
+.cmp-row.head > div { background: var(--ink); color: white; border-bottom: none; padding: 22px; }
+.cmp-row.head .t { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 8px; }
+.cmp-row.head .n { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+.cmp-row.head .p { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+.cmp-row .lab { font-weight: 700; color: var(--ink); background: var(--paper); font-size: 13.5px; }
+@media (max-width: 760px) {
+  /* Stack, but keep the header: it carries the approved scenario and the
+     media number, which are not repeated anywhere else in the table. */
+  .cmp-row, .cmp-row.head { grid-template-columns: 1fr; }
+  .cmp-row > div:not(:first-child) { border-left: none; }
+  .cmp-row.head > div + div { border-top: 1px solid rgba(255,255,255,0.14); }
+}
+
+/* Neon */
+.neon { border: 1px solid rgba(108, 92, 231, 0.75); box-shadow: 0 0 0 1px rgba(108, 92, 231, 0.18), 0 0 28px rgba(108, 92, 231, 0.28), inset 0 0 24px rgba(108, 92, 231, 0.06); }
+.services-dark { background: var(--ink); color: white; position: relative; overflow: hidden; }
+.services-dark::before { content: ""; position: absolute; top: -30%; right: -15%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.26), transparent 70%); filter: blur(100px); pointer-events: none; }
+.services-dark::after { content: ""; position: absolute; bottom: -30%; left: -15%; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,180,0.15), transparent 70%); filter: blur(100px); pointer-events: none; }
+.services-dark .container { position: relative; z-index: 1; }
+.services-dark h2 { color: white; }
+
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.svc-card { border-radius: 16px; padding: 28px 26px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; transition: background 0.3s, box-shadow 0.3s, transform 0.3s; }
+.svc-card:hover { background: rgba(108,92,231,0.08); transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(108,92,231,0.6), 0 0 34px rgba(108,92,231,0.35); }
+.svc-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--mint); margin-bottom: 14px; }
+.svc-card h4 { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: white; margin-bottom: 10px; line-height: 1.15; }
+.svc-card p { font-size: 14px; color: rgba(255,255,255,0.68); line-height: 1.55; }
+/* Seven cards in a three-up grid leave one orphan on the last row. The
+   seventh spans the full width and turns on its side, so the block closes
+   on a deliberate band instead of a gap. */
+.svc-grid > :last-child { grid-column: 1 / -1; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 8px 28px; }
+.svc-grid > :last-child .svc-tag { margin-bottom: 0; flex: 0 0 88px; }
+.svc-grid > :last-child h4 { margin-bottom: 0; flex: 0 0 auto; width: 250px; }
+.svc-grid > :last-child p { flex: 1 1 320px; }
+@media (max-width: 900px) { .svc-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc-grid > :last-child { flex-direction: column; align-items: stretch; gap: 0; }
+  .svc-grid > :last-child .svc-tag { margin-bottom: 14px; flex: 0 0 auto; }
+  .svc-grid > :last-child h4 { width: auto; margin-bottom: 10px; }
+}
+
+/* Pricing */
+.pricing-single { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; margin-top: 48px; align-items: start; }
+@media (max-width: 900px) { .pricing-single { grid-template-columns: 1fr; } }
+.pricing-card { background: white; border-radius: 16px; padding: 36px 34px; position: relative; display: flex; flex-direction: column; }
+.pricing-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--purple-deep); margin-bottom: 14px; }
+.pricing-name { font-family: var(--font-display); font-size: clamp(26px, 2.4vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 10px; color: var(--ink); }
+.pricing-tagline { font-size: 14.5px; color: var(--ink-mute); line-height: 1.5; margin-bottom: 24px; max-width: 42ch; }
+.pricing-price { font-family: var(--font-display); font-size: clamp(44px, 4.6vw, 60px); font-weight: 600; letter-spacing: -0.035em; line-height: 1; color: var(--ink); }
+.pricing-price span { font-family: var(--font-sans); font-size: 17px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink-mute); }
+.pricing-meta { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-mute); margin: 12px 0 24px; }
+.pricing-features { list-style: none; border-top: 1px solid var(--rule); flex: 1; }
+.pricing-features li { padding: 11px 0 11px 22px; border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--ink-soft); position: relative; line-height: 1.45; }
+/* A hairline dash marker, never an arrow glyph. */
+.pricing-features li::before { content: ""; position: absolute; left: 0; top: 1.28em; width: 12px; height: 1.5px; background: var(--purple); }
+.price-aside { display: flex; flex-direction: column; gap: 16px; }
+.price-note { border-radius: 14px; padding: 24px 26px; background: white; border: 1px solid var(--rule-strong); }
+.price-note.warm { background: var(--paper-warm); border-color: var(--rule); }
+.price-note .l { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--purple-deep); margin-bottom: 10px; }
+.price-note p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+.price-note p + p { margin-top: 10px; }
+.price-note strong { color: var(--ink); font-weight: 700; }
+
+/* CTA */
+.cta-section { background: var(--ink); color: white; position: relative; overflow: hidden; padding: clamp(70px, 10vh, 120px) 0 0; }
+.cta-section::before { content: ""; position: absolute; top: -25%; left: 20%; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(108,92,231,0.22), transparent 70%); filter: blur(110px); pointer-events: none; }
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 { color: white; }
+.cta-body p { font-size: 15.5px; color: rgba(255,255,255,0.72); line-height: 1.6; max-width: 56ch; margin-top: 18px; }
+.cta-body p strong { color: white; }
+.footer-meta { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 28px 40px; padding: 48px 0 32px; margin-top: 56px; border-top: 1px solid rgba(255,255,255,0.12); }
+.footer-meta-block { font-size: 13px; color: rgba(255,255,255,0.55); }
+.footer-meta-block span { display: block; font-family: var(--font-display); font-size: 16px; color: white; margin-top: 4px; }
+.footer-lockup { margin-left: auto; }
+.legal-strip { border-top: 1px solid rgba(255,255,255,0.1); padding: 22px 0; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+/* ---------- PRINT / PDF ---------- */
+@page { size: A4; margin: 14mm 12mm; }
+@media print {
+  html, body { background: #fff !important; }
+  body { font-size: 11pt; }
+  /* Without this the ink sections print as white-on-white and the whole
+     scope and next-steps pages come out blank. */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      animation: none !important; transition: none !important; }
+  .container { max-width: none; padding: 0; }
+  .section, .section-tight { padding: 22px 0; }
+  .hero { padding: 18px 0 24px; }
+  .hero::before, .hero::after, .services-dark::before, .services-dark::after, .cta-section::before { filter: blur(70px); }
+  .neon { box-shadow: none; }
+  .svc-card:hover { transform: none; box-shadow: none; }
+  .display-xl { font-size: 34pt; }
+  .display-lg { font-size: 24pt; }
+  .display-md { font-size: 18pt; }
+  .lede { font-size: 11.5pt; }
+  .capsule { font-size: 8pt; padding: 5px 13px; border-width: 1px; }
+  .cmp, .cmp-row, .svc-card, .pricing-card, .price-note, .footer-meta { break-inside: avoid; }
+  .section, .section-tight { break-inside: auto; }
+  .services-dark, .cta-section { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="client-bar">
+  <div class="container">
+    <div class="lockup">
+      <svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic Creative"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></svg>
+      <span class="lockup-rule" aria-hidden="true"></span>
+      <svg class="client-logo" viewBox="0 0 170 21" role="img" aria-label="WSC Sports"><path d="M40.1758 3.35449H43.6879L45.5328 13.1992H45.7282L48.0046 3.35449H51.2224L53.4987 13.1992H53.6941L55.539 3.35449H59.0131V3.64988L55.9907 17.5307H51.7324L49.6921 8.75047H49.4967L47.4564 17.5307H43.1982L40.1758 3.64988V3.35449Z" fill="#FFFFFF"/><path d="M65.6007 3.12012C69.4073 3.12012 71.3689 5.05034 71.5263 7.3931V7.68849H68.1511C68.1308 6.17334 67.0523 5.60038 65.6794 5.60038C64.3065 5.60038 63.4818 6.22936 63.4818 7.13591C63.4818 8.04245 64.2279 8.49318 65.5627 8.77074L67.702 9.20364C70.4097 9.75368 71.9196 10.976 71.9196 13.3569C71.9196 15.7379 70.095 17.7674 66.0525 17.7674C62.0099 17.7674 59.8326 15.7404 59.7539 13.3366V13.0412H63.1671C63.3244 14.5563 64.4233 15.2872 66.0119 15.2872C67.6004 15.2872 68.3871 14.5589 68.3871 13.6141C68.3871 12.6694 67.6994 12.2569 66.1895 11.9411L64.0502 11.5082C61.4212 10.976 59.9493 9.48121 59.9493 7.3549C59.9493 5.2286 61.7942 3.12266 65.6007 3.12266V3.12012Z" fill="#FFFFFF"/><path d="M80.1592 3.12012C84.5926 3.12012 86.4781 5.85758 86.5745 8.2589V8.55429H83.1613C83.1029 7.37273 82.3949 5.79646 80.1973 5.79646C77.9996 5.79646 76.6268 7.68594 76.6268 10.4438C76.6268 13.2016 77.921 15.0911 80.1973 15.0911C82.4736 15.0911 83.0826 13.4766 83.2197 12.2161H86.6329V12.5115C86.4172 14.9332 84.6306 17.7674 80.1567 17.7674C75.6827 17.7674 73.0156 14.7753 73.0156 10.4438C73.0156 6.11222 75.6066 3.12012 80.1567 3.12012H80.1592Z" fill="#FFFFFF"/><path d="M97.1939 3.13037C100.45 3.13037 102.493 4.68627 102.708 7.20473V7.50012H100.99C100.874 5.384 99.2723 4.52584 97.2218 4.52584C95.1714 4.52584 93.7401 5.40182 93.7401 6.96791C93.7401 8.53399 95.0166 9.04583 96.8894 9.42016L98.5871 9.75375C101.137 10.2656 103.003 11.1619 103.003 13.6524C103.003 16.1428 100.99 17.7573 97.6075 17.7573C94.2248 17.7573 91.9282 16.181 91.6719 13.632V13.3366H93.4077C93.6716 15.4935 95.4378 16.3593 97.5974 16.3593C99.757 16.3593 101.226 15.4935 101.226 13.7593C101.226 12.0252 99.8128 11.6127 97.9095 11.2307L96.2118 10.8971C93.7299 10.4056 91.9637 9.34122 91.9637 7.01884C91.9637 4.69645 93.9253 3.13037 97.1939 3.13037Z" fill="#FFFFFF"/><path d="M105.486 3.35449H111.589C114.102 3.35449 116.101 4.7907 116.101 7.41102C116.101 10.0313 114.099 11.4676 111.589 11.4676H107.283V17.5307H105.489V3.35449H105.486ZM107.28 4.7907V10.0364H111.272C113.087 10.0364 114.305 9.10188 114.305 7.40848C114.305 5.71507 113.089 4.7907 111.272 4.7907H107.28Z" fill="#FFFFFF"/><path d="M124.354 3.12012C128.328 3.12012 131.054 5.81683 131.054 10.4438C131.054 15.0707 128.326 17.7674 124.354 17.7674C120.383 17.7674 117.645 15.0707 117.645 10.4438C117.645 5.81683 120.373 3.12012 124.354 3.12012ZM124.354 16.3108C127.336 16.3108 129.249 14.1438 129.249 10.4438C129.249 6.74375 127.336 4.5767 124.354 4.5767C121.372 4.5767 119.449 6.74375 119.449 10.4438C119.449 14.1438 121.372 16.3108 124.354 16.3108Z" fill="#FFFFFF"/><path d="M144.116 15.3178C144.225 16.204 144.37 16.726 144.694 17.2379V17.5333H142.86C142.586 16.973 142.428 16.4204 142.339 15.4553L142.223 14.0675C142.065 12.2468 141.309 11.5287 138.974 11.5287H135.394V17.5333H133.6V3.35449H139.957C142.548 3.35449 144.519 4.64301 144.519 7.20476C144.519 9.20374 143.42 10.3064 141.86 10.7087V10.9048C143.352 11.2689 143.783 12.1755 143.958 13.8078L144.116 15.3153V15.3178ZM135.394 4.79325V10.0899H139.769C141.555 10.0899 142.751 9.24448 142.751 7.44158C142.751 5.63868 141.553 4.79325 139.769 4.79325H135.394Z" fill="#FFFFFF"/><path d="M145.688 3.35449H157.696V4.80089H152.595V17.5307H150.791V4.80344H145.69V3.35704L145.688 3.35449Z" fill="#FFFFFF"/><path d="M164.194 3.13062C167.45 3.13062 169.493 4.68651 169.708 7.20497V7.50036H167.99C167.874 5.38424 166.272 4.52608 164.222 4.52608C162.171 4.52608 160.74 5.40207 160.74 6.96815C160.74 8.53423 162.017 9.04607 163.889 9.4204L165.587 9.75399C168.137 10.2658 170.003 11.1622 170.003 13.6526C170.003 16.1431 167.99 17.7576 164.608 17.7576C161.225 17.7576 158.928 16.1813 158.672 13.6323V13.3369H160.408C160.672 15.4937 162.438 16.3595 164.597 16.3595C166.757 16.3595 168.226 15.4937 168.226 13.7596C168.226 12.0254 166.813 11.6129 164.91 11.2309L163.212 10.8974C160.73 10.4059 158.964 9.34146 158.964 7.01908C158.964 4.6967 160.925 3.13062 164.194 3.13062Z" fill="#FFFFFF"/><path d="M17.1954 14.7883L8.97328 0.5H0L11.5008 20.5H17.1929V14.7883H17.1954Z" fill="#FFFFFF"/><path d="M29.0001 14.7883L20.7805 0.5H11.8047L23.3055 20.5H29.0001V14.7883Z" fill="#FFFFFF"/><path class="logo-vector" d="M31.743 3.82569L28.8983 3.84097V10.3981L34.5903 0.5H23.2012" fill="#D0F200"/></svg>
+    </div>
+    <div class="client-bar-meta">Proposal &middot; Prepared September 2026</div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <span class="capsule">WSC Sports &middot; Brand Awareness</span>
+    <h1 class="display-xl">Brand awareness,<br><em class="italic">always on.</em></h1>
+    <p class="lede">A second workstream alongside your existing lead generation retainer. Same team, same platforms, plus YouTube, aimed at every rights holder in the market, not just the ones already raising their hand.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Channels: LinkedIn, Meta, YouTube</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">Sept</div><div class="hero-stat-label">Launch month, opening on the SEC hero</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head">
+      <span class="capsule">01 &middot; Context</span>
+      <h2 class="display-md">A market that already knows <em class="italic">WSC Sports.</em></h2>
+    </div>
+    <div class="prose">
+      <p>This proposal covers a new, always on workstream: brand awareness at the company level, aimed broadly at every broadcaster, league, federation, club and OTT platform with a name, not just the accounts already qualified. LinkedIn and Meta, plus YouTube for storytelling and retargeting, across the United States, Canada, UK, EU, MENA, Australia and New Zealand.</p>
+    </div>
+    <div class="prose-pull">The goal isn't more leads this month. It's a market that already knows who WSC Sports is by the time the BD team calls.</div>
+  </div>
+</section>
+
+<section class="section-tight" style="background: var(--paper-cool);">
+  <div class="container">
+    <div class="section-head">
+      <span class="capsule">02 &middot; Specification</span>
+      <h2 class="display-md">The approved <em class="italic">strategy.</em></h2>
+    </div>
+    <div class="cmp">
+      <div class="cmp-row head">
+        <div><div class="t">Approved</div><div class="n">Scenario B</div><div class="p">$8,000 / month media investment</div></div>
+        <div><div class="t">Detail</div><div class="n">What the scenario covers</div><div class="p">Objective, markets, audience, split, delivery</div></div>
+      </div>
+      <div class="cmp-row">
+        <div class="lab">Objective</div>
+        <div>Brand awareness across the sports industry in money markets: whatever the sport, whatever the rights holder, WSC Sports serves and has solutions for all.</div>
+      </div>
+      <div class="cmp-row">
+        <div class="lab">Geographies</div>
+        <div>United States, Canada, UK, EU, MENA, Australia, New Zealand. Excludes Saudi Arabia, Israel, T&uuml;rkiye, India, Africa, Qatar and the United Arab Emirates.</div>
+      </div>
+      <div class="cmp-row">
+        <div class="lab">Audience</div>
+        <div>Company level targeting across broadcasters, leagues, federations, clubs, OTT platforms and sports media. No persona or role restriction, so delivery isn't throttled by over-targeting.</div>
+      </div>
+      <div class="cmp-row">
+        <div class="lab">Channel budget</div>
+        <div>LinkedIn $4,500 (56%), Meta $2,500 (31%), YouTube $1,000 (13%). Total $8,000 / month.</div>
+      </div>
+      <div class="cmp-row">
+        <div class="lab">Expected delivery</div>
+        <div>~1.54M impressions and ~3,907 clicks per month across the three channels.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="capsule">03 &middot; Scope</span>
+      <h2 class="display-md">What Noetic <em class="italic">runs.</em></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-tag">Media</div>
+        <h4>Paid social, Meta + LinkedIn</h4>
+        <p>Company level targeting build and delivery optimization across both platforms, monitored on an ongoing basis. Review cadence is weekly at launch, moving to biweekly, excluding low value segments as delivery signals come in.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Media</div>
+        <h4>YouTube</h4>
+        <p>Storytelling and retargeting layer built on behavioral proxies: video production affinity, technology industry signals, and OTT in-market interest.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Organic</div>
+        <h4>Organic boosting</h4>
+        <p>Up to 3 organic posts per quarter boosted for extended reach beyond the always on paid layer, timed to the monthly hero moment.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Operations</div>
+        <h4>Account management</h4>
+        <p>Run by the same pod already managing the lead generation retainer, so strategy for both workstreams stays coordinated rather than siloed.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Content</div>
+        <h4>Copywriting</h4>
+        <p>Up to 10 copy pieces per month, covering new copy plus edits and tweaks to existing assets, tied to that month's hero message.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Creative</div>
+        <h4>Design, statics only</h4>
+        <p>Up to 8 statics per month, in 1:1, 4:5 and 9:16, with up to 2 rounds of revisions each. Adaptations or new creations supporting that month's message. Video is supplied by WSC.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Measurement</div>
+        <h4>Reporting &amp; dashboards</h4>
+        <p>Campaign added to the existing account dashboards, plus an end of month report covering the key metrics for this workstream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="capsule">04 &middot; Investment</span>
+      <h2 class="display-md">What this <em class="italic">costs.</em></h2>
+    </div>
+    <div class="pricing-single">
+      <div class="pricing-card neon">
+        <div class="pricing-tag">Management fee &middot; monthly</div>
+        <div class="pricing-name">Brand Awareness Workstream</div>
+        <div class="pricing-tagline">Strategy, media management, creative and reporting for the new workstream, on top of the existing lead generation retainer.</div>
+        <div class="pricing-price">$3,500<span> / month</span></div>
+        <div class="pricing-meta">3 month minimum commitment, then month to month &middot; Billed in advance</div>
+        <ul class="pricing-features">
+          <li>Paid social management, Meta + LinkedIn</li>
+          <li>YouTube management</li>
+          <li>Organic boosting, up to 3 posts / quarter</li>
+          <li>Dedicated account management</li>
+          <li>Monthly copywriting, tied to the sports calendar</li>
+          <li>Static creative design</li>
+          <li>Reporting &amp; dashboards</li>
+        </ul>
+      </div>
+      <div class="price-aside">
+        <div class="price-note">
+          <div class="l">Total account retainer</div>
+          <p>This brings the total monthly retainer with Noetic to <strong>$11,500</strong>: the existing $8,000 lead generation retainer plus $3,500 for this workstream.</p>
+        </div>
+        <div class="price-note">
+          <div class="l">Payment terms</div>
+          <p>The $3,500 monthly fee is <strong>billed in advance</strong>, due at the start of each billing cycle.</p>
+        </div>
+        <div class="price-note warm">
+          <div class="l">Media spend, billed separately</div>
+          <p>The <strong>$8,000/month</strong> brand awareness media budget across LinkedIn, Meta and YouTube runs directly on WSC's own payment method on each platform. It is not part of the management fee above and is not billed by Noetic.</p>
+        </div>
+        <div class="price-note">
+          <div class="l">Not included</div>
+          <p><strong>Video production.</strong> Video assets for this campaign are supplied by WSC. Noetic's design scope covers statics only, built from stills and headline variations of each month's hero asset.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <span class="capsule">05 &middot; Next steps</span>
+    <h2 class="display-lg" style="margin-top:18px;">Ready for a <em class="italic">September</em> launch.</h2>
+    <div class="cta-body">
+      <p>The strategy was reviewed and approved in the September 1st session. The only remaining step is sign off on this addendum so the September media plan and creative calendar can go live on schedule.</p>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-meta-block">Prepared for<span>Simon Ironmonger</span></div>
+      <div class="footer-meta-block">Prepared by<span>Tamir Alush</span></div>
+      <div class="lockup lockup--sm footer-lockup">
+        <svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic Creative"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></svg>
+        <span class="lockup-rule" aria-hidden="true"></span>
+        <svg class="client-logo" viewBox="0 0 170 21" role="img" aria-label="WSC Sports"><path d="M40.1758 3.35449H43.6879L45.5328 13.1992H45.7282L48.0046 3.35449H51.2224L53.4987 13.1992H53.6941L55.539 3.35449H59.0131V3.64988L55.9907 17.5307H51.7324L49.6921 8.75047H49.4967L47.4564 17.5307H43.1982L40.1758 3.64988V3.35449Z" fill="#FFFFFF"/><path d="M65.6007 3.12012C69.4073 3.12012 71.3689 5.05034 71.5263 7.3931V7.68849H68.1511C68.1308 6.17334 67.0523 5.60038 65.6794 5.60038C64.3065 5.60038 63.4818 6.22936 63.4818 7.13591C63.4818 8.04245 64.2279 8.49318 65.5627 8.77074L67.702 9.20364C70.4097 9.75368 71.9196 10.976 71.9196 13.3569C71.9196 15.7379 70.095 17.7674 66.0525 17.7674C62.0099 17.7674 59.8326 15.7404 59.7539 13.3366V13.0412H63.1671C63.3244 14.5563 64.4233 15.2872 66.0119 15.2872C67.6004 15.2872 68.3871 14.5589 68.3871 13.6141C68.3871 12.6694 67.6994 12.2569 66.1895 11.9411L64.0502 11.5082C61.4212 10.976 59.9493 9.48121 59.9493 7.3549C59.9493 5.2286 61.7942 3.12266 65.6007 3.12266V3.12012Z" fill="#FFFFFF"/><path d="M80.1592 3.12012C84.5926 3.12012 86.4781 5.85758 86.5745 8.2589V8.55429H83.1613C83.1029 7.37273 82.3949 5.79646 80.1973 5.79646C77.9996 5.79646 76.6268 7.68594 76.6268 10.4438C76.6268 13.2016 77.921 15.0911 80.1973 15.0911C82.4736 15.0911 83.0826 13.4766 83.2197 12.2161H86.6329V12.5115C86.4172 14.9332 84.6306 17.7674 80.1567 17.7674C75.6827 17.7674 73.0156 14.7753 73.0156 10.4438C73.0156 6.11222 75.6066 3.12012 80.1567 3.12012H80.1592Z" fill="#FFFFFF"/><path d="M97.1939 3.13037C100.45 3.13037 102.493 4.68627 102.708 7.20473V7.50012H100.99C100.874 5.384 99.2723 4.52584 97.2218 4.52584C95.1714 4.52584 93.7401 5.40182 93.7401 6.96791C93.7401 8.53399 95.0166 9.04583 96.8894 9.42016L98.5871 9.75375C101.137 10.2656 103.003 11.1619 103.003 13.6524C103.003 16.1428 100.99 17.7573 97.6075 17.7573C94.2248 17.7573 91.9282 16.181 91.6719 13.632V13.3366H93.4077C93.6716 15.4935 95.4378 16.3593 97.5974 16.3593C99.757 16.3593 101.226 15.4935 101.226 13.7593C101.226 12.0252 99.8128 11.6127 97.9095 11.2307L96.2118 10.8971C93.7299 10.4056 91.9637 9.34122 91.9637 7.01884C91.9637 4.69645 93.9253 3.13037 97.1939 3.13037Z" fill="#FFFFFF"/><path d="M105.486 3.35449H111.589C114.102 3.35449 116.101 4.7907 116.101 7.41102C116.101 10.0313 114.099 11.4676 111.589 11.4676H107.283V17.5307H105.489V3.35449H105.486ZM107.28 4.7907V10.0364H111.272C113.087 10.0364 114.305 9.10188 114.305 7.40848C114.305 5.71507 113.089 4.7907 111.272 4.7907H107.28Z" fill="#FFFFFF"/><path d="M124.354 3.12012C128.328 3.12012 131.054 5.81683 131.054 10.4438C131.054 15.0707 128.326 17.7674 124.354 17.7674C120.383 17.7674 117.645 15.0707 117.645 10.4438C117.645 5.81683 120.373 3.12012 124.354 3.12012ZM124.354 16.3108C127.336 16.3108 129.249 14.1438 129.249 10.4438C129.249 6.74375 127.336 4.5767 124.354 4.5767C121.372 4.5767 119.449 6.74375 119.449 10.4438C119.449 14.1438 121.372 16.3108 124.354 16.3108Z" fill="#FFFFFF"/><path d="M144.116 15.3178C144.225 16.204 144.37 16.726 144.694 17.2379V17.5333H142.86C142.586 16.973 142.428 16.4204 142.339 15.4553L142.223 14.0675C142.065 12.2468 141.309 11.5287 138.974 11.5287H135.394V17.5333H133.6V3.35449H139.957C142.548 3.35449 144.519 4.64301 144.519 7.20476C144.519 9.20374 143.42 10.3064 141.86 10.7087V10.9048C143.352 11.2689 143.783 12.1755 143.958 13.8078L144.116 15.3153V15.3178ZM135.394 4.79325V10.0899H139.769C141.555 10.0899 142.751 9.24448 142.751 7.44158C142.751 5.63868 141.553 4.79325 139.769 4.79325H135.394Z" fill="#FFFFFF"/><path d="M145.688 3.35449H157.696V4.80089H152.595V17.5307H150.791V4.80344H145.69V3.35704L145.688 3.35449Z" fill="#FFFFFF"/><path d="M164.194 3.13062C167.45 3.13062 169.493 4.68651 169.708 7.20497V7.50036H167.99C167.874 5.38424 166.272 4.52608 164.222 4.52608C162.171 4.52608 160.74 5.40207 160.74 6.96815C160.74 8.53423 162.017 9.04607 163.889 9.4204L165.587 9.75399C168.137 10.2658 170.003 11.1622 170.003 13.6526C170.003 16.1431 167.99 17.7576 164.608 17.7576C161.225 17.7576 158.928 16.1813 158.672 13.6323V13.3369H160.408C160.672 15.4937 162.438 16.3595 164.597 16.3595C166.757 16.3595 168.226 15.4937 168.226 13.7596C168.226 12.0254 166.813 11.6129 164.91 11.2309L163.212 10.8974C160.73 10.4059 158.964 9.34146 158.964 7.01908C158.964 4.6967 160.925 3.13062 164.194 3.13062Z" fill="#FFFFFF"/><path d="M17.1954 14.7883L8.97328 0.5H0L11.5008 20.5H17.1929V14.7883H17.1954Z" fill="#FFFFFF"/><path d="M29.0001 14.7883L20.7805 0.5H11.8047L23.3055 20.5H29.0001V14.7883Z" fill="#FFFFFF"/><path class="logo-vector" d="M31.743 3.82569L28.8983 3.84097V10.3981L34.5903 0.5H23.2012" fill="#D0F200"/></svg>
+      </div>
+    </div>
+    <div class="legal-strip">
+      Noetic Creative LLC &middot; hello@noetic.io &middot; This proposal is confidential and intended solely for WSC Sports.
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
