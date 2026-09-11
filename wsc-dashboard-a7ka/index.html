@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WSC Sports · Lead Generation Dashboard</title>
+<meta name="description" content="Live lead generation performance for WSC Sports, built by Noetic Creative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NOETIC CREATIVE — design tokens (from _styles/tokens.css)
+   ============================================================ */
+:root{
+  --paper:#FAFAF7; --paper-warm:#F2F0EA; --paper-cool:#F0F0F4; --card:#FFFFFF;
+  --ink:#0A0A0E; --ink-soft:#1A1A1F; --ink-mute:#6B6B7B; --ink-faint:#A8A8B5;
+  --purple:#6C5CE7; --purple-deep:#4D3FC9; --purple-soft:#EFEDFE; --purple-glow:rgba(108,92,231,.18);
+  --mint:#00D4B4; --coral:#FF6B6B; --amber:#F5B400; --green-text:#38761D;
+  --rule:rgba(10,10,14,.08); --rule-strong:rgba(10,10,14,.16); --rule-inv:rgba(255,255,255,.12);
+  --font-display:'Fraunces','Times New Roman',serif;
+  --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.2,.6,.2,1);
+  --r-tight:8px; --r-card:16px; --r-pill:999px;
+  --shadow-card:0 1px 2px rgba(10,10,14,.04),0 8px 24px rgba(10,10,14,.06);
+  --container:1560px; --container-pad:32px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--font-sans);font-size:16px;line-height:1.6}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:var(--r-tight)}
+em{font-style:italic;font-weight:inherit}
+
+/* Blob atmosphere — a fixed decorative layer, so the page still scrolls */
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blobs::before,.blobs::after{content:"";position:absolute;border-radius:50%;filter:blur(96px)}
+.blobs::before{width:720px;height:720px;left:-260px;bottom:-320px;background:radial-gradient(circle,rgba(0,212,180,.22),rgba(0,212,180,0) 68%)}
+.blobs::after{width:760px;height:760px;right:-280px;top:-380px;background:radial-gradient(circle,rgba(108,92,231,.20),rgba(108,92,231,0) 68%)}
+body>*:not(.blobs){position:relative;z-index:1}
+
+/* Capsule — THE section label */
+.capsule{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-mono);
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;white-space:nowrap;
+  color:var(--purple);border:1.5px solid var(--purple);border-radius:var(--r-pill);padding:7px 16px;
+  width:fit-content;max-width:100%;flex:0 0 auto}
+.meta-line{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--ink-mute)}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky;top:0;z-index:40;background:rgba(250,250,247,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule)}
+.topbar__in{max-width:var(--container);margin:0 auto;padding:16px var(--container-pad);
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand-lockup{display:inline-flex;align-items:center;gap:16px;width:fit-content}
+.noetic-logo{height:24px;width:auto;color:var(--purple);fill:currentColor;flex:0 0 auto}
+.lockup-rule{width:1px;height:22px;background:var(--rule-strong);flex:0 0 auto}
+.wsc-logo{height:19px;width:auto;color:var(--ink);flex:0 0 auto}
+.topbar__spacer{flex:1 1 auto}
+.livebar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);
+  border:1px solid var(--rule-strong);border-radius:var(--r-pill);padding:7px 14px;background:var(--card)}
+.live__dot{width:7px;height:7px;border-radius:50%;background:var(--mint);flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(0,212,180,.6);animation:pulse 2.4s var(--ease) infinite}
+.live--stale .live__dot{background:var(--amber);animation:none}
+.live--down .live__dot{background:var(--coral);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,212,180,.55)}70%{box-shadow:0 0 0 8px rgba(0,212,180,0)}100%{box-shadow:0 0 0 0 rgba(0,212,180,0)}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:var(--r-pill);padding:9px 18px;
+  font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;
+  border:1.5px solid var(--rule-strong);background:var(--card);color:var(--ink);cursor:pointer;
+  transition:all 180ms var(--ease);white-space:nowrap}
+.btn:hover{border-color:var(--purple);color:var(--purple)}
+.btn--primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.btn--primary:hover{background:var(--purple-deep);border-color:var(--purple-deep);color:#fff}
+.btn--ghost{background:transparent;border-color:var(--rule)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ---------- Page ---------- */
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--container-pad)}
+.masthead{padding:48px 0 32px}
+.masthead h1{font-size:clamp(34px,4.4vw,60px);line-height:1.04;letter-spacing:-.03em;margin:18px 0 14px;max-width:22ch}
+.masthead .sub{font-size:clamp(16px,1.5vw,19px);color:var(--ink-soft);max-width:64ch}
+.masthead .facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px}
+
+/* ---------- Filters ---------- */
+.filters{position:sticky;top:65px;z-index:30;background:rgba(250,250,247,.9);backdrop-filter:blur(14px);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:28px}
+.filters__in{max-width:var(--container);margin:0 auto;padding:16px var(--container-pad);
+  display:flex;flex-direction:column;gap:12px}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.flabel{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-faint);margin-right:2px;flex:0 0 auto}
+.chip{display:inline-flex;align-items:center;gap:7px;border-radius:var(--r-pill);padding:7px 15px;
+  font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+  border:1.5px solid var(--rule);background:var(--card);color:var(--ink-mute);cursor:pointer;
+  transition:all 160ms var(--ease)}
+.chip:hover{border-color:var(--rule-strong);color:var(--ink)}
+.chip.on{border-color:var(--purple);background:var(--purple-soft);color:var(--purple-deep)}
+.chip__n{font-size:10px;opacity:.7}
+.sel{appearance:none;border:1.5px solid var(--rule);background:var(--card);border-radius:var(--r-pill);
+  padding:8px 34px 8px 15px;font-size:13px;color:var(--ink);cursor:pointer;max-width:250px;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink-mute) 50%),linear-gradient(135deg,var(--ink-mute) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.sel:hover{border-color:var(--rule-strong)}
+.sel.on{border-color:var(--purple);color:var(--purple-deep)}
+.dateinput{border:1.5px solid var(--rule);background:var(--card);border-radius:var(--r-pill);
+  padding:7px 14px;font-size:13px;font-family:var(--font-mono);color:var(--ink)}
+.search{flex:1 1 220px;min-width:180px;max-width:340px;border:1.5px solid var(--rule);background:var(--card);
+  border-radius:var(--r-pill);padding:9px 18px;font-size:14px}
+.search::placeholder{color:var(--ink-faint)}
+
+/* ---------- Cards & grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;padding-bottom:22px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-card);padding:26px 28px;
+  box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:18px;min-width:0}
+.card__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.card h3{font-size:21px;letter-spacing:-.02em}
+.ctitle{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--purple)}
+.card__note{font-size:13px;color:var(--ink-mute);line-height:1.45}
+.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}
+.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:22px;padding-bottom:22px}
+.kpi{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-card);padding:22px 24px;
+  box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:6px;min-width:0}
+.kpi__label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--purple)}
+.kpi__val{font-family:var(--font-display);font-weight:600;font-size:clamp(30px,3.1vw,46px);
+  line-height:1;letter-spacing:-.035em;color:var(--ink)}
+.kpi__foot{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-mute)}
+.delta{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.04em;
+  padding:3px 9px;border-radius:var(--r-pill);background:var(--paper-cool);color:var(--ink-mute)}
+.delta.up{background:rgba(0,212,180,.14);color:#03836f}
+.delta.down{background:rgba(255,107,107,.14);color:#c53c3c}
+
+/* Chart plumbing */
+.chartbox{width:100%}
+.chartbox svg{width:100%;height:auto;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--ink-mute)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{border:1.5px solid var(--rule);background:var(--card);border-radius:var(--r-pill);
+  padding:5px 13px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--ink-mute);cursor:pointer}
+.seg button.on{border-color:var(--purple);background:var(--purple-soft);color:var(--purple-deep)}
+
+/* Ranked bar list */
+.ranklist{display:flex;flex-direction:column;gap:2px}
+.rankrow{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--rule)}
+.rankrow:last-child{border-bottom:0}
+.rankrow__name{font-size:13.5px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rankrow__num{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-mute);white-space:nowrap}
+.rankrow__num b{color:var(--ink);font-weight:500}
+.bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--paper-cool);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--purple)}
+.bar i.mint{background:var(--mint)}
+
+/* Funnel */
+.funnel{display:flex;flex-direction:column;gap:12px}
+.fstage{display:flex;flex-direction:column;gap:7px}
+.fstage__top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.fstage__name{font-size:14px;color:var(--ink);font-weight:500}
+.fstage__val{font-family:var(--font-mono);font-size:13px;color:var(--ink)}
+.fstage__bar{height:30px;border-radius:var(--r-tight);background:var(--paper-cool);overflow:hidden}
+.fstage__bar i{display:block;height:100%;border-radius:var(--r-tight);transition:width 500ms var(--ease)}
+.fstage__conv{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-faint);
+  text-transform:uppercase}
+
+/* Table */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r-tight)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--ink-mute);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule-strong);
+  white-space:nowrap;background:var(--paper);position:sticky;top:0;cursor:pointer;user-select:none}
+th:hover{color:var(--purple)}
+th.sorted{color:var(--purple)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--paper)}
+td.num{font-family:var(--font-mono);white-space:nowrap;color:var(--ink-mute)}
+td .co{font-weight:600;color:var(--ink)}
+td .em{color:var(--ink-mute);font-size:12.5px;word-break:break-all}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;padding:3px 9px;border-radius:var(--r-pill);border:1px solid var(--rule-strong);
+  color:var(--ink-mute);white-space:nowrap}
+.tag--mql{border-color:rgba(0,212,180,.5);background:rgba(0,212,180,.12);color:#03836f}
+.tag--sql{border-color:rgba(108,92,231,.45);background:var(--purple-soft);color:var(--purple-deep)}
+.tag--opp{border-color:rgba(245,180,0,.5);background:rgba(245,180,0,.14);color:#8a6600}
+.tag--cus{border-color:var(--ink);background:var(--ink);color:#fff}
+.tag--lead{}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:4px}
+.pager__n{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--ink-mute);text-transform:uppercase}
+
+/* Setup / states */
+.screen{max-width:860px;margin:0 auto;padding:64px var(--container-pad) 90px;display:flex;flex-direction:column;gap:22px}
+.screen h2{font-size:clamp(28px,3.4vw,44px);line-height:1.06;letter-spacing:-.03em;max-width:20ch}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:16px;margin-top:4px}
+.step{counter-increment:s;position:relative;padding-left:44px;font-size:15px;color:var(--ink-soft)}
+.step::before{content:counter(s);position:absolute;left:0;top:-1px;width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--purple);color:var(--purple);font-family:var(--font-mono);font-size:12px;
+  display:flex;align-items:center;justify-content:center}
+.step b{color:var(--ink);font-weight:600}
+pre{background:var(--ink);color:#E8E8F0;border-radius:var(--r-card);padding:20px 22px;overflow:auto;
+  font-family:var(--font-mono);font-size:11.5px;line-height:1.65;max-height:340px}
+pre .c{color:#7C7C93}
+.inputrow{display:flex;gap:10px;flex-wrap:wrap}
+.inputrow input{flex:1 1 340px;border:1.5px solid var(--rule-strong);background:var(--card);
+  border-radius:var(--r-pill);padding:12px 20px;font-size:14px;font-family:var(--font-mono)}
+.notice{border:1px solid var(--rule-strong);border-left:3px solid var(--coral);background:var(--card);
+  border-radius:var(--r-tight);padding:14px 18px;font-size:14px;color:var(--ink-soft)}
+.notice.ok{border-left-color:var(--mint)}
+.skel{background:linear-gradient(90deg,var(--paper-cool) 25%,#e8e8ee 50%,var(--paper-cool) 75%);
+  background-size:200% 100%;animation:sk 1.4s linear infinite;border-radius:var(--r-tight)}
+@keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty{padding:40px 0;text-align:center;color:var(--ink-mute);font-size:14px}
+ul.bul{list-style:none;display:flex;flex-direction:column;gap:9px}
+ul.bul li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink-soft)}
+ul.bul li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--purple)}
+
+footer.foot{border-top:1px solid var(--rule);margin-top:20px}
+.foot__in{max-width:var(--container);margin:0 auto;padding:28px var(--container-pad) 48px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+
+.hidden{display:none !important}
+
+@media (max-width:1420px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .span3{grid-column:span 6}.span4{grid-column:span 6}.span5{grid-column:span 6}
+  .span7{grid-column:span 12}.span8{grid-column:span 12}
+}
+@media (max-width:900px){
+  :root{--container-pad:20px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}
+  .filters{position:static}
+  .topbar{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+@media print{
+  @page{size:A4 landscape;margin:12mm}
+  body{background:#fff}
+  .topbar,.filters,.no-print{display:none !important}
+  .blobs{display:none}
+  .card,.kpi{box-shadow:none;break-inside:avoid}
+  .grid{gap:14px}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar no-print">
+  <div class="topbar__in">
+    <div class="brand-lockup">
+      <svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic Creative"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></svg>
+      <span class="lockup-rule" aria-hidden="true"></span>
+      <svg class="wsc-logo" viewBox="0 0 599.41 70.84" role="img" aria-label="WSC Sports"><g id="Group">
+<path id="Vector" d="M141.658 10.1107H154.042L160.546 44.9796H161.235L169.261 10.1107H180.608L188.634 44.9796H189.322L195.827 10.1107H208.076V11.1569L197.42 60.3215H182.406L175.212 29.2228H174.523L167.32 60.3215H152.307L141.649 11.1569V10.1107H141.658Z" fill="currentColor"/>
+<path id="Vector_2" d="M231.296 9.2809C244.718 9.2809 251.633 16.1176 252.188 24.4154V25.4616H240.288C240.216 20.0952 236.413 18.0658 231.573 18.0658C226.661 18.0658 223.824 20.2936 223.824 23.5044C223.824 26.8507 226.454 28.3118 231.161 29.295L238.705 30.8283C248.252 32.7764 253.576 37.1057 253.576 45.5389C253.576 53.981 247.141 61.1604 232.889 61.1604C218.635 61.1604 210.958 53.981 210.681 45.4667V44.4204H222.715C223.27 49.7869 227.145 52.3755 232.746 52.3755C238.49 52.3755 241.12 49.7959 241.12 46.4498C241.12 43.1035 238.695 41.6424 233.371 40.524L225.829 38.9908C216.559 37.1057 211.37 31.8114 211.37 24.2802C211.37 16.4603 217.875 9.2809 231.296 9.2809Z" fill="currentColor"/>
+<path id="Vector_3" d="M282.638 9.2809C298.269 9.2809 304.916 18.9767 305.256 27.482V28.5282H293.222C293.016 24.3433 290.52 18.7603 282.771 18.7603C274.745 18.7603 270.182 25.4526 270.182 35.2206C270.182 44.9887 274.745 51.681 282.771 51.681C290.448 51.681 292.945 45.9628 293.427 41.4982H305.463V42.5445C304.702 51.1219 298.403 61.1604 282.628 61.1604C266.576 61.1604 257.449 50.5627 257.449 35.2206C257.449 19.8786 266.584 9.2809 282.638 9.2809Z" fill="currentColor"/>
+<path id="Vector_4" d="M342.694 9.317C354.172 9.317 361.376 14.8279 362.137 23.748V24.7942H356.079C355.668 17.2992 350.021 14.2596 342.791 14.2596C335.562 14.2596 330.515 17.3622 330.515 22.9092C330.515 28.3479 335.017 30.269 341.619 31.5948L347.606 32.7764C356.597 34.5892 363.174 37.7642 363.174 46.5851C363.174 55.5414 356.079 61.1243 344.152 61.1243C332.287 61.1243 324.126 55.5414 323.224 46.5129V45.4667H329.344C330.274 53.1061 336.502 56.1726 344.116 56.1726C351.658 56.1726 356.91 53.1061 356.91 46.9638C356.91 40.966 351.927 39.3606 345.217 38.0077L339.231 36.8261C330.479 35.0853 324.253 31.3153 324.253 23.0896C324.253 14.927 331.178 9.317 342.694 9.317Z" fill="currentColor"/>
+<path id="Vector_5" d="M371.935 10.1107H393.453C402.311 10.1107 409.362 15.1977 409.362 24.4785C409.362 33.7145 402.302 38.8465 393.453 38.8465H378.269V60.3215H371.943V10.1107H371.935ZM378.26 15.2067V33.7865H392.335C398.732 33.7865 403.027 30.4764 403.027 24.4785C403.027 18.4806 398.741 15.2067 392.335 15.2067H378.26Z" fill="currentColor"/>
+<path id="Vector_6" d="M438.46 9.2809C452.471 9.2809 462.081 18.8324 462.081 35.2206C462.081 51.6089 452.463 61.1604 438.46 61.1604C424.411 61.1604 414.803 51.6089 414.803 35.2206C414.803 18.8324 424.411 9.2809 438.46 9.2809ZM438.46 56.0013C448.973 56.0013 455.72 48.3258 455.72 35.2206C455.72 22.1155 448.973 14.44 438.46 14.44C427.946 14.44 421.164 22.1155 421.164 35.2206C421.164 48.3258 427.946 56.0013 438.46 56.0013Z" fill="currentColor"/>
+<path id="Vector_7" d="M508.135 52.4837C508.52 55.6225 509.029 57.4715 510.176 59.2843V60.3306H503.705C502.739 58.3464 502.184 56.3892 501.871 52.9707L501.459 48.0553C500.905 41.6064 498.239 39.0629 490.007 39.0629H477.381V60.3306H471.056V10.1107H493.469C502.606 10.1107 509.557 14.6745 509.557 23.748C509.557 30.8283 505.683 34.7336 500.181 36.1587V36.8531C505.441 38.1429 506.963 41.3538 507.58 47.1353L508.135 52.4837ZM477.381 15.2067V33.967H492.808C499.107 33.967 503.321 30.9725 503.321 24.5869C503.321 18.2371 499.097 15.2067 492.808 15.2067H477.381Z" fill="currentColor"/>
+<path id="Vector_8" d="M513.683 10.1107H556.022V15.2337H538.037V60.3215H531.676V15.2427H513.691V10.1107H513.683Z" fill="currentColor"/>
+<path id="Vector_9" d="M578.928 9.317C590.408 9.317 597.61 14.8279 598.371 23.748V24.7942H592.313C591.902 17.2992 586.256 14.2596 579.027 14.2596C571.797 14.2596 566.75 17.3622 566.75 22.9092C566.75 28.3479 571.251 30.269 577.854 31.5948L583.84 32.7764C592.833 34.5892 599.41 37.7642 599.41 46.5851C599.41 55.5414 592.313 61.1243 580.387 61.1243C568.523 61.1243 560.362 55.5414 559.458 46.5129V45.4667H565.578C566.509 53.1061 572.736 56.1726 580.351 56.1726C587.894 56.1726 593.146 53.1061 593.146 46.9638C593.146 40.966 588.162 39.3606 581.452 38.0077L575.465 36.8261C566.714 35.0853 560.487 31.3153 560.487 23.0896C560.487 14.927 567.403 9.317 578.928 9.317Z" fill="currentColor"/>
+<path id="Vector_10" d="M60.629 50.6077L31.6387 0H0L40.5505 70.8382H60.62V50.6077H60.629Z" fill="currentColor"/>
+<path id="Vector_11" d="M102.253 50.6077L73.2718 0H41.624L82.1747 70.8382H102.253V50.6077Z" fill="currentColor"/>
+<path id="Vector_12" d="M111.926 11.7793L101.895 11.8334V35.0583L121.965 0H81.8079" fill="#E5FF00"/>
+</g></svg>
+    </div>
+    <div class="topbar__spacer"></div>
+    <div class="livebar">
+      <span class="live" id="liveChip"><span class="live__dot"></span><span id="liveText">Connecting</span></span>
+      <button class="btn" id="btnRefresh" type="button">Refresh</button>
+      <button class="btn btn--ghost" id="btnSettings" type="button">Data source</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SETUP SCREEN ============ -->
+<section class="screen hidden" id="setup">
+  <span class="capsule">Connect the live feed</span>
+  <h2>This dashboard reads WSC's master sheet <em>live</em>.</h2>
+  <p class="body">The sheet stays private. A small read-only Apps Script endpoint sits in front of it, protected by a token you control and can revoke at any time. Set it up once, paste the URL below, and every refresh pulls the current state of <b>Sheet1</b>.</p>
+
+  <div class="notice" id="setupError" hidden></div>
+
+  <div class="steps">
+    <div class="step">Open the sheet, then <b>Extensions &rsaquo; Apps Script</b>. Delete the contents of <b>Code.gs</b>.</div>
+    <div class="step">Paste the script below and replace <b>TOKEN</b> with your own long random string.</div>
+    <div class="step"><b>Deploy &rsaquo; New deployment &rsaquo; Web app</b>. Execute as <b>Me</b>, access <b>Anyone</b>. Authorize it.</div>
+    <div class="step">Copy the <b>/exec</b> URL, add <b>?token=YOUR_TOKEN</b> to the end, and paste it here.</div>
+  </div>
+
+  <div class="inputrow">
+    <input id="apiInput" type="url" placeholder="https://script.google.com/macros/s/AKfy.../exec?token=..." spellcheck="false">
+    <button class="btn btn--primary" id="btnConnect" type="button">Connect</button>
+  </div>
+  <p class="small" style="color:var(--ink-mute);font-size:13px">Saved in this browser only. To share one link with the team, append <b>?api=&lt;your endpoint, url-encoded&gt;</b> to this page's URL — or send the endpoint to Noetic and we'll bake it into the build.</p>
+
+  <div class="card" style="margin-top:8px">
+    <div class="card__head"><h3>Apps Script</h3><button class="btn btn--ghost" id="btnCopy" type="button">Copy</button></div>
+    <pre id="gsCode">/**
+ * WSC Sports — Campaigns Master Sheet 2026
+ * Read-only JSON API for the Noetic live dashboard.
+ *
+ * SETUP (2 minutes)
+ * 1. Open the sheet: https://docs.google.com/spreadsheets/d/1Djh0jlt1fuSTBfUtqYe3ztzJ66egf5fmGVZcSwen0RE/edit
+ * 2. Extensions &gt; Apps Script. Delete whatever is in Code.gs and paste this file.
+ * 3. Replace the TOKEN value below with your own long random string.
+ * 4. Deploy &gt; New deployment &gt; type &quot;Web app&quot;.
+ *      Execute as:        Me (your account)
+ *      Who has access:    Anyone
+ *    Authorize when Google asks. Copy the /exec URL it gives you.
+ * 5. Your API URL is:  &lt;that /exec URL&gt;?token=&lt;your TOKEN&gt;
+ *    Paste it into the dashboard&#x27;s &quot;Connect data source&quot; screen.
+ *
+ * The sheet itself stays private. Only this endpoint is reachable, only with
+ * the token, and only for reading. Revoke any time with Deploy &gt; Manage
+ * deployments &gt; Archive, or by changing TOKEN.
+ */
+
+var SHEET_ID   = &#x27;1Djh0jlt1fuSTBfUtqYe3ztzJ66egf5fmGVZcSwen0RE&#x27;;
+var SHEET_NAME = &#x27;Sheet1&#x27;;
+var TOKEN      = &#x27;CHANGE-ME-wsc-2026-9f3c1a7e5b24&#x27;;
+
+function doGet(e) {
+  var p = (e &amp;&amp; e.parameter) || {};
+  if (p.token !== TOKEN) {
+    return respond_({ error: &#x27;unauthorized&#x27; }, p.callback);
+  }
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sh = ss.getSheetByName(p.sheet || SHEET_NAME);
+    if (!sh) return respond_({ error: &#x27;Sheet not found: &#x27; + (p.sheet || SHEET_NAME) }, p.callback);
+
+    var values = sh.getDataRange().getValues();
+    if (!values.length) return respond_({ error: &#x27;Sheet is empty&#x27; }, p.callback);
+
+    var tz = ss.getSpreadsheetTimeZone() || &#x27;UTC&#x27;;
+    var headerRow = values.shift();
+
+    // Drop trailing blank columns.
+    var keep = [];
+    for (var i = 0; i &lt; headerRow.length; i++) {
+      if (String(headerRow[i]).trim() !== &#x27;&#x27;) keep.push(i);
+    }
+
+    var headers = [];
+    for (var h = 0; h &lt; keep.length; h++) headers.push(String(headerRow[keep[h]]).trim());
+
+    var rows = [];
+    for (var r = 0; r &lt; values.length; r++) {
+      var src = values[r], out = [], filled = false;
+      for (var k = 0; k &lt; keep.length; k++) {
+        var v = src[keep[k]];
+        if (v instanceof Date) {
+          v = Utilities.formatDate(v, tz, &#x27;yyyy-MM-dd&#x27;);
+        } else if (v === null || v === undefined) {
+          v = &#x27;&#x27;;
+        } else {
+          v = String(v).trim();
+        }
+        if (v !== &#x27;&#x27;) filled = true;
+        out.push(v);
+      }
+      if (filled) rows.push(out);
+    }
+
+    return respond_({
+      sheet: sh.getName(),
+      generatedAt: new Date().toISOString(),
+      timezone: tz,
+      headers: headers,
+      rows: rows
+    }, p.callback);
+
+  } catch (err) {
+    return respond_({ error: String(err) }, p.callback);
+  }
+}
+
+/** JSON, or JSONP when a callback is supplied (browser fallback). */
+function respond_(obj, callback) {
+  var body = JSON.stringify(obj);
+  if (callback) {
+    return ContentService
+      .createTextOutput(callback + &#x27;(&#x27; + body + &#x27;);&#x27;)
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService
+    .createTextOutput(body)
+    .setMimeType(ContentService.MimeType.JSON);
+}
+</pre>
+  </div>
+</section>
+
+<!-- ============ APP ============ -->
+<main id="app" class="hidden">
+
+  <div class="wrap">
+    <section class="masthead">
+      <span class="capsule">Paid Social · Lead Generation 2026</span>
+      <h1>WSC Sports campaign <em>performance</em>, live.</h1>
+      <p class="sub">Every lead captured by the Meta and LinkedIn lead-gen programme, scored by where it landed in the HubSpot lifecycle. Filter by period, platform, ICP, campaign or creative and every number on the page recalculates.</p>
+      <div class="facts">
+        <span class="meta-line" id="factRows">—</span>
+        <span class="meta-line" id="factRange">—</span>
+        <span class="meta-line" id="factSource">—</span>
+        <span class="meta-line" id="factCompare">—</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- FILTERS -->
+  <section class="filters no-print">
+    <div class="filters__in">
+      <div class="frow">
+        <span class="flabel">Period</span>
+        <div class="seg" id="presetRow"></div>
+        <input class="dateinput" type="date" id="dFrom" aria-label="From date">
+        <input class="dateinput" type="date" id="dTo" aria-label="To date">
+      </div>
+      <div class="frow">
+        <span class="flabel">Platform</span><span id="srcChips" class="seg"></span>
+        <span class="flabel" style="margin-left:10px">Segment</span><span id="icpChips" class="seg"></span>
+      </div>
+      <div class="frow">
+        <select class="sel" id="fCampaign"></select>
+        <select class="sel" id="fAdset"></select>
+        <select class="sel" id="fAd"></select>
+        <select class="sel" id="fStage"></select>
+        <select class="sel" id="fStatus"></select>
+        <input class="search" id="fSearch" type="search" placeholder="Search name, company, title or email">
+        <button class="btn btn--ghost" id="btnReset" type="button">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+
+    <!-- KPIs -->
+    <section class="kpis" id="kpis"></section>
+
+    <!-- CHARTS -->
+    <section class="grid">
+
+      <div class="card span8">
+        <div class="card__head">
+          <div>
+            <span class="ctitle">Volume &amp; quality over time</span>
+            <h3>Leads by period, split by platform</h3>
+          </div>
+          <div class="seg" id="granRow"></div>
+        </div>
+        <div class="chartbox" id="chartVolume"></div>
+        <div class="legend">
+          <span><i style="background:var(--purple)"></i>Meta</span>
+          <span><i style="background:var(--mint)"></i>LinkedIn</span>
+          <span><i style="background:var(--ink)"></i>MQL+ rate</span>
+        </div>
+      </div>
+
+      <div class="card span4">
+        <div class="card__head"><div><span class="ctitle">Lifecycle</span><h3>Funnel</h3></div></div>
+        <div class="funnel" id="funnel"></div>
+        <p class="card__note" id="funnelNote"></p>
+      </div>
+
+      <div class="card span4">
+        <div class="card__head"><div><span class="ctitle">Platform mix</span><h3>Where leads come from</h3></div></div>
+        <div class="chartbox" id="chartSource"></div>
+        <div class="ranklist" id="sourceTable"></div>
+      </div>
+
+      <div class="card span4">
+        <div class="card__head"><div><span class="ctitle">Audience segment</span><h3>ICP performance</h3></div></div>
+        <div class="ranklist" id="icpTable"></div>
+        <p class="card__note">Segment is read from the ad set and ad naming convention. Bar length is lead volume; the percentage is the MQL+ rate.</p>
+      </div>
+
+      <div class="card span4">
+        <div class="card__head"><div><span class="ctitle">Sales pipeline</span><h3>Lead status</h3></div></div>
+        <div class="ranklist" id="statusTable"></div>
+      </div>
+
+      <div class="card span8">
+        <div class="card__head">
+          <div><span class="ctitle">Creative performance</span><h3>Ads ranked by qualified volume</h3></div>
+          <div class="seg" id="creativeRow"></div>
+        </div>
+        <div class="tablewrap"><table id="creativeTable"></table></div>
+        <p class="card__note">Minimum 10 leads to appear. MQL+ counts every lead that reached Marketing Qualified or further.</p>
+      </div>
+
+      <div class="card span4">
+        <div class="card__head">
+          <div><span class="ctitle">Who is filling the form</span><h3 id="whoTitle">Top job titles</h3></div>
+          <div class="seg" id="whoRow"></div>
+        </div>
+        <div class="ranklist" id="whoTable"></div>
+      </div>
+
+      <div class="card span12">
+        <div class="card__head">
+          <div><span class="ctitle">Raw records</span><h3>Leads</h3></div>
+          <button class="btn btn--ghost no-print" id="btnExport" type="button">Export CSV</button>
+        </div>
+        <div class="tablewrap"><table id="leadTable"></table></div>
+        <div class="pager no-print">
+          <span class="pager__n" id="pagerInfo"></span>
+          <span style="display:flex;gap:8px">
+            <button class="btn btn--ghost" id="pagePrev" type="button">Previous</button>
+            <button class="btn btn--ghost" id="pageNext" type="button">Next</button>
+          </span>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer class="foot">
+    <div class="foot__in">
+      <span class="meta-line">WSC Sports &middot; Campaigns Master Sheet 2026</span>
+      <span class="meta-line" id="footStamp"></span>
+      <span class="meta-line">Built by Noetic Creative</span>
+    </div>
+  </footer>
+</main>
+
+<script>
+/* =====================================================================
+   WSC Sports · Lead Generation Dashboard
+   Data: Google Sheet "WSC - Campaigns Master Sheet 2026" / Sheet1,
+   served read-only by an Apps Script web app.
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  var BAKED_API = '';                 // set at build time once the endpoint exists
+  var REFRESH_MS = 120000;            // auto-refresh every 2 minutes
+  var STORE_KEY = 'wsc_dashboard_api';
+
+  var COL = {
+    date: 'Submission Date', source: 'Source', campaign: 'Campaign Name',
+    adset: 'Ad set name', ad: 'Ad name', stage: 'Lifecycle Stage',
+    status: 'Lead Status', first: 'First Name', last: 'Last Name',
+    company: 'Company Name', title: 'Job Title', created: 'HubSpot Create Date',
+    email: 'Email'
+  };
+
+  var STAGES = [
+    { key: 'lead',                   rank: 1, label: 'Lead',        color: '#C9C4F4' },
+    { key: 'marketingqualifiedlead', rank: 2, label: 'MQL',         color: '#8F82EC' },
+    { key: 'salesqualifiedlead',     rank: 3, label: 'SQL',         color: '#6C5CE7' },
+    { key: 'opportunity',            rank: 4, label: 'Opportunity', color: '#00D4B4' },
+    { key: 'customer',               rank: 5, label: 'Customer',    color: '#0A0A0E' }
+  ];
+
+  var PRESETS = [
+    { id: 'all',  label: 'All time' },
+    { id: 'ytd',  label: 'Year to date' },
+    { id: 'd90',  label: 'Last 90 days' },
+    { id: 'd30',  label: 'Last 30 days' },
+    { id: 'd7',   label: 'Last 7 days' }
+  ];
+
+  var state = {
+    rows: [], generatedAt: null, lastFetch: null, api: '',
+    gran: 'month', creativeBy: 'mql', whoBy: 'title',
+    sort: { key: 'date', dir: -1 }, page: 0, perPage: 50,
+    f: { preset: 'ytd', from: '', to: '', source: [], icp: [],
+         campaign: '', adset: '', ad: '', stage: '', status: '', q: '' }
+  };
+
+  /* ---------------- helpers ---------------- */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var el = function (id) { return document.getElementById(id); };
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function intf(n) { return (n || 0).toLocaleString('en-US'); }
+  function pct(n, d) { return d ? Math.round((n / d) * 1000) / 10 : 0; }
+  function pctf(n, d) { return d ? pct(n, d).toFixed(d < 40 ? 0 : 1).replace(/\.0$/, '') + '%' : '—'; }
+  function iso(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function fmtDay(d) {
+    return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+  function parseDate(v) {
+    if (!v) return null;
+    var s = String(v).trim();
+    var m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+    m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);           // US m/d/yyyy
+    if (m) return new Date(+m[3], +m[1] - 1, +m[2]);
+    var d = new Date(s);
+    return isNaN(d.getTime()) ? null : new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+  function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z]/g, ''); }
+  function titleCase(s) {
+    s = String(s || '').trim();
+    if (!s) return 'Unknown';
+    if (s.toUpperCase() === s && s.length <= 4) return s;          // MQL, NEW stays short-caps
+    return s.toLowerCase().replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); });
+  }
+
+  /* ---------------- data source ---------------- */
+  function readApi() {
+    var q = new URLSearchParams(location.search).get('api');
+    if (q) { try { localStorage.setItem(STORE_KEY, q); } catch (e) {} return q; }
+    var stored = '';
+    try { stored = localStorage.getItem(STORE_KEY) || ''; } catch (e) {}
+    return stored || BAKED_API;
+  }
+
+  function jsonp(url) {
+    return new Promise(function (res, rej) {
+      var cb = '__wsccb' + Date.now() + Math.floor(Math.random() * 1e4);
+      var s = document.createElement('script');
+      var timer = setTimeout(function () { done(); rej(new Error('Timed out')); }, 25000);
+      function done() { clearTimeout(timer); try { delete window[cb]; } catch (e) { window[cb] = undefined; } if (s.parentNode) s.parentNode.removeChild(s); }
+      window[cb] = function (d) { done(); res(d); };
+      s.onerror = function () { done(); rej(new Error('Could not reach the endpoint')); };
+      s.src = url + (url.indexOf('?') < 0 ? '?' : '&') + 'callback=' + cb;
+      document.head.appendChild(s);
+    });
+  }
+
+  function parseCSV(text) {
+    var rows = [], row = [], cur = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+        else cur += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cur); cur = ''; }
+      else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+      else if (c !== '\r') cur += c;
+    }
+    if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+    return rows.filter(function (r) { return r.some(function (c) { return String(c).trim() !== ''; }); });
+  }
+
+  function fetchData(url) {
+    return fetch(url, { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (t) {
+        var s = t.replace(/^﻿/, '').trim();
+        if (s.charAt(0) === '{') return JSON.parse(s);
+        var rows = parseCSV(s);                                  // published-CSV fallback
+        return { headers: rows.shift(), rows: rows, generatedAt: new Date().toISOString() };
+      })
+      .catch(function () { return jsonp(url); });                // CORS-blocked fallback
+  }
+
+  /* ---------------- normalise ---------------- */
+  function segmentOf(a, b) {
+    var s = (a + ' ' + b).toUpperCase();
+    if (/ICP\W?1/.test(s)) return 'ICP 1';
+    if (/ICP\W?2/.test(s)) return 'ICP 2';
+    if (/MENA/.test(s)) return 'MENA';
+    return 'Other';
+  }
+  function platformOf(v) {
+    var s = String(v || '').trim().toLowerCase();
+    if (s === 'facebook' || s === 'meta' || s === 'instagram') return 'Meta';
+    if (s === 'linkedin') return 'LinkedIn';
+    return 'Unknown';
+  }
+  function stageOf(v) {
+    var n = norm(v);
+    for (var i = 0; i < STAGES.length; i++) if (STAGES[i].key === n) return STAGES[i];
+    return { key: 'unknown', rank: 0, label: 'Unknown', color: '#D6D6DE' };
+  }
+
+  function normalise(payload) {
+    var H = payload.headers.map(function (h) { return String(h).trim(); });
+    var ix = {};
+    Object.keys(COL).forEach(function (k) { ix[k] = H.indexOf(COL[k]); });
+    var out = [];
+    payload.rows.forEach(function (r) {
+      var g = function (k) { return ix[k] >= 0 ? String(r[ix[k]] == null ? '' : r[ix[k]]).trim() : ''; };
+      var d = parseDate(g('date'));
+      if (!d) return;
+      var st = stageOf(g('stage'));
+      var adset = g('adset'), ad = g('ad');
+      var first = g('first'), last = g('last');
+      out.push({
+        date: d, ts: d.getTime(), dateStr: iso(d),
+        source: platformOf(g('source')), sourceRaw: g('source') || 'Unknown',
+        campaign: g('campaign') || 'Unknown', adset: adset || 'Unknown', ad: ad || 'Unknown',
+        segment: segmentOf(adset, ad),
+        stageKey: st.key, stageRank: st.rank, stageLabel: st.label, stageColor: st.color,
+        status: titleCase(g('status')),
+        name: (first + ' ' + last).trim() || '—',
+        company: g('company') || '—', title: g('title') || '—',
+        email: g('email') || '—', created: g('created')
+      });
+    });
+    out.sort(function (a, b) { return b.ts - a.ts; });
+    return out;
+  }
+
+  /* ---------------- filtering ---------------- */
+  function rangeFor(preset) {
+    var rows = state.rows;
+    if (!rows.length) return { from: null, to: null };
+    var max = rows[0].date, min = rows[rows.length - 1].date;
+    var to = new Date(max.getFullYear(), max.getMonth(), max.getDate());
+    var from;
+    if (preset === 'all') from = min;
+    else if (preset === 'ytd') from = new Date(to.getFullYear(), 0, 1);
+    else {
+      var days = preset === 'd90' ? 90 : preset === 'd30' ? 30 : 7;
+      from = new Date(to.getFullYear(), to.getMonth(), to.getDate() - (days - 1));
+    }
+    return { from: from, to: to };
+  }
+
+  function activeRange() {
+    if (state.f.from && state.f.to) return { from: parseDate(state.f.from), to: parseDate(state.f.to) };
+    return rangeFor(state.f.preset);
+  }
+
+  function matches(r, rg, skipDate) {
+    var f = state.f;
+    if (!skipDate && rg.from && (r.date < rg.from || r.date > rg.to)) return false;
+    if (f.source.length && f.source.indexOf(r.source) < 0) return false;
+    if (f.icp.length && f.icp.indexOf(r.segment) < 0) return false;
+    if (f.campaign && r.campaign !== f.campaign) return false;
+    if (f.adset && r.adset !== f.adset) return false;
+    if (f.ad && r.ad !== f.ad) return false;
+    if (f.stage && r.stageLabel !== f.stage) return false;
+    if (f.status && r.status !== f.status) return false;
+    if (f.q) {
+      var q = f.q.toLowerCase();
+      if ((r.name + ' ' + r.company + ' ' + r.title + ' ' + r.email).toLowerCase().indexOf(q) < 0) return false;
+    }
+    return true;
+  }
+
+  function filtered() {
+    var rg = activeRange();
+    return state.rows.filter(function (r) { return matches(r, rg); });
+  }
+
+  // The equivalent window immediately before the selected one. Returns null when
+  // that window holds too little data to compare against honestly — comparing a
+  // year to date against a near-empty prior year produces meaningless deltas.
+  var MIN_COMPARE = 15;
+  function previousPeriod() {
+    var rg = activeRange();
+    if (!rg.from || state.f.preset === 'all') return null;
+    var span = Math.round((rg.to - rg.from) / 86400000) + 1;
+    var pTo = new Date(rg.from.getFullYear(), rg.from.getMonth(), rg.from.getDate() - 1);
+    var pFrom = new Date(pTo.getFullYear(), pTo.getMonth(), pTo.getDate() - (span - 1));
+    var rows = state.rows.filter(function (r) {
+      return r.date >= pFrom && r.date <= pTo && matches(r, null, true);
+    });
+    if (rows.length < MIN_COMPARE) return null;
+    rows.label = fmtDay(pFrom) + ' to ' + fmtDay(pTo);
+    return rows;
+  }
+
+  /* ---------------- aggregation ---------------- */
+  function tally(rows) {
+    var t = { total: rows.length, mql: 0, sql: 0, opp: 0, cus: 0, meta: 0, li: 0, metaMql: 0, liMql: 0 };
+    rows.forEach(function (r) {
+      if (r.stageRank >= 2) t.mql++;
+      if (r.stageRank >= 3) t.sql++;
+      if (r.stageRank >= 4) t.opp++;
+      if (r.stageRank >= 5) t.cus++;
+      if (r.source === 'Meta') { t.meta++; if (r.stageRank >= 2) t.metaMql++; }
+      if (r.source === 'LinkedIn') { t.li++; if (r.stageRank >= 2) t.liMql++; }
+    });
+    return t;
+  }
+
+  function groupBy(rows, keyFn) {
+    var m = new Map();
+    rows.forEach(function (r) {
+      var k = keyFn(r);
+      if (!m.has(k)) m.set(k, []);
+      m.get(k).push(r);
+    });
+    return m;
+  }
+
+  function bucketKey(d, gran) {
+    if (gran === 'day') return iso(d);
+    if (gran === 'week') {
+      var x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7));
+      return iso(x);
+    }
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+  }
+  function bucketLabel(k, gran) {
+    if (gran === 'month') {
+      var p = k.split('-');
+      return new Date(+p[0], +p[1] - 1, 1).toLocaleDateString('en-GB', { month: 'short', year: '2-digit' });
+    }
+    var d = parseDate(k);
+    return d ? d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }) : k;
+  }
+
+  /* ---------------- SVG chart builders ---------------- */
+  function svgEl(w, h) {
+    return { w: w, h: h, parts: [], add: function (s) { this.parts.push(s); return this; },
+      out: function () {
+        return '<svg viewBox="0 0 ' + this.w + ' ' + this.h + '" role="img">' + this.parts.join('') + '</svg>';
+      } };
+  }
+  function txt(x, y, s, o) {
+    o = o || {};
+    return '<text x="' + x + '" y="' + y + '" fill="' + (o.fill || '#6B6B7B') + '" font-size="' + (o.size || 11) +
+      '" font-family="' + (o.mono ? "'JetBrains Mono',monospace" : "'Manrope',sans-serif") + '"' +
+      (o.anchor ? ' text-anchor="' + o.anchor + '"' : '') +
+      (o.weight ? ' font-weight="' + o.weight + '"' : '') + '>' + esc(s) + '</text>';
+  }
+
+  function renderVolume(rows) {
+    var host = el('chartVolume');
+    var gran = state.gran;
+    var groups = groupBy(rows, function (r) { return bucketKey(r.date, gran); });
+    var keys = Array.from(groups.keys()).sort();
+    if (gran !== 'month' && keys.length > 60) keys = keys.slice(-60);
+    if (!keys.length) { host.innerHTML = '<p class="empty">No leads in this selection.</p>'; return; }
+
+    var W = 960, H = 340, ml = 46, mr = 46, mt = 18, mb = 46;
+    var iw = W - ml - mr, ih = H - mt - mb;
+    var data = keys.map(function (k) {
+      var t = tally(groups.get(k));
+      return { k: k, label: bucketLabel(k, gran), meta: t.meta, li: t.li,
+        other: t.total - t.meta - t.li, total: t.total, rate: pct(t.mql, t.total) };
+    });
+    var max = Math.max.apply(null, data.map(function (d) { return d.total; })) || 1;
+    var top = Math.ceil(max / 10) * 10 || 10;
+    var bw = Math.max(3, Math.min(56, (iw / data.length) * 0.62));
+    var step = iw / data.length;
+    var s = svgEl(W, H);
+
+    for (var g = 0; g <= 4; g++) {
+      var yy = mt + ih - (ih * g / 4);
+      s.add('<line x1="' + ml + '" y1="' + yy + '" x2="' + (W - mr) + '" y2="' + yy + '" stroke="rgba(10,10,14,.07)" stroke-width="1"/>');
+      s.add(txt(ml - 10, yy + 4, intf(Math.round(top * g / 4)), { anchor: 'end', size: 10, mono: true, fill: '#A8A8B5' }));
+    }
+    for (var p = 0; p <= 4; p++) {
+      var py = mt + ih - (ih * p / 4);
+      s.add(txt(W - mr + 10, py + 4, (p * 25) + '%', { size: 10, mono: true, fill: '#A8A8B5' }));
+    }
+
+    var pts = [];
+    data.forEach(function (d, i) {
+      var x = ml + step * i + (step - bw) / 2;
+      var hMeta = (d.meta / top) * ih, hLi = (d.li / top) * ih, hOt = (d.other / top) * ih;
+      var yb = mt + ih;
+      if (hMeta > 0) { yb -= hMeta; s.add('<rect x="' + x + '" y="' + yb + '" width="' + bw + '" height="' + hMeta + '" fill="#6C5CE7" rx="2"><title>' + esc(d.label + ' · Meta ' + d.meta) + '</title></rect>'); }
+      if (hLi > 0) { yb -= hLi; s.add('<rect x="' + x + '" y="' + yb + '" width="' + bw + '" height="' + hLi + '" fill="#00D4B4" rx="2"><title>' + esc(d.label + ' · LinkedIn ' + d.li) + '</title></rect>'); }
+      if (hOt > 0) { yb -= hOt; s.add('<rect x="' + x + '" y="' + yb + '" width="' + bw + '" height="' + hOt + '" fill="#D6D6DE" rx="2"><title>' + esc(d.label + ' · Other ' + d.other) + '</title></rect>'); }
+      pts.push([ml + step * i + step / 2, mt + ih - (d.rate / 100) * ih]);
+      var every = Math.ceil(data.length / (gran === 'month' ? 14 : 10));
+      if (i % every === 0 || i === data.length - 1) {
+        s.add(txt(ml + step * i + step / 2, H - 22, d.label, { anchor: 'middle', size: 10, mono: true, fill: '#6B6B7B' }));
+      }
+    });
+
+    s.add('<polyline fill="none" stroke="#0A0A0E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="' +
+      pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>');
+    pts.forEach(function (p, i) {
+      s.add('<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="#FAFAF7" stroke="#0A0A0E" stroke-width="2"><title>' +
+        esc(data[i].label + ' · MQL+ rate ' + data[i].rate + '%') + '</title></circle>');
+    });
+    host.innerHTML = s.out();
+  }
+
+  function renderSource(rows) {
+    var groups = groupBy(rows, function (r) { return r.source; });
+    var order = ['Meta', 'LinkedIn', 'Unknown'];
+    var colors = { 'Meta': '#6C5CE7', 'LinkedIn': '#00D4B4', 'Unknown': '#D6D6DE' };
+    var items = order.filter(function (k) { return groups.has(k); }).map(function (k) {
+      var t = tally(groups.get(k));
+      return { k: k, n: t.total, mql: t.mql, color: colors[k] };
+    });
+    var total = items.reduce(function (a, b) { return a + b.n; }, 0);
+
+    var S = 200, R = 82, C = S / 2, TH = 26, s = svgEl(S, S);
+    var ang = -Math.PI / 2;
+    items.forEach(function (it) {
+      var sweep = total ? (it.n / total) * Math.PI * 2 : 0;
+      var a2 = ang + sweep;
+      var large = sweep > Math.PI ? 1 : 0;
+      var x1 = C + R * Math.cos(ang), y1 = C + R * Math.sin(ang);
+      var x2 = C + R * Math.cos(a2), y2 = C + R * Math.sin(a2);
+      var r2 = R - TH;
+      var x3 = C + r2 * Math.cos(a2), y3 = C + r2 * Math.sin(a2);
+      var x4 = C + r2 * Math.cos(ang), y4 = C + r2 * Math.sin(ang);
+      if (sweep > 0.0001) {
+        s.add('<path d="M' + x1.toFixed(2) + ' ' + y1.toFixed(2) + ' A' + R + ' ' + R + ' 0 ' + large + ' 1 ' + x2.toFixed(2) + ' ' + y2.toFixed(2) +
+          ' L' + x3.toFixed(2) + ' ' + y3.toFixed(2) + ' A' + r2 + ' ' + r2 + ' 0 ' + large + ' 0 ' + x4.toFixed(2) + ' ' + y4.toFixed(2) + ' Z" fill="' + it.color + '"><title>' +
+          esc(it.k + ' · ' + intf(it.n)) + '</title></path>');
+      }
+      ang = a2;
+    });
+    s.add(txt(C, C - 2, intf(total), { anchor: 'middle', size: 30, fill: '#0A0A0E', weight: 600 }));
+    s.add(txt(C, C + 16, 'LEADS', { anchor: 'middle', size: 9, mono: true, fill: '#A8A8B5' }));
+    el('chartSource').innerHTML = '<div style="max-width:220px;margin:0 auto">' + s.out() + '</div>';
+
+    el('sourceTable').innerHTML = items.map(function (it) {
+      return '<div class="rankrow"><span class="rankrow__name"><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:' +
+        it.color + ';margin-right:9px"></i>' + esc(it.k) + '</span>' +
+        '<span class="rankrow__num"><b>' + intf(it.n) + '</b> · ' + pctf(it.n, total) + ' of mix · ' + pctf(it.mql, it.n) + ' MQL+</span></div>';
+    }).join('');
+  }
+
+  function renderFunnel(rows) {
+    var t = tally(rows);
+    var steps = [
+      { label: 'Leads captured', n: t.total, color: '#C9C4F4' },
+      { label: 'Marketing qualified or beyond', n: t.mql, color: '#8F82EC' },
+      { label: 'Sales qualified or beyond', n: t.sql, color: '#6C5CE7' },
+      { label: 'Opportunity or beyond', n: t.opp, color: '#00D4B4' },
+      { label: 'Customer', n: t.cus, color: '#0A0A0E' }
+    ];
+    el('funnel').innerHTML = steps.map(function (s, i) {
+      var w = t.total ? (s.n / t.total) * 100 : 0;
+      var conv = i === 0 ? 'Base' : pctf(s.n, steps[i - 1].n) + ' of previous step';
+      return '<div class="fstage"><div class="fstage__top"><span class="fstage__name">' + esc(s.label) +
+        '</span><span class="fstage__val">' + intf(s.n) + ' · ' + pctf(s.n, t.total) + '</span></div>' +
+        '<div class="fstage__bar"><i style="width:' + w.toFixed(1) + '%;background:' + s.color + '"></i></div>' +
+        '<span class="fstage__conv">' + conv + '</span></div>';
+    }).join('');
+    el('funnelNote').textContent = 'Stages are cumulative: a customer is counted in every step it passed through. ' +
+      'Unknown or blank lifecycle values (' + intf(rows.filter(function (r) { return r.stageRank === 0; }).length) + ') sit outside the funnel.';
+  }
+
+  function rankRows(items, total, opts) {
+    opts = opts || {};
+    if (!items.length) return '<p class="empty">Nothing to show for this selection.</p>';
+    var max = Math.max.apply(null, items.map(function (i) { return i.n; })) || 1;
+    return items.map(function (i) {
+      return '<div class="rankrow"><span class="rankrow__name" title="' + esc(i.name) + '">' + esc(i.name) + '</span>' +
+        '<span class="rankrow__num"><b>' + intf(i.n) + '</b>' + (opts.share ? ' · ' + pctf(i.n, total) : '') +
+        (i.mql != null ? ' · ' + pctf(i.mql, i.n) + ' MQL+' : '') + '</span>' +
+        '<span class="bar"><i class="' + (opts.mint ? 'mint' : '') + '" style="width:' + ((i.n / max) * 100).toFixed(1) + '%"></i></span></div>';
+    }).join('');
+  }
+
+  function renderSegments(rows) {
+    var m = groupBy(rows, function (r) { return r.segment; });
+    var items = Array.from(m.entries()).map(function (e) {
+      var t = tally(e[1]);
+      return { name: e[0], n: t.total, mql: t.mql };
+    }).sort(function (a, b) { return b.n - a.n; });
+    el('icpTable').innerHTML = rankRows(items, rows.length, { share: true });
+  }
+
+  function renderStatus(rows) {
+    var m = groupBy(rows, function (r) { return r.status; });
+    var items = Array.from(m.entries()).map(function (e) { return { name: e[0], n: e[1].length }; })
+      .sort(function (a, b) { return b.n - a.n; });
+    el('statusTable').innerHTML = rankRows(items, rows.length, { share: true, mint: true });
+  }
+
+  function renderWho(rows) {
+    var key = state.whoBy === 'title' ? 'title' : 'company';
+    el('whoTitle').textContent = key === 'title' ? 'Top job titles' : 'Top companies';
+    var m = groupBy(rows.filter(function (r) { return r[key] && r[key] !== '—'; }), function (r) { return r[key]; });
+    var items = Array.from(m.entries()).map(function (e) {
+      var t = tally(e[1]);
+      return { name: e[0], n: t.total, mql: t.mql };
+    }).sort(function (a, b) { return b.n - a.n; }).slice(0, 12);
+    el('whoTable').innerHTML = rankRows(items, rows.length, {});
+  }
+
+  function renderCreative(rows) {
+    var m = groupBy(rows, function (r) { return r.ad; });
+    var items = Array.from(m.entries()).map(function (e) {
+      var t = tally(e[1]);
+      var platforms = Array.from(new Set(e[1].map(function (r) { return r.source; }))).join(', ');
+      return { name: e[0], n: t.total, mql: t.mql, sql: t.sql, rate: pct(t.mql, t.total), platform: platforms };
+    }).filter(function (i) { return i.n >= 10 && i.name !== 'Unknown' && i.name !== 'not found'; });
+
+    items.sort(function (a, b) {
+      if (state.creativeBy === 'rate') return b.rate - a.rate || b.n - a.n;
+      if (state.creativeBy === 'volume') return b.n - a.n;
+      return b.mql - a.mql || b.n - a.n;
+    });
+    items = items.slice(0, 12);
+
+    var max = Math.max.apply(null, items.map(function (i) { return i.n; })) || 1;
+    var head = '<thead><tr><th style="cursor:default">Ad</th><th style="cursor:default">Platform</th>' +
+      '<th style="cursor:default">Leads</th><th style="cursor:default">MQL+</th><th style="cursor:default">SQL+</th>' +
+      '<th style="cursor:default;width:180px">MQL+ rate</th></tr></thead>';
+    var body = items.length ? items.map(function (i) {
+      return '<tr><td><span class="co" style="font-weight:500;font-size:13px">' + esc(i.name) + '</span></td>' +
+        '<td class="num">' + esc(i.platform) + '</td>' +
+        '<td class="num"><b style="color:var(--ink)">' + intf(i.n) + '</b></td>' +
+        '<td class="num">' + intf(i.mql) + '</td>' +
+        '<td class="num">' + intf(i.sql) + '</td>' +
+        '<td><div style="display:flex;align-items:center;gap:10px">' +
+        '<span class="bar" style="flex:1"><i style="width:' + i.rate.toFixed(1) + '%"></i></span>' +
+        '<span class="rankrow__num" style="min-width:44px;text-align:right"><b>' + i.rate.toFixed(0) + '%</b></span></div></td></tr>';
+    }).join('') : '<tr><td colspan="6" class="empty">No ad reached 10 leads in this selection.</td></tr>';
+    el('creativeTable').innerHTML = head + '<tbody>' + body + '</tbody>';
+  }
+
+  /* ---------------- KPIs ---------------- */
+  function renderKpis(rows) {
+    var t = tally(rows);
+    var prev = previousPeriod();
+    var p = prev ? tally(prev) : null;
+
+    function delta(cur, before) {
+      if (!p || before == null) return '';
+      if (!before) return '<span class="delta">new</span>';
+      var d = ((cur - before) / before) * 100;
+      var cls = d > 0.5 ? 'up' : d < -0.5 ? 'down' : '';
+      return '<span class="delta ' + cls + '">' + (d > 0 ? '+' : '') + d.toFixed(0) + '%</span>';
+    }
+    function ptDelta(cur, before) {
+      if (!p) return '';
+      var d = cur - before;
+      var cls = d > 0.3 ? 'up' : d < -0.3 ? 'down' : '';
+      return '<span class="delta ' + cls + '">' + (d > 0 ? '+' : '') + d.toFixed(1) + ' pts</span>';
+    }
+
+    var cards = [
+      { label: 'Total leads', val: intf(t.total), foot: (p ? 'vs ' + intf(p.total) + ' prior period ' + delta(t.total, p.total) : 'All records in view') },
+      { label: 'MQL or beyond', val: intf(t.mql), foot: (p ? 'vs ' + intf(p.mql) + ' ' + delta(t.mql, p.mql) : 'Reached Marketing Qualified') },
+      { label: 'MQL+ rate', val: pctf(t.mql, t.total), foot: (p ? 'vs ' + pctf(p.mql, p.total) + ' ' + ptDelta(pct(t.mql, t.total), pct(p.mql, p.total)) : 'Share of leads qualified') },
+      { label: 'SQL or beyond', val: intf(t.sql), foot: (p ? 'vs ' + intf(p.sql) + ' ' + delta(t.sql, p.sql) : 'Handed to sales') },
+      { label: 'Opportunities', val: intf(t.opp), foot: (p ? 'vs ' + intf(p.opp) + ' ' + delta(t.opp, p.opp) : 'Open or won pipeline') },
+      { label: 'Customers', val: intf(t.cus), foot: (p ? 'vs ' + intf(p.cus) + ' ' + delta(t.cus, p.cus) : 'Closed won from paid social') }
+    ];
+    el('kpis').innerHTML = cards.map(function (c) {
+      return '<div class="kpi"><span class="kpi__label">' + esc(c.label) + '</span>' +
+        '<span class="kpi__val">' + c.val + '</span><span class="kpi__foot">' + c.foot + '</span></div>';
+    }).join('');
+  }
+
+  /* ---------------- lead table ---------------- */
+  var COLUMNS = [
+    { key: 'date', label: 'Submitted', w: 118 },
+    { key: 'name', label: 'Lead' },
+    { key: 'company', label: 'Company' },
+    { key: 'title', label: 'Job title' },
+    { key: 'email', label: 'Email' },
+    { key: 'source', label: 'Platform', w: 100 },
+    { key: 'segment', label: 'Segment', w: 92 },
+    { key: 'ad', label: 'Ad' },
+    { key: 'stageLabel', label: 'Lifecycle', w: 116 },
+    { key: 'status', label: 'Status', w: 118 }
+  ];
+
+  function sortRows(rows) {
+    var k = state.sort.key, dir = state.sort.dir;
+    return rows.slice().sort(function (a, b) {
+      var x = k === 'date' ? a.ts : (k === 'stageLabel' ? a.stageRank : String(a[k]).toLowerCase());
+      var y = k === 'date' ? b.ts : (k === 'stageLabel' ? b.stageRank : String(b[k]).toLowerCase());
+      return x < y ? -dir : x > y ? dir : 0;
+    });
+  }
+
+  function stageTag(r) {
+    var cls = r.stageRank >= 5 ? 'tag--cus' : r.stageRank === 4 ? 'tag--opp' :
+      r.stageRank === 3 ? 'tag--sql' : r.stageRank === 2 ? 'tag--mql' : 'tag--lead';
+    return '<span class="tag ' + cls + '">' + esc(r.stageLabel) + '</span>';
+  }
+
+  function renderTable(rows) {
+    var sorted = sortRows(rows);
+    var pages = Math.max(1, Math.ceil(sorted.length / state.perPage));
+    if (state.page >= pages) state.page = pages - 1;
+    var slice = sorted.slice(state.page * state.perPage, (state.page + 1) * state.perPage);
+
+    var head = '<thead><tr>' + COLUMNS.map(function (c) {
+      var on = state.sort.key === c.key;
+      return '<th data-k="' + c.key + '" class="' + (on ? 'sorted' : '') + '"' + (c.w ? ' style="width:' + c.w + 'px"' : '') + '>' +
+        esc(c.label) + (on ? (state.sort.dir === 1 ? ' &#9650;' : ' &#9660;') : '') + '</th>';
+    }).join('') + '</tr></thead>';
+
+    var body = slice.length ? slice.map(function (r) {
+      return '<tr>' +
+        '<td class="num">' + fmtDay(r.date) + '</td>' +
+        '<td><span class="co">' + esc(r.name) + '</span></td>' +
+        '<td>' + esc(r.company) + '</td>' +
+        '<td>' + esc(r.title) + '</td>' +
+        '<td><a class="em" href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></td>' +
+        '<td class="num">' + esc(r.source) + '</td>' +
+        '<td class="num">' + esc(r.segment) + '</td>' +
+        '<td><span style="font-size:12px;color:var(--ink-mute)">' + esc(r.ad) + '</span></td>' +
+        '<td>' + stageTag(r) + '</td>' +
+        '<td class="num">' + esc(r.status) + '</td></tr>';
+    }).join('') : '<tr><td colspan="10" class="empty">No leads match these filters.</td></tr>';
+
+    el('leadTable').innerHTML = head + '<tbody>' + body + '</tbody>';
+    el('pagerInfo').textContent = sorted.length
+      ? 'Showing ' + intf(state.page * state.perPage + 1) + '–' + intf(Math.min(sorted.length, (state.page + 1) * state.perPage)) +
+        ' of ' + intf(sorted.length) + ' leads'
+      : 'No leads';
+    el('pagePrev').disabled = state.page === 0;
+    el('pageNext').disabled = state.page >= pages - 1;
+
+    Array.prototype.forEach.call(el('leadTable').querySelectorAll('th'), function (th) {
+      th.addEventListener('click', function () {
+        var k = th.getAttribute('data-k');
+        if (state.sort.key === k) state.sort.dir *= -1;
+        else { state.sort.key = k; state.sort.dir = k === 'date' ? -1 : 1; }
+        render();
+      });
+    });
+  }
+
+  function exportCsv() {
+    var rows = sortRows(filtered());
+    var head = COLUMNS.map(function (c) { return c.label; });
+    var lines = [head.join(',')];
+    rows.forEach(function (r) {
+      lines.push(COLUMNS.map(function (c) {
+        var v = c.key === 'date' ? r.dateStr : r[c.key];
+        return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+      }).join(','));
+    });
+    var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'wsc-leads-' + iso(new Date()) + '.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+
+  /* ---------------- filter UI ---------------- */
+  function fillSelect(id, label, values, current) {
+    var s = el(id);
+    s.innerHTML = '<option value="">' + label + ': all</option>' + values.map(function (v) {
+      return '<option value="' + esc(v) + '"' + (v === current ? ' selected' : '') + '>' + esc(v) + '</option>';
+    }).join('');
+    s.classList.toggle('on', !!current);
+  }
+
+  function uniqSorted(rows, key) {
+    return Array.from(new Set(rows.map(function (r) { return r[key]; })))
+      .filter(function (v) { return v && v !== 'Unknown'; }).sort();
+  }
+
+  function buildFilterUi() {
+    el('presetRow').innerHTML = PRESETS.map(function (p) {
+      return '<button type="button" data-p="' + p.id + '" class="' +
+        (state.f.preset === p.id && !state.f.from ? 'on' : '') + '">' + p.label + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('presetRow').children, function (b) {
+      b.addEventListener('click', function () {
+        state.f.preset = b.getAttribute('data-p'); state.f.from = ''; state.f.to = '';
+        var rg = rangeFor(state.f.preset);
+        el('dFrom').value = rg.from ? iso(rg.from) : '';
+        el('dTo').value = rg.to ? iso(rg.to) : '';
+        state.page = 0; buildFilterUi(); render();
+      });
+    });
+
+    var srcVals = ['Meta', 'LinkedIn', 'Unknown'].filter(function (v) {
+      return state.rows.some(function (r) { return r.source === v; });
+    });
+    el('srcChips').innerHTML = srcVals.map(function (v) {
+      return '<button type="button" class="chip ' + (state.f.source.indexOf(v) >= 0 ? 'on' : '') + '" data-v="' + esc(v) + '">' + esc(v) + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('srcChips').children, function (b) {
+      b.addEventListener('click', function () { toggle(state.f.source, b.getAttribute('data-v')); state.page = 0; buildFilterUi(); render(); });
+    });
+
+    var icpVals = ['ICP 1', 'ICP 2', 'MENA', 'Other'].filter(function (v) {
+      return state.rows.some(function (r) { return r.segment === v; });
+    });
+    el('icpChips').innerHTML = icpVals.map(function (v) {
+      return '<button type="button" class="chip ' + (state.f.icp.indexOf(v) >= 0 ? 'on' : '') + '" data-v="' + esc(v) + '">' + esc(v) + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('icpChips').children, function (b) {
+      b.addEventListener('click', function () { toggle(state.f.icp, b.getAttribute('data-v')); state.page = 0; buildFilterUi(); render(); });
+    });
+
+    fillSelect('fCampaign', 'Campaign', uniqSorted(state.rows, 'campaign'), state.f.campaign);
+    fillSelect('fAdset', 'Ad set', uniqSorted(state.rows, 'adset'), state.f.adset);
+    fillSelect('fAd', 'Ad', uniqSorted(state.rows, 'ad'), state.f.ad);
+    fillSelect('fStage', 'Lifecycle', STAGES.map(function (s) { return s.label; }), state.f.stage);
+    fillSelect('fStatus', 'Status', uniqSorted(state.rows, 'status'), state.f.status);
+  }
+
+  function toggle(arr, v) {
+    var i = arr.indexOf(v);
+    if (i < 0) arr.push(v); else arr.splice(i, 1);
+  }
+
+  function buildSegs() {
+    var grans = [['day', 'Day'], ['week', 'Week'], ['month', 'Month']];
+    el('granRow').innerHTML = grans.map(function (g) {
+      return '<button type="button" data-g="' + g[0] + '" class="' + (state.gran === g[0] ? 'on' : '') + '">' + g[1] + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('granRow').children, function (b) {
+      b.addEventListener('click', function () { state.gran = b.getAttribute('data-g'); buildSegs(); render(); });
+    });
+
+    var cs = [['mql', 'By MQL+'], ['volume', 'By volume'], ['rate', 'By rate']];
+    el('creativeRow').innerHTML = cs.map(function (g) {
+      return '<button type="button" data-c="' + g[0] + '" class="' + (state.creativeBy === g[0] ? 'on' : '') + '">' + g[1] + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('creativeRow').children, function (b) {
+      b.addEventListener('click', function () { state.creativeBy = b.getAttribute('data-c'); buildSegs(); render(); });
+    });
+
+    var ws = [['title', 'Titles'], ['company', 'Companies']];
+    el('whoRow').innerHTML = ws.map(function (g) {
+      return '<button type="button" data-w="' + g[0] + '" class="' + (state.whoBy === g[0] ? 'on' : '') + '">' + g[1] + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el('whoRow').children, function (b) {
+      b.addEventListener('click', function () { state.whoBy = b.getAttribute('data-w'); buildSegs(); render(); });
+    });
+  }
+
+  /* ---------------- render ---------------- */
+  function render() {
+    var rows = filtered();
+    var rg = activeRange();
+    renderKpis(rows);
+    renderVolume(rows);
+    renderFunnel(rows);
+    renderSource(rows);
+    renderSegments(rows);
+    renderStatus(rows);
+    renderWho(rows);
+    renderCreative(rows);
+    renderTable(rows);
+
+    el('factRows').textContent = intf(rows.length) + ' of ' + intf(state.rows.length) + ' leads in view';
+    el('factRange').textContent = rg.from ? fmtDay(rg.from) + ' to ' + fmtDay(rg.to) : 'All time';
+    el('factSource').textContent = 'Sheet1 · Campaigns Master Sheet 2026';
+    var prev = previousPeriod();
+    el('factCompare').textContent = prev ? 'Compared with ' + prev.label : 'No comparable prior period';
+    el('footStamp').textContent = state.generatedAt
+      ? 'Data pulled ' + new Date(state.generatedAt).toLocaleString('en-GB') : '';
+  }
+
+  function setLive(kind, text) {
+    var chip = el('liveChip');
+    chip.className = 'live' + (kind === 'ok' ? '' : kind === 'stale' ? ' live--stale' : ' live--down');
+    el('liveText').textContent = text;
+  }
+
+  /* ---------------- load ---------------- */
+  function load(showSpinner) {
+    var api = state.api;
+    if (!api) { showSetup(); return Promise.resolve(); }
+    if (showSpinner) setLive('stale', 'Refreshing');
+    return fetchData(api).then(function (payload) {
+      if (!payload || payload.error) throw new Error(payload && payload.error ? payload.error : 'Empty response');
+      if (!payload.headers || !payload.rows) throw new Error('Unexpected response shape');
+      state.rows = normalise(payload);
+      if (!state.rows.length) throw new Error('No dated rows found in the sheet');
+      state.generatedAt = payload.generatedAt || new Date().toISOString();
+      state.lastFetch = new Date();
+      el('setup').classList.add('hidden');
+      el('app').classList.remove('hidden');
+      if (!el('dFrom').value) {
+        var rg = rangeFor(state.f.preset);
+        el('dFrom').value = rg.from ? iso(rg.from) : '';
+        el('dTo').value = rg.to ? iso(rg.to) : '';
+      }
+      buildFilterUi(); buildSegs(); render();
+      setLive('ok', 'Live · ' + state.lastFetch.toLocaleTimeString('en-GB'));
+    }).catch(function (err) {
+      setLive('down', 'Offline');
+      if (!state.rows.length) showSetup(String(err.message || err));
+      else console.warn('[WSC dashboard] refresh failed:', err);
+    });
+  }
+
+  function showSetup(msg) {
+    el('app').classList.add('hidden');
+    el('setup').classList.remove('hidden');
+    var n = el('setupError');
+    if (msg) { n.hidden = false; n.textContent = 'Could not read the endpoint: ' + msg; }
+    else n.hidden = true;
+    el('apiInput').value = state.api || '';
+  }
+
+  /* ---------------- wiring ---------------- */
+  function bind() {
+    el('btnRefresh').addEventListener('click', function () { load(true); });
+    el('btnSettings').addEventListener('click', function () { showSetup(); });
+    el('btnConnect').addEventListener('click', function () {
+      var v = el('apiInput').value.trim();
+      if (!v) return;
+      state.api = v;
+      try { localStorage.setItem(STORE_KEY, v); } catch (e) {}
+      setLive('stale', 'Connecting');
+      load(true);
+    });
+    el('apiInput').addEventListener('keydown', function (e) { if (e.key === 'Enter') el('btnConnect').click(); });
+    el('btnCopy').addEventListener('click', function () {
+      var t = el('gsCode').textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(t);
+      el('btnCopy').textContent = 'Copied';
+      setTimeout(function () { el('btnCopy').textContent = 'Copy'; }, 1600);
+    });
+
+    ['fCampaign', 'fAdset', 'fAd', 'fStage', 'fStatus'].forEach(function (id) {
+      el(id).addEventListener('change', function () {
+        var map = { fCampaign: 'campaign', fAdset: 'adset', fAd: 'ad', fStage: 'stage', fStatus: 'status' };
+        state.f[map[id]] = el(id).value;
+        el(id).classList.toggle('on', !!el(id).value);
+        state.page = 0; render();
+      });
+    });
+    var t;
+    el('fSearch').addEventListener('input', function () {
+      clearTimeout(t);
+      t = setTimeout(function () { state.f.q = el('fSearch').value.trim(); state.page = 0; render(); }, 180);
+    });
+    ['dFrom', 'dTo'].forEach(function (id) {
+      el(id).addEventListener('change', function () {
+        state.f.from = el('dFrom').value; state.f.to = el('dTo').value;
+        if (state.f.from && state.f.to) { state.f.preset = 'custom'; state.page = 0; buildFilterUi(); render(); }
+      });
+    });
+    el('btnReset').addEventListener('click', function () {
+      state.f = { preset: 'ytd', from: '', to: '', source: [], icp: [], campaign: '', adset: '', ad: '', stage: '', status: '', q: '' };
+      el('fSearch').value = '';
+      var rg = rangeFor('ytd');
+      el('dFrom').value = rg.from ? iso(rg.from) : ''; el('dTo').value = rg.to ? iso(rg.to) : '';
+      state.page = 0; buildFilterUi(); render();
+    });
+    el('pagePrev').addEventListener('click', function () { if (state.page > 0) { state.page--; render(); window.scrollBy(0, -1); } });
+    el('pageNext').addEventListener('click', function () { state.page++; render(); });
+    el('btnExport').addEventListener('click', exportCsv);
+  }
+
+  /* ---------------- boot ---------------- */
+  state.api = readApi();
+  bind();
+  if (state.api) { setLive('stale', 'Connecting'); load(false); } else { setLive('down', 'Not connected'); showSetup(); }
+  setInterval(function () { if (state.api && !document.hidden) load(false); }, REFRESH_MS);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && state.api && state.lastFetch && (Date.now() - state.lastFetch) > REFRESH_MS) load(false);
+  });
+})();
+</script>
+</body>
+</html>
