@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interlight — Account Performance — Noetic Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   NOETIC CREATIVE — DESIGN SYSTEM (inlined per delivery rule)
+   ============================================================ */
+:root{
+  --paper:        #FAFAF7;
+  --paper-warm:   #F2F0EA;
+  --paper-cool:   #F0F0F4;
+  --card:         #FFFFFF;
+  --ink:          #0A0A0E;
+  --ink-soft:     #1A1A1F;
+  --ink-mute:     #6B6B7B;
+  --ink-faint:    #A8A8B5;
+  --purple:       #6C5CE7;
+  --purple-deep:  #4D3FC9;
+  --purple-soft:  #EFEDFE;
+  --purple-glow:  rgba(108, 92, 231, 0.18);
+  --mint:         #00D4B4;
+  --coral:        #FF6B6B;
+  --amber:        #F5B400;
+  --green-text:   #38761D;
+  --rule:         rgba(10, 10, 14, 0.08);
+  --rule-strong:  rgba(10, 10, 14, 0.16);
+  --rule-inv:     rgba(255, 255, 255, 0.12);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans:    'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --motion-fast:   200ms; --motion-normal: 400ms; --motion-slow: 800ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --r-tight:  8px; --r-card:   16px; --r-pill:   999px;
+  --shadow-card: 0 1px 2px rgba(10,10,14,0.04), 0 8px 24px rgba(10,10,14,0.06);
+  --shadow-pop:  0 16px 48px rgba(10,10,14,0.12);
+  --container:        1240px; --container-narrow:  920px; --container-pad: 32px;
+  --section-pad:       clamp(80px, 12vh, 160px);
+  --section-pad-tight: clamp(60px,  9vh, 110px);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body{ background:var(--paper); color:var(--ink-soft); font-family:var(--font-sans); font-size:17px; line-height:1.6; font-weight:400; }
+img,svg,video{ max-width:100%; display:block; }
+h1,h2,h3,h4,h5,h6{ font-family:var(--font-display); font-weight:600; color:var(--ink); letter-spacing:-0.02em; }
+a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--purple); outline-offset:3px; border-radius:var(--r-tight); }
+
+.capsule{ display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono);
+  font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:0.16em; white-space:nowrap;
+  color:var(--purple); border:1.5px solid var(--purple); border-radius:var(--r-pill); padding:10px 22px;
+  width:fit-content; max-width:100%; flex:0 0 auto; }
+.dark .capsule{ color:#fff; border-color:var(--rule-inv); }
+.dark.turq .capsule{ color:var(--mint); border-color:rgba(0,212,180,0.45); }
+.meta-line{ font-family:var(--font-mono); font-size:12px; font-weight:500; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--ink-mute); }
+.dark .meta-line{ color:rgba(255,255,255,0.55); }
+
+.display-lg{ font-family:var(--font-display); font-weight:700; font-size:clamp(40px,5.8vw,66px);
+  line-height:1.05; letter-spacing:-0.03em; color:var(--ink); }
+.display-md{ font-family:var(--font-display); font-weight:600; font-size:clamp(28px,3.6vw,40px);
+  line-height:1.12; letter-spacing:-0.025em; color:var(--ink); }
+.lede-lg{ font-family:var(--font-sans); font-size:clamp(18px,1.8vw,22px); line-height:1.5; color:var(--ink); max-width:64ch; }
+.body{ font-family:var(--font-sans); font-size:17px; line-height:1.6; color:var(--ink-soft); }
+.small{ font-family:var(--font-sans); font-size:14px; line-height:1.5; color:var(--ink-mute); }
+.display-lg em,.display-md em{ font-style:italic; font-weight:600; }
+.dark em{ color:var(--purple); } .dark.turq em{ color:var(--mint); }
+
+.surface--cool{ background:var(--paper-cool); }
+.dark{ background:var(--ink); color:rgba(255,255,255,0.85); }
+.dark h1,.dark h2,.dark h3,.dark h4{ color:#fff; }
+
+.blob-bg{ position:relative; overflow:hidden; }
+.blob-bg::before,.blob-bg::after{ content:""; position:absolute; border-radius:50%; filter:blur(96px); z-index:0; pointer-events:none; }
+.dark.blob-bg{ background:
+    radial-gradient(900px 720px at 12% 112%, rgba(0,212,180,0.20), rgba(0,212,180,0) 60%),
+    radial-gradient(940px 760px at 92% -12%, rgba(108,92,231,0.22), rgba(108,92,231,0) 60%),
+    var(--ink); }
+.dark.blob-bg::before,.dark.blob-bg::after{ display:none; }
+.blob-bg > *{ position:relative; z-index:1; }
+
+.sheet{ max-width:1440px; margin:0 auto; padding:0 56px; }
+.corner-logo{ position:absolute; top:34px; right:38px; height:20px; width:auto; color:var(--purple); fill:currentColor; z-index:3; }
+.dark .corner-logo{ color:#fff; }
+.noetic-logo{ height:20px; width:auto; }
+
+.section-head{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+
+.kpi-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
+.kpi{ background:var(--card); border:1px solid var(--rule); border-radius:var(--r-card); padding:30px 26px; box-shadow:var(--shadow-card); }
+.kpi .label{ font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-mute); }
+.kpi .value{ font-family:var(--font-display); font-weight:700; font-size:clamp(30px,3.4vw,46px); color:var(--ink); margin-top:10px; line-height:1; }
+.kpi .sub{ font-family:var(--font-mono); font-size:13.5px; margin-top:14px; color:var(--ink-mute); }
+.kpi .sub b{ color:var(--purple); font-weight:600; }
+
+.card{ background:var(--card); border:1px solid var(--rule); border-radius:var(--r-card); padding:32px 28px; box-shadow:var(--shadow-card); }
+.card__head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.card h4{ font-family:var(--font-display); font-size:28px; font-weight:600; color:var(--ink); letter-spacing:-0.015em; line-height:1.15; }
+.card .emoji{ font-size:28px; line-height:1; flex:0 0 auto; }
+.card .ctitle{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-top:16px; }
+.card p{ font-family:var(--font-sans); font-size:15px; line-height:1.6; color:var(--ink-soft); margin-top:12px; }
+
+table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+thead th{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--ink-mute); text-align:left; font-weight:500; padding:9px 10px; border-bottom:1px solid var(--rule-strong); }
+tbody td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+tbody tr:last-child td{ border-bottom:none; }
+.num{ text-align:right; font-variant-numeric:tabular-nums; }
+tr.total td{ font-weight:700; border-top:2px solid var(--ink); border-bottom:none; font-size:14px; }
+ul.bul{ list-style:none; margin:0; padding:0; }
+ul.bul li{ position:relative; padding-left:22px; font-family:var(--font-sans); font-size:14.5px; line-height:1.5; color:var(--ink-soft); margin-bottom:9px; }
+ul.bul li::before{ content:""; position:absolute; left:0; top:0.65em; width:11px; height:1.5px; background:var(--purple); }
+
+.block{ margin:34px 0; }
+
+/* ---- Chart primitives (bar) ---- */
+.chart{ margin-top:18px; }
+.chart-legend{ display:flex; gap:28px; margin-bottom:18px; flex-wrap:wrap; }
+.legend-item{ display:flex; align-items:center; gap:9px; font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-mute); }
+.legend-dot{ width:12px; height:12px; border-radius:3px; flex:0 0 auto; }
+.bars-row{ display:flex; align-items:flex-end; gap:16px; height:clamp(220px,32vh,260px); padding:0 2px; border-bottom:1px solid var(--rule-strong); }
+.bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:0; }
+.bar-pair{ display:flex; align-items:flex-end; gap:6px; width:100%; justify-content:center; }
+.bar{ width:26px; border-radius:4px 4px 0 0; position:relative; }
+.bar.spend{ background:var(--purple-soft); border:1.5px solid var(--purple); }
+.bar.revenue{ background:var(--purple); }
+.bar.website{ background:var(--ink); width:44px; }
+.bar.email{ background:var(--mint); width:44px; }
+.bar-val{ font-family:var(--font-mono); font-size:11px; color:var(--ink-mute); margin-bottom:4px; white-space:nowrap; }
+.month-labels{ display:flex; gap:16px; margin-top:10px; padding:0 2px; }
+.month-labels span{ flex:1; text-align:center; font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; color:var(--ink-mute); letter-spacing:0.05em; }
+
+.split-cols{ display:grid; grid-template-columns:1.3fr 1fr; gap:32px; }
+
+.assumption{ background:var(--purple-soft); border-radius:var(--r-card); padding:18px 22px; margin-top:10px; }
+.assumption p{ font-family:var(--font-sans); font-size:14px; line-height:1.55; color:var(--ink-soft); }
+.assumption b{ color:var(--purple); }
+
+/* ---- Donut chart ---- */
+.donut{ width:clamp(220px,22vw,300px); height:clamp(220px,22vw,300px); border-radius:50%; position:relative; flex:0 0 auto;
+  background:conic-gradient(var(--purple) 0deg 193.1deg, var(--purple-deep) 193.1deg 245.8deg, var(--mint) 245.8deg 275.6deg, var(--ink-faint) 275.6deg 360deg); }
+.donut::after{ content:""; position:absolute; inset:15%; background:var(--card); border-radius:50%; z-index:1; }
+.donut-center{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2; text-align:center; }
+.legend-list{ display:flex; flex-direction:column; gap:16px; }
+.legend-row{ display:flex; align-items:center; gap:14px; font-family:var(--font-sans); font-size:17px; color:var(--ink-soft); }
+.legend-row .dot{ width:16px; height:16px; border-radius:4px; flex:0 0 auto; }
+.legend-row b{ color:var(--ink); font-family:var(--font-display); font-weight:600; }
+
+/* ---- Stacked channel bar (site-wide) ---- */
+.stack-bars-row{ display:flex; align-items:flex-end; gap:20px; padding:0 2px; }
+.stack-col{ flex:1; display:flex; flex-direction:column; width:100%; max-width:96px; margin:0 auto; border-radius:4px; overflow:hidden; }
+.stack-seg{ width:100%; display:flex; align-items:center; justify-content:center; }
+.stack-seg span{ font-family:var(--font-mono); font-size:11px; font-weight:600; color:#fff; }
+.stack-seg.faint span{ color:var(--ink-soft); }
+
+/* ---- Progress bar ---- */
+.progress-bar{ position:fixed; top:0; left:0; right:0; z-index:50; display:flex; background:rgba(250,250,247,0.94);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); padding:14px 20px 12px; gap:6px; }
+.progress-item{ flex:1; text-align:center; cursor:pointer; }
+.progress-item .track{ height:3px; background:var(--rule-strong); border-radius:2px; margin-bottom:7px; transition:background var(--motion-normal) var(--ease); }
+.progress-item .lbl{ font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint);
+  transition:color var(--motion-normal) var(--ease); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.progress-item.is-done .track,.progress-item.is-active .track{ background:var(--purple); }
+.progress-item.is-active .lbl{ color:var(--ink); font-weight:700; }
+.progress-item.is-done .lbl{ color:var(--ink-mute); }
+
+@media(max-width:820px){
+  .kpi-grid{ grid-template-columns:repeat(2,1fr); }
+  .grid-2,.grid-3,.grid-4,.split-cols{ grid-template-columns:1fr; }
+}
+
+/* ---- Full-viewport scroll sections (deck-like scroll, not an actual deck) ---- */
+html{ scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+body{ padding-top:58px; }
+.fullscreen-section{ min-height:calc(100vh - 58px); display:flex; flex-direction:column; justify-content:center;
+  scroll-snap-align:start; scroll-snap-stop:always; padding:40px 0; scroll-margin-top:58px; }
+
+@page{ size:A4; margin:14mm 12mm; }
+@media print{
+  html,body{ background:#fff !important; }
+  body{ font-size:11pt; padding-top:0; }
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet{ max-width:none; padding:0; }
+  .card,.kpi,tr,.block{ break-inside:avoid; }
+  .cover{ break-after:page; }
+  html{ scroll-snap-type:none; }
+  .fullscreen-section{ min-height:0; height:auto; scroll-snap-align:none; padding:0; break-after:page; }
+  .progress-bar{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="progress-bar" aria-label="Section progress">
+  <div class="progress-item" data-target="s-cover"><div class="track"></div><div class="lbl">Header</div></div>
+  <div class="progress-item" data-target="s-glance"><div class="track"></div><div class="lbl">At a Glance</div></div>
+  <div class="progress-item" data-target="s-impact"><div class="track"></div><div class="lbl">Combined Impact</div></div>
+  <div class="progress-item" data-target="s-sitewide"><div class="track"></div><div class="lbl">Site-Wide</div></div>
+  <div class="progress-item" data-target="s-paidsearch"><div class="track"></div><div class="lbl">Paid Search</div></div>
+  <div class="progress-item" data-target="s-email"><div class="track"></div><div class="lbl">Email Marketing</div></div>
+  <div class="progress-item" data-target="s-work"><div class="track"></div><div class="lbl">Volume of Work</div></div>
+</nav>
+
+<div class="sheet">
+
+  <!-- ══════════ COVER ══════════ -->
+  <header id="s-cover" class="dark blob-bg cover fullscreen-section" style="position:relative; border-radius:16px; padding:clamp(28px,4vw,44px);">
+    <svg class="corner-logo noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg>
+    <span class="capsule">Account Performance</span>
+    <h1 class="display-lg" style="margin-top:20px; max-width:26ch; color:#fff;">Interlight: six months of <em>paid search</em> and email</h1>
+    <p class="lede-lg" style="margin-top:14px; color:rgba(255,255,255,0.82);">Google Ads (Brand + PMax) · Microsoft Ads (Bing) · Klaviyo Email.</p>
+    <dl style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:18px; margin-top:28px; padding-top:18px; border-top:1px solid var(--rule-inv);">
+      <div><dt class="meta-line">Period</dt><dd style="margin-top:5px; font-family:var(--font-display); font-weight:600; font-size:14px; color:#fff;">Mar – Aug 2026</dd></div>
+      <div><dt class="meta-line">Channels</dt><dd style="margin-top:5px; font-family:var(--font-display); font-weight:600; font-size:14px; color:#fff;">Paid Search + Bing + Email</dd></div>
+      <div><dt class="meta-line">Prepared by</dt><dd style="margin-top:5px; font-family:var(--font-display); font-weight:600; font-size:14px; color:#fff;">Noetic Creative</dd></div>
+    </dl>
+  </header>
+
+  <!-- ══════════ HERO: WEBSITE UMBRELLA + 3-CHANNEL BREAKDOWN ══════════ -->
+  <section id="s-glance" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">At a glance</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+
+    <div style="text-align:center; margin-top:24px; padding:clamp(28px,4.5vw,44px); background:var(--purple-soft); border-radius:16px;">
+      <div class="meta-line" style="color:var(--purple);">Website Total Revenue</div>
+      <div style="font-family:var(--font-display); font-weight:700; font-size:clamp(56px,8vw,88px); color:var(--ink); margin-top:8px; line-height:1;">$3.80M</div>
+      <div class="small" style="margin-top:10px;">All channels, site-wide &middot; March&ndash;August 2026</div>
+    </div>
+
+    <div class="grid-3" style="margin-top:24px;">
+      <div class="kpi" style="text-align:center;">
+        <div class="label">Paid Search Revenue (Google Ads)</div>
+        <div class="value" style="margin-top:10px;">$2.04M</div>
+        <div class="sub" style="margin-top:16px; padding-top:16px; border-top:1px solid var(--rule);">$594.3K spend &middot; <b>3.43x</b> ROAS</div>
+      </div>
+      <div class="kpi" style="text-align:center;">
+        <div class="label">Bing Revenue</div>
+        <div class="value" style="margin-top:10px;">$556.2K</div>
+        <div class="sub" style="margin-top:16px; padding-top:16px; border-top:1px solid var(--rule);">$134.6K spend &middot; <b>4.13x</b> ROAS</div>
+      </div>
+      <div class="kpi" style="text-align:center;">
+        <div class="label">Email Revenue (Klaviyo)</div>
+        <div class="value" style="margin-top:10px;">$314.1K</div>
+        <div class="sub" style="margin-top:16px; padding-top:16px; border-top:1px solid var(--rule);"><b>8.27%</b> attribution</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WEBSITE REVENUE BY CHANNEL — DONUT ══════════ -->
+  <section id="s-impact" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">Combined Impact</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+    <h2 class="display-md" style="margin-top:16px;">Website revenue, <em>by channel</em></h2>
+
+    <div style="display:flex; align-items:center; gap:56px; margin-top:32px; flex-wrap:wrap; justify-content:center;">
+      <div class="donut">
+        <div class="donut-center">
+          <div class="meta-line" style="font-size:10px;">Total Revenue</div>
+          <div style="font-family:var(--font-display); font-weight:700; font-size:30px; color:var(--ink); margin-top:4px; line-height:1;">$3.80M</div>
+        </div>
+      </div>
+      <div class="legend-list">
+        <div class="legend-row"><span class="dot" style="background:var(--purple);"></span><span><b>53.6%</b> Paid Search — $2.04M</span></div>
+        <div class="legend-row"><span class="dot" style="background:var(--purple-deep);"></span><span><b>14.6%</b> Bing — $556.2K</span></div>
+        <div class="legend-row"><span class="dot" style="background:var(--mint);"></span><span><b>8.3%</b> Email — $314.1K</span></div>
+        <div class="legend-row"><span class="dot" style="background:var(--ink-faint);"></span><span><b>23.5%</b> Other — $891.9K</span></div>
+        <div class="legend-row" style="margin-top:6px; padding-top:10px; border-top:1px solid var(--rule);"><span class="dot" style="background:var(--ink);"></span><span><b>76.5%</b> Total contributed by Noetic — $2.91M</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WEBSITE REVENUE, STACKED BY CHANNEL (SITE-WIDE) ══════════ -->
+  <section id="s-sitewide" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">Site-Wide</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+    <h2 class="display-md" style="margin-top:16px;">Total website revenue, <em>by channel</em></h2>
+    <p class="small" style="margin-top:10px;">TOTAL WEBSITE REVENUE (ALL CHANNELS) — % of each month's total contributed by each channel</p>
+
+    <div class="chart-legend" style="margin-top:20px;">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--purple);"></span>Paid Search</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--purple-deep);"></span>Bing</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--mint);"></span>Email</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--ink-faint);"></span>Other</div>
+    </div>
+
+    <div class="stack-bars-row" style="margin-top:20px;">
+      <div class="stack-col">
+        <div class="stack-seg" style="height:60px; background:var(--ink-faint);"><span>24%</span></div>
+        <div class="stack-seg" style="height:21px; background:var(--mint);"><span>8%</span></div>
+        <div class="stack-seg" style="height:41px; background:var(--purple-deep);"><span>16%</span></div>
+        <div class="stack-seg" style="height:138px; background:var(--purple);"><span>53%</span></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-seg" style="height:51px; background:var(--ink-faint);"><span>20%</span></div>
+        <div class="stack-seg" style="height:21px; background:var(--mint);"><span>8%</span></div>
+        <div class="stack-seg" style="height:41px; background:var(--purple-deep);"><span>16%</span></div>
+        <div class="stack-seg" style="height:147px; background:var(--purple);"><span>56%</span></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-seg" style="height:102px; background:var(--ink-faint);"><span>39%</span></div>
+        <div class="stack-seg" style="height:19px; background:var(--mint);"><span>7%</span></div>
+        <div class="stack-seg" style="height:24px; background:var(--purple-deep);"><span>9%</span></div>
+        <div class="stack-seg" style="height:115px; background:var(--purple);"><span>44%</span></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-seg" style="height:48px; background:var(--ink-faint);"><span>18%</span></div>
+        <div class="stack-seg" style="height:20px; background:var(--mint);"><span>8%</span></div>
+        <div class="stack-seg" style="height:39px; background:var(--purple-deep);"><span>15%</span></div>
+        <div class="stack-seg" style="height:153px; background:var(--purple);"><span>59%</span></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-seg" style="height:39px; background:var(--ink-faint);"><span>15%</span></div>
+        <div class="stack-seg" style="height:24px; background:var(--mint);"><span>9%</span></div>
+        <div class="stack-seg" style="height:47px; background:var(--purple-deep);"><span>18%</span></div>
+        <div class="stack-seg" style="height:150px; background:var(--purple);"><span>58%</span></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-seg" style="height:60px; background:var(--ink-faint);"><span>23%</span></div>
+        <div class="stack-seg" style="height:23px; background:var(--mint);"><span>9%</span></div>
+        <div class="stack-seg" style="height:38px; background:var(--purple-deep);"><span>15%</span></div>
+        <div class="stack-seg" style="height:139px; background:var(--purple);"><span>53%</span></div>
+      </div>
+    </div>
+    <div class="month-labels"><span>Mar<br>$651K</span><span>Apr<br>$581K</span><span>May<br>$728K</span><span>Jun<br>$624K</span><span>Jul<br>$600K</span><span>Aug<br>$615K</span></div>
+  </section>
+
+  <!-- ══════════ CHART 1 — GOOGLE ADS VS BING ══════════ -->
+  <section id="s-paidsearch" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">Paid Search</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+    <h2 class="display-md" style="margin-top:16px;">Ad spend vs. <em>direct</em> revenue, by platform</h2>
+    <p class="body" style="margin-top:8px;">Google Ads (Brand + PMax, consolidated) and Microsoft Ads (Bing), tracked separately. Direct attribution only — last-click within each platform.</p>
+
+    <div class="chart-legend" style="margin-top:20px;">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--purple-soft); border:1.5px solid var(--purple);"></span>Ad spend</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--purple);"></span>Revenue</div>
+    </div>
+
+    <div class="split-cols" style="margin-top:16px;">
+      <div>
+        <p class="small" style="margin-bottom:10px;">GOOGLE ADS (BRAND + PMAX)</p>
+        <div class="bars-row">
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:57px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$92K</span></div>
+              <div class="bar revenue" style="height:216px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$345K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:56px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$90K</span></div>
+              <div class="bar revenue" style="height:204px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$328K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:61px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$98K</span></div>
+              <div class="bar revenue" style="height:201px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$322K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:65px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$105K</span></div>
+              <div class="bar revenue" style="height:230px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$368K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:65px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$104K</span></div>
+              <div class="bar revenue" style="height:217px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$347K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:65px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$105K</span></div>
+              <div class="bar revenue" style="height:206px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$328K</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="month-labels"><span>Mar<br><b style="color:var(--ink);">3.73x</b></span><span>Apr<br><b style="color:var(--ink);">3.64x</b></span><span>May<br><b style="color:var(--ink);">3.29x</b></span><span>Jun<br><b style="color:var(--ink);">3.50x</b></span><span>Jul<br><b style="color:var(--ink);">3.33x</b></span><span>Aug<br><b style="color:var(--ink);">3.14x</b></span></div>
+      </div>
+
+      <div>
+        <p class="small" style="margin-bottom:10px;">MICROSOFT ADS (BING)</p>
+        <div class="bars-row">
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:41px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$19K</span></div>
+              <div class="bar revenue" style="height:215px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$101K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:49px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$23K</span></div>
+              <div class="bar revenue" style="height:196px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$92K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:36px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$17K</span></div>
+              <div class="bar revenue" style="height:144px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$68K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:47px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$22K</span></div>
+              <div class="bar revenue" style="height:201px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$95K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:58px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$27K</span></div>
+              <div class="bar revenue" style="height:230px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$109K</span></div>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-pair">
+              <div class="bar spend" style="height:54px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%);">$26K</span></div>
+              <div class="bar revenue" style="height:192px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--purple); font-weight:600;">$91K</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="month-labels"><span>Mar<br><b style="color:var(--ink);">5.24x</b></span><span>Apr<br><b style="color:var(--ink);">4.05x</b></span><span>May<br><b style="color:var(--ink);">3.97x</b></span><span>Jun<br><b style="color:var(--ink);">4.27x</b></span><span>Jul<br><b style="color:var(--ink);">3.96x</b></span><span>Aug<br><b style="color:var(--ink);">3.53x</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ EMAIL MARKETING ══════════ -->
+  <section id="s-email" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">Email Marketing</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+    <h2 class="display-md" style="margin-top:16px;">Email revenue <em>trend</em></h2>
+    <p class="small" style="margin-top:10px;">EMAIL REVENUE (% OF TOTAL WEBSITE REVENUE)</p>
+
+    <div class="bars-row" style="margin-top:24px;">
+      <div class="bar-col">
+        <div class="bar email" style="height:245px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$52.1K</span></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar email" style="height:223px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$47.4K</span></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar email" style="height:248px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$52.6K</span></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar email" style="height:222px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$47.2K</span></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar email" style="height:260px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$55.2K</span></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar email" style="height:253px;"><span class="bar-val" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); color:var(--mint); font-weight:600;">$53.8K</span></div>
+      </div>
+    </div>
+    <div class="month-labels"><span>Mar<br>8.0%</span><span>Apr<br>8.2%</span><span>May<br>7.2%</span><span>Jun<br>7.6%</span><span>Jul<br>9.2%</span><span>Aug<br>8.8%</span></div>
+  </section>
+
+  <!-- ══════════ WORK VOLUME ══════════ -->
+  <section id="s-work" class="block avoid-break fullscreen-section">
+    <div class="section-head">
+      <span class="capsule">Volume of Work</span>
+      <span class="meta-line">Last six months</span>
+    </div>
+    <h2 class="display-md" style="margin-top:16px;">What we're actively <em>managing</em></h2>
+    <div class="grid-4" style="margin-top:26px;">
+      <div class="card">
+        <div class="card__head"><h4>13</h4><span class="emoji" role="img" aria-label="target">&#127919;</span></div>
+        <div class="ctitle">Google Ads Campaigns</div>
+        <p>13 PMax product-margin groups, plus Brand.</p>
+      </div>
+      <div class="card">
+        <div class="card__head"><h4>2</h4><span class="emoji" role="img" aria-label="target">&#127919;</span></div>
+        <div class="ctitle">Bing Campaigns</div>
+        <p>2 consolidated PMax campaigns.</p>
+      </div>
+      <div class="card">
+        <div class="card__head"><h4>120</h4><span class="emoji" role="img" aria-label="email">&#9993;&#65039;</span></div>
+        <div class="ctitle">Campaign Emails Sent</div>
+        <p>About 16 regular sends a month to our core engaged audience, plus industry-vertical campaigns sent to their own smaller segments.</p>
+      </div>
+      <div class="card">
+        <div class="card__head"><h4>7+</h4><span class="emoji" role="img" aria-label="gear">&#9881;&#65039;</span></div>
+        <div class="ctitle">Automated Flows</div>
+        <p>Welcome, abandonment, upsell, winback, VIP, sunset — always-on. Loyalty flows in progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="small" style="margin:30px 0; padding-top:16px; border-top:1px solid var(--rule);">
+    &copy; 2026 Noetic Creative &middot; Sources: Google Ads YoY report (Brand + PMax), Bing Ads report, Klaviyo email decks (Mar&ndash;Aug 2026)
+  </footer>
+
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <g id="noetic-logo"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></g>
+</svg>
+
+<script>
+(function(){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.fullscreen-section[id]'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('.progress-item'));
+
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var target = document.getElementById(item.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  function update(){
+    var pos = window.scrollY + window.innerHeight * 0.35;
+    var activeIndex = 0;
+    sections.forEach(function(sec, i){
+      if (sec.offsetTop <= pos) activeIndex = i;
+    });
+    items.forEach(function(item, i){
+      item.classList.toggle('is-active', i === activeIndex);
+      item.classList.toggle('is-done', i < activeIndex);
+    });
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>
