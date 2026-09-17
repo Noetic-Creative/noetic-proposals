@@ -1,1 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DoControl by Spin.AI x Noetic Creative: Recap &amp; Capabilities Brief</title>
+<link rel="icon" href="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<style>
+:root{
+  --paper:#FAFAF7;--paper-warm:#F2F0EA;--paper-cool:#F0F0F4;
+  --ink:#0A0A0E;--ink-soft:#1A1A1F;--ink-mute:#6B6B7B;--ink-faint:#A8A8B5;
+  --card:#FFFFFF;
+  --purple:#6C5CE7;--purple-deep:#4D3FC9;--purple-soft:#EFEDFE;--purple-glow:rgba(108,92,231,0.18);
+  --mint:#00D4B4;--coral:#FF6B6B;--amber:#F5B400;
+  /* neon layer (dark sections only) */
+  --mint-neon:#2BFFD9;--purple-neon:#9D8CFF;--lime:#C8FF3D;
+  --glow-mint:0 0 0 1px rgba(43,255,217,.55),0 0 24px rgba(43,255,217,.22);
+  --glow-purple:0 0 0 1px rgba(157,140,255,.6),0 0 24px rgba(157,140,255,.25);
+  --glow-lime:0 0 0 1px rgba(200,255,61,.55),0 0 24px rgba(200,255,61,.2);
+  --rule:rgba(10,10,14,0.08);--rule-strong:rgba(10,10,14,0.16);--rule-dark:rgba(255,255,255,.12);
+  --max:1240px;--max-narrow:920px;
+  --font-display:'Fraunces','Times New Roman',serif;
+  --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+::selection{background:var(--purple);color:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--paper);color:var(--ink-soft);overflow-x:hidden;font-family:var(--font-sans);font-size:17px;line-height:1.55;letter-spacing:-0.005em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+svg text{font-family:var(--font-sans)}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
+section{position:relative}
+.section{padding:clamp(80px,12vh,160px) 0}
+.section-tight{padding:clamp(60px,9vh,110px) 0}
+.section-head{margin-bottom:clamp(48px,6vw,80px)}
+.section-head .display-md{margin-top:18px;max-width:22ch}
+.section-head .display-lg{margin-top:18px;max-width:18ch}
 
+.display-xl{font-family:var(--font-display);font-size:clamp(56px,9vw,132px);font-weight:600;line-height:.95;letter-spacing:-.035em}
+.display-lg{font-family:var(--font-display);font-size:clamp(44px,6vw,88px);font-weight:600;line-height:1;letter-spacing:-.03em}
+.display-md{font-family:var(--font-display);font-size:clamp(34px,4.5vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.025em}
+.display-sm{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.02em}
+h1,h2,h3,h4{color:var(--ink);letter-spacing:-.022em;line-height:1.05;font-weight:700}
+.italic{font-style:italic;font-weight:400}
+.lede{font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--ink-soft);font-weight:400;max-width:60ch}
+.mono{font-family:var(--font-mono)}
+
+/* Dark section base */
+.dark{background:var(--ink);color:#fff}
+.dark h2,.dark h3,.dark h4{color:#fff}
+.dark .lede{color:rgba(255,255,255,.72)}
+.dark .section-head .display-md em,.dark .section-head .display-lg em{color:var(--mint-neon)}
+
+/* Client bar */
+.client-bar{background:var(--ink);padding:11px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule-dark)}
+.client-bar-logos{display:flex;align-items:center;gap:18px}
+.client-bar-divider{width:1px;height:22px;background:rgba(255,255,255,.2)}
+.client-chip{background:#fff;border-radius:6px;padding:5px 10px;display:flex;align-items:center;box-shadow:var(--glow-mint)}
+.client-bar-meta{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.4)}
+@media(max-width:600px){.client-bar-meta{display:none}}
+
+/* Nav */
+.nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:14px 32px;background:rgba(250,250,247,.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid transparent;transition:border-color .3s ease}
+.nav.scrolled{border-bottom-color:var(--rule)}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:16px}
+.nav-brand-divider{width:1px;height:24px;background:var(--rule-strong)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-mute);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff!important;padding:10px 18px;border-radius:999px;font-size:13px!important;font-weight:600!important;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.nav-cta:hover{background:var(--purple)!important}
+@media(max-width:820px){.nav-links li:not(:last-child){display:none}}
+
+/* Eyebrow */
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:6px;height:6px;background:var(--purple);border-radius:50%}
+.eyebrow.dark{color:rgba(255,255,255,.6)}
+.eyebrow.dark::before{background:var(--mint-neon);box-shadow:0 0 10px var(--mint-neon)}
+
+/* Hero (dark) */
+.hero{background:var(--ink);color:#fff;padding-top:clamp(110px,15vh,190px);padding-bottom:clamp(80px,12vh,140px);position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black,transparent);pointer-events:none}
+.hero-blob{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(157,140,255,.38),transparent 60%);filter:blur(80px);pointer-events:none;top:-220px;right:-200px;z-index:0}
+.hero-blob-2{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle at 70% 70%,rgba(43,255,217,.28),transparent 60%);filter:blur(80px);pointer-events:none;bottom:-160px;left:-120px;z-index:0}
+.hero-inner{position:relative;z-index:1}
+.hero-meta{display:flex;gap:18px;align-items:center;margin-bottom:28px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);flex-wrap:wrap}
+.hero-meta-divider{width:24px;height:1px;background:rgba(255,255,255,.25)}
+.hero h1{margin-bottom:28px;max-width:14ch;color:#fff;font-size:clamp(48px,7.2vw,108px)}
+.hero h1 .accent-line{display:block;color:var(--mint-neon);font-style:italic;font-weight:400;text-shadow:0 0 28px rgba(43,255,217,.35)}
+.hero-lede{font-size:clamp(19px,1.8vw,24px);line-height:1.45;color:rgba(255,255,255,.78);max-width:56ch;margin-top:8px;font-weight:400}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(60px,8vh,100px);border-top:1px solid var(--rule-dark)}
+.hero-stat{padding:32px 24px 0 0;border-right:1px solid var(--rule-dark)}
+.hero-stat:not(:first-child){padding-left:24px}
+.hero-stat:last-child{border-right:none;padding-right:0}
+.hero-stat-num{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:600;line-height:1;letter-spacing:-.03em;color:#fff;margin-bottom:8px}
+.hero-stat-num .accent{color:var(--mint-neon);text-shadow:0 0 24px rgba(43,255,217,.4)}
+.hero-stat-label{font-size:13px;color:rgba(255,255,255,.55);font-weight:500;line-height:1.4;max-width:22ch}
+@media(max-width:800px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-stat:nth-child(2n){border-right:none}
+  .hero-stat{padding:24px 16px 24px 0;border-bottom:1px solid var(--rule-dark)}
+  .hero-stat:not(:first-child){padding-left:0}
+  .hero-stat:last-child,.hero-stat:nth-last-child(2){border-bottom:none}
+}
+
+/* Belief list */
+.belief-list{list-style:none;display:flex;flex-direction:column}
+.belief-item{padding:28px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:50px 1fr;gap:24px;align-items:start}
+.belief-item:last-child{border-bottom:1px solid var(--rule)}
+.belief-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;letter-spacing:.05em;padding-top:6px}
+.belief-content h3{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;margin-bottom:8px;letter-spacing:-.02em}
+.belief-content p{color:var(--ink-mute);font-size:16px;line-height:1.55;max-width:62ch}
+.belief-content p+p{margin-top:8px}
+
+/* Recap side visual: three-brand structure */
+.recap-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(40px,6vw,90px);align-items:start}
+@media(max-width:960px){.recap-grid{grid-template-columns:1fr}}
+.recap-visual{position:sticky;top:100px}
+@media(max-width:960px){.recap-visual{position:static}}
+.figure-caption{margin-top:14px;font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);letter-spacing:.04em;line-height:1.5}
+.dark .figure-caption{color:rgba(255,255,255,.5)}
+
+/* Diagram frame (dark) */
+.diagram{margin-top:56px;border:1px solid var(--rule-dark);border-radius:16px;padding:clamp(20px,3vw,40px);background:rgba(255,255,255,.02);position:relative;overflow:hidden}
+.diagram::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(108,92,231,.12),transparent 70%)}
+.diagram svg{width:100%;height:auto;display:block;position:relative;z-index:1}
+.diagram-light{border-color:var(--rule);background:#fff}
+.diagram-light::after{display:none}
+
+/* Lanes (dark) */
+.lanes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:60px;border-top:1px solid var(--rule-dark)}
+@media(max-width:800px){.lanes-grid{grid-template-columns:1fr}}
+.lane{padding:56px 48px;border-right:1px solid var(--rule-dark);position:relative}
+.lane:last-child{border-right:none}
+@media(max-width:800px){.lane{padding:40px 0;border-right:none;border-bottom:1px solid var(--rule-dark)}.lane:last-child{border-bottom:none}}
+.lane-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint-neon);margin-bottom:20px}
+.lane h3{font-family:var(--font-display);font-size:clamp(28px,3vw,40px);font-weight:600;color:#fff;margin-bottom:18px;line-height:1.05}
+.lane p{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;max-width:42ch;margin-bottom:24px}
+.lane-spec{display:flex;gap:28px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--rule-dark)}
+.lane-spec-item .label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.15em;display:block;margin-bottom:6px}
+.lane-spec-item .value{font-size:15px;color:#fff;font-weight:500}
+.frame-pull{margin-top:64px;padding-top:32px;border-top:1px solid var(--rule-dark);font-family:var(--font-display);font-style:italic;font-size:clamp(22px,2.4vw,32px);line-height:1.3;color:#fff;max-width:34ch;font-weight:400}
+
+/* Postures */
+.postures{background:var(--paper-warm)}
+.verticals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+@media(max-width:760px){.verticals-grid{grid-template-columns:1fr}}
+.vertical-card{padding:32px 28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:rgba(255,255,255,.4);transition:background .3s,transform .3s;position:relative;cursor:default}
+.vertical-card:hover{background:#fff;transform:translateY(-2px)}
+.vertical-icon{width:36px;height:36px;border-radius:8px;background:var(--purple-soft);display:grid;place-items:center;margin-bottom:18px;color:var(--purple-deep)}
+.vertical-icon svg{width:18px;height:18px}
+.vertical-card h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.vertical-card p{font-size:14px;color:var(--ink-mute);line-height:1.5}
+.vertical-card .move{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-soft);line-height:1.5}
+.vertical-card .move strong{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--purple-deep);display:block;margin-bottom:6px;font-weight:600}
+
+/* Services map (dark) */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+@media(max-width:1000px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.svc-grid{grid-template-columns:1fr}}
+.svc{border-radius:14px;padding:22px 20px;background:rgba(255,255,255,.03);border:1px solid var(--rule-dark);min-height:150px;display:flex;flex-direction:column;gap:10px;transition:transform .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-2px)}
+.svc.asked{box-shadow:var(--glow-mint)}
+.svc.add{box-shadow:var(--glow-purple)}
+.svc.later{box-shadow:var(--glow-lime)}
+.svc-status{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;display:inline-flex;align-items:center;gap:7px}
+.svc-status::before{content:"";width:6px;height:6px;border-radius:50%}
+.svc.asked .svc-status{color:var(--mint-neon)}.svc.asked .svc-status::before{background:var(--mint-neon);box-shadow:0 0 8px var(--mint-neon)}
+.svc.add .svc-status{color:var(--purple-neon)}.svc.add .svc-status::before{background:var(--purple-neon);box-shadow:0 0 8px var(--purple-neon)}
+.svc.later .svc-status{color:var(--lime)}.svc.later .svc-status::before{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.svc h4{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.1;color:#fff}
+.svc p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.5;margin-top:auto}
+.legend{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* Services intro */
+.services-intro{background:var(--paper-cool)}
+
+/* Service deep dive */
+.service-deep{border-top:1px solid var(--rule);padding:clamp(80px,11vh,130px) 0;background:var(--paper);position:relative}
+.service-deep.warm{background:var(--paper-warm)}
+.service-deep-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,90px);align-items:start}
+@media(max-width:900px){.service-deep-grid{grid-template-columns:1fr}}
+.service-deep-meta{position:sticky;top:100px}
+@media(max-width:900px){.service-deep-meta{position:static}}
+.service-deep-num{font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);font-weight:500;margin-bottom:12px;letter-spacing:.05em}
+.service-deep-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,56px);font-weight:600;line-height:1.02;letter-spacing:-.025em;margin-bottom:18px;color:var(--ink)}
+.service-deep-tag{font-size:17px;color:var(--purple-deep);font-weight:500;margin-bottom:22px;font-style:italic;font-family:var(--font-display)}
+.service-deep-desc{color:var(--ink-mute);font-size:16px;line-height:1.6}
+.approach-list{list-style:none;margin-top:30px}
+.approach-list li{padding:14px 0;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-soft);display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.approach-list li:last-child{border-bottom:1px solid var(--rule)}
+.approach-list li::before{content:"\2192";color:var(--purple);font-weight:600;font-size:14px}
+
+/* Case card */
+.case-card{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:32px;margin-bottom:20px;position:relative;transition:transform .3s,box-shadow .3s}
+.case-card:hover{transform:translateY(-2px);box-shadow:0 14px 40px -16px rgba(10,10,14,.12)}
+.case-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--purple-deep);background:var(--purple-soft);padding:5px 10px;border-radius:999px;font-weight:500;margin-bottom:20px}
+.case-card-tag.alt{background:rgba(0,212,180,.12);color:#006B5C}
+.case-card-name{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;color:var(--ink)}
+.case-card-industry{font-size:13px;color:var(--ink-mute);margin-bottom:24px;font-family:var(--font-mono)}
+.case-card-block{margin-bottom:18px}
+.case-card-block-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-faint);font-weight:500;margin-bottom:6px}
+.case-card-block p{font-size:15px;color:var(--ink-soft);line-height:1.55}
+.case-card-block ul{list-style:none}
+.case-card-block ul li{font-size:15px;color:var(--ink-soft);line-height:1.5;padding:8px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:18px 1fr;gap:10px}
+.case-card-block ul li::before{content:"\2192";color:var(--purple);font-weight:600;font-size:13px}
+.case-card-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+.result-pop{padding:0 16px 0 0;border-right:1px solid var(--rule)}
+.result-pop:not(:first-child){padding-left:16px}
+.result-pop:last-child{border-right:none}
+.result-pop-num{font-family:var(--font-display);font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.025em;line-height:1;color:var(--purple);margin-bottom:6px}
+.result-pop-num.green{color:#00A18A}
+.result-pop-label{font-size:11px;color:var(--ink-mute);line-height:1.35;font-weight:500}
+.aha-quote{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule);font-family:var(--font-display);font-style:italic;font-size:17px;color:var(--ink);line-height:1.4}
+.aha-quote::before{content:"Aha! moment";font-style:normal;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--purple);font-weight:600;display:block;margin-bottom:8px}
+.case-logo{height:104px;width:auto;max-width:70%;object-fit:contain;object-position:left;margin-bottom:18px}
+/* results bar chart inside case card */
+.bars{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+.bar-row{display:grid;grid-template-columns:150px 1fr 64px;gap:12px;align-items:center;padding:7px 0}
+.bar-row .bl{font-size:12px;color:var(--ink-mute);font-weight:500;line-height:1.3}
+.bar-row .bt{height:12px;border-radius:999px;background:var(--paper-cool);overflow:hidden}
+.bar-row .bf{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--mint))}
+.bar-row .bv{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);text-align:right;letter-spacing:-.02em}
+@media(max-width:520px){.bar-row{grid-template-columns:100px 1fr 54px}}
+
+
+/* Instagram band */
+.ig-band{background:var(--paper-cool);border-top:1px solid var(--rule)}
+.ig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px}
+@media(max-width:1100px){.ig-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
+.ig-cell{border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:#fff;aspect-ratio:9/16;position:relative}
+.ig-cell iframe{width:100%;height:100%;border:0;display:block}
+.ig-cell.pending{display:grid;place-items:center;text-align:center;padding:20px;font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);border-style:dashed}
+.ig-caption{margin-top:16px;font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);letter-spacing:.04em}
+
+/* Differentiators */
+.differentiators{background:var(--paper-cool)}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:900px){.diff-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.diff-grid{grid-template-columns:1fr}}
+.diff-card{background:var(--paper-cool);padding:36px 28px;transition:background .3s;position:relative}
+.diff-card:hover{background:#fff}
+.diff-num{font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:.1em;margin-bottom:18px;font-weight:600}
+.diff-card h4{font-family:var(--font-display);font-size:24px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+.diff-card p{font-size:14px;color:var(--ink-mute);line-height:1.55}
+
+/* Clients */
+.clients{background:var(--paper-warm)}
+.clients-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:56px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media(max-width:1100px){.clients-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:800px){.clients-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+.client-cell{background:var(--paper-warm);padding:32px 22px;display:grid;place-items:center;text-align:center;min-height:210px;transition:background .3s;cursor:default;position:relative}
+.client-cell img{width:62%;height:64px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s,opacity .3s}
+.client-cell:hover{background:#fff}
+.client-cell:hover img{filter:none;opacity:1}
+.client-cell.highlight::after{content:"";position:absolute;top:10px;right:10px;width:6px;height:6px;border-radius:50%;background:var(--purple)}
+.clients-caption{margin-top:18px;font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.clients-caption::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--purple)}
+
+/* Timeline (dark) */
+.tl{margin-top:56px;border:1px solid var(--rule-dark);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02)}
+.tl-head{display:grid;grid-template-columns:200px repeat(3,1fr);border-bottom:1px solid var(--rule-dark)}
+.tl-head div{padding:16px 18px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.55);border-left:1px solid var(--rule-dark)}
+.tl-head div:first-child{border-left:none}
+.tl-head div b{display:block;font-family:var(--font-display);font-size:26px;letter-spacing:-.02em;text-transform:none;font-weight:600;color:#fff;margin-bottom:2px}
+.tl-row{display:grid;grid-template-columns:200px repeat(3,1fr);border-bottom:1px solid var(--rule-dark);min-height:64px;align-items:center}
+.tl-row:last-child{border-bottom:none}
+.tl-label{padding:14px 18px;font-size:14px;font-weight:600;color:#fff}
+.tl-label small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px;font-weight:500}
+.tl-cell{border-left:1px solid var(--rule-dark);height:100%;min-height:64px;padding:12px 10px;position:relative;display:flex;align-items:center}
+.tl-bar{width:100%;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:600;color:var(--ink);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bar.m{background:var(--mint-neon);box-shadow:0 0 18px rgba(43,255,217,.35)}
+.tl-bar.p{background:var(--purple-neon);box-shadow:0 0 18px rgba(157,140,255,.4)}
+.tl-bar.l{background:var(--lime);box-shadow:0 0 18px rgba(200,255,61,.3)}
+.tl-bar.ghost{background:transparent;border:1px dashed rgba(255,255,255,.3);color:rgba(255,255,255,.6);box-shadow:none}
+.tl-bar.start{border-top-right-radius:0;border-bottom-right-radius:0}
+.tl-bar.mid{border-radius:0}
+.tl-bar.end{border-top-left-radius:0;border-bottom-left-radius:0}
+.tl-milestones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:800px){.tl-milestones{grid-template-columns:1fr}}
+.tl-ms{border:1px solid var(--rule-dark);border-radius:14px;padding:20px 20px;background:rgba(255,255,255,.02)}
+.tl-ms .k{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--mint-neon);margin-bottom:8px}
+.tl-ms h4{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
+.tl-ms p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.5}
+@media(max-width:800px){
+  .tl-head,.tl-row{grid-template-columns:120px repeat(3,1fr)}
+  .tl-label{padding:12px 12px;font-size:12px}
+  .tl-bar{font-size:0;padding:6px}
+  .tl-head div{padding:12px 10px;font-size:9px}
+  .tl-head div b{font-size:18px}
+}
+
+/* Team */
+.team{background:var(--paper)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:56px}
+@media(max-width:1100px){.team-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.team-grid{grid-template-columns:1fr}}
+.team-card{background:#fff;border:1px solid var(--rule);border-radius:999px;padding:8px 18px 8px 8px;display:flex;flex-direction:row;align-items:center;gap:14px;transition:border-color .3s,box-shadow .3s;min-height:0}
+.team-card:hover{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple),0 0 18px rgba(108,92,231,.25)}
+.team-avatar{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:18px;color:#fff;letter-spacing:-.02em;flex-shrink:0;overflow:hidden;background:var(--purple-soft)}
+.team-avatar img{width:100%;height:100%;object-fit:cover}
+.team-info{min-width:0}
+.team-info h5{font-size:14px;font-weight:700;margin-bottom:2px;color:var(--ink);letter-spacing:-.01em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.team-info .role{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;color:var(--ink-mute);letter-spacing:.06em;line-height:1.35}
+.av-1{background:linear-gradient(135deg,#6C5CE7,#4D3FC9)}
+.av-2{background:linear-gradient(135deg,#00D4B4,#008C75)}
+.av-3{background:linear-gradient(135deg,#FF6B6B,#C73E3E)}
+.av-4{background:linear-gradient(135deg,#F5B400,#C68C00)}
+.av-5{background:linear-gradient(135deg,#2C2C40,#0A0A0E)}
+.av-6{background:linear-gradient(135deg,#9B7BFF,#6C5CE7)}
+.team-stats{display:flex;gap:32px;flex-wrap:wrap;margin-top:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.team-stats b{font-family:var(--font-display);font-size:22px;color:var(--ink);letter-spacing:-.02em;text-transform:none;margin-right:8px;font-weight:600}
+
+/* Process */
+.process{background:var(--paper-cool)}
+.process-track{margin-top:56px;position:relative}
+.process-step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:36px 0;border-top:1px solid var(--rule);align-items:start}
+.process-step:last-child{border-bottom:1px solid var(--rule)}
+.process-num{font-family:var(--font-display);font-size:64px;font-weight:600;line-height:.9;letter-spacing:-.04em;color:var(--purple)}
+.process-content h4{font-family:var(--font-display);font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.process-content p{color:var(--ink-mute);font-size:15px;line-height:1.55;max-width:60ch}
+.process-content .when{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--purple-deep);margin-bottom:10px;display:block}
+@media(max-width:600px){.process-step{grid-template-columns:50px 1fr;gap:16px}.process-num{font-size:40px}}
+
+/* CTA */
+.cta-section{background:var(--ink);color:#fff;padding:clamp(100px,14vh,180px) 0 clamp(60px,9vh,100px);position:relative;overflow:hidden}
+.cta-section::before{content:"";position:absolute;bottom:-20%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,.4),transparent 70%);filter:blur(100px)}
+.cta-section::after{content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(43,255,217,.2),transparent 70%);filter:blur(100px)}
+.cta-section .container{position:relative;z-index:1}
+.cta-eyebrow{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint-neon);margin-bottom:28px}
+.cta-title{font-family:var(--font-display);font-size:clamp(48px,7vw,100px);font-weight:600;line-height:.98;letter-spacing:-.03em;color:#fff;margin-bottom:28px;max-width:14ch}
+.cta-title .italic{color:var(--purple-neon);font-style:italic;font-weight:500;text-shadow:0 0 28px rgba(157,140,255,.45)}
+.cta-note{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:rgba(255,255,255,.72);max-width:56ch;margin-bottom:40px}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:60px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-.01em;transition:all .2s;border:1px solid transparent}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:var(--glow-purple)}
+.btn-primary:hover{background:#fff;color:var(--ink);box-shadow:none}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.2)}
+.btn-ghost:hover{border-color:var(--mint-neon);box-shadow:var(--glow-mint)}
+.btn svg{width:16px;height:16px}
+.footer-meta{margin-top:80px;padding-top:36px;border-top:1px solid var(--rule-dark);display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px}
+.footer-meta-block{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;line-height:1.7}
+.footer-meta-block span{display:block;color:#fff;font-size:13px;text-transform:none;letter-spacing:-.01em;margin-top:6px;font-family:var(--font-sans);font-weight:500}
+
+/* Animation */
+body.anim-ready .fade-in{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+body.anim-ready .fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media print{
+  .nav,.client-bar{display:none}
+  body{background:#fff}
+  .hero-blob,.hero-blob-2,.cta-section::before,.cta-section::after{display:none}
+  .case-card,.process-step,.belief-item,.lane,.svc,.tl{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- Client bar -->
+<div class="client-bar">
+  <div class="client-bar-logos">
+    <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:.9;">
+    <div class="client-bar-divider"></div>
+    <div class="client-chip"><img src="data:image/png;base64,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" alt="DoControl" style="height:20px;width:auto;"></div>
+  </div>
+  <span class="client-bar-meta">Recap &amp; Capabilities Brief &middot; September 2026 &middot; Confidential</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="https://raw.githubusercontent.com/tamiral1/noetic-proposals/cab3b2d4d84b4d86697dddc3ba3354a2db7180b7/agwa-e948/assets/noetic-logo.png" alt="Noetic Creative" style="height:28px;width:auto;">
+      <span class="nav-brand-divider"></span>
+      <img src="data:image/png;base64,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" alt="DoControl" style="height:24px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#recap">Recap</a></li>
+      <li><a href="#frame">The frame</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#timeline">90 days</a></li>
+            <li><a href="mailto:tamir@noetic.io" class="nav-cta">Reply to Tamir</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span>Recap &amp; Capabilities</span>
+      <span class="hero-meta-divider"></span>
+      <span>Meeting of September 15, 2026</span>
+      <span class="hero-meta-divider"></span>
+      <span>Prepared for Omri Weinberg, DoControl by Spin.AI</span>
+    </div>
+    <h1 class="display-xl">
+      Everyone who sees it gets it.
+      <span class="accent-line">Now let's get it seen.</span>
+    </h1>
+    <p class="hero-lede">Omri, thank you for the time on Tuesday. What follows is our record of the conversation, the way we read it, and the capabilities we would put behind it. Everything you told us about DoControl points to one fact: once a security leader sees the assessment, the decision is close to made. Almost nobody is looking for it before then. That is the whole job.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="accent">3,000</span></div>
+        <div class="hero-stat-label">Named accounts on the ICP list you're sharing</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">250+</div>
+        <div class="hero-stat-label">Employee threshold where the problem gets a budget and an owner</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Brands under one roof: Spin.AI, Revyz, DoControl</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">90</div>
+        <div class="hero-stat-label">Days from kickoff to a measurable pipeline signal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Recap -->
+<section class="section" id="recap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">01 / What we discussed</span>
+      <h2 class="display-md">A product that wins on contact, a company consolidating marketing, and a list <em class="italic" style="color:var(--purple)">already written</em>.</h2>
+    </div>
+
+    <div class="recap-grid">
+      <ul class="belief-list">
+        <li class="belief-item">
+          <div class="belief-num">/01</div>
+          <div class="belief-content">
+            <h3>Three brands, one company.</h3>
+            <p>Spin.AI is the parent: SaaS backup for Google Workspace, Salesforce, Slack and Microsoft, with roughly 1,500 customers across every size band. Revyz, acquired by Spin, brings the same backup to the Atlassian suite and runs on its own sales motion. DoControl is the security brand: DLP and CASB, API-only, no agent, with Spin's browser security product folding under it and sold together. The DoControl name stays, and the sentiment attached to it is strong.</p>
+          </div>
+        </li>
+        <li class="belief-item">
+          <div class="belief-num">/02</div>
+          <div class="belief-content">
+            <h3>Marketing is consolidating under you.</h3>
+            <p>Over the next month-plus you're taking over marketing for Spin, budgets included. Today it runs in pieces: a small function on the DoControl side, a VP Marketing at Spin with designers and SDRs, and partners bringing most of the new business. You intend to reorganize, centralize, and run it as one function with one plan.</p>
+          </div>
+        </li>
+        <li class="belief-item">
+          <div class="belief-num">/03</div>
+          <div class="belief-content">
+            <h3>The product does the closing.</h3>
+            <p>The free risk assessment converts at a rate most vendors would not believe. The demo has a wow factor: files shared to personal accounts, documents publicly reachable for years, ex-employees still inside the Drive, all cross-referenced with the HRIS and Okta, then remediated at scale with workflow automation. The hard part is upstream. The category is not yet understood, and the first reaction is often "why would I worry about my Google Workspace?"</p>
+          </div>
+        </li>
+        <li class="belief-item">
+          <div class="belief-num">/04</div>
+          <div class="belief-content">
+            <h3>The ICP is already defined.</h3>
+            <p>Companies of 250 employees and up, with a security function in place (a CISO, an information security manager, an analyst), on Google Workspace or a comparable stack. You hold a list of about 3,000 such companies with buying committees mapped, and you're sending it over. Smaller companies are not the target: no budget, no owner, security not yet in the mindset.</p>
+          </div>
+        </li>
+        <li class="belief-item">
+          <div class="belief-num">/05</div>
+          <div class="belief-content">
+            <h3>What you asked us for.</h3>
+            <p>A bundle rather than a single service: SEO, paid search on the brand terms of DoControl and Spin, lead generation, and a brand awareness layer for the accounts not yet searching. First a document that shows we understand the three-brand company. Then a proposal with services, channels, KPIs, time-to-value, and a measurement model you can defend internally: UTMs, fingerprinting, and a clean line back to HubSpot. One enterprise customer traceable to this work is the proof point you named.</p>
+          </div>
+        </li>
+        <li class="belief-item">
+          <div class="belief-num">/06</div>
+          <div class="belief-content">
+            <h3>Where things stand.</h3>
+            <p>SEO runs in-house today and ranks on the keywords you chose. Newsletters and in-product cross-sell to Spin's customer base already exist. Marketing lives in HubSpot; sales is moving to Salesforce, marketing stays put. You floated a November start with a six-month budget and KPIs attached.</p>
+            <p>Agreed actions: you send the ICP list and field questions by email. We run an SEO and AI visibility audit on DoControl, return with this brief, and follow with the proposal.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="recap-visual">
+        <div class="diagram diagram-light" style="margin-top:0">
+          <svg viewBox="0 0 420 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spin.AI company structure with three brands">
+            <defs>
+              <linearGradient id="gp" x1="0" x2="1"><stop offset="0" stop-color="#6C5CE7"/><stop offset="1" stop-color="#00D4B4"/></linearGradient>
+            </defs>
+            <!-- parent -->
+            <rect x="110" y="20" width="200" height="72" rx="14" fill="#0A0A0E"/>
+            <text x="210" y="50" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Spin.AI</text>
+            <text x="210" y="72" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="11" font-family="JetBrains Mono, monospace">PARENT &middot; SAAS BACKUP &middot; ~1,500 CUSTOMERS</text>
+            <!-- connectors -->
+            <path d="M210 92 V130 M70 130 H350 M70 130 V168 M210 130 V168 M350 130 V168" stroke="#A8A8B5" stroke-width="1.5" fill="none"/>
+            <!-- children -->
+            <g>
+              <rect x="10" y="168" width="120" height="96" rx="12" fill="#fff" stroke="#A8A8B5"/>
+              <text x="70" y="200" text-anchor="middle" fill="#0A0A0E" font-size="15" font-weight="700">Spin Backup</text>
+              <text x="70" y="220" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Google &middot; Salesforce</text>
+              <text x="70" y="235" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Slack &middot; Microsoft</text>
+              <text x="70" y="252" text-anchor="middle" fill="#6B6B7B" font-size="9.5" font-family="JetBrains Mono, monospace">COMPLIANCE-LED</text>
+            </g>
+            <g>
+              <rect x="150" y="168" width="120" height="96" rx="12" fill="#fff" stroke="#A8A8B5"/>
+              <text x="210" y="200" text-anchor="middle" fill="#0A0A0E" font-size="15" font-weight="700">Revyz</text>
+              <text x="210" y="220" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Backup for the</text>
+              <text x="210" y="235" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Atlassian suite</text>
+              <text x="210" y="252" text-anchor="middle" fill="#6B6B7B" font-size="9.5" font-family="JetBrains Mono, monospace">OWN SALES MOTION</text>
+            </g>
+            <g>
+              <rect x="290" y="168" width="120" height="96" rx="12" fill="#EFEDFE" stroke="#6C5CE7" stroke-width="2"/>
+              <text x="350" y="200" text-anchor="middle" fill="#4D3FC9" font-size="15" font-weight="700">DoControl</text>
+              <text x="350" y="220" text-anchor="middle" fill="#4D3FC9" font-size="10.5">DLP &middot; CASB</text>
+              <text x="350" y="235" text-anchor="middle" fill="#4D3FC9" font-size="10.5">Browser security</text>
+              <text x="350" y="252" text-anchor="middle" fill="#6C5CE7" font-size="9.5" font-family="JetBrains Mono, monospace">API-ONLY &middot; SECURITY</text>
+            </g>
+            <!-- shared buyer stack -->
+            <path d="M70 264 V300 M210 264 V300 M350 264 V300" stroke="#A8A8B5" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+            <rect x="10" y="300" width="400" height="60" rx="12" fill="none" stroke="url(#gp)" stroke-width="2"/>
+            <text x="210" y="325" text-anchor="middle" fill="#0A0A0E" font-size="13" font-weight="700">One buyer stack</text>
+            <text x="210" y="344" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Google Workspace &middot; Slack &middot; Salesforce &middot; Atlassian &middot; Microsoft 365</text>
+            <!-- shared marketing -->
+            <path d="M210 360 V392" stroke="#A8A8B5" stroke-width="1.5" fill="none"/>
+            <rect x="80" y="392" width="260" height="52" rx="26" fill="#0A0A0E"/>
+            <text x="210" y="415" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">One marketing function, one plan</text>
+            <text x="210" y="431" text-anchor="middle" fill="#00D4B4" font-size="9.5" font-family="JetBrains Mono, monospace">CONSOLIDATING UNDER OMRI</text>
+          </svg>
+        </div>
+        <p class="figure-caption">Fig. 1 &middot; The company as you described it. Three products, one buyer stack, one marketing function.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 The frame (dark) -->
+<section class="dark section" id="frame">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">02 / The frame</span>
+      <h2 class="display-lg">Nobody searches for a problem <em class="italic">they don't know they have</em>.</h2>
+      <p class="lede" style="margin-top:24px;max-width:58ch">Everything you described reduces to one asymmetry. After the assessment, the decision is close to made. Before it, almost nobody is looking. That is not a lead-generation problem with a bigger budget attached. It is an education problem with a named-account list attached, which is a very different program to build.</p>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 1160 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow from 3,000 named accounts through education to assessment, demo and customer">
+        <defs>
+          <linearGradient id="mp" x1="0" x2="1"><stop offset="0" stop-color="#9D8CFF"/><stop offset="1" stop-color="#2BFFD9"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="rgba(255,255,255,.7)"/></marker>
+        </defs>
+        <!-- zone labels -->
+        <text x="30" y="34" fill="#9D8CFF" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2">MARKETING &middot; BEFORE THE DOOR</text>
+        <text x="1130" y="34" fill="#2BFFD9" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2" text-anchor="end">SALES &middot; AFTER THE DOOR</text>
+        <!-- the door -->
+        <line x1="640" y1="20" x2="640" y2="280" stroke="#2BFFD9" stroke-width="2" stroke-dasharray="6 6" filter="url(#glow)"/>
+        <rect x="596" y="126" width="88" height="48" rx="24" fill="#0A0A0E" stroke="#2BFFD9" stroke-width="2" filter="url(#glow)"/>
+        <text x="640" y="155" text-anchor="middle" fill="#2BFFD9" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace">THE DOOR</text>
+        <!-- nodes -->
+        <g>
+          <rect x="30" y="100" width="170" height="100" rx="14" fill="rgba(255,255,255,.03)" stroke="#9D8CFF" stroke-width="1.5"/>
+          <text x="115" y="140" text-anchor="middle" fill="#fff" font-size="30" font-weight="600" font-family="Fraunces, serif">3,000</text>
+          <text x="115" y="166" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="12">named accounts</text>
+          <text x="115" y="184" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="10" font-family="JetBrains Mono, monospace">250+ EMPLOYEES</text>
+        </g>
+        <path d="M200 150 H240" stroke="rgba(255,255,255,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <g>
+          <rect x="245" y="70" width="330" height="160" rx="14" fill="rgba(157,140,255,.06)" stroke="#9D8CFF" stroke-width="1.5"/>
+          <text x="410" y="100" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Educated and reached</text>
+          <g font-size="12" fill="rgba(255,255,255,.75)">
+            <rect x="265" y="118" width="140" height="40" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="335" y="143" text-anchor="middle">ABM content</text>
+            <rect x="415" y="118" width="140" height="40" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="485" y="143" text-anchor="middle">Brand awareness</text>
+            <rect x="265" y="168" width="140" height="40" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="335" y="193" text-anchor="middle">Search + AI visibility</text>
+            <rect x="415" y="168" width="140" height="40" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="485" y="193" text-anchor="middle">HubSpot signals</text>
+          </g>
+        </g>
+        <path d="M575 150 H596" stroke="rgba(255,255,255,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <path d="M684 150 H705" stroke="rgba(255,255,255,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <g>
+          <rect x="710" y="100" width="150" height="100" rx="14" fill="rgba(43,255,217,.06)" stroke="#2BFFD9" stroke-width="1.5"/>
+          <text x="785" y="140" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Free risk</text>
+          <text x="785" y="160" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">assessment</text>
+          <text x="785" y="184" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="10" font-family="JetBrains Mono, monospace">MINUTES, AGENTLESS</text>
+        </g>
+        <path d="M860 150 H895" stroke="rgba(255,255,255,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <g>
+          <rect x="900" y="100" width="100" height="100" rx="14" fill="rgba(43,255,217,.06)" stroke="#2BFFD9" stroke-width="1.5"/>
+          <text x="950" y="145" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Demo</text>
+          <text x="950" y="168" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="10" font-family="JetBrains Mono, monospace">WOW FACTOR</text>
+        </g>
+        <path d="M1000 150 H1035" stroke="rgba(255,255,255,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <g>
+          <rect x="1040" y="100" width="90" height="100" rx="14" fill="#2BFFD9" filter="url(#glow)"/>
+          <text x="1085" y="150" text-anchor="middle" fill="#0A0A0E" font-size="14" font-weight="800">Customer</text>
+        </g>
+        <!-- bottom annotations -->
+        <text x="410" y="262" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="12">Where this program lives. Measured by assessments booked from the list.</text>
+        <text x="900" y="262" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="12">Already performing. Near-total conversion, by your account.</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Fig. 2 &middot; Marketing's job ends at the door. Sales takes it from there, with better context than it has today.</p>
+
+    <div class="lanes-grid">
+      <div class="lane">
+        <div class="lane-tag">After the door</div>
+        <h3>What already works.</h3>
+        <p>The assessment, the demo, the remediation at scale, the customers who come back two years later because the product stayed in their heads. This is your sales team's domain and it is performing. We don't touch it, except to feed it better.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">Owner</span><span class="value">DoControl sales</span></div>
+          <div class="lane-spec-item"><span class="label">Trigger</span><span class="value">Free risk assessment</span></div>
+          <div class="lane-spec-item"><span class="label">Job</span><span class="value">Prove and close</span></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-tag">Before the door</div>
+        <h3>Where the program lives.</h3>
+        <p>Three thousand accounts, each with a security leader who holds one of three postures toward this problem. Content built per posture and per persona. Brand presence for the ones not yet searching, search presence for the ones who are, and engagement signals flowing back to HubSpot so sales knows who is warm before the first call.</p>
+        <div class="lane-spec">
+          <div class="lane-spec-item"><span class="label">Owner</span><span class="value">Noetic, with you</span></div>
+          <div class="lane-spec-item"><span class="label">Accounts</span><span class="value">3,000 named</span></div>
+          <div class="lane-spec-item"><span class="label">Job</span><span class="value">Educate and qualify</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="frame-pull">Marketing here is measured by one thing: how many of the 3,000 take the assessment. The product handles the rest.</p>
+  </div>
+</section>
+
+<!-- 03 Three postures -->
+<section class="postures section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">03 / Three postures, three messages</span>
+      <h2 class="display-md">You described three kinds of CISO. Each one needs a <em class="italic" style="color:var(--purple)">different first sentence</em>.</h2>
+      <p class="lede" style="margin-top:20px">The same demo closes all three. What changes is what gets them to book it. This is the segmentation the content plan is built on.</p>
+    </div>
+
+    <div class="verticals-grid">
+      <div class="vertical-card">
+        <div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18M10.6 10.6a2 2 0 002.8 2.8M9.9 4.2A10.9 10.9 0 0112 4c7 0 10 8 10 8a17 17 0 01-2.6 3.6M6.6 6.6C3.9 8.4 2 12 2 12s3 8 10 8a10.6 10.6 0 004.6-1"/></svg></div>
+        <h4>The one who'd rather not look</h4>
+        <p>Knows the Drive is a mess, suspects the audit would be painful, and chooses not to open the door. The most common posture, by your account.</p>
+        <div class="move"><strong>What moves them</strong>Lower the cost of looking. The assessment is free, agentless, and takes minutes. Lead with peers who looked and survived, not with fear.</div>
+      </div>
+      <div class="vertical-card">
+        <div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h4>The one with a known problem</h4>
+        <p>Something already happened, or a board asked a question. Actively evaluating, typing "Google Workspace security" or "Slack DLP" into a search bar this quarter.</p>
+        <div class="move"><strong>What moves them</strong>Be there when they search. Own the category terms, defend the brand terms, and make the path from result to assessment one click long.</div>
+      </div>
+      <div class="vertical-card">
+        <div class="vertical-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>The one who thinks it's covered</h4>
+        <p>Has a full stack of well-known endpoint and network tools and assumes SaaS sharing is inside their perimeter. It is not, and the gap is invisible until someone shows it.</p>
+        <div class="move"><strong>What moves them</strong>Precision, not volume. Named-account content that names the gap: what the existing stack sees, what it does not, and what a scan of their own instance would surface.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Services map (dark) -->
+<section class="dark section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">04 / Services we discussed</span>
+      <h2 class="display-md">Everything that came up on the call, <em class="italic">sorted</em>.</h2>
+      <p class="lede" style="margin-top:20px">You asked for a bundle. This is the full list of what was discussed, split into what you asked for, what we would add so the bundle works as one system, and what we agreed to park.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>SEO</h4><p>Audit first, then a program. You rank on your terms; the buyer's terms are the next fight.</p></div>
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>Brand-term paid search</h4><p>DoControl, Spin, Revyz. Nobody sits above you on your own name.</p></div>
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>Lead generation</h4><p>Assessments booked from the ICP list. The only number that matters here.</p></div>
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>Brand awareness</h4><p>For the accounts not yet searching. Education, aimed at the list, not the internet.</p></div>
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>ABM</h4><p>Your 3,000, tiered, with buying committees mapped and content per persona.</p></div>
+      <div class="svc asked"><span class="svc-status">You asked for</span><h4>Attribution &amp; ROI</h4><p>UTMs, fingerprinting, a dashboard you can show internally. One traceable enterprise customer.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>AI visibility</h4><p>Being the source the models cite when someone asks how to secure Google Workspace.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>Reddit &amp; community</h4><p>Handled in the open, under real names. Models read Reddit; so do CISOs.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>HubSpot lifecycle</h4><p>Scoring, nurture per posture, and the handoff to Salesforce built properly.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>Landing pages &amp; calculators</h4><p>"What's exposed in a company your size." Conversion assets built for the assessment.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>Creative &amp; video</h4><p>The football clip proved the brand can be memorable. Eight people to keep it that way.</p></div>
+      <div class="svc add"><span class="svc-status">We'd add</span><h4>Cross-sell to Spin's base</h4><p>1,500 backup customers with the same stack. First-party audiences, matched into the platforms.</p></div>
+      <div class="svc later"><span class="svc-status">Later</span><h4>LinkedIn outreach</h4><p>Conversation-first prospecting from a brand-representative profile. Once the content engine is running.</p></div>
+      <div class="svc later"><span class="svc-status">Later</span><h4>Webinars</h4><p>A natural fit for the "show them the scan" motion. Phase two, once the list is warm.</p></div>
+      <div class="svc later"><span class="svc-status">Later</span><h4>Spin &amp; Revyz programs</h4><p>Same system, applied to the backup brands. Sequenced after DoControl proves the model.</p></div>
+      <div class="svc later"><span class="svc-status">Later</span><h4>Organic social</h4><p>Consistent presence on LinkedIn for the company and its leaders. Supports everything above.</p></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--mint-neon);box-shadow:0 0 8px var(--mint-neon)"></i>You asked for</span>
+      <span><i style="background:var(--purple-neon);box-shadow:0 0 8px var(--purple-neon)"></i>We'd add to make the bundle work</span>
+      <span><i style="background:var(--lime);box-shadow:0 0 8px var(--lime)"></i>Discussed, sequenced later</span>
+    </div>
+  </div>
+</section>
+
+<!-- Capabilities intro -->
+<section class="services-intro section-tight" id="capabilities">
+  <div class="container">
+    <span class="eyebrow">05 / Capabilities</span>
+    <h2 class="display-md" style="margin-top:18px;max-width:24ch">Five capabilities, one program. Each with the work behind it, <em class="italic" style="color:var(--purple)">numbers attached</em>.</h2>
+    <p class="lede" style="margin-top:20px">These are the five we would lead with. They are not separate line items; the ABM list feeds paid, paid feeds HubSpot, HubSpot feeds sales. The cases shown are real Noetic accounts with published results.</p>
+  </div>
+</section>
+
+<!-- Service 01 ABM -->
+<section class="service-deep">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">CAPABILITY / 01</div>
+        <h3 class="service-deep-title">Account-Based Marketing</h3>
+        <div class="service-deep-tag">Three thousand accounts is a list. A program is what you do with it.</div>
+        <p class="service-deep-desc">You already have the hardest part: a defined ICP and a named list with buying committees. Our job is to turn it into tiers, personas, and content that gives each person on the committee a reason to care, then to push every signal back into HubSpot so sales calls the warm ones first.</p>
+        <ul class="approach-list">
+          <li>Tier the 3,000 into priority bands; enrich with ZoomInfo and Apollo to fill the committee where it's thin</li>
+          <li>Map the committee per account: the security champion, the operations owner, the finance signer</li>
+          <li>Build content per persona and per posture: guides, benchmarks, a "what's exposed in a company your size" calculator</li>
+          <li>Persona-level delivery on LinkedIn, plus Influ2 for the accounts that matter most</li>
+          <li>Engagement signals into HubSpot as lead scores, so the SDRs work a ranked list, not a flat one</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured &middot; Israeli B2B, enterprise buyers</span>
+          <img class="case-logo" src="https://noetic.io/wp-content/uploads/2026/03/case_study_audiocodes_logo.svg" alt="AudioCodes" style="height:26px">
+          <div class="case-card-name">AudioCodes</div>
+          <div class="case-card-industry">Enterprise Communications &middot; NASDAQ: AUDC</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>A defined Tier-1 account list in the US, soft brand awareness, and previous ABM attempts that had failed, leaving internal skepticism about whether ABM could work at all. This began as a three-month pilot.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>Strict named-account ABM instead of broad demand gen. Persona-level targeting inside Tier-1 accounts with Influ2, creative rewritten from features to business problems, custom landing pages on their site, and everything attributed through HubSpot.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+88%</div><div class="result-pop-label">Demo meetings booked</div></div>
+            <div class="result-pop"><div class="result-pop-num">$4.9M</div><div class="result-pop-label">Pipeline influenced</div></div>
+            <div class="result-pop"><div class="result-pop-num green">-22%</div><div class="result-pop-label">CPL vs. benchmark</div></div>
+          </div>
+          <div class="aha-quote">ABM didn't fail AudioCodes before. Bad ABM did. Once the team saw a true named-account strategy with buyer-first creative, the skepticism went away and the budget followed.</div>
+        </div>
+
+        <div class="case-card">
+          <span class="case-card-tag alt">Companion &middot; Defense, tiered expansion</span>
+          <img class="case-logo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TSG/TSG_logo_color.png" alt="TSG Systems">
+          <div class="case-card-name">TSG Systems</div>
+          <div class="case-card-industry">DefenseTech &middot; Mission-critical systems</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>A tiered ABM system built for defense buying behavior: custom messaging by account tier, LinkedIn as the awareness and capture layer, and controlled expansion from Tier-1 to Tier-2 and Tier-3 without losing relevance. A LinkedIn outreach system started conversations directly with decision-makers.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">+71%</div><div class="result-pop-label">Tier-1 demo requests</div></div>
+            <div class="result-pop"><div class="result-pop-num">$20M+</div><div class="result-pop-label">Pipeline influenced</div></div>
+          </div>
+          <div class="bars">
+            <div class="case-card-block-label" style="margin-bottom:10px">LinkedIn outreach funnel</div>
+            <div class="bar-row"><div class="bl">Targeted prospects</div><div class="bt"><div class="bf" style="width:100%"></div></div><div class="bv">100%</div></div>
+            <div class="bar-row"><div class="bl">Responded</div><div class="bt"><div class="bf" style="width:60%"></div></div><div class="bv">60%</div></div>
+            <div class="bar-row"><div class="bl">Booked a demo</div><div class="bt"><div class="bf" style="width:25%"></div></div><div class="bv">25%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service 02 SEO + AI visibility -->
+<section class="service-deep warm">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">CAPABILITY / 02</div>
+        <h3 class="service-deep-title">SEO &amp; AI Visibility</h3>
+        <div class="service-deep-tag">You rank on the terms you chose. The question is what the searchers and the models see next.</div>
+        <p class="service-deep-desc">SEO now runs on two tracks. The classic one, on-page performance and content architecture, still decides who wins the searchers you described in posture two. The second is AI visibility: being the source the models cite when someone asks a chatbot how to secure Google Workspace. That is built on citable, specific, well-referenced content published where the models read, Reddit included. You asked whether we do backlinks and Reddit. Yes, and in the open, under real names.</p>
+        <ul class="approach-list">
+          <li>Audit first: technical health, current rankings, content gaps against category and competitor terms, and how DoControl appears in AI answers today</li>
+          <li>Topic clusters around the buyer's questions: SaaS DLP, Google Workspace security, Slack and Drive sharing risk, offboarding exposure</li>
+          <li>Citable content: benchmarks, definitions, data from your own scans (anonymized), written the way models pick up</li>
+          <li>Reddit and community presence handled by people who disclose who they are and answer well</li>
+          <li>Authority building: backlinks earned through real assets, not bought</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">First step &middot; No commitment required</span>
+          <div class="case-card-name">The DoControl audit</div>
+          <div class="case-card-industry">SEO &middot; AI visibility &middot; Competitive gap</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">What we look at</div>
+            <ul>
+              <li>Technical baseline: crawlability, speed, structure, indexation</li>
+              <li>Where DoControl ranks today on the terms you chose, and on the terms buyers in posture two actually type</li>
+              <li>Which competitors own the category terms, and with what content</li>
+              <li>What the major AI assistants say when asked about SaaS DLP, Google Workspace security, and DoControl by name</li>
+              <li>Spin and Revyz alongside, so the three brands don't compete with each other in search</li>
+            </ul>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">What you get</div>
+            <p>A ranked list of where content and authority investment pays back fastest, the gap between current rankings and category ownership, and a first read on AI visibility. This becomes the SEO section of the proposal, with numbers instead of assumptions.</p>
+          </div>
+          <div class="aha-quote">Your in-house SEO got you onto page one for the terms you picked. The audit tells us which terms the buyer picks, and whether the models agree.</div>
+        </div>
+
+        <div class="diagram diagram-light" style="margin-top:0">
+          <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two tracks of search: classic SEO and AI visibility, both landing on the assessment">
+            <text x="20" y="30" fill="#6B6B7B" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2">HOW A BUYER ARRIVES</text>
+            <!-- track 1 -->
+            <rect x="20" y="52" width="160" height="60" rx="12" fill="#EFEDFE" stroke="#6C5CE7" stroke-width="1.5"/>
+            <text x="100" y="78" text-anchor="middle" fill="#4D3FC9" font-size="13" font-weight="700">Types a query</text>
+            <text x="100" y="97" text-anchor="middle" fill="#6B6B7B" font-size="10.5">"google workspace dlp"</text>
+            <rect x="220" y="52" width="180" height="60" rx="12" fill="#fff" stroke="#A8A8B5"/>
+            <text x="310" y="78" text-anchor="middle" fill="#0A0A0E" font-size="13" font-weight="700">Search results</text>
+            <text x="310" y="97" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Classic SEO decides the rank</text>
+            <!-- track 2 -->
+            <rect x="20" y="150" width="160" height="60" rx="12" fill="#E6FBF7" stroke="#00D4B4" stroke-width="1.5"/>
+            <text x="100" y="176" text-anchor="middle" fill="#006B5C" font-size="13" font-weight="700">Asks an assistant</text>
+            <text x="100" y="195" text-anchor="middle" fill="#6B6B7B" font-size="10.5">"how do I secure shared drives"</text>
+            <rect x="220" y="150" width="180" height="60" rx="12" fill="#fff" stroke="#A8A8B5"/>
+            <text x="310" y="176" text-anchor="middle" fill="#0A0A0E" font-size="13" font-weight="700">Model answer</text>
+            <text x="310" y="195" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Cites whoever wrote it best</text>
+            <!-- arrows -->
+            <path d="M180 82 H218" stroke="#A8A8B5" stroke-width="1.5"/><path d="M180 180 H218" stroke="#A8A8B5" stroke-width="1.5"/>
+            <path d="M400 82 C440 82 440 131 480 131" stroke="#6C5CE7" stroke-width="1.5" fill="none"/>
+            <path d="M400 180 C440 180 440 131 480 131" stroke="#00D4B4" stroke-width="1.5" fill="none"/>
+            <!-- destination -->
+            <rect x="480" y="96" width="140" height="70" rx="35" fill="#0A0A0E"/>
+            <text x="550" y="127" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">The assessment</text>
+            <text x="550" y="145" text-anchor="middle" fill="#00D4B4" font-size="9.5" font-family="JetBrains Mono, monospace">ONE CLICK FROM EITHER</text>
+            <text x="320" y="240" text-anchor="middle" fill="#6B6B7B" font-size="11">Reddit, citations and benchmarks feed both tracks. The audit measures where you stand on each.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service 03 Paid -->
+<section class="service-deep">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">CAPABILITY / 03</div>
+        <h3 class="service-deep-title">Paid Media: Brand Defense &amp; Awareness</h3>
+        <div class="service-deep-tag">Two budgets with two jobs. One protects the name. One introduces it.</div>
+        <p class="service-deep-desc">You named this directly: bid on the brand terms of DoControl, Spin, and Revyz so the searchers land on you, and educate the ones who aren't searching yet. Search handles the first. LinkedIn, programmatic, and Meta retargeting handle the second, aimed at the 3,000 rather than at the internet. The creative work matters here; you've already made the clips that prove the brand can be memorable in a serious category. We have eight people in creative to keep that going.</p>
+        <ul class="approach-list">
+          <li>Brand-term coverage across all three brands, so no competitor sits above you on your own name</li>
+          <li>Category and intent terms mapped from the audit, with landing pages that lead to the assessment</li>
+          <li>Awareness campaigns to the named list only: LinkedIn document ads, video, and retargeting for the accounts that engaged</li>
+          <li>First-party audiences from Spin's customer base, matched into the platforms for cross-sell into DoControl</li>
+          <li>Monthly creative refresh: add what performs, retire what doesn't, keep the tone yours</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Featured &middot; Named accounts, LinkedIn-led</span>
+          <img class="case-logo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/WSC/WSC_logo_color.png" alt="WSC Sports">
+          <div class="case-card-name">WSC Sports</div>
+          <div class="case-card-industry">Sports content technology &middot; Enterprise buyers</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>A niche buyer, senior executives at leagues, broadcasters and networks, who don't respond to broad targeting and won't trade an email for generic content.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>LinkedIn document ads aimed at named high-value accounts, with content worth exchanging contact details for. A tailored email sequence took each lead from education to trust to a demo booking, with messaging aligned across both channels.</p>
+          </div>
+          <div class="case-card-results">
+            <div class="result-pop"><div class="result-pop-num">300+</div><div class="result-pop-label">Qualified leads from document ads</div></div>
+            <div class="result-pop"><div class="result-pop-num">20%</div><div class="result-pop-label">Engagement rate on LinkedIn</div></div>
+            <div class="result-pop"><div class="result-pop-num green">25%</div><div class="result-pop-label">Lead to demo booking</div></div>
+          </div>
+          <div class="aha-quote">Two years on, WSC Sports is expanding the engagement into the US and into brand work. Precision on a small, senior audience compounds.</div>
+        </div>
+
+        <div class="diagram diagram-light" style="margin-top:0">
+          <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two paid budgets: brand defense on search and awareness on social, both aimed at the named list">
+            <text x="20" y="30" fill="#6B6B7B" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2">TWO BUDGETS, TWO JOBS</text>
+            <rect x="20" y="50" width="290" height="150" rx="14" fill="#fff" stroke="#6C5CE7" stroke-width="1.5"/>
+            <text x="40" y="80" fill="#4D3FC9" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">BRAND DEFENSE &middot; SEARCH</text>
+            <text x="40" y="106" fill="#0A0A0E" font-size="15" font-weight="700">Protect the name</text>
+            <text x="40" y="128" fill="#6B6B7B" font-size="11.5">DoControl, Spin, Revyz brand terms</text>
+            <text x="40" y="146" fill="#6B6B7B" font-size="11.5">Category and intent terms from the audit</text>
+            <text x="40" y="164" fill="#6B6B7B" font-size="11.5">Posture two: already searching</text>
+            <text x="40" y="186" fill="#6C5CE7" font-size="10" font-family="JetBrains Mono, monospace">MEASURE: ASSESSMENTS FROM SEARCH</text>
+            <rect x="330" y="50" width="290" height="150" rx="14" fill="#fff" stroke="#00D4B4" stroke-width="1.5"/>
+            <text x="350" y="80" fill="#006B5C" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">AWARENESS &middot; SOCIAL + PROGRAMMATIC</text>
+            <text x="350" y="106" fill="#0A0A0E" font-size="15" font-weight="700">Introduce the problem</text>
+            <text x="350" y="128" fill="#6B6B7B" font-size="11.5">LinkedIn document ads, video, retargeting</text>
+            <text x="350" y="146" fill="#6B6B7B" font-size="11.5">Aimed at the 3,000, not the internet</text>
+            <text x="350" y="164" fill="#6B6B7B" font-size="11.5">Postures one and three: not yet searching</text>
+            <text x="350" y="186" fill="#00A18A" font-size="10" font-family="JetBrains Mono, monospace">MEASURE: ACCOUNT ENGAGEMENT, THEN SEARCH LIFT</text>
+            <text x="320" y="222" text-anchor="middle" fill="#6B6B7B" font-size="11">Awareness on the left raises the volume the right side captures. Reported together, funded separately.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service 04 HubSpot lifecycle -->
+<section class="service-deep warm">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">CAPABILITY / 04</div>
+        <h3 class="service-deep-title">HubSpot &amp; Lifecycle</h3>
+        <div class="service-deep-tag">The signal is the product of everything above. HubSpot is where it has to land.</div>
+        <p class="service-deep-desc">Marketing stays on HubSpot while sales moves to Salesforce, which makes the handoff the most important integration in the program. Every engagement from ABM, search, and paid becomes a score, a segment, and a nurture path. The measurement model you asked for, UTMs, fingerprinting, and attribution you can show internally, is built here, not bolted on later.</p>
+        <ul class="approach-list">
+          <li>Attribution architecture: UTM governance, first- and multi-touch models, a dashboard that shows which account came from where</li>
+          <li>Lead scoring from engagement signals, so "watched the calculator, downloaded the benchmark, visited pricing" means something</li>
+          <li>Nurture tracks per posture and per persona, each ending at the assessment</li>
+          <li>The HubSpot-to-Salesforce sync designed so sales sees the marketing context, not just a contact record</li>
+          <li>Cross-sell flows for Spin's existing base: backup customers who are also DoControl prospects</li>
+        </ul>
+      </div>
+      <div>
+        <div class="diagram diagram-light" style="margin-top:0;margin-bottom:20px">
+          <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Attribution flow from channels into HubSpot scoring and Salesforce">
+            <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#A8A8B5"/></marker></defs>
+            <text x="20" y="30" fill="#6B6B7B" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2">EVERY TOUCH BECOMES A SIGNAL</text>
+            <g font-size="12" fill="#0A0A0E" font-weight="600">
+              <rect x="20" y="50" width="130" height="38" rx="8" fill="#fff" stroke="#A8A8B5"/><text x="85" y="74" text-anchor="middle">ABM content</text>
+              <rect x="20" y="100" width="130" height="38" rx="8" fill="#fff" stroke="#A8A8B5"/><text x="85" y="124" text-anchor="middle">Paid search</text>
+              <rect x="20" y="150" width="130" height="38" rx="8" fill="#fff" stroke="#A8A8B5"/><text x="85" y="174" text-anchor="middle">Paid social</text>
+              <rect x="20" y="200" width="130" height="38" rx="8" fill="#fff" stroke="#A8A8B5"/><text x="85" y="224" text-anchor="middle">Organic + AI</text>
+              <rect x="20" y="250" width="130" height="38" rx="8" fill="#fff" stroke="#A8A8B5"/><text x="85" y="274" text-anchor="middle">Spin cross-sell</text>
+            </g>
+            <g stroke="#A8A8B5" stroke-width="1.5" fill="none" marker-end="url(#arr2)">
+              <path d="M150 69 C200 69 200 169 250 169"/><path d="M150 119 C200 119 200 169 250 169"/><path d="M150 169 H250"/><path d="M150 219 C200 219 200 169 250 169"/><path d="M150 269 C200 269 200 169 250 169"/>
+            </g>
+            <rect x="255" y="110" width="150" height="118" rx="14" fill="#EFEDFE" stroke="#6C5CE7" stroke-width="2"/>
+            <text x="330" y="140" text-anchor="middle" fill="#4D3FC9" font-size="15" font-weight="700">HubSpot</text>
+            <text x="330" y="160" text-anchor="middle" fill="#4D3FC9" font-size="10.5">UTMs + fingerprinting</text>
+            <text x="330" y="176" text-anchor="middle" fill="#4D3FC9" font-size="10.5">Lead score per contact</text>
+            <text x="330" y="192" text-anchor="middle" fill="#4D3FC9" font-size="10.5">Account score per company</text>
+            <text x="330" y="214" text-anchor="middle" fill="#6C5CE7" font-size="9.5" font-family="JetBrains Mono, monospace">MARKETING SYSTEM OF RECORD</text>
+            <path d="M405 169 H455" stroke="#A8A8B5" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <rect x="460" y="125" width="160" height="88" rx="14" fill="#fff" stroke="#00D4B4" stroke-width="2"/>
+            <text x="540" y="155" text-anchor="middle" fill="#0A0A0E" font-size="15" font-weight="700">Salesforce</text>
+            <text x="540" y="175" text-anchor="middle" fill="#6B6B7B" font-size="10.5">Ranked list, with context</text>
+            <text x="540" y="198" text-anchor="middle" fill="#00A18A" font-size="9.5" font-family="JetBrains Mono, monospace">SALES SYSTEM OF RECORD</text>
+            <path d="M540 213 V245" stroke="#A8A8B5" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <rect x="460" y="250" width="160" height="38" rx="19" fill="#0A0A0E"/>
+            <text x="540" y="274" text-anchor="middle" fill="#00D4B4" font-size="11" font-weight="700">Closed-won, attributed</text>
+          </svg>
+        </div>
+
+        <div class="case-card">
+          <span class="case-card-tag">Featured &middot; Segmentation, nurture, dashboards</span>
+          <img class="case-logo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SAP/SAP_logo_color.png" alt="Sapiens">
+          <div class="case-card-name">Sapiens</div>
+          <div class="case-card-industry">Insurance software &middot; Public company</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>A webinar program that lacked registrations, audience segmentation by engagement, and the analytics to know what was working. Follow-up was manual and generic.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>Audiences segmented by behavior (registered, attended, partial, watched on demand), personalized email flows per segment on HubSpot, real-time dashboards for registration, attendance, engagement, and conversion, and content repurposed for continued lead capture after the live date.</p>
+          </div>
+          <div class="bars">
+            <div class="case-card-block-label" style="margin-bottom:10px">Conversion by segment</div>
+            <div class="bar-row"><div class="bl">Live attendees to leads</div><div class="bt"><div class="bf" style="width:28%"></div></div><div class="bv">28%</div></div>
+            <div class="bar-row"><div class="bl">On-demand viewers to leads</div><div class="bt"><div class="bf" style="width:17%"></div></div><div class="bv">17%</div></div>
+            <div class="bar-row"><div class="bl">Attendance rate lift</div><div class="bt"><div class="bf" style="width:30%"></div></div><div class="bv">+30%</div></div>
+            <div class="bar-row"><div class="bl">Qualified leads lift</div><div class="bt"><div class="bf" style="width:25%"></div></div><div class="bv">+25%</div></div>
+          </div>
+          <div class="aha-quote">The lift didn't come from more events. It came from treating every behavior as a segment and every segment as its own conversation, with the numbers visible to everyone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Service 05 UGC & Creative -->
+<section class="service-deep">
+  <div class="container">
+    <div class="service-deep-grid">
+      <div class="service-deep-meta">
+        <div class="service-deep-num">CAPABILITY / 05</div>
+        <h3 class="service-deep-title">UGC &amp; Creative</h3>
+        <div class="service-deep-tag">The football clip worked because it didn't look like a security vendor made it. Keep that.</div>
+        <p class="service-deep-desc">Awareness to a list of 3,000 lives or dies on creative. A CISO scrolls past brand video; they stop for a person who sounds like them. We run UGC as a production line: casting real practitioners and creators, briefing them with scene-by-scene scripts, filming on their own devices, editing in-house, and refreshing monthly so the same account never sees the same ad twice. Everything produced is yours, for paid, for organic, for email.</p>
+        <ul class="approach-list">
+          <li>Casting: security practitioners, IT admins and creators who can talk about shared drives without reading a script</li>
+          <li>Scene-level briefs per posture: "I'd rather not look," "we have a problem," "we thought we were covered"</li>
+          <li>Two lanes: creator-led UGC for LinkedIn and Meta, and brand-led explainers cut from the same footage</li>
+          <li>Monthly refresh cadence tied to what the media team sees performing</li>
+          <li>Eight people in creative and design, plus video editing, in-house</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-card">
+          <span class="case-card-tag">Reference &middot; UGC production line</span>
+          <img class="case-logo" src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/RAIL/RAIL_logo_color.png" alt="Rail Europe">
+          <div class="case-card-name">Rail Europe</div>
+          <div class="case-card-industry">Consumer travel &middot; Creator program</div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Challenge</div>
+            <p>Brand video was slow, expensive and stiff. Social audiences burned through it fast, and creative freshness was the biggest lever on cost per booking.</p>
+          </div>
+          <div class="case-card-block">
+            <div class="case-card-block-label">Method</div>
+            <p>End-to-end UGC infrastructure: creator outreach and contracts, brief writing with scene breakdowns, creative direction, and editing. Travel content that looks like a real person filmed it, not a brand, produced in volume and rotated into paid.</p>
+          </div>
+          <div class="aha-quote">The audience doesn't reward polish. It rewards a person they believe. Once the pipeline was in place, fresh creative stopped being the bottleneck.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UGC examples -->
+<section class="ig-band section-tight">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow">Reference work</span>
+      <h2 class="display-md" style="max-width:24ch;margin-top:18px">This is what it looks like when it <em class="italic" style="color:var(--purple)">works</em>.</h2>
+      <p class="lede" style="margin-top:22px">Five pieces from our Rail Europe creator program. A different category, the same principle: a real person, a real place, a reason to keep watching.</p>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-cell"><iframe title="Rail Europe Instagram post" loading="lazy" scrolling="no" src="https://www.instagram.com/p/DR_0wMGDm8I/embed"></iframe></div>
+      <div class="ig-cell"><iframe title="Rail Europe Instagram post" loading="lazy" scrolling="no" src="https://www.instagram.com/p/DZxZFqFlUuC/embed"></iframe></div>
+      <div class="ig-cell"><iframe title="Rail Europe Instagram post" loading="lazy" scrolling="no" src="https://www.instagram.com/p/DWEqRR3CaIo/embed"></iframe></div>
+      <div class="ig-cell"><iframe title="Rail Europe Instagram post" loading="lazy" scrolling="no" src="https://www.instagram.com/p/DUGnav_lV4U/embed"></iframe></div>
+      <div class="ig-cell"><iframe title="Rail Europe Instagram post" loading="lazy" scrolling="no" src="https://www.instagram.com/p/DXrdfwglCCy/embed"></iframe></div>
+    </div>
+    <div class="ig-caption">Rail Europe &middot; Instagram &middot; Produced by Noetic Creative</div>
+  </div>
+</section>
+
+<!-- 06 Buying committee (dark) -->
+<section class="dark section" id="committee">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">06 / The buying committee</span>
+      <h2 class="display-md">One account, five people, five reasons to say yes. <em class="italic">One assessment</em> answers them all.</h2>
+      <p class="lede" style="margin-top:20px">You said your champion is usually the CISO or the head of information security, and that operations and finance sign. This is the committee as we would map it inside each of the 3,000, with the content each seat needs before the door opens.</p>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 1160 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Buying committee map: five personas around a target account, each with the content they need">
+        <defs>
+          <filter id="glow2"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- spokes -->
+        <g stroke="rgba(255,255,255,.22)" stroke-width="1.5" fill="none" stroke-dasharray="5 5">
+          <path d="M580 280 L195 120"/><path d="M580 280 L965 120"/><path d="M580 280 L175 400"/><path d="M580 280 L985 400"/><path d="M580 280 L580 500"/>
+        </g>
+        <!-- center -->
+        <circle cx="580" cy="280" r="86" fill="#0A0A0E" stroke="#2BFFD9" stroke-width="2" filter="url(#glow2)"/>
+        <text x="580" y="266" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Target account</text>
+        <text x="580" y="288" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="11.5">250+ employees</text>
+        <text x="580" y="306" text-anchor="middle" fill="#2BFFD9" font-size="10" font-family="JetBrains Mono, monospace">GOOGLE WORKSPACE + SLACK</text>
+        <!-- persona nodes -->
+        <g>
+          <rect x="30" y="50" width="330" height="140" rx="16" fill="rgba(157,140,255,.06)" stroke="#9D8CFF" stroke-width="1.5"/>
+          <text x="50" y="78" fill="#9D8CFF" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">CHAMPION</text>
+          <text x="50" y="104" fill="#fff" font-size="18" font-weight="700">CISO / Head of InfoSec</text>
+          <text x="50" y="128" fill="rgba(255,255,255,.7)" font-size="12">Needs: the scan of their own instance.</text>
+          <text x="50" y="146" fill="rgba(255,255,255,.7)" font-size="12">Proof that the existing stack misses this.</text>
+          <text x="50" y="170" fill="rgba(255,255,255,.45)" font-size="9.5" font-family="JetBrains Mono, monospace">CONTENT: GAP BRIEF, PEER CASES, ASSESSMENT CTA</text>
+        </g>
+        <g>
+          <rect x="800" y="50" width="330" height="140" rx="16" fill="rgba(157,140,255,.06)" stroke="#9D8CFF" stroke-width="1.5"/>
+          <text x="820" y="78" fill="#9D8CFF" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">EVALUATOR</text>
+          <text x="820" y="104" fill="#fff" font-size="18" font-weight="700">Security analyst / engineer</text>
+          <text x="820" y="128" fill="rgba(255,255,255,.7)" font-size="12">Needs: how it works, what it touches,</text>
+          <text x="820" y="146" fill="rgba(255,255,255,.7)" font-size="12">what "API-only, no agent" means in practice.</text>
+          <text x="820" y="170" fill="rgba(255,255,255,.45)" font-size="9.5" font-family="JetBrains Mono, monospace">CONTENT: TECHNICAL EXPLAINERS, REDDIT, DOCS</text>
+        </g>
+        <g>
+          <rect x="10" y="330" width="330" height="140" rx="16" fill="rgba(43,255,217,.05)" stroke="#2BFFD9" stroke-width="1.5"/>
+          <text x="30" y="358" fill="#2BFFD9" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">OWNER OF THE STACK</text>
+          <text x="30" y="384" fill="#fff" font-size="18" font-weight="700">Head of IT / Workspace admin</text>
+          <text x="30" y="408" fill="rgba(255,255,255,.7)" font-size="12">Needs: remediation without breaking work.</text>
+          <text x="30" y="426" fill="rgba(255,255,255,.7)" font-size="12">Offboarding and sharing hygiene at scale.</text>
+          <text x="30" y="450" fill="rgba(255,255,255,.45)" font-size="9.5" font-family="JetBrains Mono, monospace">CONTENT: WORKFLOW DEMOS, "FILES NOBODY TOUCHED"</text>
+        </g>
+        <g>
+          <rect x="820" y="330" width="330" height="140" rx="16" fill="rgba(43,255,217,.05)" stroke="#2BFFD9" stroke-width="1.5"/>
+          <text x="840" y="358" fill="#2BFFD9" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">SIGNER</text>
+          <text x="840" y="384" fill="#fff" font-size="18" font-weight="700">CFO / Finance</text>
+          <text x="840" y="408" fill="rgba(255,255,255,.7)" font-size="12">Needs: exposure in numbers. Files public,</text>
+          <text x="840" y="426" fill="rgba(255,255,255,.7)" font-size="12">ex-employees with access, cost of a leak.</text>
+          <text x="840" y="450" fill="rgba(255,255,255,.45)" font-size="9.5" font-family="JetBrains Mono, monospace">CONTENT: EXPOSURE CALCULATOR, ROI ONE-PAGER</text>
+        </g>
+        <g>
+          <rect x="420" y="420" width="320" height="120" rx="16" fill="rgba(200,255,61,.05)" stroke="#C8FF3D" stroke-width="1.5"/>
+          <text x="440" y="448" fill="#C8FF3D" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1.5">INFLUENCER</text>
+          <text x="440" y="474" fill="#fff" font-size="18" font-weight="700">Legal / Compliance</text>
+          <text x="440" y="498" fill="rgba(255,255,255,.7)" font-size="12">Needs: audit trail, PII detection, policy control.</text>
+          <text x="440" y="522" fill="rgba(255,255,255,.45)" font-size="9.5" font-family="JetBrains Mono, monospace">CONTENT: COMPLIANCE MAPPING, DATA HANDLING</text>
+        </g>
+        <!-- signal arrows to hubspot (small) -->
+        <text x="580" y="392" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="1.5">EVERY SEAT'S ENGAGEMENT ROLLS UP TO ONE ACCOUNT SCORE</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Fig. 5 &middot; Titles vary by company; the roles don't. Enrichment fills each seat per account; the account score tells sales when the committee is warm.</p>
+  </div>
+</section>
+
+<!-- 07 Why Noetic -->
+<section class="differentiators section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">07 / Why Noetic</span>
+      <h2 class="display-md">You named what matters to you. Here is how we <em class="italic" style="color:var(--purple)">measure up</em>.</h2>
+    </div>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">/ 01</div>
+        <h4>Same coast, same hours</h4>
+        <p>Founder-led from South Florida, with the team across the Americas and the account lead on your time zone. You said availability and consistency are the first things you judge an agency on. That is a structural fact here, not a promise.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 02</div>
+        <h4>Built for the CISO buyer</h4>
+        <p>Oasis Security is an active account. The security buyer's skepticism, procurement pace, and reliance on peer proof are patterns we already work inside, not ones we would learn on your budget.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 03</div>
+        <h4>An outsourced marketing arm, not a vendor</h4>
+        <p>You described what you want as the integrated marketer of DoControl. That is the model: one account manager orchestrating specialists in media, search, lifecycle, creative, and strategy, sitting inside your plan rather than next to it.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 04</div>
+        <h4>Specialists, not generalists</h4>
+        <p>Paid social and paid search are different disciplines here, run by different people. Lifecycle and HubSpot are their own function. Creative is eight people. The person doing the work is the person who knows the channel.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 05</div>
+        <h4>Israeli-founded, American-executed</h4>
+        <p>The founder speaks your language, in both senses. The team executing is American and Latin American, living the market you sell into. That combination is the reason Israeli tech companies selling into the US keep choosing us.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">/ 06</div>
+        <h4>Measured the way you asked</h4>
+        <p>Every case above has a number because attribution was designed in from day one. UTMs, fingerprinting, HubSpot as the system of record. When one enterprise customer closes, you will be able to show where it came from.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Client roster -->
+<section class="clients section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">08 / Selected clients</span>
+      <h2 class="display-md">Companies that sell to <em class="italic" style="color:var(--purple)">serious buyers</em>.</h2>
+    </div>
+
+    <div class="clients-grid">
+      <div class="client-cell highlight"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/OAS/OAS_logo_color.png" alt="Oasis Security"></div>
+      <div class="client-cell highlight"><img src="https://noetic.io/wp-content/uploads/2026/03/case_study_audiocodes_logo.svg" alt="AudioCodes"></div>
+      <div class="client-cell highlight"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TSG/TSG_logo_color.png" alt="TSG Systems"></div>
+      <div class="client-cell highlight"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/WSC/WSC_logo_color.png" alt="WSC Sports"></div>
+      <div class="client-cell highlight"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NICE/NICE_logo_color.png" alt="NICE"></div>
+      <div class="client-cell highlight"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/SAP/SAP_logo_color.png" alt="Sapiens"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/LUM/LUM_logo_color.png" alt="Lumenis"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/PRT/PRT_logo_color.png" alt="Priority Software"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/RAIL/RAIL_logo_color.png" alt="Rail Europe"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/TAB/TAB_logo_color.png" alt="Tabit"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/NCH/NCH_logo_color.png" alt="Notch"></div>
+      <div class="client-cell"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/client-logos/HAZ/HAZ_logo_color.png" alt="Hazera"></div>
+      <div class="client-cell"><img src="https://noetic.io/wp-content/uploads/2026/08/caesarstone_logo.svg" alt="Caesarstone"></div>
+      <div class="client-cell"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzciIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAxMzcgMjUiIGZpbGw9Im5vbmUiPjxnIGlkPSJTYXVjZSBMb2dvIj48cGF0aCBpZD0iUGF0aCAxMTAiIGQ9Ik0xMzUuMDI4IDIzLjE3MTdDMTM3LjI3MiAyMC43OTQyIDEzNy40OCAxNi42MSAxMzUuNDUgMTQuNjkxNEMxMzMuNTIgMTIuODY3NSAxMjkuNzU3IDEyLjc4MDQgMTI4LjAyIDE0LjUxODlDMTI1Ljk1MyAxNi41ODY3IDEyNi40MTIgMjAuOTU3IDEyOC45NDYgMjMuMzQwNUMxMjkuMzM4IDIzLjc2MjMgMTI5LjgxNSAyNC4wOTU4IDEzMC4zNDYgMjQuMzE4NUMxMzAuODc3IDI0LjU0MTMgMTMxLjQ1IDI0LjY0ODMgMTMyLjAyNSAyNC42MzIzQzEzMi42MDEgMjQuNjE2MyAxMzMuMTY3IDI0LjQ3NzggMTMzLjY4NCAyNC4yMjU5QzEzNC4yMDIgMjMuOTc0MSAxMzQuNjYgMjMuNjE0NyAxMzUuMDI4IDIzLjE3MTdaIiBmaWxsPSIjRkYyRDM4Ij48L3BhdGg+PHBhdGggaWQ9IlBhdGggMTExIiBkPSJNMTAuMDQwNiAyNC41MjE1QzYuNjYxNTkgMjQuNTIxNSA0LjE0MzgzIDI0LjAxNjIgMi40ODczMyAyMy4wMDU3QzAuODMwODMxIDIxLjk5NTIgMC4wMDE4MzQ4MyAyMC44MjcyIDAuMDAwMzM0ODI2IDE5LjUwMTdDLTAuMDA2Nzg2MjkgMTkuMDg2MyAwLjA5OTgwMjMgMTguNjc2OCAwLjMwODU4MSAxOC4zMTc1QzAuNDkxODczIDE3Ljk5ODggMC43MTQ2MzMgMTcuNzA0NSAwLjk3MTU4MyAxNy40NDE1QzEuMTc1NDggMTcuMjMwNyAxLjQwNjIxIDE3LjA0NzYgMS42NTc4MyAxNi44OTdDMS44NzgzMyAxNi43NzE1IDIuMDAzMzMgMTYuNzI0MyAyLjAzMjgzIDE2Ljc1NTNDMi45NDA4IDE3LjY2NyA0LjAwODUxIDE4LjQwNDIgNS4xODI4MyAxOC45MzAyQzYuNTg5ODYgMTkuNTU2OSA4LjExODE5IDE5Ljg2NDMgOS42NTgwOCAxOS44MzAzQzEwLjY5OTQgMTkuODg4IDExLjczOTIgMTkuNjkzIDEyLjY4ODggMTkuMjYxN0MxMy4wMDQgMTkuMTE1NSAxMy4yNzAyIDE4Ljg4MTMgMTMuNDU1MiAxOC41ODcyQzEzLjY0MDIgMTguMjkzIDEzLjczNjEgMTcuOTUxNyAxMy43MzEzIDE3LjYwNDJDMTMuNzQ5NiAxNy4yMjA5IDEzLjYzMiAxNi44NDM1IDEzLjM5OTEgMTYuNTM4NUMxMy4xMzI3IDE2LjIzODEgMTIuODAwNiAxNi4wMDMyIDEyLjQyODYgMTUuODUyMkMxMS45MjQ1IDE1LjYzNzUgMTEuNDAxMSAxNS40NzEgMTAuODY1NiAxNS4zNTVDMTAuMjUwMSAxNS4yMTMgOS41NDc1OCAxNS4wNjMgOC43NTgwOCAxNC45MDVDNy45Njg1OCAxNC43MTU1IDcuMTAwMzMgMTQuNDk0NSA2LjE1MzMzIDE0LjI0MkM1LjIxODQ5IDEzLjk5NDcgNC4zMjQ5OSAxMy42MTE2IDMuNTAxMzMgMTMuMTA1QzIuNjc4NTQgMTIuNTk5MiAxLjk3NTU2IDExLjkyMDUgMS40NDEwOCAxMS4xMTZDMC44NTAyNjQgMTAuMTQ5MSAwLjU2Mjg5NCA5LjAyNzMzIDAuNjE2MDg0IDcuODk1NDlDMC42MDAzNjggNi44MzA4NCAwLjgzNTQ1OCA1Ljc3NzQ2IDEuMzAyMzMgNC44MjA1MUMxLjc2Mjg0IDMuOTAxNDkgMi40MjY5NCAzLjA5OTY0IDMuMjQ0MDggMi40NzZDNC4xNjEyNSAxLjc4ODQ4IDUuMTk2NTggMS4yNzQ3NiA2LjI5ODgzIDAuOTYwMjU1QzcuNTg5OTQgMC41ODQ3MTYgOC45MjkzIDAuNDAxMjQxIDEwLjI3MzggMC40MTU3NDVDMTMuMzk5MyAwLjQxNTc0NSAxNS43MzU2IDAuOTA1MjUxIDE3LjI4MjYgMS44ODQyNUMxOC44Mjk2IDIuODYzMjUgMTkuNjAzMSA0LjAxNTUxIDE5LjYwMzEgNS4zNDEwMUMxOS42MDg0IDUuNzYzNzcgMTkuNTAyNCA2LjE4MDQ4IDE5LjI5NTYgNi41NDkyNUMxOS4xMDY5IDYuODkwOTYgMTguODY3NyA3LjIwMjIxIDE4LjU4NjEgNy40NzI0OUMxOC4zNjQyIDcuNjg5ODUgMTguMTE3OCA3Ljg4MDYzIDE3Ljg1MTggOC4wNDA5OUMxNy42MzEzIDguMTY3NzQgMTcuNTA0NiA4LjIxNDk5IDE3LjQ3MzEgOC4xODM0OUMxNi42NTIxIDcuMjQzOCAxNS42NDQxIDYuNDg1NjcgMTQuNTEzNiA1Ljk1NzVDMTMuMzIzOSA1LjM4Nzk0IDEyLjAyMDMgNS4wOTYzNSAxMC43MDEzIDUuMTA0NzZDOS42OTU1NCA1LjA0ODQ4IDguNjkyMjMgNS4yNTI1NCA3Ljc4ODMzIDUuNjk3MjRDNy40Nzc4OSA1Ljg1MzUyIDcuMjE3NzMgNi4wOTQwNiA3LjAzNzYgNi4zOTEzQzYuODU3NDggNi42ODg1NCA2Ljc2NDY5IDcuMDMwNDcgNi43Njk4NCA3LjM3Nzk5QzYuNzU1ODIgNy43NDYwOSA2Ljg3MzMzIDguMTA3MTYgNy4xMDEzMyA4LjM5NjQ5QzcuMzY1MTggOC42OTQzNCA3LjY5ODk0IDguOTIxOTQgOC4wNzI1OSA5LjA1ODc2QzguNTcyNzEgOS4yNTU2OSA5LjA4NzIyIDkuNDEzODkgOS42MTE1OCA5LjUzMTk5QzEwLjIxMTYgOS42NzQ0OSAxMC45MDYxIDkuODI0NSAxMS42OTUxIDkuOTgyQzEyLjUxNjEgMTAuMTcxNSAxMy40MjM4IDEwLjM5MjUgMTQuNDE4MyAxMC42NDVDMTUuMzk0OSAxMC44OTAzIDE2LjMyODkgMTEuMjgxNCAxNy4xODg4IDExLjgwNTJDMTguMDM2NiAxMi4zMjI0IDE4Ljc2OTYgMTMuMDA3NCAxOS4zNDI4IDEzLjgxODJDMTkuOTY1NiAxNC43NzI5IDIwLjI3MjMgMTUuODk5MyAyMC4yMTk2IDE3LjAzOEMyMC4yNjAyIDE4LjEwNTggMjAuMDM0NyAxOS4xNjY5IDE5LjU2MzQgMjAuMTI1OUMxOS4wOTIxIDIxLjA4NDggMTguMzg5NyAyMS45MTE2IDE3LjUxOTYgMjIuNTMxN0MxNS43MTk2IDIzLjg1NzcgMTMuMjI1MyAyNC41MjA4IDEwLjAzNjggMjQuNTIwOCIgZmlsbD0iIzJFM0I0OSI+PC9wYXRoPjxwYXRoIGlkPSJQYXRoIDExMiIgZD0iTTMzLjgxMzMgNS4zODg4OEMzMi40Nzc1IDUuMzA0OTYgMzEuMTU0MyA1LjY5MDEzIDMwLjA3MjMgNi40Nzc4N0MyOS4yMzY3IDcuMTQzMyAyOC41NTc1IDcuOTg0MSAyOC4wODI1IDguOTQwODdDMjguMDgyNSA4Ljk3Mjg3IDI3Ljg2MTUgOC45ODA4OCAyNy40MTk1IDguOTY0ODhDMjYuOTEzNiA4LjkzODU1IDI2LjQxMjcgOC44NTExNSAyNS45Mjc4IDguNzA0NjJDMjUuMzY5NiA4LjU0MzUyIDI0Ljg1ODEgOC4yNTExMyAyNC40MzYgNy44NTE4N0MyNC4yMDcxIDcuNjIzNzQgMjQuMDI5NiA3LjM0OTM3IDIzLjkxNTIgNy4wNDcxQzIzLjgwMDkgNi43NDQ4MyAyMy43NTI0IDYuNDIxNjMgMjMuNzczIDYuMDk5MTJDMjMuNzgwMSA1LjM0OTg1IDI0LjAwMjEgNC42MTgzNyAyNC40MTI4IDMuOTkxNjJDMjQuOTEyIDMuMjQzMzYgMjUuNTc2MyAyLjYxOTYxIDI2LjM1NDUgMi4xNjgzN0MyNy4zNzE2IDEuNTcxMjggMjguNDczNCAxLjEzMjAzIDI5LjYyMjMgMC44NjU2MjJDMzEuMTM1MyAwLjUxMTQwOCAzMi42ODYyIDAuMzQ0NDExIDM0LjI0IDAuMzY4Mzc2QzM3LjkwMiAwLjM2ODM3NiA0MC42MzMgMS4xNzMzOCA0Mi40MzMgMi43ODMzOEM0NC4yMzMgNC4zOTMzOCA0NS4xMzMgNi43NjEzNyA0NS4xMzMgOS44ODczN1YyMy41NzQxQzQ1LjEzMyAyMy43MzIxIDQ0Ljg3MjUgMjMuODk3OSA0NC4zNTE1IDI0LjA3MTRDNDMuNzkzIDI0LjI1MDQgNDMuMjA5MyAyNC4zMzgzIDQyLjYyMjggMjQuMzMxNkM0MS42NzcxIDI0LjM2NDUgNDAuNzUxNiAyNC4wNTMzIDQwLjAxOCAyMy40NTU2QzM5LjI0MzcgMjIuNzEyMSAzOC43NzE3IDIxLjcwODUgMzguNjkyOCAyMC42Mzc5QzM3Ljg1MTQgMjEuODU1NSAzNi43MDkxIDIyLjgzNDUgMzUuMzc3IDIzLjQ3OTZDMzMuOTE3MyAyNC4xODk4IDMyLjMxMTEgMjQuNTQ2NiAzMC42ODggMjQuNTIxNEMyOC4yNTY1IDI0LjUyMTQgMjYuMzU0MyAyMy45MDU2IDI0Ljk4MTMgMjIuNjc0MUMyNC4zMDQzIDIyLjA2OTUgMjMuNzY4OCAyMS4zMjMzIDIzLjQxMjcgMjAuNDg4NEMyMy4wNTY2IDE5LjY1MzUgMjIuODg4OCAxOC43NTA0IDIyLjkyMSAxNy44NDM0QzIyLjg3MTYgMTYuNjExOSAyMy4xODk3IDE1LjM5MzYgMjMuODM1IDE0LjM0MzVDMjQuNDgwMiAxMy4yOTM1IDI1LjQyMzMgMTIuNDU5MiAyNi41NDQzIDExLjk0NjlDMjguOTU5MyAxMC42OTk0IDMyLjcwOTMgMTAuMDQ0MSAzNy43OTQzIDkuOTgxMTJIMzguNTUxOEMzOC41NTE4IDYuOTE5MTIgMzYuOTczMyA1LjM4Nzg3IDMzLjgxNjMgNS4zODczN00zMi45MTYzIDIwLjE2MjRDMzQuNDE0MSAyMC4yMjcyIDM1Ljg3NzMgMTkuNyAzNi45ODk1IDE4LjY5NDZDMzcuNTAxNSAxOC4yMTgyIDM3LjkwNTcgMTcuNjM4IDM4LjE3NTEgMTYuOTkyNkMzOC40NDQ1IDE2LjM0NzMgMzguNTczIDE1LjY1MTkgMzguNTUxOCAxNC45NTI5VjEzLjYyNzZMMzcuMzIwMyAxMy42NzQ5QzM1LjI4MjkgMTMuNjMyNyAzMy4yNTQzIDEzLjk1MzUgMzEuMzI5MyAxNC42MjIxQzMwLjc0NCAxNC44MDQyIDMwLjIzMjUgMTUuMTY5MiAyOS44NzAyIDE1LjY2MzZDMjkuNTA3OCAxNi4xNTggMjkuMzEzNyAxNi43NTU3IDI5LjMxNjMgMTcuMzY4NkMyOS4zMDMgMTcuNzYxIDI5LjM4NDMgMTguMTUwNyAyOS41NTMyIDE4LjUwNTFDMjkuNzIyMSAxOC44NTk1IDI5Ljk3MzcgMTkuMTY4MSAzMC4yODY4IDE5LjQwNDlDMzEuMDUxNSAxOS45NDU3IDMxLjk3NjQgMjAuMjEyNiAzMi45MTE4IDIwLjE2MjQiIGZpbGw9IiMyRTNCNDkiPjwvcGF0aD48cGF0aCBpZD0iUGF0aCAxMTMiIGQ9Ik02NC40Nzc0IDIwLjU0NDFDNjMuNjcxOCAyMS43Mjk1IDYyLjYyMzcgMjIuNzMwMyA2MS40MDI0IDIzLjQ4MDNDNjAuMDIyOSAyNC4yNzY4IDU4LjQ0NzggMjQuNjcwNyA1Ni44NTU5IDI0LjYxNzNDNTUuNTE2MSAyNC42NTEzIDU0LjE4NDQgMjQuNDAxIDUyLjk0ODMgMjMuODgzMUM1MS45MDk4IDIzLjQzMzMgNTAuOTk4NSAyMi43MzM4IDUwLjI5NTYgMjEuODQ2OEM0OS41OTYxIDIwLjkzNzIgNDkuMDgxNCAxOS44OTk0IDQ4Ljc4MDYgMTguNzkyMUM0OC40NDI0IDE3LjU3NDEgNDguMjc1MSAxNi4zMTUxIDQ4LjI4MzMgMTUuMDUxMVYzLjg3NjA1QzQ4LjIzMjcgMy40MjI5NCA0OC4yODAxIDIuOTY0MjQgNDguNDIyNSAyLjUzMTFDNDguNTY0OCAyLjA5Nzk2IDQ4Ljc5ODggMS43MDA1MyA0OS4xMDg0IDEuMzY1ODJDNDkuNyAwLjg3ODY2NiA1MC40NSAwLjYyNTkwNSA1MS4yMTU5IDAuNjU1NTcySDUxLjkyNjFDNTIuNzA4OSAwLjYyNDM3NyA1My40NzggMC44NjcwMzcgNTQuMTAxMSAxLjM0MTgxQzU0LjY2OTEgMS43OTk4MSA1NC45NTMzIDIuNjQ0MzIgNTQuOTUzOCAzLjg3NTMyVjE0LjA1NzNDNTQuODc3OSAxNS4zNjY3IDU1LjI3MjYgMTYuNjYwMSA1Ni4wNjY5IDE3LjcwMzhDNTYuNDcxMiAxOC4xNTY4IDU2Ljk3MzUgMTguNTExNyA1Ny41MzU2IDE4Ljc0MTRDNTguMDk3NyAxOC45NzEyIDU4LjcwNDcgMTkuMDY5OCA1OS4zMTA2IDE5LjAyOThDNjAuMzU2NSAxOS4wNDc3IDYxLjM4NSAxOC43NjEgNjIuMjcwOSAxOC4yMDQ4QzYzLjEyNzcgMTcuNjY0OSA2My44MjMxIDE2LjkwMzkgNjQuMjgzOCAxNi4wMDIxVjMuODcwMDZDNjQuMjMzMSAzLjQxNjk0IDY0LjI4MDUgMi45NTgyMSA2NC40MjI5IDIuNTI1MDZDNjQuNTY1MiAyLjA5MTkgNjQuNzk5MiAxLjY5NDQ4IDY1LjEwODkgMS4zNTk4MkM2NS43MTYgMC44Njc0MzcgNjYuNDgyNyAwLjYxNDcyNiA2Ny4yNjM2IDAuNjQ5NTUzSDY3LjkyNjZDNjguNzE4NyAwLjYxMDE0MiA2OS40OTkxIDAuODUzMzUzIDcwLjEyODYgMS4zMzU4MUM3MC42Nzg2IDEuNzkzODEgNzAuOTUzNiAyLjYzODMgNzAuOTUzNiAzLjg2OTNWMjMuNDI4NkM3MC45NTM2IDIzLjU1NTMgNzAuNzA4MyAyMy43MTI4IDcwLjIxOTMgMjMuOTAyNkM2OS42NDk4IDI0LjEwNTUgNjkuMDQ3OCAyNC4yMDE4IDY4LjQ0MzQgMjQuMTg2OEM2OC4wMTk4IDI0LjE4NSA2Ny41OTgxIDI0LjEyOTIgNjcuMTg4NiAyNC4wMjExQzY2Ljc2MDcgMjMuOTEwMiA2Ni4zNTg1IDIzLjcxNzEgNjYuMDA0NCAyMy40NTI2QzY1LjYxMzUgMjMuMTUyNyA2NS4yOTA2IDIyLjc3MzQgNjUuMDU3MSAyMi4zMzk2QzY0Ljc1ODEgMjEuNzc3OSA2NC41NTc3IDIxLjE2OSA2NC40NjQ2IDIwLjUzOTYiIGZpbGw9IiMyRTNCNDkiPjwvcGF0aD48cGF0aCBpZD0iUGF0aCAxMTQiIGQ9Ik04NS45NzcyIDI0LjYxNjNDODQuMjkyNyAyNC42MzcyIDgyLjYyMDIgMjQuMzMxNiA4MS4wNTE5IDIzLjcxNjNDNzkuNjE2MSAyMy4xNDg2IDc4LjMxMDggMjIuMjk0NSA3Ny4yMTU3IDIxLjIwNkM3Ni4xMjczIDIwLjExMDkgNzUuMjczMSAxOC44MDU3IDc0LjcwNTQgMTcuMzY5OEM3NC4wOTI5IDE1LjgxODMgNzMuNzg3MiAxNC4xNjI3IDczLjgwNTUgMTIuNDk0OEM3My43ODczIDEwLjgyNjkgNzQuMDkzIDkuMTcxMzEgNzQuNzA1NCA3LjYxOTgxQzc1LjI3MjYgNi4xODQ5MSA3Ni4xMzU5IDQuODg1NjYgNzcuMjM5IDMuODA2OEM3OC4zNTE1IDIuNzM0NTIgNzkuNjYyOCAxLjg4OTk1IDgxLjA5OTIgMS4zMjA1NEM4Mi42NTA4IDAuNzA4MzAxIDg0LjMwNjMgMC40MDI2NzYgODUuOTc0MiAwLjQyMDU1OEM4Ny41MDgzIDAuMzg0OTg2IDg5LjAzNzQgMC42MDkxMjcgOTAuNDk2NyAxLjA4MzU0QzkxLjYwMTMgMS40NDg3NCA5Mi42MzQ3IDIuMDAxNiA5My41NTE1IDIuNzE3OEM5NC4yNjU5IDMuMjc1MzcgOTQuODU0OSAzLjk3NzA5IDk1LjI4MDIgNC43NzczQzk1LjYwMzEgNS4zNTkzMiA5NS43ODkzIDYuMDA3MTcgOTUuODI0NyA2LjY3MThDOTUuODUxIDcuMjYxOTMgOTUuNjQ3MSA3LjgzOTIxIDk1LjI1NjIgOC4yODIwNUM5NC45MDY3IDguNjcwMDYgOTQuNDg5NCA4Ljk5MTA3IDk0LjAyNDcgOS4yMjkzQzkzLjYzMjMgOS40MzQyIDkzLjIwNzYgOS41NzAxNyA5Mi43NjkyIDkuNjMxMjlDOTIuMzc0NyA5LjY3ODI5IDkyLjE2MTUgOS42NzA1NiA5Mi4xMjk1IDkuNjA4MDZDOTEuNzA1OSA4LjUyODYgOTEuMDAzNSA3LjU4MDg0IDkwLjA5MzkgNi44NjE1NEM4OC45NzU1IDYuMDc0MzYgODcuNjIyOSA1LjY5MDM5IDg2LjI1NzcgNS43NzI1NUM4NS4zODgxIDUuNzYzMzIgODQuNTI1OCA1LjkzMjU1IDgzLjcyNDIgNi4yNjk3OUM4Mi45NjkgNi41ODgwNiA4Mi4yOTA3IDcuMDY0NTIgODEuNzM1MiA3LjY2NzA1QzgxLjE2OTIgOC4yODc4MSA4MC43MjcgOS4wMTEwMyA4MC40MzI1IDkuNzk3OEM4MC4xMDg5IDEwLjY2MDggNzkuOTQ4MSAxMS41NzYyIDc5Ljk1ODQgMTIuNDk3OEM3OS45NDk1IDEzLjQyNjYgODAuMTEwMSAxNC4zNDkyIDgwLjQzMjUgMTUuMjIwM0M4MC43MjI1IDE2LjAxNjQgODEuMTY1MSAxNi43NDgzIDgxLjczNTIgMTcuMzc1QzgyLjI5MDcgMTcuOTc3NiA4Mi45NjkgMTguNDU0IDgzLjcyNDIgMTguNzcyM0M4NC41MjU4IDE5LjEwOTUgODUuMzg4MSAxOS4yNzg4IDg2LjI1NzcgMTkuMjY5NUM4Ny42MTQ3IDE5LjM0NTQgODguOTU3NyAxOC45NjE4IDkwLjA3IDE4LjE4MDZDOTAuOTkxMiAxNy40NjcxIDkxLjcwMjcgMTYuNTE4MiA5Mi4xMjk1IDE1LjQzNEM5Mi4xNjE1IDE1LjM3MSA5Mi4zNjcgMTUuMzU1IDkyLjc0NiAxNS4zODZDOTMuMTgzNiAxNS40MzU1IDkzLjYwODggMTUuNTYzOCA5NC4wMDA3IDE1Ljc2NDhDOTQuNDc1MSAxNS45OTg4IDk0LjkwMSAxNi4zMjAxIDk1LjI1NjIgMTYuNzEyQzk1LjY1NzYgMTcuMTg2MiA5NS44NjEyIDE3Ljc5NjYgOTUuODI0NyAxOC40MTY4Qzk1Ljc4OSAxOS4wNzczIDk1LjU5NCAxOS43MTkzIDk1LjI1NjIgMjAuMjg4Qzk0LjgwNzcgMjEuMDc5NyA5NC4yMDM2IDIxLjc3MjQgOTMuNDgwMiAyMi4zMjQzQzkyLjU1OTkgMjMuMDMyNSA5MS41Mjg0IDIzLjU4MyA5MC40Mjc3IDIzLjk1MzNDODguOTkyOCAyNC40Mjc0IDg3LjQ4NzIgMjQuNjUxOSA4NS45NzY1IDI0LjYxNzEiIGZpbGw9IiMyRTNCNDkiPjwvcGF0aD48cGF0aCBpZD0iUGF0aCAxMTUiIGQ9Ik0xMDUuOTg4IDE4LjI5NDZDMTA3LjI3MyAxOS4yODY1IDEwOC44NjUgMTkuNzk3NSAxMTAuNDg4IDE5LjczOTFDMTExLjk1NCAxOS44MTY2IDExMy40MTEgMTkuNDYyOCAxMTQuNjc5IDE4LjcyMTNDMTE1LjYzNCAxOC4xMTU0IDExNi40MzcgMTcuMjk2OSAxMTcuMDI0IDE2LjMyOTZDMTE3LjAyNCAxNi4yOTgxIDExNy4xOTcgMTYuMzEzOCAxMTcuNTQ5IDE2LjM3NjhDMTE3Ljk0IDE2LjQ1NzEgMTE4LjMxNiAxNi42MDEgMTE4LjY2MiAxNi44MDI4QzExOS4wODIgMTcuMDQ2MSAxMTkuNDUxIDE3LjM2NzYgMTE5Ljc1MSAxNy43NTAxQzEyMC4wOTkgMTguMjEyNSAxMjAuMjc1IDE4Ljc4MiAxMjAuMjQ4IDE5LjM2MDNDMTIwLjIyNCAyMC4wMjk4IDExOS45OTIgMjAuNjc1MiAxMTkuNTg0IDIxLjIwNjhDMTE5LjA3MSAyMS45MDMxIDExOC40MTggMjIuNDg0MSAxMTcuNjY2IDIyLjkxMjRDMTE2LjY5IDIzLjQ3MzYgMTE1LjYzNyAyMy44ODg1IDExNC41NDEgMjQuMTQzOUMxMTMuMTM3IDI0LjQ3NyAxMTEuNjk4IDI0LjYzNTkgMTEwLjI1NSAyNC42MTcxQzEwOC41MDUgMjQuNjQxMyAxMDYuNzY1IDI0LjM1MjYgMTA1LjExNyAyMy43NjQzQzEwMy42NTQgMjMuMjM5MSAxMDIuMzE1IDIyLjQxNjggMTAxLjE4NiAyMS4zNDkzQzEwMC4wODMgMjAuMjg4NCA5OS4yMTk1IDE5LjAwNSA5OC42NTE1IDE3LjU4NDRDOTguMDMxNCAxNi4wMDg5IDk3LjcyNTcgMTQuMzI3MyA5Ny43NTE1IDEyLjYzNDNDOTcuNzM0NyAxMC45NTc4IDk4LjA0MDMgOS4yOTM2IDk4LjY1MTUgNy43MzIzNEM5OS4yMTkzIDYuMjgyNTcgMTAwLjA3MyA0Ljk2MTg4IDEwMS4xNjIgMy44NDg4NkMxMDIuMjU1IDIuNzQ2MyAxMDMuNTYgMS44NzYzNCAxMDQuOTk4IDEuMjkxMzZDMTA2LjUzMSAwLjY2NjI2MiAxMDguMTczIDAuMzUyNDA3IDEwOS44MjkgMC4zNjgwOTJDMTExLjQyNCAwLjM0NzgwOSAxMTMuMDA5IDAuNjM3NDEgMTE0LjQ5NCAxLjIyMDg0QzExNS44NTggMS43NjM0NCAxMTcuMDk5IDIuNTc3MSAxMTguMTQgMy42MTI2MUMxMTkuMTc0IDQuNjUwODEgMTE5Ljk4IDUuODkyNiAxMjAuNTA4IDcuMjU5MTFDMTIxLjA3NSA4Ljc0Nzg4IDEyMS4zNTYgMTAuMzMwMyAxMjEuMzM3IDExLjkyMzRWMTIuMzk2NkMxMjEuMzM4IDEyLjg3NzUgMTIxLjIxNiAxMy4zNTA3IDEyMC45ODEgMTMuNzcwNkMxMjAuODI5IDEzLjk0ODMgMTIwLjYzNCAxNC4wODQ4IDEyMC40MTQgMTQuMTY3NUMxMjAuMTk1IDE0LjI1MDIgMTE5Ljk1OSAxNC4yNzY0IDExOS43MjcgMTQuMjQzOEgxMDMuODA5QzEwMy45NzYgMTUuODI2NCAxMDQuNzU3IDE3LjI4MDQgMTA1Ljk4NCAxOC4yOTM4TTExNS4xMjUgMTAuMzYxMUMxMTUuMTI4IDguOTE3MTcgMTE0LjU3NyA3LjUyNjkzIDExMy41ODYgNi40Nzc1OUMxMTMuMDc3IDUuOTgwODIgMTEyLjQ3MiA1LjU5NDExIDExMS44MDggNS4zNDE1OEMxMTEuMTQ0IDUuMDg5MDUgMTEwLjQzNSA0Ljk3NjExIDEwOS43MjUgNS4wMDk4NEMxMDguMjU2IDQuOTY5MjcgMTA2LjgzIDUuNTA0MzMgMTA1Ljc1IDYuNTAwODRDMTA0LjY2NSA3LjUxNjM1IDEwMy45NzcgOC44ODQ2NyAxMDMuODA5IDEwLjM2MTFIMTE1LjEyNVoiIGZpbGw9IiMyRTNCNDkiPjwvcGF0aD48L2c+PC9zdmc+" alt="Sauce" style="width:31%;height:32px"></div>
+      <div class="client-cell"><img src="https://noetic.io/wp-content/uploads/2026/08/keter_logo.svg" alt="Keter" style="width:31%;height:32px"></div>
+    </div>
+    <p class="clients-caption">Highlighted: cybersecurity, enterprise B2B, or Israeli-founded companies selling into the US with a named-account motion.</p>
+  </div>
+</section>
+
+<!-- 09 First 90 days (dark) -->
+<section class="dark section" id="timeline">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow dark">09 / The first 90 days</span>
+      <h2 class="display-md">What happens between kickoff and the first <em class="italic">pipeline signal</em>.</h2>
+      <p class="lede" style="margin-top:20px">You asked for time-to-value. This is the shape of it, assuming a November kickoff: foundations first, live campaigns by week three, and a ranked list in sales' hands by day 60. Scope and channels per brand are set in the proposal.</p>
+    </div>
+
+    <div class="tl">
+      <div class="tl-head">
+        <div style="border-left:none">Workstream</div>
+        <div><b>Days 1&ndash;30</b>Foundations</div>
+        <div><b>Days 31&ndash;60</b>Live and learning</div>
+        <div><b>Days 61&ndash;90</b>Optimizing</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Setup &amp; measurement<small>Access, tracking, dashboards</small></div>
+        <div class="tl-cell"><div class="tl-bar l">Access, UTM plan, HubSpot scoring, dashboard v1</div></div>
+        <div class="tl-cell"><div class="tl-bar ghost">Attribution QA</div></div>
+        <div class="tl-cell"><div class="tl-bar ghost">Board-ready report</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">ABM<small>3,000 accounts</small></div>
+        <div class="tl-cell"><div class="tl-bar p start">Tiering, enrichment, committee map</div></div>
+        <div class="tl-cell"><div class="tl-bar p mid">Tier-1 campaigns live, persona content</div></div>
+        <div class="tl-cell"><div class="tl-bar p end">Tier-2 expansion, calculator live</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Paid search<small>Brand defense</small></div>
+        <div class="tl-cell"><div class="tl-bar m start">Brand terms live, week 2</div></div>
+        <div class="tl-cell"><div class="tl-bar m mid">Category terms from the audit</div></div>
+        <div class="tl-cell"><div class="tl-bar m end">Scale winners, prune the rest</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Paid social<small>Awareness to the list</small></div>
+        <div class="tl-cell"><div class="tl-bar ghost">Creative in production</div></div>
+        <div class="tl-cell"><div class="tl-bar m start">Document ads + video to Tier-1</div></div>
+        <div class="tl-cell"><div class="tl-bar m end">Retargeting engaged accounts</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">SEO &amp; AI visibility<small>Audit to program</small></div>
+        <div class="tl-cell"><div class="tl-bar l start">Audit findings, cluster plan</div></div>
+        <div class="tl-cell"><div class="tl-bar l mid">First cluster published, Reddit presence</div></div>
+        <div class="tl-cell"><div class="tl-bar l end">Authority build, AI answer check</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Lifecycle<small>HubSpot nurture</small></div>
+        <div class="tl-cell"><div class="tl-bar ghost">Sequences drafted</div></div>
+        <div class="tl-cell"><div class="tl-bar p start">Nurture per posture live</div></div>
+        <div class="tl-cell"><div class="tl-bar p end">Spin cross-sell flow live</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Creative<small>Eight-person studio</small></div>
+        <div class="tl-cell"><div class="tl-bar m start">Concepts, first batch</div></div>
+        <div class="tl-cell"><div class="tl-bar m mid">Monthly refresh begins</div></div>
+        <div class="tl-cell"><div class="tl-bar m end">Winners scaled, losers cut</div></div>
+      </div>
+    </div>
+
+    <div class="tl-milestones">
+      <div class="tl-ms"><div class="k">Day 30</div><h4>Live, measured</h4><p>Brand terms defended, tracking clean, Tier-1 list enriched and mapped, first creative in market. You can see spend and engagement by account in one dashboard.</p></div>
+      <div class="tl-ms"><div class="k">Day 60</div><h4>A ranked list in sales' hands</h4><p>Account scores populated from real engagement. Sales works the warm accounts first. First assessments booked from the program, attributed.</p></div>
+      <div class="tl-ms"><div class="k">Day 90</div><h4>Decision-grade numbers</h4><p>Cost per assessment by channel, pipeline influenced, and a board-ready read on what to scale. The six-month plan gets adjusted on evidence, not opinion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Team -->
+<section class="team section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">10 / The team</span>
+      <h2 class="display-md">One orchestrator. Thirty-six specialists <em class="italic" style="color:var(--purple)">behind them</em>.</h2>
+      <p class="lede" style="margin-top:20px">You asked who you'd be talking to day to day. An account lead runs the plan; behind them, this is the full bench in media, search, lifecycle, creative, design, strategy and operations. The exact pod for DoControl is set in the proposal.</p>
+      <div class="team-stats">
+        <span><b>36</b>People</span>
+        <span><b>8</b>Creative and design</span>
+        <span><b>9</b>Media, search and data</span>
+        <span><b>7</b>Marketing ops and lifecycle</span>
+        <span><b>12</b>Countries</span>
+      </div>
+    </div>
+
+    <div class="team-grid">
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/TAMIR/TAMIR_circle_color.png" alt="Tamir Alush" loading="lazy"></div><div class="team-info"><h5>Tamir Alush</h5><div class="role">Founder &amp; CEO</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/NICOLE/NICOLE_circle_color.png" alt="Nicole Luna" loading="lazy"></div><div class="team-info"><h5>Nicole Luna</h5><div class="role">Account Director</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JACKIE/JACKIE_circle_color.png" alt="Jackie Frysz" loading="lazy"></div><div class="team-info"><h5>Jackie Frysz</h5><div class="role">Head of Operations</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ANDREA/ANDREA_circle_color.png" alt="Andrea Martinez" loading="lazy"></div><div class="team-info"><h5>Andrea Martinez</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VANESSA/VANESSA_circle_color.png" alt="Vanessa Soria" loading="lazy"></div><div class="team-info"><h5>Vanessa Soria</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/45130a96-a542-4b94-bf7e-d749406d9515-1785178123009.png" alt="Laura Gil" loading="lazy"></div><div class="team-info"><h5>Laura Gil</h5><div class="role">Account Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/CAROLINA/CAROLINA_circle_color.png" alt="Carolina Fallu" loading="lazy"></div><div class="team-info"><h5>Carolina Fallu</h5><div class="role">Strategic Planner</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/9b073f7b-2ccf-4be8-a6cd-3341033b9db9-1782160077180.png" alt="Helen Schenck" loading="lazy"></div><div class="team-info"><h5>Helen Schenck</h5><div class="role">Creative Direction</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ALEX/ALEX_circle_color.png" alt="Alex Heilbronn" loading="lazy"></div><div class="team-info"><h5>Alex Heilbronn</h5><div class="role">Copywriter</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VIRGINIA/VIRGINIA_circle_color.png" alt="Virginia Mayer" loading="lazy"></div><div class="team-info"><h5>Virginia Mayer</h5><div class="role">Copywriter</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JOSE/JOSE_circle_color.png" alt="Jose Cadenas" loading="lazy"></div><div class="team-info"><h5>Jose Cadenas</h5><div class="role">Senior Designer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MAGGIE/MAGGIE_circle_color.png" alt="Maggie Bernal" loading="lazy"></div><div class="team-info"><h5>Maggie Bernal</h5><div class="role">Graphic Designer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/new-1782154217415.png" alt="Sebastian Cortes" loading="lazy"></div><div class="team-info"><h5>Sebastian Cortes</h5><div class="role">Graphic Designer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/946e1077-9c40-4a98-b28b-3c1ef10d138c-1782159990933.png" alt="Angelica Negron" loading="lazy"></div><div class="team-info"><h5>Angelica Negron</h5><div class="role">Graphic Designer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/DANIEL/DANIEL_circle_color.png" alt="Daniel Rojas" loading="lazy"></div><div class="team-info"><h5>Daniel Rojas</h5><div class="role">Video Editor &amp; Design</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/GONZALO/GONZALO_circle_color.png" alt="Gonzalo Mazzoni" loading="lazy"></div><div class="team-info"><h5>Gonzalo Mazzoni</h5><div class="role">Media Buyer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/LUNA/LUNA_circle_color.png" alt="Luna Murgia" loading="lazy"></div><div class="team-info"><h5>Luna Murgia</h5><div class="role">Media Buyer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/KATHRYN/KATHRYN_circle_color.png" alt="Kathryn Kudra" loading="lazy"></div><div class="team-info"><h5>Kathryn Kudra</h5><div class="role">Paid Social Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/TIM/TIM_circle_color.png" alt="Tim Newlin" loading="lazy"></div><div class="team-info"><h5>Tim Newlin</h5><div class="role">Paid Search</div></div></div>
+<div class="team-card"><div class="team-avatar av-2">AH</div><div class="team-info"><h5>Austin Holcomb</h5><div class="role">Paid Search Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/d8d89fab-70a8-4add-9091-50041f454d4c-1785178179996.png" alt="Yoav Chen" loading="lazy"></div><div class="team-info"><h5>Yoav Chen</h5><div class="role">Paid Search Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/FRANCISCO/FRANCISCO_circle_color.png" alt="Francisco Sica" loading="lazy"></div><div class="team-info"><h5>Francisco Sica</h5><div class="role">Data Analyst</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/JOE/JOE_circle_color.png" alt="Joe Conroy" loading="lazy"></div><div class="team-info"><h5>Joe Conroy</h5><div class="role">SEO</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/RUI/RUI_circle_color.png" alt="Rui Kojima" loading="lazy"></div><div class="team-info"><h5>Rui Kojima</h5><div class="role">CRO</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/DANIELA/DANIELA_circle_color.png" alt="Daniela Benfele" loading="lazy"></div><div class="team-info"><h5>Daniela Benfele</h5><div class="role">Automations &amp; Email</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/new-1784228957021.png" alt="Ed Lopez" loading="lazy"></div><div class="team-info"><h5>Ed Lopez</h5><div class="role">Lifecycle Marketing Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/aafb5932-4552-4680-97c3-f89e19e2dfb6-1782154171949.png" alt="Serge Alarcon" loading="lazy"></div><div class="team-info"><h5>Serge Alarcon</h5><div class="role">Email Marketing Specialist</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MONIQUE/MONIQUE_circle_color.png" alt="Monique Johnson" loading="lazy"></div><div class="team-info"><h5>Monique Johnson</h5><div class="role">Webinar Operations</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/def91a6a-4f50-47e5-97a5-7474e14c2167-1781280597964.png" alt="Paula Pinzon" loading="lazy"></div><div class="team-info"><h5>Paula Pinzon</h5><div class="role">Social Media &amp; Community Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/VAL/VAL_circle_color.png" alt="Val Parra" loading="lazy"></div><div class="team-info"><h5>Val Parra</h5><div class="role">Social Media Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/ESTEBAN/ESTEBAN_circle_color.png" alt="Esteban Grijalva" loading="lazy"></div><div class="team-info"><h5>Esteban Grijalva</h5><div class="role">Developer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/3150d37e-e41b-4017-ba12-26c03fe65c18-1784228750636.png" alt="Andres Coronel" loading="lazy"></div><div class="team-info"><h5>Andres Coronel</h5><div class="role">Web Developer</div></div></div>
+<div class="team-card"><div class="team-avatar av-3">JA</div><div class="team-info"><h5>James Alonso</h5><div class="role">Web Designer</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/FLOR/FLOR_circle_color.png" alt="Flor Hasman" loading="lazy"></div><div class="team-info"><h5>Flor Hasman</h5><div class="role">Talent Acquisition &amp; HR Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/MARIA/MARIA_circle_color.png" alt="Maria Arevalo" loading="lazy"></div><div class="team-info"><h5>Maria Arevalo</h5><div class="role">Executive Assistant / Admin Manager</div></div></div>
+<div class="team-card"><div class="team-avatar"><img src="https://nrpalskhzmwucpqgqxyi.supabase.co/storage/v1/object/public/team-avatars/a3a9a05c-7423-40ef-b7ee-3ae34c514d28-1785178042854.png" alt="Ali Caiza" loading="lazy"></div><div class="team-info"><h5>Ali Caiza</h5><div class="role">Executive Assistant &amp; Admin Coordinator</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-eyebrow">11 / With thanks</div>
+    <h2 class="cta-title">Omri, <span class="italic">thank you</span>.</h2>
+    <p class="cta-note">For the walkthrough, for the candor about where marketing stands today, and for the clarity on what you want to be able to prove. Questions, corrections, and the ICP list all go to the same place.</p>
+    <div class="cta-actions">
+      <a href="mailto:tamir@noetic.io" class="btn btn-primary">
+        tamir@noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+      </a>
+      <a href="https://noetic.io" target="_blank" rel="noopener" class="btn btn-ghost">
+        noetic.io
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-meta">
+      <div class="footer-meta-block">
+        Prepared for
+        <span>Omri Weinberg, DoControl by Spin.AI</span>
+      </div>
+      <div class="footer-meta-block">
+        Prepared by
+        <span>Tamir Alush, Founder &amp; CEO, Noetic Creative</span>
+      </div>
+      <div class="footer-meta-block">
+        Date
+        <span>September 16, 2026 &middot; Confidential</span>
+      </div>
+      <div class="footer-meta-block">
+        &copy; 2026 Noetic Creative
+        <span>Miami, Florida &middot; hello@noetic.io &middot; noetic.io</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>20){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
+  });
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion&&'IntersectionObserver' in window){
+    document.body.classList.add('anim-ready');
+    var els=document.querySelectorAll('.case-card,.vertical-card,.belief-item,.diff-card,.team-card,.process-step,.svc,.tl-ms,.diagram');
+    els.forEach(function(el){el.classList.add('fade-in');});
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+      });
+    },{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){observer.observe(el);});
+    setTimeout(function(){
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el){el.classList.add('visible');});
+    },4000);
+  }
+})();
+</script>
+</body>
+</html>
