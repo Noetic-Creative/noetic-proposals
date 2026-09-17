@@ -627,6 +627,8 @@
       }
       .choice-index { width: 38px; height: 38px; font-size: 10.5px; }
       .q-actions { margin-top: 18px; }
+      .field select, .field input { min-height: 68px; padding: 26px 18px 11px; border-radius: 13px; }
+      .field label { top: 10px; left: 18px; font-size: 10px; }
       .insight.is-on { margin-top: 16px; }
       .insight-card { padding: 17px 19px; border-radius: 16px; }
       .insight-body { margin-top: 11px; }
@@ -1162,6 +1164,30 @@
             </div>
           </div>
         </article>
+        <article class="panel q-panel" data-panel="contact" aria-labelledby="contact-title">
+          <div class="q-layout">
+            <header class="q-copy">
+              <p class="q-num">Your details</p>
+              <h2 id="contact-title">Who are we building this <em>benchmark</em> for?</h2>
+              <p class="q-hint">We use your name and email to match the results to your practice, nothing else.</p>
+            </header>
+            <div>
+              <div class="field-stack">
+                <div class="field" data-field>
+                  <label for="lead-name">Full name</label>
+                  <input id="lead-name" name="fullname" autocomplete="name" placeholder="First and last name">
+                </div>
+                <div class="field" data-field>
+                  <label for="lead-email">Work email</label>
+                  <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourpractice.com">
+                </div>
+              </div>
+              <div class="q-actions">
+                <button class="next-button" type="button" data-next disabled><span>Continue</span></button>
+              </div>
+            </div>
+          </div>
+        </article>
         <article class="panel q-panel" data-panel="q3" aria-labelledby="q3-title">
           <div class="q-layout">
             <header class="q-copy">
@@ -1617,7 +1643,7 @@
       const DEMAND7 = ['hair-removal', 'photofacial', 'acne', 'pigmentation', 'vascular', 'resurfacing', 'tightening'];
 
       const answers = {
-        businessType: '', position: '', state: '', zip: '',
+        businessType: '', position: '', fullName: '', email: '', state: '', zip: '',
         menu: [], modality: {}, referrals: '', competition: '', platform: '', bottleneck: ''
       };
       const order = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
@@ -1746,14 +1772,17 @@
       }
 
       /* ---------- rail + panel switching ---------- */
+      /* Steps that are not one of the eight questions still need a place on the rail. */
+      const ASIDE = { contact: 2, zip: order.length };
       const setRail = (name) => {
         const idx = order.indexOf(name);
-        const shown = idx === -1 ? order.length : idx;
+        const shown = idx > -1 ? idx : (ASIDE[name] !== undefined ? ASIDE[name] : order.length);
         dots.forEach((d, i) => {
           d.classList.toggle('done', i < shown);
           d.classList.toggle('now', i === shown);
         });
         if (idx > -1) stepCount.textContent = 'Question ' + pad(idx + 1) + ' / ' + pad(order.length);
+        else if (name === 'contact') stepCount.textContent = 'Your details';
         else if (name === 'zip') stepCount.textContent = 'Last step';
         else stepCount.textContent = '';
         syncTopic(name);
@@ -1794,6 +1823,8 @@
 
       const nextOf = (from) => {
         if (from === 'q1') return answers.businessType === 'Patient / Consumer' ? 'exit' : 'q2';
+        if (from === 'q2') return 'contact';
+        if (from === 'contact') return 'q3';
         if (from === 'q3') return activeMenu().length ? 'q4' : 'q5';
         if (from === 'q8') return 'zip';
         if (from === 'zip' || from === 'exit') return null;
@@ -1860,6 +1891,25 @@
         stateSel.closest('[data-field]').classList.add('is-set');
         openInsight(panelOf('q2'), reveal.q2(), q2Next);
       });
+
+      /* ---------- name + email, captured right after the state question ---------- */
+      const nameInput = $('#lead-name');
+      const emailInput = $('#lead-email');
+      const contactNext = panelOf('contact').querySelector('[data-next]');
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      function checkContact() {
+        answers.fullName = nameInput.value.trim();
+        answers.email = emailInput.value.trim();
+        const nameOk = answers.fullName.length > 1;
+        const mailOk = EMAIL_RE.test(answers.email);
+        nameInput.closest('[data-field]').classList.toggle('is-set', nameOk);
+        emailInput.closest('[data-field]').classList.toggle('is-set', mailOk);
+        setReady(contactNext, nameOk && mailOk);
+      }
+      nameInput.addEventListener('input', checkContact);
+      emailInput.addEventListener('input', checkContact);
+      emailInput.addEventListener('blur', checkContact);
 
       /* ---------- Q3 / Q5 / Q6 / Q7 / Q8: choice lists ---------- */
       $$('.choice-list:not([data-q4-list])').forEach((list) => {
@@ -2067,7 +2117,12 @@
 
       /* ---------- demo dialog ---------- */
       const dialog = $('#demo-dialog');
-      $$('[data-open-demo]').forEach((b) => b.addEventListener('click', () => dialog.showModal()));
+      $$('[data-open-demo]').forEach((b) => b.addEventListener('click', () => {
+        /* They gave us these back at the contact step; do not ask twice. */
+        if (answers.fullName && !$('#name').value) $('#name').value = answers.fullName;
+        if (answers.email && !$('#email').value) $('#email').value = answers.email;
+        dialog.showModal();
+      }));
       $$('[data-close-demo]').forEach((b) => b.addEventListener('click', () => dialog.close()));
       dialog.addEventListener('click', (ev) => { if (ev.target === dialog) dialog.close(); });
       $('#demo-form').addEventListener('submit', (ev) => {
