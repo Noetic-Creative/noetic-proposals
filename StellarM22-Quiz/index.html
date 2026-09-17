@@ -559,6 +559,7 @@
       color: #8f3334; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase;
     }
     .insight-body { position: relative; z-index: 1; margin: 16px 0 0; }
+    .insight.is-plain .insight-body { margin-top: 0; }
     .insight-body p {
       margin: 0; font-family: var(--serif); color: rgba(10, 10, 10, .88);
       font-size: clamp(17px, 1.34vw, 24px); line-height: 1.46; letter-spacing: -.012em;
@@ -1054,10 +1055,9 @@
                   </select>
                 </div>
               </div>
-              <div class="insight" data-insight role="status" aria-live="polite">
+              <div class="insight is-plain" data-insight role="status" aria-live="polite">
                 <div class="insight-card">
                   <span class="insight-star" aria-hidden="true"><svg viewBox="0 0 63 62" fill="none" aria-hidden="true"><path d="M29.969.145 33.676 0C34.285 16.221 45.773 28.527 62.227 28.897c1.556 6.022-2.315 3.857-6.79 5.008-10.317 2.652-18.667 10.789-20.96 21.289-.244 1.118-.709 6.175-1.036 6.652l-3.795-.039c-.659-10.86-5.114-19.296-14.669-24.998-4.689-2.798-8.987-3.339-14.292-3.841.046-1.301.12-2.601.227-3.898 1.303-.134 2.603-.284 3.904-.449 11.957-1.627 22.33-11.665 24.341-23.586.227-1.338.035-3.87.812-4.89Zm-17.829 30.997c8.137 2.936 13.524 7.838 17.823 15.555.436.782 1.075 3.273 1.734 3.685 4.155-10.305 9.162-14.989 19.149-19.243-7.701-3.735-12.075-6.665-16.893-14.343-.476-.756-2.293-4.868-2.588-5.147-2.98 7.268-6.622 12.152-13.445 16.411-2.003 1.25-3.927 2.024-5.88 3.122Z" fill="currentColor"/></svg></span>
-                  <p class="insight-calc"><i aria-hidden="true"></i><span>Calculating your practice profile&hellip;</span></p>
                   <div class="insight-body"><p data-insight-text></p></div>
                 </div>
               </div>
@@ -1626,9 +1626,9 @@
       /* Business type + position option sets mirror the live Stellar M22 HubSpot form
          (portal 278427 / form 8fcebf4a-47f1-4ac7-bde2-725fe8c495df). */
       const POSITIONS = {
-        'MedSpa / Aesthetic Wellness': ['Dermatologist', 'Plastic Surgeon', 'Medical Director', 'Practice / MedSpa Owner', 'Nurse Practitioner (NP) / PA', 'Laser Practitioner', 'Staff', 'Procurement / Purchasing', 'Cosmetician / Beautician', 'Hair Restoration Specialist'],
-        'Private Practice / Physician Clinic': ['Dermatologist', 'Plastic Surgeon', 'OBGYN / Gynecology', 'Medical Director', 'Practice Owner', 'Family Medicine / Primary Care', 'Dentist', 'Nurse Practitioner (NP)\\ PA', 'Laser Practitioner', 'Clinical Engineering', 'Administration', 'Hair Restoration Specialist', 'Procurement / Purchasing'],
-        'Hospital / Health center': ['Department Head', 'Dermatologist', 'Plastic Surgeon', 'Physician / Surgeon', 'Biomedical / Clinical Engineering', 'Procurement / Purchasing', 'Nurse / Clinical Staff']
+        'MedSpa / Aesthetic Wellness': ['Owner', 'General Manager', 'Dermatologist', 'Plastic Surgeon', 'Medical Director', 'Practice / MedSpa Owner', 'Nurse Practitioner (NP) / PA', 'Laser Practitioner', 'Staff', 'Procurement / Purchasing', 'Cosmetician / Beautician', 'Hair Restoration Specialist'],
+        'Private Practice / Physician Clinic': ['Owner', 'General Manager', 'Dermatologist', 'Plastic Surgeon', 'OBGYN / Gynecology', 'Medical Director', 'Practice Owner', 'Family Medicine / Primary Care', 'Dentist', 'Nurse Practitioner (NP)\\ PA', 'Laser Practitioner', 'Clinical Engineering', 'Administration', 'Hair Restoration Specialist', 'Procurement / Purchasing'],
+        'Hospital / Health center': ['Owner', 'General Manager', 'Department Head', 'Dermatologist', 'Plastic Surgeon', 'Physician / Surgeon', 'Biomedical / Clinical Engineering', 'Procurement / Purchasing', 'Nurse / Clinical Staff']
       };
       const TREAT = {
         'hair-removal': 'Hair Removal', 'photofacial': 'Photofacial', 'acne': 'Acne',
@@ -1666,7 +1666,7 @@
           const p = answers.position;
           if (/Nurse Practitioner/i.test(p)) return 'NP-owned practices have more than doubled since 2019, you\u2019re part of the fastest-growing ownership group in the industry.';
           if (p === 'Dermatologist' || p === 'Plastic Surgeon') return 'Physician-owned practices are still the backbone of the industry, and the ones pulling ahead are the ones adding capabilities, not just patients.';
-          if (p === 'Practice / MedSpa Owner' || p === 'Practice Owner') return 'Owner-operators make up the majority of this industry, and the ones growing fastest aren\u2019t the biggest, they\u2019re the ones covering the most ground.';
+          if (p === 'Owner' || p === 'Practice / MedSpa Owner' || p === 'Practice Owner') return 'Owner-operators make up the majority of this industry, and the ones growing fastest aren\u2019t the biggest, they\u2019re the ones covering the most ground.';
           return 'Every role in this industry is dealing with the same question right now, how to do more with the practice you\u2019ve already built.';
         },
         q2() {
@@ -1712,14 +1712,17 @@
           if (next) setReady(next, true);
           return;
         }
+        /* A plain dropdown computes nothing, so its card just appears, no spinner. */
+        const plain = box.classList.contains('is-plain');
         box.classList.add('is-on');
+        if (plain) box.classList.add('is-done');
         keepInView(box);
         clearTimeout(box._hold);
         box._hold = setTimeout(() => {
           box.classList.add('is-done');
           keepInView(box);
           if (next) setReady(next, true);
-        }, reduced ? 0 : 1500);
+        }, reduced ? 0 : (plain ? 700 : 1500));
       }
 
       /* Scroll the least possible: just enough that the card and the Continue button are
