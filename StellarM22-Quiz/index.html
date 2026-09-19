@@ -585,18 +585,26 @@
 
     /* ---------- hero photo: her face on the centre of the frame, at every size ---------- */
     /* object-fit can only shift the crop when there IS overflow, so on a wide monitor the
-       patient drifted left. Instead the photo is sized to cover the frame at its own aspect
-       (2640x2246) and then pulled so the point 39.5% across / 54% down -- her face -- lands
-       on the middle of the frame. True for any container shape, phone included.
+       patient drifted left. The fix sizes the photo to cover the frame at its own aspect
+       (2640x2246) and pulls the point 39.5% across / 54% down -- her face -- to the middle.
        The offset lives in `translate`, not `transform`, so the ken-burns drift still works. */
-    .kv-frame { container-type: size; }
-    .kv-main img {
-      inset: auto; top: 50%; left: 50%;
-      width: max(100cqw, 100cqh * 2640 / 2246);
-      height: auto;
-      translate: -39.5% -54%;
+
+    /* Fallback: plain cover. Slightly off-centre, but never a bare edge. This is what a
+       browser without container-query units gets, instead of a broken crop. */
+    .kv-main img { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+
+    @supports (width: 1cqw) {
+      .kv-frame { container-type: size; }
+      .kv-main img {
+        inset: auto; top: 50%; left: 50%;
+        /* Pinning a subject at 39.5%/54% to the middle costs coverage: the photo has to be
+           1.27x the frame wide and 1.09x tall or an edge goes bare. 133/137 adds drift room. */
+        width: max(133cqw, 137cqh);
+        height: auto;
+        translate: -39.5% -54%;
+      }
     }
-    @media (max-width: 900px) { .kv-main img { object-position: 50% 50%; } }
+    @media (max-width: 900px) { .kv-main img { object-position: 40% 50%; } }
 
     /* ---------- the rail carries the subject, so it survives any scroll ---------- */
     .step-topic {
