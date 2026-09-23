@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slice: four creative directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2EE; --panel:#E2E9E3; --ink:#14231C; --muted:#5F7068; --rule:#C5D0C8;
+  --green:#1F6B4A; --stamp:#B3263E; --chrome:#DDE5DF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10201A; --panel:#183028; --ink:#E8EFEA; --muted:#93A89C; --rule:#2C463B;
+    --green:#6CC79B; --stamp:#F2748C; --chrome:#0B1813;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10201A; --panel:#183028; --ink:#E8EFEA; --muted:#93A89C; --rule:#2C463B;
+  --green:#6CC79B; --stamp:#F2748C; --chrome:#0B1813;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--chrome);color:var(--ink);overflow:hidden;
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;display:flex;flex-direction:column}
+.viewport{flex:1;position:relative;overflow:hidden;min-height:0}
+.stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center center;
+  background:var(--bg)}
+.slide{position:absolute;inset:0;padding:60px 80px 56px;display:none}
+.slide.on{display:block}
+
+/* type */
+.d{font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+.tag{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-size:15px;font-weight:600;color:var(--green);
+  font-stretch:112%;letter-spacing:.01em;margin-bottom:14px}
+h1{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:800;font-stretch:75%;
+  font-size:84px;line-height:.96;letter-spacing:-.015em}
+h2{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:750;font-stretch:80%;
+  font-size:46px;line-height:1.04;letter-spacing:-.01em;max-width:960px}
+h3{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:650;font-size:17px;font-stretch:105%;
+  margin-bottom:6px}
+p,li{font-size:19px;line-height:1.5}
+.small{font-size:16px;line-height:1.45;color:var(--muted)}
+.lede{font-size:23px;line-height:1.45;max-width:760px;margin-top:26px}
+.cols{display:grid;gap:56px;margin-top:34px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}
+.c57{grid-template-columns:5fr 7fr}
+.rule{border-top:1.5px solid var(--ink);padding-top:14px}
+.rule.soft{border-top-color:var(--rule)}
+ul{list-style:none;padding:0}
+ul.cols li{font-size:22px;line-height:1.45;padding-bottom:28px}
+ul.cols h3{font-size:20px;margin-bottom:8px}
+.stamp{color:var(--stamp)}
+.green{color:var(--green)}
+
+/* tried list */
+.tried{margin-top:28px;display:grid;grid-template-columns:1fr}
+.tried div{padding:11px 0;border-top:1px solid var(--rule);display:flex;gap:18px;align-items:baseline}
+.tried s{font-family:"Archivo",Arial,sans-serif;font-weight:650;font-stretch:88%;font-size:25px;
+  text-decoration-color:var(--stamp);text-decoration-thickness:2px;flex:0 0 470px}
+.tried span{font-size:19px;color:var(--muted);line-height:1.35}
+
+/* dyad: the one loud element */
+.dyad{display:flex;flex-direction:column;justify-content:center;min-height:400px;border-top:1.5px solid var(--ink);
+  border-bottom:1.5px solid var(--ink);padding:10px 0}
+.dyad .a{font-family:"Archivo",Arial,sans-serif;font-stretch:62%;font-weight:300;font-size:118px;line-height:1;
+  color:var(--muted);letter-spacing:-.01em}
+.dyad .b{font-family:"Archivo",Arial,sans-serif;font-stretch:125%;font-weight:850;font-size:104px;line-height:1.02;
+  color:var(--green);letter-spacing:-.03em}
+.dyad .b.red{color:var(--stamp)}
+.dyad .cap{font-size:15px;color:var(--muted);margin:2px 0 12px}
+.line{margin-top:22px;font-family:"Archivo",Arial,sans-serif;font-weight:700;font-stretch:88%;font-size:31px;line-height:1.2}
+.line small{display:block;font-family:"Source Serif 4",Georgia,serif;font-weight:400;font-size:15px;color:var(--muted);margin-bottom:6px}
+.idea p{margin-top:12px;max-width:440px}
+.idea h2{font-size:50px;margin-bottom:6px}
+.idea h3{margin-top:22px;margin-bottom:0}
+
+/* stamps for direction 2 */
+.stamps{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:14px}
+.stamps b{font-family:"Archivo",Arial,sans-serif;font-stretch:118%;font-weight:800;font-size:29px;
+  border:3px solid var(--stamp);color:var(--stamp);padding:4px 10px;border-radius:4px;letter-spacing:.02em}
+.stamps b:nth-child(1){transform:rotate(-3deg)}.stamps b:nth-child(2){transform:rotate(2deg)}
+.stamps b:nth-child(3){transform:rotate(-1.5deg)}.stamps b:nth-child(4){transform:rotate(3deg)}
+.stamps b:nth-child(5){transform:rotate(-2deg)}
+.stamps i{font-style:normal;display:block;font-family:"Source Serif 4",Georgia,serif;font-weight:400;font-size:12px;letter-spacing:0;color:var(--muted)}
+
+/* linkedin ad mock: uses Slice's own peach and orange so the team sees it in context */
+.ad{width:400px;background:#fff;color:#1b1b1b;border-radius:10px;border:1px solid #d9d9d9;overflow:hidden;
+  font-family:"Helvetica Neue",Arial,sans-serif}
+.ad .who{display:flex;gap:10px;padding:12px 14px 6px;align-items:center}
+.ad .logo{width:36px;height:36px;border-radius:6px;background:#F26B3A;color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:20px}
+.ad .who b{font-size:13.5px;display:block}.ad .who span{font-size:11.5px;color:#666;display:block}
+.ad .intro{font-size:13.5px;line-height:1.4;padding:4px 14px 12px}
+.ad .img{background:linear-gradient(#FFF4EC,#FBDCC9);height:300px;padding:26px 28px;display:flex;flex-direction:column;
+  justify-content:center;font-family:"Archivo",Arial,sans-serif;color:#2A1208}
+.ad .img .h{font-weight:750;font-stretch:88%;font-size:37px;line-height:1.06;letter-spacing:-.01em}
+.ad .img .h em{font-style:normal;color:#E8551F}
+.ad .img .s{font-size:15px;margin-top:16px;font-weight:500;color:#5a3a2c}
+.ad .cta{background:#EEF3F8;padding:10px 14px;font-size:13px;font-weight:600}
+.ad .cta span{display:block;font-weight:400;color:#666;font-size:11.5px;margin-top:2px}
+.ad .mini{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin-top:14px;font-size:13.5px;font-weight:500;color:#2A1208}
+.ad .mini div{border-top:1px solid #E7B9A0;padding:5px 0}
+.ad .mini .hd{font-weight:800;border-top:0;font-size:15px}
+.ad .mini .hd.o{color:#E8551F}
+.exec{display:grid;grid-template-columns:400px 1fr;gap:64px;margin-top:26px}
+.cuts div{padding:16px 0;border-top:1px solid var(--rule)}
+.cuts div:first-of-type{border-top:1.5px solid var(--ink)}
+.cuts p{font-size:21px;line-height:1.4}
+.note{margin-top:16px;padding:12px 16px;background:var(--panel);border-left:3px solid var(--stamp)}
+.cuts .note{padding:14px 18px;border-top:0;margin-top:24px}
+.note p{font-size:16.5px;line-height:1.42}
+
+/* table */
+table{border-collapse:collapse;width:100%;margin-top:28px}
+th,td{text-align:left;vertical-align:top;padding:17px 18px 17px 0;border-top:1px solid var(--rule);font-size:18px;line-height:1.35}
+th{font-family:"Archivo",Arial,sans-serif;font-weight:650;font-size:14.5px;color:var(--muted);border-top:1.5px solid var(--ink)}
+td:first-child{font-family:"Archivo",Arial,sans-serif;font-weight:700;font-stretch:88%;font-size:18px;width:210px}
+
+/* stack diagram */
+.stack{margin-top:34px;display:grid;gap:10px;max-width:1000px}
+.stack>div{padding:18px 24px;background:var(--panel)}
+.stack .top{background:var(--green);color:var(--bg)}
+.stack .top .small{color:inherit;opacity:.85}
+.stack .mid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;background:none}
+.stack .mid>div{padding:18px 24px;background:var(--panel)}
+.stack b{font-family:"Archivo",Arial,sans-serif;font-weight:750;font-stretch:88%;font-size:24px;display:block}
+
+/* chrome */
+.bar{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));
+  font-family:"Archivo",Arial,sans-serif;font-size:14px;color:var(--muted)}
+.bar button{font:inherit;font-weight:600;color:var(--ink);background:transparent;border:1.5px solid var(--rule);
+  border-radius:6px;padding:7px 14px;cursor:pointer}
+.bar button:hover{border-color:var(--ink)}
+.bar button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.bar button:disabled{opacity:.35;cursor:default}
+.bar .where{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{height:3px;background:var(--rule)}.prog i{display:block;height:100%;background:var(--green);width:0}
+</style>
+</head>
+<body>
+<div class="viewport" id="vp">
+<div class="stage" id="stage">
+
+<!-- 1 -->
+<section class="slide on" data-t="Title">
+  <div class="tag">Noetic internal creative review, September 2026</div>
+  <h1 style="margin-top:120px">Slice.<br>Four ways to talk about equity that a payroll company can't copy.</h1>
+  <p class="lede">For Helen and the creative team. React, argue, pick. Nothing here has gone to the client.</p>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-t="Why this pitch is about the idea">
+  <div class="tag">Where we stand</div>
+  <h2>This pitch gets decided on the idea, not the media plan.</h2>
+  <div class="cols c3">
+    <div class="rule"><h3>What the client told us</h3><p>Their past campaigns failed on messaging. The last agency never found an insight. Their marketer runs the function alone and tried paid herself without results.</p></div>
+    <div class="rule"><h3>Who we're talking to</h3><p>The office of the CFO at venture-backed companies, 100 to 5,000 people, granting equity in more than two countries. Legal and HR use the product too.</p></div>
+    <div class="rule"><h3>What they're replacing</h3><p>Carta or a spreadsheet, plus a lawyer in every country. Buyers already have something. They don't know how exposed it leaves them.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" data-t="What we've tried">
+  <div class="tag">What we've tried so far</div>
+  <h2>Every line so far has the same problem. It's about geography.</h2>
+  <div class="tried">
+    <div><s>Confidence at global scale</s><span>Ledgy already says "go global with confidence."</span></div>
+    <div><s>Equity in motion</s><span>Motion is what Deel and Remote sell.</span></div>
+    <div><s>Your equity has a passport</s><span>Travel imagery. Could be a visa service.</span></div>
+    <div><s>The promise moves with you</s><span>The company isn't moving. Right word, wrong subject.</span></div>
+    <div><s>The moment it crosses a border</s><span>Says nothing about equity. Melio could run it.</span></div>
+    <div><s>Equity moves. Slice keeps it airtight.</s><span>Strong payoff word, weak setup. "Moves" is the geography frame again.</span></div>
+  </div>
+  <p class="lede" style="font-size:20px;margin-top:24px">Borders, crossings and movement are home turf for the global payroll category. Rewording doesn't fix that. We need a different frame.</p>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-t="The swap test">
+  <div class="tag">The filter for everything that follows</div>
+  <h1 style="font-size:96px;margin-top:40px">The swap test.</h1>
+  <p class="lede" style="font-size:30px;max-width:900px">Put a Deel, Payoneer or Melio logo on the ad. If it still works, kill it.</p>
+  <p class="lede" style="font-size:20px">Worth showing the client too. They were burned on messaging, so seeing how we judge a line will persuade them as much as the lines do.</p>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-t="Three truths about equity">
+  <div class="tag">The new frame</div>
+  <h2>Three things that are true of equity and false of payroll.</h2>
+  <div class="cols c3">
+    <div class="rule"><h3>It comes due later</h3><p>Salary is finished every month. A grant made today gets tested at a vest, an exercise or an exit, years from now, under whatever rules apply by then.</p><p class="small" style="margin-top:12px">Feeds directions 1 and 4</p></div>
+    <div class="rule"><h3>It changes identity by country</h3><p>The same 10,000 options are an ISO in the US, EMI in the UK, BSPCE in France, VSOP in Germany, Section 102 in Israel. A salary is a salary everywhere.</p><p class="small" style="margin-top:12px">Feeds direction 2</p></div>
+    <div class="rule"><h3>The record isn't the obligation</h3><p>A cap table shows who owns what. It doesn't show the withholding, filings and deadlines each grant creates. Payroll has no such gap.</p><p class="small" style="margin-top:12px">Feeds direction 3</p></div>
+  </div>
+</section>
+
+<!-- 6 D1 idea -->
+<section class="slide" data-t="Direction 1: Paid vs. Promised">
+  <div class="cols c57" style="margin-top:0">
+    <div class="idea">
+      <div class="tag">Direction 1, recommended as the platform idea</div>
+      <h2>Paid vs. Promised</h2>
+      <h3>Insight</h3>
+      <p>Payroll mistakes surface within 30 days. Equity mistakes stay silent until the worst possible moment, because equity is a promise that comes due years later.</p>
+      <h3>How the story runs</h3>
+      <p>Open on the contrast. Show the promise aging: she vested in London, moved to Amsterdam, exercised in year four. Land on Slice keeping it valid where it comes due.</p>
+    </div>
+    <div>
+      <div class="dyad">
+        <div class="a">Salary is paid.</div>
+        <div class="b" style="font-size:78px">Equity is promised.</div>
+      </div>
+      <div class="line"><small>The line</small>Salary is paid. Equity is promised. Slice keeps it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 D1 exec -->
+<section class="slide" data-t="Direction 1 in market">
+  <div class="tag">Direction 1 in market</div>
+  <h2 style="font-size:36px">The ad draws the line against payroll itself.</h2>
+  <div class="exec">
+    <div class="ad">
+      <div class="who"><div class="logo">S</div><div><b>Slice | Global Equity</b><span>Promoted</span></div></div>
+      <div class="intro">You paid her in March. You promised her in March too. One of those is finished.</div>
+      <div class="img"><div class="h">Salary is paid.<br><em>Equity is promised.</em></div><div class="s">Slice keeps every grant valid in the country where it comes due. 60+ of them.</div></div>
+      <div class="cta">Keep every equity promise you've made<span>sliceglobal.com</span></div>
+    </div>
+    <div class="cuts">
+      <div><h3>Finance</h3><p>Payroll closes every month. Your grants stay open for ten years.</p></div>
+      <div><h3>Legal</h3><p>A grant is a contract that matures in a country you haven't picked yet.</p></div>
+      <div><h3>HR</h3><p>You closed the hire with equity. Will it be worth what you said when she exercises in Amsterdam?</p></div>
+      <div class="note"><p><b>Watch out.</b> "Promise" can read soft to a CFO, so Finance cuts should treat it as a liability. "Slice keeps it" is brand voice, not a guarantee. Legal buyers will notice an overclaim.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 D2 idea -->
+<section class="slide" data-t="Direction 2: One grant. Sixty meanings.">
+  <div class="cols c57" style="margin-top:0">
+    <div class="idea">
+      <div class="tag">Direction 2</div>
+      <h2>One grant. Sixty meanings.</h2>
+      <h3>Insight</h3>
+      <p>The board approves one grant. Each country turns it into a different instrument, with its own tax event and its own filing.</p>
+      <h3>How the story runs</h3>
+      <p>One grant letter, shown identically every time, stamped with what it becomes in each country. Slice is the only system that knows which one it is, every time.</p>
+    </div>
+    <div>
+      <div class="dyad" style="justify-content:flex-start;padding-top:22px">
+        <div class="a" style="font-size:92px;white-space:nowrap">10,000 options.</div>
+        <div class="cap">Approved Tuesday. By Friday it was five different things.</div>
+        <div class="stamps"><b>ISO<i>United States</i></b><b>EMI<i>United Kingdom</i></b><b>BSPCE<i>France</i></b><b>VSOP<i>Germany</i></b><b>102<i>Israel</i></b></div>
+      </div>
+      <div class="line"><small>The line</small>It's never the same grant twice. Slice knows the difference.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 D2 exec -->
+<section class="slide" data-t="Direction 2 in market">
+  <div class="tag">Direction 2 in market</div>
+  <h2 style="font-size:36px">Insider vocabulary does the differentiating.</h2>
+  <div class="exec">
+    <div class="ad">
+      <div class="who"><div class="logo">S</div><div><b>Slice | Global Equity</b><span>Promoted</span></div></div>
+      <div class="intro">Your board approved one grant. Your employees received five different instruments. Do you know which is which?</div>
+      <div class="img"><div class="h">10,000 options.<br><em>Never the same 10,000 options.</em></div><div class="s">ISO. EMI. BSPCE. VSOP. 102. Slice knows which one it is, in 60+ countries.</div></div>
+      <div class="cta">See what your grants become in each country<span>sliceglobal.com</span></div>
+    </div>
+    <div class="cuts">
+      <div><h3>Finance</h3><p>Same grant, five withholding rules. Which one did you apply?</p></div>
+      <div><h3>Legal</h3><p>Your plan was drafted for Delaware. Your grantees live under eleven other rulebooks.</p></div>
+      <div><h3>HR</h3><p>She asked what her options are worth after tax. The honest answer depends on where she lives.</p></div>
+      <div class="note"><p><b>Watch out.</b> The jargon is the point, but it may lose HR. Every country claim needs an accuracy check from Slice's legal team before it runs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 D3 idea -->
+<section class="slide" data-t="Direction 3: Owned vs. Owed">
+  <div class="cols c57" style="margin-top:0">
+    <div class="idea">
+      <div class="tag">Direction 3, the conquest layer for Carta accounts</div>
+      <h2>Owned vs. Owed</h2>
+      <h3>Insight</h3>
+      <p>Buyers think an accurate cap table means equity is handled. It only records ownership. The obligations each grant creates live somewhere else, or nowhere.</p>
+      <h3>How the story runs</h3>
+      <p>Show a clean, up-to-date cap table as false comfort. List what the record doesn't hold. Slice is everything after the record.</p>
+    </div>
+    <div>
+      <div class="dyad">
+        <div class="a">What they own.</div>
+        <div class="b red" style="font-size:84px">What you owe.</div>
+      </div>
+      <div class="line"><small>The line</small>Your cap table knows what they own. Slice knows what you owe.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 D3 exec -->
+<section class="slide" data-t="Direction 3 in market">
+  <div class="tag">Direction 3 in market</div>
+  <h2 style="font-size:36px">The cap table becomes the foil, which puts Slice above it.</h2>
+  <div class="exec">
+    <div class="ad">
+      <div class="who"><div class="logo">S</div><div><b>Slice | Global Equity</b><span>Promoted</span></div></div>
+      <div class="intro">Your cap table is accurate. That was never the question.</div>
+      <div class="img" style="justify-content:flex-start"><div class="h" style="font-size:30px">Your cap table knows what they own. <em>Do you know what you owe?</em></div>
+        <div class="mini"><div class="hd">Owned</div><div class="hd o">Owed</div>
+          <div>12,000 options</div><div>Withholding at exercise</div>
+          <div>4-year vest</div><div>Local filing, every year</div>
+          <div>Strike price</div><div>Exercise window on exit</div></div></div>
+      <div class="cta">Find what your cap table isn't tracking<span>sliceglobal.com</span></div>
+    </div>
+    <div class="cuts">
+      <div><h3>Finance</h3><p>The cap table balanced. The withholding in three countries didn't.</p></div>
+      <div><h3>Legal</h3><p>A record of the grant isn't a record of what the grant requires.</p></div>
+      <div><h3>HR</h3><p>She can see her options. Nobody can see what happens to them when she relocates.</p></div>
+      <div class="note"><p><b>Watch out.</b> The brief says don't lead with cap table. Here it's the thing we argue against, but the client needs to agree to that. "Owe" must read as obligations, not debt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 D4 idea -->
+<section class="slide" data-t="Direction 4: Every grant gets read eventually">
+  <div class="cols c57" style="margin-top:0">
+    <div class="idea">
+      <div class="tag">Direction 4</div>
+      <h2>Every grant gets read eventually.</h2>
+      <h3>Insight</h3>
+      <p>Nobody reads a grant closely on the day it's issued. Years later someone will: an acquirer's counsel, an auditor, a tax authority, a departing employee's lawyer.</p>
+      <h3>How the story runs</h3>
+      <p>Each execution dates a grant twice. Slice reads every grant first, against local law, the moment it's made. And it has already read the old ones.</p>
+    </div>
+    <div>
+      <div class="dyad">
+        <div class="a" style="font-size:80px">Granted: Berlin, 2023.</div>
+        <div class="b red" style="font-size:60px;margin-top:10px">Read: due diligence, 2028.</div>
+      </div>
+      <div class="line"><small>The line</small>Someone will read every grant you've ever issued. Slice reads them first.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 D4 exec -->
+<section class="slide" data-t="Direction 4 in market">
+  <div class="tag">Direction 4 in market</div>
+  <h2 style="font-size:36px">The most natural home for SliceAI. The AI is the reader, not a chatbot.</h2>
+  <div class="exec">
+    <div class="ad">
+      <div class="who"><div class="logo">S</div><div><b>Slice | Global Equity</b><span>Promoted</span></div></div>
+      <div class="intro">Diligence will read six years of your grants in three weeks. Better that something reads them before then.</div>
+      <div class="img"><div class="h" style="font-size:31px">Granted: Berlin, March 2023.<br><em>Read: due diligence, 2028.</em></div><div class="s">SliceAI reads every grant against local law the day it's made. It has already read your old ones.</div></div>
+      <div class="cta">Get your historical grants read<span>sliceglobal.com</span></div>
+    </div>
+    <div class="cuts">
+      <div><h3>Finance</h3><p>You just raised. The next people to read your grants will be doing diligence.</p></div>
+      <div><h3>Legal</h3><p>The first person to read this grant closely shouldn't be opposing counsel.</p></div>
+      <div><h3>HR</h3><p>Her tax adviser will read the grant at exercise. Make sure it says what you told her.</p></div>
+      <div class="note"><p><b>Watch out.</b> It's fear-led, so tone matters. Real cases like Revolut make it land, but the Pine Labs story in the brief is unverified. Confirm before naming any company in paid.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 compare -->
+<section class="slide" data-t="Side by side">
+  <div class="tag">Side by side</div>
+  <h2>All four pass the swap test. They differ on who they reach and when.</h2>
+  <table>
+    <tr><th>Direction</th><th>Why a payroll brand can't run it</th><th>Strongest with</th><th>Room for SliceAI</th><th>Carries 60+ countries</th><th>Best stage</th></tr>
+    <tr><td>Paid vs. Promised</td><td>Names payroll as the opposite</td><td>All three buyers</td><td>Some</td><td>Yes, "where it comes due"</td><td>Awareness</td></tr>
+    <tr><td>One grant. Sixty meanings.</td><td>Vocabulary only equity people use</td><td>Finance, Legal</td><td>Some</td><td>Best of the four</td><td>Awareness into consideration</td></tr>
+    <tr><td>Owned vs. Owed</td><td>Argues with the cap table</td><td>Finance</td><td>Little</td><td>Lightly</td><td>Consideration, Carta accounts</td></tr>
+    <tr><td>Every grant gets read</td><td>Diligence and exercise are equity events</td><td>Finance, Legal</td><td>Best of the four</td><td>Partly</td><td>Consideration, just-raised and pre-exit</td></tr>
+  </table>
+</section>
+
+<!-- 15 fit -->
+<section class="slide" data-t="How they fit together">
+  <div class="tag">My recommendation</div>
+  <h2>One idea on top, two campaign pillars, one conquest layer.</h2>
+  <div class="stack">
+    <div class="top"><b>Paid vs. Promised</b><span class="small">The platform idea. It's the line that separates equity from payroll.</span></div>
+    <div class="mid">
+      <div><b>One grant. Sixty meanings.</b><span class="small">Pillar: proves the specialist depth.</span></div>
+      <div><b>Every grant gets read.</b><span class="small">Pillar: carries SliceAI and the historical audit.</span></div>
+    </div>
+    <div><b>Owned vs. Owed</b><span class="small">Conquest: ABM against accounts on Carta.</span></div>
+  </div>
+  <p class="lede" style="font-size:19px;margin-top:22px">"Airtight" can stay as a product-level sign-off under any of these. The weak half of the baseline was the setup, not the payoff.</p>
+</section>
+
+<!-- 16 guardrails -->
+<section class="slide" data-t="Guardrails">
+  <div class="tag">Guardrails from the client's brief</div>
+  <h2>What we can't get wrong.</h2>
+  <div class="cols c2">
+    <div class="rule"><h3>Words the client rejected</h3>
+      <p>Cap table software. AI chatbot, wrapper, connector. Compliance checker or tracker. Automated paperwork. Revolutionary, game-changing, disruptive, synergy.</p>
+      <h3 style="margin-top:22px">Proof points to state exactly</h3>
+      <p>Compliance across more than 60 countries. SliceAI as a single built-in agent. Agentic workflows linking HR, Legal and Finance. Live in about two weeks.</p></div>
+    <div class="rule"><h3>Things to confirm before the pitch</h3>
+      <p>The Revolut and Pine Labs stories come from the client. I couldn't verify Pine Labs. Check both before they appear on a slide.</p>
+      <p style="margin-top:12px">The client wants US social proof. Most of the logos on their site are Israeli-founded companies, so we should ask which US names we can use.</p>
+      <p style="margin-top:12px">Our own competitive deck says Ledgy, not Carta, is the closest rival. Direction 3 aims at Carta because that's who the buyers are on today.</p></div>
+  </div>
+</section>
+
+<!-- 17 asks -->
+<section class="slide" data-t="What I need from you">
+  <div class="tag">For the room</div>
+  <h2>What I need from you.</h2>
+  <ul class="cols c2" style="gap:0 56px">
+    <li class="rule soft" style="padding-bottom:16px"><h3>Pick the lead</h3>Is Paid vs. Promised the right platform idea, or does one of the others deserve the top slot?</li>
+    <li class="rule soft" style="padding-bottom:16px"><h3>Break a line</h3>Run the swap test on every line here. Tell me which ones fail.</li>
+    <li class="rule soft" style="padding-bottom:16px"><h3>Art direction</h3>Direction 2 needs a visual system for the stamped grant letter. Direction 4 needs a treatment for the two dates. Who takes which?</li>
+    <li class="rule soft" style="padding-bottom:16px"><h3>Show or hold</h3>Do we present all four to Slice, or lead with one and keep the rest as the campaign architecture?</li>
+  </ul>
+</section>
+
+</div>
+</div>
+<div class="prog"><i id="pg"></i></div>
+<div class="bar">
+  <button id="prev" aria-label="Previous slide">Previous</button>
+  <button id="next" aria-label="Next slide">Next</button>
+  <div class="where" id="where" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,
+      stage=document.getElementById('stage'),vp=document.getElementById('vp'),
+      where=document.getElementById('where'),pg=document.getElementById('pg'),
+      prev=document.getElementById('prev'),next=document.getElementById('next');
+  function fit(){var s=Math.min(vp.clientWidth/1280,vp.clientHeight/720);
+    stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+  function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('on',k===i);});
+    where.textContent=(i+1)+' of '+slides.length+'   '+slides[i].getAttribute('data-t');
+    pg.style.width=((i+1)/slides.length*100)+'%';
+    prev.disabled=i===0;next.disabled=i===slides.length-1;
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}}
+  prev.onclick=function(){show(i-1)};next.onclick=function(){show(i+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);}else if(e.key==='End'){show(slides.length-1);}});
+  var x0=null;vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  vp.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;
+    if(Math.abs(d)>50)show(i+(d<0?1:-1));x0=null;},{passive:true});
+  window.addEventListener('resize',fit);fit();
+  var h=parseInt(location.hash.slice(1),10);show(h>0?h-1:0);
+})();
+</script>
+</body>
+</html>
