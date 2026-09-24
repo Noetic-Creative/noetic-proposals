@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Competitive Paid Media Landscape · Cambria &amp; Cosentino · Noetic Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--paper:#FAFAF7; --paper-cool:#F0F0F4; --card:#FFFFFF;
+--ink:#0A0A0E; --ink-soft:#1A1A1F; --ink-mute:#6B6B7B; --ink-faint:#A8A8B5;
+--night:#0A0A0E;
+--purple:#6C5CE7; --purple-deep:#4D3FC9; --purple-soft:#EFEDFE;
+--mint:#00D4B4; --mint-deep:#00A88F; --mint-soft:#E0F8F3;
+--rule:rgba(10,10,14,0.08); --rule-strong:rgba(10,10,14,0.16); --rule-inv:rgba(255,255,255,0.12);
+--font-display:'Fraunces','Times New Roman',Georgia,serif;
+--font-sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+--font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--ease:cubic-bezier(0.2,0.6,0.2,1);
+--r-tight:8px; --r-card:16px; --r-pill:999px;
+--shadow-card:0 1px 2px rgba(10,10,14,0.04),0 8px 24px rgba(10,10,14,0.06);
+--bar-h:58px;
+box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;scroll-padding-top:calc(var(--bar-h) + env(safe-area-inset-top,0px));}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--font-sans);font-size:17px;line-height:1.6;padding-top:var(--bar-h);}
+img,svg{max-width:100%;display:block;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);letter-spacing:-0.02em;}
+.capsule{display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;white-space:nowrap;color:var(--purple);border:1.5px solid var(--purple);border-radius:var(--r-pill);padding:10px 22px;width:fit-content;}
+.meta-line{font-family:var(--font-mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-mute);}
+.display-lg{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,5.6vw,66px);line-height:1.05;letter-spacing:-0.03em;}
+.display-md{font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.12;letter-spacing:-0.025em;color:var(--ink);}
+.display-md em,.display-lg em{font-style:italic;font-weight:600;}
+.lede-lg{font-size:clamp(18px,1.8vw,22px);line-height:1.5;max-width:64ch;}
+.body{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:78ch;}
+.small{font-size:14px;line-height:1.5;color:var(--ink-mute);}
+.sheet{max-width:1440px;margin:0 auto;padding:0 clamp(18px,4vw,56px);}
+.corner-lockup{position:absolute;top:34px;right:38px;display:flex;align-items:center;gap:14px;z-index:3;}
+.corner-lockup .noetic-logo{height:20px;width:auto;fill:#fff;}
+.lockup-rule{width:1px;height:20px;background:rgba(255,255,255,0.35);}
+.client-logo{height:18px;width:auto;}
+.section-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-card);padding:28px 26px;box-shadow:var(--shadow-card);}
+.card h4{font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.2;}
+.card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;}
+.card .emoji{font-size:26px;line-height:1;}
+.ctitle{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-top:14px;}
+.card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin-top:10px;}
+ul.bul{list-style:none;}
+ul.bul li{position:relative;padding-left:22px;font-size:15px;line-height:1.5;color:var(--ink-soft);margin-bottom:10px;}
+ul.bul li::before{content:"";position:absolute;left:0;top:0.7em;width:11px;height:1.5px;background:var(--purple);}
+.brand-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink);font-weight:500;}
+.brand-tag .dot{width:12px;height:12px;border-radius:3px;}
+.dot.cam,.legend-dot.cam{background:var(--purple);}
+.dot.cos,.legend-dot.cos{background:var(--mint);}
+.chart-legend{display:flex;gap:28px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:12.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-mute);}
+.legend-dot{width:12px;height:12px;border-radius:3px;}
+.note{background:var(--purple-soft);border-radius:var(--r-card);padding:16px 20px;font-size:14px;line-height:1.55;color:var(--ink-soft);}
+.note b{color:var(--purple);}
+.share{margin-top:6px;}
+.share-row{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);}
+.share-row:last-child{border-bottom:none;}
+.share-lbl{font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-mute);}
+.share-bar{display:flex;height:34px;border-radius:8px;overflow:hidden;}
+.share-bar span{display:flex;align-items:center;padding:0 12px;font-family:var(--font-mono);font-size:12px;font-weight:500;white-space:nowrap;}
+.s-cam{background:var(--purple);color:#fff;} .s-cos{background:var(--mint);color:#0A0A0E;justify-content:flex-end;}
+.vs-table{width:100%;border-collapse:collapse;}
+.vs-table th{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-mute);font-weight:500;text-align:left;padding:10px;border-bottom:1px solid var(--rule-strong);}
+.vs-table td{padding:14px 10px;border-bottom:1px solid var(--rule);font-size:15px;vertical-align:top;}
+.vs-table tr:last-child td{border-bottom:none;}
+.vs-table td.big{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--ink);white-space:nowrap;}
+.pill{display:inline-block;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;padding:4px 10px;border-radius:var(--r-pill);border:1px solid var(--rule-strong);color:var(--ink-mute);margin:3px 4px 3px 0;white-space:nowrap;}
+.pill.hot{border-color:var(--purple);color:var(--purple);}
+.pill.hot2{border-color:var(--mint-deep);color:var(--mint-deep);}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.serp{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow-card);margin-top:14px;}
+.serp-top{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-mute);}
+.sp{font-weight:700;color:var(--ink);font-size:12.5px;}
+.serp-title{font-family:Arial,Helvetica,sans-serif;font-size:19px;line-height:1.3;color:#1A0DAB;margin-top:6px;}
+.serp-desc{font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:var(--ink-soft);margin-top:6px;}
+.trend{width:100%;max-height:34vh;margin:0 auto;}
+.trend .g{stroke:var(--rule);stroke-width:1;}
+.trend .axis{stroke:var(--rule-strong);stroke-width:1;}
+.trend .xl{font-family:var(--font-mono);font-size:12px;fill:var(--ink-mute);text-anchor:middle;letter-spacing:0.05em;}
+.trend .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.trend .ln.cam{stroke:var(--purple);} .trend .ln.cos{stroke:var(--mint);}
+.flight{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin-top:8px;}
+.cells{display:grid;grid-template-columns:repeat(27,1fr);gap:3px;}
+.cell{height:16px;border-radius:3px;background:var(--rule);}
+.cell.on-cam{background:var(--purple);} .cell.on-cos{background:var(--mint);}
+.ad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:14px;}
+.ad{border-radius:12px;overflow:hidden;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow-card);}
+.ad img{width:100%;aspect-ratio:403/345;object-fit:cover;}
+.ad .cap{padding:10px 12px;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-mute);}
+.ad .cap b{color:var(--purple);font-weight:500;}
+.tier{display:grid;grid-template-columns:2fr 2fr 1fr;gap:22px;margin-top:10px;align-items:start;}
+.tier-col .ad-grid{grid-template-columns:repeat(auto-fit,minmax(120px,190px));}
+.progress-bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;gap:6px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding:calc(14px + env(safe-area-inset-top,0px)) 20px 12px;overflow-x:auto;}
+.progress-item{flex:1;min-width:64px;text-align:center;cursor:pointer;}
+.progress-item .track{height:3px;background:var(--rule-strong);border-radius:2px;margin-bottom:7px;transition:background .4s var(--ease);}
+.progress-item .lbl{font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .4s var(--ease);}
+.progress-item.is-done .track,.progress-item.is-active .track{background:var(--purple);}
+.progress-item.is-active .lbl{color:var(--ink);font-weight:700;}
+.progress-item.is-done .lbl{color:var(--ink-mute);}
+.fullscreen-section{min-height:calc(100vh - var(--bar-h));display:flex;flex-direction:column;justify-content:center;padding:26px 0;}
+.fit{width:100%;}
+@media (min-width:900px) and (min-height:720px){
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+.fullscreen-section{scroll-snap-align:start;scroll-snap-stop:always;}
+}
+@media(max-width:900px){
+.grid-2,.tier{grid-template-columns:1fr;}
+.corner-lockup{top:22px;right:22px;}
+.share-row{grid-template-columns:1fr;gap:6px;}
+.progress-item .lbl{font-size:8.5px;}
+}
+@page{size:A4 landscape;margin:12mm;}
+@media print{
+body{padding-top:0;background:#fff;}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.progress-bar{display:none;}
+html{scroll-snap-type:none;}
+.fullscreen-section{min-height:0;break-after:page;}
+.card,.serp,.ad{break-inside:avoid;}
+.fit{zoom:1 !important;}
+}
+.cover-light{background:radial-gradient(760px 600px at 8% 115%,rgba(0,212,180,0.22),rgba(0,212,180,0) 62%),radial-gradient(820px 640px at 95% -15%,rgba(108,92,231,0.22),rgba(108,92,231,0) 62%),var(--card);border:1px solid var(--rule);color:var(--ink-soft);}
+.cover-light em{color:var(--purple);}
+.cover-light .corner-lockup .noetic-logo{fill:var(--purple);}
+.cover-light .lockup-rule{background:var(--rule-strong);}
+.method{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--purple);border-radius:var(--r-card);padding:20px 24px;}
+.method p{font-size:14.5px;line-height:1.55;margin-top:8px;}
+.method b{color:var(--ink);}
+.foot{font-size:12.5px;line-height:1.5;color:var(--ink-mute);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);}
+.foot::before{content:"Directional estimate · ";font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);}
+.split-kpi{display:flex;gap:18px;flex-wrap:wrap;align-items:stretch;}
+.mini{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow-card);min-width:200px;}
+.mini .mv{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--ink);line-height:1.1;margin-top:6px;}
+.trend .yl{font-family:var(--font-mono);font-size:11px;fill:var(--ink-mute);text-anchor:end;}
+.trend .vl{font-family:var(--font-mono);font-size:11.5px;text-anchor:middle;font-weight:500;}
+.trend .vl.c1{fill:var(--purple);} .trend .vl.c2{fill:var(--mint-deep);}
+.trend .pc{fill:var(--purple);} .trend .po{fill:var(--mint);}
+@media(max-width:900px){ .method ul.bul{columns:1;} }
+</style>
+</head>
+<body>
+<nav class="progress-bar" aria-label="Section progress">
+<div class="progress-item" data-target="s-cover"><div class="track"></div><div class="lbl">Cover</div></div>
+<div class="progress-item" data-target="s-glance"><div class="track"></div><div class="lbl">Glance</div></div>
+<div class="progress-item" data-target="s-p-trend"><div class="track"></div><div class="lbl">Social Trend</div></div>
+<div class="progress-item" data-target="s-p-break"><div class="track"></div><div class="lbl">Breakdown</div></div>
+<div class="progress-item" data-target="s-p-pub"><div class="track"></div><div class="lbl">Platforms</div></div>
+<div class="progress-item" data-target="s-p-camp"><div class="track"></div><div class="lbl">Campaigns</div></div>
+<div class="progress-item" data-target="s-p-ads"><div class="track"></div><div class="lbl">Creative</div></div>
+<div class="progress-item" data-target="s-s-invest"><div class="track"></div><div class="lbl">Search Spend</div></div>
+<div class="progress-item" data-target="s-s-kw"><div class="track"></div><div class="lbl">Keywords</div></div>
+<div class="progress-item" data-target="s-s-comp"><div class="track"></div><div class="lbl">Competitors</div></div>
+<div class="progress-item" data-target="s-s-pages"><div class="track"></div><div class="lbl">Pages</div></div>
+<div class="progress-item" data-target="s-s-ads"><div class="track"></div><div class="lbl">Search Ads</div></div>
+</nav>
+<div class="sheet">
+<header id="s-cover" class="cover-light fullscreen-section" style="position:relative;border-radius:16px;padding:clamp(28px,4vw,56px);margin-top:16px;">
+<div class="corner-lockup">
+<svg class="noetic-logo" viewBox="0 0 423.25 114.13" role="img" aria-label="Noetic"><use href="#noetic-logo"/></svg>
+<span class="lockup-rule" aria-hidden="true"></span>
+<svg class="client-logo" role="img" aria-label="Caesarstone" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M17.9316 1.86H29.3116C35.0216 1.86 37.3816 0 37.3716 0H17.8916C4.50157 0 -1.23843 9.17 0.221575 17.11C1.26157 22.74 6.42157 27.52 13.9416 27.98C16.9916 28.17 19.9316 27.27 19.9316 27.27C10.8016 27.44 4.37157 22.69 3.66158 16.12C2.79157 8.11 8.63158 1.86 17.9316 1.86Z" fill="#1A1B17"/><path d="M14.51 5.08914C23.9 4.26914 28.63 10.4491 27.92 16.6391C27.41 21.0891 23.07 24.6291 18.29 24.3991C16.31 24.2991 14.55 23.4691 14.55 23.4691C19.95 23.6691 24.06 19.9591 24.56 15.5091C25.27 9.31914 20.16 5.74914 14.5 5.08914" fill="#1A1B17"/><path d="M17.6292 8.34118C11.2792 7.05118 7.91924 11.3812 8.34924 15.4912C8.64924 18.4412 11.5192 20.8112 14.7092 20.6812C16.0192 20.6312 17.1992 20.0912 17.1992 20.0912C13.6092 20.1912 11.5492 17.9512 11.2392 15.0012C10.8092 10.8912 13.7892 8.72118 17.6292 8.34118Z" fill="#1A1B17"/><path d="M175.522 8.75H175.952C176.232 8.75 176.412 8.69 176.412 8.4C176.412 8.15 176.182 8.07 175.952 8.07H175.522V8.75ZM175.162 7.79H176.012C176.522 7.79 176.782 8 176.782 8.42C176.782 8.78 176.562 9.03 176.202 9.03L176.832 10.02H176.442L175.822 9.03H175.512V10.02H175.142V7.79H175.162ZM175.902 10.52C176.772 10.52 177.432 9.81 177.432 8.9C177.432 7.99 176.772 7.28 175.902 7.28C175.032 7.28 174.352 7.99 174.352 8.9C174.352 9.81 175.012 10.52 175.902 10.52ZM175.892 7C176.932 7 177.792 7.85 177.792 8.9C177.792 9.95 176.932 10.8 175.892 10.8C174.852 10.8 173.992 9.95 173.992 8.9C173.992 7.85 174.842 7 175.892 7Z" fill="#1A1B17"/><path d="M108.018 7.29781C107.338 7.09781 106.588 7.00781 105.938 7.00781C104.408 7.00781 102.828 8.09781 102.108 9.62781H102.048V7.34781H99.5078V22.0578H102.218V15.3678C102.218 11.6778 103.808 9.37781 106.228 9.37781C106.328 9.37781 106.618 9.39781 106.668 9.39781L108.018 7.30781V7.29781Z" fill="#1A1B17"/><path d="M44.1381 9.83C43.0981 9.4 42.0581 9.2 41.1981 9.2C38.1681 9.2 36.4681 11.91 36.4681 14.71C36.4681 17.33 37.8781 20.22 41.3681 20.22C42.2881 20.22 43.4481 19.93 44.2781 19.38L44.4781 21.8C43.3481 22.32 42.0581 22.4 41.0781 22.4C36.6381 22.4 33.5781 18.91 33.5781 14.7C33.5781 10.23 36.5781 7 41.0781 7C42.1781 7 43.5881 7.26 44.3681 7.58L44.1381 9.83Z" fill="#1A1B17"/><path d="M74.5503 19.1678C75.6203 19.8578 77.1503 20.2078 77.9303 20.2078C79.1603 20.2078 80.6903 19.6878 80.6903 18.1078C80.6903 15.4278 74.3203 15.6578 74.3203 11.5378C74.3203 8.48781 76.6003 7.00781 79.5103 7.00781C80.7803 7.00781 81.8203 7.26781 82.8803 7.58781L82.6503 9.95781C82.0403 9.57781 80.4303 9.20781 79.7903 9.20781C78.4103 9.20781 77.2003 9.78781 77.2003 10.9978C77.2003 13.9978 83.5703 13.1278 83.5703 17.8278C83.5703 20.9778 81.0603 22.4078 78.4403 22.4078C77.0603 22.4078 75.6403 22.2678 74.4003 21.6078L74.5503 19.1878V19.1678Z" fill="#1A1B17"/><path d="M94.5481 15.0478C93.9781 15.0478 93.3981 14.9878 92.8181 14.9878C91.3581 14.9878 87.7181 15.2178 87.7181 17.8078C87.7181 19.3678 89.2181 20.1978 90.4581 20.1978C93.1381 20.1978 94.5481 18.5278 94.5481 16.3378V15.0378V15.0478ZM86.4981 8.38781C87.8481 7.57781 89.4681 7.00781 91.3481 7.00781C95.5581 7.00781 97.2581 9.07781 97.2581 13.0878V19.1678C97.2581 20.8378 97.3181 21.6178 97.3781 22.0478H94.8381V20.1478H94.7781C94.1381 21.0378 92.6981 22.3978 90.2181 22.3978C87.0481 22.3978 84.8281 21.0178 84.8281 17.8178C84.8281 14.1278 88.8681 12.9778 91.6681 12.9778C92.7381 12.9778 93.4881 12.9778 94.5481 13.0378C94.5481 10.4978 93.6281 9.20781 90.9181 9.20781C89.3881 9.20781 87.7481 9.78781 86.6481 10.7078L86.4981 8.39781V8.38781Z" fill="#1A1B17"/><path d="M55.5013 15.0478C54.9313 15.0478 54.3513 14.9878 53.7713 14.9878C52.3013 14.9878 48.6712 15.2178 48.6712 17.8078C48.6712 19.3678 50.1713 20.1978 51.4113 20.1978C54.0913 20.1978 55.5013 18.5278 55.5013 16.3378V15.0378V15.0478ZM47.4613 8.38781C48.8213 7.57781 50.4313 7.00781 52.3113 7.00781C56.5213 7.00781 58.2213 9.07781 58.2213 13.0878V19.1678C58.2213 20.8378 58.2813 21.6178 58.3313 22.0478H55.7913V20.1478H55.7313C55.0913 21.0378 53.6512 22.3978 51.1712 22.3978C47.9912 22.3978 45.7812 21.0178 45.7812 17.8178C45.7812 14.1278 49.8213 12.9778 52.6113 12.9778C53.6813 12.9778 54.4313 12.9778 55.4913 13.0378C55.4913 10.4978 54.5713 9.20781 51.8613 9.20781C50.3313 9.20781 48.6912 9.78781 47.6012 10.7078L47.4513 8.39781L47.4613 8.38781Z" fill="#1A1B17"/><path d="M135.467 20.21C138.637 20.21 140.047 17.33 140.047 14.7C140.047 11.9 138.347 9.19 135.467 9.19C132.587 9.19 130.857 11.9 130.857 14.7C130.857 17.32 132.267 20.21 135.467 20.21ZM135.467 7C139.937 7 142.937 10.23 142.937 14.7C142.937 18.91 139.877 22.4 135.467 22.4C131.057 22.4 127.977 18.91 127.977 14.7C127.977 10.23 130.977 7 135.467 7Z" fill="#1A1B17"/><path d="M144.398 7.34781H147.018V9.68781H147.078C147.888 8.01781 149.848 7.00781 151.898 7.00781C155.708 7.00781 157.408 9.36781 157.408 13.3278V22.0678H154.698V14.4578C154.698 11.0278 153.948 9.35781 151.588 9.20781C148.498 9.20781 147.118 11.6878 147.118 15.2578V22.0578H144.408V7.34781H144.398Z" fill="#1A1B17"/><path d="M169.498 13.29C169.498 11.04 168.168 9.2 165.838 9.2C163.188 9.2 162.088 11.39 161.888 13.29H169.498ZM171.258 21.45C170.218 21.83 169.038 22.4 166.618 22.4C161.398 22.4 159.008 19.23 159.008 14.44C159.008 10.09 161.748 7 165.898 7C170.798 7 172.388 10.57 172.388 15.3H161.898C161.898 18.21 164.178 20.2 166.738 20.2C168.528 20.2 170.598 19.28 171.268 18.73V21.44L171.258 21.45Z" fill="#1A1B17"/><path d="M70.2734 13.29C70.2734 11.04 68.9534 9.2 66.6134 9.2C63.9534 9.2 62.8634 11.39 62.6634 13.29H70.2734ZM72.0234 21.45C70.9834 21.83 69.8034 22.4 67.3834 22.4C62.1634 22.4 59.7734 19.23 59.7734 14.44C59.7734 10.09 62.5134 7 66.6634 7C71.5634 7 73.1534 10.57 73.1534 15.3H62.6534C62.6534 18.21 64.9334 20.2 67.4934 20.2C69.2834 20.2 71.3634 19.28 72.0234 18.73V21.44V21.45Z" fill="#1A1B17"/><path d="M126.104 20.2091C124.864 20.2091 123.824 19.2891 123.824 17.5891V9.54906H127.714V7.34906H123.824V5.03906L121.114 5.54906V7.34906H113.424C112.884 7.37906 108.354 6.94906 108.344 11.5391C108.344 15.6591 114.714 15.4291 114.714 18.1091C114.714 19.6991 113.194 20.2191 111.954 20.2191C111.174 20.2191 109.654 19.8691 108.584 19.1791L108.434 21.5991C109.674 22.2591 111.084 22.4091 112.474 22.4091C115.094 22.4091 117.594 20.9691 117.604 17.8291C117.614 13.1191 111.124 13.9491 111.244 10.9291C111.294 9.61906 112.704 9.57906 113.714 9.55906H121.124V18.1391C121.124 21.0791 122.854 22.4091 125.654 22.4091C126.524 22.4091 127.354 22.1791 127.954 21.9991V19.6991C127.554 19.9591 126.944 20.2191 126.104 20.2191" fill="#1A1B17"/></g></svg>
+</div>
+<span class="capsule" style="margin-top:40px;">Competitive Landscape</span>
+<h1 class="display-lg" style="margin-top:20px;max-width:22ch;">Cambria and Cosentino in <em>paid media</em></h1>
+<p class="lede-lg" style="margin-top:16px;color:var(--ink-soft);">How the two closest competitors show up in paid social and Google Search across the US market.</p>
+<dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-top:32px;padding-top:18px;border-top:1px solid var(--rule-strong);">
+<div><dt class="meta-line">Period</dt><dd style="margin-top:5px;font-family:var(--font-display);font-weight:600;font-size:15px;">March to August 2026</dd></div>
+<div><dt class="meta-line">Market</dt><dd style="margin-top:5px;font-family:var(--font-display);font-weight:600;font-size:15px;">United States</dd></div>
+<div><dt class="meta-line">Channels</dt><dd style="margin-top:5px;font-family:var(--font-display);font-weight:600;font-size:15px;">Paid Social · Google Search</dd></div>
+<div><dt class="meta-line">Prepared by</dt><dd style="margin-top:5px;font-family:var(--font-display);font-weight:600;font-size:15px;">Noetic Creative</dd></div>
+</dl>
+</header>
+<section id="s-glance" class="fullscreen-section">
+<div class="section-head"><span class="capsule">At a glance</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Two brands, two very different <em>playbooks</em></h2>
+<div class="grid-2" style="margin-top:28px;">
+<div class="card">
+<div class="card__head"><h4>Cambria</h4><span class="brand-tag"><span class="dot cam"></span>Cambria</span></div>
+<div class="ctitle">Defend the brand, convert the pro</div>
+<ul class="bul" style="margin-top:14px;">
+<li>Paid social runs in flights on Facebook, led by professional sample orders, its top campaign, plus a gated Kitchen and Bath Planner.</li>
+<li>Search is almost entirely brand defense, run as a spring flight that peaked in June and faded by August.</li>
+<li>Creative follows the same priority: samples first, then gated planning content, then brand awareness.</li>
+</ul>
+</div>
+<div class="card">
+<div class="card__head"><h4>Cosentino</h4><span class="brand-tag"><span class="dot cos"></span>Cosentino</span></div>
+<div class="ctitle">Own the category, stay visible</div>
+<ul class="bul" style="margin-top:14px;">
+<li>Paid social is an always-on brand presence, almost entirely on Pinterest, at a much lower cost per impression.</li>
+<li>Search goes after generic category terms like quartz countertops, and search activity accelerated sharply in August.</li>
+<li>Creative is space-led and brand-level, with Silestone and Dekton in context rather than offers.</li>
+</ul>
+</div>
+</div>
+<div class="method" style="margin-top:22px;">
+<div class="card__head"><h4 style="font-size:20px;">How to read this report</h4><span class="emoji">🧭</span></div>
+<p>Competitor investment is <b>estimated</b> from observed ad activity, since platforms do not publish what advertisers spend. Use every figure as <b>directional</b>: it shows scale, trend and relative position between brands, not an exact budget.</p>
+<ul class="bul" style="margin-top:10px;columns:2;column-gap:28px;">
+<li><b>Paid social</b> covers ads detected on Facebook, Instagram and Pinterest.</li>
+<li><b>Google Search</b> covers detected text ads only. Performance Max, Shopping, YouTube and Demand Gen are not captured, so real search totals are likely higher.</li>
+</ul>
+</div>
+</section>
+<section id="s-p-trend" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Paid Social · Activity Trend</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Cosentino runs <em>always-on</em>. Cambria runs in flights.</h2>
+<p class="body" style="margin-top:10px;">Weekly paid social impressions. Cosentino held a continuous presence from March through late June with no dark weeks, then paused for the summer. Cambria moved in short bursts separated by gaps.</p>
+<div class="chart-legend" style="margin-top:20px;">
+<div class="legend-item"><span class="legend-dot cam"></span>Cambria</div>
+<div class="legend-item"><span class="legend-dot cos"></span>Cosentino</div>
+</div>
+<div class="scroll-x" style="margin-top:14px;"><div style="min-width:620px;"><svg viewBox="0 0 1000 290" class="trend" role="img" aria-label="Weekly paid social impressions, Cambria vs Cosentino"><line x1="60" x2="980" y1="252" y2="252" class="axis"/><line x1="60" x2="980" y1="207" y2="207" class="g"/><text x="50" y="211" class="yl">1M</text><line x1="60" x2="980" y1="162" y2="162" class="g"/><text x="50" y="166" class="yl">2M</text><line x1="60" x2="980" y1="117" y2="117" class="g"/><text x="50" y="121" class="yl">3M</text><line x1="60" x2="980" y1="72" y2="72" class="g"/><text x="50" y="76" class="yl">4M</text><line x1="60" x2="980" y1="27" y2="27" class="g"/><text x="50" y="31" class="yl">5M</text><text x="60" y="278" class="xl">Mar</text><text x="236" y="278" class="xl">Apr</text><text x="378" y="278" class="xl">May</text><text x="520" y="278" class="xl">Jun</text><text x="696" y="278" class="xl">Jul</text><text x="838" y="278" class="xl">Aug</text><path d="M60,128 C65,125 83,108 95,110 C107,112 119,136 130,142 C142,147 154,141 166,144 C177,146 189,151 201,157 C213,163 225,181 236,180 C248,178 260,149 272,148 C284,148 295,178 307,177 C319,177 331,158 343,144 C354,130 366,79 378,94 C390,110 402,225 413,236 C425,247 437,197 449,162 C461,127 472,37 484,27 C496,17 508,89 520,103 C531,118 543,105 555,115 C567,124 579,145 590,162 C602,179 620,207 626,216 " class="ln cos"/><path d="M60,191 C65,188 83,171 95,171 C107,170 119,176 130,186 C142,197 154,225 166,231 C177,238 189,226 201,227 C213,228 225,251 236,238 C248,225 266,165 272,151 M378,245 C384,220 402,101 413,99 C425,97 437,222 449,234 C461,246 478,181 484,171 M555,61 C561,87 579,194 590,216 C602,238 614,191 626,193 C637,195 655,223 661,229 M732,229 C738,220 755,176 767,177 C779,179 797,228 803,238 M944,247 C950,247 974,249 980,249 " class="ln cam"/></svg></div></div>
+<div style="margin-top:18px;" class="scroll-x"><div style="min-width:620px;">
+<p class="small" style="margin-bottom:6px;">Weeks with active ads</p>
+<div class="flight"><span class="share-lbl">Cambria</span><div class="cells"><span class="cell on-cam" title="Mar 2"></span><span class="cell on-cam" title="Mar 9"></span><span class="cell on-cam" title="Mar 16"></span><span class="cell on-cam" title="Mar 23"></span><span class="cell on-cam" title="Mar 30"></span><span class="cell on-cam" title="Apr 6"></span><span class="cell on-cam" title="Apr 13"></span><span class="cell" title="Apr 20"></span><span class="cell" title="Apr 27"></span><span class="cell on-cam" title="May 4"></span><span class="cell on-cam" title="May 11"></span><span class="cell on-cam" title="May 18"></span><span class="cell on-cam" title="May 25"></span><span class="cell" title="Jun 1"></span><span class="cell on-cam" title="Jun 8"></span><span class="cell on-cam" title="Jun 15"></span><span class="cell on-cam" title="Jun 22"></span><span class="cell on-cam" title="Jun 29"></span><span class="cell" title="Jul 6"></span><span class="cell on-cam" title="Jul 13"></span><span class="cell on-cam" title="Jul 20"></span><span class="cell on-cam" title="Jul 27"></span><span class="cell" title="Aug 3"></span><span class="cell" title="Aug 10"></span><span class="cell" title="Aug 17"></span><span class="cell on-cam" title="Aug 24"></span><span class="cell on-cam" title="Aug 31"></span></div></div>
+<div class="flight"><span class="share-lbl">Cosentino</span><div class="cells"><span class="cell on-cos" title="Mar 2"></span><span class="cell on-cos" title="Mar 9"></span><span class="cell on-cos" title="Mar 16"></span><span class="cell on-cos" title="Mar 23"></span><span class="cell on-cos" title="Mar 30"></span><span class="cell on-cos" title="Apr 6"></span><span class="cell on-cos" title="Apr 13"></span><span class="cell on-cos" title="Apr 20"></span><span class="cell on-cos" title="Apr 27"></span><span class="cell on-cos" title="May 4"></span><span class="cell on-cos" title="May 11"></span><span class="cell on-cos" title="May 18"></span><span class="cell on-cos" title="May 25"></span><span class="cell on-cos" title="Jun 1"></span><span class="cell on-cos" title="Jun 8"></span><span class="cell on-cos" title="Jun 15"></span><span class="cell on-cos" title="Jun 22"></span><span class="cell" title="Jun 29"></span><span class="cell" title="Jul 6"></span><span class="cell" title="Jul 13"></span><span class="cell" title="Jul 20"></span><span class="cell" title="Jul 27"></span><span class="cell" title="Aug 3"></span><span class="cell" title="Aug 10"></span><span class="cell" title="Aug 17"></span><span class="cell" title="Aug 24"></span><span class="cell" title="Aug 31"></span></div></div>
+</div></div>
+</section>
+<section id="s-p-break" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Paid Social · Breakdown</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Similar weight, very different <em>efficiency</em></h2>
+<p class="body" style="margin-top:10px;">Both brands invest at a comparable level, but Cosentino buys far more reach per dollar and rotates almost twice as many creatives.</p>
+<div class="share" style="margin-top:22px;">
+<div class="share-row"><span class="share-lbl">Share of spend</span><div class="share-bar"><span class="s-cam" style="width:52%">Cambria ~$166.7K · 52%</span><span class="s-cos" style="width:48%">Cosentino ~$155.2K · 48%</span></div></div>
+<div class="share-row"><span class="share-lbl">Share of impressions</span><div class="share-bar"><span class="s-cam" style="width:36%">~23.3M · 36%</span><span class="s-cos" style="width:64%">~40.8M · 64%</span></div></div>
+<div class="share-row"><span class="share-lbl">Share of creatives</span><div class="share-bar"><span class="s-cam" style="width:35%">68 · 35%</span><span class="s-cos" style="width:65%">126 · 65%</span></div></div>
+</div>
+<div class="grid-2" style="margin-top:22px;">
+<div class="card scroll-x">
+<table class="vs-table">
+<thead><tr><th></th><th><span class="brand-tag"><span class="dot cam"></span>Cambria</span></th><th><span class="brand-tag"><span class="dot cos"></span>Cosentino</span></th></tr></thead>
+<tbody>
+<tr><td>Est. investment</td><td class="big">~$166.7K</td><td class="big">~$155.2K</td></tr>
+<tr><td>Estimated CPM</td><td class="big">$7.15</td><td class="big">$3.80</td></tr>
+<tr><td>Campaigns</td><td class="big">14</td><td class="big">22</td></tr>
+<tr><td>Platforms</td><td>Facebook, Instagram, Pinterest (trace)</td><td>Pinterest, Instagram</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note" style="align-self:start;"><b>Why the gap:</b> Cosentino's cost per thousand impressions is roughly half of Cambria's, driven by its Pinterest-first buying. Cambria pays more per impression for Facebook audiences it can target with professional and sample offers.</div>
+</div>
+<p class="foot">Estimated paid social investment and impressions, March to August 2026. Directional figures.</p>
+</section>
+<section id="s-p-pub" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Paid Social · Platforms</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Cosentino goes all-in on <em>Pinterest</em>. Cambria lives on Facebook.</h2>
+<div class="grid-2" style="margin-top:26px;">
+<div class="card">
+<div class="brand-tag"><span class="dot cam"></span>Cambria · spend by platform</div>
+<div class="share" style="margin-top:12px;">
+<div class="share-row"><span class="share-lbl">Facebook</span><div class="share-bar" style="background:var(--rule);"><span class="s-cam" style="width:98.8%">~$164.7K · 99%</span></div></div>
+<div class="share-row"><span class="share-lbl">Pinterest</span><div class="share-bar" style="background:var(--rule);"><span class="s-cam" style="width:1.5%;padding:0;"></span><span style="color:var(--ink-mute);">~$1.5K · 1%</span></div></div>
+<div class="share-row"><span class="share-lbl">Instagram</span><div class="share-bar" style="background:var(--rule);"><span class="s-cam" style="width:0.6%;padding:0;"></span><span style="color:var(--ink-mute);">under $5K</span></div></div>
+</div>
+<p class="small" style="margin-top:10px;">Cambria accounts for all observed competitor spend on Facebook.</p>
+</div>
+<div class="card">
+<div class="brand-tag"><span class="dot cos"></span>Cosentino · spend by platform</div>
+<div class="share" style="margin-top:12px;">
+<div class="share-row"><span class="share-lbl">Pinterest</span><div class="share-bar" style="background:var(--rule);"><span class="s-cos" style="width:99.3%;justify-content:flex-start;">~$154.5K · 99%</span></div></div>
+<div class="share-row"><span class="share-lbl">Facebook</span><div class="share-bar" style="background:var(--rule);"><span style="color:var(--ink-mute);">not observed</span></div></div>
+<div class="share-row"><span class="share-lbl">Instagram</span><div class="share-bar" style="background:var(--rule);"><span class="s-cos" style="width:0.7%;padding:0;"></span><span style="color:var(--ink-mute);">under $5K</span></div></div>
+</div>
+<p class="small" style="margin-top:10px;">Cosentino accounts for 99% of observed competitor spend on Pinterest.</p>
+</div>
+</div>
+<div class="note" style="margin-top:22px;">The two brands barely overlap by platform. Cosentino owns the planning and inspiration moment on Pinterest, while Cambria uses Facebook targeting to reach professionals with direct offers. Instagram is marginal for both.</div>
+</section>
+<section id="s-p-camp" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Paid Social · Top Campaigns</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Cambria sells to the <em>pro</em>. Cosentino builds the group brand.</h2>
+<div class="grid-2" style="margin-top:24px;">
+<div class="card scroll-x">
+<div class="brand-tag"><span class="dot cam"></span>Cambria · 14 campaigns</div>
+<table class="vs-table" style="margin-top:10px;">
+<thead><tr><th>Campaign</th><th>Est. spend</th><th>Active</th></tr></thead>
+<tbody>
+<tr><td><b>Professional Samples</b><br><span class="small">Sample orders for trade professionals</span></td><td class="big">~$70.8K<br><span class="small">42% of brand</span></td><td class="small">Since Mar 2025, still running in late Jul 2026</td></tr>
+<tr><td><b>Kitchen &amp; Bath Planner</b><br><span class="small">Gated planning guide, lead capture</span></td><td class="big">~$37.6K<br><span class="small">23% of brand</span></td><td class="small">Since May 2025, running into Jul 2026</td></tr>
+</tbody>
+</table>
+<p class="small" style="margin-top:12px;">Professional Samples is Cambria's number one priority. Together with the Planner, two lower-funnel campaigns carry about two thirds of its social investment, and both have been live for over a year.</p>
+</div>
+<div class="card scroll-x">
+<div class="brand-tag"><span class="dot cos"></span>Cosentino · 22 campaigns</div>
+<table class="vs-table" style="margin-top:10px;">
+<thead><tr><th>Campaign</th><th>Est. spend</th><th>Active</th></tr></thead>
+<tbody>
+<tr><td><b>Cosentino Group brand</b><br><span class="small">Corporate brand presence, all sub-brands</span></td><td class="big">~$62.8K<br><span class="small">41% of brand</span></td><td class="small">Feb to Jun 2026</td></tr>
+<tr><td><b>What is Dekton</b><br><span class="small">Sub-brand education</span></td><td class="big">~$11.1K<br><span class="small">7% of brand</span></td><td class="small">Aug 2025 to Apr 2026</td></tr>
+</tbody>
+</table>
+<p class="small" style="margin-top:12px;">Cosentino's lead campaign is brand-group level, supported by product education rather than direct offers.</p>
+</div>
+</div>
+</section>
+<section id="s-p-ads" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Paid Social · Top Creative</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Cambria leads with <em>samples</em></h2>
+<p class="body" style="margin-top:10px;">Sample-order creative for professionals is where Cambria puts the most money, followed by gated planning content and a lighter brand awareness layer. Cosentino leans on aspirational spaces with its surfaces in context.</p>
+<div class="brand-tag" style="margin-top:22px;"><span class="dot cam"></span>Cambria</div>
+<div class="tier">
+<div class="tier-col"><div class="ctitle" style="margin-top:0;">Priority · sample orders</div>
+<div class="ad-grid"><div class="ad"><img src="assets/cam2.jpg" alt="Cambria complimentary samples for pros ad"><div class="cap"><b>Video</b> · Free samples for pros · ~$10.7K</div></div><div class="ad"><img src="assets/cam4.jpg" alt="Cambria order a sample ad"><div class="cap"><b>Video</b> · Order a sample · ~$8.6K</div></div></div></div>
+<div class="tier-col"><div class="ctitle" style="margin-top:0;">Second · gated planner</div>
+<div class="ad-grid"><div class="ad"><img src="assets/cam1.jpg" alt="Cambria Kitchen and Bath Design Planner ad"><div class="cap"><b>Image</b> · Design Planner · ~$11K</div></div><div class="ad"><img src="assets/cam3.jpg" alt="Cambria Design Planner guide ad"><div class="cap"><b>Image</b> · Design Planner · ~$8.6K</div></div></div></div>
+<div class="tier-col"><div class="ctitle" style="margin-top:0;">Awareness · main site</div>
+<div class="ad-grid"><div class="ad"><img src="assets/cam0.jpg" alt="Cambria video ad: For pros who never settle"><div class="cap"><b>Video</b> · For pros who never settle · ~$22.6K</div></div></div></div>
+</div>
+<div class="brand-tag" style="margin-top:26px;"><span class="dot cos"></span>Cosentino · space-led brand imagery, short 3 to 6 second video</div>
+<div class="ad-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,190px));">
+<div class="ad"><img src="assets/cos0.jpg" alt="Cosentino bathroom video ad"><div class="cap"><b>Video</b> · Bath · ~$19.7K</div></div>
+<div class="ad"><img src="assets/cos1.jpg" alt="Cosentino kitchen video ad"><div class="cap"><b>Video</b> · Kitchen · ~$6.9K</div></div>
+<div class="ad"><img src="assets/cos3.jpg" alt="Cosentino kitchen surface video ad"><div class="cap"><b>Video</b> · Kitchen · ~$6K</div></div>
+<div class="ad"><img src="assets/cos4.jpg" alt="Cosentino living room video ad"><div class="cap"><b>Video</b> · Living · ~$5K</div></div>
+</div>
+<p class="foot">Individual ad figures are estimated spend per creative. Sample-order campaigns carry the largest share of Cambria's budget even though a single awareness video is its top individual ad.</p>
+</section>
+<section id="s-s-invest" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Google Search · Investment</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:14px;">Cambria spikes in spring, Cosentino <em>accelerates</em> in August</h2>
+<div class="split-kpi" style="margin-top:18px;">
+<div class="mini"><span class="brand-tag"><span class="dot cam"></span>Cambria</span><div class="mv">~$23.0K</div><div class="small">est. period total · peak June</div></div>
+<div class="mini"><span class="brand-tag"><span class="dot cos"></span>Cosentino</span><div class="mv">~$8.4K</div><div class="small">est. period total · peak August</div></div>
+<div class="chart-legend" style="align-self:end;justify-content:flex-end;flex:1;">
+<div class="legend-item"><span class="legend-dot cam"></span>Cambria</div>
+<div class="legend-item"><span class="legend-dot cos"></span>Cosentino</div>
+</div>
+</div>
+<div class="scroll-x" style="margin-top:8px;"><div style="min-width:620px;"><svg viewBox="0 0 1000 280" class="trend" role="img" aria-label="Estimated monthly Google Search investment, Cambria vs Cosentino"><line x1="70" x2="960" y1="238" y2="238" class="axis"/><line x1="70" x2="960" y1="190" y2="190" class="g"/><text x="58" y="194" class="yl">$2K</text><line x1="70" x2="960" y1="142" y2="142" class="g"/><text x="58" y="146" class="yl">$4K</text><line x1="70" x2="960" y1="95" y2="95" class="g"/><text x="58" y="99" class="yl">$6K</text><line x1="70" x2="960" y1="47" y2="47" class="g"/><text x="58" y="51" class="yl">$8K</text><text x="70" y="266" class="xl">Mar</text><text x="248" y="266" class="xl">Apr</text><text x="426" y="266" class="xl">May</text><text x="604" y="266" class="xl">Jun</text><text x="782" y="266" class="xl">Jul</text><text x="960" y="266" class="xl">Aug</text><path d="M70,204 C99,210 188,233 248,237 C307,238 366,231 426,228 C485,225 544,221 604,219 C663,217 722,236 782,219 C841,202 930,135 960,119" class="ln cos"/><path d="M70,230 C99,220 188,196 248,170 C307,144 366,93 426,72 C485,51 544,32 604,44 C663,55 722,112 782,142 C841,171 930,208 960,222" class="ln cam"/><circle cx="70" cy="230.2" r="5" class="pc"/><text x="84" y="234.2" class="vl c1" style="text-anchor:start">$330</text><circle cx="248" cy="170.3" r="5" class="pc"/><text x="248" y="158.3" class="vl c1">$2.8K</text><circle cx="426" cy="72.8" r="5" class="pc"/><text x="426" y="60.8" class="vl c1">$6.9K</text><circle cx="604" cy="44.4" r="5" class="pc"/><text x="604" y="32.4" class="vl c1">$8.1K</text><circle cx="782" cy="142.2" r="5" class="pc"/><text x="782" y="130.2" class="vl c1">$4.0K</text><circle cx="960" cy="222.0" r="5" class="pc"/><text x="960" y="210.0" class="vl c1">$671</text><circle cx="70" cy="204.7" r="5" class="po"/><text x="84" y="198.7" class="vl c2" style="text-anchor:start">$1.4K</text><circle cx="248" cy="237.8" r="5" class="po"/><text x="248" y="225.8" class="vl c2">$9</text><circle cx="426" cy="228.9" r="5" class="po"/><text x="426" y="216.9" class="vl c2">$384</text><circle cx="604" cy="219.5" r="5" class="po"/><text x="604" y="207.5" class="vl c2">$778</text><circle cx="782" cy="219.4" r="5" class="po"/><text x="782" y="207.4" class="vl c2">$781</text><circle cx="960" cy="119.1" r="5" class="po"/><text x="960" y="107.1" class="vl c2">$5.0K</text></svg></div></div>
+<div class="grid-2" style="margin-top:10px;">
+<div class="note"><b>Cambria</b> ran a concentrated push from May to July, scaling from 3 to 120 active keywords in June, then pulled back to a handful of terms by August.</div>
+<div class="note"><b>Cosentino</b> stayed modest through July, then made its biggest move of the period in August by bidding on the highest-volume category term in the space.</div>
+</div>
+<p class="foot">Estimated monthly investment in Google Search text ads. Directional: other Google formats are not captured, so real totals are likely higher.</p>
+</section>
+<section id="s-s-kw" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Google Search · Keywords</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Cambria buys its <em>name</em>. Cosentino buys the category.</h2>
+<div class="share" style="margin-top:26px;">
+<div class="share-row"><span class="share-lbl">Cambria</span><div class="share-bar"><span class="s-cam" style="width:100%">Brand terms ~100%</span></div></div>
+<div class="share-row"><span class="share-lbl">Cosentino</span><div class="share-bar"><span class="s-cam" style="width:15%;background:var(--ink-faint);color:var(--ink);">Brand</span><span class="s-cos" style="width:85%">Category terms ~85%</span></div></div>
+</div>
+<p class="small" style="margin-top:6px;">Approximate share of estimated search clicks, full period.</p>
+<div class="grid-2" style="margin-top:22px;">
+<div class="card">
+<div class="card__head"><h4>Pure brand defense</h4><span class="emoji">🛡️</span></div>
+<div class="ctitle">Cambria</div>
+<p>Every keyword contains the Cambria name. The core set covers the brand plus product words, and the June peak added dozens of design names, from Montaaj and Swanbridge to Ironsbridge and Skara Brae.</p>
+<div style="margin-top:14px;"><span class="pill hot">cambria</span><span class="pill hot">cambria quartz</span><span class="pill hot">cambria countertops</span><span class="pill hot">cambria quartz countertops</span><span class="pill">cambria usa</span><span class="pill">cambria showrooms near me</span><span class="pill">cambria samples</span><span class="pill">design names</span></div>
+</div>
+<div class="card">
+<div class="card__head"><h4>Category conquest</h4><span class="emoji">🎯</span></div>
+<div class="ctitle">Cosentino</div>
+<p>Cosentino leads with generic, high-volume terms that any quartz shopper types. By August, <b>quartz countertops</b> alone drove the vast majority of its estimated clicks. Silestone and Dekton brand terms play a supporting role.</p>
+<div style="margin-top:14px;"><span class="pill hot2">quartz countertops</span><span class="pill hot2">quartzite countertops</span><span class="pill hot2">engineered quartz countertops</span><span class="pill hot2">quartz slabs</span><span class="pill">best kitchen countertops</span><span class="pill">silestone quartz</span><span class="pill">cosentino dekton</span></div>
+</div>
+</div>
+</section>
+<section id="s-s-comp" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Google Search · Competitors</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Who they meet in the <em>auction</em></h2>
+<p class="body" style="margin-top:10px;">Advertisers that most often appear on the same search terms as each brand.</p>
+<div class="grid-2" style="margin-top:24px;">
+<div class="card">
+<div class="card__head"><h4>Local fabricators on the Cambria name</h4><span class="brand-tag"><span class="dot cam"></span>Cambria</span></div>
+<p>Because Cambria only bids on its own name, its overlap is with regional fabricators and stone yards that bid on Cambria searches to capture shoppers. No major surface brand competes with Cambria head to head in search.</p>
+<div style="margin-top:14px;"><span class="pill">factoryplaza.com</span><span class="pill">quartztopsandmore.com</span><span class="pill">stonehouseusa.com</span><span class="pill">stonetekdesign.com</span><span class="pill">graniteamerica.com</span><span class="pill">colonialmarble.net</span><span class="pill">homedepot.com</span><span class="pill">lowes.com</span></div>
+</div>
+<div class="card">
+<div class="card__head"><h4>Caesarstone in the category race</h4><span class="brand-tag"><span class="dot cos"></span>Cosentino</span></div>
+<p>Cosentino's generic strategy puts it against fabricators and, from July, directly against <b>Caesarstone</b>, which became one of its top overlapping advertisers on category terms in July and August.</p>
+<div style="margin-top:14px;"><span class="pill hot">caesarstoneus.com</span><span class="pill">factoryplaza.com</span><span class="pill">zsoltgranitecorporation.com</span><span class="pill">montsurfaces.com</span><span class="pill">stonehouseusa.com</span><span class="pill">graniteamerica.com</span><span class="pill">quartztopsandmore.com</span></div>
+</div>
+</div>
+<div class="note" style="margin-top:22px;">The category auction for terms like quartz countertops is where Caesarstone and Cosentino now compete most directly. Cambria is not present there.</div>
+</section>
+<section id="s-s-pages" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Google Search · Landing Pages</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">Where the <em>clicks</em> land</h2>
+<div class="grid-2" style="margin-top:24px;">
+<div class="card scroll-x">
+<div class="brand-tag"><span class="dot cam"></span>Cambria</div>
+<table class="vs-table" style="margin-top:10px;">
+<thead><tr><th>Page</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td>Showroom and dealer locator</td><td>The constant. Receives 100% of clicks in March, April and August</td></tr>
+<tr><td>Home page</td><td>Main brand entry point during the May to July push</td></tr>
+<tr><td>Montaaj design page</td><td>Around a third of clicks in May and June, signaling a design launch push</td></tr>
+<tr><td>Quartz countertops hub</td><td>Product overview for broader brand searches</td></tr>
+<tr><td>Los Angeles locator</td><td>Regional page, suggests a California-focused layer</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card scroll-x">
+<div class="brand-tag"><span class="dot cos"></span>Cosentino</div>
+<table class="vs-table" style="margin-top:10px;">
+<thead><tr><th>Page</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td>Quartz countertops and mineral surfaces landing</td><td>The workhorse. All category traffic goes here, over 90% of clicks in August</td></tr>
+<tr><td>Silestone Ethereal Glow color page</td><td>Hero color for Silestone brand searches</td></tr>
+<tr><td>Dekton Marmorio color page</td><td>Dekton enters in July, around a quarter of clicks that month</td></tr>
+<tr><td>Silestone Pietra color page</td><td>Secondary color, paired with a find-a-pro message</td></tr>
+<tr><td>Kitchen countertops page</td><td>Inspiration support for broad kitchen searches</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="note" style="margin-top:22px;"><b>Takeaway:</b> Cambria sends searchers to find a showroom. Cosentino sends them to a category education page and hero colors.</div>
+</section>
+<section id="s-s-ads" class="fullscreen-section">
+<div class="section-head"><span class="capsule">Google Search · Ad Examples</span><span class="meta-line">Mar to Aug 2026</span></div>
+<h2 class="display-md" style="margin-top:16px;">What they <em>say</em> in search</h2>
+<div class="grid-2" style="margin-top:20px;">
+<div>
+<div class="brand-tag"><span class="dot cam"></span>Cambria · heritage, durability, showrooms</div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cambriausa.com</span></div><div class="serp-title">Cambria® Quartz Surfaces - The Cambria Difference</div><p class="serp-desc">Family-owned and American-made, Cambria quartz countertops and surfaces combine innovative design and durability for a lifetime of beauty.</p></div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cambriausa.com</span></div><div class="serp-title">Ironsbridge Cambria Quartz Designs</div><p class="serp-desc">Combining true strength and delicate beauty, this design blends liquid honey accents with patchworks of grays, whites, and cream. Stain Resistant. Maintenance Free. Unbeatable Durability.</p></div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cambriausa.com</span></div><div class="serp-title">Quartz Surfaces at Cambria Sales and Distribution Center Showroom</div><p class="serp-desc">Meet with a representative to find our vast design palette of quartz colors, and talk about how Cambria can add value. American Made.</p></div>
+</div>
+<div>
+<div class="brand-tag"><span class="dot cos"></span>Cosentino · color stories, sub-brands, find a pro</div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cosentino.com/usa</span></div><div class="serp-title">Silestone: Kitchen Countertops | Silestone: Ethereal Glow</div><p class="serp-desc">Silestone® Ethereal Glow: a modern Calacatta look with bold gold and gray structures. Gold and gray veining across a nuanced white background adds depth and value.</p></div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cosentino.com/usa</span></div><div class="serp-title">Dekton: Kitchen Countertops | Dekton Marmorio</div><p class="serp-desc">The Italian stones of yesteryear, recoded by Dekton for contemporary design. Dekton Marmorio: inspired by Travertino Navona, quarried near Tivoli, east of Rome.</p></div>
+<div class="serp"><div class="serp-top"><span class="sp">Sponsored</span><span class="serp-url">www.cosentino.com/usa</span></div><div class="serp-title">Silestone: Kitchen Countertops | Silestone: Pietra</div><p class="serp-desc">Silestone Pietra: a calm gray surface designed to complement modern interiors. Are you working on a remodel? Find a certified professional and they will be in touch.</p></div>
+</div>
+</div>
+</section>
+<footer class="small" style="margin:30px 0 40px;padding-top:16px;border-top:1px solid var(--rule);">
+&copy; 2026 Noetic Creative · Competitive analysis prepared for Caesarstone US · Paid social and Google Search activity, United States, March to August 2026. All figures are directional estimates based on observed ad activity.
+</footer>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><g id="noetic-logo"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.690-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.970V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.080-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.350-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.650,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></g></svg>
+<script>
+(function(){
+var sections=[].slice.call(document.querySelectorAll('.fullscreen-section[id]'));
+var items=[].slice.call(document.querySelectorAll('.progress-item'));
+items.forEach(function(it){it.addEventListener('click',function(){var t=document.getElementById(it.getAttribute('data-target'));if(t)t.scrollIntoView({behavior:'smooth'});});});
+function update(){var pos=window.scrollY+window.innerHeight*0.35,a=0;sections.forEach(function(s,i){if(s.offsetTop<=pos)a=i;});
+items.forEach(function(it,i){it.classList.toggle('is-active',i===a);it.classList.toggle('is-done',i<a);});
+var act=items[a]; if(act&&act.parentNode.scrollWidth>act.parentNode.clientWidth){act.parentNode.scrollLeft=act.offsetLeft-act.parentNode.clientWidth/2;} }
+var bar=document.querySelector('.progress-bar');
+sections.forEach(function(sec){var w=document.createElement('div');w.className='fit';while(sec.firstChild)w.appendChild(sec.firstChild);sec.appendChild(w);});
+function fit(){var desk=window.innerWidth>900;var avail=window.innerHeight-(bar?bar.offsetHeight:58);
+sections.forEach(function(sec){var w=sec.firstChild;w.style.zoom=1;if(!desk)return;
+var cs=getComputedStyle(sec);var pad=parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom);var need=w.scrollHeight+pad;
+if(need>avail){w.style.zoom=Math.max(0.6,(avail-pad-6)/w.scrollHeight*0.97);}});}
+window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);fit();
+window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
+})();
+</script>
+</body>
+</html>
