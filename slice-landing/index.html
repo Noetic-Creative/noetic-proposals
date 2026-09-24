@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signed Isn’t Settled · Slice</title>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="description" content="Issue equity to your teams anywhere, stay in compliance locally, avoid tax penalties — easily and quickly.">
+<style>
+/* ============================================================
+   SLICE — GLOBAL EQUITY ASSURANCE
+   Design tokens v1.0  ·  sliceglobal.com
+   Single source of truth. Never hard-code a value that
+   exists as a token below.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Open+Sans:wght@400;600;700;800&display=swap');
+
+:root {
+
+  /* ---------- 1. CORE PALETTE (primary) ---------- */
+  --slice-dark:            #280003;  /* signature deep maroon-black. Default text. */
+  --slice-dark-50:         #28000380;
+  --slice-orange:          #FF5400;  /* primary brand accent + primary CTA */
+  --slice-magenta:         #FF0054;
+  --slice-purple:          #9F50B2;
+  --slice-yellow:          #FFD23F;
+  --slice-creamsicle:      #FEEFE0;  /* warm page tint. Nav, alt sections. */
+  --slice-creamsicle-50:   #FEEFE080;
+  --slice-pure:            #FFFFFF;
+  --slice-grey:            #C4C4C4;
+  --slice-grey-50:         #E1E1E1;
+  --slice-black:           #000000;
+
+  /* ---------- 2. SECONDARY RAMPS ---------- */
+  /* i = lightest (tints / backgrounds)  ·  iii = deepest (hover / text-safe) */
+  --slice-orange-i:        #FFBB99;
+  --slice-orange-ii:       #FF9664;
+  --slice-orange-iii:      #FF7939;
+
+  --slice-magenta-i:       #FE6196;
+  --slice-magenta-ii:      #FF3176;
+  --slice-magenta-iii:     #E9004E;
+
+  --slice-purple-i:        #DDAFE8;
+  --slice-purple-ii:       #BE7ACF;
+  --slice-purple-iii:      #87339C;
+
+  --slice-yellow-i:        #FFE48D;
+  --slice-yellow-ii:       #FFDA62;
+  --slice-yellow-iii:      #FFB13F;
+
+  /* Gradient-only greens. Never used as flat fills or type colour. */
+  --slice-green-i:         #00D0C1;
+  --slice-green-ii:        #1BB2A8;
+
+  /* ---------- 3. SEMANTIC ROLES ---------- */
+  --color-text:            var(--slice-dark);
+  --color-text-muted:      var(--slice-dark-50);
+  --color-text-invert:     var(--slice-pure);
+  --color-accent:          var(--slice-orange);
+  --color-accent-hover:    var(--slice-magenta-iii);
+  --color-link:            var(--slice-orange);
+  --color-surface:         var(--slice-pure);
+  --color-surface-warm:    var(--slice-creamsicle);
+  --color-surface-dark:    var(--slice-dark);
+  --color-border:          var(--slice-grey-50);
+  --color-border-strong:   var(--slice-grey);
+
+  --color-success:         var(--slice-green-ii);
+  --color-warning:         var(--slice-yellow-iii);
+  --color-critical:        var(--slice-magenta-iii);
+  --color-info:            var(--slice-purple-iii);
+
+  /* ---------- 4. GRADIENTS ---------- */
+  /* 4a. Signature Hero — the single most recognisable brand asset.
+         Orange at top, resolving to purple. Vertical only. */
+  --grad-hero: linear-gradient(180deg,
+      #E84E0C   0%,
+      #DB6E0B  30%,
+      #D86512  52%,
+      #D2574D  72%,
+      #B4476C  88%,
+      #7D297F 100%);
+
+  /* 4b. Mesh Hero — richer, for large full-bleed canvases (decks, key visuals). */
+  --grad-hero-mesh:
+      radial-gradient(120% 90% at 12% 4%,  #FF7939 0%, transparent 58%),
+      radial-gradient(110% 80% at 88% 14%, #FFB13F 0%, transparent 52%),
+      radial-gradient(130% 95% at 70% 96%, #87339C 0%, transparent 60%),
+      radial-gradient(110% 80% at 18% 88%, #E9004E 0%, transparent 55%),
+      linear-gradient(180deg, #E84E0C 0%, #B4476C 62%, #7D297F 100%);
+
+  /* 4c. Spectrum — the colour story, left to right. Rules, bars, charts. */
+  --grad-spectrum: linear-gradient(90deg, var(--slice-orange) 0%, var(--slice-magenta) 50%, var(--slice-purple) 100%);
+
+  /* 4d. Warm — energy, growth, upside. */
+  --grad-warm: linear-gradient(135deg, var(--slice-yellow) 0%, var(--slice-orange) 100%);
+
+  /* 4e. Mark — the logomark gradient. Reserve for the mark and for icon fills. */
+  --grad-mark: linear-gradient(135deg, var(--slice-yellow-ii) 0%, var(--slice-yellow-iii) 100%);
+
+  /* 4f. Assurance — the cool counterpoint. Compliance, security, "safe". */
+  --grad-assurance: linear-gradient(135deg, var(--slice-green-i) 0%, var(--slice-green-ii) 100%);
+
+  /* 4g. Sheen — the horizontal white wash used over partner logo strips. */
+  --grad-sheen: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.25) 30%, rgba(255,255,255,.25) 70%, rgba(255,255,255,0) 100%);
+
+  /* ---------- 5. TYPEFACES ---------- */
+  --font-display: 'Kanit', 'Trebuchet MS', sans-serif;   /* headings only */
+  --font-body:    'Open Sans', Arial, Helvetica, sans-serif;
+  --font-mono:    'SFMono-Regular', Consolas, monospace; /* data / code only */
+
+  /* Weights */
+  --fw-display:   400;   /* Kanit is ALWAYS 400. Never bold a Kanit heading. */
+  --fw-regular:   400;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+  --fw-black:     800;   /* labels, eyebrows, buttons */
+
+  /* Type scale — desktop */
+  --fs-display:   80px;  --lh-display:   84px;
+  --fs-h1:        65px;  --lh-h1:      71.5px;
+  --fs-h2:        60px;  --lh-h2:        60px;
+  --fs-h3:        40px;  --lh-h3:        48px;
+  --fs-h4:        25px;  --lh-h4:      32.5px;
+  --fs-h5:        25px;  --lh-h5:      37.5px;   /* Open Sans 700, not Kanit */
+  --fs-lead:      22px;  --lh-lead:      33px;
+  --fs-body:      16px;  --lh-body:      24px;
+  --fs-small:     14px;  --lh-small:     21px;
+  --fs-caption:   12px;  --lh-caption:   18px;
+  --fs-eyebrow:   14px;  --lh-eyebrow:   17px;
+  --fs-eyebrow-lg:17.6px;--lh-eyebrow-lg:21px;
+
+  /* Tracking */
+  --ls-heading:   -0.48px;   /* every Kanit heading */
+  --ls-body:      0;
+  --ls-eyebrow:   1.8px;
+  --ls-eyebrow-lg:3.2px;
+  --ls-button:    1.8px;
+
+  /* ---------- 6. SPACE — 4pt base ---------- */
+  --sp-1:   4px;   --sp-2:   8px;   --sp-3:  12px;  --sp-4:  16px;
+  --sp-5:  20px;   --sp-6:  24px;   --sp-7:  32px;  --sp-8:  40px;
+  --sp-9:  48px;   --sp-10: 56px;   --sp-11: 64px;  --sp-12: 80px;
+  --sp-13: 96px;   --sp-14:112px;   --sp-15:128px;  --sp-16:160px;
+
+  /* ---------- 7. LAYOUT ---------- */
+  --container:       1360px;
+  --container-text:  720px;   /* max measure for long-form copy */
+  --gutter:          48px;    /* desktop page margin */
+  --gutter-mobile:   24px;
+  --grid-columns:    12;
+  --grid-gap:        24px;
+  --section-y:       112px;   /* default section rhythm */
+  --section-y-tight:  96px;
+  --section-y-loose: 128px;
+  --nav-height:       84px;
+
+  /* ---------- 8. RADII ---------- */
+  --r-xs:    4px;
+  --r-sm:    6px;    /* default card */
+  --r-md:    8px;    /* large card, image */
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-pill: 30px;    /* every button, every tag */
+  --r-full:  999px;
+
+  /* ---------- 9. ELEVATION ---------- */
+  --sh-xs: 0 3px 5px rgba(40,0,3,.10);
+  --sh-sm: 0 4px 30px rgba(40,0,3,.10);   /* default card */
+  --sh-md: 0 14px 30px rgba(40,0,3,.10);  /* raised / hover */
+  --sh-lg: 0 24px 60px rgba(40,0,3,.14);
+  --sh-nav:0 3px 30px rgba(0,0,0,.10);
+
+  /* ---------- 10. BORDERS ---------- */
+  --bd-hairline: 1px solid var(--color-border);
+  --bd-button:   3px solid currentColor;   /* outline buttons are 3px, not 1px */
+
+  /* ---------- 11. MOTION ---------- */
+  --ease-out:   cubic-bezier(.22,.61,.36,1);
+  --ease-inout: cubic-bezier(.65,.05,.36,1);
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   450ms;
+  --dur-reveal: 700ms;
+
+  /* ---------- 12. Z-INDEX ---------- */
+  --z-base:0; --z-raised:10; --z-sticky:100; --z-nav:1000; --z-modal:2000; --z-toast:3000;
+}
+
+@media (max-width: 991px) {
+  :root {
+    --fs-display: 56px; --lh-display: 60px;
+    --fs-h1: 44px;  --lh-h1: 50px;
+    --fs-h2: 40px;  --lh-h2: 44px;
+    --fs-h3: 30px;  --lh-h3: 38px;
+    --fs-h4: 22px;  --lh-h4: 29px;
+    --fs-h5: 20px;  --lh-h5: 30px;
+    --fs-lead:19px; --lh-lead:29px;
+    --gutter: 24px;
+    --section-y: 72px; --section-y-tight: 56px; --section-y-loose: 88px;
+  }
+}
+
+/* ============================================================
+   BASE + COMPONENT LAYER
+   Import after the tokens block above.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--ls-heading);
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); }
+h5 {
+  font-family: var(--font-body); font-weight: var(--fw-bold);
+  font-size: var(--fs-h5); line-height: var(--lh-h5);
+  letter-spacing: var(--ls-heading); margin: 0;
+}
+p { margin: 0 0 var(--sp-4); }
+a { color: var(--color-link); text-decoration: none; }
+
+.u-display { font-family: var(--font-display); font-weight: 400;
+  font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--ls-heading); }
+.u-lead    { font-size: var(--fs-lead); line-height: var(--lh-lead); }
+.u-small   { font-size: var(--fs-small); line-height: var(--lh-small); }
+.u-caption { font-size: var(--fs-caption); line-height: var(--lh-caption); }
+
+.eyebrow {
+  font-family: var(--font-body); font-weight: var(--fw-black);
+  font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+  letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
+  color: var(--color-accent); margin: 0 0 var(--sp-4);
+}
+.eyebrow--lg { font-size: var(--fs-eyebrow-lg); letter-spacing: var(--ls-eyebrow-lg); }
+.eyebrow--dark { color: var(--slice-dark); }
+.eyebrow--invert { color: var(--slice-pure); }
+
+/* Gradient text — reserve for one phrase per page, never a whole heading. */
+.u-grad-text {
+  background: var(--grad-spectrum);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* ---------- Layout helpers ---------- */
+.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.container--text { max-width: var(--container-text); }
+.section   { padding-block: var(--section-y); }
+.section--tight { padding-block: var(--section-y-tight); }
+.section--loose { padding-block: var(--section-y-loose); }
+.section--warm  { background: var(--color-surface-warm); }
+.section--dark  { background: var(--color-surface-dark); color: var(--color-text-invert); }
+.section--hero  { background: var(--grad-hero); color: var(--color-text-invert); }
+.grid { display: grid; grid-template-columns: repeat(var(--grid-columns), 1fr); gap: var(--grid-gap); }
+.grid--3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.grid--2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); }
+@media (max-width: 991px) { .grid--3, .grid--2 { grid-template-columns: 1fr; } }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  font-family: var(--font-body); font-weight: var(--fw-black);
+  font-size: var(--fs-eyebrow); letter-spacing: var(--ls-button);
+  text-transform: uppercase; text-decoration: none;
+  padding: 15px 24px; border-radius: var(--r-pill);
+  border: 3px solid transparent; cursor: pointer;
+  transition: background var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible { outline: 3px solid var(--slice-purple); outline-offset: 3px; }
+
+/* On light surfaces */
+.btn--primary  { background: var(--slice-orange); color: var(--slice-pure); border-color: var(--slice-orange); }
+.btn--primary:hover { background: var(--slice-magenta-iii); border-color: var(--slice-magenta-iii); box-shadow: var(--sh-md); }
+.btn--secondary { background: transparent; color: var(--slice-orange); border-color: var(--slice-orange); }
+.btn--secondary:hover { background: var(--slice-orange); color: var(--slice-pure); }
+.btn--tertiary { background: transparent; color: var(--slice-dark); border-color: transparent; padding-inline: 8px; }
+.btn--tertiary:hover { color: var(--slice-orange); }
+
+/* On gradient / dark surfaces */
+.btn--invert  { background: var(--slice-pure); color: var(--slice-orange); border-color: var(--slice-pure); }
+.btn--invert:hover { background: var(--slice-creamsicle); color: var(--slice-magenta-iii); box-shadow: var(--sh-md); }
+.btn--outline { background: transparent; color: var(--slice-pure); border-color: var(--slice-pure); padding: 15px 31px; }
+.btn--outline:hover { background: var(--slice-pure); color: var(--slice-orange); }
+.btn--ghost-invert { background: transparent; color: var(--slice-pure); border-color: transparent; }
+
+.btn--sm { padding: 11px 18px; font-size: 12px; }
+.btn--lg { padding: 19px 34px; font-size: 16px; }
+.btn--block { display: flex; width: 100%; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-surface); border-radius: var(--r-sm);
+  box-shadow: var(--sh-sm); padding: 27px;
+  transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.card:hover { box-shadow: var(--sh-md); transform: translateY(-4px); }
+.card--flat  { box-shadow: none; border: var(--bd-hairline); }
+.card--warm  { background: var(--color-surface-warm); box-shadow: none; }
+.card--dark  { background: var(--slice-dark); color: var(--color-text-invert); box-shadow: none; }
+.card--quote { border-radius: var(--r-md); padding: 56px 40px; box-shadow: var(--sh-md); }
+.card__icon {
+  width: 48px; height: 48px; border-radius: var(--r-xs);
+  display: grid; place-items: center; margin-bottom: var(--sp-5);
+  background: var(--slice-creamsicle);
+}
+.card__icon svg { stroke: var(--slice-orange); }
+
+/* ---------- Tag / pill ---------- */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--fs-caption); font-weight: var(--fw-black);
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: var(--r-pill);
+  background: var(--slice-creamsicle); color: var(--slice-orange);
+}
+.tag--dark { background: rgba(255,255,255,.14); color: var(--slice-pure); }
+.tag--success { background: rgba(27,178,168,.12); color: var(--slice-green-ii); }
+.tag--critical{ background: rgba(233,0,78,.10);  color: var(--slice-magenta-iii); }
+
+/* ---------- Numbered step ---------- */
+.step { display: flex; gap: var(--sp-6); align-items: flex-start; }
+.step__num {
+  flex: 0 0 auto; width: 40px; height: 40px; border-radius: var(--r-full);
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 20px; line-height: 1;
+  background: var(--slice-orange); color: var(--slice-pure);
+}
+.step--invert .step__num { background: var(--slice-pure); color: var(--slice-orange); }
+
+/* ---------- Spectrum rule ---------- */
+.rule-spectrum { height: 4px; border: 0; border-radius: 2px; background: var(--grad-spectrum); margin: 0; }
+
+/* ---------- Stat ---------- */
+.stat__value { font-family: var(--font-display); font-size: 64px; line-height: 1; letter-spacing: var(--ls-heading); }
+.stat__label { font-size: var(--fs-small); color: var(--color-text-muted); margin-top: var(--sp-2); }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-nav);
+  height: var(--nav-height); display: flex; align-items: center;
+  background: var(--slice-creamsicle); box-shadow: var(--sh-nav);
+  padding-inline: var(--gutter);
+}
+.nav--transparent { background: transparent; box-shadow: none; }
+.nav__link {
+  font-size: 15.7px; font-weight: var(--fw-semibold); color: var(--slice-dark);
+  padding: 8px 14px;
+}
+.nav__link:hover { color: var(--slice-orange); }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--slice-dark); color: var(--slice-pure); padding: 54px var(--gutter) 56px; }
+.footer a { color: rgba(255,255,255,.72); font-size: var(--fs-small); }
+.footer a:hover { color: var(--slice-pure); }
+.footer__head {
+  font-size: var(--fs-caption); font-weight: var(--fw-black);
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--slice-orange-ii);
+  margin-bottom: var(--sp-4);
+}
+
+/* ---------- Form ---------- */
+.field { display: block; margin-bottom: var(--sp-5); }
+.field__label {
+  display: block; font-size: var(--fs-small); font-weight: var(--fw-semibold);
+  margin-bottom: 6px; color: var(--slice-dark);
+}
+.field__input {
+  width: 100%; font-family: var(--font-body); font-size: var(--fs-body);
+  padding: 13px 16px; border-radius: var(--r-sm);
+  border: 1px solid var(--color-border-strong); background: var(--slice-pure);
+  color: var(--slice-dark); transition: border-color var(--dur-fast) var(--ease-out);
+}
+.field__input:focus { outline: none; border-color: var(--slice-orange); box-shadow: 0 0 0 3px rgba(255,84,0,.15); }
+.field__help { font-size: var(--fs-caption); color: var(--color-text-muted); margin-top: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ============================================================
+   BRAND ASSET LAYER
+   The logos live here as base64 data URIs, exposed as classes.
+   Never reference a logo by file path — a deliverable has to
+   survive being emailed, uploaded, or dragged to a desktop.
+
+     <span class="slice-logo"></span>        primary lockup
+     <span class="slice-logo is-light"></span>  reversed lockup
+     <span class="slice-mark"></span>        mark only
+
+   Inside a dark or gradient surface the lockup reverses itself,
+   so you rarely need `is-light` by hand.
+   ============================================================ */
+
+.slice-logo, .slice-mark {
+  display: inline-block; background-repeat: no-repeat;
+  background-position: left center; background-size: contain;
+  vertical-align: middle; flex: 0 0 auto;
+}
+.slice-logo { width: 100px; height: auto; aspect-ratio: 100 / 38;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAwIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF8yODU1KSI+CjxwYXRoIGQ9Ik00My43ODQ4IDE4Ljc1ODhMNDAuNjc1IDE3LjgyNjVDNDAuMjk4NyAxNy43MDU5IDM5LjkwOTYgMTcuNTU5MiAzOS41MDc2IDE3LjM4QzM5LjEwNTYgMTcuMjAwNyAzOC43NjQ3IDE2LjkzOTkgMzguNDgxNyAxNi41OTEyQzM4LjE5ODcgMTYuMjQ1NiAzOC4wNTcyIDE1LjgwODkgMzguMDU3MiAxNS4yODQxQzM4LjA1NzIgMTQuNTIxMyAzOC4zNDAyIDEzLjg5ODggMzguOTA2MiAxMy40MjI5QzM5LjQ3MjIgMTIuOTQ3IDQwLjIzNzYgMTIuNzA1OCA0MS4yMDI0IDEyLjcwNThDNDIuMjYzNiAxMi43MDU4IDQzLjIxNTYgMTIuOTkyNiA0NC4wNjQ2IDEzLjU2NjNDNDQuODE3MSAxNC4wNzQ4IDQ1LjM5OTIgMTQuNzQ5NSA0NS44MjA1IDE1LjU5MzdDNDUuOTEzOCAxNS43Nzk1IDQ2LjEzNTcgMTUuODU0NSA0Ni4zMTkgMTUuNzY2NUw0OC4zMjU3IDE0LjgyNzdDNDguNTEyMiAxNC43Mzk3IDQ4LjYwMjMgMTQuNTIxMyA0OC41MjE5IDE0LjMyOUM0Ny45NDYyIDEyLjk0MDQgNDcuMDQyNiAxMS44NTE3IDQ1LjgxMDggMTEuMDU2NEM0NC40Nzk0IDEwLjE5NTkgNDIuOTc3NiA5Ljc2NTYyIDQxLjMwNTMgOS43NjU2MkM0MC4wNTc1IDkuNzY1NjIgMzguOTMxOSAxMC4wMDM2IDM3LjkzMTggMTAuNDgyN0MzNi45MzE2IDEwLjk2MTkgMzYuMTQwNSAxMS42MjM2IDM1LjU2NDggMTIuNDcxMUMzNC45ODYgMTMuMzE4NiAzNC42OTk3IDE0LjMxNiAzNC42OTk3IDE1LjQ2MDFDMzQuNjk5NyAxNi43MDIgMzUuMDk1MyAxNy43OTM5IDM1Ljg4MzIgMTguNzM1OUMzNi42NzExIDE5LjY3OCAzNy45MTU3IDIwLjM4ODUgMzkuNjEwNSAyMC44Njc3TDQyLjQ3MjcgMjEuNjkyNEM0Mi44NzE1IDIxLjc4NjkgNDMuMjg5NSAyMS45MzY4IDQzLjcyNjkgMjIuMTM4OUM0NC4xNjExIDIyLjM0MSA0NC41NDA1IDIyLjYxODEgNDQuODU4OSAyMi45NjM2QzQ1LjE3NzMgMjMuMzA5MSA0NS4zMzQ5IDIzLjc2ODcgNDUuMzM0OSAyNC4zNDI0QzQ1LjMzNDkgMjUuMTU0IDQ0Ljk5NCAyNS44MDkyIDQ0LjMwOSAyNi4zMTEyQzQzLjYyNCAyNi44MTMxIDQyLjc3ODIgMjcuMDY0MSA0MS43NjUyIDI3LjA2NDFDNDAuNjEwNiAyNy4wNjQxIDM5LjU2MjIgMjYuNzI4NCAzOC42MiAyNi4wNjAyQzM3Ljc3MSAyNS40NTcyIDM3LjA4NiAyNC42NjUxIDM2LjU2MTggMjMuNjc0MkMzNi40NjUzIDIzLjQ4ODQgMzYuMjQzNCAyMy40MTAyIDM2LjA1NjkgMjMuNTAxNEwzNC4wNjk0IDI0LjQ2OTVDMzMuODg2MSAyNC41NTc1IDMzLjc5OTMgMjQuNzc5MiAzMy44Nzk3IDI0Ljk2ODJDMzQuNTAwMyAyNi40MzE4IDM1LjQ2ODMgMjcuNjA4NSAzNi43ODA1IDI4LjQ5NTFDMzguMTkyMyAyOS40NTAxIDM5Ljg1NDkgMjkuOTI2IDQxLjc2MiAyOS45MjZDNDMuMTI4NyAyOS45MjYgNDQuMzI4MyAyOS42ODgxIDQ1LjM2NyAyOS4yMDg5QzQ2LjQwMjYgMjguNzMzIDQ3LjIxNjIgMjguMDYxNiA0Ny44MDQ3IDI3LjIwNDNDNDguMzkzMiAyNi4zNDM4IDQ4LjY4OTEgMjUuMzc4OSA0OC42ODkxIDI0LjMwMzNDNDguNjg5MSAyMi45NjY5IDQ4LjI1ODIgMjEuODE5NSA0Ny4zOTk1IDIwLjg2NDRDNDYuNTQwOSAxOS45MDk0IDQ1LjMzMTcgMTkuMjA1MyA0My43Nzg0IDE4Ljc1MjJMNDMuNzg0OCAxOC43NTg4WiIgZmlsbD0iIzI4MDAwMyIvPgo8cGF0aCBkPSJNNTMuNzkgNS40ODYzM0g1MS4yMzMzQzUxLjAyMTkgNS40ODYzMyA1MC44NTA2IDUuNjU5OTkgNTAuODUwNiA1Ljg3NDIyVjI5LjExNDlDNTAuODUwNiAyOS4zMjkxIDUxLjAyMTkgMjkuNTAyOCA1MS4yMzMzIDI5LjUwMjhINTMuNzlDNTQuMDAxMyAyOS41MDI4IDU0LjE3MjcgMjkuMzI5MSA1NC4xNzI3IDI5LjExNDlWNS44NzQyMkM1NC4xNzI3IDUuNjU5OTkgNTQuMDAxMyA1LjQ4NjMzIDUzLjc5IDUuNDg2MzNaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik02MC4wNDQ4IDEwLjk3ODVINTcuNDg4MkM1Ny4yNzY4IDEwLjk3ODUgNTcuMTA1NSAxMS4xNTIyIDU3LjEwNTUgMTEuMzY2NFYyOS4xMThDNTcuMTA1NSAyOS4zMzIyIDU3LjI3NjggMjkuNTA1OSA1Ny40ODgyIDI5LjUwNTlINjAuMDQ0OEM2MC4yNTYyIDI5LjUwNTkgNjAuNDI3NSAyOS4zMzIyIDYwLjQyNzUgMjkuMTE4VjExLjM2NjRDNjAuNDI3NSAxMS4xNTIyIDYwLjI1NjIgMTAuOTc4NSA2MC4wNDQ4IDEwLjk3ODVaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik04MC4wNzExIDI0LjU3NzdMNzcuODAzOCAyMy40MTQxQzc3LjYyMDUgMjMuMzE5NSA3Ny4zODkgMjMuMzg4IDc3LjI5NTcgMjMuNTczOEM3Ni44MzI2IDI0LjQ3MDIgNzYuMTk5MSAyNS4xOTcgNzUuMzkxOSAyNS43NjFDNzQuNDg1IDI2LjM5MzMgNzMuNDMwMSAyNi43MDk1IDcyLjIzMDYgMjYuNzA5NUM3MS4wMzEgMjYuNzA5NSA3MC4wMzQxIDI2LjQwOTYgNjkuMTA0NyAyNS44MTMxQzY4LjE3NTMgMjUuMjE2NiA2Ny40Mzg4IDI0LjM5ODUgNjYuODk1MyAyMy4zNTg3QzY2LjM1MTggMjIuMzE4OSA2Ni4wODE3IDIxLjE1NTIgNjYuMDgxNyAxOS44Njc3QzY2LjA4MTcgMTguNTgwMSA2Ni4zNTE4IDE3LjM3NzQgNjYuODk1MyAxNi4zNDA4QzY3LjQzNTYgMTUuMzAxIDY4LjE3MiAxNC40ODk0IDY5LjEwNDcgMTMuOTA1OUM3MC4wMzQxIDEzLjMyMjUgNzEuMDc2IDEzLjAyOTEgNzIuMjMwNiAxMy4wMjkxQzczLjM4NTEgMTMuMDI5MSA3NC40OTE0IDEzLjMzODggNzUuNDExMiAxMy45NjEzQzc2LjIyOCAxNC41MTIyIDc2Ljg1NTEgMTUuMjIyOCA3Ny4zMDIxIDE2LjA5NjNDNzcuMzk1NCAxNi4yODIxIDc3LjYyMzcgMTYuMzUzOSA3Ny44MTAyIDE2LjI1OTNMODAuMDc0MyAxNS4xMjVDODAuMjY0IDE1LjAzMDUgODAuMzM4IDE0LjgwMjMgODAuMjUxMiAxNC42MUM3OS44NzE3IDEzLjc1MjcgNzkuMzE4NSAxMi45ODAyIDc4LjU5NDkgMTIuMjk1N0M3Ny43NzE3IDExLjUxOTkgNzYuODE2NSAxMC45MDM5IDc1LjczMjcgMTAuNDUwOEM3NC42NDkgOS45OTc3IDczLjQ4MTYgOS43Njk1MyA3Mi4yMzM4IDkuNzY5NTNDNzAuMzQ5MiA5Ljc2OTUzIDY4LjY4MzQgMTAuMjEyOCA2Ny4yMzMgMTEuMDk2MkM2NS43ODU4IDExLjk3OTUgNjQuNjQ3NCAxMy4xNzI1IDYzLjgyNDEgMTQuNjc4NEM2My4wMDA4IDE2LjE4MTEgNjIuNTg1OSAxNy45MDIxIDYyLjU4NTkgMTkuODM1MUM2Mi41ODU5IDIxLjc2OCA2My4wMDQgMjMuNDYzIDYzLjg0MDIgMjQuOTkxN0M2NC42NzYzIDI2LjUyMDQgNjUuODExNSAyNy43MjY1IDY3LjI0OTEgMjguNjA5OEM2OC42ODY2IDI5LjQ5MzIgNzAuMzQ2IDI5LjkzNjUgNzIuMjMwNiAyOS45MzY1QzczLjQ3ODQgMjkuOTM2NSA3NC42NDU4IDI5LjcwODMgNzUuNzI5NSAyOS4yNTUyQzc2LjgxMzMgMjguODAyMSA3Ny43NjUyIDI4LjE4NjEgNzguNTkxNyAyNy40MTAzQzc5LjMxODUgMjYuNzI1OCA3OS44NzE3IDI1Ljk1MzMgODAuMjUxMiAyNS4wOTI3QzgwLjMzNDggMjQuOTAwNCA4MC4yNjQgMjQuNjcyMyA4MC4wNzc1IDI0LjU3NzdIODAuMDcxMVoiIGZpbGw9IiMyODAwMDMiLz4KPHBhdGggZD0iTTk5LjM4MjMgMTUuNTg5OEM5OC45NzA3IDE0LjQ3ODMgOTguMzgyMiAxMy40OTA2IDk3LjYxNjggMTIuNjE3MUM5Ni44NTE0IDExLjc0NjggOTUuOTIyIDExLjA1MjUgOTQuODI1MyAxMC41NDA3QzkzLjcyODcgMTAuMDI5IDkyLjQ3NDUgOS43NzE0OCA5MS4wNjI3IDkuNzcxNDhDODkuMjk3MSA5Ljc3MTQ4IDg3LjcxODEgMTAuMjA4MyA4Ni4zMjg4IDExLjA3ODZDODQuOTM5NSAxMS45NDg5IDgzLjgzMzIgMTMuMTM4NiA4My4wMDY3IDE0LjY0MTNDODIuMTgzNCAxNi4xNDM5IDgxLjc2ODYgMTcuODY1IDgxLjc2ODYgMTkuNzk3OUM4MS43Njg2IDIxLjczMDggODIuMTgwMiAyMy40MzIzIDgzLjAwNjcgMjQuOTc0MUM4My44MyAyNi41MTI2IDg0Ljk2ODQgMjcuNzI1MiA4Ni40MTU2IDI4LjYwODVDODcuODYyOCAyOS40OTE4IDg5LjUwNjEgMjkuOTM1MSA5MS4zNDU3IDI5LjkzNTFDOTIuNjQxNyAyOS45MzUxIDkzLjgzMTYgMjkuNzIgOTQuOTE1NCAyOS4yODk4Qzk1Ljk5OTEgMjguODU5NSA5Ni45MzUgMjguMjgyNSA5Ny43MjI5IDI3LjU1MjRDOTguNDA0NyAyNi45MjMzIDk4LjkzMjEgMjYuMjM4OCA5OS4zMDUxIDI1LjQ5NTZDOTkuNDAxNiAyNS4zIDk5LjMzNDEgMjUuMDYyMSA5OS4xNDExIDI0Ljk2NDNMOTcuMDI4MiAyMy44NjU4Qzk2Ljg1MTQgMjMuNzc0NiA5Ni42MzU5IDIzLjgzNjUgOTYuNTI2NiAyNC4wMDZDOTYuMDEyIDI0LjgwMTMgOTUuMzY4OCAyNS40NjMgOTQuNTkzOCAyNS45OTQzQzkzLjcyMjMgMjYuNTkwOCA5Mi42NTEzIDI2Ljg5MDcgOTEuMzc3OCAyNi44OTA3QzkwLjIyMzMgMjYuODkwNyA4OS4xNTg4IDI2LjU5NzQgODguMTgxMiAyNi4wMTM5Qzg3LjIwMzUgMjUuNDMwNCA4Ni40NTEgMjQuNjA1OCA4NS45MjA0IDIzLjU0MzFDODUuNTI0OCAyMi43NTExIDg1LjMwMjkgMjEuODYxMiA4NS4yNTQ2IDIwLjg3MzZIOTkuNDkxN0M5OS42ODE0IDIwLjg3MzYgOTkuODQ1NCAyMC43MzAxIDk5Ljg3NDQgMjAuNTQxMUM5OS45MDMzIDIwLjM0MjMgOTkuOTI1OCAyMC4xNDM0IDk5Ljk0ODMgMTkuOTQ0NkM5OS45ODM3IDE5LjYzNDkgOTkuOTk5OCAxOS4zMzUgOTkuOTk5OCAxOS4wNDgyQzk5Ljk5OTggMTcuODU1MiA5OS43OTQgMTYuNzAxMyA5OS4zODIzIDE1LjU5MzFWMTUuNTg5OFpNODguMDIwNCAxMy42MjFDODguOTQwMSAxMy4wMzc2IDg5Ljk0OTkgMTIuNzQ0MiA5MS4wNTk0IDEyLjc0NDJDOTIuMTY4OSAxMi43NDQyIDkzLjE1NjIgMTMuMDMxIDk0LjAyNzggMTMuNjA0N0M5NC44OTkzIDE0LjE3ODQgOTUuNTU4NiAxNC45NTQyIDk2LjAwNTYgMTUuOTMyMUM5Ni4yOTE4IDE2LjU1NzkgOTYuNDM2NSAxNy4yMzkxIDk2LjQ0MjkgMTcuOTcyNUg4NS4zMjU0Qzg1LjQyMTkgMTcuMjgxNSA4NS42MDUyIDE2LjY0NTkgODUuODgxOCAxNi4wNzU1Qzg2LjM4NjcgMTUuMDI1OSA4Ny4xMDA2IDE0LjIwNzggODguMDIwNCAxMy42MjFaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik01OC43NjQ4IDkuNjQ0MjdDNTkuOTA1MSA5LjY0NDI3IDYwLjgyOTUgOC43MDczNiA2MC44Mjk1IDcuNTUxNjJDNjAuODI5NSA2LjM5NTg5IDU5LjkwNTEgNS40NTg5OCA1OC43NjQ4IDUuNDU4OThDNTcuNjI0NiA1LjQ1ODk4IDU2LjcwMDIgNi4zOTU4OSA1Ni43MDAyIDcuNTUxNjJDNTYuNzAwMiA4LjcwNzM2IDU3LjYyNDYgOS42NDQyNyA1OC43NjQ4IDkuNjQ0MjdaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik05Ljk3NjQ1IDI1LjE3MzhMNS4zMTk3NSAzNS4zNTM0QzQuNjg5NDIgMzYuNzI5IDUuODYzMjUgMzguMjUxMiA3LjMzMjkzIDM3Ljk2NDRMMjAuMzg5NyAzNS40MTU0TDkuOTc2NDUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0XzI4NTUpIi8+CjxwYXRoIGQ9Ik01LjYyNSAxLjg4MTM5TDE4LjM2OTggMC4wMjAxODA0QzE5LjgxMDYgLTAuMTkxNjkxIDIwLjkxMDQgMS4zMDQ0NSAyMC4yOTYyIDIuNjQ0MTNMMTUuOTg2OCAxMi4wNjc1TDUuNjI1IDEuODgxMzlaIiBmaWxsPSJ1cmwoI3BhaW50MV9saW5lYXJfMjg1NF8yODU1KSIvPgo8cGF0aCBkPSJNNS42MjQ5NiAxLjg4MDg2TDAuMTgwMzU4IDEzLjc3ODNDLTAuMTY2OTY1IDE0LjUzNzcgLTAuMDAyOTUxMjMgMTUuNDM3NCAwLjU4ODc4NCAxNi4wMjA4TDIwLjM4NjIgMzUuNDE1M0wyNS44NTAxIDIzLjQ4ODVDMjYuMTk3NCAyMi43MjkgMjYuMDMzNCAyMS44MjYxIDI1LjQzODQgMjEuMjQyN0w1LjYyNDk2IDEuODgwODZaIiBmaWxsPSIjRkY3OTM5Ii8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0XzI4NTUiIHgxPSI4LjEyMDg0IiB5MT0iMzQuMTQ3NCIgeDI9IjE3LjA5NTUiIHkyPSIyOS4zODE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCMTNGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0XzI4NTUiIHgxPSIxOS4xMzIiIHkxPSIwLjI2NzkwNyIgeDI9IjkuNDk0MzIiIHkyPSI3LjgyNDIzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCMTNGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMjg1NF8yODU1Ij4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIzOCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"); }
+.slice-logo.is-light { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAxIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAxIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF84NDQ5KSI+CjxwYXRoIGQ9Ik00NC4yMjMgMTguNzU4OEw0MS4wODIxIDE3LjgyNjVDNDAuNzAyMSAxNy43MDU5IDQwLjMwOSAxNy41NTkyIDM5LjkwMyAxNy4zOEMzOS40OTcgMTcuMjAwNyAzOS4xNTI3IDE2LjkzOTkgMzguODY2OSAxNi41OTEyQzM4LjU4MSAxNi4yNDU2IDM4LjQzODEgMTUuODA4OSAzOC40MzgxIDE1LjI4NDFDMzguNDM4MSAxNC41MjEzIDM4LjcyNCAxMy44OTg4IDM5LjI5NTYgMTMuNDIyOUMzOS44NjczIDEyLjk0NyA0MC42NDAzIDEyLjcwNTggNDEuNjE0OCAxMi43MDU4QzQyLjY4NjcgMTIuNzA1OCA0My42NDgxIDEyLjk5MjYgNDQuNTA1NiAxMy41NjYzQzQ1LjI2NTcgMTQuMDc0OCA0NS44NTM2IDE0Ljc0OTUgNDYuMjc5MSAxNS41OTM3QzQ2LjM3MzMgMTUuNzc5NSA0Ni41OTc0IDE1Ljg1NDUgNDYuNzgyNSAxNS43NjY1TDQ4LjgwOTMgMTQuODI3N0M0OC45OTc3IDE0LjczOTcgNDkuMDg4NyAxNC41MjEzIDQ5LjAwNzUgMTQuMzI5QzQ4LjQyNjEgMTIuOTQwNCA0Ny41MTMzIDExLjg1MTcgNDYuMjY5MyAxMS4wNTY0QzQ0LjkyNDYgMTAuMTk1OSA0My40MDc3IDkuNzY1NjIgNDEuNzE4NyA5Ljc2NTYyQzQwLjQ1ODUgOS43NjU2MiAzOS4zMjE2IDEwLjAwMzYgMzguMzExNSAxMC40ODI3QzM3LjMwMTMgMTAuOTYxOSAzNi41MDIzIDExLjYyMzYgMzUuOTIwOCAxMi40NzExQzM1LjMzNjIgMTMuMzE4NiAzNS4wNDcxIDE0LjMxNiAzNS4wNDcxIDE1LjQ2MDFDMzUuMDQ3MSAxNi43MDIgMzUuNDQ2NiAxNy43OTM5IDM2LjI0MjQgMTguNzM1OUMzNy4wMzgyIDE5LjY3OCAzOC4yOTUyIDIwLjM4ODUgNDAuMDA3IDIwLjg2NzdMNDIuODk3OCAyMS42OTI0QzQzLjMwMDYgMjEuNzg2OSA0My43MjI4IDIxLjkzNjggNDQuMTY0NSAyMi4xMzg5QzQ0LjYwMyAyMi4zNDEgNDQuOTg2MyAyMi42MTgxIDQ1LjMwNzkgMjIuOTYzNkM0NS42Mjk0IDIzLjMwOTEgNDUuNzg4NiAyMy43Njg3IDQ1Ljc4ODYgMjQuMzQyNEM0NS43ODg2IDI1LjE1NCA0NS40NDQzIDI1LjgwOTIgNDQuNzUyNSAyNi4zMTEyQzQ0LjA2MDYgMjYuODEzMSA0My4yMDY0IDI3LjA2NDEgNDIuMTgzMiAyNy4wNjQxQzQxLjAxNzEgMjcuMDY0MSAzOS45NTgyIDI2LjcyODQgMzkuMDA2NSAyNi4wNjAyQzM4LjE0OSAyNS40NTcyIDM3LjQ1NzIgMjQuNjY1MSAzNi45Mjc4IDIzLjY3NDJDMzYuODMwMyAyMy40ODg0IDM2LjYwNjIgMjMuNDEwMiAzNi40MTc4IDIzLjUwMTRMMzQuNDEwNSAyNC40Njk1QzM0LjIyNTMgMjQuNTU3NSAzNC4xMzc2IDI0Ljc3OTIgMzQuMjE4OCAyNC45NjgyQzM0Ljg0NTcgMjYuNDMxOCAzNS44MjM0IDI3LjYwODUgMzcuMTQ4NiAyOC40OTUxQzM4LjU3NDYgMjkuNDUwMSA0MC4yNTM4IDI5LjkyNiA0Mi4xOCAyOS45MjZDNDMuNTYwNCAyOS45MjYgNDQuNzcxOSAyOS42ODgxIDQ1LjgyMTEgMjkuMjA4OUM0Ni44NjcgMjguNzMzIDQ3LjY4ODcgMjguMDYxNiA0OC4yODMxIDI3LjIwNDNDNDguODc3NiAyNi4zNDM4IDQ5LjE3NjQgMjUuMzc4OSA0OS4xNzY0IDI0LjMwMzNDNDkuMTc2NCAyMi45NjY5IDQ4Ljc0MTEgMjEuODE5NSA0Ny44NzM5IDIwLjg2NDRDNDcuMDA2NiAxOS45MDk0IDQ1Ljc4NTQgMTkuMjA1MyA0NC4yMTY1IDE4Ljc1MjJMNDQuMjIzIDE4Ljc1ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTQuMzI4MSA1LjQ4NjMzSDUxLjc0NTlDNTEuNTMyNCA1LjQ4NjMzIDUxLjM1OTQgNS42NTk5OSA1MS4zNTk0IDUuODc0MjJWMjkuMTE0OUM1MS4zNTk0IDI5LjMyOTEgNTEuNTMyNCAyOS41MDI4IDUxLjc0NTkgMjkuNTAyOEg1NC4zMjgxQzU0LjU0MTYgMjkuNTAyOCA1NC43MTQ3IDI5LjMyOTEgNTQuNzE0NyAyOS4xMTQ5VjUuODc0MjJDNTQuNzE0NyA1LjY1OTk5IDU0LjU0MTYgNS40ODYzMyA1NC4zMjgxIDUuNDg2MzNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjAuNjQ1NSAxMC45Nzg1SDU4LjA2MzNDNTcuODQ5OCAxMC45Nzg1IDU3LjY3NjggMTEuMTUyMiA1Ny42NzY4IDExLjM2NjRWMjkuMTE4QzU3LjY3NjggMjkuMzMyMiA1Ny44NDk4IDI5LjUwNTkgNTguMDYzMyAyOS41MDU5SDYwLjY0NTVDNjAuODU5IDI5LjUwNTkgNjEuMDMyMSAyOS4zMzIyIDYxLjAzMjEgMjkuMTE4VjExLjM2NjRDNjEuMDMyMSAxMS4xNTIyIDYwLjg1OSAxMC45Nzg1IDYwLjY0NTUgMTAuOTc4NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04MC44NzE5IDI0LjU3NzdMNzguNTgyIDIzLjQxNDFDNzguMzk2OCAyMy4zMTk1IDc4LjE2MyAyMy4zODggNzguMDY4OCAyMy41NzM4Qzc3LjYwMSAyNC40NzAyIDc2Ljk2MTIgMjUuMTk3IDc2LjE0NTkgMjUuNzYxQzc1LjIyOTkgMjYuMzkzMyA3NC4xNjQ1IDI2LjcwOTUgNzIuOTUzIDI2LjcwOTVDNzEuNzQxNSAyNi43MDk1IDcwLjczNDUgMjYuNDA5NiA2OS43OTU4IDI1LjgxMzFDNjguODU3MSAyNS4yMTY2IDY4LjExMzMgMjQuMzk4NSA2Ny41NjQ0IDIzLjM1ODdDNjcuMDE1NCAyMi4zMTg5IDY2Ljc0MjYgMjEuMTU1MiA2Ni43NDI2IDE5Ljg2NzdDNjYuNzQyNiAxOC41ODAxIDY3LjAxNTQgMTcuMzc3NCA2Ny41NjQ0IDE2LjM0MDhDNjguMTEwMSAxNS4zMDEgNjguODUzOSAxNC40ODk0IDY5Ljc5NTggMTMuOTA1OUM3MC43MzQ1IDEzLjMyMjUgNzEuNzg2OSAxMy4wMjkxIDcyLjk1MyAxMy4wMjkxQzc0LjExOTEgMTMuMDI5MSA3NS4yMzY0IDEzLjMzODggNzYuMTY1NCAxMy45NjEzQzc2Ljk5MDQgMTQuNTEyMiA3Ny42MjM4IDE1LjIyMjggNzguMDc1MyAxNi4wOTYzQzc4LjE2OTUgMTYuMjgyMSA3OC40MDAxIDE2LjM1MzkgNzguNTg4NSAxNi4yNTkzTDgwLjg3NTEgMTUuMTI1QzgxLjA2NjggMTUuMDMwNSA4MS4xNDE1IDE0LjgwMjMgODEuMDUzOCAxNC42MUM4MC42NzA1IDEzLjc1MjcgODAuMTExOCAxMi45ODAyIDc5LjM4MSAxMi4yOTU3Qzc4LjU0OTUgMTEuNTE5OSA3Ny41ODQ4IDEwLjkwMzkgNzYuNDkwMiAxMC40NTA4Qzc1LjM5NTYgOS45OTc3IDc0LjIxNjUgOS43Njk1MyA3Mi45NTYyIDkuNzY5NTNDNzEuMDUyOSA5Ljc2OTUzIDY5LjM3MDMgMTAuMjEyOCA2Ny45MDU0IDExLjA5NjJDNjYuNDQzOCAxMS45Nzk1IDY1LjI5NCAxMy4xNzI1IDY0LjQ2MjQgMTQuNjc4NEM2My42MzA5IDE2LjE4MTEgNjMuMjExOSAxNy45MDIxIDYzLjIxMTkgMTkuODM1MUM2My4yMTE5IDIxLjc2OCA2My42MzQyIDIzLjQ2MyA2NC40Nzg3IDI0Ljk5MTdDNjUuMzIzMiAyNi41MjA0IDY2LjQ2OTggMjcuNzI2NSA2Ny45MjE3IDI4LjYwOThDNjkuMzczNiAyOS40OTMyIDcxLjA0OTYgMjkuOTM2NSA3Mi45NTMgMjkuOTM2NUM3NC4yMTMzIDI5LjkzNjUgNzUuMzkyMyAyOS43MDgzIDc2LjQ4NjkgMjkuMjU1MkM3Ny41ODE2IDI4LjgwMjEgNzguNTQzIDI4LjE4NjEgNzkuMzc3OCAyNy40MTAzQzgwLjExMTggMjYuNzI1OCA4MC42NzA1IDI1Ljk1MzMgODEuMDUzOCAyNS4wOTI3QzgxLjEzODIgMjQuOTAwNCA4MS4wNjY4IDI0LjY3MjMgODAuODc4NCAyNC41Nzc3SDgwLjg3MTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjM3NyAxNS41ODk4Qzk5Ljk2MTEgMTQuNDc4MyA5OS4zNjY3IDEzLjQ5MDYgOTguNTkzNiAxMi42MTcxQzk3LjgyMDYgMTEuNzQ2OCA5Ni44ODE4IDExLjA1MjUgOTUuNzc0MiAxMC41NDA3Qzk0LjY2NjYgMTAuMDI5IDkzLjM5OTkgOS43NzE0OCA5MS45NzQgOS43NzE0OEM5MC4xOTA3IDkuNzcxNDggODguNTk1OSAxMC4yMDgzIDg3LjE5MjcgMTEuMDc4NkM4NS43ODk2IDExLjk0ODkgODQuNjcyMiAxMy4xMzg2IDgzLjgzNzQgMTQuNjQxM0M4My4wMDU5IDE2LjE0MzkgODIuNTg2OSAxNy44NjUgODIuNTg2OSAxOS43OTc5QzgyLjU4NjkgMjEuNzMwOCA4My4wMDI3IDIzLjQzMjMgODMuODM3NCAyNC45NzQxQzg0LjY2ODkgMjYuNTEyNiA4NS44MTg4IDI3LjcyNTIgODcuMjgwNCAyOC42MDg1Qzg4Ljc0MjEgMjkuNDkxOCA5MC40MDE5IDI5LjkzNTEgOTIuMjU5OCAyOS45MzUxQzkzLjU2ODggMjkuOTM1MSA5NC43NzA2IDI5LjcyIDk1Ljg2NTIgMjkuMjg5OEM5Ni45NTk4IDI4Ljg1OTUgOTcuOTA1IDI4LjI4MjUgOTguNzAwOCAyNy41NTI0Qzk5LjM4OTQgMjYuOTIzMyA5OS45MjIxIDI2LjIzODggMTAwLjI5OSAyNS40OTU2QzEwMC4zOTYgMjUuMyAxMDAuMzI4IDI1LjA2MjEgMTAwLjEzMyAyNC45NjQzTDk3Ljk5OTIgMjMuODY1OEM5Ny44MjA2IDIzLjc3NDYgOTcuNjAyOSAyMy44MzY1IDk3LjQ5MjUgMjQuMDA2Qzk2Ljk3MjggMjQuODAxMyA5Ni4zMjMyIDI1LjQ2MyA5NS41NDA0IDI1Ljk5NDNDOTQuNjYwMSAyNi41OTA4IDkzLjU3ODUgMjYuODkwNyA5Mi4yOTIzIDI2Ljg5MDdDOTEuMTI2MiAyNi44OTA3IDkwLjA1MTEgMjYuNTk3NCA4OS4wNjM3IDI2LjAxMzlDODguMDc2MiAyNS40MzA0IDg3LjMxNjIgMjQuNjA1OCA4Ni43ODAyIDIzLjU0MzFDODYuMzgwNyAyMi43NTExIDg2LjE1NjYgMjEuODYxMiA4Ni4xMDc5IDIwLjg3MzZIMTAwLjQ4N0MxMDAuNjc5IDIwLjg3MzYgMTAwLjg0NSAyMC43MzAxIDEwMC44NzQgMjAuNTQxMUMxMDAuOTAzIDIwLjM0MjMgMTAwLjkyNiAyMC4xNDM0IDEwMC45NDggMTkuOTQ0NkMxMDAuOTg0IDE5LjYzNDkgMTAxIDE5LjMzNSAxMDEgMTkuMDQ4MkMxMDEgMTcuODU1MiAxMDAuNzkzIDE2LjcwMTMgMTAwLjM3NyAxNS41OTMxVjE1LjU4OThaTTg4LjkwMTIgMTMuNjIxQzg5LjgzMDIgMTMuMDM3NiA5MC44NTAxIDEyLjc0NDIgOTEuOTcwNyAxMi43NDQyQzkzLjA5MTMgMTIuNzQ0MiA5NC4wODg1IDEzLjAzMSA5NC45Njg3IDEzLjYwNDdDOTUuODQ5IDE0LjE3ODQgOTYuNTE0OCAxNC45NTQyIDk2Ljk2NjMgMTUuOTMyMUM5Ny4yNTU0IDE2LjU1NzkgOTcuNDAxNiAxNy4yMzkxIDk3LjQwOCAxNy45NzI1SDg2LjE3OTNDODYuMjc2OCAxNy4yODE1IDg2LjQ2MTkgMTYuNjQ1OSA4Ni43NDEyIDE2LjA3NTVDODcuMjUxMiAxNS4wMjU5IDg3Ljk3MjMgMTQuMjA3OCA4OC45MDEyIDEzLjYyMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik01OS4zNTI5IDkuNjQ0MjdDNjAuNTA0NSA5LjY0NDI3IDYxLjQzODIgOC43MDczNiA2MS40MzgyIDcuNTUxNjJDNjEuNDM4MiA2LjM5NTg5IDYwLjUwNDUgNS40NTg5OCA1OS4zNTI5IDUuNDU4OThDNTguMjAxMiA1LjQ1ODk4IDU3LjI2NzYgNi4zOTU4OSA1Ny4yNjc2IDcuNTUxNjJDNTcuMjY3NiA4LjcwNzM2IDU4LjIwMTIgOS42NDQyNyA1OS4zNTI5IDkuNjQ0MjdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAuMDc1NSAyNS4xNzM4TDUuMzcyMjcgMzUuMzUzNEM0LjczNTY0IDM2LjcyOSA1LjkyMTIgMzguMjUxMiA3LjQwNTU5IDM3Ljk2NDRMMjAuNTkyOSAzNS40MTU0TDEwLjA3NTUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkpIi8+CjxwYXRoIGQ9Ik01LjY4MTY0IDEuODgxMzlMMTguNTUzOSAwLjAyMDE4MDRDMjAuMDA5MSAtMC4xOTE2OTEgMjEuMTE5OSAxLjMwNDQ1IDIwLjQ5OTUgMi42NDQxM0wxNi4xNDcxIDEyLjA2NzVMNS42ODE2NCAxLjg4MTM5WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzI4NTRfODQ0OSkiLz4KPHBhdGggZD0iTTUuNjgxMjEgMS44ODA4NkwwLjE4MjE2MiAxMy43NzgzQy0wLjE2ODYzNCAxNC41Mzc3IC0wLjAwMjk4MDc0IDE1LjQzNzQgMC41OTQ2NzIgMTYuMDIwOEwyMC41OSAzNS40MTUzTDI2LjEwODYgMjMuNDg4NUMyNi40NTk0IDIyLjcyOSAyNi4yOTM3IDIxLjgyNjEgMjUuNjkyOCAyMS4yNDI3TDUuNjgxMjEgMS44ODA4NloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSI4LjIwMTM4IiB5MT0iMzQuMTQ3NCIgeDI9IjE1Ljk3MjMiIHkyPSIyOS4zMzE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IndoaXRlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSIxOS4zMjM3IiB5MT0iMC4yNjc5MDciIHgyPSI5LjY2MzU4IiB5Mj0iNy45MTc1NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzI4NTRfODQ0OSI+CjxyZWN0IHdpZHRoPSIxMDEiIGhlaWdodD0iMzgiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg=="); }
+.slice-mark { width: 32px; height: auto; aspect-ratio: 32 / 38;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCAzMiAzOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxkZWZzPg0KPGxpbmVhckdyYWRpZW50IGlkPSJzbGljZU1hcmtBIiB4MT0iOC4xMjA4NCIgeTE9IjM0LjE0NzQiIHgyPSIxNy4wOTU1IiB5Mj0iMjkuMzgxOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkIxM0YiLz48L2xpbmVhckdyYWRpZW50Pg0KPGxpbmVhckdyYWRpZW50IGlkPSJzbGljZU1hcmtCIiB4MT0iMTkuMTMyIiB5MT0iMC4yNjc5MDciIHgyPSI5LjQ5NDMyIiB5Mj0iNy44MjQyMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkIxM0YiLz48L2xpbmVhckdyYWRpZW50Pg0KPC9kZWZzPg0KPHBhdGggZD0iTTkuOTc2NDUgMjUuMTczOEw1LjMxOTc1IDM1LjM1MzRDNC42ODk0MiAzNi43MjkgNS44NjMyNSAzOC4yNTEyIDcuMzMyOTMgMzcuOTY0NEwyMC4zODk3IDM1LjQxNTRMOS45NzY0NSAyNS4xNzM4WiIgZmlsbD0idXJsKCNzbGljZU1hcmtBKSIvPg0KPHBhdGggZD0iTTUuNjI1IDEuODgxMzlMMTguMzY5OCAwLjAyMDE4MDRDMTkuODEwNiAtMC4xOTE2OTEgMjAuOTEwNCAxLjMwNDQ1IDIwLjI5NjIgMi42NDQxM0wxNS45ODY4IDEyLjA2NzVMNS42MjUgMS44ODEzOVoiIGZpbGw9InVybCgjc2xpY2VNYXJrQikiLz4NCjxwYXRoIGQ9Ik01LjYyNDk2IDEuODgwODZMMC4xODAzNTggMTMuNzc4M0MtMC4xNjY5NjUgMTQuNTM3NyAtMC4wMDI5NTEyMyAxNS40Mzc0IDAuNTg4Nzg0IDE2LjAyMDhMMjAuMzg2MiAzNS40MTUzTDI1Ljg1MDEgMjMuNDg4NUMyNi4xOTc0IDIyLjcyOSAyNi4wMzM0IDIxLjgyNjEgMjUuNDM4NCAyMS4yNDI3TDUuNjI0OTYgMS44ODA4NloiIGZpbGw9IiNGRjc5MzkiLz4NCjwvc3ZnPg=="); }
+
+/* Sizes set ONE dimension; aspect-ratio derives the other, so a logo can
+   never be stretched by a stray height rule. */
+.slice-logo--sm { width: 80px; }
+.slice-logo--lg { width: 150px; }
+.slice-logo--xl { width: 200px; }
+.slice-mark--sm { width: 24px; }
+.slice-mark--lg { width: 48px; }
+
+/* Auto-reverse on every dark or gradient ground the system defines. */
+.section--dark  .slice-logo, .section--hero .slice-logo,
+.surface-dark   .slice-logo, .surface-grad  .slice-logo,
+.card--dark     .slice-logo, .footer        .slice-logo,
+.cta            .slice-logo, .slide--dark   .slice-logo,
+.slide--grad    .slice-logo, .canvas--dark  .slice-logo,
+.canvas--grad   .slice-logo, .b--grad       .slice-logo,
+.b--dark        .slice-logo { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAxIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAxIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF84NDQ5KSI+CjxwYXRoIGQ9Ik00NC4yMjMgMTguNzU4OEw0MS4wODIxIDE3LjgyNjVDNDAuNzAyMSAxNy43MDU5IDQwLjMwOSAxNy41NTkyIDM5LjkwMyAxNy4zOEMzOS40OTcgMTcuMjAwNyAzOS4xNTI3IDE2LjkzOTkgMzguODY2OSAxNi41OTEyQzM4LjU4MSAxNi4yNDU2IDM4LjQzODEgMTUuODA4OSAzOC40MzgxIDE1LjI4NDFDMzguNDM4MSAxNC41MjEzIDM4LjcyNCAxMy44OTg4IDM5LjI5NTYgMTMuNDIyOUMzOS44NjczIDEyLjk0NyA0MC42NDAzIDEyLjcwNTggNDEuNjE0OCAxMi43MDU4QzQyLjY4NjcgMTIuNzA1OCA0My42NDgxIDEyLjk5MjYgNDQuNTA1NiAxMy41NjYzQzQ1LjI2NTcgMTQuMDc0OCA0NS44NTM2IDE0Ljc0OTUgNDYuMjc5MSAxNS41OTM3QzQ2LjM3MzMgMTUuNzc5NSA0Ni41OTc0IDE1Ljg1NDUgNDYuNzgyNSAxNS43NjY1TDQ4LjgwOTMgMTQuODI3N0M0OC45OTc3IDE0LjczOTcgNDkuMDg4NyAxNC41MjEzIDQ5LjAwNzUgMTQuMzI5QzQ4LjQyNjEgMTIuOTQwNCA0Ny41MTMzIDExLjg1MTcgNDYuMjY5MyAxMS4wNTY0QzQ0LjkyNDYgMTAuMTk1OSA0My40MDc3IDkuNzY1NjIgNDEuNzE4NyA5Ljc2NTYyQzQwLjQ1ODUgOS43NjU2MiAzOS4zMjE2IDEwLjAwMzYgMzguMzExNSAxMC40ODI3QzM3LjMwMTMgMTAuOTYxOSAzNi41MDIzIDExLjYyMzYgMzUuOTIwOCAxMi40NzExQzM1LjMzNjIgMTMuMzE4NiAzNS4wNDcxIDE0LjMxNiAzNS4wNDcxIDE1LjQ2MDFDMzUuMDQ3MSAxNi43MDIgMzUuNDQ2NiAxNy43OTM5IDM2LjI0MjQgMTguNzM1OUMzNy4wMzgyIDE5LjY3OCAzOC4yOTUyIDIwLjM4ODUgNDAuMDA3IDIwLjg2NzdMNDIuODk3OCAyMS42OTI0QzQzLjMwMDYgMjEuNzg2OSA0My43MjI4IDIxLjkzNjggNDQuMTY0NSAyMi4xMzg5QzQ0LjYwMyAyMi4zNDEgNDQuOTg2MyAyMi42MTgxIDQ1LjMwNzkgMjIuOTYzNkM0NS42Mjk0IDIzLjMwOTEgNDUuNzg4NiAyMy43Njg3IDQ1Ljc4ODYgMjQuMzQyNEM0NS43ODg2IDI1LjE1NCA0NS40NDQzIDI1LjgwOTIgNDQuNzUyNSAyNi4zMTEyQzQ0LjA2MDYgMjYuODEzMSA0My4yMDY0IDI3LjA2NDEgNDIuMTgzMiAyNy4wNjQxQzQxLjAxNzEgMjcuMDY0MSAzOS45NTgyIDI2LjcyODQgMzkuMDA2NSAyNi4wNjAyQzM4LjE0OSAyNS40NTcyIDM3LjQ1NzIgMjQuNjY1MSAzNi45Mjc4IDIzLjY3NDJDMzYuODMwMyAyMy40ODg0IDM2LjYwNjIgMjMuNDEwMiAzNi40MTc4IDIzLjUwMTRMMzQuNDEwNSAyNC40Njk1QzM0LjIyNTMgMjQuNTU3NSAzNC4xMzc2IDI0Ljc3OTIgMzQuMjE4OCAyNC45NjgyQzM0Ljg0NTcgMjYuNDMxOCAzNS44MjM0IDI3LjYwODUgMzcuMTQ4NiAyOC40OTUxQzM4LjU3NDYgMjkuNDUwMSA0MC4yNTM4IDI5LjkyNiA0Mi4xOCAyOS45MjZDNDMuNTYwNCAyOS45MjYgNDQuNzcxOSAyOS42ODgxIDQ1LjgyMTEgMjkuMjA4OUM0Ni44NjcgMjguNzMzIDQ3LjY4ODcgMjguMDYxNiA0OC4yODMxIDI3LjIwNDNDNDguODc3NiAyNi4zNDM4IDQ5LjE3NjQgMjUuMzc4OSA0OS4xNzY0IDI0LjMwMzNDNDkuMTc2NCAyMi45NjY5IDQ4Ljc0MTEgMjEuODE5NSA0Ny44NzM5IDIwLjg2NDRDNDcuMDA2NiAxOS45MDk0IDQ1Ljc4NTQgMTkuMjA1MyA0NC4yMTY1IDE4Ljc1MjJMNDQuMjIzIDE4Ljc1ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTQuMzI4MSA1LjQ4NjMzSDUxLjc0NTlDNTEuNTMyNCA1LjQ4NjMzIDUxLjM1OTQgNS42NTk5OSA1MS4zNTk0IDUuODc0MjJWMjkuMTE0OUM1MS4zNTk0IDI5LjMyOTEgNTEuNTMyNCAyOS41MDI4IDUxLjc0NTkgMjkuNTAyOEg1NC4zMjgxQzU0LjU0MTYgMjkuNTAyOCA1NC43MTQ3IDI5LjMyOTEgNTQuNzE0NyAyOS4xMTQ5VjUuODc0MjJDNTQuNzE0NyA1LjY1OTk5IDU0LjU0MTYgNS40ODYzMyA1NC4zMjgxIDUuNDg2MzNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjAuNjQ1NSAxMC45Nzg1SDU4LjA2MzNDNTcuODQ5OCAxMC45Nzg1IDU3LjY3NjggMTEuMTUyMiA1Ny42NzY4IDExLjM2NjRWMjkuMTE4QzU3LjY3NjggMjkuMzMyMiA1Ny44NDk4IDI5LjUwNTkgNTguMDYzMyAyOS41MDU5SDYwLjY0NTVDNjAuODU5IDI5LjUwNTkgNjEuMDMyMSAyOS4zMzIyIDYxLjAzMjEgMjkuMTE4VjExLjM2NjRDNjEuMDMyMSAxMS4xNTIyIDYwLjg1OSAxMC45Nzg1IDYwLjY0NTUgMTAuOTc4NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04MC44NzE5IDI0LjU3NzdMNzguNTgyIDIzLjQxNDFDNzguMzk2OCAyMy4zMTk1IDc4LjE2MyAyMy4zODggNzguMDY4OCAyMy41NzM4Qzc3LjYwMSAyNC40NzAyIDc2Ljk2MTIgMjUuMTk3IDc2LjE0NTkgMjUuNzYxQzc1LjIyOTkgMjYuMzkzMyA3NC4xNjQ1IDI2LjcwOTUgNzIuOTUzIDI2LjcwOTVDNzEuNzQxNSAyNi43MDk1IDcwLjczNDUgMjYuNDA5NiA2OS43OTU4IDI1LjgxMzFDNjguODU3MSAyNS4yMTY2IDY4LjExMzMgMjQuMzk4NSA2Ny41NjQ0IDIzLjM1ODdDNjcuMDE1NCAyMi4zMTg5IDY2Ljc0MjYgMjEuMTU1MiA2Ni43NDI2IDE5Ljg2NzdDNjYuNzQyNiAxOC41ODAxIDY3LjAxNTQgMTcuMzc3NCA2Ny41NjQ0IDE2LjM0MDhDNjguMTEwMSAxNS4zMDEgNjguODUzOSAxNC40ODk0IDY5Ljc5NTggMTMuOTA1OUM3MC43MzQ1IDEzLjMyMjUgNzEuNzg2OSAxMy4wMjkxIDcyLjk1MyAxMy4wMjkxQzc0LjExOTEgMTMuMDI5MSA3NS4yMzY0IDEzLjMzODggNzYuMTY1NCAxMy45NjEzQzc2Ljk5MDQgMTQuNTEyMiA3Ny42MjM4IDE1LjIyMjggNzguMDc1MyAxNi4wOTYzQzc4LjE2OTUgMTYuMjgyMSA3OC40MDAxIDE2LjM1MzkgNzguNTg4NSAxNi4yNTkzTDgwLjg3NTEgMTUuMTI1QzgxLjA2NjggMTUuMDMwNSA4MS4xNDE1IDE0LjgwMjMgODEuMDUzOCAxNC42MUM4MC42NzA1IDEzLjc1MjcgODAuMTExOCAxMi45ODAyIDc5LjM4MSAxMi4yOTU3Qzc4LjU0OTUgMTEuNTE5OSA3Ny41ODQ4IDEwLjkwMzkgNzYuNDkwMiAxMC40NTA4Qzc1LjM5NTYgOS45OTc3IDc0LjIxNjUgOS43Njk1MyA3Mi45NTYyIDkuNzY5NTNDNzEuMDUyOSA5Ljc2OTUzIDY5LjM3MDMgMTAuMjEyOCA2Ny45MDU0IDExLjA5NjJDNjYuNDQzOCAxMS45Nzk1IDY1LjI5NCAxMy4xNzI1IDY0LjQ2MjQgMTQuNjc4NEM2My42MzA5IDE2LjE4MTEgNjMuMjExOSAxNy45MDIxIDYzLjIxMTkgMTkuODM1MUM2My4yMTE5IDIxLjc2OCA2My42MzQyIDIzLjQ2MyA2NC40Nzg3IDI0Ljk5MTdDNjUuMzIzMiAyNi41MjA0IDY2LjQ2OTggMjcuNzI2NSA2Ny45MjE3IDI4LjYwOThDNjkuMzczNiAyOS40OTMyIDcxLjA0OTYgMjkuOTM2NSA3Mi45NTMgMjkuOTM2NUM3NC4yMTMzIDI5LjkzNjUgNzUuMzkyMyAyOS43MDgzIDc2LjQ4NjkgMjkuMjU1MkM3Ny41ODE2IDI4LjgwMjEgNzguNTQzIDI4LjE4NjEgNzkuMzc3OCAyNy40MTAzQzgwLjExMTggMjYuNzI1OCA4MC42NzA1IDI1Ljk1MzMgODEuMDUzOCAyNS4wOTI3QzgxLjEzODIgMjQuOTAwNCA4MS4wNjY4IDI0LjY3MjMgODAuODc4NCAyNC41Nzc3SDgwLjg3MTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjM3NyAxNS41ODk4Qzk5Ljk2MTEgMTQuNDc4MyA5OS4zNjY3IDEzLjQ5MDYgOTguNTkzNiAxMi42MTcxQzk3LjgyMDYgMTEuNzQ2OCA5Ni44ODE4IDExLjA1MjUgOTUuNzc0MiAxMC41NDA3Qzk0LjY2NjYgMTAuMDI5IDkzLjM5OTkgOS43NzE0OCA5MS45NzQgOS43NzE0OEM5MC4xOTA3IDkuNzcxNDggODguNTk1OSAxMC4yMDgzIDg3LjE5MjcgMTEuMDc4NkM4NS43ODk2IDExLjk0ODkgODQuNjcyMiAxMy4xMzg2IDgzLjgzNzQgMTQuNjQxM0M4My4wMDU5IDE2LjE0MzkgODIuNTg2OSAxNy44NjUgODIuNTg2OSAxOS43OTc5QzgyLjU4NjkgMjEuNzMwOCA4My4wMDI3IDIzLjQzMjMgODMuODM3NCAyNC45NzQxQzg0LjY2ODkgMjYuNTEyNiA4NS44MTg4IDI3LjcyNTIgODcuMjgwNCAyOC42MDg1Qzg4Ljc0MjEgMjkuNDkxOCA5MC40MDE5IDI5LjkzNTEgOTIuMjU5OCAyOS45MzUxQzkzLjU2ODggMjkuOTM1MSA5NC43NzA2IDI5LjcyIDk1Ljg2NTIgMjkuMjg5OEM5Ni45NTk4IDI4Ljg1OTUgOTcuOTA1IDI4LjI4MjUgOTguNzAwOCAyNy41NTI0Qzk5LjM4OTQgMjYuOTIzMyA5OS45MjIxIDI2LjIzODggMTAwLjI5OSAyNS40OTU2QzEwMC4zOTYgMjUuMyAxMDAuMzI4IDI1LjA2MjEgMTAwLjEzMyAyNC45NjQzTDk3Ljk5OTIgMjMuODY1OEM5Ny44MjA2IDIzLjc3NDYgOTcuNjAyOSAyMy44MzY1IDk3LjQ5MjUgMjQuMDA2Qzk2Ljk3MjggMjQuODAxMyA5Ni4zMjMyIDI1LjQ2MyA5NS41NDA0IDI1Ljk5NDNDOTQuNjYwMSAyNi41OTA4IDkzLjU3ODUgMjYuODkwNyA5Mi4yOTIzIDI2Ljg5MDdDOTEuMTI2MiAyNi44OTA3IDkwLjA1MTEgMjYuNTk3NCA4OS4wNjM3IDI2LjAxMzlDODguMDc2MiAyNS40MzA0IDg3LjMxNjIgMjQuNjA1OCA4Ni43ODAyIDIzLjU0MzFDODYuMzgwNyAyMi43NTExIDg2LjE1NjYgMjEuODYxMiA4Ni4xMDc5IDIwLjg3MzZIMTAwLjQ4N0MxMDAuNjc5IDIwLjg3MzYgMTAwLjg0NSAyMC43MzAxIDEwMC44NzQgMjAuNTQxMUMxMDAuOTAzIDIwLjM0MjMgMTAwLjkyNiAyMC4xNDM0IDEwMC45NDggMTkuOTQ0NkMxMDAuOTg0IDE5LjYzNDkgMTAxIDE5LjMzNSAxMDEgMTkuMDQ4MkMxMDEgMTcuODU1MiAxMDAuNzkzIDE2LjcwMTMgMTAwLjM3NyAxNS41OTMxVjE1LjU4OThaTTg4LjkwMTIgMTMuNjIxQzg5LjgzMDIgMTMuMDM3NiA5MC44NTAxIDEyLjc0NDIgOTEuOTcwNyAxMi43NDQyQzkzLjA5MTMgMTIuNzQ0MiA5NC4wODg1IDEzLjAzMSA5NC45Njg3IDEzLjYwNDdDOTUuODQ5IDE0LjE3ODQgOTYuNTE0OCAxNC45NTQyIDk2Ljk2NjMgMTUuOTMyMUM5Ny4yNTU0IDE2LjU1NzkgOTcuNDAxNiAxNy4yMzkxIDk3LjQwOCAxNy45NzI1SDg2LjE3OTNDODYuMjc2OCAxNy4yODE1IDg2LjQ2MTkgMTYuNjQ1OSA4Ni43NDEyIDE2LjA3NTVDODcuMjUxMiAxNS4wMjU5IDg3Ljk3MjMgMTQuMjA3OCA4OC45MDEyIDEzLjYyMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik01OS4zNTI5IDkuNjQ0MjdDNjAuNTA0NSA5LjY0NDI3IDYxLjQzODIgOC43MDczNiA2MS40MzgyIDcuNTUxNjJDNjEuNDM4MiA2LjM5NTg5IDYwLjUwNDUgNS40NTg5OCA1OS4zNTI5IDUuNDU4OThDNTguMjAxMiA1LjQ1ODk4IDU3LjI2NzYgNi4zOTU4OSA1Ny4yNjc2IDcuNTUxNjJDNTcuMjY3NiA4LjcwNzM2IDU4LjIwMTIgOS42NDQyNyA1OS4zNTI5IDkuNjQ0MjdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAuMDc1NSAyNS4xNzM4TDUuMzcyMjcgMzUuMzUzNEM0LjczNTY0IDM2LjcyOSA1LjkyMTIgMzguMjUxMiA3LjQwNTU5IDM3Ljk2NDRMMjAuNTkyOSAzNS40MTU0TDEwLjA3NTUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkpIi8+CjxwYXRoIGQ9Ik01LjY4MTY0IDEuODgxMzlMMTguNTUzOSAwLjAyMDE4MDRDMjAuMDA5MSAtMC4xOTE2OTEgMjEuMTE5OSAxLjMwNDQ1IDIwLjQ5OTUgMi42NDQxM0wxNi4xNDcxIDEyLjA2NzVMNS42ODE2NCAxLjg4MTM5WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzI4NTRfODQ0OSkiLz4KPHBhdGggZD0iTTUuNjgxMjEgMS44ODA4NkwwLjE4MjE2MiAxMy43NzgzQy0wLjE2ODYzNCAxNC41Mzc3IC0wLjAwMjk4MDc0IDE1LjQzNzQgMC41OTQ2NzIgMTYuMDIwOEwyMC41OSAzNS40MTUzTDI2LjEwODYgMjMuNDg4NUMyNi40NTk0IDIyLjcyOSAyNi4yOTM3IDIxLjgyNjEgMjUuNjkyOCAyMS4yNDI3TDUuNjgxMjEgMS44ODA4NloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSI4LjIwMTM4IiB5MT0iMzQuMTQ3NCIgeDI9IjE1Ljk3MjMiIHkyPSIyOS4zMzE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IndoaXRlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSIxOS4zMjM3IiB5MT0iMC4yNjc5MDciIHgyPSI5LjY2MzU4IiB5Mj0iNy45MTc1NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzI4NTRfODQ0OSI+CjxyZWN0IHdpZHRoPSIxMDEiIGhlaWdodD0iMzgiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg=="); }
+
+/* The mark is a two-tone gradient symbol; on dark grounds knock it
+   out to solid white rather than letting the amber go muddy. */
+.slice-mark--knockout { filter: brightness(0) invert(1); }
+
+/* Ghost watermark — the mark at 7% behind a gradient composition.
+   This is the only decorative use of the mark the system allows. */
+.slice-ghost {
+  position: absolute; pointer-events: none; opacity: .07;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCAzMiAzOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxkZWZzPg0KPGxpbmVhckdyYWRpZW50IGlkPSJzbGljZU1hcmtBIiB4MT0iOC4xMjA4NCIgeTE9IjM0LjE0NzQiIHgyPSIxNy4wOTU1IiB5Mj0iMjkuMzgxOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkIxM0YiLz48L2xpbmVhckdyYWRpZW50Pg0KPGxpbmVhckdyYWRpZW50IGlkPSJzbGljZU1hcmtCIiB4MT0iMTkuMTMyIiB5MT0iMC4yNjc5MDciIHgyPSI5LjQ5NDMyIiB5Mj0iNy44MjQyMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkIxM0YiLz48L2xpbmVhckdyYWRpZW50Pg0KPC9kZWZzPg0KPHBhdGggZD0iTTkuOTc2NDUgMjUuMTczOEw1LjMxOTc1IDM1LjM1MzRDNC42ODk0MiAzNi43MjkgNS44NjMyNSAzOC4yNTEyIDcuMzMyOTMgMzcuOTY0NEwyMC4zODk3IDM1LjQxNTRMOS45NzY0NSAyNS4xNzM4WiIgZmlsbD0idXJsKCNzbGljZU1hcmtBKSIvPg0KPHBhdGggZD0iTTUuNjI1IDEuODgxMzlMMTguMzY5OCAwLjAyMDE4MDRDMTkuODEwNiAtMC4xOTE2OTEgMjAuOTEwNCAxLjMwNDQ1IDIwLjI5NjIgMi42NDQxM0wxNS45ODY4IDEyLjA2NzVMNS42MjUgMS44ODEzOVoiIGZpbGw9InVybCgjc2xpY2VNYXJrQikiLz4NCjxwYXRoIGQ9Ik01LjYyNDk2IDEuODgwODZMMC4xODAzNTggMTMuNzc4M0MtMC4xNjY5NjUgMTQuNTM3NyAtMC4wMDI5NTEyMyAxNS40Mzc0IDAuNTg4Nzg0IDE2LjAyMDhMMjAuMzg2MiAzNS40MTUzTDI1Ljg1MDEgMjMuNDg4NUMyNi4xOTc0IDIyLjcyOSAyNi4wMzM0IDIxLjgyNjEgMjUuNDM4NCAyMS4yNDI3TDUuNjI0OTYgMS44ODA4NloiIGZpbGw9IiNGRjc5MzkiLz4NCjwvc3ZnPg=="); background-repeat: no-repeat;
+  background-size: contain; right: -8%; bottom: -20%;
+  width: 62%; aspect-ratio: 32 / 38;
+}
+
+/* ============================================================
+   SURFACE HELPERS
+   The one-gradient rule lives here: .surface-grad is the
+   signature, and a composition gets exactly one of them.
+   ============================================================ */
+.surface-grad { background: var(--grad-hero);      color: #fff; position: relative; overflow: hidden; }
+.surface-mesh { background: var(--grad-hero-mesh); color: #fff; position: relative; overflow: hidden; }
+.surface-dark { background: var(--slice-dark);     color: #fff; }
+.surface-warm { background: var(--slice-creamsicle); }
+.surface-white { background: #fff; }
+
+/* Scrim for copy sitting low on a gradient or over photography. */
+.scrim::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(40,0,3,0) 0%, rgba(40,0,3,.35) 100%);
+}
+.scrim > * { position: relative; }
+
+</style>
+<style>
+/* ── Deliverable overrides · Signed Isn’t Settled (Direction D) ─────────────
+   Page composition only. The system block above stays untouched.            */
+
+:root{
+  /* Text-safe tints of Slice Dark. --color-text-muted (50%) is only 3.9:1 on
+     white, which fails for body copy, so long-form muted text uses 74%.      */
+  --text-soft:  rgba(40,0,3,.74);
+  --text-faint: rgba(40,0,3,.58);
+  --line-warm:  #F2E9E5;
+  /* Status inks: the semantic tokens darkened until the pill label clears 4.5:1 */
+  --ink-ok:#12817A;   --tint-ok:rgba(27,178,168,.12);
+  --ink-warn:#A66000; --tint-warn:rgba(255,177,63,.20);
+  --ink-risk:#C60046; --tint-risk:rgba(233,0,78,.10);
+  --ink-info:var(--slice-purple-iii); --tint-info:rgba(135,51,156,.10);
+  --ink-wait:rgba(40,0,3,.55); --tint-wait:rgba(40,0,3,.06);
+  --fs-h2-page: clamp(34px, 3.6vw + 8px, 56px);
+}
+html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--nav-height) - 8px); }
+/* Side-entering reveals start off-canvas; clip them per section so phones never get a sideways scroll */
+main, .footer{ overflow-x:clip; }
+img{ max-width:100%; }
+:focus-visible{ outline:3px solid var(--slice-purple-iii); outline-offset:3px; }
+.skip{ position:absolute; left:var(--sp-4); top:-60px; z-index:calc(var(--z-nav) + 1);
+  background:var(--slice-dark); color:#fff; padding:10px 16px; border-radius:var(--r-pill); font-weight:700; }
+.skip:focus{ top:var(--sp-4); }
+.h2{ font-size:var(--fs-h2-page); line-height:1.06; }
+.muted{ color:var(--text-soft); }
+.sec-head{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--sp-9) var(--sp-12);
+  align-items:end; margin-bottom:var(--sp-12); }
+.sec-head .u-lead{ margin:0; }
+.sec-head--solo{ grid-template-columns:1fr; margin-bottom:var(--sp-10); }
+.sec-head--solo .h2{ max-width:18ch; }
+@media(max-width:991px){ .sec-head{ grid-template-columns:1fr; gap:var(--sp-5); margin-bottom:var(--sp-9); } }
+
+/* Arrow nudge on every button that carries an arrow */
+.btn .arr{ transition:transform var(--dur-base) var(--ease-out); }
+.btn:hover .arr{ transform:translateX(4px); }
+.link-arrow{ display:inline-flex; align-items:center; gap:8px; margin-top:var(--sp-6);
+  font-weight:var(--fw-black); font-size:var(--fs-eyebrow); letter-spacing:var(--ls-button); text-transform:uppercase;
+  color:var(--slice-dark); padding-bottom:4px; background:linear-gradient(var(--slice-orange),var(--slice-orange)) 0 100%/0 2px no-repeat;
+  transition:color var(--dur-base) var(--ease-out), background-size var(--dur-slow) var(--ease-out); }
+.link-arrow:hover{ color:var(--slice-orange); background-size:100% 2px; }
+.link-arrow:hover .arr{ transform:translateX(4px); }
+.link-arrow .arr{ transition:transform var(--dur-base) var(--ease-out); }
+
+/* ── Status pill: colour + icon + text, never colour alone ── */
+.pill{ display:inline-flex; align-items:center; gap:5px; flex:0 0 auto; white-space:nowrap;
+  font-size:10px; line-height:14px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+  padding:4px 10px 4px 8px; border-radius:var(--r-pill);
+  transition:background var(--dur-slow) var(--ease-out), color var(--dur-slow) var(--ease-out); }
+.pill::before{ content:""; width:10px; height:10px; flex:0 0 auto; background:currentColor;
+  -webkit-mask:var(--ic) center/contain no-repeat; mask:var(--ic) center/contain no-repeat; }
+.pill--ok  { background:var(--tint-ok);   color:var(--ink-ok);
+  --ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.4 6.3l2.3 2.3 4.9-5.2' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.pill--warn{ background:var(--tint-warn); color:var(--ink-warn);
+  --ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Ccircle cx='6' cy='6' r='4.6' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3Cpath d='M6 3.6V6l1.7 1.1' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.pill--risk{ background:var(--tint-risk); color:var(--ink-risk);
+  --ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1.4l5 9H1z' fill='none' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M6 5v2.3' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='6' cy='8.7' r='.8'/%3E%3C/svg%3E"); }
+.pill--info{ background:var(--tint-info); color:var(--ink-info);
+  --ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Ccircle cx='2.5' cy='6' r='1.2'/%3E%3Ccircle cx='6' cy='6' r='1.2'/%3E%3Ccircle cx='9.5' cy='6' r='1.2'/%3E%3C/svg%3E"); }
+.pill--wait{ background:var(--tint-wait); color:var(--ink-wait);
+  --ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1.5a4.5 4.5 0 1 0 4.5 4.5' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.pill--wait::before{ animation:spin .8s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* ── 01 Nav ── */
+.nav{ position:fixed; inset:0 0 auto; width:100%; background:transparent; box-shadow:none;
+  transition:background var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out), height var(--dur-slow) var(--ease-out); }
+.nav.is-stuck{ background:var(--slice-creamsicle); box-shadow:var(--sh-nav); height:68px; }
+.nav__inner{ max-width:var(--container); margin-inline:auto; width:100%; display:flex; align-items:center; gap:var(--sp-7); }
+.nav__brand{ display:block; flex:0 0 auto; line-height:0; }
+.nav__logo{ width:104px; height:auto; display:block; }  /* lockup minimum is 100 px wide */
+.nav__logo--dark{ display:none; }
+.nav.is-stuck .nav__logo--light{ display:none; }
+.nav.is-stuck .nav__logo--dark{ display:block; }
+.nav__links{ display:flex; gap:2px; margin-left:var(--sp-5); }
+.nav .nav__link{ color:#fff; position:relative; transition:color var(--dur-base) var(--ease-out); }
+.nav .nav__link::after{ content:""; position:absolute; left:14px; right:14px; bottom:2px; height:2px; border-radius:2px;
+  background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform var(--dur-slow) var(--ease-out); }
+.nav .nav__link:hover::after, .nav .nav__link.is-active::after{ transform:scaleX(1); }
+.nav.is-stuck .nav__link{ color:var(--slice-dark); }
+.nav.is-stuck .nav__link:hover, .nav.is-stuck .nav__link.is-active{ color:var(--slice-orange); }
+.nav__actions{ margin-left:auto; display:flex; align-items:center; gap:var(--sp-2); }
+.nav.is-stuck .btn--ghost-invert{ color:var(--slice-dark); }
+.nav.is-stuck .btn--ghost-invert:hover{ color:var(--slice-orange); }
+.nav.is-stuck .btn--invert{ background:var(--slice-orange); color:#fff; border-color:var(--slice-orange); }
+.nav.is-stuck .btn--invert:hover{ background:var(--slice-magenta-iii); border-color:var(--slice-magenta-iii); }
+.nav__progress{ position:absolute; left:0; bottom:0; width:100%; height:3px; background:var(--grad-spectrum);
+  transform-origin:0 50%; transform:scaleX(var(--p,0)); opacity:0; transition:opacity var(--dur-slow) var(--ease-out); }
+.nav.is-stuck .nav__progress{ opacity:1; }
+@media(max-width:991px){ .nav__links{ display:none; } }
+@media(max-width:560px){
+  .nav .btn--ghost-invert{ display:none; }
+  .nav .btn--invert{ padding:11px 16px; font-size:12px; letter-spacing:1.2px; }
+  .nav__logo{ width:100px; }
+}
+
+/* ── 02 Hero (the page’s one gradient surface, marquee is its tail) ── */
+.hero{ background:var(--grad-hero); color:#fff; position:relative; overflow:hidden; isolation:isolate;
+  padding-top:calc(var(--nav-height) + clamp(40px, 6vw, 88px)); }
+.hero .slice-ghost{ right:-10%; bottom:-6%; width:48%; z-index:-1; animation:ghost 18s var(--ease-inout) infinite alternate; }
+@keyframes ghost{ to{ transform:translate(-3%, -4%) rotate(-4deg); } }
+.hero__grid{ max-width:var(--container); margin-inline:auto; padding-inline:var(--gutter);
+  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(40px,5vw,80px);
+  align-items:center; padding-bottom:clamp(56px,7vw,104px); }
+.hero h1{ margin:var(--sp-4) 0 var(--sp-6); font-size:clamp(40px, 3.4vw + 12px, 64px); line-height:1.08; }
+.hero h1 .ln{ display:block; overflow:hidden; padding-bottom:.08em; margin-bottom:-.08em; }
+.hero h1 .ln > span{ display:block; }
+.hero__lead{ font-size:var(--fs-lead); line-height:var(--lh-lead); max-width:44ch; color:rgba(255,255,255,.94); margin:0; }
+.hero__lead b{ font-weight:700; }
+.hero__ctas{ display:flex; gap:var(--sp-4); flex-wrap:wrap; margin-top:var(--sp-8); }
+
+.hero__vis{ position:relative; perspective:1200px; }
+.hero__ui{ border-radius:var(--r-md); box-shadow:var(--sh-lg); overflow:hidden; background:#fff; color:var(--slice-dark);
+  transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) translateY(var(--py,0px));
+  transition:transform .6s var(--ease-out); will-change:transform; }
+.hero__toast{ position:absolute; left:-36px; bottom:-28px; width:min(310px, 78%);
+  background:#fff; color:var(--slice-dark); border-radius:var(--r-sm); box-shadow:var(--sh-lg);
+  padding:14px 16px; display:flex; gap:12px; align-items:flex-start; font-size:13px; line-height:19px; }
+.hero__toast .ico{ width:32px; height:32px; border-radius:var(--r-xs); background:var(--tint-risk); display:grid; place-items:center; flex:0 0 auto; }
+.hero__toast b{ display:block; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--ink-risk); margin-bottom:2px; }
+@media(max-width:991px){
+  .hero__grid{ grid-template-columns:1fr; }
+  .hero h1{ font-size:clamp(40px, 6vw + 8px, 56px); }
+  .hero__toast{ left:auto; right:12px; bottom:-24px; }
+}
+@media(max-width:560px){ .hero__toast{ position:relative; right:auto; bottom:auto; width:auto; margin:-18px 12px 0; } }
+
+/* Mock UI */
+.ui__bar{ height:38px; background:var(--slice-creamsicle); display:flex; align-items:center; gap:6px; padding:0 14px; }
+.ui__dot{ width:8px; height:8px; border-radius:50%; background:#E3CDBB; }
+.ui__title{ margin-left:10px; font-size:11px; color:#94705A; font-weight:700; letter-spacing:.3px; }
+.ui__live{ margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:800;
+  letter-spacing:1px; text-transform:uppercase; color:var(--ink-ok); }
+.ui__live i{ width:7px; height:7px; border-radius:50%; background:var(--slice-green-ii); position:relative; }
+.ui__live i::after{ content:""; position:absolute; inset:0; border-radius:50%; background:var(--slice-green-ii); animation:ping 1.8s var(--ease-out) infinite; }
+@keyframes ping{ 0%{ transform:scale(1); opacity:.7 } 100%{ transform:scale(3.2); opacity:0 } }
+.ui__body{ padding:8px 20px 12px; position:relative; }
+.ui__row{ display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line-warm); font-size:13px; }
+.ui__row:last-child{ border-bottom:0; }
+.ui__flag{ width:22px; height:16px; border-radius:2px; flex:0 0 auto; display:block; box-shadow:0 0 0 1px rgba(40,0,3,.08); }
+.ui__name{ flex:1; min-width:0; color:var(--slice-dark); font-weight:600; }
+.ui__scan{ position:absolute; left:0; right:0; top:0; height:48px; pointer-events:none; opacity:0;
+  background:linear-gradient(180deg, rgba(255,84,0,0), rgba(255,84,0,.07) 60%, rgba(255,84,0,0)); }
+.ui__scan.is-on{ animation:scan 2.2s var(--ease-inout) 1 forwards; }
+@keyframes scan{ 0%{ top:0; opacity:0 } 12%{ opacity:1 } 88%{ opacity:1 } 100%{ top:calc(100% - 48px); opacity:0 } }
+
+/* Marquee (hero tail) */
+.proof{ border-top:1px solid rgba(255,255,255,.16); padding-block:var(--sp-9) var(--sp-11); }
+.proof__label{ text-align:center; font-size:12px; font-weight:800; letter-spacing:2.4px; text-transform:uppercase;
+  color:rgba(255,255,255,.8); margin:0 0 var(--sp-7); }
+.proof__strip{ overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+          mask-image:linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%); }
+.proof__track{ display:flex; align-items:center; width:max-content; animation:marquee 38s linear infinite; }
+.proof__strip:hover .proof__track{ animation-play-state:paused; }
+/* spacing lives on the item, not as flex gap, so -50% lands exactly on the loop seam */
+.proof__logo{ font-family:var(--font-display); font-size:26px; letter-spacing:-.4px; color:#fff; opacity:.92;
+  white-space:nowrap; padding-right:72px; }
+@keyframes marquee{ to{ transform:translateX(-50%); } }
+
+/* ── 04 Problem ── */
+.card h4{ margin-top:0; }
+.card .card__txt{ color:var(--text-soft); margin:var(--sp-3) 0 0; }
+.card__icon svg path, .card__icon svg circle, .card__icon svg rect{ stroke-dasharray:80; stroke-dashoffset:0; }
+.js .card[data-reveal] .card__icon svg *{ stroke-dashoffset:80; }
+.js .card.is-in .card__icon svg *{ stroke-dashoffset:0; transition:stroke-dashoffset 1.3s var(--ease-out) .25s; }
+.problem .card{ border-top:3px solid transparent; }
+.problem .card:hover{ border-top-color:var(--slice-orange); }
+
+/* ── 05 Before / After ── */
+.ba{ display:grid; grid-template-columns:1fr 1fr; position:relative; }
+.ba__l{ background:var(--slice-dark); color:#fff; padding:var(--section-y) var(--sp-12); }
+.ba__r{ background:var(--slice-creamsicle); padding:var(--section-y) var(--sp-12); }
+.ba__in{ max-width:540px; }
+.ba__l .ba__in{ margin-left:auto; padding-right:var(--sp-8); }
+.ba__r .ba__in{ padding-left:var(--sp-8); }
+.ba h2{ font-size:clamp(34px, 2.6vw + 8px, 46px); line-height:1.08; margin-bottom:var(--sp-9); }
+.ba__l .eyebrow{ color:var(--slice-orange-ii); }
+.steps{ position:relative; display:grid; gap:var(--sp-8); }
+.steps::before{ content:""; position:absolute; left:19px; top:44px; bottom:44px; width:2px; border-radius:2px;
+  background:rgba(40,0,3,.14); transform-origin:top; }
+.ba__l .steps::before{ background:rgba(255,255,255,.22); }
+.js .steps::before{ transform:scaleY(0); transition:transform 1.4s var(--ease-inout) .2s; }
+.js .steps.is-in::before{ transform:scaleY(1); }
+.step__num{ position:relative; z-index:1; }
+.ba__l h5{ color:#fff; }
+.ba__l .step p{ color:rgba(255,255,255,.8); }
+.ba__r .step p{ color:var(--text-soft); }
+.step p{ font-size:var(--fs-body); line-height:var(--lh-body); margin:var(--sp-2) 0 0; }
+.ba h5{ font-size:22px; line-height:30px; }
+.ba__pivot{ position:absolute; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%;
+  background:var(--slice-creamsicle); box-shadow:var(--sh-md); display:grid; place-items:center; z-index:2; }
+.ba__pivot svg{ stroke:var(--slice-orange); }
+.js .ba__pivot{ transform:scale(.4); opacity:0; transition:transform .7s var(--ease-out) .5s, opacity .5s var(--ease-out) .5s; }
+.js .ba.is-in .ba__pivot{ transform:none; opacity:1; }
+@media(max-width:991px){
+  .ba{ grid-template-columns:1fr; }
+  .ba__l,.ba__r{ padding-inline:var(--gutter); }
+  .ba__l .ba__in, .ba__r .ba__in{ margin:0; padding:0; max-width:none; }
+  .ba__pivot{ position:relative; left:auto; top:auto; margin:-32px auto; }
+  .ba__pivot svg{ transform:rotate(90deg); }
+}
+
+/* ── 06 Pillars ── */
+.pillars{ display:grid; gap:clamp(64px, 8vw, 120px); }
+.pillar{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(40px,6vw,96px); align-items:center; }
+.pillar:nth-child(even) .pillar__txt{ order:2; }
+.pillar h3{ font-size:clamp(28px, 1.8vw + 10px, 40px); line-height:1.18; }
+.pillar__txt p:not(.eyebrow){ color:var(--text-soft); margin-top:var(--sp-4); max-width:46ch; }
+.pillar__stage{ background:var(--slice-creamsicle); border-radius:var(--r-lg); padding:clamp(20px,4vw,56px); }
+.pillar__vis{ border-radius:var(--r-md); box-shadow:var(--sh-md); background:#fff; overflow:hidden; }
+.pillar__vis--pad{ padding:clamp(24px,3vw,40px); }
+.stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-5); }
+.stats .stat__value{ font-size:clamp(34px, 2.4vw + 6px, 46px); white-space:nowrap; }
+.stats .stat__label{ color:var(--text-soft); }
+.vis__note{ font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--text-faint); margin:var(--sp-4) 0 0; }
+.vis__label{ font-size:12px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:var(--text-faint); margin-bottom:var(--sp-5); }
+.bars{ display:flex; flex-direction:column; gap:16px; font-size:13px; }
+.bar__top{ display:flex; justify-content:space-between; margin-bottom:6px; }
+.bar__track{ height:8px; border-radius:4px; background:var(--line-warm); overflow:hidden; }
+.bar__fill{ height:100%; border-radius:4px; width:var(--w); }
+.js .bar__fill{ width:0; transition:width 1.4s var(--ease-out); }
+.js .is-in .bar__fill{ width:var(--w); }
+.js .is-in .bar:nth-child(2) .bar__fill{ transition-delay:.15s; }
+.js .is-in .bar:nth-child(3) .bar__fill{ transition-delay:.3s; }
+.cascade .ui__row{ transition:opacity .5s var(--ease-out), transform .5s var(--ease-out); }
+.js .cascade .ui__row{ opacity:0; transform:translateX(16px); }
+.js .is-in .cascade .ui__row{ opacity:1; transform:none; }
+.js .is-in .cascade .ui__row:nth-child(2){ transition-delay:.12s; }
+.js .is-in .cascade .ui__row:nth-child(3){ transition-delay:.24s; }
+.js .is-in .cascade .ui__row:nth-child(4){ transition-delay:.36s; }
+@media(max-width:991px){
+  .pillar{ grid-template-columns:1fr; }
+  .pillar:nth-child(even) .pillar__txt{ order:0; }
+}
+@media(max-width:520px){
+  .stats{ grid-template-columns:1fr; gap:var(--sp-4); }
+  .stats > div{ display:flex; align-items:baseline; gap:var(--sp-4); }
+  .stats .stat__label{ margin:0; }
+  .ui__row{ flex-wrap:wrap; }
+}
+
+/* ── 07 Testimonials ── */
+.quotes{ max-width:900px; margin-inline:auto; }
+.quotes__stage{ display:grid; }
+.quote{ grid-area:1/1; text-align:left; background:#fff; border-radius:var(--r-md); box-shadow:var(--sh-md);
+  padding:clamp(32px,5vw,56px) clamp(24px,5vw,56px); margin:0;
+  transition:opacity .6s var(--ease-out), transform .6s var(--ease-out), visibility .6s; }
+.quote:not(.is-active){ opacity:0; transform:translateY(12px); visibility:hidden; }
+.quote blockquote{ margin:0 0 var(--sp-7); font-size:clamp(20px, 1vw + 12px, 26px); line-height:1.46; }
+.quote .rule-spectrum{ width:64px; margin-bottom:var(--sp-5); }
+.quote cite{ font-style:normal; display:block; }
+.quote cite b{ display:block; font-weight:700; }
+.quote cite span{ font-size:var(--fs-small); color:var(--text-soft); }
+.quotes__ctrl{ display:flex; align-items:center; justify-content:center; gap:var(--sp-4); margin-top:var(--sp-7); }
+.quotes__dots{ display:flex; gap:10px; }
+.quotes__dot{ width:10px; height:10px; padding:0; border-radius:var(--r-pill); border:0; cursor:pointer;
+  background:rgba(40,0,3,.2); transition:width var(--dur-slow) var(--ease-out), background var(--dur-slow) var(--ease-out); }
+.quotes__dot[aria-current="true"]{ width:32px; background:var(--slice-orange); }
+.quotes__btn{ width:44px; height:44px; border-radius:50%; border:2px solid rgba(40,0,3,.16); background:transparent;
+  display:grid; place-items:center; cursor:pointer; color:var(--slice-dark);
+  transition:border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+.quotes__btn:hover{ border-color:var(--slice-orange); color:var(--slice-orange); }
+
+/* ── 08 Integrations ── */
+.intg{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--grid-gap); }
+.intg__group{ border:var(--bd-hairline); border-radius:var(--r-md); padding:var(--sp-7); background:#fff; }
+.intg__group .eyebrow{ margin-bottom:var(--sp-5); }
+.intg__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3); }
+.intg__cell{ height:64px; background:#fff; border:1px solid var(--color-border); border-radius:var(--r-sm);
+  display:grid; place-items:center; font-size:14px; font-weight:700; color:var(--text-soft); text-align:center;
+  transition:transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.intg__cell:hover{ transform:translateY(-3px); box-shadow:var(--sh-sm); color:var(--slice-dark); border-color:transparent; }
+@media(max-width:991px){ .intg{ grid-template-columns:1fr; } }
+
+/* ── 09 Trust ── */
+.trust{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--sp-12); align-items:center; }
+.trust p:not(.eyebrow){ color:var(--text-soft); margin-top:var(--sp-5); max-width:46ch; }
+.badges{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-4); }
+.badge{ text-align:center; padding:var(--sp-7) var(--sp-4); background:#fff; }
+.badge__ico{ width:52px; height:52px; margin:0 auto var(--sp-4); border-radius:var(--r-sm); background:var(--grad-assurance);
+  display:grid; place-items:center; }
+.badge:hover .badge__ico{ animation:bob .7s var(--ease-out); }
+@keyframes bob{ 40%{ transform:translateY(-5px) } }
+.badge__name{ font-size:14px; font-weight:700; }
+@media(max-width:991px){ .trust{ grid-template-columns:1fr; gap:var(--sp-9); } }
+@media(max-width:560px){
+  .badges{ grid-template-columns:1fr; gap:var(--sp-3); }
+  .badge{ display:flex; align-items:center; gap:var(--sp-4); text-align:left; padding:var(--sp-4) var(--sp-5); }
+  .badge__ico{ margin:0; width:44px; height:44px; }
+}
+
+/* ── 10 Final CTA + form ── */
+.cta{ background:var(--slice-dark); color:#fff; padding-block:var(--section-y-loose); text-align:left; position:relative; overflow:hidden; }
+.cta__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.9fr); gap:clamp(40px,6vw,96px); align-items:center; }
+.cta h2{ max-width:16ch; margin:var(--sp-4) 0 var(--sp-5); font-size:var(--fs-h2-page); line-height:1.06; }
+.cta__copy p{ max-width:46ch; color:rgba(255,255,255,.82); margin:0; font-size:var(--fs-lead); line-height:var(--lh-lead); }
+.cta .eyebrow{ color:var(--slice-orange-ii); }
+.form{ background:#fff; color:var(--slice-dark); border-radius:var(--r-md); box-shadow:var(--sh-lg); padding:clamp(24px,3.4vw,44px); }
+.form__row{ display:grid; grid-template-columns:1fr 1fr; gap:0 var(--sp-4); }
+.form .field__input{ height:50px; }
+.form select.field__input{ appearance:none; -webkit-appearance:none; padding-right:40px; cursor:pointer;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23280003' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") right 16px center/12px 8px no-repeat; }
+.field__input[aria-invalid="true"]{ border-color:var(--slice-magenta-iii); }
+.field__err{ display:none; font-size:var(--fs-caption); color:var(--ink-risk); margin-top:4px; }
+.field__input[aria-invalid="true"] + .field__err{ display:block; }
+.form .btn{ margin-top:var(--sp-2); }
+.form__done{ display:none; text-align:center; padding:var(--sp-8) 0; }
+.form__done .tick{ width:64px; height:64px; border-radius:50%; margin:0 auto var(--sp-5); background:var(--grad-assurance); display:grid; place-items:center; }
+.form__done .tick path{ stroke-dasharray:30; stroke-dashoffset:30; }
+.form.is-sent .form__done .tick path{ animation:draw .7s var(--ease-out) .2s forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+.form.is-sent .form__fields{ display:none; }
+.form.is-sent .form__done{ display:block; animation:rise .6s var(--ease-out) both; }
+@media(max-width:991px){ .cta__grid{ grid-template-columns:1fr; } }
+@media(max-width:480px){ .form__row{ grid-template-columns:1fr; } }
+
+/* ── 11 Footer ── */
+.footer{ border-top:1px solid rgba(255,255,255,.1); }
+.f__grid{ max-width:var(--container); margin-inline:auto; display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:var(--sp-8); }
+.f__grid ul{ list-style:none; margin:0; padding:0; }
+.f__grid li{ margin-bottom:10px; }
+.f__logo{ width:120px; height:auto; display:block; }
+.footer a{ transition:color var(--dur-base) var(--ease-out); }
+.f__legal{ max-width:var(--container); margin:var(--sp-11) auto 0; padding-top:var(--sp-6);
+  border-top:1px solid rgba(255,255,255,.14); display:flex; gap:var(--sp-3) var(--sp-6); flex-wrap:wrap; align-items:center;
+  font-size:12px; color:rgba(255,255,255,.6); }
+.f__legal a{ font-size:12px; }
+.f__disclaimer{ flex-basis:100%; margin:var(--sp-2) 0 0; }
+@media(max-width:991px){ .f__grid{ grid-template-columns:1fr 1fr; } .f__brand{ grid-column:1 / -1; } }
+
+/* ── Motion ─────────────────────────────────────────────────────────────────
+   Everything is visible by default; hidden states only apply once JS has
+   added .js to <html>, so a failed script never leaves a blank page.        */
+.js [data-reveal]{ opacity:0; transform:translateY(28px);
+  transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+  transition-delay:var(--d, 0ms); }
+.js [data-reveal="left"]{ transform:translateX(-36px); }
+.js [data-reveal="right"]{ transform:translateX(36px); }
+.js [data-reveal="zoom"]{ transform:scale(.96) translateY(16px); }
+.js [data-reveal].is-in{ opacity:1; transform:none; }
+
+@keyframes rise{ from{ opacity:0; transform:translateY(22px); } to{ opacity:1; transform:none; } }
+@keyframes lineUp{ from{ transform:translateY(105%); } to{ transform:none; } }
+@keyframes floatIn{ from{ opacity:0; transform:translateY(48px) scale(.97); } to{ opacity:1; transform:none; } }
+@keyframes toastIn{ from{ opacity:0; transform:translateY(16px) scale(.94); } to{ opacity:1; transform:none; } }
+.js .hero [data-in]{ animation:rise .8s var(--ease-out) both; animation-delay:var(--d,0ms); }
+.js .hero h1 .ln > span{ animation:lineUp .9s var(--ease-out) both; animation-delay:var(--d,0ms); }
+.js .hero__vis{ animation:floatIn 1.1s var(--ease-out) .35s both; }
+.js .hero__toast{ animation:toastIn .7s var(--ease-out) 2.6s both; }
+.js .proof{ animation:rise .9s var(--ease-out) .9s both; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .js [data-reveal], .js .cascade .ui__row, .js .ba__pivot{ opacity:1 !important; transform:none !important; }
+  .js .steps::before{ transform:none; }
+  .js .bar__fill{ width:var(--w); }
+  .proof__track, .hero .slice-ghost, .ui__live i::after, .pill--wait::before{ animation:none !important; }
+  .js .card .card__icon svg *{ stroke-dashoffset:0; }
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ 01 NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand" aria-label="Slice home"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAxIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAxIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF84NDQ5KSI+CjxwYXRoIGQ9Ik00NC4yMjMgMTguNzU4OEw0MS4wODIxIDE3LjgyNjVDNDAuNzAyMSAxNy43MDU5IDQwLjMwOSAxNy41NTkyIDM5LjkwMyAxNy4zOEMzOS40OTcgMTcuMjAwNyAzOS4xNTI3IDE2LjkzOTkgMzguODY2OSAxNi41OTEyQzM4LjU4MSAxNi4yNDU2IDM4LjQzODEgMTUuODA4OSAzOC40MzgxIDE1LjI4NDFDMzguNDM4MSAxNC41MjEzIDM4LjcyNCAxMy44OTg4IDM5LjI5NTYgMTMuNDIyOUMzOS44NjczIDEyLjk0NyA0MC42NDAzIDEyLjcwNTggNDEuNjE0OCAxMi43MDU4QzQyLjY4NjcgMTIuNzA1OCA0My42NDgxIDEyLjk5MjYgNDQuNTA1NiAxMy41NjYzQzQ1LjI2NTcgMTQuMDc0OCA0NS44NTM2IDE0Ljc0OTUgNDYuMjc5MSAxNS41OTM3QzQ2LjM3MzMgMTUuNzc5NSA0Ni41OTc0IDE1Ljg1NDUgNDYuNzgyNSAxNS43NjY1TDQ4LjgwOTMgMTQuODI3N0M0OC45OTc3IDE0LjczOTcgNDkuMDg4NyAxNC41MjEzIDQ5LjAwNzUgMTQuMzI5QzQ4LjQyNjEgMTIuOTQwNCA0Ny41MTMzIDExLjg1MTcgNDYuMjY5MyAxMS4wNTY0QzQ0LjkyNDYgMTAuMTk1OSA0My40MDc3IDkuNzY1NjIgNDEuNzE4NyA5Ljc2NTYyQzQwLjQ1ODUgOS43NjU2MiAzOS4zMjE2IDEwLjAwMzYgMzguMzExNSAxMC40ODI3QzM3LjMwMTMgMTAuOTYxOSAzNi41MDIzIDExLjYyMzYgMzUuOTIwOCAxMi40NzExQzM1LjMzNjIgMTMuMzE4NiAzNS4wNDcxIDE0LjMxNiAzNS4wNDcxIDE1LjQ2MDFDMzUuMDQ3MSAxNi43MDIgMzUuNDQ2NiAxNy43OTM5IDM2LjI0MjQgMTguNzM1OUMzNy4wMzgyIDE5LjY3OCAzOC4yOTUyIDIwLjM4ODUgNDAuMDA3IDIwLjg2NzdMNDIuODk3OCAyMS42OTI0QzQzLjMwMDYgMjEuNzg2OSA0My43MjI4IDIxLjkzNjggNDQuMTY0NSAyMi4xMzg5QzQ0LjYwMyAyMi4zNDEgNDQuOTg2MyAyMi42MTgxIDQ1LjMwNzkgMjIuOTYzNkM0NS42Mjk0IDIzLjMwOTEgNDUuNzg4NiAyMy43Njg3IDQ1Ljc4ODYgMjQuMzQyNEM0NS43ODg2IDI1LjE1NCA0NS40NDQzIDI1LjgwOTIgNDQuNzUyNSAyNi4zMTEyQzQ0LjA2MDYgMjYuODEzMSA0My4yMDY0IDI3LjA2NDEgNDIuMTgzMiAyNy4wNjQxQzQxLjAxNzEgMjcuMDY0MSAzOS45NTgyIDI2LjcyODQgMzkuMDA2NSAyNi4wNjAyQzM4LjE0OSAyNS40NTcyIDM3LjQ1NzIgMjQuNjY1MSAzNi45Mjc4IDIzLjY3NDJDMzYuODMwMyAyMy40ODg0IDM2LjYwNjIgMjMuNDEwMiAzNi40MTc4IDIzLjUwMTRMMzQuNDEwNSAyNC40Njk1QzM0LjIyNTMgMjQuNTU3NSAzNC4xMzc2IDI0Ljc3OTIgMzQuMjE4OCAyNC45NjgyQzM0Ljg0NTcgMjYuNDMxOCAzNS44MjM0IDI3LjYwODUgMzcuMTQ4NiAyOC40OTUxQzM4LjU3NDYgMjkuNDUwMSA0MC4yNTM4IDI5LjkyNiA0Mi4xOCAyOS45MjZDNDMuNTYwNCAyOS45MjYgNDQuNzcxOSAyOS42ODgxIDQ1LjgyMTEgMjkuMjA4OUM0Ni44NjcgMjguNzMzIDQ3LjY4ODcgMjguMDYxNiA0OC4yODMxIDI3LjIwNDNDNDguODc3NiAyNi4zNDM4IDQ5LjE3NjQgMjUuMzc4OSA0OS4xNzY0IDI0LjMwMzNDNDkuMTc2NCAyMi45NjY5IDQ4Ljc0MTEgMjEuODE5NSA0Ny44NzM5IDIwLjg2NDRDNDcuMDA2NiAxOS45MDk0IDQ1Ljc4NTQgMTkuMjA1MyA0NC4yMTY1IDE4Ljc1MjJMNDQuMjIzIDE4Ljc1ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTQuMzI4MSA1LjQ4NjMzSDUxLjc0NTlDNTEuNTMyNCA1LjQ4NjMzIDUxLjM1OTQgNS42NTk5OSA1MS4zNTk0IDUuODc0MjJWMjkuMTE0OUM1MS4zNTk0IDI5LjMyOTEgNTEuNTMyNCAyOS41MDI4IDUxLjc0NTkgMjkuNTAyOEg1NC4zMjgxQzU0LjU0MTYgMjkuNTAyOCA1NC43MTQ3IDI5LjMyOTEgNTQuNzE0NyAyOS4xMTQ5VjUuODc0MjJDNTQuNzE0NyA1LjY1OTk5IDU0LjU0MTYgNS40ODYzMyA1NC4zMjgxIDUuNDg2MzNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjAuNjQ1NSAxMC45Nzg1SDU4LjA2MzNDNTcuODQ5OCAxMC45Nzg1IDU3LjY3NjggMTEuMTUyMiA1Ny42NzY4IDExLjM2NjRWMjkuMTE4QzU3LjY3NjggMjkuMzMyMiA1Ny44NDk4IDI5LjUwNTkgNTguMDYzMyAyOS41MDU5SDYwLjY0NTVDNjAuODU5IDI5LjUwNTkgNjEuMDMyMSAyOS4zMzIyIDYxLjAzMjEgMjkuMTE4VjExLjM2NjRDNjEuMDMyMSAxMS4xNTIyIDYwLjg1OSAxMC45Nzg1IDYwLjY0NTUgMTAuOTc4NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04MC44NzE5IDI0LjU3NzdMNzguNTgyIDIzLjQxNDFDNzguMzk2OCAyMy4zMTk1IDc4LjE2MyAyMy4zODggNzguMDY4OCAyMy41NzM4Qzc3LjYwMSAyNC40NzAyIDc2Ljk2MTIgMjUuMTk3IDc2LjE0NTkgMjUuNzYxQzc1LjIyOTkgMjYuMzkzMyA3NC4xNjQ1IDI2LjcwOTUgNzIuOTUzIDI2LjcwOTVDNzEuNzQxNSAyNi43MDk1IDcwLjczNDUgMjYuNDA5NiA2OS43OTU4IDI1LjgxMzFDNjguODU3MSAyNS4yMTY2IDY4LjExMzMgMjQuMzk4NSA2Ny41NjQ0IDIzLjM1ODdDNjcuMDE1NCAyMi4zMTg5IDY2Ljc0MjYgMjEuMTU1MiA2Ni43NDI2IDE5Ljg2NzdDNjYuNzQyNiAxOC41ODAxIDY3LjAxNTQgMTcuMzc3NCA2Ny41NjQ0IDE2LjM0MDhDNjguMTEwMSAxNS4zMDEgNjguODUzOSAxNC40ODk0IDY5Ljc5NTggMTMuOTA1OUM3MC43MzQ1IDEzLjMyMjUgNzEuNzg2OSAxMy4wMjkxIDcyLjk1MyAxMy4wMjkxQzc0LjExOTEgMTMuMDI5MSA3NS4yMzY0IDEzLjMzODggNzYuMTY1NCAxMy45NjEzQzc2Ljk5MDQgMTQuNTEyMiA3Ny42MjM4IDE1LjIyMjggNzguMDc1MyAxNi4wOTYzQzc4LjE2OTUgMTYuMjgyMSA3OC40MDAxIDE2LjM1MzkgNzguNTg4NSAxNi4yNTkzTDgwLjg3NTEgMTUuMTI1QzgxLjA2NjggMTUuMDMwNSA4MS4xNDE1IDE0LjgwMjMgODEuMDUzOCAxNC42MUM4MC42NzA1IDEzLjc1MjcgODAuMTExOCAxMi45ODAyIDc5LjM4MSAxMi4yOTU3Qzc4LjU0OTUgMTEuNTE5OSA3Ny41ODQ4IDEwLjkwMzkgNzYuNDkwMiAxMC40NTA4Qzc1LjM5NTYgOS45OTc3IDc0LjIxNjUgOS43Njk1MyA3Mi45NTYyIDkuNzY5NTNDNzEuMDUyOSA5Ljc2OTUzIDY5LjM3MDMgMTAuMjEyOCA2Ny45MDU0IDExLjA5NjJDNjYuNDQzOCAxMS45Nzk1IDY1LjI5NCAxMy4xNzI1IDY0LjQ2MjQgMTQuNjc4NEM2My42MzA5IDE2LjE4MTEgNjMuMjExOSAxNy45MDIxIDYzLjIxMTkgMTkuODM1MUM2My4yMTE5IDIxLjc2OCA2My42MzQyIDIzLjQ2MyA2NC40Nzg3IDI0Ljk5MTdDNjUuMzIzMiAyNi41MjA0IDY2LjQ2OTggMjcuNzI2NSA2Ny45MjE3IDI4LjYwOThDNjkuMzczNiAyOS40OTMyIDcxLjA0OTYgMjkuOTM2NSA3Mi45NTMgMjkuOTM2NUM3NC4yMTMzIDI5LjkzNjUgNzUuMzkyMyAyOS43MDgzIDc2LjQ4NjkgMjkuMjU1MkM3Ny41ODE2IDI4LjgwMjEgNzguNTQzIDI4LjE4NjEgNzkuMzc3OCAyNy40MTAzQzgwLjExMTggMjYuNzI1OCA4MC42NzA1IDI1Ljk1MzMgODEuMDUzOCAyNS4wOTI3QzgxLjEzODIgMjQuOTAwNCA4MS4wNjY4IDI0LjY3MjMgODAuODc4NCAyNC41Nzc3SDgwLjg3MTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjM3NyAxNS41ODk4Qzk5Ljk2MTEgMTQuNDc4MyA5OS4zNjY3IDEzLjQ5MDYgOTguNTkzNiAxMi42MTcxQzk3LjgyMDYgMTEuNzQ2OCA5Ni44ODE4IDExLjA1MjUgOTUuNzc0MiAxMC41NDA3Qzk0LjY2NjYgMTAuMDI5IDkzLjM5OTkgOS43NzE0OCA5MS45NzQgOS43NzE0OEM5MC4xOTA3IDkuNzcxNDggODguNTk1OSAxMC4yMDgzIDg3LjE5MjcgMTEuMDc4NkM4NS43ODk2IDExLjk0ODkgODQuNjcyMiAxMy4xMzg2IDgzLjgzNzQgMTQuNjQxM0M4My4wMDU5IDE2LjE0MzkgODIuNTg2OSAxNy44NjUgODIuNTg2OSAxOS43OTc5QzgyLjU4NjkgMjEuNzMwOCA4My4wMDI3IDIzLjQzMjMgODMuODM3NCAyNC45NzQxQzg0LjY2ODkgMjYuNTEyNiA4NS44MTg4IDI3LjcyNTIgODcuMjgwNCAyOC42MDg1Qzg4Ljc0MjEgMjkuNDkxOCA5MC40MDE5IDI5LjkzNTEgOTIuMjU5OCAyOS45MzUxQzkzLjU2ODggMjkuOTM1MSA5NC43NzA2IDI5LjcyIDk1Ljg2NTIgMjkuMjg5OEM5Ni45NTk4IDI4Ljg1OTUgOTcuOTA1IDI4LjI4MjUgOTguNzAwOCAyNy41NTI0Qzk5LjM4OTQgMjYuOTIzMyA5OS45MjIxIDI2LjIzODggMTAwLjI5OSAyNS40OTU2QzEwMC4zOTYgMjUuMyAxMDAuMzI4IDI1LjA2MjEgMTAwLjEzMyAyNC45NjQzTDk3Ljk5OTIgMjMuODY1OEM5Ny44MjA2IDIzLjc3NDYgOTcuNjAyOSAyMy44MzY1IDk3LjQ5MjUgMjQuMDA2Qzk2Ljk3MjggMjQuODAxMyA5Ni4zMjMyIDI1LjQ2MyA5NS41NDA0IDI1Ljk5NDNDOTQuNjYwMSAyNi41OTA4IDkzLjU3ODUgMjYuODkwNyA5Mi4yOTIzIDI2Ljg5MDdDOTEuMTI2MiAyNi44OTA3IDkwLjA1MTEgMjYuNTk3NCA4OS4wNjM3IDI2LjAxMzlDODguMDc2MiAyNS40MzA0IDg3LjMxNjIgMjQuNjA1OCA4Ni43ODAyIDIzLjU0MzFDODYuMzgwNyAyMi43NTExIDg2LjE1NjYgMjEuODYxMiA4Ni4xMDc5IDIwLjg3MzZIMTAwLjQ4N0MxMDAuNjc5IDIwLjg3MzYgMTAwLjg0NSAyMC43MzAxIDEwMC44NzQgMjAuNTQxMUMxMDAuOTAzIDIwLjM0MjMgMTAwLjkyNiAyMC4xNDM0IDEwMC45NDggMTkuOTQ0NkMxMDAuOTg0IDE5LjYzNDkgMTAxIDE5LjMzNSAxMDEgMTkuMDQ4MkMxMDEgMTcuODU1MiAxMDAuNzkzIDE2LjcwMTMgMTAwLjM3NyAxNS41OTMxVjE1LjU4OThaTTg4LjkwMTIgMTMuNjIxQzg5LjgzMDIgMTMuMDM3NiA5MC44NTAxIDEyLjc0NDIgOTEuOTcwNyAxMi43NDQyQzkzLjA5MTMgMTIuNzQ0MiA5NC4wODg1IDEzLjAzMSA5NC45Njg3IDEzLjYwNDdDOTUuODQ5IDE0LjE3ODQgOTYuNTE0OCAxNC45NTQyIDk2Ljk2NjMgMTUuOTMyMUM5Ny4yNTU0IDE2LjU1NzkgOTcuNDAxNiAxNy4yMzkxIDk3LjQwOCAxNy45NzI1SDg2LjE3OTNDODYuMjc2OCAxNy4yODE1IDg2LjQ2MTkgMTYuNjQ1OSA4Ni43NDEyIDE2LjA3NTVDODcuMjUxMiAxNS4wMjU5IDg3Ljk3MjMgMTQuMjA3OCA4OC45MDEyIDEzLjYyMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik01OS4zNTI5IDkuNjQ0MjdDNjAuNTA0NSA5LjY0NDI3IDYxLjQzODIgOC43MDczNiA2MS40MzgyIDcuNTUxNjJDNjEuNDM4MiA2LjM5NTg5IDYwLjUwNDUgNS40NTg5OCA1OS4zNTI5IDUuNDU4OThDNTguMjAxMiA1LjQ1ODk4IDU3LjI2NzYgNi4zOTU4OSA1Ny4yNjc2IDcuNTUxNjJDNTcuMjY3NiA4LjcwNzM2IDU4LjIwMTIgOS42NDQyNyA1OS4zNTI5IDkuNjQ0MjdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAuMDc1NSAyNS4xNzM4TDUuMzcyMjcgMzUuMzUzNEM0LjczNTY0IDM2LjcyOSA1LjkyMTIgMzguMjUxMiA3LjQwNTU5IDM3Ljk2NDRMMjAuNTkyOSAzNS40MTU0TDEwLjA3NTUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkpIi8+CjxwYXRoIGQ9Ik01LjY4MTY0IDEuODgxMzlMMTguNTUzOSAwLjAyMDE4MDRDMjAuMDA5MSAtMC4xOTE2OTEgMjEuMTE5OSAxLjMwNDQ1IDIwLjQ5OTUgMi42NDQxM0wxNi4xNDcxIDEyLjA2NzVMNS42ODE2NCAxLjg4MTM5WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzI4NTRfODQ0OSkiLz4KPHBhdGggZD0iTTUuNjgxMjEgMS44ODA4NkwwLjE4MjE2MiAxMy43NzgzQy0wLjE2ODYzNCAxNC41Mzc3IC0wLjAwMjk4MDc0IDE1LjQzNzQgMC41OTQ2NzIgMTYuMDIwOEwyMC41OSAzNS40MTUzTDI2LjEwODYgMjMuNDg4NUMyNi40NTk0IDIyLjcyOSAyNi4yOTM3IDIxLjgyNjEgMjUuNjkyOCAyMS4yNDI3TDUuNjgxMjEgMS44ODA4NloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSI4LjIwMTM4IiB5MT0iMzQuMTQ3NCIgeDI9IjE1Ljk3MjMiIHkyPSIyOS4zMzE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IndoaXRlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSIxOS4zMjM3IiB5MT0iMC4yNjc5MDciIHgyPSI5LjY2MzU4IiB5Mj0iNy45MTc1NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzI4NTRfODQ0OSI+CjxyZWN0IHdpZHRoPSIxMDEiIGhlaWdodD0iMzgiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==" class="nav__logo nav__logo--light" alt="Slice" width="104" height="39"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAwIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF8yODU1KSI+CjxwYXRoIGQ9Ik00My43ODQ4IDE4Ljc1ODhMNDAuNjc1IDE3LjgyNjVDNDAuMjk4NyAxNy43MDU5IDM5LjkwOTYgMTcuNTU5MiAzOS41MDc2IDE3LjM4QzM5LjEwNTYgMTcuMjAwNyAzOC43NjQ3IDE2LjkzOTkgMzguNDgxNyAxNi41OTEyQzM4LjE5ODcgMTYuMjQ1NiAzOC4wNTcyIDE1LjgwODkgMzguMDU3MiAxNS4yODQxQzM4LjA1NzIgMTQuNTIxMyAzOC4zNDAyIDEzLjg5ODggMzguOTA2MiAxMy40MjI5QzM5LjQ3MjIgMTIuOTQ3IDQwLjIzNzYgMTIuNzA1OCA0MS4yMDI0IDEyLjcwNThDNDIuMjYzNiAxMi43MDU4IDQzLjIxNTYgMTIuOTkyNiA0NC4wNjQ2IDEzLjU2NjNDNDQuODE3MSAxNC4wNzQ4IDQ1LjM5OTIgMTQuNzQ5NSA0NS44MjA1IDE1LjU5MzdDNDUuOTEzOCAxNS43Nzk1IDQ2LjEzNTcgMTUuODU0NSA0Ni4zMTkgMTUuNzY2NUw0OC4zMjU3IDE0LjgyNzdDNDguNTEyMiAxNC43Mzk3IDQ4LjYwMjMgMTQuNTIxMyA0OC41MjE5IDE0LjMyOUM0Ny45NDYyIDEyLjk0MDQgNDcuMDQyNiAxMS44NTE3IDQ1LjgxMDggMTEuMDU2NEM0NC40Nzk0IDEwLjE5NTkgNDIuOTc3NiA5Ljc2NTYyIDQxLjMwNTMgOS43NjU2MkM0MC4wNTc1IDkuNzY1NjIgMzguOTMxOSAxMC4wMDM2IDM3LjkzMTggMTAuNDgyN0MzNi45MzE2IDEwLjk2MTkgMzYuMTQwNSAxMS42MjM2IDM1LjU2NDggMTIuNDcxMUMzNC45ODYgMTMuMzE4NiAzNC42OTk3IDE0LjMxNiAzNC42OTk3IDE1LjQ2MDFDMzQuNjk5NyAxNi43MDIgMzUuMDk1MyAxNy43OTM5IDM1Ljg4MzIgMTguNzM1OUMzNi42NzExIDE5LjY3OCAzNy45MTU3IDIwLjM4ODUgMzkuNjEwNSAyMC44Njc3TDQyLjQ3MjcgMjEuNjkyNEM0Mi44NzE1IDIxLjc4NjkgNDMuMjg5NSAyMS45MzY4IDQzLjcyNjkgMjIuMTM4OUM0NC4xNjExIDIyLjM0MSA0NC41NDA1IDIyLjYxODEgNDQuODU4OSAyMi45NjM2QzQ1LjE3NzMgMjMuMzA5MSA0NS4zMzQ5IDIzLjc2ODcgNDUuMzM0OSAyNC4zNDI0QzQ1LjMzNDkgMjUuMTU0IDQ0Ljk5NCAyNS44MDkyIDQ0LjMwOSAyNi4zMTEyQzQzLjYyNCAyNi44MTMxIDQyLjc3ODIgMjcuMDY0MSA0MS43NjUyIDI3LjA2NDFDNDAuNjEwNiAyNy4wNjQxIDM5LjU2MjIgMjYuNzI4NCAzOC42MiAyNi4wNjAyQzM3Ljc3MSAyNS40NTcyIDM3LjA4NiAyNC42NjUxIDM2LjU2MTggMjMuNjc0MkMzNi40NjUzIDIzLjQ4ODQgMzYuMjQzNCAyMy40MTAyIDM2LjA1NjkgMjMuNTAxNEwzNC4wNjk0IDI0LjQ2OTVDMzMuODg2MSAyNC41NTc1IDMzLjc5OTMgMjQuNzc5MiAzMy44Nzk3IDI0Ljk2ODJDMzQuNTAwMyAyNi40MzE4IDM1LjQ2ODMgMjcuNjA4NSAzNi43ODA1IDI4LjQ5NTFDMzguMTkyMyAyOS40NTAxIDM5Ljg1NDkgMjkuOTI2IDQxLjc2MiAyOS45MjZDNDMuMTI4NyAyOS45MjYgNDQuMzI4MyAyOS42ODgxIDQ1LjM2NyAyOS4yMDg5QzQ2LjQwMjYgMjguNzMzIDQ3LjIxNjIgMjguMDYxNiA0Ny44MDQ3IDI3LjIwNDNDNDguMzkzMiAyNi4zNDM4IDQ4LjY4OTEgMjUuMzc4OSA0OC42ODkxIDI0LjMwMzNDNDguNjg5MSAyMi45NjY5IDQ4LjI1ODIgMjEuODE5NSA0Ny4zOTk1IDIwLjg2NDRDNDYuNTQwOSAxOS45MDk0IDQ1LjMzMTcgMTkuMjA1MyA0My43Nzg0IDE4Ljc1MjJMNDMuNzg0OCAxOC43NTg4WiIgZmlsbD0iIzI4MDAwMyIvPgo8cGF0aCBkPSJNNTMuNzkgNS40ODYzM0g1MS4yMzMzQzUxLjAyMTkgNS40ODYzMyA1MC44NTA2IDUuNjU5OTkgNTAuODUwNiA1Ljg3NDIyVjI5LjExNDlDNTAuODUwNiAyOS4zMjkxIDUxLjAyMTkgMjkuNTAyOCA1MS4yMzMzIDI5LjUwMjhINTMuNzlDNTQuMDAxMyAyOS41MDI4IDU0LjE3MjcgMjkuMzI5MSA1NC4xNzI3IDI5LjExNDlWNS44NzQyMkM1NC4xNzI3IDUuNjU5OTkgNTQuMDAxMyA1LjQ4NjMzIDUzLjc5IDUuNDg2MzNaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik02MC4wNDQ4IDEwLjk3ODVINTcuNDg4MkM1Ny4yNzY4IDEwLjk3ODUgNTcuMTA1NSAxMS4xNTIyIDU3LjEwNTUgMTEuMzY2NFYyOS4xMThDNTcuMTA1NSAyOS4zMzIyIDU3LjI3NjggMjkuNTA1OSA1Ny40ODgyIDI5LjUwNTlINjAuMDQ0OEM2MC4yNTYyIDI5LjUwNTkgNjAuNDI3NSAyOS4zMzIyIDYwLjQyNzUgMjkuMTE4VjExLjM2NjRDNjAuNDI3NSAxMS4xNTIyIDYwLjI1NjIgMTAuOTc4NSA2MC4wNDQ4IDEwLjk3ODVaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik04MC4wNzExIDI0LjU3NzdMNzcuODAzOCAyMy40MTQxQzc3LjYyMDUgMjMuMzE5NSA3Ny4zODkgMjMuMzg4IDc3LjI5NTcgMjMuNTczOEM3Ni44MzI2IDI0LjQ3MDIgNzYuMTk5MSAyNS4xOTcgNzUuMzkxOSAyNS43NjFDNzQuNDg1IDI2LjM5MzMgNzMuNDMwMSAyNi43MDk1IDcyLjIzMDYgMjYuNzA5NUM3MS4wMzEgMjYuNzA5NSA3MC4wMzQxIDI2LjQwOTYgNjkuMTA0NyAyNS44MTMxQzY4LjE3NTMgMjUuMjE2NiA2Ny40Mzg4IDI0LjM5ODUgNjYuODk1MyAyMy4zNTg3QzY2LjM1MTggMjIuMzE4OSA2Ni4wODE3IDIxLjE1NTIgNjYuMDgxNyAxOS44Njc3QzY2LjA4MTcgMTguNTgwMSA2Ni4zNTE4IDE3LjM3NzQgNjYuODk1MyAxNi4zNDA4QzY3LjQzNTYgMTUuMzAxIDY4LjE3MiAxNC40ODk0IDY5LjEwNDcgMTMuOTA1OUM3MC4wMzQxIDEzLjMyMjUgNzEuMDc2IDEzLjAyOTEgNzIuMjMwNiAxMy4wMjkxQzczLjM4NTEgMTMuMDI5MSA3NC40OTE0IDEzLjMzODggNzUuNDExMiAxMy45NjEzQzc2LjIyOCAxNC41MTIyIDc2Ljg1NTEgMTUuMjIyOCA3Ny4zMDIxIDE2LjA5NjNDNzcuMzk1NCAxNi4yODIxIDc3LjYyMzcgMTYuMzUzOSA3Ny44MTAyIDE2LjI1OTNMODAuMDc0MyAxNS4xMjVDODAuMjY0IDE1LjAzMDUgODAuMzM4IDE0LjgwMjMgODAuMjUxMiAxNC42MUM3OS44NzE3IDEzLjc1MjcgNzkuMzE4NSAxMi45ODAyIDc4LjU5NDkgMTIuMjk1N0M3Ny43NzE3IDExLjUxOTkgNzYuODE2NSAxMC45MDM5IDc1LjczMjcgMTAuNDUwOEM3NC42NDkgOS45OTc3IDczLjQ4MTYgOS43Njk1MyA3Mi4yMzM4IDkuNzY5NTNDNzAuMzQ5MiA5Ljc2OTUzIDY4LjY4MzQgMTAuMjEyOCA2Ny4yMzMgMTEuMDk2MkM2NS43ODU4IDExLjk3OTUgNjQuNjQ3NCAxMy4xNzI1IDYzLjgyNDEgMTQuNjc4NEM2My4wMDA4IDE2LjE4MTEgNjIuNTg1OSAxNy45MDIxIDYyLjU4NTkgMTkuODM1MUM2Mi41ODU5IDIxLjc2OCA2My4wMDQgMjMuNDYzIDYzLjg0MDIgMjQuOTkxN0M2NC42NzYzIDI2LjUyMDQgNjUuODExNSAyNy43MjY1IDY3LjI0OTEgMjguNjA5OEM2OC42ODY2IDI5LjQ5MzIgNzAuMzQ2IDI5LjkzNjUgNzIuMjMwNiAyOS45MzY1QzczLjQ3ODQgMjkuOTM2NSA3NC42NDU4IDI5LjcwODMgNzUuNzI5NSAyOS4yNTUyQzc2LjgxMzMgMjguODAyMSA3Ny43NjUyIDI4LjE4NjEgNzguNTkxNyAyNy40MTAzQzc5LjMxODUgMjYuNzI1OCA3OS44NzE3IDI1Ljk1MzMgODAuMjUxMiAyNS4wOTI3QzgwLjMzNDggMjQuOTAwNCA4MC4yNjQgMjQuNjcyMyA4MC4wNzc1IDI0LjU3NzdIODAuMDcxMVoiIGZpbGw9IiMyODAwMDMiLz4KPHBhdGggZD0iTTk5LjM4MjMgMTUuNTg5OEM5OC45NzA3IDE0LjQ3ODMgOTguMzgyMiAxMy40OTA2IDk3LjYxNjggMTIuNjE3MUM5Ni44NTE0IDExLjc0NjggOTUuOTIyIDExLjA1MjUgOTQuODI1MyAxMC41NDA3QzkzLjcyODcgMTAuMDI5IDkyLjQ3NDUgOS43NzE0OCA5MS4wNjI3IDkuNzcxNDhDODkuMjk3MSA5Ljc3MTQ4IDg3LjcxODEgMTAuMjA4MyA4Ni4zMjg4IDExLjA3ODZDODQuOTM5NSAxMS45NDg5IDgzLjgzMzIgMTMuMTM4NiA4My4wMDY3IDE0LjY0MTNDODIuMTgzNCAxNi4xNDM5IDgxLjc2ODYgMTcuODY1IDgxLjc2ODYgMTkuNzk3OUM4MS43Njg2IDIxLjczMDggODIuMTgwMiAyMy40MzIzIDgzLjAwNjcgMjQuOTc0MUM4My44MyAyNi41MTI2IDg0Ljk2ODQgMjcuNzI1MiA4Ni40MTU2IDI4LjYwODVDODcuODYyOCAyOS40OTE4IDg5LjUwNjEgMjkuOTM1MSA5MS4zNDU3IDI5LjkzNTFDOTIuNjQxNyAyOS45MzUxIDkzLjgzMTYgMjkuNzIgOTQuOTE1NCAyOS4yODk4Qzk1Ljk5OTEgMjguODU5NSA5Ni45MzUgMjguMjgyNSA5Ny43MjI5IDI3LjU1MjRDOTguNDA0NyAyNi45MjMzIDk4LjkzMjEgMjYuMjM4OCA5OS4zMDUxIDI1LjQ5NTZDOTkuNDAxNiAyNS4zIDk5LjMzNDEgMjUuMDYyMSA5OS4xNDExIDI0Ljk2NDNMOTcuMDI4MiAyMy44NjU4Qzk2Ljg1MTQgMjMuNzc0NiA5Ni42MzU5IDIzLjgzNjUgOTYuNTI2NiAyNC4wMDZDOTYuMDEyIDI0LjgwMTMgOTUuMzY4OCAyNS40NjMgOTQuNTkzOCAyNS45OTQzQzkzLjcyMjMgMjYuNTkwOCA5Mi42NTEzIDI2Ljg5MDcgOTEuMzc3OCAyNi44OTA3QzkwLjIyMzMgMjYuODkwNyA4OS4xNTg4IDI2LjU5NzQgODguMTgxMiAyNi4wMTM5Qzg3LjIwMzUgMjUuNDMwNCA4Ni40NTEgMjQuNjA1OCA4NS45MjA0IDIzLjU0MzFDODUuNTI0OCAyMi43NTExIDg1LjMwMjkgMjEuODYxMiA4NS4yNTQ2IDIwLjg3MzZIOTkuNDkxN0M5OS42ODE0IDIwLjg3MzYgOTkuODQ1NCAyMC43MzAxIDk5Ljg3NDQgMjAuNTQxMUM5OS45MDMzIDIwLjM0MjMgOTkuOTI1OCAyMC4xNDM0IDk5Ljk0ODMgMTkuOTQ0NkM5OS45ODM3IDE5LjYzNDkgOTkuOTk5OCAxOS4zMzUgOTkuOTk5OCAxOS4wNDgyQzk5Ljk5OTggMTcuODU1MiA5OS43OTQgMTYuNzAxMyA5OS4zODIzIDE1LjU5MzFWMTUuNTg5OFpNODguMDIwNCAxMy42MjFDODguOTQwMSAxMy4wMzc2IDg5Ljk0OTkgMTIuNzQ0MiA5MS4wNTk0IDEyLjc0NDJDOTIuMTY4OSAxMi43NDQyIDkzLjE1NjIgMTMuMDMxIDk0LjAyNzggMTMuNjA0N0M5NC44OTkzIDE0LjE3ODQgOTUuNTU4NiAxNC45NTQyIDk2LjAwNTYgMTUuOTMyMUM5Ni4yOTE4IDE2LjU1NzkgOTYuNDM2NSAxNy4yMzkxIDk2LjQ0MjkgMTcuOTcyNUg4NS4zMjU0Qzg1LjQyMTkgMTcuMjgxNSA4NS42MDUyIDE2LjY0NTkgODUuODgxOCAxNi4wNzU1Qzg2LjM4NjcgMTUuMDI1OSA4Ny4xMDA2IDE0LjIwNzggODguMDIwNCAxMy42MjFaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik01OC43NjQ4IDkuNjQ0MjdDNTkuOTA1MSA5LjY0NDI3IDYwLjgyOTUgOC43MDczNiA2MC44Mjk1IDcuNTUxNjJDNjAuODI5NSA2LjM5NTg5IDU5LjkwNTEgNS40NTg5OCA1OC43NjQ4IDUuNDU4OThDNTcuNjI0NiA1LjQ1ODk4IDU2LjcwMDIgNi4zOTU4OSA1Ni43MDAyIDcuNTUxNjJDNTYuNzAwMiA4LjcwNzM2IDU3LjYyNDYgOS42NDQyNyA1OC43NjQ4IDkuNjQ0MjdaIiBmaWxsPSIjMjgwMDAzIi8+CjxwYXRoIGQ9Ik05Ljk3NjQ1IDI1LjE3MzhMNS4zMTk3NSAzNS4zNTM0QzQuNjg5NDIgMzYuNzI5IDUuODYzMjUgMzguMjUxMiA3LjMzMjkzIDM3Ljk2NDRMMjAuMzg5NyAzNS40MTU0TDkuOTc2NDUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0XzI4NTUpIi8+CjxwYXRoIGQ9Ik01LjYyNSAxLjg4MTM5TDE4LjM2OTggMC4wMjAxODA0QzE5LjgxMDYgLTAuMTkxNjkxIDIwLjkxMDQgMS4zMDQ0NSAyMC4yOTYyIDIuNjQ0MTNMMTUuOTg2OCAxMi4wNjc1TDUuNjI1IDEuODgxMzlaIiBmaWxsPSJ1cmwoI3BhaW50MV9saW5lYXJfMjg1NF8yODU1KSIvPgo8cGF0aCBkPSJNNS42MjQ5NiAxLjg4MDg2TDAuMTgwMzU4IDEzLjc3ODNDLTAuMTY2OTY1IDE0LjUzNzcgLTAuMDAyOTUxMjMgMTUuNDM3NCAwLjU4ODc4NCAxNi4wMjA4TDIwLjM4NjIgMzUuNDE1M0wyNS44NTAxIDIzLjQ4ODVDMjYuMTk3NCAyMi43MjkgMjYuMDMzNCAyMS44MjYxIDI1LjQzODQgMjEuMjQyN0w1LjYyNDk2IDEuODgwODZaIiBmaWxsPSIjRkY3OTM5Ii8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0XzI4NTUiIHgxPSI4LjEyMDg0IiB5MT0iMzQuMTQ3NCIgeDI9IjE3LjA5NTUiIHkyPSIyOS4zODE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCMTNGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0XzI4NTUiIHgxPSIxOS4xMzIiIHkxPSIwLjI2NzkwNyIgeDI9IjkuNDk0MzIiIHkyPSI3LjgyNDIzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkRBNjIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCMTNGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMjg1NF8yODU1Ij4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIzOCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K" class="nav__logo nav__logo--dark" alt="" width="104" height="39"></a>
+    <nav class="nav__links" aria-label="Page sections">
+      <a href="#how" class="nav__link">The Problem</a>
+      <a href="#platform" class="nav__link">Platform</a>
+      <a href="#integrations" class="nav__link">Integrations</a>
+      <a href="#security" class="nav__link">Security</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="#" class="btn btn--ghost-invert">Sign In</a>
+      <a href="#demo" class="btn btn--invert">Book a Demo</a>
+    </div>
+  </div>
+  <span class="nav__progress" aria-hidden="true"></span>
+</header>
+
+<main id="main">
+
+<!-- ============ 02 HERO + 03 SOCIAL PROOF (one gradient surface) ============ -->
+<section class="hero" id="top">
+  <span class="slice-ghost" aria-hidden="true"></span>
+  <div class="hero__grid">
+    <div>
+      <p class="eyebrow eyebrow--invert" data-in style="--d:100ms">Global Equity Assurance Platform</p>
+      <h1><span class="ln"><span style="--d:200ms">Signed Isn’t Settled.</span></span><span class="ln"><span style="--d:340ms">Slice Keeps It Airtight.</span></span></h1>
+      <p class="hero__lead" data-in style="--d:520ms">A grant is signed once, then tested years later — at a vesting cliff, an exercise,
+         an exit — under whatever rules apply by then. <b>Slice already knows</b> what it becomes.</p>
+      <div class="hero__ctas" data-in style="--d:660ms">
+        <a href="#demo" class="btn btn--invert">Request a Demo <span class="arr" aria-hidden="true">→</span></a>
+        <a href="#how" class="btn btn--outline">See How It Works</a>
+      </div>
+    </div>
+
+    <div class="hero__vis">
+      <div class="hero__ui" id="heroUi" role="img" aria-label="Product screen: compliance overview across five countries">
+        <div class="ui__bar"><span class="ui__dot"></span><span class="ui__dot"></span><span class="ui__dot"></span>
+          <span class="ui__title">Compliance overview</span><span class="ui__live"><i></i>Live</span></div>
+        <div class="ui__body" aria-hidden="true">
+          <span class="ui__scan" id="heroScan"></span>
+          <div class="ui__row"><svg class="ui__flag" viewBox="0 0 60 30" preserveAspectRatio="none"><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
+            <span class="ui__name">United Kingdom</span><span class="pill pill--ok" data-final="ok">Compliant</span></div>
+          <div class="ui__row"><svg class="ui__flag" viewBox="0 0 3 3" preserveAspectRatio="none"><rect width="3" height="1" fill="#000"/><rect y="1" width="3" height="1" fill="#DD0000"/><rect y="2" width="3" height="1" fill="#FFCE00"/></svg>
+            <span class="ui__name">Germany</span><span class="pill pill--ok" data-final="ok">Compliant</span></div>
+          <div class="ui__row"><svg class="ui__flag" viewBox="0 0 22 16" preserveAspectRatio="none"><rect width="22" height="16" fill="#fff"/><rect y="1.6" width="22" height="2.4" fill="#0038B8"/><rect y="12" width="22" height="2.4" fill="#0038B8"/><path d="M11 5.2l2.6 4.4H8.4zM11 10.8L8.4 6.4h5.2z" fill="none" stroke="#0038B8" stroke-width=".7"/></svg>
+            <span class="ui__name">Israel</span><span class="pill pill--warn" data-final="warn">102 Filing Due</span></div>
+          <div class="ui__row"><svg class="ui__flag" viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+            <span class="ui__name">France</span><span class="pill pill--risk" data-final="risk">Exposure</span></div>
+          <div class="ui__row"><svg class="ui__flag" viewBox="0 0 2 2" preserveAspectRatio="none"><rect width="2" height="1" fill="#fff"/><rect y="1" width="2" height="1" fill="#DC143C"/></svg>
+            <span class="ui__name">Poland</span><span class="pill pill--ok" data-final="ok">Compliant</span></div>
+        </div>
+      </div>
+      <div class="hero__toast" aria-hidden="true">
+        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C60046" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4"/><circle cx="12" cy="17.2" r=".6" fill="#C60046"/></svg></span>
+        <span><b>Exposure</b>France · 3 grants issued outside the approved plan</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof">
+    <div class="container">
+      <p class="proof__label">Trusted by global teams</p>
+      <div class="proof__strip">
+        <div class="proof__track">
+          <span class="proof__logo">aidoc</span><span class="proof__logo">ALLIANZ</span><span class="proof__logo">augury</span>
+          <span class="proof__logo">WAYVE</span><span class="proof__logo">Avalor</span><span class="proof__logo">aqua</span>
+          <span class="proof__logo">cyera</span><span class="proof__logo">wiz</span>
+          <span class="proof__logo" aria-hidden="true">aidoc</span><span class="proof__logo" aria-hidden="true">ALLIANZ</span><span class="proof__logo" aria-hidden="true">augury</span>
+          <span class="proof__logo" aria-hidden="true">WAYVE</span><span class="proof__logo" aria-hidden="true">Avalor</span><span class="proof__logo" aria-hidden="true">aqua</span>
+          <span class="proof__logo" aria-hidden="true">cyera</span><span class="proof__logo" aria-hidden="true">wiz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 PROBLEM ============ -->
+<section class="section problem" id="how">
+  <div class="container">
+    <div class="sec-head">
+      <div data-reveal>
+        <p class="eyebrow">The gap between signing and vesting</p>
+        <h2 class="h2">A Grant Changes Shape After You Sign It</h2>
+      </div>
+      <p class="u-lead muted" data-reveal style="--d:120ms">Nobody reads a grant closely on the day it’s issued. By the time someone does —
+        at a vest, an exercise, an audit — it may already be a different instrument under different rules.</p>
+    </div>
+    <div class="grid--3" data-stagger>
+      <div class="card" data-reveal>
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Ever-Changing Compliance</h4>
+        <p class="card__txt">Each country has specific regulations around equity, and they constantly change.
+          That exposes you and your employees to financial penalties.</p>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 7h8a2.5 2.5 0 010 5H9a2.5 2.5 0 000 5h8"/></svg></div>
+        <h4>Complicated Tax Codes</h4>
+        <p class="card__txt">Tax codes for equity are extremely complicated. Mistakes are irreversible, and it is
+          easy to miss large tax breaks.</p>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a8 8 0 108 8"/><path d="M12 8v4l3 2"/><path d="M16 4h5v5"/></svg></div>
+        <h4>Costly Manual Work</h4>
+        <p class="card__txt">Setting up and maintaining global equity plans is heavily time-consuming, and requires
+          deep and expensive research.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 BEFORE / AFTER ============ -->
+<section class="ba" data-observe aria-label="Before and after Slice">
+  <div class="ba__l">
+    <div class="ba__in">
+      <p class="eyebrow" data-reveal>Today</p>
+      <h2 data-reveal>Before Slice</h2>
+      <div class="steps" data-observe data-stagger>
+        <div class="step step--invert" data-reveal="left"><div class="step__num">1</div>
+          <div><h5>Signed and Forgotten</h5>
+          <p>A grant gets approved, filed, and nobody looks at it again until something forces the question.</p></div></div>
+        <div class="step step--invert" data-reveal="left"><div class="step__num">2</div>
+          <div><h5>Rules That Moved On</h5>
+          <p>By the time it vests, the rules that applied at signing aren’t the rules that apply now. I find out too late.</p></div></div>
+        <div class="step step--invert" data-reveal="left"><div class="step__num">3</div>
+          <div><h5>Nobody Assigned to Check</h5>
+          <p>Nothing on the cap table tells me when a grant needs a second look. So it doesn’t get one.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ba__pivot" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="ba__r">
+    <div class="ba__in">
+      <p class="eyebrow" data-reveal>With Slice</p>
+      <h2 data-reveal>After Slice</h2>
+      <div class="steps" data-observe data-stagger>
+        <div class="step" data-reveal="right"><div class="step__num">1</div>
+          <div><h5>Read the Day It’s Signed</h5>
+          <p>Slice reads every grant against local law the moment it’s issued, not the moment something goes wrong.</p></div></div>
+        <div class="step" data-reveal="right"><div class="step__num">2</div>
+          <div><h5>Re-Checked as Rules Change</h5>
+          <p>When the rules a grant is subject to change, Slice already knows, and tells me before it matters.</p></div></div>
+        <div class="step" data-reveal="right"><div class="step__num">3</div>
+          <div><h5>Nothing Left Unassigned</h5>
+          <p>Every grant has a standing check, with a full audit trail of what changed and when.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 PILLARS ============ -->
+<section class="section" id="platform">
+  <div class="container">
+    <div class="sec-head">
+      <div data-reveal>
+        <p class="eyebrow">The platform</p>
+        <h2 class="h2">Airtight, From Signing to Vesting</h2>
+      </div>
+      <p class="u-lead muted" data-reveal style="--d:120ms">Powered by our AI compliance engine, Slice reads every grant the day
+        it’s signed, and every day after, so nothing gets settled by accident.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar" data-observe>
+        <div class="pillar__txt" data-reveal="left">
+          <p class="eyebrow">01 · Continuous Global Compliance</p>
+          <h3>Read the Moment It’s Signed</h3>
+          <p>Every grant is checked against local law the day it’s issued, not the day someone finally looks.
+            Preemptive alerts steer you clear of exposure as the rules change under it.</p>
+          <a href="#demo" class="link-arrow">See It Live <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="pillar__stage" data-reveal="right">
+          <div class="pillar__vis"><div class="ui__bar"><span class="ui__dot"></span><span class="ui__dot"></span><span class="ui__dot"></span><span class="ui__title">Alerts</span></div>
+            <div class="ui__body cascade">
+              <div class="ui__row"><span class="pill pill--warn">Action</span><span class="ui__name">Israel · Section 102 filing window opens in 14 days</span></div>
+              <div class="ui__row"><span class="pill pill--risk">Exposure</span><span class="ui__name">France · 3 grants issued outside the approved plan</span></div>
+              <div class="ui__row"><span class="pill pill--ok">Cleared</span><span class="ui__name">Germany · Annual reporting submitted</span></div>
+            </div></div>
+        </div>
+      </article>
+
+      <article class="pillar" data-observe>
+        <div class="pillar__txt" data-reveal="right">
+          <p class="eyebrow">02 · Global Tax Optimisation</p>
+          <h3>What Was Signed Isn’t What’s Owed Now</h3>
+          <p>A grant’s tax treatment isn’t fixed at signing; it’s tested at exercise. Slice tracks the gap and
+            optimises for it automatically, so a missed election never costs someone their upside.</p>
+          <a href="#demo" class="link-arrow">See It Live <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="pillar__stage" data-reveal="left">
+          <div class="pillar__vis pillar__vis--pad">
+            <div class="stats">
+              <div><div class="stat__value" style="color:var(--slice-orange)" data-count="1.2" data-prefix="€" data-suffix="M" data-dec="1">€1.2M</div><div class="stat__label">Tax breaks captured</div></div>
+              <div><div class="stat__value" style="color:var(--slice-purple-iii)" data-count="17">17</div><div class="stat__label">Elections filed on time</div></div>
+              <div><div class="stat__value" style="color:var(--ink-ok)">0</div><div class="stat__label">Missed deadlines</div></div>
+            </div>
+            <hr class="rule-spectrum" style="margin-top:var(--sp-8)">
+            <p class="vis__note">Figures are illustrative.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="pillar" data-observe>
+        <div class="pillar__txt" data-reveal="left">
+          <p class="eyebrow">03 · Exposure Intelligence</p>
+          <h3>See What Changed Since Signing</h3>
+          <p>Gain insight into every grant that’s drifted from the terms it was signed under, and remediate it
+            instantly, with a full record of what changed and why.</p>
+          <a href="#demo" class="link-arrow">See It Live <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="pillar__stage" data-reveal="right">
+          <div class="pillar__vis pillar__vis--pad">
+            <div class="vis__label">Exposure by category</div>
+            <div class="bars">
+              <div class="bar"><div class="bar__top"><span>Filing deadlines</span><b>4</b></div><div class="bar__track"><div class="bar__fill" style="--w:66%;background:var(--slice-orange)"></div></div></div>
+              <div class="bar"><div class="bar__top"><span>Plan documentation</span><b>2</b></div><div class="bar__track"><div class="bar__fill" style="--w:34%;background:var(--slice-purple-iii)"></div></div></div>
+              <div class="bar"><div class="bar__top"><span>Employee data</span><b>1</b></div><div class="bar__track"><div class="bar__fill" style="--w:16%;background:var(--slice-green-ii)"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pillar" data-observe>
+        <div class="pillar__txt" data-reveal="right">
+          <p class="eyebrow">04 · Secure Lifecycle Automation</p>
+          <h3>Settled at Every Stage, Not Just the First</h3>
+          <p>A grant passes through more hands than the one that signs it. Board approvals, grant letters,
+            exercises and cancellations — each checked again, with a complete audit trail.</p>
+          <a href="#demo" class="link-arrow">See It Live <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="pillar__stage" data-reveal="left">
+          <div class="pillar__vis"><div class="ui__bar"><span class="ui__dot"></span><span class="ui__dot"></span><span class="ui__dot"></span><span class="ui__title">Workflows</span></div>
+            <div class="ui__body cascade">
+              <div class="ui__row"><span class="ui__name">Board approval · Q1 grants</span><span class="pill pill--ok">Approved</span></div>
+              <div class="ui__row"><span class="ui__name">Grant letters · 48 employees</span><span class="pill pill--ok">Sent</span></div>
+              <div class="ui__row"><span class="ui__name">HRIS sync · Workday</span><span class="pill pill--ok">Live</span></div>
+              <div class="ui__row"><span class="ui__name">Exercise request · 2 pending</span><span class="pill pill--info">In Review</span></div>
+            </div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 TESTIMONIALS ============ -->
+<section class="section section--warm">
+  <div class="container" style="text-align:center">
+    <p class="eyebrow" data-reveal>What real assurance feels like</p>
+    <h2 class="h2" style="margin-bottom:var(--sp-11)" data-reveal>Finance Teams, in Their Words</h2>
+    <div class="quotes" id="quotes" data-reveal="zoom" aria-roledescription="carousel" aria-label="Customer testimonials">
+      <div class="quotes__stage" aria-live="polite">
+        <figure class="quote is-active">
+          <svg width="34" height="26" viewBox="0 0 34 26" fill="none" style="margin-bottom:var(--sp-5)" aria-hidden="true"><path d="M14 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7H2V0zM34 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7h-7V0z" fill="#FF5400" opacity=".22"/></svg>
+          <blockquote>“As a VP Finance who runs Equity for a global organization, Slice gives me peace of mind through
+            automated compliance monitoring in every country we operate in while making sure our data is accurate
+            and integrity is 100%.”</blockquote>
+          <hr class="rule-spectrum">
+          <figcaption><cite><b>Shiran Bar-Lev</b><span>VP Finance</span></cite></figcaption>
+        </figure>
+        <figure class="quote">
+          <svg width="34" height="26" viewBox="0 0 34 26" fill="none" style="margin-bottom:var(--sp-5)" aria-hidden="true"><path d="M14 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7H2V0zM34 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7h-7V0z" fill="#FF5400" opacity=".22"/></svg>
+          <blockquote>“Slice Global Equity has really solved all my pains in the equity process, especially the manual
+            work and discrepancies between platforms — HR system, legal records. I really enjoy that everything works
+            in the same place and syncs with all the data, and that all information is live and up to date.”</blockquote>
+          <hr class="rule-spectrum">
+          <figcaption><cite><b>Senior Director of Finance</b><span>Mid-market company</span></cite></figcaption>
+        </figure>
+        <figure class="quote">
+          <svg width="34" height="26" viewBox="0 0 34 26" fill="none" style="margin-bottom:var(--sp-5)" aria-hidden="true"><path d="M14 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7H2V0zM34 0v14c0 7-5 12-12 12v-5c4 0 7-3 7-7h-7V0z" fill="#FF5400" opacity=".22"/></svg>
+          <blockquote>“The compliance section, in particular, is a real game-changer. The support team is highly
+            efficient, and having a dedicated Slack channel makes it easy to get immediate assistance and quick
+            resolutions whenever issues come up.”</blockquote>
+          <hr class="rule-spectrum">
+          <figcaption><cite><b>Assaf C.</b><span>VP Finance</span></cite></figcaption>
+        </figure>
+      </div>
+      <div class="quotes__ctrl">
+        <button class="quotes__btn" type="button" data-dir="-1" aria-label="Previous testimonial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="quotes__dots"></div>
+        <button class="quotes__btn" type="button" data-dir="1" aria-label="Next testimonial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 INTEGRATIONS ============ -->
+<section class="section" id="integrations">
+  <div class="container">
+    <div class="sec-head sec-head--solo">
+      <div data-reveal>
+        <p class="eyebrow">Connected</p>
+        <h2 class="h2">Slice Fits the Stack You Already Run</h2>
+      </div>
+    </div>
+    <div class="intg" data-stagger>
+      <div class="intg__group" data-reveal>
+        <p class="eyebrow eyebrow--dark">HR Systems</p>
+        <div class="intg__grid"><div class="intg__cell">Workday</div><div class="intg__cell">HiBob</div>
+          <div class="intg__cell">BambooHR</div><div class="intg__cell">Rippling</div></div>
+      </div>
+      <div class="intg__group" data-reveal>
+        <p class="eyebrow eyebrow--dark">Cap Table</p>
+        <div class="intg__grid"><div class="intg__cell">Carta</div><div class="intg__cell">Pulley</div>
+          <div class="intg__cell">Ledgy</div><div class="intg__cell">Altshare</div></div>
+      </div>
+      <div class="intg__group" data-reveal>
+        <p class="eyebrow eyebrow--dark">Security</p>
+        <div class="intg__grid"><div class="intg__cell">Okta</div><div class="intg__cell">Azure AD</div>
+          <div class="intg__cell">Google SSO</div><div class="intg__cell">SCIM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 TRUST ============ -->
+<section class="section section--warm section--tight" id="security">
+  <div class="container trust">
+    <div data-reveal>
+      <p class="eyebrow">Security</p>
+      <h2 class="h2">Guarding Your Privacy With Certified Expertise</h2>
+      <p>Equity data is among the most sensitive a company holds. Slice is built to enterprise standards,
+        independently audited, and covered by permission profiles, SSO and complete audit trails.</p>
+    </div>
+    <div class="badges" data-stagger>
+      <div class="card card--flat badge" data-reveal="zoom">
+        <div class="badge__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="badge__name">SOC 2 Type II</div></div>
+      <div class="card card--flat badge" data-reveal="zoom">
+        <div class="badge__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg></div>
+        <div class="badge__name">ISO 27001</div></div>
+      <div class="card card--flat badge" data-reveal="zoom">
+        <div class="badge__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></div>
+        <div class="badge__name">GDPR</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 FINAL CTA ============ -->
+<section class="cta" id="demo">
+  <div class="container cta__grid">
+    <div class="cta__copy">
+      <p class="eyebrow" data-reveal>Get started</p>
+      <h2 data-reveal>See What Your Grants Have Become.</h2>
+      <p data-reveal>Find out which of your grants have drifted from the terms they were signed under, in a
+        30-minute walkthrough with an equity expert.</p>
+    </div>
+    <form class="form" id="demoForm" novalidate data-reveal="right" aria-label="Request a demo">
+      <div class="form__fields">
+        <div class="form__row">
+          <label class="field"><span class="field__label">First name</span>
+            <input class="field__input" name="first" autocomplete="given-name" required><span class="field__err">Please add your first name.</span></label>
+          <label class="field"><span class="field__label">Last name</span>
+            <input class="field__input" name="last" autocomplete="family-name" required><span class="field__err">Please add your last name.</span></label>
+        </div>
+        <label class="field"><span class="field__label">Work email</span>
+          <input class="field__input" type="email" name="email" autocomplete="email" required><span class="field__err">Please use a valid work email.</span></label>
+        <label class="field"><span class="field__label">Company</span>
+          <input class="field__input" name="company" autocomplete="organization" required><span class="field__err">Please add your company.</span></label>
+        <label class="field"><span class="field__label">Countries with equity holders</span>
+          <select class="field__input" name="countries" required>
+            <option value="" selected disabled>Select</option>
+            <option>1–5</option><option>6–15</option><option>16–40</option><option>40+</option>
+          </select><span class="field__err">Please choose a range.</span></label>
+        <button class="btn btn--primary btn--lg btn--block" type="submit">Request a Demo <span class="arr" aria-hidden="true">→</span></button>
+      </div>
+      <div class="form__done" role="status" tabindex="-1">
+        <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h4>Thanks, we’ll be in touch.</h4>
+        <p class="muted" style="margin:var(--sp-3) 0 0">An equity expert will reach out to schedule your walkthrough.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 11 FOOTER ============ -->
+<footer class="footer">
+  <div class="f__grid">
+    <div class="f__brand">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAxIiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSIwIDAgMTAxIDM4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMjg1NF84NDQ5KSI+CjxwYXRoIGQ9Ik00NC4yMjMgMTguNzU4OEw0MS4wODIxIDE3LjgyNjVDNDAuNzAyMSAxNy43MDU5IDQwLjMwOSAxNy41NTkyIDM5LjkwMyAxNy4zOEMzOS40OTcgMTcuMjAwNyAzOS4xNTI3IDE2LjkzOTkgMzguODY2OSAxNi41OTEyQzM4LjU4MSAxNi4yNDU2IDM4LjQzODEgMTUuODA4OSAzOC40MzgxIDE1LjI4NDFDMzguNDM4MSAxNC41MjEzIDM4LjcyNCAxMy44OTg4IDM5LjI5NTYgMTMuNDIyOUMzOS44NjczIDEyLjk0NyA0MC42NDAzIDEyLjcwNTggNDEuNjE0OCAxMi43MDU4QzQyLjY4NjcgMTIuNzA1OCA0My42NDgxIDEyLjk5MjYgNDQuNTA1NiAxMy41NjYzQzQ1LjI2NTcgMTQuMDc0OCA0NS44NTM2IDE0Ljc0OTUgNDYuMjc5MSAxNS41OTM3QzQ2LjM3MzMgMTUuNzc5NSA0Ni41OTc0IDE1Ljg1NDUgNDYuNzgyNSAxNS43NjY1TDQ4LjgwOTMgMTQuODI3N0M0OC45OTc3IDE0LjczOTcgNDkuMDg4NyAxNC41MjEzIDQ5LjAwNzUgMTQuMzI5QzQ4LjQyNjEgMTIuOTQwNCA0Ny41MTMzIDExLjg1MTcgNDYuMjY5MyAxMS4wNTY0QzQ0LjkyNDYgMTAuMTk1OSA0My40MDc3IDkuNzY1NjIgNDEuNzE4NyA5Ljc2NTYyQzQwLjQ1ODUgOS43NjU2MiAzOS4zMjE2IDEwLjAwMzYgMzguMzExNSAxMC40ODI3QzM3LjMwMTMgMTAuOTYxOSAzNi41MDIzIDExLjYyMzYgMzUuOTIwOCAxMi40NzExQzM1LjMzNjIgMTMuMzE4NiAzNS4wNDcxIDE0LjMxNiAzNS4wNDcxIDE1LjQ2MDFDMzUuMDQ3MSAxNi43MDIgMzUuNDQ2NiAxNy43OTM5IDM2LjI0MjQgMTguNzM1OUMzNy4wMzgyIDE5LjY3OCAzOC4yOTUyIDIwLjM4ODUgNDAuMDA3IDIwLjg2NzdMNDIuODk3OCAyMS42OTI0QzQzLjMwMDYgMjEuNzg2OSA0My43MjI4IDIxLjkzNjggNDQuMTY0NSAyMi4xMzg5QzQ0LjYwMyAyMi4zNDEgNDQuOTg2MyAyMi42MTgxIDQ1LjMwNzkgMjIuOTYzNkM0NS42Mjk0IDIzLjMwOTEgNDUuNzg4NiAyMy43Njg3IDQ1Ljc4ODYgMjQuMzQyNEM0NS43ODg2IDI1LjE1NCA0NS40NDQzIDI1LjgwOTIgNDQuNzUyNSAyNi4zMTEyQzQ0LjA2MDYgMjYuODEzMSA0My4yMDY0IDI3LjA2NDEgNDIuMTgzMiAyNy4wNjQxQzQxLjAxNzEgMjcuMDY0MSAzOS45NTgyIDI2LjcyODQgMzkuMDA2NSAyNi4wNjAyQzM4LjE0OSAyNS40NTcyIDM3LjQ1NzIgMjQuNjY1MSAzNi45Mjc4IDIzLjY3NDJDMzYuODMwMyAyMy40ODg0IDM2LjYwNjIgMjMuNDEwMiAzNi40MTc4IDIzLjUwMTRMMzQuNDEwNSAyNC40Njk1QzM0LjIyNTMgMjQuNTU3NSAzNC4xMzc2IDI0Ljc3OTIgMzQuMjE4OCAyNC45NjgyQzM0Ljg0NTcgMjYuNDMxOCAzNS44MjM0IDI3LjYwODUgMzcuMTQ4NiAyOC40OTUxQzM4LjU3NDYgMjkuNDUwMSA0MC4yNTM4IDI5LjkyNiA0Mi4xOCAyOS45MjZDNDMuNTYwNCAyOS45MjYgNDQuNzcxOSAyOS42ODgxIDQ1LjgyMTEgMjkuMjA4OUM0Ni44NjcgMjguNzMzIDQ3LjY4ODcgMjguMDYxNiA0OC4yODMxIDI3LjIwNDNDNDguODc3NiAyNi4zNDM4IDQ5LjE3NjQgMjUuMzc4OSA0OS4xNzY0IDI0LjMwMzNDNDkuMTc2NCAyMi45NjY5IDQ4Ljc0MTEgMjEuODE5NSA0Ny44NzM5IDIwLjg2NDRDNDcuMDA2NiAxOS45MDk0IDQ1Ljc4NTQgMTkuMjA1MyA0NC4yMTY1IDE4Ljc1MjJMNDQuMjIzIDE4Ljc1ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTQuMzI4MSA1LjQ4NjMzSDUxLjc0NTlDNTEuNTMyNCA1LjQ4NjMzIDUxLjM1OTQgNS42NTk5OSA1MS4zNTk0IDUuODc0MjJWMjkuMTE0OUM1MS4zNTk0IDI5LjMyOTEgNTEuNTMyNCAyOS41MDI4IDUxLjc0NTkgMjkuNTAyOEg1NC4zMjgxQzU0LjU0MTYgMjkuNTAyOCA1NC43MTQ3IDI5LjMyOTEgNTQuNzE0NyAyOS4xMTQ5VjUuODc0MjJDNTQuNzE0NyA1LjY1OTk5IDU0LjU0MTYgNS40ODYzMyA1NC4zMjgxIDUuNDg2MzNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjAuNjQ1NSAxMC45Nzg1SDU4LjA2MzNDNTcuODQ5OCAxMC45Nzg1IDU3LjY3NjggMTEuMTUyMiA1Ny42NzY4IDExLjM2NjRWMjkuMTE4QzU3LjY3NjggMjkuMzMyMiA1Ny44NDk4IDI5LjUwNTkgNTguMDYzMyAyOS41MDU5SDYwLjY0NTVDNjAuODU5IDI5LjUwNTkgNjEuMDMyMSAyOS4zMzIyIDYxLjAzMjEgMjkuMTE4VjExLjM2NjRDNjEuMDMyMSAxMS4xNTIyIDYwLjg1OSAxMC45Nzg1IDYwLjY0NTUgMTAuOTc4NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04MC44NzE5IDI0LjU3NzdMNzguNTgyIDIzLjQxNDFDNzguMzk2OCAyMy4zMTk1IDc4LjE2MyAyMy4zODggNzguMDY4OCAyMy41NzM4Qzc3LjYwMSAyNC40NzAyIDc2Ljk2MTIgMjUuMTk3IDc2LjE0NTkgMjUuNzYxQzc1LjIyOTkgMjYuMzkzMyA3NC4xNjQ1IDI2LjcwOTUgNzIuOTUzIDI2LjcwOTVDNzEuNzQxNSAyNi43MDk1IDcwLjczNDUgMjYuNDA5NiA2OS43OTU4IDI1LjgxMzFDNjguODU3MSAyNS4yMTY2IDY4LjExMzMgMjQuMzk4NSA2Ny41NjQ0IDIzLjM1ODdDNjcuMDE1NCAyMi4zMTg5IDY2Ljc0MjYgMjEuMTU1MiA2Ni43NDI2IDE5Ljg2NzdDNjYuNzQyNiAxOC41ODAxIDY3LjAxNTQgMTcuMzc3NCA2Ny41NjQ0IDE2LjM0MDhDNjguMTEwMSAxNS4zMDEgNjguODUzOSAxNC40ODk0IDY5Ljc5NTggMTMuOTA1OUM3MC43MzQ1IDEzLjMyMjUgNzEuNzg2OSAxMy4wMjkxIDcyLjk1MyAxMy4wMjkxQzc0LjExOTEgMTMuMDI5MSA3NS4yMzY0IDEzLjMzODggNzYuMTY1NCAxMy45NjEzQzc2Ljk5MDQgMTQuNTEyMiA3Ny42MjM4IDE1LjIyMjggNzguMDc1MyAxNi4wOTYzQzc4LjE2OTUgMTYuMjgyMSA3OC40MDAxIDE2LjM1MzkgNzguNTg4NSAxNi4yNTkzTDgwLjg3NTEgMTUuMTI1QzgxLjA2NjggMTUuMDMwNSA4MS4xNDE1IDE0LjgwMjMgODEuMDUzOCAxNC42MUM4MC42NzA1IDEzLjc1MjcgODAuMTExOCAxMi45ODAyIDc5LjM4MSAxMi4yOTU3Qzc4LjU0OTUgMTEuNTE5OSA3Ny41ODQ4IDEwLjkwMzkgNzYuNDkwMiAxMC40NTA4Qzc1LjM5NTYgOS45OTc3IDc0LjIxNjUgOS43Njk1MyA3Mi45NTYyIDkuNzY5NTNDNzEuMDUyOSA5Ljc2OTUzIDY5LjM3MDMgMTAuMjEyOCA2Ny45MDU0IDExLjA5NjJDNjYuNDQzOCAxMS45Nzk1IDY1LjI5NCAxMy4xNzI1IDY0LjQ2MjQgMTQuNjc4NEM2My42MzA5IDE2LjE4MTEgNjMuMjExOSAxNy45MDIxIDYzLjIxMTkgMTkuODM1MUM2My4yMTE5IDIxLjc2OCA2My42MzQyIDIzLjQ2MyA2NC40Nzg3IDI0Ljk5MTdDNjUuMzIzMiAyNi41MjA0IDY2LjQ2OTggMjcuNzI2NSA2Ny45MjE3IDI4LjYwOThDNjkuMzczNiAyOS40OTMyIDcxLjA0OTYgMjkuOTM2NSA3Mi45NTMgMjkuOTM2NUM3NC4yMTMzIDI5LjkzNjUgNzUuMzkyMyAyOS43MDgzIDc2LjQ4NjkgMjkuMjU1MkM3Ny41ODE2IDI4LjgwMjEgNzguNTQzIDI4LjE4NjEgNzkuMzc3OCAyNy40MTAzQzgwLjExMTggMjYuNzI1OCA4MC42NzA1IDI1Ljk1MzMgODEuMDUzOCAyNS4wOTI3QzgxLjEzODIgMjQuOTAwNCA4MS4wNjY4IDI0LjY3MjMgODAuODc4NCAyNC41Nzc3SDgwLjg3MTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjM3NyAxNS41ODk4Qzk5Ljk2MTEgMTQuNDc4MyA5OS4zNjY3IDEzLjQ5MDYgOTguNTkzNiAxMi42MTcxQzk3LjgyMDYgMTEuNzQ2OCA5Ni44ODE4IDExLjA1MjUgOTUuNzc0MiAxMC41NDA3Qzk0LjY2NjYgMTAuMDI5IDkzLjM5OTkgOS43NzE0OCA5MS45NzQgOS43NzE0OEM5MC4xOTA3IDkuNzcxNDggODguNTk1OSAxMC4yMDgzIDg3LjE5MjcgMTEuMDc4NkM4NS43ODk2IDExLjk0ODkgODQuNjcyMiAxMy4xMzg2IDgzLjgzNzQgMTQuNjQxM0M4My4wMDU5IDE2LjE0MzkgODIuNTg2OSAxNy44NjUgODIuNTg2OSAxOS43OTc5QzgyLjU4NjkgMjEuNzMwOCA4My4wMDI3IDIzLjQzMjMgODMuODM3NCAyNC45NzQxQzg0LjY2ODkgMjYuNTEyNiA4NS44MTg4IDI3LjcyNTIgODcuMjgwNCAyOC42MDg1Qzg4Ljc0MjEgMjkuNDkxOCA5MC40MDE5IDI5LjkzNTEgOTIuMjU5OCAyOS45MzUxQzkzLjU2ODggMjkuOTM1MSA5NC43NzA2IDI5LjcyIDk1Ljg2NTIgMjkuMjg5OEM5Ni45NTk4IDI4Ljg1OTUgOTcuOTA1IDI4LjI4MjUgOTguNzAwOCAyNy41NTI0Qzk5LjM4OTQgMjYuOTIzMyA5OS45MjIxIDI2LjIzODggMTAwLjI5OSAyNS40OTU2QzEwMC4zOTYgMjUuMyAxMDAuMzI4IDI1LjA2MjEgMTAwLjEzMyAyNC45NjQzTDk3Ljk5OTIgMjMuODY1OEM5Ny44MjA2IDIzLjc3NDYgOTcuNjAyOSAyMy44MzY1IDk3LjQ5MjUgMjQuMDA2Qzk2Ljk3MjggMjQuODAxMyA5Ni4zMjMyIDI1LjQ2MyA5NS41NDA0IDI1Ljk5NDNDOTQuNjYwMSAyNi41OTA4IDkzLjU3ODUgMjYuODkwNyA5Mi4yOTIzIDI2Ljg5MDdDOTEuMTI2MiAyNi44OTA3IDkwLjA1MTEgMjYuNTk3NCA4OS4wNjM3IDI2LjAxMzlDODguMDc2MiAyNS40MzA0IDg3LjMxNjIgMjQuNjA1OCA4Ni43ODAyIDIzLjU0MzFDODYuMzgwNyAyMi43NTExIDg2LjE1NjYgMjEuODYxMiA4Ni4xMDc5IDIwLjg3MzZIMTAwLjQ4N0MxMDAuNjc5IDIwLjg3MzYgMTAwLjg0NSAyMC43MzAxIDEwMC44NzQgMjAuNTQxMUMxMDAuOTAzIDIwLjM0MjMgMTAwLjkyNiAyMC4xNDM0IDEwMC45NDggMTkuOTQ0NkMxMDAuOTg0IDE5LjYzNDkgMTAxIDE5LjMzNSAxMDEgMTkuMDQ4MkMxMDEgMTcuODU1MiAxMDAuNzkzIDE2LjcwMTMgMTAwLjM3NyAxNS41OTMxVjE1LjU4OThaTTg4LjkwMTIgMTMuNjIxQzg5LjgzMDIgMTMuMDM3NiA5MC44NTAxIDEyLjc0NDIgOTEuOTcwNyAxMi43NDQyQzkzLjA5MTMgMTIuNzQ0MiA5NC4wODg1IDEzLjAzMSA5NC45Njg3IDEzLjYwNDdDOTUuODQ5IDE0LjE3ODQgOTYuNTE0OCAxNC45NTQyIDk2Ljk2NjMgMTUuOTMyMUM5Ny4yNTU0IDE2LjU1NzkgOTcuNDAxNiAxNy4yMzkxIDk3LjQwOCAxNy45NzI1SDg2LjE3OTNDODYuMjc2OCAxNy4yODE1IDg2LjQ2MTkgMTYuNjQ1OSA4Ni43NDEyIDE2LjA3NTVDODcuMjUxMiAxNS4wMjU5IDg3Ljk3MjMgMTQuMjA3OCA4OC45MDEyIDEzLjYyMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik01OS4zNTI5IDkuNjQ0MjdDNjAuNTA0NSA5LjY0NDI3IDYxLjQzODIgOC43MDczNiA2MS40MzgyIDcuNTUxNjJDNjEuNDM4MiA2LjM5NTg5IDYwLjUwNDUgNS40NTg5OCA1OS4zNTI5IDUuNDU4OThDNTguMjAxMiA1LjQ1ODk4IDU3LjI2NzYgNi4zOTU4OSA1Ny4yNjc2IDcuNTUxNjJDNTcuMjY3NiA4LjcwNzM2IDU4LjIwMTIgOS42NDQyNyA1OS4zNTI5IDkuNjQ0MjdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAuMDc1NSAyNS4xNzM4TDUuMzcyMjcgMzUuMzUzNEM0LjczNTY0IDM2LjcyOSA1LjkyMTIgMzguMjUxMiA3LjQwNTU5IDM3Ljk2NDRMMjAuNTkyOSAzNS40MTU0TDEwLjA3NTUgMjUuMTczOFoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkpIi8+CjxwYXRoIGQ9Ik01LjY4MTY0IDEuODgxMzlMMTguNTUzOSAwLjAyMDE4MDRDMjAuMDA5MSAtMC4xOTE2OTEgMjEuMTE5OSAxLjMwNDQ1IDIwLjQ5OTUgMi42NDQxM0wxNi4xNDcxIDEyLjA2NzVMNS42ODE2NCAxLjg4MTM5WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzI4NTRfODQ0OSkiLz4KPHBhdGggZD0iTTUuNjgxMjEgMS44ODA4NkwwLjE4MjE2MiAxMy43NzgzQy0wLjE2ODYzNCAxNC41Mzc3IC0wLjAwMjk4MDc0IDE1LjQzNzQgMC41OTQ2NzIgMTYuMDIwOEwyMC41OSAzNS40MTUzTDI2LjEwODYgMjMuNDg4NUMyNi40NTk0IDIyLjcyOSAyNi4yOTM3IDIxLjgyNjEgMjUuNjkyOCAyMS4yNDI3TDUuNjgxMjEgMS44ODA4NloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSI4LjIwMTM4IiB5MT0iMzQuMTQ3NCIgeDI9IjE1Ljk3MjMiIHkyPSIyOS4zMzE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IndoaXRlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yODU0Xzg0NDkiIHgxPSIxOS4zMjM3IiB5MT0iMC4yNjc5MDciIHgyPSI5LjY2MzU4IiB5Mj0iNy45MTc1NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzI4NTRfODQ0OSI+CjxyZWN0IHdpZHRoPSIxMDEiIGhlaWdodD0iMzgiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==" alt="Slice" class="f__logo" width="120" height="45">
+      <p class="u-small" style="color:rgba(255,255,255,.62);margin-top:var(--sp-4);max-width:26ch">
+        Global Equity Compliance &amp; Tax.</p>
+    </div>
+    <div><div class="footer__head">Manage Equity</div><ul>
+      <li><a href="#">Cap Table</a></li><li><a href="#">Equity Grants</a></li>
+      <li><a href="#">Pool Administration</a></li><li><a href="#">Share Registry</a></li>
+      <li><a href="#">Warrants &amp; Convertibles</a></li></ul></div>
+    <div><div class="footer__head">Workflows</div><ul>
+      <li><a href="#">Equity Approvals</a></li><li><a href="#">Grant Letters</a></li>
+      <li><a href="#">Exercise Options</a></li><li><a href="#">Issue &amp; Cancel Shares</a></li></ul></div>
+    <div><div class="footer__head">Compliance</div><ul>
+      <li><a href="#">Global Compliance</a></li><li><a href="#">Equity Value Simulator</a></li>
+      <li><a href="#">Template Manager</a></li><li><a href="#">Plan Administration</a></li></ul></div>
+    <div><div class="footer__head">Company</div><ul>
+      <li><a href="#">About</a></li><li><a href="#">Pricing</a></li>
+      <li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact Us</a></li></ul></div>
+  </div>
+  <div class="f__legal">
+    <span>© 2026 Slice. All rights reserved.</span>
+    <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Data Privacy Addendum</a>
+    <p class="f__disclaimer">Figures are illustrative. This material is for general information only and does not constitute tax or legal advice.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* Nav: creamsicle once past the hero top, spectrum progress bar, active section */
+  const nav = $('#nav'), links = $$('.nav__link');
+  const onScroll = () => {
+    const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    nav.classList.toggle('is-stuck', y > 40);
+    nav.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('is-active', l.hash === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(l => { const t = $(l.hash); if (t) spy.observe(t); });
+
+  /* Stagger siblings inside [data-stagger] */
+  $$('[data-stagger]').forEach(g => $$(':scope > [data-reveal]', g).forEach((el, i) => el.style.setProperty('--d', i * 110 + 'ms')));
+
+  /* Reveal once. After it lands, drop the reveal hooks so hover transforms work again. */
+  const done = el => { el.removeAttribute('data-reveal'); el.style.removeProperty('--d'); };
+  const io = new IntersectionObserver((es, o) => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target; el.classList.add('is-in'); o.unobserve(el);
+    if (el.hasAttribute('data-reveal')) el.addEventListener('transitionend', function h(ev) {
+      if (ev.target === el && ev.propertyName === 'transform') { el.removeEventListener('transitionend', h); done(el); }
+    });
+    $$('[data-count]', el).forEach(countUp);
+  }), { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+  $$('[data-reveal], [data-observe]').forEach(el => io.observe(el));
+
+  /* Count-up for the illustrative stats */
+  function countUp(el) {
+    if (reduce || el.dataset.counted) return; el.dataset.counted = 1;
+    const to = +el.dataset.count, dec = +(el.dataset.dec || 0), pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1600;
+    const tick = t => { const k = Math.min(1, (t - t0) / dur), v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = pre + v.toFixed(dec) + suf; if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+
+  /* Hero: rows show "Checking" and resolve one by one, as if Slice were reading them */
+  if (!reduce) {
+    const pills = $$('#heroUi [data-final]'), scan = $('#heroScan');
+    const labels = pills.map(p => p.textContent);
+    pills.forEach(p => { p.className = 'pill pill--wait'; p.textContent = 'Checking'; });
+    setTimeout(() => scan.classList.add('is-on'), 1300);
+    pills.forEach((p, i) => setTimeout(() => { p.className = 'pill pill--' + p.dataset.final; p.textContent = labels[i]; }, 1600 + i * 360));
+
+    /* Subtle tilt toward the pointer + scroll parallax on the product screen */
+    const ui = $('#heroUi'), hero = $('.hero');
+    if (matchMedia('(hover: hover) and (min-width: 992px)').matches) {
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        ui.style.setProperty('--ry', (x * -6).toFixed(2) + 'deg'); ui.style.setProperty('--rx', (y * 5).toFixed(2) + 'deg');
+      });
+      hero.addEventListener('pointerleave', () => { ui.style.setProperty('--ry', '0deg'); ui.style.setProperty('--rx', '0deg'); });
+      addEventListener('scroll', () => { if (scrollY < innerHeight) ui.style.setProperty('--py', (scrollY * -.06).toFixed(1) + 'px'); }, { passive: true });
+    }
+  }
+
+  /* Testimonial carousel */
+  const q = $('#quotes'), slides = $$('.quote', q), dots = $('.quotes__dots', q);
+  let cur = 0, timer;
+  slides.forEach((_, i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'quotes__dot';
+    b.setAttribute('aria-label', 'Show testimonial ' + (i + 1)); b.onclick = () => { go(i); restart(); }; dots.appendChild(b); });
+  const go = i => { cur = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => { s.classList.toggle('is-active', j === cur); s.setAttribute('aria-hidden', j !== cur); });
+    $$('.quotes__dot', dots).forEach((d, j) => d.setAttribute('aria-current', j === cur)); };
+  const restart = () => { clearInterval(timer); if (!reduce) timer = setInterval(() => go(cur + 1), 7000); };
+  $$('.quotes__btn', q).forEach(b => b.onclick = () => { go(cur + +b.dataset.dir); restart(); });
+  q.addEventListener('mouseenter', () => clearInterval(timer)); q.addEventListener('mouseleave', restart);
+  q.addEventListener('focusin', () => clearInterval(timer));
+  go(0); restart();
+
+  /* Demo form: inline validation + confirmation state (wire the submit to the real endpoint) */
+  const form = $('#demoForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault(); let first;
+    $$('[required]', form).forEach(f => { const ok = f.checkValidity() && (f.type !== 'email' || /\S+@\S+\.\S+/.test(f.value));
+      f.setAttribute('aria-invalid', !ok); if (!ok && !first) first = f; });
+    if (first) { first.focus(); return; }
+    form.classList.add('is-sent'); $('.form__done', form).focus?.();
+  });
+  form.addEventListener('input', e => { if (e.target.getAttribute('aria-invalid') === 'true' && e.target.checkValidity()) e.target.setAttribute('aria-invalid', 'false'); });
+
+  /* Any "#demo" link focuses the first field once the scroll lands */
+  $$('a[href="#demo"]').forEach(a => a.addEventListener('click', () => setTimeout(() => $('input', form)?.focus({ preventScroll: true }), 700)));
+})();
+</script>
+</body>
+</html>
