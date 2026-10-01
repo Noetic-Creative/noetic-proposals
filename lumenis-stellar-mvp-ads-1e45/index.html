@@ -12,7 +12,7 @@ body.render .slide { left: 0; top: 0; margin: 0; transform: none; }
 .slide > * { position: absolute; }
 .g-warm { background: radial-gradient(70% 70% at 10% 0%, rgba(255,242,238,.6), rgba(255,242,238,0) 60%), linear-gradient(150deg, #F7C9BF 0%, #E3A0A0 30%, #C27580 62%, #9E4B57 100%); }
 .g-medspa { background: linear-gradient(100deg, #A85964 0%, #BA6871 34%, #D99398 62%, #F3CFC9 84%, #FFF1EE 100%); }
-.g-phys { background: radial-gradient(70% 90% at 28% 60%, #A9566A 0%, #7C3442 48%, #4C1B26 100%); }
+.g-phys { background: radial-gradient(70% 70% at 90% 0%, rgba(255,242,238,.55), rgba(255,242,238,0) 60%), linear-gradient(210deg, #F7C9BF 0%, #E3A0A0 30%, #C27580 62%, #9E4B57 100%); }
 .logo { right: 80px; top: 64px; width: 300px; aspect-ratio: 600 / 131; background: url('assets/stellar-m22-by-lumenis-white.svg') center / contain no-repeat; }
 .pg { right: 80px; bottom: 56px; font-size: 22px; letter-spacing: .14em; opacity: .75; }
 .medspa .pg { color: #913D48; opacity: .8; }
@@ -23,6 +23,13 @@ body.render .slide { left: 0; top: 0; margin: 0; transform: none; }
 .frame img, .frame video { width: 100%; height: 100%; display: block; object-fit: cover; }
 body.hide-media .frame { visibility: hidden; }
 .col { left: 980px; top: 168px; width: 800px; }
+.frame.duo { top: 180px; width: 500px; height: 625px; }
+.frame.wide { left: 110px; top: 290px; width: 1110px; height: 581px; }
+.duo-lab { top: 830px; width: 500px; font-size: 22px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; margin: 0; }
+.copy.sm { font-size: 28px; margin-bottom: 20px; }
+.duo-col h2 { font-size: 52px; }
+.vis.sm { font-size: 24px; }
+
 .medspa .col { color: #913D48; }
 .eyebrow { display: flex; align-items: center; gap: 16px; font-size: 22px; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 26px; }
 .eyebrow b { display: inline-grid; place-items: center; min-width: 64px; height: 40px; padding: 0 12px; border-radius: 20px; background: #FFF; color: #A85964; letter-spacing: .06em; font-size: 20px; }
@@ -40,7 +47,7 @@ h2 { margin: 0; font-weight: 700; font-size: 60px; line-height: 1.06; letter-spa
 .lede { left: 154px; width: 860px; font-size: 34px; line-height: 1.32; margin: 0; }
 .dev { width: auto; filter: drop-shadow(0 40px 40px rgba(40,8,15,.5)); }
 .thumbs { left: 150px; right: 150px; display: flex; gap: 22px; }
-.thumbs img { flex: 1; min-width: 0; max-width: 240px; aspect-ratio: 4/5; border-radius: 10px; box-shadow: 0 24px 40px -24px rgba(40,8,15,.8); }
+.thumbs img { flex: 1; min-width: 0; max-width: 240px; aspect-ratio: 4/5; object-fit: contain; border-radius: 10px; box-shadow: 0 24px 40px -24px rgba(40,8,15,.8); }
 .hint { position: fixed; left: 16px; bottom: 12px; font: 12px Arial; color: rgba(255,255,255,.4); }
 body.render .hint { display: none; }
 </style></head><body>
@@ -49,538 +56,430 @@ body.render .hint { display: none; }
   <img class="dev" src="assets/stellar-m22-device.webp" style="left:1144px;top:223px;height:780px;filter:drop-shadow(0 18px 14px rgba(40,8,15,.35))" alt="">
   <span class="logo" style="left:150px;right:auto;width:380px"></span>
   <h1 class="big" style="top:300px;font-size:110px;width:1180px;white-space:nowrap">Stellar&nbsp;M22<br><span class="mk">MVP</span> Ad Creative</h1>
-  <p class="lede" style="top:570px">4:5 review round · 22 pieces<br>Warm · Cold MedSpa · Cold Physician</p>
+  <p class="lede" style="top:570px">Review round · 22 pieces · 4:5 + GDN 1.91:1<br>Warm · Cold MedSpa · Cold Physician</p>
   <p class="lede" style="top:760px;font-size:24px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">Map, interactive and data-visualisation direction · October 2026</p>
-  <span class="pg">01 / 41</span></section>
+  <span class="pg">01 / 38</span></section>
 <section class="slide g-warm" data-kind="section">
   <span class="logo"></span>
   <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 1 of 3 · 8 pieces · Meta 4 · LinkedIn 2 · GDN 1 · Email 1</p>
   <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Warm</h1>
   <p class="lede" style="top:390px;">Existing leads, customers and site retargeting: already engaged with Lumenis / Stellar, not yet converted.<br><span style="opacity:.8">Direct, a little daring. FOMO-driven.</span></p>
   <div class="thumbs" style="top:610px"><img src="assets/W1_Warm_Meta_Awareness-Short_treatment-tiles.jpg" alt=""><img src="assets/W2_Warm_Meta_Awareness-Long_spectrum.jpg" alt=""><img src="assets/W3_Warm_Meta_Retargeting-Short_gauge-needle.jpg" alt=""><img src="assets/W4_Warm_Meta_Retargeting-Long_converge.jpg" alt=""><img src="assets/W5_Warm_LinkedIn_Option-A_5-000-treatments.jpg" alt=""><img src="assets/W6_Warm_LinkedIn_Option-B-gated_Slide-1.jpg" alt=""><img src="assets/W7_Warm_GDN_Copy-1.jpg" alt=""><img src="assets/W8_Warm_Email_Email-header.jpg" alt=""></div>
-  <span class="pg">02 / 41</span></section>
+  <span class="pg">02 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W1">
   <div class="frame"><video src="assets/W1_Warm_Meta_Awareness-Short_treatment-tiles.mp4" poster="assets/W1_Warm_Meta_Awareness-Short_treatment-tiles.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W1</b>Warm · Meta</p>
     <h2>Warm / Meta / Awareness Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Get Ahead: / Find Your Aesthetic Practice’s Growth Opportunities”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Nine treatment tiles fill in one by one; the three left open light up as the growth opportunities.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Get Ahead: / Find Your Aesthetic Practice’s Growth Opportunities”</p>
+    <p class="lab">Visual</p><p class="vis">Nine treatment tiles fill in one by one; the three left open light up as the growth opportunities.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">03 / 41</span></section>
+  <span class="pg">03 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W2">
   <div class="frame"><video src="assets/W2_Warm_Meta_Awareness-Long_spectrum.mp4" poster="assets/W2_Warm_Meta_Awareness-Long_spectrum.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W2</b>Warm · Meta</p>
     <h2>Warm / Meta / Awareness Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Aesthetic treatment demand is growing 6.6% a year. / Are you keeping up?”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A low-to-high spectrum: demand keeps climbing while the practice marker stalls, leaving a visible gap.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Aesthetic treatment demand is growing 6.6% a year. / Are you keeping up?”</p>
+    <p class="lab">Visual</p><p class="vis">A low-to-high spectrum: demand keeps climbing while the practice marker stalls, leaving a visible gap.</p>
     <div class="fmt"><span>MP4 · 9.5s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">04 / 41</span></section>
+  <span class="pg">04 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W3">
   <div class="frame"><video src="assets/W3_Warm_Meta_Retargeting-Short_gauge-needle.mp4" poster="assets/W3_Warm_Meta_Retargeting-Short_gauge-needle.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W3</b>Warm · Meta</p>
     <h2>Warm / Meta / Retargeting Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“The Must-Know Before You Grow: / Take the Aesthetic Practice Benchmark Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A benchmark gauge: the needle sweeps up, overshoots and settles on the practice’s reading.</p>
+    <p class="lab">Copy for design</p><p class="copy">“The Must-Know Before You Grow: / Take the Aesthetic Practice Benchmark Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">A benchmark gauge: the needle sweeps up, overshoots and settles on the practice’s reading.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">05 / 41</span></section>
+  <span class="pg">05 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W4">
   <div class="frame"><video src="assets/W4_Warm_Meta_Retargeting-Long_converge.mp4" poster="assets/W4_Warm_Meta_Retargeting-Long_converge.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W4</b>Warm · Meta</p>
     <h2>Warm / Meta / Retargeting Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“30,000+ practices run Stellar M22. / Are you keeping up?”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A field of points (the practices running Stellar M22) converges into the device on its podium.</p>
+    <p class="lab">Copy for design</p><p class="copy">“30,000+ practices run Stellar M22. / Are you keeping up?”</p>
+    <p class="lab">Visual</p><p class="vis">A field of points (the practices running Stellar M22) converges into the device on its pedestal.</p>
     <div class="fmt"><span>MP4 · 10.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">06 / 41</span></section>
+  <span class="pg">06 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W5">
   <div class="frame"><img src="assets/W5_Warm_LinkedIn_Option-A_5-000-treatments.jpg" alt="Warm / LinkedIn / Option A"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W5</b>Warm · LinkedIn</p>
     <h2>Warm / LinkedIn / Option A</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">““5,000 Treatments with Stellar M22 and Counting” / — Michael D. Mirmanesh, MD”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A milestone line climbs 1,000 → 5,000 and keeps going (and counting), next to the device on its pedestal.</p>
+    <p class="lab">Copy for design</p><p class="copy">““5,000 Treatments with Stellar M22 and Counting” / — Michael D. Mirmanesh, MD”</p>
+    <p class="lab">Visual</p><p class="vis">A milestone line climbs 1,000 → 5,000 and keeps going (and counting), next to the device on its pedestal.</p>
     <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">07 / 41</span></section>
+  <span class="pg">07 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W6">
-  <div class="frame"><img src="assets/W6_Warm_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Warm / LinkedIn / Option B (Gated) · Slide 1"></div>
+  <div class="frame duo" style="left:110px"><img src="assets/W6_Warm_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Warm / LinkedIn / Option B (Gated) · Slide 1"></div><div class="frame duo" style="left:640px"><img src="assets/W6_Warm_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Warm / LinkedIn / Option B (Gated) · Slide 2"></div><p class="duo-lab" style="left:110px">Slide 1</p><p class="duo-lab" style="left:640px">Slide 2</p>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col duo-col" style="left:1240px;width:580px;top:150px">
     <p class="eyebrow"><b>W6</b>Warm · LinkedIn</p>
-    <h2>Warm / LinkedIn / Option B (Gated) · Slide 1</h2>
+    <h2>Warm / LinkedIn / Option B (Gated)</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“The 2026 Practice Growth Benchmark Is Here”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The 2026 benchmark report revealed as a fanned cover with the device.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design · Slide 1</p><p class="copy sm">“The 2026 Practice Growth Benchmark Is Here”</p><p class="lab">Copy for design · Slide 2</p><p class="copy sm">“See how practices like yours are performing.”</p>
+    <p class="lab">Visual</p><p class="vis sm">1 · The 2026 benchmark report revealed as a fanned cover with the device.<br>2 · Practices like yours as bars; yours lit and marked by the device.</p>
+    <div class="fmt"><span>Carousel · 2 slides</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">08 / 41</span></section>
-<section class="slide g-warm warm" data-kind="asset" data-code="W6">
-  <div class="frame"><img src="assets/W6_Warm_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Warm / LinkedIn / Option B (Gated) · Slide 2"></div>
-  <span class="logo"></span>
-  <div class="col">
-    <p class="eyebrow"><b>W6</b>Warm · LinkedIn</p>
-    <h2>Warm / LinkedIn / Option B (Gated) · Slide 2</h2>
-    <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“See how practices like yours are performing.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Practices like yours as bars; yours lit and marked by the device.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
-  </div>
-  <span class="pg">09 / 41</span></section>
+  <span class="pg">08 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W7">
-  <div class="frame"><img src="assets/W7_Warm_GDN_Copy-1.jpg" alt="Warm / GDN / Copy 1 of 5"></div>
+  <div class="frame wide"><img src="assets/W7_Warm_GDN_Copy-1.jpg" alt="Warm / GDN / Copy 1 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>W7</b>Warm · GDN</p>
     <h2>Warm / GDN / Copy 1 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Take the Stellar Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Take the Stellar Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">10 / 41</span></section>
+  <span class="pg">09 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W7">
-  <div class="frame"><img src="assets/W7_Warm_GDN_Copy-2.jpg" alt="Warm / GDN / Copy 2 of 5"></div>
+  <div class="frame wide"><img src="assets/W7_Warm_GDN_Copy-2.jpg" alt="Warm / GDN / Copy 2 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>W7</b>Warm · GDN</p>
     <h2>Warm / GDN / Copy 2 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Lumenis Practice Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Lumenis Practice Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">11 / 41</span></section>
+  <span class="pg">10 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W7">
-  <div class="frame"><img src="assets/W7_Warm_GDN_Copy-3.jpg" alt="Warm / GDN / Copy 3 of 5"></div>
+  <div class="frame wide"><img src="assets/W7_Warm_GDN_Copy-3.jpg" alt="Warm / GDN / Copy 3 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>W7</b>Warm · GDN</p>
     <h2>Warm / GDN / Copy 3 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Your Quiz Results Await”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Your Quiz Results Await”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">12 / 41</span></section>
+  <span class="pg">11 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W7">
-  <div class="frame"><img src="assets/W7_Warm_GDN_Copy-4.jpg" alt="Warm / GDN / Copy 4 of 5"></div>
+  <div class="frame wide"><img src="assets/W7_Warm_GDN_Copy-4.jpg" alt="Warm / GDN / Copy 4 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>W7</b>Warm · GDN</p>
     <h2>Warm / GDN / Copy 4 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Stellar M22: Take the Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Stellar M22: Take the Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">13 / 41</span></section>
+  <span class="pg">12 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W7">
-  <div class="frame"><img src="assets/W7_Warm_GDN_Copy-5.jpg" alt="Warm / GDN / Copy 5 of 5"></div>
+  <div class="frame wide"><img src="assets/W7_Warm_GDN_Copy-5.jpg" alt="Warm / GDN / Copy 5 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>W7</b>Warm · GDN</p>
     <h2>Warm / GDN / Copy 5 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“See Your Quiz Results”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“See Your Quiz Results”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">14 / 41</span></section>
+  <span class="pg">13 / 38</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W8">
   <div class="frame"><img src="assets/W8_Warm_Email_Email-header.jpg" alt="Warm / Email"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>W8</b>Warm · Email</p>
     <h2>Warm / Email</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Get your practice growth benchmark”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Benchmark rows: your practice against the peer mark on five measures.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Get your practice growth benchmark”</p>
+    <p class="lab">Visual</p><p class="vis">Benchmark rows: your practice against the peer mark on five measures.</p>
     <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">15 / 41</span></section>
+  <span class="pg">14 / 38</span></section>
 <section class="slide g-medspa" data-kind="section">
   <span class="logo"></span>
   <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 2 of 3 · 7 pieces · Meta 4 · LinkedIn 2 · GDN 1</p>
   <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Cold MedSpa</h1>
   <p class="lede" style="top:390px;">Business owners running MedSpas and clinics.<br><span style="opacity:.8">Top-of-funnel, curiosity-led. Framed around what they miss by not taking the quiz.</span></p>
   <div class="thumbs" style="top:610px"><img src="assets/M1_Cold-MedSpa_Meta_Awareness-Short_map.jpg" alt=""><img src="assets/M2_Cold-MedSpa_Meta_Awareness-Long_pins-around-a-You.jpg" alt=""><img src="assets/M3_Cold-MedSpa_Meta_Retargeting-Short_spectrum.jpg" alt=""><img src="assets/M4_Cold-MedSpa_Meta_Retargeting-Long_diverging-lines.jpg" alt=""><img src="assets/M5_Cold-MedSpa_LinkedIn_Option-A_treatment-tiles.jpg" alt=""><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B-gated_Slide-1.jpg" alt=""><img src="assets/M7_Cold-MedSpa_GDN_Copy-1.jpg" alt=""></div>
-  <span class="pg" style="color:#913D48">16 / 41</span></section>
+  <span class="pg" style="color:#913D48">15 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M1">
   <div class="frame"><video src="assets/M1_Cold-MedSpa_Meta_Awareness-Short_map.mp4" poster="assets/M1_Cold-MedSpa_Meta_Awareness-Short_map.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>M1</b>Cold MedSpa · Meta</p>
     <h2>Cold MedSpa / Meta / Awareness Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Is your practice missing an MVP? / Find Out Here.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A town map: device pins drop around a practice still marked “?”, the missing MVP.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Is your practice missing an MVP? / Find Out Here.”</p>
+    <p class="lab">Visual</p><p class="vis">A town map: device pins drop around a practice still marked “?”, the missing MVP.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">17 / 41</span></section>
+  <span class="pg">16 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M2">
   <div class="frame"><video src="assets/M2_Cold-MedSpa_Meta_Awareness-Long_pins-around-a-You.mp4" poster="assets/M2_Cold-MedSpa_Meta_Awareness-Long_pins-around-a-You.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>M2</b>Cold MedSpa · Meta</p>
     <h2>Cold MedSpa / Meta / Awareness Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“1,600+ new med spas opened in the last year on record. / What sets the winners apart?”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A “You” pin lands first, then med spa pins drop in rings around it.</p>
+    <p class="lab">Copy for design</p><p class="copy">“1,600+ new med spas opened in the last year on record. / What sets the winners apart?”</p>
+    <p class="lab">Visual</p><p class="vis">A “You” pin lands first, then med spa pins drop in rings around it.</p>
     <div class="fmt"><span>MP4 · 10.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">18 / 41</span></section>
+  <span class="pg">17 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M3">
   <div class="frame"><video src="assets/M3_Cold-MedSpa_Meta_Retargeting-Short_spectrum.mp4" poster="assets/M3_Cold-MedSpa_Meta_Retargeting-Short_spectrum.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>M3</b>Cold MedSpa · Meta</p>
     <h2>Cold MedSpa / Meta / Retargeting Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“The 2-Minute Quiz Every Practice Should Take”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The device marker travels low to high across peer practices and settles.</p>
+    <p class="lab">Copy for design</p><p class="copy">“The 2-Minute Quiz Every Practice Should Take”</p>
+    <p class="lab">Visual</p><p class="vis">The device marker travels low to high across peer practices and settles.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">19 / 41</span></section>
+  <span class="pg">18 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M4">
   <div class="frame"><video src="assets/M4_Cold-MedSpa_Meta_Retargeting-Long_diverging-lines.mp4" poster="assets/M4_Cold-MedSpa_Meta_Retargeting-Long_diverging-lines.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>M4</b>Cold MedSpa · Meta</p>
     <h2>Cold MedSpa / Meta / Retargeting Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Don’t get left behind, / check where your practice stands.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">“Patient demand” rises while “Your menu?” stays flat; the gap between them fills in.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Don’t get left behind, / check where your practice stands.”</p>
+    <p class="lab">Visual</p><p class="vis">“Patient demand” rises while “Your menu?” stays flat; the gap between them fills in.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">20 / 41</span></section>
+  <span class="pg">19 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M5">
   <div class="frame"><video src="assets/M5_Cold-MedSpa_LinkedIn_Option-A_treatment-tiles.mp4" poster="assets/M5_Cold-MedSpa_LinkedIn_Option-A_treatment-tiles.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>M5</b>Cold MedSpa · LinkedIn</p>
     <h2>Cold MedSpa / LinkedIn / Option A</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Most Medspas have a growth gap. / Have you found yours?”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Nine treatment tiles fill in; one stays open: the growth gap.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Most Medspas have a growth gap. / Have you found yours?”</p>
+    <p class="lab">Visual</p><p class="vis">Nine treatment tiles fill in; one stays open: the growth gap.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">21 / 41</span></section>
+  <span class="pg">20 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M6">
-  <div class="frame"><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Cold MedSpa / LinkedIn / Option B (Gated) · Slide 1"></div>
+  <div class="frame duo" style="left:110px"><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Cold MedSpa / LinkedIn / Option B (Gated) · Slide 1"></div><div class="frame duo" style="left:640px"><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Cold MedSpa / LinkedIn / Option B (Gated) · Slide 2"></div><p class="duo-lab" style="left:110px">Slide 1</p><p class="duo-lab" style="left:640px">Slide 2</p>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col duo-col" style="left:1240px;width:580px;top:150px">
     <p class="eyebrow"><b>M6</b>Cold MedSpa · LinkedIn</p>
-    <h2>Cold MedSpa / LinkedIn / Option B (Gated) · Slide 1</h2>
+    <h2>Cold MedSpa / LinkedIn / Option B (Gated)</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“What are you missing to grow your practice more?”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Benchmark rows: your position against peers on five measures.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design · Slide 1</p><p class="copy sm">“What are you missing to grow your practice more?”</p><p class="lab">Copy for design · Slide 2</p><p class="copy sm">“See the revenue opportunity in your market”</p>
+    <p class="lab">Visual</p><p class="vis sm">1 · Benchmark rows: your position against peers on five measures.<br>2 · A market map with demand hot-spots around “You”.</p>
+    <div class="fmt"><span>Carousel · 2 slides</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">22 / 41</span></section>
-<section class="slide g-medspa medspa" data-kind="asset" data-code="M6">
-  <div class="frame"><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Cold MedSpa / LinkedIn / Option B (Gated) · Slide 2"></div>
-  <span class="logo"></span>
-  <div class="col">
-    <p class="eyebrow"><b>M6</b>Cold MedSpa · LinkedIn</p>
-    <h2>Cold MedSpa / LinkedIn / Option B (Gated) · Slide 2</h2>
-    <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“See the revenue opportunity in your market”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A market map with demand hot-spots around “You”.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
-  </div>
-  <span class="pg">23 / 41</span></section>
+  <span class="pg">21 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M7">
-  <div class="frame"><img src="assets/M7_Cold-MedSpa_GDN_Copy-1.jpg" alt="Cold MedSpa / GDN / Copy 1 of 5"></div>
+  <div class="frame wide"><img src="assets/M7_Cold-MedSpa_GDN_Copy-1.jpg" alt="Cold MedSpa / GDN / Copy 1 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>M7</b>Cold MedSpa · GDN</p>
     <h2>Cold MedSpa / GDN / Copy 1 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Take the Stellar Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Take the Stellar Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">24 / 41</span></section>
+  <span class="pg">22 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M7">
-  <div class="frame"><img src="assets/M7_Cold-MedSpa_GDN_Copy-2.jpg" alt="Cold MedSpa / GDN / Copy 2 of 5"></div>
+  <div class="frame wide"><img src="assets/M7_Cold-MedSpa_GDN_Copy-2.jpg" alt="Cold MedSpa / GDN / Copy 2 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>M7</b>Cold MedSpa · GDN</p>
     <h2>Cold MedSpa / GDN / Copy 2 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Free Lumenis Practice Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Free Lumenis Practice Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">25 / 41</span></section>
+  <span class="pg">23 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M7">
-  <div class="frame"><img src="assets/M7_Cold-MedSpa_GDN_Copy-3.jpg" alt="Cold MedSpa / GDN / Copy 3 of 5"></div>
+  <div class="frame wide"><img src="assets/M7_Cold-MedSpa_GDN_Copy-3.jpg" alt="Cold MedSpa / GDN / Copy 3 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>M7</b>Cold MedSpa · GDN</p>
     <h2>Cold MedSpa / GDN / Copy 3 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Your Gap, Find It. Take the Quiz.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Your Gap, Find It. Take the Quiz.”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">26 / 41</span></section>
+  <span class="pg">24 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M7">
-  <div class="frame"><img src="assets/M7_Cold-MedSpa_GDN_Copy-4.jpg" alt="Cold MedSpa / GDN / Copy 4 of 5"></div>
+  <div class="frame wide"><img src="assets/M7_Cold-MedSpa_GDN_Copy-4.jpg" alt="Cold MedSpa / GDN / Copy 4 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>M7</b>Cold MedSpa · GDN</p>
     <h2>Cold MedSpa / GDN / Copy 4 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Stellar M22 Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Stellar M22 Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">27 / 41</span></section>
+  <span class="pg">25 / 38</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M7">
-  <div class="frame"><img src="assets/M7_Cold-MedSpa_GDN_Copy-5.jpg" alt="Cold MedSpa / GDN / Copy 5 of 5"></div>
+  <div class="frame wide"><img src="assets/M7_Cold-MedSpa_GDN_Copy-5.jpg" alt="Cold MedSpa / GDN / Copy 5 of 5"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>M7</b>Cold MedSpa · GDN</p>
     <h2>Cold MedSpa / GDN / Copy 5 of 5</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“2-Minute Stellar Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered, beside the device on its podium.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“2-Minute Stellar Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">28 / 41</span></section>
+  <span class="pg">26 / 38</span></section>
 <section class="slide g-phys" data-kind="section">
   <span class="logo"></span>
   <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 3 of 3 · 7 pieces · Meta 4 · LinkedIn 2 · GDN 1</p>
   <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Cold Physician</h1>
   <p class="lede" style="top:390px;">Physicians / MDs running private aesthetic practices.<br><span style="opacity:.8">Evidence is the hook; the benchmark is the destination.</span></p>
   <div class="thumbs" style="top:610px"><img src="assets/P1_Cold-Physician_Meta_Awareness-Short_menu-grid.jpg" alt=""><img src="assets/P2_Cold-Physician_Meta_Awareness-Long_evidence-orbit.jpg" alt=""><img src="assets/P3_Cold-Physician_Meta_Retargeting-Short_dial.jpg" alt=""><img src="assets/P4_Cold-Physician_Meta_Retargeting-Long_data-to-benchmark.jpg" alt=""><img src="assets/P5_Cold-Physician_LinkedIn_Option-A_5-000-treatments.jpg" alt=""><img src="assets/P6_Cold-Physician_LinkedIn_Option-B-gated_Slide-1.jpg" alt=""><img src="assets/P7_Cold-Physician_GDN_Copy-1.jpg" alt=""></div>
-  <span class="pg">29 / 41</span></section>
+  <span class="pg">27 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P1">
   <div class="frame"><video src="assets/P1_Cold-Physician_Meta_Awareness-Short_menu-grid.mp4" poster="assets/P1_Cold-Physician_Meta_Awareness-Short_menu-grid.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>P1</b>Cold Physician · Meta</p>
     <h2>Cold Physician / Meta / Awareness Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Where does your clinic stand? / Check the market data to see.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A menu grid of clinics × treatments fills in row by row; your clinic’s row lifts out with its gaps.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Where does your clinic stand? / Check the market data to see.”</p>
+    <p class="lab">Visual</p><p class="vis">A menu grid of clinics × treatments fills in row by row; your clinic’s row lifts out with its gaps.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">30 / 41</span></section>
+  <span class="pg">28 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P2">
   <div class="frame"><img src="assets/P2_Cold-Physician_Meta_Awareness-Long_evidence-orbit.jpg" alt="Cold Physician / Meta / Awareness Long"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>P2</b>Cold Physician · Meta</p>
     <h2>Cold Physician / Meta / Awareness Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Backed by clinical data. / One benchmark for your practice.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Clinical studies orbit the device on its podium.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Backed by clinical data. / One benchmark for your practice.”</p>
+    <p class="lab">Visual</p><p class="vis">Clinical studies orbit the device on its pedestal.</p>
     <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">31 / 41</span></section>
+  <span class="pg">29 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P3">
   <div class="frame"><video src="assets/P3_Cold-Physician_Meta_Retargeting-Short_dial.mp4" poster="assets/P3_Cold-Physician_Meta_Retargeting-Short_dial.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>P3</b>Cold Physician · Meta</p>
     <h2>Cold Physician / Meta / Retargeting Short</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Still reviewing the data? / Here’s Where You Stand.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A dial sweeps around the device and settles on where the clinic stands.</p>
+    <p class="lab">Copy for design</p><p class="copy">“Still reviewing the data? / Here’s Where You Stand.”</p>
+    <p class="lab">Visual</p><p class="vis">A dial sweeps around the device and settles on where the clinic stands.</p>
     <div class="fmt"><span>MP4 · 9.0s · loop</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">32 / 41</span></section>
+  <span class="pg">30 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P4">
   <div class="frame"><img src="assets/P4_Cold-Physician_Meta_Retargeting-Long_data-to-benchmark.jpg" alt="Cold Physician / Meta / Retargeting Long"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>P4</b>Cold Physician · Meta</p>
     <h2>Cold Physician / Meta / Retargeting Long</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“The data was the easy part. / Here’s what it means for your practice.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A stack of studies resolves into one benchmark chart, your bar lit.</p>
+    <p class="lab">Copy for design</p><p class="copy">“The data was the easy part. / Here’s what it means for your practice.”</p>
+    <p class="lab">Visual</p><p class="vis">A stack of studies resolves into one benchmark chart, your bar lit.</p>
     <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">33 / 41</span></section>
+  <span class="pg">31 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P5">
   <div class="frame"><img src="assets/P5_Cold-Physician_LinkedIn_Option-A_5-000-treatments.jpg" alt="Cold Physician / LinkedIn / Option A"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="">
     <p class="eyebrow"><b>P5</b>Cold Physician · LinkedIn</p>
     <h2>Cold Physician / LinkedIn / Option A</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">““5,000 Treatments with Stellar M22 and Counting” / — Michael D. Mirmanesh, MD”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">A milestone line climbs 1,000 → 5,000 and keeps going (and counting), next to the device on its pedestal.</p>
+    <p class="lab">Copy for design</p><p class="copy">““5,000 Treatments with Stellar M22 and Counting” / — Michael D. Mirmanesh, MD”</p>
+    <p class="lab">Visual</p><p class="vis">A milestone line climbs 1,000 → 5,000 and keeps going (and counting), next to the device on its pedestal.</p>
     <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">34 / 41</span></section>
+  <span class="pg">32 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P6">
-  <div class="frame"><img src="assets/P6_Cold-Physician_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Cold Physician / LinkedIn / Option B (Gated) · Slide 1"></div>
+  <div class="frame duo" style="left:110px"><img src="assets/P6_Cold-Physician_LinkedIn_Option-B-gated_Slide-1.jpg" alt="Cold Physician / LinkedIn / Option B (Gated) · Slide 1"></div><div class="frame duo" style="left:640px"><img src="assets/P6_Cold-Physician_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Cold Physician / LinkedIn / Option B (Gated) · Slide 2"></div><p class="duo-lab" style="left:110px">Slide 1</p><p class="duo-lab" style="left:640px">Slide 2</p>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col duo-col" style="left:1240px;width:580px;top:150px">
     <p class="eyebrow"><b>P6</b>Cold Physician · LinkedIn</p>
-    <h2>Cold Physician / LinkedIn / Option B (Gated) · Slide 1</h2>
+    <h2>Cold Physician / LinkedIn / Option B (Gated)</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“The 2026 Practice Growth Benchmark Is Here”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The 2026 benchmark report revealed as a fanned cover with the device.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design · Slide 1</p><p class="copy sm">“The 2026 Practice Growth Benchmark Is Here”</p><p class="lab">Copy for design · Slide 2</p><p class="copy sm">“See how clinics like yours are performing.”</p>
+    <p class="lab">Visual</p><p class="vis sm">1 · The 2026 benchmark report revealed as a fanned cover with the device.<br>2 · Clinics like yours as bars; yours lit and marked by the device.</p>
+    <div class="fmt"><span>Carousel · 2 slides</span><span>1080 × 1350</span></div>
   </div>
-  <span class="pg">35 / 41</span></section>
-<section class="slide g-phys phys" data-kind="asset" data-code="P6">
-  <div class="frame"><img src="assets/P6_Cold-Physician_LinkedIn_Option-B-gated_Slide-2.jpg" alt="Cold Physician / LinkedIn / Option B (Gated) · Slide 2"></div>
-  <span class="logo"></span>
-  <div class="col">
-    <p class="eyebrow"><b>P6</b>Cold Physician · LinkedIn</p>
-    <h2>Cold Physician / LinkedIn / Option B (Gated) · Slide 2</h2>
-    <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“See how clinics like yours are performing.”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">Clinics like yours as bars; yours lit and marked by the device.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
-  </div>
-  <span class="pg">36 / 41</span></section>
+  <span class="pg">33 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P7">
-  <div class="frame"><img src="assets/P7_Cold-Physician_GDN_Copy-1.jpg" alt="Cold Physician / GDN / Copy 1 of 4"></div>
+  <div class="frame wide"><img src="assets/P7_Cold-Physician_GDN_Copy-1.jpg" alt="Cold Physician / GDN / Copy 1 of 4"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>P7</b>Cold Physician · GDN</p>
     <h2>Cold Physician / GDN / Copy 1 of 4</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Take the Lumenis Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Take the Lumenis Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">37 / 41</span></section>
+  <span class="pg">34 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P7">
-  <div class="frame"><img src="assets/P7_Cold-Physician_GDN_Copy-2.jpg" alt="Cold Physician / GDN / Copy 2 of 4"></div>
+  <div class="frame wide"><img src="assets/P7_Cold-Physician_GDN_Copy-2.jpg" alt="Cold Physician / GDN / Copy 2 of 4"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>P7</b>Cold Physician · GDN</p>
     <h2>Cold Physician / GDN / Copy 2 of 4</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Stellar M22 Data Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Stellar M22 Data Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">38 / 41</span></section>
+  <span class="pg">35 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P7">
-  <div class="frame"><img src="assets/P7_Cold-Physician_GDN_Copy-3.jpg" alt="Cold Physician / GDN / Copy 3 of 4"></div>
+  <div class="frame wide"><img src="assets/P7_Cold-Physician_GDN_Copy-3.jpg" alt="Cold Physician / GDN / Copy 3 of 4"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>P7</b>Cold Physician · GDN</p>
     <h2>Cold Physician / GDN / Copy 3 of 4</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“See Your Quiz Results”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“See Your Quiz Results”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">39 / 41</span></section>
+  <span class="pg">36 / 38</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P7">
-  <div class="frame"><img src="assets/P7_Cold-Physician_GDN_Copy-4.jpg" alt="Cold Physician / GDN / Copy 4 of 4"></div>
+  <div class="frame wide"><img src="assets/P7_Cold-Physician_GDN_Copy-4.jpg" alt="Cold Physician / GDN / Copy 4 of 4"></div>
   <span class="logo"></span>
-  <div class="col">
+  <div class="col" style="left:1300px;width:520px;top:250px">
     <p class="eyebrow"><b>P7</b>Cold Physician · GDN</p>
     <h2>Cold Physician / GDN / Copy 4 of 4</h2>
     <div class="rule"></div>
-    <p class="lab">Copy for design</p>
-    <p class="copy">“Lumenis Practice Quiz”</p>
-    <p class="lab">Visual</p>
-    <p class="vis">The quiz card, answered.</p>
-    <div class="fmt"><span>Static PNG</span><span>1080 × 1350</span></div>
+    <p class="lab">Copy for design</p><p class="copy">“Lumenis Practice Quiz”</p>
+    <p class="lab">Visual</p><p class="vis">The quiz card, answered, beside the device on its pedestal.</p>
+    <div class="fmt"><span>Static PNG</span><span>1200 × 628</span></div>
   </div>
-  <span class="pg">40 / 41</span></section>
+  <span class="pg">37 / 38</span></section>
 <section class="slide g-warm" data-kind="end">
   <span class="logo" style="left:50%;right:auto;top:300px;width:520px;margin-left:-260px"></span>
-  <p class="lede" style="top:520px;left:0;width:1920px;text-align:center;font-size:40px">22 pieces in 4:5 for review and approval.<br><span style="opacity:.8">Other sizes adapted after approval.</span></p>
-  <span class="pg">41 / 41</span></section>
+  <p class="lede" style="top:520px;left:0;width:1920px;text-align:center;font-size:40px">22 pieces for review and approval · 4:5 + GDN banners in 1.91:1.<br><span style="opacity:.8">Other sizes adapted after approval.</span></p>
+  <span class="pg">38 / 38</span></section>
 </div>
 <div class="hint">← → or click to navigate · F fullscreen</div>
 <script>
