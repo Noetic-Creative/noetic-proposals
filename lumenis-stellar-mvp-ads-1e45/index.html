@@ -51,13 +51,19 @@ h2 { margin: 0; font-weight: 700; font-size: 60px; line-height: 1.06; letter-spa
 .mk { background: #FFF; color: #A85964; padding: .04em .14em 0; }
 .lede { left: 154px; width: 860px; font-size: 34px; line-height: 1.32; margin: 0; }
 .dev { width: auto; filter: drop-shadow(0 40px 40px rgba(40,8,15,.5)); }
+.sec-eye { margin: 0; font-size: 24px; letter-spacing: .16em; text-transform: uppercase; opacity: .9; }
+.sec-txt { margin: 0 0 30px; font-size: 34px; line-height: 1.3; }
+.sec-txt.sm { font-size: 27px; line-height: 1.42; opacity: .95; }
+.sec-tiles { display: flex; gap: 18px; }
+.sec-tile { display: flex; align-items: baseline; gap: 14px; padding: 18px 28px 16px; border-radius: 22px; background: rgba(255,255,255,.16); border: 1.5px solid rgba(255,255,255,.55); }
+.sec-tile b { font-size: 54px; line-height: 1; } .sec-tile span { font-size: 24px; letter-spacing: .1em; text-transform: uppercase; }
 .thumbs { left: 150px; right: 150px; display: flex; gap: 22px; }
 .thumbs img { flex: 1; min-width: 0; max-width: 240px; aspect-ratio: 4/5; object-fit: contain; border-radius: 10px; box-shadow: 0 24px 40px -24px rgba(40,8,15,.8); }
 .hint { position: fixed; left: 16px; bottom: 12px; font: 12px Arial; color: rgba(255,255,255,.4); }
 body.render .hint { display: none; }
 </style></head><body>
 <div class="deck">
-<section class="slide g-warm" data-kind="cover"><svg class="rings" viewBox="0 0 1920 1080"><defs><linearGradient id="pds" x1="0" x2="1"><stop offset="0" stop-color="#8F3F4C"/><stop offset=".28" stop-color="#C47580"/><stop offset=".52" stop-color="#D9969A"/><stop offset=".78" stop-color="#B4626E"/><stop offset="1" stop-color="#86394A"/></linearGradient><radialGradient id="pdt" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".6" stop-color="#F2C3BC"/><stop offset="1" stop-color="#DE9E9D"/></radialGradient><filter id="pb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="26"/></filter><filter id="pg" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs><ellipse cx="1440" cy="1092.0" rx="472.0" ry="150.0" fill="#3C121B" opacity=".38" filter="url(#pb)"/><path d="M1040 930 L1040 1050.0 A400 120.0 0 0 0 1840 1050.0 L1840 930 A400 120.0 0 0 1 1040 930 Z" fill="url(#pds)"/><ellipse cx="1440" cy="930" rx="400" ry="120.0" fill="url(#pdt)"/><path d="M1040 930 A400 120.0 0 0 0 1840 930" fill="none" stroke="#FFE4DE" stroke-width="14" filter="url(#pg)" opacity=".9"/><path d="M1040 930 A400 120.0 0 0 0 1840 930" fill="none" stroke="#FFF" stroke-width="3"/></svg>
+<section class="slide g-warm" data-kind="cover"><svg class="rings" viewBox="0 0 1920 1080"><defs><linearGradient id="p1pds" x1="0" x2="1"><stop offset="0" stop-color="#8F3F4C"/><stop offset=".28" stop-color="#C47580"/><stop offset=".52" stop-color="#D9969A"/><stop offset=".78" stop-color="#B4626E"/><stop offset="1" stop-color="#86394A"/></linearGradient><radialGradient id="p1pdt" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".6" stop-color="#F2C3BC"/><stop offset="1" stop-color="#DE9E9D"/></radialGradient><filter id="p1pb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="26"/></filter><filter id="p1pg" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs><ellipse cx="1440" cy="1092.0" rx="472.0" ry="150.0" fill="#3C121B" opacity=".38" filter="url(#p1pb)"/><path d="M1040 930 L1040 1050.0 A400 120.0 0 0 0 1840 1050.0 L1840 930 A400 120.0 0 0 1 1040 930 Z" fill="url(#p1pds)"/><ellipse cx="1440" cy="930" rx="400" ry="120.0" fill="url(#p1pdt)"/><path d="M1040 930 A400 120.0 0 0 0 1840 930" fill="none" stroke="#FFE4DE" stroke-width="14" filter="url(#p1pg)" opacity=".9"/><path d="M1040 930 A400 120.0 0 0 0 1840 930" fill="none" stroke="#FFF" stroke-width="3"/></svg>
   <img class="dev" src="assets/stellar-m22-device.webp" style="left:1144px;top:223px;height:780px;filter:drop-shadow(0 18px 14px rgba(40,8,15,.35))" alt="">
   <span class="logo" style="left:150px;right:auto;width:380px"></span>
   <h1 class="big" style="top:300px;font-size:110px;width:1180px;white-space:nowrap">Stellar&nbsp;M22<br><span class="mk">MVP</span> Ad Creative</h1>
@@ -65,11 +71,16 @@ body.render .hint { display: none; }
   <p class="lede" style="top:760px;font-size:24px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">Map, interactive and data-visualisation direction · October 2026</p>
   <span class="pg">01 / 39</span></section>
 <section class="slide g-warm" data-kind="section">
+  <svg class="rings" viewBox="0 0 1920 1080"><defs><linearGradient id="p2pds" x1="0" x2="1"><stop offset="0" stop-color="#8F3F4C"/><stop offset=".28" stop-color="#C47580"/><stop offset=".52" stop-color="#D9969A"/><stop offset=".78" stop-color="#B4626E"/><stop offset="1" stop-color="#86394A"/></linearGradient><radialGradient id="p2pdt" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".6" stop-color="#F2C3BC"/><stop offset="1" stop-color="#DE9E9D"/></radialGradient><filter id="p2pb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="26"/></filter><filter id="p2pg" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs><ellipse cx="1440" cy="959.35" rx="318.59999999999997" ry="101.25" fill="#3C121B" opacity=".38" filter="url(#p2pb)"/><path d="M1170 850 L1170 931.0 A270 81.0 0 0 0 1710 931.0 L1710 850 A270 81.0 0 0 1 1170 850 Z" fill="url(#p2pds)"/><ellipse cx="1440" cy="850" rx="270" ry="81.0" fill="url(#p2pdt)"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFE4DE" stroke-width="14" filter="url(#p2pg)" opacity=".9"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFF" stroke-width="3"/></svg>
+  <img class="dev" src="assets/stellar-m22-device.webp" style="left:1197px;top:270px;height:640px;filter:drop-shadow(0 18px 14px rgba(40,8,15,.35))" alt="">
   <span class="logo"></span>
-  <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 1 of 3 · 8 pieces · Meta 4 · LinkedIn 2 · GDN 1 · Email 1</p>
-  <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Warm</h1>
-  <p class="lede" style="top:390px;">Existing leads, customers and site retargeting: already engaged with Lumenis / Stellar, not yet converted.<br><span style="opacity:.8">Direct, a little daring. FOMO-driven.</span></p>
-  <div class="thumbs" style="top:610px"><img src="assets/W1_Warm_Meta_Ad-1-Short_treatment-tiles.jpg" alt=""><img src="assets/W2_Warm_Meta_Ad-2-Long_spectrum.jpg" alt=""><img src="assets/W3_Warm_Meta_Ad-3-Short_gauge-needle.jpg" alt=""><img src="assets/W4_Warm_Meta_Ad-4-Long_converge.jpg" alt=""><img src="assets/W5_Warm_LinkedIn_Option-A_5-000-treatments.jpg" alt=""><img src="assets/W6_Warm_LinkedIn_Option-B_Slide-1.jpg" alt=""><img src="assets/W7_Warm_GDN_Copy-1.jpg" alt=""><img src="assets/W8_Warm_Email_Email-header.jpg" alt=""></div>
+  <p class="sec-eye" style="left:150px;top:150px">Audience 1 of 3 · 8 pieces</p>
+  <h1 class="big" style="top:196px;font-size:132px;width:1100px;white-space:nowrap">Warm</h1>
+  <div class="sec-col" style="left:154px;top:390px;width:1000px">
+    <p class="lab">Who they are</p><p class="sec-txt">Existing leads, customers, and site retargeting, already engaged with Lumenis/Stellar in some way, but haven’t converted.</p>
+    <p class="lab">Messaging angle</p><p class="sec-txt sm">Not a cold introduction; go direct, a little daring. FOMO-driven: acknowledge they’ve been checking us out, and give them a reason this is the moment that changes their mind.</p>
+  </div>
+  <div class="sec-tiles" style="left:150px;top:806px"><div class="sec-tile"><b>4</b><span>Meta</span></div><div class="sec-tile"><b>2</b><span>LinkedIn</span></div><div class="sec-tile"><b>1</b><span>GDN</span></div><div class="sec-tile"><b>1</b><span>Email</span></div></div>
   <span class="pg">02 / 39</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W1">
   <div class="frame"><video src="assets/W1_Warm_Meta_Ad-1-Short_treatment-tiles.mp4" poster="assets/W1_Warm_Meta_Ad-1-Short_treatment-tiles.jpg" muted loop playsinline preload="auto"></video></div>
@@ -116,7 +127,7 @@ body.render .hint { display: none; }
     <div class="rule"></div>
     <p class="lab">Headline</p><p class="copy">See exactly where the gap is, and what it&#x27;s costing you.</p><p class="lab">Primary text</p><p class="copy prim">Aesthetic treatment demand has grown, and the practices keeping up aren&#x27;t guessing, they&#x27;re checking. You&#x27;ve spent some time looking into Stellar M22, now running in over 30,000 practices worldwide. Here&#x27;s something worth two minutes.</p><p class="lab">CTA</p><p class="copy cta">Take the Quiz</p>
     
-    <div class="fmt-row"><p class="lab">Format</p><div class="fmt"><span>MP4 · 10.0s · loop</span><span>1080 × 1350</span></div></div>
+    <div class="fmt-row"><p class="lab">Format</p><div class="fmt"><span>MP4 · 11.0s · loop</span><span>1080 × 1350</span></div></div>
   </div>
   <span class="pg">06 / 39</span></section>
 <section class="slide g-warm warm" data-kind="asset" data-code="W5">
@@ -216,12 +227,17 @@ body.render .hint { display: none; }
   </div>
   <span class="pg">14 / 39</span></section>
 <section class="slide g-medspa" data-kind="section">
+  <svg class="rings" viewBox="0 0 1920 1080"><defs><linearGradient id="p3pds" x1="0" x2="1"><stop offset="0" stop-color="#8F3F4C"/><stop offset=".28" stop-color="#C47580"/><stop offset=".52" stop-color="#D9969A"/><stop offset=".78" stop-color="#B4626E"/><stop offset="1" stop-color="#86394A"/></linearGradient><radialGradient id="p3pdt" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".6" stop-color="#F2C3BC"/><stop offset="1" stop-color="#DE9E9D"/></radialGradient><filter id="p3pb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="26"/></filter><filter id="p3pg" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs><ellipse cx="1440" cy="959.35" rx="318.59999999999997" ry="101.25" fill="#3C121B" opacity=".38" filter="url(#p3pb)"/><path d="M1170 850 L1170 931.0 A270 81.0 0 0 0 1710 931.0 L1710 850 A270 81.0 0 0 1 1170 850 Z" fill="url(#p3pds)"/><ellipse cx="1440" cy="850" rx="270" ry="81.0" fill="url(#p3pdt)"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFE4DE" stroke-width="14" filter="url(#p3pg)" opacity=".9"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFF" stroke-width="3"/></svg>
+  <img class="dev" src="assets/stellar-m22-device.webp" style="left:1197px;top:270px;height:640px;filter:drop-shadow(0 18px 14px rgba(40,8,15,.35))" alt="">
   <span class="logo"></span>
-  <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 2 of 3 · 7 pieces · Meta 4 · LinkedIn 2 · GDN 1</p>
-  <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Cold MedSpa</h1>
-  <p class="lede" style="top:390px;">Business owners running MedSpas and clinics.<br><span style="opacity:.8">Top-of-funnel, curiosity-led. Framed around what they miss by not taking the quiz.</span></p>
-  <div class="thumbs" style="top:610px"><img src="assets/M1_Cold-MedSpa_Meta_Ad-1-Short_map.jpg" alt=""><img src="assets/M2_Cold-MedSpa_Meta_Ad-2-Long_pins-around-a-You.jpg" alt=""><img src="assets/M3_Cold-MedSpa_Meta_Ad-3-Short_spectrum.jpg" alt=""><img src="assets/M4_Cold-MedSpa_Meta_Ad-4-Long_diverging-lines.jpg" alt=""><img src="assets/M5_Cold-MedSpa_LinkedIn_Option-A_treatment-tiles.jpg" alt=""><img src="assets/M6_Cold-MedSpa_LinkedIn_Option-B_Slide-1.jpg" alt=""><img src="assets/M7_Cold-MedSpa_GDN_Copy-1.jpg" alt=""></div>
-  <span class="pg" style="color:#913D48">15 / 39</span></section>
+  <p class="sec-eye" style="left:150px;top:150px">Audience 2 of 3 · 7 pieces</p>
+  <h1 class="big" style="top:196px;font-size:132px;width:1100px;white-space:nowrap">Cold MedSpa</h1>
+  <div class="sec-col" style="left:154px;top:390px;width:1000px">
+    <p class="lab">Who they are</p><p class="sec-txt">Business owners running MedSpas/clinics.</p>
+    <p class="lab">Messaging angle</p><p class="sec-txt sm">Top-of-funnel, curiosity-led, no hard sell — this is a true first touch, so the job of the ad is to earn the click, not close anything. Framed around what they’re missing by not taking the quiz.</p>
+  </div>
+  <div class="sec-tiles" style="left:150px;top:806px"><div class="sec-tile"><b>4</b><span>Meta</span></div><div class="sec-tile"><b>2</b><span>LinkedIn</span></div><div class="sec-tile"><b>1</b><span>GDN</span></div></div>
+  <span class="pg">15 / 39</span></section>
 <section class="slide g-medspa medspa" data-kind="asset" data-code="M1">
   <div class="frame"><video src="assets/M1_Cold-MedSpa_Meta_Ad-1-Short_map.mp4" poster="assets/M1_Cold-MedSpa_Meta_Ad-1-Short_map.jpg" muted loop playsinline preload="auto"></video></div>
   <span class="logo"></span>
@@ -355,11 +371,16 @@ body.render .hint { display: none; }
   </div>
   <span class="pg">26 / 39</span></section>
 <section class="slide g-phys" data-kind="section">
+  <svg class="rings" viewBox="0 0 1920 1080"><defs><linearGradient id="p4pds" x1="0" x2="1"><stop offset="0" stop-color="#8F3F4C"/><stop offset=".28" stop-color="#C47580"/><stop offset=".52" stop-color="#D9969A"/><stop offset=".78" stop-color="#B4626E"/><stop offset="1" stop-color="#86394A"/></linearGradient><radialGradient id="p4pdt" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".6" stop-color="#F2C3BC"/><stop offset="1" stop-color="#DE9E9D"/></radialGradient><filter id="p4pb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="26"/></filter><filter id="p4pg" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs><ellipse cx="1440" cy="959.35" rx="318.59999999999997" ry="101.25" fill="#3C121B" opacity=".38" filter="url(#p4pb)"/><path d="M1170 850 L1170 931.0 A270 81.0 0 0 0 1710 931.0 L1710 850 A270 81.0 0 0 1 1170 850 Z" fill="url(#p4pds)"/><ellipse cx="1440" cy="850" rx="270" ry="81.0" fill="url(#p4pdt)"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFE4DE" stroke-width="14" filter="url(#p4pg)" opacity=".9"/><path d="M1170 850 A270 81.0 0 0 0 1710 850" fill="none" stroke="#FFF" stroke-width="3"/></svg>
+  <img class="dev" src="assets/stellar-m22-device.webp" style="left:1197px;top:270px;height:640px;filter:drop-shadow(0 18px 14px rgba(40,8,15,.35))" alt="">
   <span class="logo"></span>
-  <p class="lede" style="top:150px;width:1500px;font-size:24px;letter-spacing:.16em;text-transform:uppercase;">Audience 3 of 3 · 7 pieces · Meta 4 · LinkedIn 2 · GDN 1</p>
-  <h1 class="big" style="top:200px;font-size:150px;width:1600px;white-space:nowrap;">Cold Physician</h1>
-  <p class="lede" style="top:390px;">Physicians / MDs running private aesthetic practices.<br><span style="opacity:.8">Evidence is the hook; the benchmark is the destination.</span></p>
-  <div class="thumbs" style="top:610px"><img src="assets/P1_Cold-Physician_Meta_Ad-1-Short_menu-grid.jpg" alt=""><img src="assets/P2_Cold-Physician_Meta_Ad-2-Long_demand-growth.jpg" alt=""><img src="assets/P3_Cold-Physician_Meta_Ad-3-Short_dial.jpg" alt=""><img src="assets/P4_Cold-Physician_Meta_Ad-4-Long_treatments-converge.jpg" alt=""><img src="assets/P5_Cold-Physician_LinkedIn_Option-A_5-000-treatments.jpg" alt=""><img src="assets/P6_Cold-Physician_LinkedIn_Option-B_Slide-1.jpg" alt=""><img src="assets/P7_Cold-Physician_GDN_Copy-1.jpg" alt=""></div>
+  <p class="sec-eye" style="left:150px;top:150px">Audience 3 of 3 · 7 pieces</p>
+  <h1 class="big" style="top:196px;font-size:132px;width:1100px;white-space:nowrap">Cold Physician</h1>
+  <div class="sec-col" style="left:154px;top:390px;width:1000px">
+    <p class="lab">Who they are</p><p class="sec-txt">Physicians/MDs running private aesthetic practices.</p>
+    <p class="lab">Messaging angle</p><p class="sec-txt sm">Needs an evidence-based anchor to earn credibility with this audience, but the quiz/benchmark is the actual destination, not a research page. Evidence functions as the hook that gets the click; the benchmark is what delivers the value.</p>
+  </div>
+  <div class="sec-tiles" style="left:150px;top:806px"><div class="sec-tile"><b>4</b><span>Meta</span></div><div class="sec-tile"><b>2</b><span>LinkedIn</span></div><div class="sec-tile"><b>1</b><span>GDN</span></div></div>
   <span class="pg">27 / 39</span></section>
 <section class="slide g-phys phys" data-kind="asset" data-code="P1">
   <div class="frame"><video src="assets/P1_Cold-Physician_Meta_Ad-1-Short_menu-grid.mp4" poster="assets/P1_Cold-Physician_Meta_Ad-1-Short_menu-grid.jpg" muted loop playsinline preload="auto"></video></div>
