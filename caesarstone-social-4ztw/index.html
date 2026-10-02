@@ -271,7 +271,7 @@ S.forEach((s,k)=>{ const p=s.querySelector('.pg'); if(p) p.textContent=String(k+
 function vids(s){ return [...s.querySelectorAll('video')]; }
 function show(n){ n=Math.max(0,Math.min(S.length-1,n));
   S.forEach((s,k)=>{ const on=k===n; s.classList.toggle('on',on);
-    vids(s).forEach(v=>{ if(on){ if(!v.src) v.src=v.dataset.src; v.muted=true; v.parentNode.classList.remove('loud'); const sn=v.parentNode.querySelector('.snd'); if(sn) sn.textContent='Click for sound'; v.play().catch(()=>{}); } else { v.pause(); } }); });
+    vids(s).forEach(v=>{ if(on){ if(!v.src) v.src=v.dataset.src; v.muted=true; v.parentNode.classList.remove('loud'); const sn=v.parentNode.querySelector('.snd'); if(sn) sn.textContent='Click for sound'; v.play().catch(()=>{}); v.addEventListener('canplay',()=>{ if(s.classList.contains('on')&&v.paused) v.play().catch(()=>{}); },{once:true}); } else { v.pause(); } }); });
   // warm up the next slide's films
   if(S[n+1]) vids(S[n+1]).forEach(v=>{ if(!v.src){ v.preload='auto'; v.src=v.dataset.src; } });
   i=n; document.getElementById('cnt').textContent=(n+1)+' / '+S.length; history.replaceState(null,'','#'+(n+1)); }
@@ -282,6 +282,7 @@ document.querySelectorAll('.card video').forEach(v=>v.addEventListener('click',(
   const loud=v.muted; document.querySelectorAll('video').forEach(o=>{ if(o!==v){ o.muted=true; o.parentNode.classList.remove('loud'); const s=o.parentNode.querySelector('.snd'); if(s) s.textContent='Click for sound'; } });
   v.muted=!loud; if(loud){ v.currentTime=0; v.play(); } v.parentNode.classList.toggle('loud',loud); const sn=v.parentNode.querySelector('.snd'); if(sn) sn.textContent=loud?'Sound on':'Click for sound'; }));
 show(Math.max(0,(parseInt(location.hash.slice(1))||1)-1));
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden) vids(S[i]).forEach(v=>{ if(v.paused) v.play().catch(()=>{}); }); });
 </script>
 </body>
 </html>
