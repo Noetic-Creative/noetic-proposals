@@ -11,8 +11,8 @@
   *{ box-sizing:border-box; margin:0; padding:0; }
   html,body{ height:100%; background:#0d0d0b; overflow:hidden; }
   body{ font-family:'Source Sans 3',sans-serif; color:var(--sw); }
-  #vp{ position:fixed; inset:0; display:grid; place-items:center; }
-  #deck{ position:relative; width:1920px; height:1080px; transform-origin:50% 50%; }
+  #vp{ position:fixed; inset:0; overflow:hidden; }
+  #deck{ position:absolute; left:50%; top:50%; width:1920px; height:1080px; transform-origin:50% 50%; }
   .slide{ position:absolute; inset:0; background:var(--mb); overflow:hidden; opacity:0; pointer-events:none; transition:opacity .45s ease; }
   .slide.on{ opacity:1; pointer-events:auto; }
   .slide.light{ background:var(--sw); color:var(--mb); }
@@ -265,7 +265,7 @@
 <div id="nav"><span id="hint">← → navigate · click a film for sound</span><button id="prev" aria-label="Previous">‹</button><span id="cnt"></span><button id="next" aria-label="Next">›</button></div>
 <script>
 const deck=document.getElementById('deck'), S=[...document.querySelectorAll('.slide')]; let i=0;
-function fit(){ const s=Math.min(innerWidth/1920,innerHeight/1080); deck.style.transform=`scale(${s})`; }
+function fit(){ const s=Math.min(innerWidth/1920,innerHeight/1080); deck.style.transform=`translate(-50%,-50%) scale(${s})`; }
 addEventListener('resize',fit); fit();
 S.forEach((s,k)=>{ const p=s.querySelector('.pg'); if(p) p.textContent=String(k+1).padStart(2,'0')+' / '+S.length; });
 function vids(s){ return [...s.querySelectorAll('video')]; }
