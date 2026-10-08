@@ -33,8 +33,14 @@
      Use a blank / canvas / full-width template so the theme header and footer
      do not stack on top of this page.
 
+     Built in the live pollogen.com design language: Codec Cold caps with wide
+     tracking, Montserrat for everything else, the blush #F5E6DD surface, black
+     tag chips, underline-only form fields and hairline text-link CTAs.
+
      Every selector is scoped to .tp-hud-lp. Nothing here touches the theme.
-     No JavaScript: the FAQ uses <details>, everything else is CSS.
+     NO JAVASCRIPT — the FAQ is <details>, and every animation is CSS:
+     keyframes on load, scroll-driven animations where the browser supports
+     them, and hover transitions. Everything is readable with motion off.
 
      Sections, in order:  HERO · MARKET · TECHNOLOGY · ROUTES · PROCESS ·
                           FORM · FAQ · REFERENCES · FOOTER
@@ -42,458 +48,663 @@
 
 <style>
 /* --------------------------------------------------------------------------
-   FONTS
-   Poppins — Google Fonts, Open Font License. Already a webfont pattern the
-   site handles; swap the @import for a self-hosted @font-face if WP strips it.
-   GT Super Display — LICENSED. Used exactly once (the hero voice line).
-   If the licence is not secured, delete the @font-face and the line falls back
-   to Georgia italic with no layout change.
+   FONTS — both faces are already served by pollogen.com, so nothing new needs
+   uploading for the live page.
+     Montserrat    Google Fonts, loaded site-wide by the theme already
+     Codec Cold    the theme's own @font-face, declared as "Codec Warm Trial"
+   The stack names the theme's family FIRST, so on pollogen.com the site's own
+   file is used and the copies below are never downloaded. They exist so the
+   page also renders correctly off-site (this preview, a staging host).
    -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @font-face{
-  font-family:'TPH GT Super Display';
-  font-style:italic; font-weight:400; font-display:swap;
-  src:url('assets/fonts/GT-Super-Display-Regular-Italic.woff2') format('woff2');
+  font-family:'TPH Codec Cold';
+  font-weight:400;font-style:normal;font-display:swap;
+  src:local('Codec Warm Trial Regular'),local('Codec Cold News'),
+      url('assets/fonts/codec-cold-news.woff2') format('woff2');
+}
+@font-face{
+  font-family:'TPH Codec Cold';
+  font-weight:700;font-style:normal;font-display:swap;
+  src:local('Codec Warm Trial Bold'),local('Codec Cold Bold'),
+      url('assets/fonts/codec-cold-bold.woff2') format('woff2');
 }
 
 /* --------------------------------------------------------------------------
-   TOKENS — the live TriPollar design system, scoped to this page only
+   TOKENS — measured off pollogen.com, scoped to this page only
    -------------------------------------------------------------------------- */
 .tp-hud-lp{
-  --tph-primary:#4E4A4B;        /* the TriPollar colour — warm charcoal */
-  --tph-primary-dark:#2F2C2D;
-  --tph-heading:#202020;
-  --tph-body:#4E4A4B;
-  --tph-secondary:#666666;
-  --tph-info:#959595;
-  --tph-cream:#F0E3C9;
-  --tph-canvas:#FFFFFF;
-  --tph-header-bg:#FBFBFB;
-  --tph-footer-bg:#EEEEEE;
-  --tph-grey-50:#F9FAFB;
-  --tph-grey-100:#F7F8FA;
-  --tph-border-1:#EEEEEE;
-  --tph-border-3:#D2D2D2;
-  --tph-border-4:#737373;
+  --pg-black:#000000;
+  --pg-ink:#161616;
+  --pg-grey:#6B6B6B;
+  --pg-mute:#8F8F8F;
+  --pg-line:#DEDEDE;
+  --pg-hair:#EDEDED;
+  --pg-blush:#F5E6DD;          /* the signature Pollogen surface */
+  --pg-blush-deep:#EBD6C9;
+  --pg-smoke:#F7F7F7;
+  --pg-dark:#3E3E3E;
+  --pg-white:#FFFFFF;
 
-  --tph-font:'Poppins','Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --tph-display:'TPH GT Super Display',Georgia,'Times New Roman',serif;
+  --pg-display:'Codec Warm Trial','TPH Codec Cold','Montserrat',sans-serif;
+  --pg-ui:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
 
-  --tph-container:1400px;
-  --tph-gutter:28px;
+  --pg-track-display:.135em;   /* 4.77px on 35px — the site's own value */
+  --pg-track-label:.2em;
+  --pg-track-link:.05em;
+
+  --pg-container:1240px;
+  --pg-gutter:26px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px;
-  --s5:48px; --s6:64px; --s7:96px; --s8:128px;
-  --tph-ease:cubic-bezier(.4,0,.2,1);
+  --s5:48px; --s6:64px; --s7:96px; --s8:132px;
+  --pg-ease:cubic-bezier(.22,.61,.36,1);
 
-  font-family:var(--tph-font);
-  font-size:14px;
+  font-family:var(--pg-ui);
+  font-size:15px;
   font-weight:400;
-  line-height:1.75;
-  color:var(--tph-body);
-  background:var(--tph-canvas);
+  line-height:1.9;
+  letter-spacing:.02em;
+  color:var(--pg-ink);
+  background:var(--pg-white);
   -webkit-font-smoothing:antialiased;
   text-align:left;
 }
 
-/* Scoped reset — never leaves the wrapper */
+/* scoped reset — never leaves the wrapper */
 .tp-hud-lp,
 .tp-hud-lp *,
 .tp-hud-lp *::before,
 .tp-hud-lp *::after{box-sizing:border-box}
-
 .tp-hud-lp img,
 .tp-hud-lp svg{max-width:100%;display:block;height:auto;border:0}
-
-.tp-hud-lp p,
-.tp-hud-lp h1,.tp-hud-lp h2,.tp-hud-lp h3,.tp-hud-lp h4,
-.tp-hud-lp ul,.tp-hud-lp ol,.tp-hud-lp li,.tp-hud-lp figure,.tp-hud-lp blockquote{
-  margin:0;padding:0;
-}
+.tp-hud-lp p,.tp-hud-lp h1,.tp-hud-lp h2,.tp-hud-lp h3,.tp-hud-lp h4,
+.tp-hud-lp ul,.tp-hud-lp ol,.tp-hud-lp li,.tp-hud-lp figure,.tp-hud-lp figcaption{margin:0;padding:0}
 .tp-hud-lp ul,.tp-hud-lp ol{list-style:none}
-
 .tp-hud-lp h1,.tp-hud-lp h2,.tp-hud-lp h3,.tp-hud-lp h4{
-  font-family:var(--tph-font);font-weight:400;color:var(--tph-heading);
-  letter-spacing:normal;text-transform:none;
+  font-family:var(--pg-display);font-weight:400;color:var(--pg-black);
 }
 .tp-hud-lp a{color:inherit;text-decoration:none}
-.tp-hud-lp :focus-visible{outline:2px solid var(--tph-heading);outline-offset:3px}
+.tp-hud-lp :focus-visible{outline:2px solid var(--pg-black);outline-offset:4px}
 
 /* --------------------------------------------------------------------------
    LAYOUT
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-wrap{
-  width:var(--tph-container);
-  max-width:calc(100% - (var(--tph-gutter) * 2));
+.tp-hud-lp .pg-wrap{
+  width:var(--pg-container);
+  max-width:calc(100% - (var(--pg-gutter) * 2));
   margin-left:auto;margin-right:auto;
 }
-.tp-hud-lp .tph-section{padding:var(--s8) 0}
-.tp-hud-lp .tph-section--tight{padding:var(--s7) 0}
-.tp-hud-lp .tph-grey{background:var(--tph-grey-50)}
-.tp-hud-lp .tph-cream{background:var(--tph-cream)}
-.tp-hud-lp .tph-dark{background:var(--tph-primary);color:rgba(255,255,255,.86)}
-.tp-hud-lp .tph-dark h2,
-.tp-hud-lp .tph-dark h3{color:#fff}
-.tp-hud-lp .tph-measure{max-width:720px}
-.tp-hud-lp .tph-measure-wide{max-width:900px}
-.tp-hud-lp .tph-anchor{scroll-margin-top:96px}
+.tp-hud-lp .pg-section{padding:var(--s8) 0;position:relative;overflow:hidden}
+.tp-hud-lp .pg-section--tight{padding:var(--s7) 0}
+.tp-hud-lp .pg-blush{background:var(--pg-blush)}
+.tp-hud-lp .pg-smoke{background:var(--pg-smoke)}
+.tp-hud-lp .pg-anchor{scroll-margin-top:90px}
+.tp-hud-lp .pg-center{text-align:center}
+.tp-hud-lp .pg-measure{max-width:680px}
+.tp-hud-lp .pg-center .pg-measure{margin-left:auto;margin-right:auto}
 
 /* --------------------------------------------------------------------------
-   TYPE
-   Large headlines are set LIGHT (300). That lightness is the brand.
+   TYPE — uppercase Codec with wide tracking is the whole signature
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-h1{
-  font-size:clamp(34px,4.6vw,48px);font-weight:300;line-height:1.12;
-  letter-spacing:-.01em;color:var(--tph-heading);
+.tp-hud-lp .pg-h2{
+  font-family:var(--pg-display);font-weight:400;
+  font-size:clamp(23px,2.8vw,35px);line-height:1.38;
+  letter-spacing:var(--pg-track-display);text-transform:uppercase;
 }
-.tp-hud-lp .tph-h2{
-  font-size:clamp(27px,3.2vw,37px);font-weight:300;line-height:1.2;
-  letter-spacing:-.005em;color:var(--tph-heading);
+.tp-hud-lp .pg-h3{
+  font-family:var(--pg-display);font-weight:400;
+  font-size:clamp(18px,1.8vw,23px);line-height:1.45;
+  letter-spacing:.1em;text-transform:uppercase;
 }
-.tp-hud-lp .tph-h3{
-  font-size:clamp(20px,2.1vw,25px);font-weight:400;line-height:1.3;color:var(--tph-heading);
+.tp-hud-lp .pg-label{
+  display:block;font-family:var(--pg-ui);font-weight:400;font-size:12px;line-height:1.8;
+  letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-grey);
 }
-.tp-hud-lp .tph-h4{font-size:18px;font-weight:500;line-height:1.45;color:var(--tph-heading)}
-.tp-hud-lp .tph-kicker{
-  display:block;font-size:11px;font-weight:500;line-height:1.7;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--tph-secondary);
-}
-.tp-hud-lp .tph-dark .tph-kicker{color:rgba(255,255,255,.62)}
-.tp-hud-lp .tph-lede{font-size:15px;line-height:1.85;color:var(--tph-secondary)}
-.tp-hud-lp .tph-body{font-size:14px;line-height:1.85;color:var(--tph-body)}
-.tp-hud-lp .tph-dark .tph-body,
-.tp-hud-lp .tph-dark .tph-lede{color:rgba(255,255,255,.80)}
-.tp-hud-lp .tph-small{font-size:13px;line-height:1.8;color:var(--tph-secondary)}
-.tp-hud-lp .tph-micro{
-  font-size:11px;line-height:1.7;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--tph-info);
-}
-.tp-hud-lp .tph-em{font-style:italic}
-.tp-hud-lp .tph-strong{font-weight:600;color:var(--tph-heading)}
+.tp-hud-lp .pg-body{font-size:15px;line-height:1.9;color:var(--pg-ink)}
+.tp-hud-lp .pg-lede{font-size:16px;line-height:1.95;color:var(--pg-ink)}
+.tp-hud-lp .pg-small{font-size:13px;line-height:1.9;color:var(--pg-grey)}
+.tp-hud-lp .pg-em{font-style:italic}
+.tp-hud-lp .pg-strong{font-weight:600}
+.tp-hud-lp .pg-stack > * + *{margin-top:var(--s3)}
 
-/* the one GT Super moment on the page */
-.tp-hud-lp .tph-voice{
-  font-family:var(--tph-display);font-style:italic;font-weight:400;
-  font-size:clamp(18px,2vw,22px);line-height:1.55;color:var(--tph-heading);
-}
+/* a hairline rule under a centred title, straight off the site's cards */
+.tp-hud-lp .pg-tick{width:46px;height:1px;background:currentColor;opacity:.45;margin:var(--s3) 0}
+.tp-hud-lp .pg-center .pg-tick{margin-left:auto;margin-right:auto}
 
-/* footnote references */
-.tp-hud-lp .tph-ref{
+/* footnote markers */
+.tp-hud-lp .pg-ref{
   font-size:10px;line-height:1;vertical-align:super;font-weight:500;
-  color:var(--tph-info);text-decoration:none;margin-left:2px;
+  letter-spacing:0;color:var(--pg-mute);margin-left:2px;
 }
-.tp-hud-lp .tph-ref:hover{color:var(--tph-heading)}
-
-.tp-hud-lp .tph-stack > * + *{margin-top:var(--s3)}
-.tp-hud-lp .tph-stack-sm > * + *{margin-top:var(--s2)}
+.tp-hud-lp .pg-ref:hover{color:var(--pg-black)}
 
 /* --------------------------------------------------------------------------
-   BUTTONS — 0 radius, 1px border, 15px/500, uppercase, 0 tracking
+   LINKS + BUTTONS — the site uses hairline text links, not filled buttons.
+   The one filled button on the page is the form submit.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:52px;padding:13px 34px;
-  border:1px solid var(--tph-primary-dark);border-radius:0;
-  background:var(--tph-primary-dark);color:#FFFFFF;
-  font-family:var(--tph-font);font-size:15px;font-weight:500;line-height:23px;
-  letter-spacing:0;text-transform:uppercase;text-align:center;text-decoration:none;
-  cursor:pointer;
-  transition:background .3s var(--tph-ease),border-color .3s var(--tph-ease),color .3s var(--tph-ease);
+.tp-hud-lp .pg-link{
+  position:relative;display:inline-block;padding-bottom:7px;
+  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
+  letter-spacing:var(--pg-track-link);text-transform:uppercase;color:var(--pg-black);
 }
-.tp-hud-lp .tph-btn:hover,
-.tp-hud-lp .tph-btn:focus-visible{background:var(--tph-primary);border-color:var(--tph-primary);color:#fff}
-.tp-hud-lp .tph-btn--outline{background:transparent;color:var(--tph-primary-dark)}
-.tp-hud-lp .tph-btn--outline:hover{background:var(--tph-primary-dark);color:#fff}
-.tp-hud-lp .tph-btn--invert{background:transparent;border-color:#fff;color:#fff}
-.tp-hud-lp .tph-btn--invert:hover{background:#fff;border-color:#fff;color:var(--tph-primary-dark)}
-.tp-hud-lp .tph-btn--block{width:100%}
-.tp-hud-lp .tph-btn-row{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s4);align-items:center}
+.tp-hud-lp .pg-link::before,
+.tp-hud-lp .pg-link::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;background:currentColor;
+}
+.tp-hud-lp .pg-link::before{width:100%;opacity:.3}
+.tp-hud-lp .pg-link::after{
+  width:100%;transform:scaleX(0);transform-origin:left;
+  transition:transform .5s var(--pg-ease);
+}
+.tp-hud-lp .pg-link:hover::after,
+.tp-hud-lp .pg-link:focus-visible::after{transform:scaleX(1)}
+.tp-hud-lp .pg-link--light{color:var(--pg-white)}
+.tp-hud-lp .pg-arrow{display:inline-block;margin-left:10px;transition:transform .45s var(--pg-ease)}
+.tp-hud-lp .pg-link:hover .pg-arrow{transform:translateX(7px)}
 
-.tp-hud-lp .tph-link{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  border-bottom:1px solid currentColor;padding-bottom:3px;
-  transition:opacity .2s var(--tph-ease);
+.tp-hud-lp .pg-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:15px 40px;overflow:hidden;
+  border:1px solid var(--pg-black);border-radius:0;background:var(--pg-black);
+  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
+  letter-spacing:.09em;text-transform:uppercase;text-align:center;color:var(--pg-white);
+  cursor:pointer;transition:color .45s var(--pg-ease);
 }
-.tp-hud-lp .tph-link:hover{opacity:.6}
+.tp-hud-lp .pg-btn > span{position:relative;z-index:1}
+.tp-hud-lp .pg-btn::after{
+  content:'';position:absolute;inset:0;background:var(--pg-white);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .45s var(--pg-ease);
+}
+.tp-hud-lp .pg-btn:hover,
+.tp-hud-lp .pg-btn:focus-visible{color:var(--pg-black)}
+.tp-hud-lp .pg-btn:hover::after,
+.tp-hud-lp .pg-btn:focus-visible::after{transform:scaleY(1)}
+.tp-hud-lp .pg-btn--block{width:100%}
 
-/* --------------------------------------------------------------------------
-   LOGO BAR — the whole header. No navigation, no cart, no search.
-   -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-logobar{background:var(--tph-header-bg);border-bottom:1px solid var(--tph-border-1)}
-.tp-hud-lp .tph-logobar__in{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:84px}
-.tp-hud-lp .tph-logobar__mark{height:40px;width:auto;filter:brightness(0)}
-.tp-hud-lp .tph-logobar__by{
-  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tph-info);
-  white-space:nowrap;
+/* black tag chip, exactly as the product grid on pollogen.com */
+.tp-hud-lp .pg-tag{
+  display:inline-block;padding:4px 8px;background:var(--pg-black);color:var(--pg-white);
+  font-family:var(--pg-ui);font-size:9px;font-weight:500;line-height:1.5;
+  letter-spacing:.09em;text-transform:uppercase;
 }
-
-/* --------------------------------------------------------------------------
-   HERO
-   -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-hero{padding:var(--s8) 0;background:var(--tph-canvas);overflow:hidden}
-.tp-hud-lp .tph-hero__grid{
-  display:grid;grid-template-columns:1.08fr .92fr;gap:var(--s7);align-items:center;
-}
-.tp-hud-lp .tph-hero__title{margin-top:var(--s3)}
-.tp-hud-lp .tph-hero__deck{margin-top:var(--s3);font-size:clamp(17px,1.7vw,20px);font-weight:400;line-height:1.5;color:var(--tph-heading)}
-.tp-hud-lp .tph-hero__copy{margin-top:var(--s4);max-width:36em}
-.tp-hud-lp .tph-hero__cta{margin-top:var(--s5)}
-.tp-hud-lp .tph-hero__pic{background:var(--tph-grey-100);overflow:hidden}
-.tp-hud-lp .tph-hero__pic img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 45%}
 
 /* --------------------------------------------------------------------------
-   STATS
+   LOGO BAR
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:var(--s6)}
-.tp-hud-lp .tph-stat{padding:0 var(--s5);border-left:1px solid var(--tph-border-3)}
-.tp-hud-lp .tph-stat:first-child{padding-left:0;border-left:0}
-.tp-hud-lp .tph-stat__fig{
-  font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.05;
-  color:var(--tph-heading);margin-bottom:var(--s2);
+.tp-hud-lp .pg-logobar{
+  position:relative;z-index:5;background:var(--pg-white);border-bottom:1px solid var(--pg-hair);
 }
-.tp-hud-lp .tph-stat__label{
-  font-size:12px;line-height:1.7;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--tph-info);
+.tp-hud-lp .pg-logobar__in{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:78px;
+}
+.tp-hud-lp .pg-logobar__mark{height:34px;width:auto;filter:brightness(0)}
+.tp-hud-lp .pg-logobar__by{
+  font-size:10px;letter-spacing:var(--pg-track-label);text-transform:uppercase;
+  color:var(--pg-mute);white-space:nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   HERO — full-bleed photograph, white caps on a scrim, the site's own
+   treatment. The image drifts slowly; the lines wipe up on load.
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:#B48D88;isolation:isolate}
+.tp-hud-lp .pg-hero{overflow:hidden}
+/* The media box is full-width but offset to the right, so the device lands
+   around 68% across and the copy sits on the fluted rose panel. object-position
+   cannot do this: at this aspect the image only overflows vertically, so there
+   is nothing to slide. The hero's own background matches the image's left edge,
+   which is what shows through the 18% the box leaves uncovered. */
+.tp-hud-lp .pg-hero__media{
+  position:absolute;top:0;bottom:0;left:18%;width:100%;z-index:0;overflow:hidden;
+}
+.tp-hud-lp .pg-hero__media img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 26%;transform:scale(1.04);
+}
+.tp-hud-lp .pg-hero__scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(92deg, rgba(22,13,11,.92) 0%, rgba(22,13,11,.86) 26%, rgba(22,13,11,.62) 46%, rgba(22,13,11,.22) 66%, rgba(22,13,11,0) 84%),
+    linear-gradient(180deg, rgba(22,13,11,.40) 0%, rgba(22,13,11,0) 36%);
+}
+.tp-hud-lp .pg-hero__in{
+  position:relative;z-index:2;
+  min-height:clamp(560px,82vh,840px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--s8) 0 var(--s7);
+}
+.tp-hud-lp .pg-hero__copy{max-width:780px;color:var(--pg-white)}
+.tp-hud-lp .pg-hero__kicker{color:rgba(255,255,255,.72);margin-bottom:var(--s4)}
+.tp-hud-lp .pg-hero__title{
+  font-family:var(--pg-display);font-weight:400;color:var(--pg-white);
+  font-size:clamp(27px,3.9vw,50px);line-height:1.24;
+  letter-spacing:var(--pg-track-display);text-transform:uppercase;
+}
+.tp-hud-lp .pg-hero__deck{
+  margin-top:var(--s4);font-size:clamp(15px,1.5vw,18px);line-height:1.75;
+  letter-spacing:.04em;color:rgba(255,255,255,.94);
+}
+.tp-hud-lp .pg-hero__body{margin-top:var(--s4);max-width:34em;color:rgba(255,255,255,.86)}
+.tp-hud-lp .pg-hero__cta{margin-top:var(--s6)}
+
+/* each hero line sits in a mask and wipes up */
+.tp-hud-lp .pg-line{display:block;overflow:hidden}
+.tp-hud-lp .pg-line > span{display:block}
+
+/* --------------------------------------------------------------------------
+   SECTION HEADS
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-head{max-width:860px;margin-bottom:var(--s7)}
+.tp-hud-lp .pg-head.pg-center{margin-left:auto;margin-right:auto}
+.tp-hud-lp .pg-head .pg-label{margin-bottom:var(--s3)}
+.tp-hud-lp .pg-head .pg-lede{margin-top:var(--s4)}
+
+/* --------------------------------------------------------------------------
+   STATS — figures plus a bar that grows from 2025 to 2030 as it scrolls in
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-stat-panel{background:var(--pg-blush);padding:var(--s6)}
+.tp-hud-lp .pg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
+.tp-hud-lp .pg-stat__fig{
+  font-family:var(--pg-display);font-weight:400;
+  font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:.04em;color:var(--pg-black);
+}
+.tp-hud-lp .pg-stat__label{
+  margin-top:12px;font-size:11px;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-grey);
+}
+.tp-hud-lp .pg-growth{
+  margin-top:var(--s5);height:3px;
+  background:rgba(0,0,0,.12);position:relative;overflow:hidden;
+}
+.tp-hud-lp .pg-growth i{
+  position:absolute;inset:0;background:var(--pg-black);
+  transform:scaleX(.08);transform-origin:left;
 }
 
 /* --------------------------------------------------------------------------
    GRIDS + CARDS
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-grid{display:grid;gap:var(--s4)}
-.tp-hud-lp .tph-grid--2{grid-template-columns:repeat(2,1fr)}
-.tp-hud-lp .tph-grid--3{grid-template-columns:repeat(3,1fr)}
-.tp-hud-lp .tph-grid--gap-lg{gap:var(--s6)}
+.tp-hud-lp .pg-grid{display:grid;gap:var(--s4)}
+.tp-hud-lp .pg-grid--2{grid-template-columns:repeat(2,1fr)}
+.tp-hud-lp .pg-grid--3{grid-template-columns:repeat(3,1fr)}
+.tp-hud-lp .pg-grid--lg{gap:var(--s6)}
+.tp-hud-lp .pg-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center}
+.tp-hud-lp .pg-split--top{align-items:start}
 
-.tp-hud-lp .tph-card{background:#fff;border:1px solid var(--tph-border-1);padding:var(--s5)}
-.tp-hud-lp .tph-dark .tph-card{
-  background:transparent;border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.82);
+/* blush card, centred title + tick + caption — the site's own card */
+.tp-hud-lp .pg-card{
+  position:relative;background:var(--pg-blush);padding:var(--s6) var(--s5);
+  text-align:center;overflow:hidden;
+  transition:background .5s var(--pg-ease),transform .5s var(--pg-ease);
 }
-.tp-hud-lp .tph-card__num{
-  display:block;font-size:12px;font-weight:600;letter-spacing:.2em;
-  color:var(--tph-info);margin-bottom:var(--s3);
+.tp-hud-lp .pg-card::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--pg-black);
+  transform:scaleX(0);transform-origin:left;transition:transform .55s var(--pg-ease);
 }
-.tp-hud-lp .tph-dark .tph-card__num{color:rgba(255,255,255,.55)}
-.tp-hud-lp .tph-card__title{margin-bottom:var(--s2)}
-
-/* technology chips */
-.tp-hud-lp .tph-chips{display:flex;flex-wrap:wrap;gap:10px}
-.tp-hud-lp .tph-chip{
-  display:inline-block;padding:9px 18px;border:1px solid var(--tph-border-3);
-  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--tph-heading);background:#fff;
+.tp-hud-lp .pg-card:hover{background:var(--pg-blush-deep);transform:translateY(-6px)}
+.tp-hud-lp .pg-card:hover::after{transform:scaleX(1)}
+.tp-hud-lp .pg-card__num{
+  display:block;font-family:var(--pg-display);font-size:12px;letter-spacing:.3em;
+  color:var(--pg-mute);margin-bottom:var(--s3);
 }
 
 /* technology diagrams */
-.tp-hud-lp .tph-diagram{text-align:center}
-.tp-hud-lp .tph-diagram img{width:100%;max-width:230px;height:auto;margin:0 auto}
-.tp-hud-lp .tph-diagram figcaption{
-  margin-top:var(--s3);font-size:11px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--tph-secondary);
+.tp-hud-lp .pg-diagram{text-align:center}
+.tp-hud-lp .pg-diagram img{
+  width:100%;max-width:210px;margin:0 auto;transition:transform .8s var(--pg-ease);
+}
+.tp-hud-lp .pg-diagram:hover img{transform:rotate(8deg) scale(1.06)}
+.tp-hud-lp .pg-diagram figcaption{
+  margin-top:var(--s4);font-size:11px;font-weight:500;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-grey);
 }
 
-/* platform strip — three real home-use platforms, one consistent white tile */
-.tp-hud-lp .tph-plat__pic{
-  aspect-ratio:4/3;background:#fff;border:1px solid var(--tph-border-1);overflow:hidden;
+/* technology marquee — the no-JS answer to the site's carousel */
+.tp-hud-lp .pg-marquee{
+  position:relative;overflow:hidden;padding:var(--s4) 0;
+  border-top:1px solid var(--pg-hair);border-bottom:1px solid var(--pg-hair);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
 }
-.tp-hud-lp .tph-plat__pic img{width:100%;height:100%;object-fit:cover}
-.tp-hud-lp .tph-plat__name{
-  margin-top:var(--s3);font-size:12px;font-weight:500;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--tph-heading);
+.tp-hud-lp .pg-marquee__track{display:flex;width:max-content}
+.tp-hud-lp .pg-marquee__row{
+  display:flex;align-items:center;gap:var(--s6);padding-right:var(--s6);flex:none;
+}
+.tp-hud-lp .pg-marquee__row li{
+  font-family:var(--pg-display);font-size:clamp(15px,1.5vw,19px);
+  letter-spacing:var(--pg-track-display);text-transform:uppercase;color:var(--pg-black);
+  white-space:nowrap;
+}
+.tp-hud-lp .pg-marquee__row li::after{
+  content:'';display:inline-block;width:5px;height:5px;margin-left:var(--s6);
+  vertical-align:middle;background:var(--pg-blush-deep);
 }
 
-/* split band */
-.tp-hud-lp .tph-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center}
-.tp-hud-lp .tph-split__pic{background:var(--tph-grey-100);overflow:hidden}
-.tp-hud-lp .tph-split__pic img{width:100%;aspect-ratio:16/9;object-fit:cover}
+/* platform tiles */
+.tp-hud-lp .pg-plat__pic{
+  aspect-ratio:4/3;background:var(--pg-white);border:1px solid var(--pg-hair);overflow:hidden;
+}
+.tp-hud-lp .pg-plat__pic img{
+  width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--pg-ease);
+}
+.tp-hud-lp .pg-plat:hover .pg-plat__pic img{transform:scale(1.07)}
+.tp-hud-lp .pg-plat__name{
+  display:flex;align-items:center;gap:12px;margin-top:var(--s3);
+  font-family:var(--pg-ui);font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--pg-black);
+}
+
+/* dark band — the site's "BODY WISDOM" rhythm break */
+.tp-hud-lp .pg-dark-band{
+  position:relative;overflow:hidden;background:var(--pg-dark);color:rgba(255,255,255,.88);
+}
+.tp-hud-lp .pg-dark-band::before{
+  content:'';position:absolute;inset:-20%;
+  background:radial-gradient(60% 55% at 22% 32%, rgba(245,230,221,.20), transparent 70%),
+             radial-gradient(52% 48% at 82% 74%, rgba(245,230,221,.14), transparent 70%);
+}
+.tp-hud-lp .pg-dark-band > *{position:relative;z-index:1}
+.tp-hud-lp .pg-dark-band h2,
+.tp-hud-lp .pg-dark-band h3{color:var(--pg-white)}
+.tp-hud-lp .pg-dark-band .pg-body,
+.tp-hud-lp .pg-dark-band .pg-lede{color:rgba(255,255,255,.84)}
+.tp-hud-lp .pg-dark-band .pg-label{color:rgba(255,255,255,.6)}
+.tp-hud-lp .pg-dark-band .pg-ref{color:rgba(255,255,255,.55)}
 
 /* --------------------------------------------------------------------------
-   SECTION HEADS
+   PROCESS — a rule that draws itself across the three steps
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-head{max-width:820px;margin-bottom:var(--s7)}
-.tp-hud-lp .tph-head .tph-kicker{margin-bottom:var(--s3)}
-.tp-hud-lp .tph-head .tph-lede{margin-top:var(--s3)}
-.tp-hud-lp .tph-rule{height:1px;background:var(--tph-border-1);border:0;margin:var(--s7) 0}
-.tp-hud-lp .tph-dark .tph-rule{background:rgba(255,255,255,.2)}
+.tp-hud-lp .pg-steps{
+  position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);
+}
+.tp-hud-lp .pg-steps__line{
+  position:absolute;left:0;right:0;top:9px;height:1px;background:var(--pg-line);
+  transform:scaleX(0);transform-origin:left;
+}
+.tp-hud-lp .pg-step{position:relative;padding-top:var(--s5)}
+.tp-hud-lp .pg-step::before{
+  content:'';position:absolute;left:0;top:5px;width:9px;height:9px;background:var(--pg-black);
+}
+.tp-hud-lp .pg-step__num{
+  display:block;font-family:var(--pg-display);font-size:12px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--pg-mute);margin-bottom:var(--s2);
+}
 
 /* --------------------------------------------------------------------------
-   FORM
+   FORM — underline-only fields, exactly like the contact form on the site
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-formwrap{background:#fff;border:1px solid var(--tph-border-1);padding:var(--s6)}
-.tp-hud-lp .tph-form-split{display:grid;grid-template-columns:.78fr 1.22fr;gap:var(--s7);align-items:start}
-.tp-hud-lp .tph-form-split .tph-head{margin-bottom:0;max-width:none;position:sticky;top:var(--s4)}
-.tp-hud-lp .tph-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s4)}
-.tp-hud-lp .tph-field{display:block}
-.tp-hud-lp .tph-field--full{grid-column:1 / -1}
-.tp-hud-lp .tph-field__label{
-  display:block;font-size:11px;font-weight:500;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--tph-secondary);margin-bottom:8px;
+.tp-hud-lp .pg-form-split{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--s8);align-items:start;
 }
-.tp-hud-lp .tph-field input,
-.tp-hud-lp .tph-field select,
-.tp-hud-lp .tph-field textarea{
-  width:100%;height:50px;padding:0 16px;
-  border:1px solid var(--tph-border-3);border-radius:0;background:#fff;
-  font-family:var(--tph-font);font-size:14px;line-height:1.7;color:var(--tph-primary);
+.tp-hud-lp .pg-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5) var(--s6)}
+.tp-hud-lp .pg-field{display:block;position:relative}
+.tp-hud-lp .pg-field--full{grid-column:1 / -1}
+.tp-hud-lp .pg-field__label{
+  display:block;font-size:10px;font-weight:500;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-grey);margin-bottom:10px;
+}
+.tp-hud-lp .pg-field input,
+.tp-hud-lp .pg-field select,
+.tp-hud-lp .pg-field textarea{
+  width:100%;height:42px;padding:0 0 8px;
+  border:0;border-bottom:1px solid var(--pg-line);border-radius:0;background:transparent;
+  font-family:var(--pg-ui);font-size:15px;line-height:1.8;letter-spacing:.02em;color:var(--pg-black);
   -webkit-appearance:none;appearance:none;
 }
-.tp-hud-lp .tph-field select{
-  background-image:linear-gradient(45deg,transparent 50%,var(--tph-primary) 50%),
-                   linear-gradient(135deg,var(--tph-primary) 50%,transparent 50%);
-  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;
-  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:42px;
+.tp-hud-lp .pg-field select{
+  background-image:linear-gradient(45deg,transparent 50%,var(--pg-black) 50%),
+                   linear-gradient(135deg,var(--pg-black) 50%,transparent 50%);
+  background-position:calc(100% - 11px) calc(50% - 5px),calc(100% - 6px) calc(50% - 5px);
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:30px;
 }
-.tp-hud-lp .tph-field textarea{height:132px;padding:14px 16px;resize:vertical}
-.tp-hud-lp .tph-field input:focus,
-.tp-hud-lp .tph-field select:focus,
-.tp-hud-lp .tph-field textarea:focus{outline:0;border-color:var(--tph-heading)}
-.tp-hud-lp .tph-consent{display:flex;gap:12px;align-items:flex-start;grid-column:1 / -1}
-.tp-hud-lp .tph-consent input{
-  appearance:none;-webkit-appearance:none;width:20px;height:20px;flex:none;margin:3px 0 0;
-  border:1px solid var(--tph-border-4);border-radius:0;background:#fff;cursor:pointer;
+.tp-hud-lp .pg-field textarea{height:96px;resize:vertical}
+.tp-hud-lp .pg-field__bar{
+  position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--pg-black);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--pg-ease);
 }
-.tp-hud-lp .tph-consent input:checked{
-  background:var(--tph-primary-dark);border-color:var(--tph-primary-dark);
+.tp-hud-lp .pg-field input:focus,
+.tp-hud-lp .pg-field select:focus,
+.tp-hud-lp .pg-field textarea:focus{outline:0}
+.tp-hud-lp .pg-field:focus-within .pg-field__bar{transform:scaleX(1)}
+.tp-hud-lp .pg-consent{display:flex;gap:14px;align-items:flex-start;grid-column:1 / -1}
+.tp-hud-lp .pg-consent input{
+  appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;margin:4px 0 0;
+  border:1px solid var(--pg-grey);border-radius:0;background:transparent;cursor:pointer;
+  transition:background .3s var(--pg-ease),border-color .3s var(--pg-ease);
+}
+.tp-hud-lp .pg-consent input:checked{
+  background:var(--pg-black);border-color:var(--pg-black);
   background-image:linear-gradient(45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%),
                    linear-gradient(-45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%);
 }
-.tp-hud-lp .tph-consent label{font-size:12px;line-height:1.8;color:var(--tph-secondary)}
-.tp-hud-lp .tph-consent a{color:var(--tph-heading);border-bottom:1px solid currentColor}
-.tp-hud-lp .tph-form-actions{grid-column:1 / -1;margin-top:var(--s1)}
-.tp-hud-lp .tph-form-secondary{
-  grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);
-  padding-top:var(--s4);border-top:1px solid var(--tph-border-1);
+.tp-hud-lp .pg-consent label{font-size:12px;line-height:1.85;color:var(--pg-grey)}
+.tp-hud-lp .pg-consent a{color:var(--pg-black);border-bottom:1px solid currentColor}
+.tp-hud-lp .pg-form-actions{grid-column:1 / -1;margin-top:var(--s2)}
+.tp-hud-lp .pg-form-secondary{
+  grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s4);
+  padding-top:var(--s4);border-top:1px solid var(--pg-line);
 }
 
 /* --------------------------------------------------------------------------
-   FAQ — <details>, no JavaScript
+   FAQ — <details>, no JavaScript. Opens with a height transition where the
+   browser can interpolate to auto; elsewhere it simply snaps open.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-faq{border-top:1px solid var(--tph-border-3);max-width:900px}
-.tp-hud-lp .tph-faq__item{border-bottom:1px solid var(--tph-border-1)}
-.tp-hud-lp .tph-faq__q{
+.tp-hud-lp .pg-faq{border-top:1px solid var(--pg-line)}
+.tp-hud-lp .pg-faq__item{border-bottom:1px solid var(--pg-hair)}
+.tp-hud-lp .pg-faq__q{
   display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
   padding:var(--s4) 0;cursor:pointer;list-style:none;
-  font-size:16px;font-weight:500;line-height:1.5;color:var(--tph-heading);
+  font-family:var(--pg-ui);font-size:14px;font-weight:600;line-height:1.6;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--pg-black);
+  transition:opacity .3s var(--pg-ease);
 }
-.tp-hud-lp .tph-faq__q::-webkit-details-marker{display:none}
-.tp-hud-lp .tph-faq__q::marker{content:''}
-.tp-hud-lp .tph-faq__icon{position:relative;width:18px;height:18px;flex:none}
-.tp-hud-lp .tph-faq__icon::before,
-.tp-hud-lp .tph-faq__icon::after{
-  content:'';position:absolute;top:50%;left:50%;background:var(--tph-primary);
-  transform:translate(-50%,-50%);
+.tp-hud-lp .pg-faq__q:hover{opacity:.58}
+.tp-hud-lp .pg-faq__q::-webkit-details-marker{display:none}
+.tp-hud-lp .pg-faq__q::marker{content:''}
+.tp-hud-lp .pg-faq__icon{position:relative;width:16px;height:16px;flex:none}
+.tp-hud-lp .pg-faq__icon::before,
+.tp-hud-lp .pg-faq__icon::after{
+  content:'';position:absolute;top:50%;left:50%;background:var(--pg-black);
+  transform:translate(-50%,-50%);transition:transform .4s var(--pg-ease),opacity .4s var(--pg-ease);
 }
-.tp-hud-lp .tph-faq__icon::before{width:18px;height:1px}
-.tp-hud-lp .tph-faq__icon::after{width:1px;height:18px;transition:opacity .2s var(--tph-ease)}
-.tp-hud-lp .tph-faq__item[open] .tph-faq__icon::after{opacity:0}
-.tp-hud-lp .tph-faq__a{padding:0 0 var(--s4);max-width:820px}
+.tp-hud-lp .pg-faq__icon::before{width:16px;height:1px}
+.tp-hud-lp .pg-faq__icon::after{width:1px;height:16px}
+.tp-hud-lp .pg-faq__item[open] .pg-faq__icon::after{
+  transform:translate(-50%,-50%) rotate(90deg);opacity:0;
+}
+.tp-hud-lp .pg-faq__a{padding:0 0 var(--s5);max-width:780px}
 
 /* --------------------------------------------------------------------------
-   REFERENCES
+   REFERENCES + FOOTER
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-refs{border-top:1px solid var(--tph-border-1);padding:var(--s6) 0}
-.tp-hud-lp .tph-refs li{
-  display:grid;grid-template-columns:28px 1fr;gap:var(--s2);
-  font-size:11px;line-height:1.8;color:var(--tph-info);
+.tp-hud-lp .pg-refs{border-top:1px solid var(--pg-hair);padding:var(--s6) 0}
+.tp-hud-lp .pg-refs li{
+  display:grid;grid-template-columns:26px 1fr;gap:var(--s2);
+  font-size:11px;line-height:1.85;letter-spacing:.01em;color:var(--pg-mute);
 }
-.tp-hud-lp .tph-refs li + li{margin-top:var(--s2)}
-.tp-hud-lp .tph-refs a{word-break:break-word;border-bottom:1px solid rgba(149,149,149,.5)}
-.tp-hud-lp .tph-refs a:hover{color:var(--tph-heading)}
+.tp-hud-lp .pg-refs li + li{margin-top:var(--s2)}
+.tp-hud-lp .pg-refs a{word-break:break-word;border-bottom:1px solid rgba(143,143,143,.5)}
+.tp-hud-lp .pg-refs a:hover{color:var(--pg-black)}
 
-/* --------------------------------------------------------------------------
-   FOOTER
-   -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-footer{background:var(--tph-footer-bg);padding:var(--s6) 0}
-.tp-hud-lp .tph-footer__in{
-  display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);
-  align-items:center;justify-content:space-between;
+.tp-hud-lp .pg-footer{background:var(--pg-blush);padding:var(--s7) 0 var(--s6)}
+.tp-hud-lp .pg-footer__in{
+  display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);align-items:center;justify-content:space-between;
 }
-.tp-hud-lp .tph-footer__mark{height:26px;width:auto}
-.tp-hud-lp .tph-footer__links{display:flex;flex-wrap:wrap;gap:var(--s4)}
-.tp-hud-lp .tph-footer__links a{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--tph-secondary);transition:color .2s var(--tph-ease);
+.tp-hud-lp .pg-footer__mark{height:28px;width:auto}
+.tp-hud-lp .pg-footer__links{display:flex;flex-wrap:wrap;gap:var(--s5)}
+.tp-hud-lp .pg-footer__links a{
+  position:relative;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pg-ink);
 }
-.tp-hud-lp .tph-footer__links a:hover{color:var(--tph-heading)}
-.tp-hud-lp .tph-footer__legal{width:100%;font-size:11px;line-height:1.8;color:var(--tph-secondary)}
+.tp-hud-lp .pg-footer__links a::after{
+  content:'';position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--pg-ease);
+}
+.tp-hud-lp .pg-footer__links a:hover::after{transform:scaleX(1)}
+.tp-hud-lp .pg-footer__legal{
+  width:100%;margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid rgba(0,0,0,.09);
+  font-size:11px;line-height:1.9;color:var(--pg-grey);
+}
 
 /* --------------------------------------------------------------------------
    SKIP LINK + SR-ONLY
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-skip{
+.tp-hud-lp .pg-skip{
   position:absolute;left:-9999px;top:0;z-index:100;
-  background:var(--tph-primary-dark);color:#fff;padding:14px 22px;
-  font-size:13px;font-weight:500;text-transform:uppercase;
+  background:var(--pg-black);color:#fff;padding:14px 22px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
 }
-.tp-hud-lp .tph-skip:focus{left:0}
-.tp-hud-lp .tph-sr{
+.tp-hud-lp .pg-skip:focus{left:0}
+.tp-hud-lp .pg-sr{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;
 }
 
+/* ==========================================================================
+   MOTION
+   Progressive throughout. Nothing is hidden by default, so a browser without
+   support — or a visitor who asks for reduced motion — gets the whole page,
+   static and complete.
+   ========================================================================== */
+@keyframes pg-wipe-up{from{transform:translateY(105%)}to{transform:translateY(0)}}
+@keyframes pg-fade-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes pg-drift{from{transform:scale(1.06)}to{transform:scale(1.16)}}
+@keyframes pg-grow{from{transform:scaleX(.08)}to{transform:scaleX(1)}}
+@keyframes pg-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pg-parallax{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
+@keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* --- hero, on load ------------------------------------------------- */
+  .tp-hud-lp .pg-hero__media img{animation:pg-drift 26s var(--pg-ease) both}
+  .tp-hud-lp .pg-line > span{animation:pg-wipe-up .95s var(--pg-ease) both}
+  .tp-hud-lp .pg-hero__kicker,
+  .tp-hud-lp .pg-hero__deck,
+  .tp-hud-lp .pg-hero__body,
+  .tp-hud-lp .pg-hero__cta{animation:pg-fade-up .9s var(--pg-ease) both}
+
+  .tp-hud-lp .pg-hero__kicker{animation-delay:.10s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(1) > span{animation-delay:.22s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(2) > span{animation-delay:.32s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(3) > span{animation-delay:.42s}
+  .tp-hud-lp .pg-hero__deck{animation-delay:.56s}
+  .tp-hud-lp .pg-hero__body{animation-delay:.66s}
+  .tp-hud-lp .pg-hero__cta{animation-delay:.78s}
+
+  /* --- the marquee never stops --------------------------------------- */
+  .tp-hud-lp .pg-marquee__track{animation:pg-marquee 34s linear infinite}
+  .tp-hud-lp .pg-marquee:hover .pg-marquee__track{animation-play-state:paused}
+
+  /* --- scroll-driven, where the browser has it ----------------------- */
+  @supports (animation-timeline: view()){
+
+    .tp-hud-lp .pg-reveal{
+      animation:pg-fade-up linear both;
+      animation-timeline:view();
+      animation-range:entry 4% cover 26%;
+    }
+    .tp-hud-lp .pg-stagger > *{
+      animation:pg-fade-up linear both;
+      animation-timeline:view();
+    }
+    .tp-hud-lp .pg-stagger > *:nth-child(1){animation-range:entry 2% cover 24%}
+    .tp-hud-lp .pg-stagger > *:nth-child(2){animation-range:entry 7% cover 29%}
+    .tp-hud-lp .pg-stagger > *:nth-child(3){animation-range:entry 12% cover 34%}
+    .tp-hud-lp .pg-stagger > *:nth-child(4){animation-range:entry 17% cover 39%}
+    .tp-hud-lp .pg-stagger > *:nth-child(5){animation-range:entry 22% cover 44%}
+
+    .tp-hud-lp .pg-growth i{
+      animation:pg-grow linear both;
+      animation-timeline:view();
+      animation-range:entry 20% cover 48%;
+    }
+    .tp-hud-lp .pg-steps__line{
+      animation:pg-rule linear both;
+      animation-timeline:view();
+      animation-range:entry 14% cover 46%;
+    }
+    /* the platform shots ride slightly against the scroll */
+    .tp-hud-lp .pg-plat__pic img{
+      animation:pg-parallax linear both;
+      animation-timeline:view();
+      animation-range:cover 0% cover 100%;
+    }
+  }
+}
+
+/* a height transition on <details> where the browser can interpolate to auto */
+@supports (interpolate-size: allow-keywords){
+  @media (prefers-reduced-motion: no-preference){
+    .tp-hud-lp{interpolate-size:allow-keywords}
+    .tp-hud-lp .pg-faq__item::details-content{
+      block-size:0;overflow:clip;
+      transition:block-size .45s var(--pg-ease),content-visibility .45s allow-discrete;
+    }
+    .tp-hud-lp .pg-faq__item[open]::details-content{block-size:auto}
+  }
+}
+
 /* --------------------------------------------------------------------------
-   BUILD NOTES — preview only. The `tph-annotated` class is NOT on the
+   BUILD NOTES — preview only. The `pg-annotated` class is NOT on the
    WordPress fragment, so none of this renders on the live page.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .tph-note{display:none}
-.tp-hud-lp.tph-annotated .tph-note{
-  display:block;margin-top:10px;padding:8px 12px;
+.tp-hud-lp .pg-note{display:none}
+.tp-hud-lp.pg-annotated .pg-note{
+  display:block;margin-top:12px;padding:9px 13px;
   border:1px dashed #B99A3E;background:#FFFBEF;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11px;line-height:1.6;letter-spacing:0;text-transform:none;color:#6B5411;
+  font-size:11px;line-height:1.65;letter-spacing:0;text-transform:none;color:#6B5411;text-align:left;
 }
-.tp-hud-lp.tph-annotated .tph-note--block{margin:0 0 var(--s4)}
+.tp-hud-lp.pg-annotated .pg-note--block{margin:0 0 var(--s5)}
 
 /* --------------------------------------------------------------------------
    RESPONSIVE
    -------------------------------------------------------------------------- */
-@media (max-width:1100px){
-  .tp-hud-lp .tph-stat{padding:0 var(--s4)}
-}
-@media (max-width:900px){
-  .tp-hud-lp{--s7:64px;--s8:80px}
-  .tp-hud-lp .tph-hero__grid,
-  .tp-hud-lp .tph-form-split,
-  .tp-hud-lp .tph-split{grid-template-columns:1fr;gap:var(--s5)}
-  .tp-hud-lp .tph-form-split .tph-head{position:static}
-  .tp-hud-lp .tph-hero__pic img{aspect-ratio:4/5;object-position:50% 45%}
-  .tp-hud-lp .tph-grid--3{grid-template-columns:1fr}
-  .tp-hud-lp .tph-form-grid{grid-template-columns:1fr}
-  .tp-hud-lp .tph-logobar__in{height:70px}
-  .tp-hud-lp .tph-logobar__mark{height:34px}
-  .tp-hud-lp .tph-formwrap{padding:var(--s5) var(--s4)}
-  .tp-hud-lp .tph-stats{grid-template-columns:1fr;gap:var(--s4)}
-  .tp-hud-lp .tph-stat{padding:0 0 var(--s4) 0;border-left:0;border-bottom:1px solid var(--tph-border-1)}
-  .tp-hud-lp .tph-stat:last-child{border-bottom:0;padding-bottom:0}
-}
-@media (max-width:600px){
-  .tp-hud-lp .tph-grid--2{grid-template-columns:1fr}
-  .tp-hud-lp .tph-logobar__by{display:none}
-  .tp-hud-lp .tph-btn{width:100%}
-  .tp-hud-lp .tph-btn-row{gap:var(--s2)}
-}
-@media (prefers-reduced-motion:reduce){
-  .tp-hud-lp *,.tp-hud-lp *::before,.tp-hud-lp *::after{
-    animation-duration:.01ms !important;transition-duration:.01ms !important;
+@media (max-width:1000px){
+  .tp-hud-lp{--s7:70px;--s8:88px}
+  .tp-hud-lp .pg-split,
+  .tp-hud-lp .pg-form-split{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-grid--3{grid-template-columns:1fr}
+  .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
+  .tp-hud-lp .pg-steps__line{display:none}
+  .tp-hud-lp .pg-stat-panel{padding:var(--s5) var(--s4)}
+  .tp-hud-lp .pg-stats{grid-template-columns:1fr;gap:var(--s4)}
+  .tp-hud-lp .pg-form-grid{grid-template-columns:1fr}
+  .tp-hud-lp .pg-hero__in{min-height:auto;padding:var(--s8) 0 var(--s7)}
+  .tp-hud-lp .pg-hero__media{left:0;width:100%}
+  .tp-hud-lp .pg-hero__media img{object-position:50% 26%}
+  /* the device fills the frame on a phone, so the scrim has to carry the whole
+     column rather than fade in from the top */
+  .tp-hud-lp .pg-hero__scrim{
+    background:linear-gradient(180deg, rgba(22,13,11,.76) 0%, rgba(22,13,11,.82) 45%, rgba(22,13,11,.90) 100%);
   }
+  .tp-hud-lp .pg-logobar__in{height:66px}
+  .tp-hud-lp .pg-logobar__mark{height:28px}
+}
+@media (max-width:620px){
+  .tp-hud-lp{--pg-gutter:20px}
+  .tp-hud-lp .pg-grid--2{grid-template-columns:1fr}
+  .tp-hud-lp .pg-logobar__by{display:none}
+  .tp-hud-lp .pg-btn{width:100%}
+  .tp-hud-lp .pg-card{padding:var(--s5) var(--s4)}
 }
 </style>
 
 
-<div class="tp-hud-lp tph-annotated">
+<div class="tp-hud-lp pg-annotated">
 
-  <a class="tph-skip" href="#tph-form">Skip to the inquiry form</a>
+  <a class="pg-skip" href="#pg-form">Skip to the inquiry form</a>
 
   <!-- ======================================================================
        LOGO BAR
-       Landing-page header: the mark only. No nav, no search, no cart.
+       Landing-page header: the mark only. No nav, no search.
        ====================================================================== -->
-  <header class="tph-logobar">
-    <div class="tph-wrap">
-      <div class="tph-logobar__in">
-        <img class="tph-logobar__mark" src="assets/logo/tripollar-logo.svg"
+  <header class="pg-logobar">
+    <div class="pg-wrap">
+      <div class="pg-logobar__in">
+        <img class="pg-logobar__mark" src="assets/logo/tripollar-logo.svg"
              alt="TriPollar — Intelligent Biology" width="159" height="53">
-        <span class="tph-logobar__by">Developed by Pollogen, a Lumenis company</span>
+        <span class="pg-logobar__by">Developed by Pollogen, a Lumenis company</span>
       </div>
     </div>
   </header>
@@ -503,68 +714,78 @@
   <!-- ======================================================================
        HERO
        ====================================================================== -->
-  <section class="tph-hero">
-    <div class="tph-wrap">
-      <div class="tph-hero__grid">
+  <section class="pg-hero">
 
-        <div>
-          <span class="tph-kicker">Proprietary technologies. Clinical research. Product development expertise.</span>
+    <div class="pg-hero__media">
+      <img src="assets/images/hero-device.webp"
+           alt="A TriPollar home-use radio frequency device photographed on a rose-toned set."
+           width="1100" height="1317" fetchpriority="high" decoding="async">
+    </div>
+    <div class="pg-hero__scrim" aria-hidden="true"></div>
 
-          <h1 class="tph-h1 tph-hero__title">Bring Proven Beauty Technology to Market Faster</h1>
+    <div class="pg-wrap">
+      <div class="pg-hero__in">
+        <div class="pg-hero__copy">
 
-          <p class="tph-hero__deck">Build Your Next Beauty Device with an established Aesthetic Technology expert.</p>
+          <span class="pg-label pg-hero__kicker">Proprietary technologies. Clinical research. Product development expertise.</span>
 
-          <div class="tph-hero__copy tph-stack">
-            <p class="tph-lede">Partner with TriPollar to create differentiated home-use beauty devices, from adapting an existing platform to developing a solution around your brand&rsquo;s ambitions.</p>
-            <p class="tph-voice">Bring together your consumer insight and brand identity with our aesthetic technology and development capabilities.</p>
-          </div>
+          <h1 class="pg-hero__title">
+            <span class="pg-line"><span>Bring Proven</span></span>
+            <span class="pg-line"><span>Beauty Technology</span></span>
+            <span class="pg-line"><span>to Market Faster</span></span>
+          </h1>
 
-          <div class="tph-hero__cta">
-            <a class="tph-btn" href="#tph-form">Request the Partnership Overview</a>
+          <p class="pg-hero__deck">Build Your Next Beauty Device with an established Aesthetic Technology expert.</p>
+
+          <p class="pg-body pg-hero__body">Partner with TriPollar to create differentiated home-use beauty devices, from adapting an existing platform to developing a solution around your brand&rsquo;s ambitions. Bring together your consumer insight and brand identity with our aesthetic technology and development capabilities.</p>
+
+          <div class="pg-hero__cta">
+            <a class="pg-link pg-link--light" href="#pg-form">Request the Partnership Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
             <!-- CTA 1 of 3 — anchors to the inquiry form on this page (per the copy doc). -->
-            <p class="tph-note">CTA &rarr; anchor link to <code>#tph-form</code> further down this page. No external URL needed.</p>
+            <p class="pg-note">CTA &rarr; anchor link to <code>#pg-form</code> further down this page. No external URL needed.</p>
           </div>
+
+
         </div>
-
-        <figure class="tph-hero__pic">
-          <img src="assets/images/hero-device.webp"
-               alt="A TriPollar home-use radio frequency device photographed on a rose-toned set."
-               width="1100" height="1317" decoding="async">
-        </figure>
-
       </div>
     </div>
+
   </section>
 
   <!-- ======================================================================
        MARKET — the category case
        ====================================================================== -->
-  <section class="tph-section tph-grey">
-    <div class="tph-wrap">
+  <section class="pg-section">
+    <div class="pg-wrap">
 
-      <div class="tph-head">
-        <span class="tph-kicker">The Opportunity</span>
-        <h2 class="tph-h2">A Growing Market. An Opportunity to Success.</h2>
+      <div class="pg-head pg-center pg-reveal">
+        <span class="pg-label">The Opportunity</span>
+        <h2 class="pg-h2">A Growing Market. An Opportunity to Success.</h2>
       </div>
 
-      <div class="tph-stats">
-        <div class="tph-stat">
-          <div class="tph-stat__fig">$12.94B</div>
-          <div class="tph-stat__label">Market size, 2025</div>
+      <div class="pg-reveal pg-stat-panel">
+        <div class="pg-stats pg-stagger">
+          <div>
+            <div class="pg-stat__fig">$12.94B</div>
+            <div class="pg-stat__label">Market size, 2025</div>
+          </div>
+          <div>
+            <div class="pg-stat__fig">$21.85B</div>
+            <div class="pg-stat__label">Forecast, 2030</div>
+          </div>
+          <div>
+            <div class="pg-stat__fig">~11%</div>
+            <div class="pg-stat__label">CAGR</div>
+          </div>
         </div>
-        <div class="tph-stat">
-          <div class="tph-stat__fig">$21.85B</div>
-          <div class="tph-stat__label">Forecast, 2030</div>
-        </div>
-        <div class="tph-stat">
-          <div class="tph-stat__fig">~11%</div>
-          <div class="tph-stat__label">CAGR</div>
-        </div>
+        <div class="pg-growth" aria-hidden="true"><i></i></div>
       </div>
 
-      <div class="tph-measure-wide tph-stack">
-        <p class="tph-body">The Business Research Company estimates the global home-use beauty device market at <span class="tph-strong">$12.94 billion in 2025</span>, with growth to <span class="tph-strong">$21.85 billion by 2030</span> &mdash; approximately <span class="tph-strong">11% CAGR</span>.<a class="tph-ref" href="#tph-ref-1" id="tph-cite-1">[1]</a></p>
-        <p class="tph-body">For brands entering or expanding in the category, differentiation begins with the <em class="tph-em">technology</em>, <em class="tph-em">evidence</em>, and <em class="tph-em">consumer experience behind the product.</em></p>
+      <div class="pg-center pg-reveal" style="margin-top:var(--s7)">
+        <div class="pg-measure pg-stack">
+          <p class="pg-body">The Business Research Company estimates the global home-use beauty device market at <span class="pg-strong">$12.94 billion in 2025</span>, with growth to <span class="pg-strong">$21.85 billion by 2030</span> &mdash; approximately <span class="pg-strong">11% CAGR</span>.<a class="pg-ref" href="#pg-ref-1" id="pg-cite-1">[1]</a></p>
+          <p class="pg-body">For brands entering or expanding in the category, differentiation begins with the <em class="pg-em">technology</em>, <em class="pg-em">evidence</em>, and <em class="pg-em">consumer experience behind the product.</em></p>
+        </div>
       </div>
 
     </div>
@@ -573,35 +794,27 @@
   <!-- ======================================================================
        TECHNOLOGY — what a partner builds on
        ====================================================================== -->
-  <section class="tph-section">
-    <div class="tph-wrap">
+  <section class="pg-section pg-smoke">
+    <div class="pg-wrap">
 
-      <div class="tph-head">
-        <span class="tph-kicker">Technology</span>
-        <h2 class="tph-h2">Technology to Build Around</h2>
+      <div class="pg-head pg-center pg-reveal">
+        <span class="pg-label">Technology</span>
+        <h2 class="pg-h2">Technology to Build Around</h2>
       </div>
 
-      <div class="tph-split">
-        <div class="tph-stack">
-          <p class="tph-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="tph-ref" href="#tph-ref-2" id="tph-cite-2">[2]</a></p>
-          <p class="tph-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
-
-          <ul class="tph-chips" style="margin-top:8px">
-            <li class="tph-chip">TriPollar RF</li>
-            <li class="tph-chip">Dynamic Muscle Activation</li>
-            <li class="tph-chip">LED</li>
-            <li class="tph-chip">Galvanic current</li>
-            <li class="tph-chip">Electroporation</li>
-          </ul>
+      <div class="pg-split">
+        <div class="pg-stack pg-reveal">
+          <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
+          <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
         </div>
 
-        <div class="tph-grid tph-grid--2 tph-grid--gap-lg">
-          <figure class="tph-diagram">
+        <div class="pg-grid pg-grid--2 pg-grid--lg pg-stagger">
+          <figure class="pg-diagram">
             <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
                  width="396" height="396" loading="lazy" decoding="async">
             <figcaption>TriPollar RF</figcaption>
           </figure>
-          <figure class="tph-diagram">
+          <figure class="pg-diagram">
             <img src="assets/images/tech-dma.webp" alt="Diagram of Dynamic Muscle Activation energy delivery."
                  width="396" height="396" loading="lazy" decoding="async">
             <figcaption>Dynamic Muscle Activation</figcaption>
@@ -609,32 +822,46 @@
         </div>
       </div>
 
-      <hr class="tph-rule">
+      <!-- the five technologies named in the copy, on a slow loop -->
+      <div class="pg-marquee" style="margin-top:var(--s7)" aria-hidden="true">
+        <div class="pg-marquee__track">
+          <ul class="pg-marquee__row">
+            <li>TriPollar RF</li><li>Dynamic Muscle Activation</li><li>LED</li>
+            <li>Galvanic Current</li><li>Electroporation</li>
+          </ul>
+          <ul class="pg-marquee__row">
+            <li>TriPollar RF</li><li>Dynamic Muscle Activation</li><li>LED</li>
+            <li>Galvanic Current</li><li>Electroporation</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pg-sr">Home-use technologies: TriPollar RF, Dynamic Muscle Activation, LED, galvanic current, electroporation.</p>
 
       <!-- Platforms already in market — illustrative, not a catalogue.
            Product photography is Pollogen's own, taken from pollogen.com. -->
-      <p class="tph-note tph-note--block">Platform row &mdash; these three are illustrative, pulled from pollogen.com. POL should confirm which platforms may be shown on a partnership page, since the copy deliberately keeps availability open.</p>
-      <ul class="tph-grid tph-grid--3">
-        <li>
-          <div class="tph-plat__pic">
+      <p class="pg-note pg-note--block" style="margin-top:var(--s7)">Platform row &mdash; these three are illustrative, pulled from pollogen.com. POL should confirm which platforms may be shown on a partnership page, since the copy deliberately keeps availability open.</p>
+
+      <ul class="pg-grid pg-grid--3 pg-stagger" style="margin-top:var(--s7)">
+        <li class="pg-plat">
+          <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx3.webp" alt="TriPollar STOP VX3 home-use device."
                  width="700" height="525" loading="lazy" decoding="async">
           </div>
-          <p class="tph-plat__name">TriPollar STOP VX3</p>
+          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX3</p>
         </li>
-        <li>
-          <div class="tph-plat__pic">
+        <li class="pg-plat">
+          <div class="pg-plat__pic">
             <img src="assets/images/platform-pose-vx.webp" alt="TriPollar POSE VX home-use device and packaging."
                  width="760" height="570" loading="lazy" decoding="async">
           </div>
-          <p class="tph-plat__name">TriPollar POSE VX</p>
+          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
         </li>
-        <li>
-          <div class="tph-plat__pic">
+        <li class="pg-plat">
+          <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx2-gold.webp" alt="TriPollar STOP VX2 Gold home-use device and packaging."
                  width="760" height="570" loading="lazy" decoding="async">
           </div>
-          <p class="tph-plat__name">TriPollar STOP VX2 Gold</p>
+          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX2 Gold</p>
         </li>
       </ul>
 
@@ -644,76 +871,82 @@
   <!-- ======================================================================
        TECHNOLOGY — evidence band
        ====================================================================== -->
-  <section class="tph-section tph-section--tight tph-cream">
-    <div class="tph-wrap">
-      <div class="tph-btn-row" style="justify-content:space-between">
-        <h2 class="tph-h3">Published Research. Specific Evidence.</h2>
-        <div>
-          <a class="tph-btn tph-btn--outline" href="#" data-tph-cta="technology-clinical-overview">Explore the Technology &amp; Clinical Overview</a>
-          <!-- CTA 2 of 3 — destination still to be supplied. -->
-          <p class="tph-note">CTA &rarr; <span class="tph-strong">needs a destination.</span> Either a gated PDF (then it should open the form) or a standalone overview page. Currently <code>href="#"</code>.</p>
+  <section class="pg-section pg-section--tight pg-blush">
+    <div class="pg-wrap pg-center pg-reveal">
+      <h2 class="pg-h2">Published Research. Specific Evidence.</h2>
+      <div class="pg-tick" aria-hidden="true"></div>
+      <a class="pg-link" href="#" data-pg-cta="technology-clinical-overview">Explore the Technology &amp; Clinical Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+      <!-- CTA 2 of 3 — destination still to be supplied. -->
+      <p class="pg-note">CTA &rarr; <span class="pg-strong">needs a destination.</span> Either a gated PDF (then it should open the form) or a standalone overview page. Currently <code>href="#"</code>.</p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       TECHNOLOGY — regulatory grounding
+       ====================================================================== -->
+  <section class="pg-section">
+    <div class="pg-wrap">
+      <div class="pg-split pg-split--top">
+        <div class="pg-reveal">
+          <span class="pg-label">Regulatory</span>
+          <h3 class="pg-h3" style="margin-top:var(--s3)">Regulatory Experience From the Start</h3>
+        </div>
+        <div class="pg-stack pg-reveal">
+          <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
+          <p class="pg-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
+          <p class="pg-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       TECHNOLOGY — regulatory + development
+       TECHNOLOGY — development, on the dark band
        ====================================================================== -->
-  <section class="tph-section">
-    <div class="tph-wrap">
-
-      <div class="tph-grid tph-grid--2 tph-grid--gap-lg">
-
-        <div class="tph-stack">
-          <h3 class="tph-h3">Regulatory Experience From the Start</h3>
-          <p class="tph-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="tph-strong">STOP U Model UXV</span>.<a class="tph-ref" href="#tph-ref-3" id="tph-cite-3">[3]</a></p>
-          <p class="tph-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
-          <p class="tph-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
-        </div>
-
-        <div class="tph-stack">
-          <h3 class="tph-h3">Development Built Around Commercial Priorities</h3>
-          <p class="tph-body">Our partnership approach aligns product design, usability, testing, design-to-cost and production planning with your commercial objectives&mdash;from the initial brief through preparation for launch.</p>
-          <p class="tph-body">TriPollar is developed by Pollogen, a Lumenis company, connecting home-use beauty technology with a heritage of more than five decades in energy-based medical and aesthetic innovation.<a class="tph-ref" href="#tph-ref-4" id="tph-cite-4">[4]</a></p>
-        </div>
-
+  <section class="pg-section pg-dark-band">
+    <div class="pg-wrap pg-center pg-reveal">
+      <span class="pg-label">Development</span>
+      <h2 class="pg-h2" style="margin-top:var(--s3)">Development Built Around Commercial Priorities</h2>
+      <div class="pg-measure pg-stack" style="margin-top:var(--s5)">
+        <p class="pg-lede">Our partnership approach aligns product design, usability, testing, design-to-cost and production planning with your commercial objectives&mdash;from the initial brief through preparation for launch.</p>
+        <p class="pg-body">TriPollar is developed by Pollogen, a Lumenis company, connecting home-use beauty technology with a heritage of more than five decades in energy-based medical and aesthetic innovation.<a class="pg-ref" href="#pg-ref-4" id="pg-cite-4">[4]</a></p>
       </div>
-
-
     </div>
   </section>
 
   <!-- ======================================================================
        ROUTES — the three partnership models
        ====================================================================== -->
-  <section class="tph-section tph-dark">
-    <div class="tph-wrap">
+  <section class="pg-section">
+    <div class="pg-wrap">
 
-      <div class="tph-head">
-        <span class="tph-kicker">Partnership Models</span>
-        <h2 class="tph-h2">Choose Your Route to Market</h2>
+      <div class="pg-head pg-center pg-reveal">
+        <span class="pg-label">Partnership Models</span>
+        <h2 class="pg-h2">Choose Your Route to Market</h2>
       </div>
 
-      <ul class="tph-grid tph-grid--3">
-        <li class="tph-card">
-          <span class="tph-card__num">01</span>
-          <h3 class="tph-h4 tph-card__title">Adapt an Existing Platform</h3>
-          <p class="tph-body">Build on an established technology platform with branding and product adaptations suited to your market</p>
+      <ul class="pg-grid pg-grid--3 pg-stagger">
+        <li class="pg-card">
+          <span class="pg-card__num">01</span>
+          <h3 class="pg-h3">Adapt an Existing Platform</h3>
+          <div class="pg-tick" aria-hidden="true"></div>
+          <p class="pg-body">Build on an established technology platform with branding and product adaptations suited to your market</p>
         </li>
-        <li class="tph-card">
-          <span class="tph-card__num">02</span>
-          <h3 class="tph-h4 tph-card__title">Customize a Solution</h3>
-          <p class="tph-body">Explore changes to design, features, or technology combinations around a defined product proposition.</p>
+        <li class="pg-card">
+          <span class="pg-card__num">02</span>
+          <h3 class="pg-h3">Customize a Solution</h3>
+          <div class="pg-tick" aria-hidden="true"></div>
+          <p class="pg-body">Explore changes to design, features, or technology combinations around a defined product proposition.</p>
         </li>
-        <li class="tph-card">
-          <span class="tph-card__num">03</span>
-          <h3 class="tph-h4 tph-card__title">Co-Develop a Device</h3>
-          <p class="tph-body">Collaborate on a development program shaped by your consumer needs, technical requirements, and business objectives.</p>
+        <li class="pg-card">
+          <span class="pg-card__num">03</span>
+          <h3 class="pg-h3">Co-Develop a Device</h3>
+          <div class="pg-tick" aria-hidden="true"></div>
+          <p class="pg-body">Collaborate on a development program shaped by your consumer needs, technical requirements, and business objectives.</p>
         </li>
       </ul>
 
-      <p class="tph-small" style="margin-top:var(--s5);color:rgba(255,255,255,.62)">Scope, technology access and development responsibilities are defined for each partnership.</p>
+      <p class="pg-small pg-center pg-reveal" style="margin-top:var(--s6)">Scope, technology access and development responsibilities are defined for each partnership.</p>
 
     </div>
   </section>
@@ -721,26 +954,27 @@
   <!-- ======================================================================
        PROCESS — how an engagement starts
        ====================================================================== -->
-  <section class="tph-section">
-    <div class="tph-wrap">
+  <section class="pg-section pg-smoke">
+    <div class="pg-wrap">
 
-      <div class="tph-head">
-        <span class="tph-kicker">The Process</span>
-        <h2 class="tph-h2">Start With Your Product Ambition</h2>
+      <div class="pg-head pg-center pg-reveal">
+        <span class="pg-label">The Process</span>
+        <h2 class="pg-h2">Start With Your Product Ambition</h2>
       </div>
 
-      <ol class="tph-grid tph-grid--3">
-        <li class="tph-stack-sm">
-          <span class="tph-card__num">01 &mdash; Share your brief</span>
-          <p class="tph-body">Tell us about your brand, target market, and product objectives.</p>
+      <ol class="pg-steps pg-stagger">
+        <span class="pg-steps__line" aria-hidden="true"></span>
+        <li class="pg-step">
+          <span class="pg-step__num">01 &mdash; Share your brief</span>
+          <p class="pg-body">Tell us about your brand, target market, and product objectives.</p>
         </li>
-        <li class="tph-stack-sm">
-          <span class="tph-card__num">02 &mdash; Assess the fit</span>
-          <p class="tph-body">Explore the relevant technologies, development scope, and commercial requirements.</p>
+        <li class="pg-step">
+          <span class="pg-step__num">02 &mdash; Assess the fit</span>
+          <p class="pg-body">Explore the relevant technologies, development scope, and commercial requirements.</p>
         </li>
-        <li class="tph-stack-sm">
-          <span class="tph-card__num">03 &mdash; Define the program</span>
-          <p class="tph-body">Agree on the partnership structure, milestones and validation and regulatory approach.</p>
+        <li class="pg-step">
+          <span class="pg-step__num">03 &mdash; Define the program</span>
+          <p class="pg-body">Agree on the partnership structure, milestones and validation and regulatory approach.</p>
         </li>
       </ol>
 
@@ -753,146 +987,152 @@
        WORDPRESS: the markup below is DESIGN ONLY. It does not submit anywhere.
        Replace everything between FORM EMBED START and FORM EMBED END with the
        HubSpot / Gravity Forms / Contact Form 7 embed or shortcode, then copy
-       the .tph-field / .tph-btn classes onto the plugin's own markup (or map
+       the .pg-field / .pg-btn classes onto the plugin's own markup (or map
        them in the plugin's CSS class settings) so it keeps this styling.
        Fields required: Company · Full name · Role · Business email ·
        Target market / region · Partnership interest (select) · Product
        objectives or message. Submit label: "Request the Partnership Overview".
        ====================================================================== -->
-  <section class="tph-section tph-grey tph-anchor" id="tph-form">
-    <div class="tph-wrap">
+  <section class="pg-section pg-blush pg-anchor" id="pg-form">
+    <div class="pg-wrap">
+      <div class="pg-form-split">
 
-      <div class="tph-form-split">
+        <div class="pg-reveal">
+          <span class="pg-label">Get in touch</span>
+          <h2 class="pg-h2" style="margin-top:var(--s3)">Let&rsquo;s Develop Your Next Beauty Device</h2>
+          <div class="pg-tick" aria-hidden="true"></div>
+          <p class="pg-lede">Connect with our team to explore the technology and partnership model that fit YOUR BRAND</p>
+        </div>
 
-      <div class="tph-head">
-        <span class="tph-kicker">Get in touch</span>
-        <h2 class="tph-h2">Let&rsquo;s Develop Your Next Beauty Device</h2>
-        <p class="tph-lede">Connect with our team to explore the technology and partnership model that fit YOUR BRAND</p>
+        <div class="pg-reveal">
+
+          <p class="pg-note pg-note--block">FORM EMBED START &mdash; replace this whole form with the WordPress form shortcode or embed. Keep the field list and the submit label. Styling classes: <code>.pg-field</code>, <code>.pg-btn</code>.</p>
+
+          <!-- FORM EMBED START -->
+          <form class="pg-form-grid" action="#" method="post" novalidate>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Company</span>
+              <input type="text" name="company" autocomplete="organization" required>
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Full name</span>
+              <input type="text" name="fullname" autocomplete="name" required>
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Role</span>
+              <input type="text" name="role" autocomplete="organization-title">
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Business email</span>
+              <input type="email" name="email" autocomplete="email" required>
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Target market / region</span>
+              <input type="text" name="region">
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field">
+              <span class="pg-field__label">Partnership interest</span>
+              <select name="interest">
+                <option value="">Select one</option>
+                <option>Existing platform</option>
+                <option>Customization</option>
+                <option>Co-development</option>
+                <option>Exploring options</option>
+              </select>
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <label class="pg-field pg-field--full">
+              <span class="pg-field__label">Product objectives or message</span>
+              <textarea name="message" rows="4"></textarea>
+              <span class="pg-field__bar" aria-hidden="true"></span>
+            </label>
+
+            <div class="pg-consent">
+              <input type="checkbox" id="pg-consent" name="consent" required>
+              <label for="pg-consent">I agree that Pollogen may contact me about this inquiry and store my details in line with the <a href="#" data-pg-link="privacy">Privacy Policy</a>.</label>
+            </div>
+
+            <div class="pg-form-actions">
+              <button class="pg-btn pg-btn--block" type="submit"><span>Request the Partnership Overview</span></button>
+            </div>
+
+            <div class="pg-form-secondary">
+              <span class="pg-label" style="font-size:10px">Secondary action</span>
+              <a class="pg-link" href="#" data-pg-cta="schedule-conversation">Schedule a Partnership Conversation<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+            </div>
+
+          </form>
+          <!-- FORM EMBED END -->
+
+          <p class="pg-note">CTA 3 of 3 &mdash; &ldquo;Schedule a Partnership Conversation&rdquo; <span class="pg-strong">needs a destination:</span> a calendar booking link (Calendly / HubSpot Meetings) or a mailto. Currently <code>href="#"</code>. The Privacy Policy link also needs the real URL.</p>
+
+        </div>
+
       </div>
-
-      <div class="tph-formwrap">
-
-        <p class="tph-note tph-note--block">FORM EMBED START &mdash; replace this whole form with the WordPress form shortcode or embed. Keep the field list and the submit label. Styling classes: <code>.tph-field</code>, <code>.tph-btn</code>.</p>
-
-        <!-- FORM EMBED START -->
-        <form class="tph-form-grid" action="#" method="post" novalidate>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Company</span>
-            <input type="text" name="company" autocomplete="organization" required>
-          </label>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Full name</span>
-            <input type="text" name="fullname" autocomplete="name" required>
-          </label>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Role</span>
-            <input type="text" name="role" autocomplete="organization-title">
-          </label>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Business email</span>
-            <input type="email" name="email" autocomplete="email" required>
-          </label>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Target market / region</span>
-            <input type="text" name="region">
-          </label>
-
-          <label class="tph-field">
-            <span class="tph-field__label">Partnership interest</span>
-            <select name="interest">
-              <option value="">Select one</option>
-              <option>Existing platform</option>
-              <option>Customization</option>
-              <option>Co-development</option>
-              <option>Exploring options</option>
-            </select>
-          </label>
-
-          <label class="tph-field tph-field--full">
-            <span class="tph-field__label">Product objectives or message</span>
-            <textarea name="message" rows="5"></textarea>
-          </label>
-
-          <div class="tph-consent">
-            <input type="checkbox" id="tph-consent" name="consent" required>
-            <label for="tph-consent">I agree that Pollogen may contact me about this inquiry and store my details in line with the <a href="#" data-tph-link="privacy">Privacy Policy</a>.</label>
-          </div>
-
-          <div class="tph-form-actions">
-            <button class="tph-btn tph-btn--block" type="submit">Request the Partnership Overview</button>
-          </div>
-
-          <div class="tph-form-secondary">
-            <span class="tph-micro">Secondary action</span>
-            <a class="tph-link" href="#" data-tph-cta="schedule-conversation">Schedule a Partnership Conversation</a>
-          </div>
-
-        </form>
-        <!-- FORM EMBED END -->
-
-        <p class="tph-note">CTA 3 of 3 &mdash; &ldquo;Schedule a Partnership Conversation&rdquo; <span class="tph-strong">needs a destination:</span> a calendar booking link (Calendly / HubSpot Meetings) or a mailto. Currently <code>href="#"</code>. The Privacy Policy link also needs the real URL.</p>
-
-      </div>
-
-      </div>
-
     </div>
   </section>
 
   <!-- ======================================================================
        FAQ — <details> elements, no JavaScript
        ====================================================================== -->
-  <section class="tph-section">
-    <div class="tph-wrap">
+  <section class="pg-section">
+    <div class="pg-wrap">
 
-      <div class="tph-head">
-        <h2 class="tph-h2">Frequently Asked Questions</h2>
+      <div class="pg-head pg-center pg-reveal">
+        <h2 class="pg-h2">Frequently Asked Questions</h2>
       </div>
 
-      <div class="tph-faq">
+      <div class="pg-faq pg-reveal">
 
-        <details class="tph-faq__item">
-          <summary class="tph-faq__q">
+        <details class="pg-faq__item">
+          <summary class="pg-faq__q">
             <span>Can a device be developed under our brand?</span>
-            <span class="tph-faq__icon" aria-hidden="true"></span>
+            <span class="pg-faq__icon" aria-hidden="true"></span>
           </summary>
-          <div class="tph-faq__a">
-            <p class="tph-body">Partner branding and product customization can be explored as part of the development brief. Options depend on the selected platform, project scope, and regulatory requirements.</p>
+          <div class="pg-faq__a">
+            <p class="pg-body">Partner branding and product customization can be explored as part of the development brief. Options depend on the selected platform, project scope, and regulatory requirements.</p>
           </div>
         </details>
 
-        <details class="tph-faq__item">
-          <summary class="tph-faq__q">
+        <details class="pg-faq__item">
+          <summary class="pg-faq__q">
             <span>Which technologies can we explore?</span>
-            <span class="tph-faq__icon" aria-hidden="true"></span>
+            <span class="pg-faq__icon" aria-hidden="true"></span>
           </summary>
-          <div class="tph-faq__a">
-            <p class="tph-body">Home-use capabilities include TriPollar RF, DMA, LED, galvanic current and electroporation. The team will assess which options are appropriate for your intended product.</p>
+          <div class="pg-faq__a">
+            <p class="pg-body">Home-use capabilities include TriPollar RF, DMA, LED, galvanic current and electroporation. The team will assess which options are appropriate for your intended product.</p>
           </div>
         </details>
 
-        <details class="tph-faq__item">
-          <summary class="tph-faq__q">
+        <details class="pg-faq__item">
+          <summary class="pg-faq__q">
             <span>Can you support an international launch?</span>
-            <span class="tph-faq__icon" aria-hidden="true"></span>
+            <span class="pg-faq__icon" aria-hidden="true"></span>
           </summary>
-          <div class="tph-faq__a">
-            <p class="tph-body">Target markets are considered during project definition, with testing, documentation and regulatory requirements assessed for each intended launch region.</p>
+          <div class="pg-faq__a">
+            <p class="pg-body">Target markets are considered during project definition, with testing, documentation and regulatory requirements assessed for each intended launch region.</p>
           </div>
         </details>
 
-        <details class="tph-faq__item">
-          <summary class="tph-faq__q">
+        <details class="pg-faq__item">
+          <summary class="pg-faq__q">
             <span>Does an existing FDA clearance cover a customized device?</span>
-            <span class="tph-faq__icon" aria-hidden="true"></span>
+            <span class="pg-faq__icon" aria-hidden="true"></span>
           </summary>
-          <div class="tph-faq__a">
-            <p class="tph-body">Not automatically. Changes to design, technology, intended use, or claims may require additional assessment, testing or a new regulatory submission.</p>
+          <div class="pg-faq__a">
+            <p class="pg-body">Not automatically. Changes to design, technology, intended use, or claims may require additional assessment, testing or a new regulatory submission.</p>
           </div>
         </details>
 
@@ -904,16 +1144,16 @@
   </main>
 
   <!-- ======================================================================
-       REFERENCES — the source notes that back the numbered claims above
+       REFERENCES — the source notes behind the numbered claims above
        ====================================================================== -->
-  <section class="tph-wrap">
-    <div class="tph-refs">
-      <h2 class="tph-micro" style="margin-bottom:var(--s3)">Sources</h2>
+  <section class="pg-wrap">
+    <div class="pg-refs">
+      <h2 class="pg-label" style="margin-bottom:var(--s3)">Sources</h2>
       <ol>
-        <li id="tph-ref-1"><span>[1]</span><span>The Business Research Company, <em class="tph-em">Home-Use Beauty Devices Market Report 2026</em>. <a href="https://www.thebusinessresearchcompany.com/report/home-use-beauty-devices-global-market-report" rel="noopener nofollow" target="_blank">thebusinessresearchcompany.com</a> &mdash; publisher estimates and forecasts for a broad category including hair removal, cleansing and other devices; not the market size for home RF alone.</span></li>
-        <li id="tph-ref-2"><span>[2]</span><span>Pollogen technology and product descriptions: <a href="https://pollogen.com/products/tripollar-aura/" rel="noopener" target="_blank">TriPollar Aura</a>, <a href="https://pollogen.com/technologies/omnicurrent/" rel="noopener" target="_blank">OmniCurrent</a>. These establish manufacturer-described technology availability, not independent proof of every treatment claim.</span></li>
-        <li id="tph-ref-3"><span>[3]</span><span>FDA 510(k) K203665, STOP U Model UXV, Pollogen Ltd.; substantially equivalent decision dated 25 February 2021. <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K203665" rel="noopener nofollow" target="_blank">accessdata.fda.gov</a> &mdash; clearance is device- and indication-specific.</span></li>
-        <li id="tph-ref-4"><span>[4]</span><span>Pollogen / Lumenis: <a href="https://pollogen.com/" rel="noopener" target="_blank">pollogen.com</a>, <a href="https://lumenis.com/" rel="noopener" target="_blank">lumenis.com</a>.</span></li>
+        <li id="pg-ref-1"><span>[1]</span><span>The Business Research Company, <em class="pg-em">Home-Use Beauty Devices Market Report 2026</em>. <a href="https://www.thebusinessresearchcompany.com/report/home-use-beauty-devices-global-market-report" rel="noopener nofollow" target="_blank">thebusinessresearchcompany.com</a> &mdash; publisher estimates and forecasts for a broad category including hair removal, cleansing and other devices; not the market size for home RF alone.</span></li>
+        <li id="pg-ref-2"><span>[2]</span><span>Pollogen technology and product descriptions: <a href="https://pollogen.com/products/tripollar-aura/" rel="noopener" target="_blank">TriPollar Aura</a>, <a href="https://pollogen.com/technologies/omnicurrent/" rel="noopener" target="_blank">OmniCurrent</a>. These establish manufacturer-described technology availability, not independent proof of every treatment claim.</span></li>
+        <li id="pg-ref-3"><span>[3]</span><span>FDA 510(k) K203665, STOP U Model UXV, Pollogen Ltd.; substantially equivalent decision dated 25 February 2021. <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K203665" rel="noopener nofollow" target="_blank">accessdata.fda.gov</a> &mdash; clearance is device- and indication-specific.</span></li>
+        <li id="pg-ref-4"><span>[4]</span><span>Pollogen / Lumenis: <a href="https://pollogen.com/" rel="noopener" target="_blank">pollogen.com</a>, <a href="https://lumenis.com/" rel="noopener" target="_blank">lumenis.com</a>.</span></li>
       </ol>
     </div>
   </section>
@@ -921,19 +1161,19 @@
   <!-- ======================================================================
        FOOTER
        ====================================================================== -->
-  <footer class="tph-footer">
-    <div class="tph-wrap">
-      <div class="tph-footer__in">
-        <img class="tph-footer__mark" src="assets/logo/pollogen-logo.png"
+  <footer class="pg-footer">
+    <div class="pg-wrap">
+      <div class="pg-footer__in">
+        <img class="pg-footer__mark" src="assets/logo/pollogen-logo.png"
              alt="Pollogen" width="333" height="120" loading="lazy">
-        <nav class="tph-footer__links" aria-label="Legal">
-          <a href="#" data-tph-link="privacy">Privacy</a>
-          <a href="#" data-tph-link="accessibility">Accessibility</a>
-          <a href="#" data-tph-link="contact">Contact</a>
+        <nav class="pg-footer__links" aria-label="Legal">
+          <a href="#" data-pg-link="privacy">Privacy</a>
+          <a href="#" data-pg-link="accessibility">Accessibility</a>
+          <a href="#" data-pg-link="contact">Contact</a>
         </nav>
-        <p class="tph-footer__legal">TriPollar is developed by Pollogen Ltd., a Lumenis company. Regulatory clearance is device- and indication-specific; any partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
+        <p class="pg-footer__legal">TriPollar is developed by Pollogen Ltd., a Lumenis company. Regulatory clearance is device- and indication-specific; any partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
       </div>
-      <p class="tph-note">Footer links need real URLs before launch: Privacy, Accessibility, Contact.</p>
+      <p class="pg-note">Footer links need real URLs before launch: Privacy, Accessibility, Contact.</p>
     </div>
   </footer>
 
