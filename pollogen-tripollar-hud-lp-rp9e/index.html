@@ -464,20 +464,38 @@
 }
 
 /* --------------------------------------------------------------------------
-   PLATFORM TILES — offset so the row reads as a composition, not a grid
+   PLATFORM RAIL — a scroll-snap slider. No JavaScript: it is a horizontal
+   scroller, so a trackpad, a touch swipe, a shift-wheel or the arrow keys all
+   drive it, and the progress bar is a scroll-driven animation.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-plats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);align-items:start}
-.tp-hud-lp .pg-plats > *:nth-child(2){margin-top:var(--s5)}
-.tp-hud-lp .pg-plats > *:nth-child(3){margin-top:calc(var(--s5) * 2)}
-.tp-hud-lp .pg-plat__pic{
-  aspect-ratio:4/3;background:var(--pg-white);border:1px solid var(--pg-hair);overflow:hidden;
+.tp-hud-lp .pg-railwrap{timeline-scope:--pgRail}
+.tp-hud-lp .pg-rail{
+  display:flex;gap:var(--s4);
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding-bottom:var(--s4);
+  scroll-timeline:--pgRail inline;
 }
-.tp-hud-lp .pg-plat__pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--pg-ease)}
-.tp-hud-lp .pg-plat:hover .pg-plat__pic img{transform:scale(1.07)}
-.tp-hud-lp .pg-plat__name{
+.tp-hud-lp .pg-rail::-webkit-scrollbar{display:none}
+.tp-hud-lp .pg-rail:focus-visible{outline:2px solid var(--pg-black);outline-offset:6px}
+.tp-hud-lp .pg-rail__item{flex:0 0 clamp(248px,26vw,350px);scroll-snap-align:start}
+.tp-hud-lp .pg-rail__card{
+  position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--pg-hair);
+}
+.tp-hud-lp .pg-rail__card img{
+  width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--pg-ease);
+}
+.tp-hud-lp .pg-rail__item:hover .pg-rail__card img{transform:scale(1.06)}
+.tp-hud-lp .pg-rail__name{
   display:flex;align-items:center;gap:12px;margin-top:var(--s3);
   font-family:var(--pg-ui);font-size:11px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--pg-black);
+}
+.tp-hud-lp .pg-rail__bar{position:relative;height:2px;background:rgba(0,0,0,.1)}
+.tp-hud-lp .pg-rail__bar i{
+  position:absolute;inset:0;background:var(--pg-black);
+  transform:scaleX(0);transform-origin:left;
 }
 
 /* --------------------------------------------------------------------------
@@ -746,8 +764,8 @@
     .tp-hud-lp .pg-noir-split__pic img{
       animation:pg-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
     }
-    .tp-hud-lp .pg-plat__pic img{
-      animation:pg-parallax linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
+    .tp-hud-lp .pg-rail__bar i{
+      animation:pg-rule linear both;animation-timeline:--pgRail;
     }
   }
 }
@@ -793,10 +811,6 @@
   .tp-hud-lp .pg-sticky{position:static}
   .tp-hud-lp .pg-form-split .pg-figure{max-width:520px}
   .tp-hud-lp .pg-grid--3{grid-template-columns:1fr}
-  .tp-hud-lp .pg-plats{grid-template-columns:1fr;gap:var(--s6);justify-items:start}
-  .tp-hud-lp .pg-plats > *{width:100%;max-width:520px}
-  .tp-hud-lp .pg-plats > *:nth-child(2),
-  .tp-hud-lp .pg-plats > *:nth-child(3){margin-top:0}
   .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
   .tp-hud-lp .pg-steps__line{display:none}
   .tp-hud-lp .pg-form-grid{grid-template-columns:1fr}
@@ -1026,14 +1040,6 @@
             <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__name">Electroporation</span></li>
           </ol>
 
-          <figure class="pg-reveal" style="margin-top:var(--s6)">
-            <div class="pg-figure pg-figure--16x9">
-              <img src="assets/images/led-prism.webp"
-                   alt="A TriPollar LED eye device lit on a pale studio pedestal."
-                   width="1600" height="900" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="pg-figure__cap">TriPollar PRISM &middot; LED</figcaption>
-          </figure>
         </div>
 
       </div>
@@ -1053,32 +1059,50 @@
       </div>
 
       <!-- Platforms already in market — illustrative, not a catalogue.
-           Product photography is Pollogen's own, taken from pollogen.com. -->
-      <p class="pg-note pg-note--block" style="margin-top:var(--s7)">Platform row &mdash; these three are illustrative, pulled from pollogen.com. POL should confirm which platforms may be shown on a partnership page, since the copy deliberately keeps availability open.</p>
+           Photography is Pollogen's own; each frame is taken from that product's
+           own page on pollogen.com. -->
+      <p class="pg-note pg-note--block" style="margin-top:var(--s7)">Platform rail &mdash; illustrative, not a catalogue. Each frame comes from that product&rsquo;s own page on pollogen.com, but <span class="pg-strong">POL should confirm both the selection and the product names</span>, since the copy deliberately keeps availability open.</p>
 
-      <ul class="pg-plats pg-stagger" style="margin-top:var(--s8)">
-        <li class="pg-plat">
-          <div class="pg-plat__pic">
-            <img src="assets/images/platform-stop-vx3.webp" alt="TriPollar STOP VX3 home-use device."
-                 width="700" height="525" loading="lazy" decoding="async">
-          </div>
-          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX3</p>
-        </li>
-        <li class="pg-plat">
-          <div class="pg-plat__pic">
-            <img src="assets/images/platform-pose-vx.webp" alt="TriPollar POSE VX home-use device and packaging."
-                 width="1200" height="900" loading="lazy" decoding="async">
-          </div>
-          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
-        </li>
-        <li class="pg-plat">
-          <div class="pg-plat__pic">
-            <img src="assets/images/platform-stop-vx2-gold.webp" alt="TriPollar STOP VX2 Gold home-use device and packaging."
-                 width="1200" height="900" loading="lazy" decoding="async">
-          </div>
-          <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX2 Gold</p>
-        </li>
-      </ul>
+      <div class="pg-railwrap pg-reveal" style="margin-top:var(--s8)">
+        <ul class="pg-rail" tabindex="0" role="region" aria-label="TriPollar home-use platforms. Scroll sideways to see more.">
+          <li class="pg-rail__item">
+            <figure class="pg-rail__card">
+              <img src="assets/images/rail-aura.webp" alt="The TriPollar Aura home-use device on a rose-toned set."
+                   width="900" height="1126" loading="lazy" decoding="async">
+            </figure>
+            <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar Aura</p>
+          </li>
+          <li class="pg-rail__item">
+            <figure class="pg-rail__card">
+              <img src="assets/images/rail-stop-vx3.webp" alt="The TriPollar STOP VX3 home-use device on a rose-toned set."
+                   width="900" height="1125" loading="lazy" decoding="async">
+            </figure>
+            <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar STOP VX3</p>
+          </li>
+          <li class="pg-rail__item">
+            <figure class="pg-rail__card">
+              <img src="assets/images/rail-stop-vx.webp" alt="The TriPollar STOP VX home-use device photographed beside a brass vase."
+                   width="900" height="1125" loading="lazy" decoding="async">
+            </figure>
+            <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar STOP VX</p>
+          </li>
+          <li class="pg-rail__item">
+            <figure class="pg-rail__card">
+              <img src="assets/images/rail-pose-vx.webp" alt="The TriPollar POSE VX home-use device on an oak tray."
+                   width="750" height="937" loading="lazy" decoding="async">
+            </figure>
+            <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
+          </li>
+          <li class="pg-rail__item">
+            <figure class="pg-rail__card">
+              <img src="assets/images/rail-prism.webp" alt="The TriPollar PRISM LED device, lit."
+                   width="864" height="1080" loading="lazy" decoding="async">
+            </figure>
+            <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar PRISM</p>
+          </li>
+        </ul>
+        <div class="pg-rail__bar" aria-hidden="true"><i></i></div>
+      </div>
 
     </div>
   </section>
