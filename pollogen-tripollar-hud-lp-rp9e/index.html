@@ -76,15 +76,15 @@
    -------------------------------------------------------------------------- */
 .tp-hud-lp{
   --pg-black:#000000;
-  --pg-ink:#161616;
+  --pg-ink:#141414;
   --pg-grey:#6B6B6B;
   --pg-mute:#8F8F8F;
   --pg-line:#DEDEDE;
-  --pg-hair:#EDEDED;
+  --pg-hair:#E8E4E1;
   --pg-blush:#F5E6DD;          /* the signature Pollogen surface */
   --pg-blush-deep:#EBD6C9;
-  --pg-smoke:#F7F7F7;
-  --pg-dark:#3E3E3E;
+  --pg-paper:#FAF8F7;          /* warm off-white — the page ground */
+  --pg-noir:#070706;           /* matches the black in the RF photograph */
   --pg-white:#FFFFFF;
 
   --pg-display:'Codec Warm Trial','TPH Codec Cold','Montserrat',sans-serif;
@@ -92,23 +92,17 @@
 
   --pg-track-display:.135em;   /* 4.77px on 35px — the site's own value */
   --pg-track-label:.2em;
-  --pg-track-link:.05em;
 
   --pg-container:1240px;
   --pg-gutter:26px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px;
-  --s5:48px; --s6:64px; --s7:96px; --s8:132px;
+  --s5:48px; --s6:64px; --s7:96px; --s8:136px;
   --pg-ease:cubic-bezier(.22,.61,.36,1);
 
   font-family:var(--pg-ui);
-  font-size:15px;
-  font-weight:400;
-  line-height:1.9;
-  letter-spacing:.02em;
-  color:var(--pg-ink);
-  background:var(--pg-white);
-  -webkit-font-smoothing:antialiased;
-  text-align:left;
+  font-size:15px;font-weight:400;line-height:1.9;letter-spacing:.02em;
+  color:var(--pg-ink);background:var(--pg-paper);
+  -webkit-font-smoothing:antialiased;text-align:left;
 }
 
 /* scoped reset — never leaves the wrapper */
@@ -135,13 +129,14 @@
   max-width:calc(100% - (var(--pg-gutter) * 2));
   margin-left:auto;margin-right:auto;
 }
-.tp-hud-lp .pg-section{padding:var(--s8) 0;position:relative;overflow:hidden}
+.tp-hud-lp .pg-section{padding:var(--s8) 0;position:relative}
 .tp-hud-lp .pg-section--tight{padding:var(--s7) 0}
-.tp-hud-lp .pg-blush{background:var(--pg-blush)}
-.tp-hud-lp .pg-smoke{background:var(--pg-smoke)}
+.tp-hud-lp .pg-paper{background:var(--pg-paper)}
+.tp-hud-lp .pg-white{background:var(--pg-white)}
+.tp-hud-lp .pg-blush-bg{background:var(--pg-blush)}
 .tp-hud-lp .pg-anchor{scroll-margin-top:90px}
 .tp-hud-lp .pg-center{text-align:center}
-.tp-hud-lp .pg-measure{max-width:680px}
+.tp-hud-lp .pg-measure{max-width:640px}
 .tp-hud-lp .pg-center .pg-measure{margin-left:auto;margin-right:auto}
 
 /* --------------------------------------------------------------------------
@@ -149,30 +144,28 @@
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-h2{
   font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(23px,2.8vw,35px);line-height:1.38;
+  font-size:clamp(23px,2.9vw,38px);line-height:1.34;
   letter-spacing:var(--pg-track-display);text-transform:uppercase;
 }
 .tp-hud-lp .pg-h3{
   font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(18px,1.8vw,23px);line-height:1.45;
+  font-size:clamp(17px,1.7vw,22px);line-height:1.45;
   letter-spacing:.1em;text-transform:uppercase;
 }
 .tp-hud-lp .pg-label{
-  display:block;font-family:var(--pg-ui);font-weight:400;font-size:12px;line-height:1.8;
+  display:block;font-family:var(--pg-ui);font-weight:500;font-size:11px;line-height:1.8;
   letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-grey);
 }
-.tp-hud-lp .pg-body{font-size:15px;line-height:1.9;color:var(--pg-ink)}
-.tp-hud-lp .pg-lede{font-size:16px;line-height:1.95;color:var(--pg-ink)}
+.tp-hud-lp .pg-body{font-size:15px;line-height:1.95;color:var(--pg-ink)}
+.tp-hud-lp .pg-lede{font-size:17px;line-height:1.9;color:var(--pg-ink)}
 .tp-hud-lp .pg-small{font-size:13px;line-height:1.9;color:var(--pg-grey)}
 .tp-hud-lp .pg-em{font-style:italic}
 .tp-hud-lp .pg-strong{font-weight:600}
 .tp-hud-lp .pg-stack > * + *{margin-top:var(--s3)}
 
-/* a hairline rule under a centred title, straight off the site's cards */
-.tp-hud-lp .pg-tick{width:46px;height:1px;background:currentColor;opacity:.45;margin:var(--s3) 0}
+.tp-hud-lp .pg-tick{width:48px;height:1px;background:currentColor;opacity:.4;margin:var(--s4) 0}
 .tp-hud-lp .pg-center .pg-tick{margin-left:auto;margin-right:auto}
 
-/* footnote markers */
 .tp-hud-lp .pg-ref{
   font-size:10px;line-height:1;vertical-align:super;font-weight:500;
   letter-spacing:0;color:var(--pg-mute);margin-left:2px;
@@ -180,35 +173,31 @@
 .tp-hud-lp .pg-ref:hover{color:var(--pg-black)}
 
 /* --------------------------------------------------------------------------
-   LINKS + BUTTONS — the site uses hairline text links, not filled buttons.
-   The one filled button on the page is the form submit.
+   LINKS + BUTTONS — the site uses hairline text links, not filled buttons
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-link{
-  position:relative;display:inline-block;padding-bottom:7px;
-  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
-  letter-spacing:var(--pg-track-link);text-transform:uppercase;color:var(--pg-black);
+  position:relative;display:inline-block;padding-bottom:8px;
+  font-family:var(--pg-ui);font-size:12px;font-weight:600;line-height:1.6;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--pg-black);
 }
 .tp-hud-lp .pg-link::before,
+.tp-hud-lp .pg-link::after{content:'';position:absolute;left:0;bottom:0;height:1px;background:currentColor}
+.tp-hud-lp .pg-link::before{width:100%;opacity:.28}
 .tp-hud-lp .pg-link::after{
-  content:'';position:absolute;left:0;bottom:0;height:1px;background:currentColor;
-}
-.tp-hud-lp .pg-link::before{width:100%;opacity:.3}
-.tp-hud-lp .pg-link::after{
-  width:100%;transform:scaleX(0);transform-origin:left;
-  transition:transform .5s var(--pg-ease);
+  width:100%;transform:scaleX(0);transform-origin:left;transition:transform .55s var(--pg-ease);
 }
 .tp-hud-lp .pg-link:hover::after,
 .tp-hud-lp .pg-link:focus-visible::after{transform:scaleX(1)}
 .tp-hud-lp .pg-link--light{color:var(--pg-white)}
-.tp-hud-lp .pg-arrow{display:inline-block;margin-left:10px;transition:transform .45s var(--pg-ease)}
-.tp-hud-lp .pg-link:hover .pg-arrow{transform:translateX(7px)}
+.tp-hud-lp .pg-arrow{display:inline-block;margin-left:12px;transition:transform .45s var(--pg-ease)}
+.tp-hud-lp .pg-link:hover .pg-arrow{transform:translateX(8px)}
 
 .tp-hud-lp .pg-btn{
   position:relative;display:inline-flex;align-items:center;justify-content:center;
-  min-height:56px;padding:15px 40px;overflow:hidden;
+  min-height:58px;padding:16px 42px;overflow:hidden;
   border:1px solid var(--pg-black);border-radius:0;background:var(--pg-black);
-  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
-  letter-spacing:.09em;text-transform:uppercase;text-align:center;color:var(--pg-white);
+  font-family:var(--pg-ui);font-size:12px;font-weight:600;line-height:1.6;
+  letter-spacing:.14em;text-transform:uppercase;text-align:center;color:var(--pg-white);
   cursor:pointer;transition:color .45s var(--pg-ease);
 }
 .tp-hud-lp .pg-btn > span{position:relative;z-index:1}
@@ -222,21 +211,20 @@
 .tp-hud-lp .pg-btn:focus-visible::after{transform:scaleY(1)}
 .tp-hud-lp .pg-btn--block{width:100%}
 
-/* black tag chip, exactly as the product grid on pollogen.com */
 .tp-hud-lp .pg-tag{
-  display:inline-block;padding:4px 8px;background:var(--pg-black);color:var(--pg-white);
+  display:inline-block;padding:4px 9px;background:var(--pg-black);color:var(--pg-white);
   font-family:var(--pg-ui);font-size:9px;font-weight:500;line-height:1.5;
-  letter-spacing:.09em;text-transform:uppercase;
+  letter-spacing:.1em;text-transform:uppercase;
 }
 
 /* --------------------------------------------------------------------------
    LOGO BAR
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-logobar{
-  position:relative;z-index:5;background:var(--pg-white);border-bottom:1px solid var(--pg-hair);
+  position:relative;z-index:5;background:var(--pg-paper);border-bottom:1px solid var(--pg-hair);
 }
 .tp-hud-lp .pg-logobar__in{
-  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:78px;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:80px;
 }
 .tp-hud-lp .pg-logobar__mark{height:34px;width:auto;filter:brightness(0)}
 .tp-hud-lp .pg-logobar__by{
@@ -245,84 +233,145 @@
 }
 
 /* --------------------------------------------------------------------------
-   HERO — full-bleed photograph, white caps on a scrim, the site's own
-   treatment. The image drifts slowly; the lines wipe up on load.
+   HERO — an editorial split. Copy on paper, the photograph bleeding off the
+   right edge, a blush plane behind the copy and a scroll cue on the baseline.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:#B48D88;isolation:isolate}
-.tp-hud-lp .pg-hero{overflow:hidden}
-/* The media box is full-width but offset to the right, so the device lands
-   around 68% across and the copy sits on the fluted rose panel. object-position
-   cannot do this: at this aspect the image only overflows vertically, so there
-   is nothing to slide. The hero's own background matches the image's left edge,
-   which is what shows through the 18% the box leaves uncovered. */
-.tp-hud-lp .pg-hero__media{
-  position:absolute;top:0;bottom:0;left:18%;width:100%;z-index:0;overflow:hidden;
+.tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:var(--pg-paper)}
+.tp-hud-lp .pg-hero__pic{
+  position:absolute;top:0;right:0;bottom:0;width:47%;overflow:hidden;background:#DEDCD8;
 }
-.tp-hud-lp .pg-hero__media img{
-  width:100%;height:100%;object-fit:cover;object-position:50% 26%;transform:scale(1.04);
+.tp-hud-lp .pg-hero__pic picture{display:block;width:100%;height:100%}
+.tp-hud-lp .pg-hero__pic img{width:100%;height:100%;object-fit:cover;object-position:56% 50%}
+/* the photograph's own light wall, carried a little way into the copy column
+   so the two halves read as one plate rather than two blocks */
+.tp-hud-lp .pg-hero__pic::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:22%;z-index:1;
+  background:linear-gradient(90deg, var(--pg-paper) 0%, rgba(250,248,247,0) 100%);
 }
-.tp-hud-lp .pg-hero__scrim{
-  position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(92deg, rgba(22,13,11,.92) 0%, rgba(22,13,11,.86) 26%, rgba(22,13,11,.62) 46%, rgba(22,13,11,.22) 66%, rgba(22,13,11,0) 84%),
-    linear-gradient(180deg, rgba(22,13,11,.40) 0%, rgba(22,13,11,0) 36%);
+/* a blush plane bleeding off the left edge, behind the copy */
+.tp-hud-lp .pg-hero__plane{
+  position:absolute;left:0;bottom:0;width:36%;height:46%;background:var(--pg-blush);z-index:0;
 }
 .tp-hud-lp .pg-hero__in{
   position:relative;z-index:2;
-  min-height:clamp(560px,82vh,840px);
+  min-height:clamp(620px,88vh,900px);
   display:flex;flex-direction:column;justify-content:center;
-  padding:var(--s8) 0 var(--s7);
+  padding:var(--s8) 0;
 }
-.tp-hud-lp .pg-hero__copy{max-width:780px;color:var(--pg-white)}
-.tp-hud-lp .pg-hero__kicker{color:rgba(255,255,255,.72);margin-bottom:var(--s4)}
+.tp-hud-lp .pg-hero__copy{max-width:54%}
+.tp-hud-lp .pg-hero__kicker{margin-bottom:var(--s5)}
 .tp-hud-lp .pg-hero__title{
-  font-family:var(--pg-display);font-weight:400;color:var(--pg-white);
-  font-size:clamp(27px,3.9vw,50px);line-height:1.24;
+  font-family:var(--pg-display);font-weight:400;color:var(--pg-black);
+  font-size:clamp(27px,3.5vw,46px);line-height:1.24;
   letter-spacing:var(--pg-track-display);text-transform:uppercase;
 }
 .tp-hud-lp .pg-hero__deck{
-  margin-top:var(--s4);font-size:clamp(15px,1.5vw,18px);line-height:1.75;
-  letter-spacing:.04em;color:rgba(255,255,255,.94);
+  margin-top:var(--s5);font-size:clamp(15px,1.4vw,18px);line-height:1.7;
+  letter-spacing:.04em;color:var(--pg-black);max-width:24em;
 }
-.tp-hud-lp .pg-hero__body{margin-top:var(--s4);max-width:34em;color:rgba(255,255,255,.86)}
+.tp-hud-lp .pg-hero__body{margin-top:var(--s4);max-width:32em;color:var(--pg-grey)}
 .tp-hud-lp .pg-hero__cta{margin-top:var(--s6)}
 
 /* each hero line sits in a mask and wipes up */
 .tp-hud-lp .pg-line{display:block;overflow:hidden}
 .tp-hud-lp .pg-line > span{display:block}
 
+/* scroll cue — a hairline with a travelling dot */
+.tp-hud-lp .pg-cue{
+  position:absolute;left:0;bottom:var(--s6);z-index:3;
+  width:1px;height:72px;background:rgba(0,0,0,.18);overflow:hidden;
+}
+.tp-hud-lp .pg-cue::after{
+  content:'';position:absolute;left:-1px;top:0;width:3px;height:22px;background:var(--pg-black);
+}
+
 /* --------------------------------------------------------------------------
    SECTION HEADS
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-head{max-width:860px;margin-bottom:var(--s7)}
-.tp-hud-lp .pg-head.pg-center{margin-left:auto;margin-right:auto}
-.tp-hud-lp .pg-head .pg-label{margin-bottom:var(--s3)}
+.tp-hud-lp .pg-head{margin-bottom:var(--s7)}
+.tp-hud-lp .pg-head--center{max-width:880px;margin-left:auto;margin-right:auto;text-align:center}
+.tp-hud-lp .pg-head .pg-label{margin-bottom:var(--s4)}
 .tp-hud-lp .pg-head .pg-lede{margin-top:var(--s4)}
 
-/* --------------------------------------------------------------------------
-   STATS — figures plus a bar that grows from 2025 to 2030 as it scrolls in
-   -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-stat-panel{background:var(--pg-blush);padding:var(--s6)}
-.tp-hud-lp .pg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
-.tp-hud-lp .pg-stat__fig{
-  font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:.04em;color:var(--pg-black);
-}
-.tp-hud-lp .pg-stat__label{
-  margin-top:12px;font-size:11px;letter-spacing:var(--pg-track-label);
-  text-transform:uppercase;color:var(--pg-grey);
-}
-.tp-hud-lp .pg-growth{
-  margin-top:var(--s5);height:3px;
-  background:rgba(0,0,0,.12);position:relative;overflow:hidden;
-}
-.tp-hud-lp .pg-growth i{
-  position:absolute;inset:0;background:var(--pg-black);
-  transform:scaleX(.08);transform-origin:left;
+/* a two-column head: label + title left, running copy right */
+.tp-hud-lp .pg-head--split{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s7);align-items:start;
 }
 
 /* --------------------------------------------------------------------------
-   GRIDS + CARDS
+   MARKET CHART — two stems whose height carries the value, on a dotted base
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-chart{position:relative;background:var(--pg-blush);padding:var(--s7) var(--s7) var(--s6)}
+.tp-hud-lp .pg-plot{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);align-items:end;
+  padding-bottom:var(--s4);
+  border-bottom:1px dashed rgba(0,0,0,.3);
+}
+.tp-hud-lp .pg-plot__col{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.tp-hud-lp .pg-plot__fig{
+  font-family:var(--pg-display);font-weight:400;
+  font-size:clamp(28px,3.6vw,46px);line-height:1;letter-spacing:.03em;color:var(--pg-black);
+}
+.tp-hud-lp .pg-plot__label{
+  margin-top:12px;font-size:10px;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-grey);
+}
+.tp-hud-lp .pg-plot__stem{
+  margin-top:var(--s4);width:4px;height:var(--h,120px);background:var(--pg-black);
+  transform-origin:bottom;
+}
+.tp-hud-lp .pg-plot__col--cagr{padding-bottom:2px}
+.tp-hud-lp .pg-plot__col--cagr .pg-plot__fig{color:var(--pg-black)}
+.tp-hud-lp .pg-chart__note{
+  margin-top:var(--s4);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pg-grey);
+}
+
+/* --------------------------------------------------------------------------
+   FULL-BLEED IMAGE BAND — a photograph with the section title over it
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-band{position:relative;overflow:hidden;background:var(--pg-noir)}
+.tp-hud-lp .pg-band__media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.tp-hud-lp .pg-band__media img{width:100%;height:100%;object-fit:cover}
+.tp-hud-lp .pg-band__scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(7,7,6,.42) 0%, rgba(7,7,6,.62) 60%, rgba(7,7,6,.78) 100%);
+}
+.tp-hud-lp .pg-band__in{
+  position:relative;z-index:2;min-height:clamp(380px,52vh,560px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:var(--s8) 0;
+}
+.tp-hud-lp .pg-band__in h2{color:var(--pg-white)}
+.tp-hud-lp .pg-band__in .pg-label{color:rgba(255,255,255,.66)}
+.tp-hud-lp .pg-band__in .pg-lede{color:rgba(255,255,255,.88)}
+
+/* --------------------------------------------------------------------------
+   NOIR SPLIT — the RF photograph is shot on near-black, so it melts into a
+   black section and the copy sits on the open half.
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-noir-split{position:relative;overflow:hidden;background:var(--pg-noir);color:rgba(255,255,255,.84)}
+.tp-hud-lp .pg-noir-split__pic{position:absolute;top:0;right:0;bottom:0;width:46%;overflow:hidden}
+.tp-hud-lp .pg-noir-split__pic img{width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.tp-hud-lp .pg-noir-split__pic::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:38%;z-index:1;
+  background:linear-gradient(90deg, var(--pg-noir) 0%, rgba(7,7,6,0) 100%);
+}
+.tp-hud-lp .pg-noir-split__in{
+  position:relative;z-index:2;padding:var(--s8) 0;
+  min-height:clamp(440px,60vh,640px);display:flex;flex-direction:column;justify-content:center;
+}
+.tp-hud-lp .pg-noir-split__copy{max-width:48%}
+.tp-hud-lp .pg-noir-split h2,
+.tp-hud-lp .pg-noir-split h3{color:var(--pg-white)}
+.tp-hud-lp .pg-noir-split .pg-body{color:rgba(255,255,255,.78)}
+.tp-hud-lp .pg-noir-split .pg-lede{color:rgba(255,255,255,.9)}
+.tp-hud-lp .pg-noir-split .pg-label{color:rgba(255,255,255,.58)}
+.tp-hud-lp .pg-noir-split .pg-ref{color:rgba(255,255,255,.5)}
+.tp-hud-lp .pg-noir-split .pg-tick{color:#fff}
+
+/* --------------------------------------------------------------------------
+   GRIDS + SPLITS
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-grid{display:grid;gap:var(--s4)}
 .tp-hud-lp .pg-grid--2{grid-template-columns:repeat(2,1fr)}
@@ -330,112 +379,137 @@
 .tp-hud-lp .pg-grid--lg{gap:var(--s6)}
 .tp-hud-lp .pg-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center}
 .tp-hud-lp .pg-split--top{align-items:start}
+.tp-hud-lp .pg-split--wide-right{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.tp-hud-lp .pg-sticky{position:sticky;top:var(--s5)}
 
-/* blush card, centred title + tick + caption — the site's own card */
-.tp-hud-lp .pg-card{
-  position:relative;background:var(--pg-blush);padding:var(--s6) var(--s5);
-  text-align:center;overflow:hidden;
-  transition:background .5s var(--pg-ease),transform .5s var(--pg-ease);
+/* --------------------------------------------------------------------------
+   TECHNOLOGY INDEX — the five technologies as a numbered editorial list
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-index{border-top:1px solid var(--pg-line)}
+.tp-hud-lp .pg-index__row{
+  position:relative;display:flex;align-items:baseline;gap:var(--s5);
+  padding:var(--s4) var(--s3);border-bottom:1px solid var(--pg-hair);overflow:hidden;
 }
-.tp-hud-lp .pg-card::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--pg-black);
-  transform:scaleX(0);transform-origin:left;transition:transform .55s var(--pg-ease);
+.tp-hud-lp .pg-index__row::before{
+  content:'';position:absolute;inset:0;background:var(--pg-blush);z-index:0;
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--pg-ease);
 }
-.tp-hud-lp .pg-card:hover{background:var(--pg-blush-deep);transform:translateY(-6px)}
-.tp-hud-lp .pg-card:hover::after{transform:scaleX(1)}
-.tp-hud-lp .pg-card__num{
-  display:block;font-family:var(--pg-display);font-size:12px;letter-spacing:.3em;
-  color:var(--pg-mute);margin-bottom:var(--s3);
+.tp-hud-lp .pg-index__row:hover::before{transform:scaleX(1)}
+.tp-hud-lp .pg-index__n,
+.tp-hud-lp .pg-index__name{position:relative;z-index:1}
+.tp-hud-lp .pg-index__n{
+  font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;color:var(--pg-mute);
+  flex:none;width:34px;
 }
+.tp-hud-lp .pg-index__name{
+  font-family:var(--pg-display);font-size:clamp(15px,1.6vw,21px);line-height:1.4;
+  letter-spacing:var(--pg-track-display);text-transform:uppercase;color:var(--pg-black);
+  transition:transform .6s var(--pg-ease);
+}
+.tp-hud-lp .pg-index__row:hover .pg-index__name{transform:translateX(12px)}
 
 /* technology diagrams */
 .tp-hud-lp .pg-diagram{text-align:center}
-.tp-hud-lp .pg-diagram img{
-  width:100%;max-width:210px;margin:0 auto;transition:transform .8s var(--pg-ease);
-}
-.tp-hud-lp .pg-diagram:hover img{transform:rotate(8deg) scale(1.06)}
+.tp-hud-lp .pg-diagram img{width:100%;max-width:156px;margin:0 auto;transition:transform .9s var(--pg-ease)}
+.tp-hud-lp .pg-diagram:hover img{transform:rotate(10deg) scale(1.07)}
 .tp-hud-lp .pg-diagram figcaption{
-  margin-top:var(--s4);font-size:11px;font-weight:500;letter-spacing:var(--pg-track-label);
+  margin-top:var(--s3);font-size:10px;font-weight:500;letter-spacing:var(--pg-track-label);
   text-transform:uppercase;color:var(--pg-grey);
+}
+
+/* a plain framed figure */
+.tp-hud-lp .pg-figure{position:relative;overflow:hidden;background:var(--pg-hair)}
+.tp-hud-lp .pg-figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--pg-ease)}
+.tp-hud-lp .pg-figure:hover img{transform:scale(1.05)}
+.tp-hud-lp .pg-figure--4x5{aspect-ratio:4/5}
+.tp-hud-lp .pg-figure--16x9{aspect-ratio:16/9}
+.tp-hud-lp .pg-figure__cap{
+  margin-top:var(--s3);font-size:10px;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-mute);
 }
 
 /* technology marquee — the no-JS answer to the site's carousel */
 .tp-hud-lp .pg-marquee{
-  position:relative;overflow:hidden;padding:var(--s4) 0;
+  position:relative;overflow:hidden;padding:var(--s3) 0;
   border-top:1px solid var(--pg-hair);border-bottom:1px solid var(--pg-hair);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
 }
 .tp-hud-lp .pg-marquee__track{display:flex;width:max-content}
-.tp-hud-lp .pg-marquee__row{
-  display:flex;align-items:center;gap:var(--s6);padding-right:var(--s6);flex:none;
-}
+.tp-hud-lp .pg-marquee__row{display:flex;align-items:center;gap:var(--s6);padding-right:var(--s6);flex:none}
 .tp-hud-lp .pg-marquee__row li{
-  font-family:var(--pg-display);font-size:clamp(15px,1.5vw,19px);
-  letter-spacing:var(--pg-track-display);text-transform:uppercase;color:var(--pg-black);
-  white-space:nowrap;
+  font-family:var(--pg-display);font-size:13px;letter-spacing:var(--pg-track-display);
+  text-transform:uppercase;color:var(--pg-mute);white-space:nowrap;
 }
 .tp-hud-lp .pg-marquee__row li::after{
-  content:'';display:inline-block;width:5px;height:5px;margin-left:var(--s6);
+  content:'';display:inline-block;width:4px;height:4px;margin-left:var(--s6);
   vertical-align:middle;background:var(--pg-blush-deep);
 }
 
-/* platform tiles */
+/* --------------------------------------------------------------------------
+   PLATFORM TILES — offset so the row reads as a composition, not a grid
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-plats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);align-items:start}
+.tp-hud-lp .pg-plats > *:nth-child(2){margin-top:var(--s5)}
+.tp-hud-lp .pg-plats > *:nth-child(3){margin-top:calc(var(--s5) * 2)}
 .tp-hud-lp .pg-plat__pic{
   aspect-ratio:4/3;background:var(--pg-white);border:1px solid var(--pg-hair);overflow:hidden;
 }
-.tp-hud-lp .pg-plat__pic img{
-  width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--pg-ease);
-}
+.tp-hud-lp .pg-plat__pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--pg-ease)}
 .tp-hud-lp .pg-plat:hover .pg-plat__pic img{transform:scale(1.07)}
 .tp-hud-lp .pg-plat__name{
   display:flex;align-items:center;gap:12px;margin-top:var(--s3);
-  font-family:var(--pg-ui);font-size:12px;font-weight:700;letter-spacing:.08em;
+  font-family:var(--pg-ui);font-size:11px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--pg-black);
 }
 
-/* dark band — the site's "BODY WISDOM" rhythm break */
-.tp-hud-lp .pg-dark-band{
-  position:relative;overflow:hidden;background:var(--pg-dark);color:rgba(255,255,255,.88);
+/* --------------------------------------------------------------------------
+   ROUTE CARDS — blush, with an oversized ghost numeral in the corner
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-card{
+  position:relative;background:var(--pg-blush);padding:var(--s6) var(--s5) var(--s7);
+  overflow:hidden;transition:background .55s var(--pg-ease),transform .55s var(--pg-ease);
 }
-.tp-hud-lp .pg-dark-band::before{
-  content:'';position:absolute;inset:-20%;
-  background:radial-gradient(60% 55% at 22% 32%, rgba(245,230,221,.20), transparent 70%),
-             radial-gradient(52% 48% at 82% 74%, rgba(245,230,221,.14), transparent 70%);
+.tp-hud-lp .pg-card::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--pg-black);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--pg-ease);
 }
-.tp-hud-lp .pg-dark-band > *{position:relative;z-index:1}
-.tp-hud-lp .pg-dark-band h2,
-.tp-hud-lp .pg-dark-band h3{color:var(--pg-white)}
-.tp-hud-lp .pg-dark-band .pg-body,
-.tp-hud-lp .pg-dark-band .pg-lede{color:rgba(255,255,255,.84)}
-.tp-hud-lp .pg-dark-band .pg-label{color:rgba(255,255,255,.6)}
-.tp-hud-lp .pg-dark-band .pg-ref{color:rgba(255,255,255,.55)}
+.tp-hud-lp .pg-card:hover{background:var(--pg-blush-deep);transform:translateY(-7px)}
+.tp-hud-lp .pg-card:hover::after{transform:scaleX(1)}
+.tp-hud-lp .pg-card__ghost{
+  position:absolute;right:-10px;bottom:-42px;z-index:0;
+  font-family:var(--pg-display);font-size:150px;line-height:1;letter-spacing:.02em;
+  color:rgba(0,0,0,.055);pointer-events:none;
+  transition:transform .7s var(--pg-ease),color .7s var(--pg-ease);
+}
+.tp-hud-lp .pg-card:hover .pg-card__ghost{transform:translateY(-8px);color:rgba(0,0,0,.085)}
+.tp-hud-lp .pg-card > *:not(.pg-card__ghost){position:relative;z-index:1}
 
 /* --------------------------------------------------------------------------
    PROCESS — a rule that draws itself across the three steps
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-steps{
-  position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);
-}
+.tp-hud-lp .pg-steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6)}
 .tp-hud-lp .pg-steps__line{
-  position:absolute;left:0;right:0;top:9px;height:1px;background:var(--pg-line);
+  position:absolute;left:0;right:0;top:11px;height:1px;background:var(--pg-line);
   transform:scaleX(0);transform-origin:left;
 }
-.tp-hud-lp .pg-step{position:relative;padding-top:var(--s5)}
+.tp-hud-lp .pg-step{position:relative;padding-top:var(--s6)}
 .tp-hud-lp .pg-step::before{
-  content:'';position:absolute;left:0;top:5px;width:9px;height:9px;background:var(--pg-black);
+  content:'';position:absolute;left:0;top:6px;width:11px;height:11px;background:var(--pg-black);
 }
 .tp-hud-lp .pg-step__num{
-  display:block;font-family:var(--pg-display);font-size:12px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--pg-mute);margin-bottom:var(--s2);
+  display:block;font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--pg-mute);margin-bottom:var(--s3);
+}
+.tp-hud-lp .pg-step__title{
+  font-family:var(--pg-display);font-size:clamp(16px,1.5vw,19px);line-height:1.4;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--pg-black);margin-bottom:var(--s3);
 }
 
 /* --------------------------------------------------------------------------
    FORM — underline-only fields, exactly like the contact form on the site
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-form-split{
-  display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--s8);align-items:start;
-}
+.tp-hud-lp .pg-form-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s8);align-items:start}
 .tp-hud-lp .pg-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5) var(--s6)}
 .tp-hud-lp .pg-field{display:block;position:relative}
 .tp-hud-lp .pg-field--full{grid-column:1 / -1}
@@ -447,7 +521,7 @@
 .tp-hud-lp .pg-field select,
 .tp-hud-lp .pg-field textarea{
   width:100%;height:42px;padding:0 0 8px;
-  border:0;border-bottom:1px solid var(--pg-line);border-radius:0;background:transparent;
+  border:0;border-bottom:1px solid rgba(0,0,0,.22);border-radius:0;background:transparent;
   font-family:var(--pg-ui);font-size:15px;line-height:1.8;letter-spacing:.02em;color:var(--pg-black);
   -webkit-appearance:none;appearance:none;
 }
@@ -482,23 +556,22 @@
 .tp-hud-lp .pg-form-actions{grid-column:1 / -1;margin-top:var(--s2)}
 .tp-hud-lp .pg-form-secondary{
   grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s4);
-  padding-top:var(--s4);border-top:1px solid var(--pg-line);
+  padding-top:var(--s4);border-top:1px solid rgba(0,0,0,.14);
 }
 
 /* --------------------------------------------------------------------------
-   FAQ — <details>, no JavaScript. Opens with a height transition where the
-   browser can interpolate to auto; elsewhere it simply snaps open.
+   FAQ — <details>, no JavaScript
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-faq{border-top:1px solid var(--pg-line)}
 .tp-hud-lp .pg-faq__item{border-bottom:1px solid var(--pg-hair)}
 .tp-hud-lp .pg-faq__q{
   display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
   padding:var(--s4) 0;cursor:pointer;list-style:none;
-  font-family:var(--pg-ui);font-size:14px;font-weight:600;line-height:1.6;
-  letter-spacing:.05em;text-transform:uppercase;color:var(--pg-black);
+  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--pg-black);
   transition:opacity .3s var(--pg-ease);
 }
-.tp-hud-lp .pg-faq__q:hover{opacity:.58}
+.tp-hud-lp .pg-faq__q:hover{opacity:.56}
 .tp-hud-lp .pg-faq__q::-webkit-details-marker{display:none}
 .tp-hud-lp .pg-faq__q::marker{content:''}
 .tp-hud-lp .pg-faq__icon{position:relative;width:16px;height:16px;flex:none}
@@ -509,10 +582,8 @@
 }
 .tp-hud-lp .pg-faq__icon::before{width:16px;height:1px}
 .tp-hud-lp .pg-faq__icon::after{width:1px;height:16px}
-.tp-hud-lp .pg-faq__item[open] .pg-faq__icon::after{
-  transform:translate(-50%,-50%) rotate(90deg);opacity:0;
-}
-.tp-hud-lp .pg-faq__a{padding:0 0 var(--s5);max-width:780px}
+.tp-hud-lp .pg-faq__item[open] .pg-faq__icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.tp-hud-lp .pg-faq__a{padding:0 0 var(--s5);max-width:760px}
 
 /* --------------------------------------------------------------------------
    REFERENCES + FOOTER
@@ -565,34 +636,44 @@
    support — or a visitor who asks for reduced motion — gets the whole page,
    static and complete.
    ========================================================================== */
-@keyframes pg-wipe-up{from{transform:translateY(105%)}to{transform:translateY(0)}}
-@keyframes pg-fade-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-@keyframes pg-drift{from{transform:scale(1.06)}to{transform:scale(1.16)}}
-@keyframes pg-grow{from{transform:scaleX(.08)}to{transform:scaleX(1)}}
+@keyframes pg-wipe-up{from{transform:translateY(106%)}to{transform:translateY(0)}}
+@keyframes pg-fade-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes pg-fade{from{opacity:0}to{opacity:1}}
+@keyframes pg-zoom-in{from{transform:scale(1.14)}to{transform:scale(1)}}
+@keyframes pg-drift{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+@keyframes pg-bar{from{transform:scaleY(.04)}to{transform:scaleY(1)}}
 @keyframes pg-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes pg-parallax{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
 @keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pg-cue{
+  0%{transform:translateY(-100%)}
+  55%{transform:translateY(240%)}
+  100%{transform:translateY(240%)}
+}
 
 @media (prefers-reduced-motion: no-preference){
 
   /* --- hero, on load ------------------------------------------------- */
-  .tp-hud-lp .pg-hero__media img{animation:pg-drift 26s var(--pg-ease) both}
-  .tp-hud-lp .pg-line > span{animation:pg-wipe-up .95s var(--pg-ease) both}
+  .tp-hud-lp .pg-hero__pic img{animation:pg-zoom-in 2.4s var(--pg-ease) both}
+  .tp-hud-lp .pg-hero__plane{animation:pg-rule 1.1s var(--pg-ease) .25s both;transform-origin:left}
+  .tp-hud-lp .pg-line > span{animation:pg-wipe-up 1s var(--pg-ease) both}
   .tp-hud-lp .pg-hero__kicker,
   .tp-hud-lp .pg-hero__deck,
   .tp-hud-lp .pg-hero__body,
   .tp-hud-lp .pg-hero__cta{animation:pg-fade-up .9s var(--pg-ease) both}
+  .tp-hud-lp .pg-cue{animation:pg-fade 1s var(--pg-ease) 1.2s both}
+  .tp-hud-lp .pg-cue::after{animation:pg-cue 2.6s var(--pg-ease) 1.4s infinite}
 
-  .tp-hud-lp .pg-hero__kicker{animation-delay:.10s}
-  .tp-hud-lp .pg-hero__title .pg-line:nth-child(1) > span{animation-delay:.22s}
-  .tp-hud-lp .pg-hero__title .pg-line:nth-child(2) > span{animation-delay:.32s}
-  .tp-hud-lp .pg-hero__title .pg-line:nth-child(3) > span{animation-delay:.42s}
-  .tp-hud-lp .pg-hero__deck{animation-delay:.56s}
-  .tp-hud-lp .pg-hero__body{animation-delay:.66s}
-  .tp-hud-lp .pg-hero__cta{animation-delay:.78s}
+  .tp-hud-lp .pg-hero__kicker{animation-delay:.12s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(1) > span{animation-delay:.24s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(2) > span{animation-delay:.34s}
+  .tp-hud-lp .pg-hero__title .pg-line:nth-child(3) > span{animation-delay:.44s}
+  .tp-hud-lp .pg-hero__deck{animation-delay:.60s}
+  .tp-hud-lp .pg-hero__body{animation-delay:.70s}
+  .tp-hud-lp .pg-hero__cta{animation-delay:.82s}
 
   /* --- the marquee never stops --------------------------------------- */
-  .tp-hud-lp .pg-marquee__track{animation:pg-marquee 34s linear infinite}
+  .tp-hud-lp .pg-marquee__track{animation:pg-marquee 38s linear infinite}
   .tp-hud-lp .pg-marquee:hover .pg-marquee__track{animation-play-state:paused}
 
   /* --- scroll-driven, where the browser has it ----------------------- */
@@ -600,34 +681,31 @@
 
     .tp-hud-lp .pg-reveal{
       animation:pg-fade-up linear both;
-      animation-timeline:view();
-      animation-range:entry 4% cover 26%;
+      animation-timeline:view();animation-range:entry 4% cover 26%;
     }
-    .tp-hud-lp .pg-stagger > *{
-      animation:pg-fade-up linear both;
-      animation-timeline:view();
-    }
+    .tp-hud-lp .pg-stagger > *{animation:pg-fade-up linear both;animation-timeline:view()}
     .tp-hud-lp .pg-stagger > *:nth-child(1){animation-range:entry 2% cover 24%}
     .tp-hud-lp .pg-stagger > *:nth-child(2){animation-range:entry 7% cover 29%}
     .tp-hud-lp .pg-stagger > *:nth-child(3){animation-range:entry 12% cover 34%}
     .tp-hud-lp .pg-stagger > *:nth-child(4){animation-range:entry 17% cover 39%}
     .tp-hud-lp .pg-stagger > *:nth-child(5){animation-range:entry 22% cover 44%}
 
-    .tp-hud-lp .pg-growth i{
-      animation:pg-grow linear both;
-      animation-timeline:view();
-      animation-range:entry 20% cover 48%;
+    .tp-hud-lp .pg-plot__col:nth-child(1) .pg-plot__stem{
+      animation:pg-bar linear both;animation-timeline:view();animation-range:entry 18% cover 46%;
+    }
+    .tp-hud-lp .pg-plot__col:nth-child(2) .pg-plot__stem{
+      animation:pg-bar linear both;animation-timeline:view();animation-range:entry 24% cover 56%;
     }
     .tp-hud-lp .pg-steps__line{
-      animation:pg-rule linear both;
-      animation-timeline:view();
-      animation-range:entry 14% cover 46%;
+      animation:pg-rule linear both;animation-timeline:view();animation-range:entry 16% cover 48%;
     }
-    /* the platform shots ride slightly against the scroll */
+    /* the band and tile photographs ride against the scroll */
+    .tp-hud-lp .pg-band__media img,
+    .tp-hud-lp .pg-noir-split__pic img{
+      animation:pg-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
+    }
     .tp-hud-lp .pg-plat__pic img{
-      animation:pg-parallax linear both;
-      animation-timeline:view();
-      animation-range:cover 0% cover 100%;
+      animation:pg-parallax linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
     }
   }
 }
@@ -660,33 +738,55 @@
 /* --------------------------------------------------------------------------
    RESPONSIVE
    -------------------------------------------------------------------------- */
+@media (max-width:1100px){
+  .tp-hud-lp .pg-head--split{grid-template-columns:1fr;gap:var(--s5)}
+  .tp-hud-lp .pg-chart{padding:var(--s6) var(--s5) var(--s5)}
+  .tp-hud-lp .pg-card__ghost{font-size:118px}
+}
 @media (max-width:1000px){
   .tp-hud-lp{--s7:70px;--s8:88px}
   .tp-hud-lp .pg-split,
+  .tp-hud-lp .pg-split--wide-right,
   .tp-hud-lp .pg-form-split{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-sticky{position:static}
   .tp-hud-lp .pg-grid--3{grid-template-columns:1fr}
+  .tp-hud-lp .pg-plats{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-plats > *:nth-child(2),
+  .tp-hud-lp .pg-plats > *:nth-child(3){margin-top:0}
   .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
   .tp-hud-lp .pg-steps__line{display:none}
-  .tp-hud-lp .pg-stat-panel{padding:var(--s5) var(--s4)}
-  .tp-hud-lp .pg-stats{grid-template-columns:1fr;gap:var(--s4)}
   .tp-hud-lp .pg-form-grid{grid-template-columns:1fr}
-  .tp-hud-lp .pg-hero__in{min-height:auto;padding:var(--s8) 0 var(--s7)}
-  .tp-hud-lp .pg-hero__media{left:0;width:100%}
-  .tp-hud-lp .pg-hero__media img{object-position:50% 26%}
-  /* the device fills the frame on a phone, so the scrim has to carry the whole
-     column rather than fade in from the top */
-  .tp-hud-lp .pg-hero__scrim{
-    background:linear-gradient(180deg, rgba(22,13,11,.76) 0%, rgba(22,13,11,.82) 45%, rgba(22,13,11,.90) 100%);
-  }
+  .tp-hud-lp .pg-plot{grid-template-columns:1fr 1fr;gap:var(--s5)}
+  .tp-hud-lp .pg-plot__col--cagr{grid-column:1 / -1;margin-top:var(--s5)}
+
+  /* hero stacks: photograph first, then the copy */
+  .tp-hud-lp .pg-hero{display:flex;flex-direction:column}
+  .tp-hud-lp .pg-hero__pic{position:relative;width:100%;height:auto;aspect-ratio:1/1;order:-1}
+  .tp-hud-lp .pg-hero__pic img{object-position:42% 50%}
+  .tp-hud-lp .pg-hero__pic::before{display:none}
+  .tp-hud-lp .pg-hero__plane{width:62%;height:30%}
+  .tp-hud-lp .pg-hero__in{min-height:0;padding:var(--s7) 0 var(--s8)}
+  .tp-hud-lp .pg-hero__copy{max-width:none}
+  .tp-hud-lp .pg-cue{display:none}
+
+  .tp-hud-lp .pg-noir-split__pic{position:relative;width:100%;aspect-ratio:16/9}
+  .tp-hud-lp .pg-noir-split__pic::before{display:none}
+  .tp-hud-lp .pg-noir-split__in{min-height:0;padding:var(--s7) 0}
+  .tp-hud-lp .pg-noir-split__copy{max-width:none}
+
   .tp-hud-lp .pg-logobar__in{height:66px}
   .tp-hud-lp .pg-logobar__mark{height:28px}
 }
 @media (max-width:620px){
   .tp-hud-lp{--pg-gutter:20px}
   .tp-hud-lp .pg-grid--2{grid-template-columns:1fr}
+  .tp-hud-lp .pg-plot{grid-template-columns:1fr}
+  .tp-hud-lp .pg-plot__col--cagr{margin-top:var(--s4)}
   .tp-hud-lp .pg-logobar__by{display:none}
   .tp-hud-lp .pg-btn{width:100%}
-  .tp-hud-lp .pg-card{padding:var(--s5) var(--s4)}
+  .tp-hud-lp .pg-card{padding:var(--s5) var(--s4) var(--s6)}
+  .tp-hud-lp .pg-card__ghost{font-size:96px;bottom:-26px}
+  .tp-hud-lp .pg-index__row{gap:var(--s4);padding:var(--s3) var(--s2)}
 }
 </style>
 
@@ -696,8 +796,7 @@
   <a class="pg-skip" href="#pg-form">Skip to the inquiry form</a>
 
   <!-- ======================================================================
-       LOGO BAR
-       Landing-page header: the mark only. No nav, no search.
+       LOGO BAR — the mark only. No nav, no search.
        ====================================================================== -->
   <header class="pg-logobar">
     <div class="pg-wrap">
@@ -716,12 +815,16 @@
        ====================================================================== -->
   <section class="pg-hero">
 
-    <div class="pg-hero__media">
-      <img src="assets/images/hero-device.webp"
-           alt="A TriPollar home-use radio frequency device photographed on a rose-toned set."
-           width="1100" height="1317" fetchpriority="high" decoding="async">
-    </div>
-    <div class="pg-hero__scrim" aria-hidden="true"></div>
+    <div class="pg-hero__plane" aria-hidden="true"></div>
+
+    <figure class="pg-hero__pic">
+      <picture>
+        <source media="(max-width: 1000px)" srcset="assets/images/hero-editorial-wide.webp" width="1500" height="791">
+        <img src="assets/images/hero-editorial.webp"
+             alt="A TriPollar home-use device on a studio table beside a model, photographed on a pale set."
+             width="1020" height="1150" fetchpriority="high" decoding="async">
+      </picture>
+    </figure>
 
     <div class="pg-wrap">
       <div class="pg-hero__in">
@@ -740,14 +843,14 @@
           <p class="pg-body pg-hero__body">Partner with TriPollar to create differentiated home-use beauty devices, from adapting an existing platform to developing a solution around your brand&rsquo;s ambitions. Bring together your consumer insight and brand identity with our aesthetic technology and development capabilities.</p>
 
           <div class="pg-hero__cta">
-            <a class="pg-link pg-link--light" href="#pg-form">Request the Partnership Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+            <a class="pg-link" href="#pg-form">Request the Partnership Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
             <!-- CTA 1 of 3 — anchors to the inquiry form on this page (per the copy doc). -->
             <p class="pg-note">CTA &rarr; anchor link to <code>#pg-form</code> further down this page. No external URL needed.</p>
           </div>
 
-
         </div>
       </div>
+      <span class="pg-cue" aria-hidden="true"></span>
     </div>
 
   </section>
@@ -755,75 +858,111 @@
   <!-- ======================================================================
        MARKET — the category case
        ====================================================================== -->
-  <section class="pg-section">
+  <section class="pg-section pg-paper">
     <div class="pg-wrap">
 
-      <div class="pg-head pg-center pg-reveal">
-        <span class="pg-label">The Opportunity</span>
-        <h2 class="pg-h2">A Growing Market. An Opportunity to Success.</h2>
-      </div>
-
-      <div class="pg-reveal pg-stat-panel">
-        <div class="pg-stats pg-stagger">
-          <div>
-            <div class="pg-stat__fig">$12.94B</div>
-            <div class="pg-stat__label">Market size, 2025</div>
-          </div>
-          <div>
-            <div class="pg-stat__fig">$21.85B</div>
-            <div class="pg-stat__label">Forecast, 2030</div>
-          </div>
-          <div>
-            <div class="pg-stat__fig">~11%</div>
-            <div class="pg-stat__label">CAGR</div>
-          </div>
+      <div class="pg-head pg-head--split pg-reveal">
+        <div>
+          <span class="pg-label">The Opportunity</span>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">A Growing Market. An Opportunity to Success.</h2>
         </div>
-        <div class="pg-growth" aria-hidden="true"><i></i></div>
-      </div>
-
-      <div class="pg-center pg-reveal" style="margin-top:var(--s7)">
-        <div class="pg-measure pg-stack">
+        <div class="pg-stack">
           <p class="pg-body">The Business Research Company estimates the global home-use beauty device market at <span class="pg-strong">$12.94 billion in 2025</span>, with growth to <span class="pg-strong">$21.85 billion by 2030</span> &mdash; approximately <span class="pg-strong">11% CAGR</span>.<a class="pg-ref" href="#pg-ref-1" id="pg-cite-1">[1]</a></p>
           <p class="pg-body">For brands entering or expanding in the category, differentiation begins with the <em class="pg-em">technology</em>, <em class="pg-em">evidence</em>, and <em class="pg-em">consumer experience behind the product.</em></p>
         </div>
+      </div>
+
+      <div class="pg-chart pg-reveal">
+        <div class="pg-plot">
+          <div class="pg-plot__col">
+            <div class="pg-plot__fig">$12.94B</div>
+            <div class="pg-plot__label">Market size, 2025</div>
+            <div class="pg-plot__stem" style="--h:112px"></div>
+          </div>
+          <div class="pg-plot__col">
+            <div class="pg-plot__fig">$21.85B</div>
+            <div class="pg-plot__label">Forecast, 2030</div>
+            <div class="pg-plot__stem" style="--h:189px"></div>
+          </div>
+          <div class="pg-plot__col pg-plot__col--cagr">
+            <div class="pg-plot__fig">~11%</div>
+            <div class="pg-plot__label">CAGR</div>
+          </div>
+        </div>
+        <p class="pg-chart__note">The Business Research Company &middot; Home-Use Beauty Devices Market Report 2026<a class="pg-ref" href="#pg-ref-1">[1]</a></p>
       </div>
 
     </div>
   </section>
 
   <!-- ======================================================================
-       TECHNOLOGY — what a partner builds on
+       TECHNOLOGY — opener band
        ====================================================================== -->
-  <section class="pg-section pg-smoke">
+  <section class="pg-band">
+    <div class="pg-band__media">
+      <img src="assets/images/collagen-matrix.webp"
+           alt="A three-dimensional render of a collagen-like matrix with illuminated connection points."
+           width="962" height="510" loading="lazy" decoding="async">
+    </div>
+    <div class="pg-band__scrim" aria-hidden="true"></div>
+    <div class="pg-wrap">
+      <div class="pg-band__in">
+        <span class="pg-label">Technology</span>
+        <h2 class="pg-h2" style="margin-top:var(--s4)">Technology to Build Around</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       TECHNOLOGY — the portfolio
+       ====================================================================== -->
+  <section class="pg-section pg-white">
     <div class="pg-wrap">
 
-      <div class="pg-head pg-center pg-reveal">
-        <span class="pg-label">Technology</span>
-        <h2 class="pg-h2">Technology to Build Around</h2>
-      </div>
+      <div class="pg-split pg-split--wide-right pg-split--top">
 
-      <div class="pg-split">
-        <div class="pg-stack pg-reveal">
-          <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
-          <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
+        <div class="pg-sticky">
+          <div class="pg-stack pg-reveal">
+            <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
+            <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
+          </div>
+          <div class="pg-grid pg-grid--2 pg-stagger" style="margin-top:var(--s7);max-width:380px">
+            <figure class="pg-diagram">
+              <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
+                   width="396" height="396" loading="lazy" decoding="async">
+              <figcaption>TriPollar RF</figcaption>
+            </figure>
+            <figure class="pg-diagram">
+              <img src="assets/images/tech-dma.webp" alt="Diagram of Dynamic Muscle Activation energy delivery."
+                   width="396" height="396" loading="lazy" decoding="async">
+              <figcaption>Dynamic Muscle Activation</figcaption>
+            </figure>
+          </div>
         </div>
 
-        <div class="pg-grid pg-grid--2 pg-grid--lg pg-stagger">
-          <figure class="pg-diagram">
-            <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
-                 width="396" height="396" loading="lazy" decoding="async">
-            <figcaption>TriPollar RF</figcaption>
-          </figure>
-          <figure class="pg-diagram">
-            <img src="assets/images/tech-dma.webp" alt="Diagram of Dynamic Muscle Activation energy delivery."
-                 width="396" height="396" loading="lazy" decoding="async">
-            <figcaption>Dynamic Muscle Activation</figcaption>
+        <div>
+          <ol class="pg-index pg-reveal">
+            <li class="pg-index__row"><span class="pg-index__n">01</span><span class="pg-index__name">TriPollar RF</span></li>
+            <li class="pg-index__row"><span class="pg-index__n">02</span><span class="pg-index__name">Dynamic Muscle Activation</span></li>
+            <li class="pg-index__row"><span class="pg-index__n">03</span><span class="pg-index__name">LED</span></li>
+            <li class="pg-index__row"><span class="pg-index__n">04</span><span class="pg-index__name">Galvanic Current</span></li>
+            <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__name">Electroporation</span></li>
+          </ol>
+
+          <figure class="pg-reveal" style="margin-top:var(--s6)">
+            <div class="pg-figure pg-figure--16x9">
+              <img src="assets/images/led-prism.webp"
+                   alt="A TriPollar LED eye device lit on a pale studio pedestal."
+                   width="1400" height="788" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="pg-figure__cap">TriPollar PRISM &middot; LED</figcaption>
           </figure>
         </div>
+
       </div>
 
       <!-- the five technologies named in the copy, on a slow loop -->
-      <div class="pg-marquee" style="margin-top:var(--s7)" aria-hidden="true">
+      <div class="pg-marquee" style="margin-top:var(--s8)" aria-hidden="true">
         <div class="pg-marquee__track">
           <ul class="pg-marquee__row">
             <li>TriPollar RF</li><li>Dynamic Muscle Activation</li><li>LED</li>
@@ -835,13 +974,12 @@
           </ul>
         </div>
       </div>
-      <p class="pg-sr">Home-use technologies: TriPollar RF, Dynamic Muscle Activation, LED, galvanic current, electroporation.</p>
 
       <!-- Platforms already in market — illustrative, not a catalogue.
            Product photography is Pollogen's own, taken from pollogen.com. -->
       <p class="pg-note pg-note--block" style="margin-top:var(--s7)">Platform row &mdash; these three are illustrative, pulled from pollogen.com. POL should confirm which platforms may be shown on a partnership page, since the copy deliberately keeps availability open.</p>
 
-      <ul class="pg-grid pg-grid--3 pg-stagger" style="margin-top:var(--s7)">
+      <ul class="pg-plats pg-stagger" style="margin-top:var(--s8)">
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx3.webp" alt="TriPollar STOP VX3 home-use device."
@@ -871,7 +1009,7 @@
   <!-- ======================================================================
        TECHNOLOGY — evidence band
        ====================================================================== -->
-  <section class="pg-section pg-section--tight pg-blush">
+  <section class="pg-section pg-section--tight pg-blush-bg">
     <div class="pg-wrap pg-center pg-reveal">
       <h2 class="pg-h2">Published Research. Specific Evidence.</h2>
       <div class="pg-tick" aria-hidden="true"></div>
@@ -884,12 +1022,13 @@
   <!-- ======================================================================
        TECHNOLOGY — regulatory grounding
        ====================================================================== -->
-  <section class="pg-section">
+  <section class="pg-section pg-paper">
     <div class="pg-wrap">
       <div class="pg-split pg-split--top">
         <div class="pg-reveal">
           <span class="pg-label">Regulatory</span>
-          <h3 class="pg-h3" style="margin-top:var(--s3)">Regulatory Experience From the Start</h3>
+          <h3 class="pg-h3" style="margin-top:var(--s4)">Regulatory Experience From the Start</h3>
+          <div class="pg-tick" aria-hidden="true"></div>
         </div>
         <div class="pg-stack pg-reveal">
           <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
@@ -901,15 +1040,25 @@
   </section>
 
   <!-- ======================================================================
-       TECHNOLOGY — development, on the dark band
+       TECHNOLOGY — development, against the RF photograph
        ====================================================================== -->
-  <section class="pg-section pg-dark-band">
-    <div class="pg-wrap pg-center pg-reveal">
-      <span class="pg-label">Development</span>
-      <h2 class="pg-h2" style="margin-top:var(--s3)">Development Built Around Commercial Priorities</h2>
-      <div class="pg-measure pg-stack" style="margin-top:var(--s5)">
-        <p class="pg-lede">Our partnership approach aligns product design, usability, testing, design-to-cost and production planning with your commercial objectives&mdash;from the initial brief through preparation for launch.</p>
-        <p class="pg-body">TriPollar is developed by Pollogen, a Lumenis company, connecting home-use beauty technology with a heritage of more than five decades in energy-based medical and aesthetic innovation.<a class="pg-ref" href="#pg-ref-4" id="pg-cite-4">[4]</a></p>
+  <section class="pg-noir-split">
+    <figure class="pg-noir-split__pic">
+      <img src="assets/images/rf-in-use.webp"
+           alt="A TriPollar home-use device held against the cheek, with the radio frequency field drawn as concentric arcs."
+           width="910" height="500" loading="lazy" decoding="async">
+    </figure>
+    <div class="pg-wrap">
+      <div class="pg-noir-split__in">
+        <div class="pg-noir-split__copy pg-reveal">
+          <span class="pg-label">Development</span>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">Development Built Around Commercial Priorities</h2>
+          <div class="pg-tick" aria-hidden="true"></div>
+          <div class="pg-stack">
+            <p class="pg-lede">Our partnership approach aligns product design, usability, testing, design-to-cost and production planning with your commercial objectives&mdash;from the initial brief through preparation for launch.</p>
+            <p class="pg-body">TriPollar is developed by Pollogen, a Lumenis company, connecting home-use beauty technology with a heritage of more than five decades in energy-based medical and aesthetic innovation.<a class="pg-ref" href="#pg-ref-4" id="pg-cite-4">[4]</a></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -917,29 +1066,29 @@
   <!-- ======================================================================
        ROUTES — the three partnership models
        ====================================================================== -->
-  <section class="pg-section">
+  <section class="pg-section pg-white">
     <div class="pg-wrap">
 
-      <div class="pg-head pg-center pg-reveal">
+      <div class="pg-head pg-head--center pg-reveal">
         <span class="pg-label">Partnership Models</span>
         <h2 class="pg-h2">Choose Your Route to Market</h2>
       </div>
 
       <ul class="pg-grid pg-grid--3 pg-stagger">
         <li class="pg-card">
-          <span class="pg-card__num">01</span>
+          <span class="pg-card__ghost" aria-hidden="true">01</span>
           <h3 class="pg-h3">Adapt an Existing Platform</h3>
           <div class="pg-tick" aria-hidden="true"></div>
           <p class="pg-body">Build on an established technology platform with branding and product adaptations suited to your market</p>
         </li>
         <li class="pg-card">
-          <span class="pg-card__num">02</span>
+          <span class="pg-card__ghost" aria-hidden="true">02</span>
           <h3 class="pg-h3">Customize a Solution</h3>
           <div class="pg-tick" aria-hidden="true"></div>
           <p class="pg-body">Explore changes to design, features, or technology combinations around a defined product proposition.</p>
         </li>
         <li class="pg-card">
-          <span class="pg-card__num">03</span>
+          <span class="pg-card__ghost" aria-hidden="true">03</span>
           <h3 class="pg-h3">Co-Develop a Device</h3>
           <div class="pg-tick" aria-hidden="true"></div>
           <p class="pg-body">Collaborate on a development program shaped by your consumer needs, technical requirements, and business objectives.</p>
@@ -954,10 +1103,10 @@
   <!-- ======================================================================
        PROCESS — how an engagement starts
        ====================================================================== -->
-  <section class="pg-section pg-smoke">
+  <section class="pg-section pg-paper">
     <div class="pg-wrap">
 
-      <div class="pg-head pg-center pg-reveal">
+      <div class="pg-head pg-head--center pg-reveal">
         <span class="pg-label">The Process</span>
         <h2 class="pg-h2">Start With Your Product Ambition</h2>
       </div>
@@ -965,15 +1114,18 @@
       <ol class="pg-steps pg-stagger">
         <span class="pg-steps__line" aria-hidden="true"></span>
         <li class="pg-step">
-          <span class="pg-step__num">01 &mdash; Share your brief</span>
+          <span class="pg-step__num">01</span>
+          <h3 class="pg-step__title">Share your brief</h3>
           <p class="pg-body">Tell us about your brand, target market, and product objectives.</p>
         </li>
         <li class="pg-step">
-          <span class="pg-step__num">02 &mdash; Assess the fit</span>
+          <span class="pg-step__num">02</span>
+          <h3 class="pg-step__title">Assess the fit</h3>
           <p class="pg-body">Explore the relevant technologies, development scope, and commercial requirements.</p>
         </li>
         <li class="pg-step">
-          <span class="pg-step__num">03 &mdash; Define the program</span>
+          <span class="pg-step__num">03</span>
+          <h3 class="pg-step__title">Define the program</h3>
           <p class="pg-body">Agree on the partnership structure, milestones and validation and regulatory approach.</p>
         </li>
       </ol>
@@ -993,15 +1145,21 @@
        Target market / region · Partnership interest (select) · Product
        objectives or message. Submit label: "Request the Partnership Overview".
        ====================================================================== -->
-  <section class="pg-section pg-blush pg-anchor" id="pg-form">
+  <section class="pg-section pg-blush-bg pg-anchor" id="pg-form">
     <div class="pg-wrap">
       <div class="pg-form-split">
 
         <div class="pg-reveal">
           <span class="pg-label">Get in touch</span>
-          <h2 class="pg-h2" style="margin-top:var(--s3)">Let&rsquo;s Develop Your Next Beauty Device</h2>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">Let&rsquo;s Develop Your Next Beauty Device</h2>
           <div class="pg-tick" aria-hidden="true"></div>
           <p class="pg-lede">Connect with our team to explore the technology and partnership model that fit YOUR BRAND</p>
+
+          <figure class="pg-figure pg-figure--4x5" style="margin-top:var(--s6)">
+            <img src="assets/images/stilllife-vx3.webp"
+                 alt="A TriPollar home-use device standing on a rose-toned set."
+                 width="900" height="1078" loading="lazy" decoding="async">
+          </figure>
         </div>
 
         <div class="pg-reveal">
@@ -1087,14 +1245,14 @@
   <!-- ======================================================================
        FAQ — <details> elements, no JavaScript
        ====================================================================== -->
-  <section class="pg-section">
+  <section class="pg-section pg-white">
     <div class="pg-wrap">
 
-      <div class="pg-head pg-center pg-reveal">
+      <div class="pg-head pg-head--center pg-reveal">
         <h2 class="pg-h2">Frequently Asked Questions</h2>
       </div>
 
-      <div class="pg-faq pg-reveal">
+      <div class="pg-faq pg-reveal" style="max-width:900px;margin:0 auto">
 
         <details class="pg-faq__item">
           <summary class="pg-faq__q">
@@ -1146,15 +1304,17 @@
   <!-- ======================================================================
        REFERENCES — the source notes behind the numbered claims above
        ====================================================================== -->
-  <section class="pg-wrap">
-    <div class="pg-refs">
-      <h2 class="pg-label" style="margin-bottom:var(--s3)">Sources</h2>
-      <ol>
-        <li id="pg-ref-1"><span>[1]</span><span>The Business Research Company, <em class="pg-em">Home-Use Beauty Devices Market Report 2026</em>. <a href="https://www.thebusinessresearchcompany.com/report/home-use-beauty-devices-global-market-report" rel="noopener nofollow" target="_blank">thebusinessresearchcompany.com</a> &mdash; publisher estimates and forecasts for a broad category including hair removal, cleansing and other devices; not the market size for home RF alone.</span></li>
-        <li id="pg-ref-2"><span>[2]</span><span>Pollogen technology and product descriptions: <a href="https://pollogen.com/products/tripollar-aura/" rel="noopener" target="_blank">TriPollar Aura</a>, <a href="https://pollogen.com/technologies/omnicurrent/" rel="noopener" target="_blank">OmniCurrent</a>. These establish manufacturer-described technology availability, not independent proof of every treatment claim.</span></li>
-        <li id="pg-ref-3"><span>[3]</span><span>FDA 510(k) K203665, STOP U Model UXV, Pollogen Ltd.; substantially equivalent decision dated 25 February 2021. <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K203665" rel="noopener nofollow" target="_blank">accessdata.fda.gov</a> &mdash; clearance is device- and indication-specific.</span></li>
-        <li id="pg-ref-4"><span>[4]</span><span>Pollogen / Lumenis: <a href="https://pollogen.com/" rel="noopener" target="_blank">pollogen.com</a>, <a href="https://lumenis.com/" rel="noopener" target="_blank">lumenis.com</a>.</span></li>
-      </ol>
+  <section class="pg-white">
+    <div class="pg-wrap">
+      <div class="pg-refs">
+        <h2 class="pg-label" style="margin-bottom:var(--s3)">Sources</h2>
+        <ol>
+          <li id="pg-ref-1"><span>[1]</span><span>The Business Research Company, <em class="pg-em">Home-Use Beauty Devices Market Report 2026</em>. <a href="https://www.thebusinessresearchcompany.com/report/home-use-beauty-devices-global-market-report" rel="noopener nofollow" target="_blank">thebusinessresearchcompany.com</a> &mdash; publisher estimates and forecasts for a broad category including hair removal, cleansing and other devices; not the market size for home RF alone.</span></li>
+          <li id="pg-ref-2"><span>[2]</span><span>Pollogen technology and product descriptions: <a href="https://pollogen.com/products/tripollar-aura/" rel="noopener" target="_blank">TriPollar Aura</a>, <a href="https://pollogen.com/technologies/omnicurrent/" rel="noopener" target="_blank">OmniCurrent</a>. These establish manufacturer-described technology availability, not independent proof of every treatment claim.</span></li>
+          <li id="pg-ref-3"><span>[3]</span><span>FDA 510(k) K203665, STOP U Model UXV, Pollogen Ltd.; substantially equivalent decision dated 25 February 2021. <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K203665" rel="noopener nofollow" target="_blank">accessdata.fda.gov</a> &mdash; clearance is device- and indication-specific.</span></li>
+          <li id="pg-ref-4"><span>[4]</span><span>Pollogen / Lumenis: <a href="https://pollogen.com/" rel="noopener" target="_blank">pollogen.com</a>, <a href="https://lumenis.com/" rel="noopener" target="_blank">lumenis.com</a>.</span></li>
+        </ol>
+      </div>
     </div>
   </section>
 
