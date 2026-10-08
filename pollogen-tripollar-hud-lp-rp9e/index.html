@@ -791,8 +791,10 @@
   .tp-hud-lp .pg-split--wide-right,
   .tp-hud-lp .pg-form-split{grid-template-columns:1fr;gap:var(--s6)}
   .tp-hud-lp .pg-sticky{position:static}
+  .tp-hud-lp .pg-form-split .pg-figure{max-width:520px}
   .tp-hud-lp .pg-grid--3{grid-template-columns:1fr}
-  .tp-hud-lp .pg-plats{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-plats{grid-template-columns:1fr;gap:var(--s6);justify-items:start}
+  .tp-hud-lp .pg-plats > *{width:100%;max-width:520px}
   .tp-hud-lp .pg-plats > *:nth-child(2),
   .tp-hud-lp .pg-plats > *:nth-child(3){margin-top:0}
   .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
@@ -863,7 +865,6 @@
     <div class="pg-hero__media">
       <picture>
         <source media="(max-width: 700px)" srcset="assets/images/hero-mob.webp" width="1100" height="791">
-        <source media="(max-width: 1400px)" srcset="assets/images/hero-1280.webp" width="1280" height="575">
         <img src="assets/images/hero.webp"
              alt="A TriPollar home-use device photographed against a soft rose-toned field."
              width="2560" height="1150" fetchpriority="high" decoding="async">
@@ -974,10 +975,10 @@
   <section class="pg-band pg-band--left">
     <div class="pg-band__media">
       <picture>
-        <source media="(max-width: 900px)" srcset="assets/images/tech-band-1200.webp" width="1200" height="576">
+        <source media="(max-width: 900px)" srcset="assets/images/tech-band-sm.webp" width="1600" height="768">
         <img src="assets/images/tech-band.webp"
              alt="A render of the TriPollar device head delivering radio frequency energy into a cross-section of skin."
-             width="2400" height="1151" loading="lazy" decoding="async">
+             width="2560" height="1228" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="pg-band__scrim" aria-hidden="true"></div>
@@ -1059,21 +1060,21 @@
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx3.webp" alt="TriPollar STOP VX3 home-use device."
-                 width="820" height="615" loading="lazy" decoding="async">
+                 width="700" height="525" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX3</p>
         </li>
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-pose-vx.webp" alt="TriPollar POSE VX home-use device and packaging."
-                 width="820" height="615" loading="lazy" decoding="async">
+                 width="1200" height="900" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
         </li>
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx2-gold.webp" alt="TriPollar STOP VX2 Gold home-use device and packaging."
-                 width="820" height="615" loading="lazy" decoding="async">
+                 width="1200" height="900" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX2 Gold</p>
         </li>
@@ -1088,10 +1089,10 @@
   <section class="pg-band pg-band--left">
     <div class="pg-band__media">
       <picture>
-        <source media="(max-width: 900px)" srcset="assets/images/macro-head-1200.webp" width="1200" height="576">
+        <source media="(max-width: 900px)" srcset="assets/images/macro-head-sm.webp" width="1600" height="768">
         <img src="assets/images/macro-head.webp"
              alt="A macro photograph of the TriPollar device's electrode head."
-             width="2400" height="1151" loading="lazy" decoding="async">
+             width="2560" height="1228" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="pg-band__scrim" aria-hidden="true"></div>
@@ -1254,7 +1255,7 @@
           <figure class="pg-figure pg-figure--4x5" style="margin-top:var(--s6)">
             <img src="assets/images/portrait-form.webp"
                  alt="A model laughing, photographed on a pale studio set."
-                 width="1100" height="990" loading="lazy" decoding="async">
+                 width="1200" height="1080" loading="lazy" decoding="async">
           </figure>
         </div>
 
