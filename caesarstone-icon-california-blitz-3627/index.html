@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICON California Blitz · Caesarstone × Noetic</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --bg:#141413; --fg:#f4f1ec; --accent:#E3592B; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; background:var(--bg); color:var(--fg); overflow:hidden;
+    font:12px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+  #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  .slide { position:absolute; width:min(100vw, calc(100vh * 16 / 9)); aspect-ratio:16/9;
+    opacity:0; transition:opacity .35s ease; pointer-events:none; }
+  .slide.on { opacity:1; pointer-events:auto; }
+  .slide img { width:100%; height:100%; display:block; user-select:none; -webkit-user-drag:none; }
+  #ui { position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
+    gap:14px; padding:14px; opacity:0; transition:opacity .3s; }
+  body:hover #ui, #ui:focus-within { opacity:1; }
+  #ui button { background:rgba(20,20,19,.75); color:var(--fg); border:1px solid rgba(244,241,236,.25);
+    width:36px; height:36px; border-radius:50%; font-size:16px; cursor:pointer; backdrop-filter:blur(6px); }
+  #ui button:hover { border-color:var(--accent); color:var(--accent); }
+  #count { background:rgba(20,20,19,.75); padding:7px 12px; border-radius:18px; letter-spacing:.08em;
+    font-variant-numeric:tabular-nums; backdrop-filter:blur(6px); }
+  #bar { position:fixed; left:0; top:0; height:2px; background:var(--accent); transition:width .35s ease; }
+  .nav { position:fixed; top:0; bottom:60px; width:30%; cursor:pointer; }
+  #prevZone { left:0; } #nextZone { right:0; }
+  @media print {
+    @page { size:1920px 1080px; margin:0; }
+    html,body { overflow:visible; height:auto; background:#fff; }
+    #ui,#bar,.nav { display:none; }
+    #stage { position:static; display:block; }
+    .slide { position:relative; width:1920px; opacity:1; page-break-after:always; break-after:page; }
+  }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage"></div>
+<div class="nav" id="prevZone" aria-hidden="true"></div>
+<div class="nav" id="nextZone" aria-hidden="true"></div>
+<div id="ui">
+  <button id="prev" aria-label="Previous slide">&#8592;</button>
+  <span id="count">01 / 23</span>
+  <button id="next" aria-label="Next slide">&#8594;</button>
+  <button id="fs" aria-label="Fullscreen">&#x26F6;</button>
+</div>
+<script>
+const SLIDES = [
+  ["01.jpg","ICON California Blitz. Campaign proposal, October 2026."],
+  ["02.png","01 Creative concept"],
+  ["03.png","ICON is proven. The colors are new."],
+  ["04.png","Designers don't specify colors. They specify atmospheres."],
+  ["05.png","The new palette already reads like California."],
+  ["06.png","The atmosphere is real because the material is different."],
+  ["07.png","California is Chapter One of the ICON Atlas."],
+  ["08.png","California, meet your new ICONs."],
+  ["09.png","California in the media plan. Inspiration in the feed."],
+  ["10.png","Ocean Sage. The Coastal Icon."],
+  ["11.png","Calacatta Dreamwave. The Free Spirit."],
+  ["12.png","Taj Whisper. The Quiet Icon."],
+  ["13.png","Coming. Meeting. Choosing."],
+  ["14.png","02 Paid media"],
+  ["15.png","Meta builds the moment. Google catches the intent."],
+  ["16.png","Weight in October, a steady tail through December."],
+  ["17.png","Phase 1. Pre-blitz."],
+  ["18.png","Phase 2. Blitz and showcase."],
+  ["19.png","Phase 3. Follow-up and pipeline."],
+  ["20.png","Phase 4. Ongoing California awareness."],
+  ["21.png","Organic content boosting."],
+  ["22.png","One more ad group, not one more campaign."],
+  ["23.png","Thank you. Set in Caesarstone."]
+];
+const stage = document.getElementById('stage');
+const els = SLIDES.map(([src, alt], i) => {
+  const d = document.createElement('div'); d.className = 'slide';
+  const img = document.createElement('img'); img.alt = alt; img.decoding = 'async';
+  img.dataset.src = 'assets/' + src; d.appendChild(img); stage.appendChild(d); return d;
+});
+const load = i => { const im = els[i] && els[i].firstChild; if (im && !im.src) im.src = im.dataset.src; };
+let cur = -1;
+function go(n) {
+  n = Math.max(0, Math.min(SLIDES.length - 1, n));
+  if (n === cur) return;
+  if (cur >= 0) els[cur].classList.remove('on');
+  cur = n; [n, n + 1, n + 2, n - 1].forEach(load);
+  els[n].classList.add('on');
+  document.getElementById('count').textContent =
+    String(n + 1).padStart(2, '0') + ' / ' + String(SLIDES.length).padStart(2, '0');
+  document.getElementById('bar').style.width = ((n + 1) / SLIDES.length * 100) + '%';
+  history.replaceState(null, '', '#' + (n + 1));
+}
+document.getElementById('prev').onclick = () => go(cur - 1);
+document.getElementById('next').onclick = () => go(cur + 1);
+document.getElementById('prevZone').onclick = () => go(cur - 1);
+document.getElementById('nextZone').onclick = () => go(cur + 1);
+document.getElementById('fs').onclick = () =>
+  document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+addEventListener('keydown', e => {
+  if (['ArrowRight','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+  else if (['ArrowLeft','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+  else if (e.key === 'Home') go(0);
+  else if (e.key === 'End') go(SLIDES.length - 1);
+  else if (e.key === 'f' || e.key === 'F') document.getElementById('fs').click();
+});
+let tx = null;
+addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+addEventListener('touchend', e => {
+  if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1));
+});
+addEventListener('beforeprint', () => els.forEach((_, i) => load(i)));
+addEventListener('hashchange', () => go((parseInt(location.hash.slice(1)) || 1) - 1));
+go((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+</body>
+</html>
