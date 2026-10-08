@@ -440,19 +440,20 @@
    one object, so nothing floats in white space.
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-board{background:var(--pg-white);border:1px solid var(--pg-hair)}
-.tp-hud-lp .pg-board__head{
-  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7);
-  align-items:center;padding:var(--s6) var(--s6) var(--s6);
-}
-.tp-hud-lp .pg-board__copy{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
-.tp-hud-lp .pg-board__marks{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+.tp-hud-lp .pg-board__head{padding:var(--s6)}
+.tp-hud-lp .pg-board__copy{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7)}
 
 /* the numbered index */
 .tp-hud-lp .pg-index{border-top:1px solid var(--pg-hair)}
 .tp-hud-lp .pg-index__row{
-  position:relative;display:flex;align-items:baseline;gap:var(--s5);
+  position:relative;display:flex;align-items:center;gap:var(--s4);
   padding:var(--s4) var(--s6);border-bottom:1px solid var(--pg-hair);overflow:hidden;
 }
+.tp-hud-lp .pg-index__mark{position:relative;z-index:1;flex:none;width:58px;height:58px}
+.tp-hud-lp .pg-index__mark img{
+  width:100%;height:100%;object-fit:contain;transition:transform .8s var(--pg-ease);
+}
+.tp-hud-lp .pg-index__row:hover .pg-index__mark img{transform:rotate(-14deg) scale(1.1)}
 .tp-hud-lp .pg-index__row:last-child{border-bottom:0}
 .tp-hud-lp .pg-index__rule{
   position:relative;z-index:1;flex:1;height:1px;background:var(--pg-hair);
@@ -474,7 +475,7 @@
 .tp-hud-lp .pg-index__name{position:relative;z-index:1}
 .tp-hud-lp .pg-index__n{
   font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;color:var(--pg-mute);
-  flex:none;width:34px;
+  flex:none;width:30px;
 }
 .tp-hud-lp .pg-index__name{
   font-family:var(--pg-display);font-size:clamp(15px,1.6vw,21px);line-height:1.4;
@@ -1180,26 +1181,14 @@
             <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
             <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
           </div>
-          <div class="pg-board__marks pg-stagger">
-            <figure class="pg-diagram">
-              <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
-                   width="396" height="396" loading="lazy" decoding="async">
-              <figcaption>TriPollar RF</figcaption>
-            </figure>
-            <figure class="pg-diagram">
-              <img src="assets/images/tech-dma.webp" alt="Diagram of Dynamic Muscle Activation energy delivery."
-                   width="396" height="396" loading="lazy" decoding="async">
-              <figcaption>Dynamic Muscle Activation</figcaption>
-            </figure>
-          </div>
         </div>
 
-        <ol class="pg-index">
-          <li class="pg-index__row"><span class="pg-index__n">01</span><span class="pg-index__name">TriPollar RF</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
-          <li class="pg-index__row"><span class="pg-index__n">02</span><span class="pg-index__name">Dynamic Muscle Activation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
-          <li class="pg-index__row"><span class="pg-index__n">03</span><span class="pg-index__name">LED</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
-          <li class="pg-index__row"><span class="pg-index__n">04</span><span class="pg-index__name">Galvanic Current</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
-          <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__name">Electroporation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+        <ol class="pg-index pg-stagger">
+          <li class="pg-index__row"><span class="pg-index__n">01</span><span class="pg-index__mark"><img src="assets/images/mark-rf.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span><span class="pg-index__name">TriPollar RF</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">02</span><span class="pg-index__mark"><img src="assets/images/mark-dma.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span><span class="pg-index__name">Dynamic Muscle Activation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">03</span><span class="pg-index__mark"><img src="assets/images/mark-led.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span><span class="pg-index__name">LED</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">04</span><span class="pg-index__mark"><img src="assets/images/mark-omnicurrent.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span><span class="pg-index__name">Galvanic Current</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__mark"><img src="assets/images/mark-omnicurrent.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span><span class="pg-index__name">Electroporation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
         </ol>
 
       </div>
@@ -1221,6 +1210,8 @@
       <!-- Platforms already in market — illustrative, not a catalogue.
            Photography is Pollogen's own; each frame is taken from that product's
            own page on pollogen.com. -->
+      <p class="pg-note pg-note--block">Technology marks &mdash; Pollogen publishes an icon for TriPollar RF, DMA and LED. <span class="pg-strong">Galvanic current and electroporation have no mark of their own:</span> the site presents both as components of OmniCurrent, so both rows carry the OmniCurrent icon. POL would need to supply dedicated art to split them.</p>
+
       <p class="pg-note pg-note--block" style="margin-top:var(--s7)">Platform rail &mdash; illustrative, not a catalogue. Each frame comes from that product&rsquo;s own page on pollogen.com, but <span class="pg-strong">POL should confirm both the selection and the product names</span>, since the copy deliberately keeps availability open.</p>
 
       <div class="pg-railwrap pg-reveal" style="margin-top:var(--s8)">
