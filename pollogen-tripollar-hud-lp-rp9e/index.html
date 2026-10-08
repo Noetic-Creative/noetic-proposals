@@ -299,40 +299,60 @@
 }
 
 /* --------------------------------------------------------------------------
-   MARKET CHART — the 11% trajectory from 2025 to 2030, drawn as an area
+   MARKET CHART - the 11% trajectory from 2025 to 2030, drawn as an area with
+   each value labelled at the point it belongs to.
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-chart{background:var(--pg-blush);padding:var(--s7) var(--s7) var(--s6)}
-.tp-hud-lp .pg-chart__head{
-  display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);align-items:start;
-  margin-bottom:var(--s6);
+.tp-hud-lp .pg-chart__top{
+  display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);align-items:baseline;
+  padding-bottom:var(--s4);margin-bottom:var(--s7);border-bottom:1px solid rgba(0,0,0,.16);
 }
-.tp-hud-lp .pg-chart__fig{
-  font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(28px,3.6vw,46px);line-height:1;letter-spacing:.03em;color:var(--pg-black);
-}
-.tp-hud-lp .pg-chart__cap{
-  display:block;margin-top:12px;font-size:10px;letter-spacing:var(--pg-track-label);
+.tp-hud-lp .pg-chart__eyebrow{
+  font-family:var(--pg-ui);font-size:10px;font-weight:500;letter-spacing:var(--pg-track-label);
   text-transform:uppercase;color:var(--pg-grey);
 }
-.tp-hud-lp .pg-chart__head > *:last-child{text-align:right}
-.tp-hud-lp .pg-chart__plot{position:relative;width:100%}
-.tp-hud-lp .pg-chart__plot svg{width:100%;height:auto;display:block;overflow:visible}
-.tp-hud-lp .pg-chart__grid line{stroke:rgba(0,0,0,.14);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 4}
-.tp-hud-lp .pg-chart__base{stroke:rgba(0,0,0,.5);stroke-width:1;vector-effect:non-scaling-stroke}
-.tp-hud-lp .pg-chart__tick{stroke:rgba(0,0,0,.5);stroke-width:1;vector-effect:non-scaling-stroke}
-.tp-hud-lp .pg-chart__area{fill:url(#pgAreaFill)}
-/* the growth rate annotated where it happens, on the slope */
 .tp-hud-lp .pg-chart__badge{
-  position:absolute;left:41%;top:48%;z-index:2;background:var(--pg-blush);
-  padding:9px 16px;border:1px solid rgba(0,0,0,.3);
-  font-family:var(--pg-display);font-size:12px;letter-spacing:.1em;
+  padding:7px 14px;border:1px solid rgba(0,0,0,.3);
+  font-family:var(--pg-display);font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--pg-black);white-space:nowrap;
 }
+
+.tp-hud-lp .pg-chart__plot{width:100%}
+/* the labels resolve their percentages against the SVG alone, not against
+   the plot box, which also holds the year row */
+.tp-hud-lp .pg-chart__frame{position:relative;width:100%}
+.tp-hud-lp .pg-chart__plot svg{width:100%;height:auto;display:block}
+.tp-hud-lp .pg-chart__grid line{
+  stroke:rgba(0,0,0,.13);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 5;
+}
+.tp-hud-lp .pg-chart__drop{
+  stroke:rgba(0,0,0,.3);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 4;
+}
+.tp-hud-lp .pg-chart__base{stroke:rgba(0,0,0,.55);stroke-width:1;vector-effect:non-scaling-stroke}
+.tp-hud-lp .pg-chart__tick{stroke:rgba(0,0,0,.3);stroke-width:1;vector-effect:non-scaling-stroke}
+.tp-hud-lp .pg-chart__tick--end{stroke:rgba(0,0,0,.6)}
+.tp-hud-lp .pg-chart__area{fill:url(#pgAreaFill)}
 .tp-hud-lp .pg-chart__line{
-  fill:none;stroke:var(--pg-black);stroke-width:2;vector-effect:non-scaling-stroke;
+  fill:none;stroke:var(--pg-black);stroke-width:2.5;vector-effect:non-scaling-stroke;
   stroke-linejoin:round;stroke-linecap:round;
 }
 .tp-hud-lp .pg-chart__dot{fill:var(--pg-black)}
+.tp-hud-lp .pg-chart__ring{
+  fill:none;stroke:var(--pg-black);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.35;
+}
+
+/* each value sits at its own point rather than in a detached header */
+.tp-hud-lp .pg-chart__pt{position:absolute;z-index:2}
+.tp-hud-lp .pg-chart__pt--a{left:0;top:51.4%;transform:translateY(-132%)}
+.tp-hud-lp .pg-chart__pt--b{right:0;top:26.1%;transform:translateY(-132%);text-align:right}
+.tp-hud-lp .pg-chart__fig{
+  font-family:var(--pg-display);font-weight:400;
+  font-size:clamp(26px,3.2vw,42px);line-height:1;letter-spacing:.03em;color:var(--pg-black);
+}
+.tp-hud-lp .pg-chart__cap{
+  display:block;margin-top:10px;font-size:10px;letter-spacing:var(--pg-track-label);
+  text-transform:uppercase;color:var(--pg-grey);
+}
 .tp-hud-lp .pg-chart__years{
   display:flex;justify-content:space-between;margin-top:var(--s3);padding:0 1.3%;
   font-size:10px;letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-grey);
@@ -844,22 +864,24 @@
     .tp-hud-lp .pg-stagger > *:nth-child(4){animation-range:entry 17% cover 39%}
     .tp-hud-lp .pg-stagger > *:nth-child(5){animation-range:entry 22% cover 44%}
 
-    /* the chart builds itself: baseline, then the area wipes in under the
-       curve as the curve draws, then the two end points land */
+    /* the chart finishes building while it is still arriving, so it is never
+       caught half-drawn at a resting scroll position */
     .tp-hud-lp .pg-chart__line{
-      stroke-dasharray:900;stroke-dashoffset:900;
-      animation:pg-draw linear both;animation-timeline:view();animation-range:entry 14% cover 52%;
+      stroke-dasharray:3000;stroke-dashoffset:3000;
+      animation:pg-draw linear both;animation-timeline:view();animation-range:entry 5% entry 55%;
     }
     .tp-hud-lp .pg-chart__area{
-      animation:pg-wipe-right linear both;animation-timeline:view();animation-range:entry 14% cover 52%;
+      animation:pg-wipe-right linear both;animation-timeline:view();animation-range:entry 5% entry 55%;
     }
-    .tp-hud-lp .pg-chart__dot{
+    .tp-hud-lp .pg-chart__dot,
+    .tp-hud-lp .pg-chart__ring{
       transform-box:fill-box;transform-origin:center;
       animation:pg-pop linear both;animation-timeline:view();
     }
-    .tp-hud-lp .pg-chart__dot--a{animation-range:entry 18% cover 30%}
-    .tp-hud-lp .pg-chart__dot--b{animation-range:entry 40% cover 56%}
-
+    .tp-hud-lp .pg-chart__dot--a,
+    .tp-hud-lp .pg-chart__ring--a{animation-range:entry 14% entry 32%}
+    .tp-hud-lp .pg-chart__dot--b,
+    .tp-hud-lp .pg-chart__ring--b{animation-range:entry 44% entry 60%}
     .tp-hud-lp .pg-steps__line{
       animation:pg-rule linear both;animation-timeline:view();animation-range:entry 16% cover 48%;
     }
@@ -934,8 +956,6 @@
   .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
   .tp-hud-lp .pg-steps__line{display:none}
   .tp-hud-lp .pg-form-grid{grid-template-columns:1fr}
-  .tp-hud-lp .pg-chart__head{gap:var(--s4)}
-  .tp-hud-lp .pg-chart__badge{left:auto;right:0;top:-14%}
 
   .tp-hud-lp .pg-hero{display:flex;flex-direction:column;background:var(--pg-paper)}
   .tp-hud-lp .pg-hero__media{position:relative;inset:auto;width:100%;aspect-ratio:4/3;order:-1}
@@ -956,8 +976,6 @@
 @media (max-width:620px){
   .tp-hud-lp{--pg-gutter:20px}
   .tp-hud-lp .pg-grid--2{grid-template-columns:1fr}
-  .tp-hud-lp .pg-chart__head{grid-template-columns:1fr;gap:var(--s4)}
-  .tp-hud-lp .pg-chart__head > *:last-child{text-align:left}
   .tp-hud-lp .pg-chart__line{stroke-width:3}
   .tp-hud-lp .pg-chart__dot{transform:scale(1.5);transform-box:fill-box;transform-origin:center}
   .tp-hud-lp .pg-chart__grid{display:none}
@@ -1057,46 +1075,68 @@
 
       <figure class="pg-chart pg-reveal">
 
-        <div class="pg-chart__head">
-          <div>
-            <div class="pg-chart__fig">$12.94B</div>
-            <span class="pg-chart__cap">Market size, 2025</span>
-          </div>
-          <div>
-            <div class="pg-chart__fig">$21.85B</div>
-            <span class="pg-chart__cap">Forecast, 2030</span>
-          </div>
+        <div class="pg-chart__top">
+          <span class="pg-chart__eyebrow">Global home-use beauty device market</span>
+          <span class="pg-chart__badge">~11% CAGR</span>
         </div>
 
         <!-- the curve is the stated 11% CAGR applied year on year from the 2025
-             figure; it lands on the 2030 figure. Scale runs 0 to $24B. -->
+             figure; it lands on the 2030 figure. The scale runs from zero. -->
         <div class="pg-chart__plot">
+          <div class="pg-chart__frame">
           <svg viewBox="0 0 600 190" preserveAspectRatio="xMidYMid meet" role="img"
-               aria-label="Area chart: the home-use beauty device market growing from 12.94 billion dollars in 2025 to 21.85 billion dollars in 2030 at about 11 percent a year.">
+               aria-label="Area chart: the global home-use beauty device market growing from 12.94 billion dollars in 2025 to 21.85 billion dollars in 2030, about 11 percent a year.">
             <defs>
               <linearGradient id="pgAreaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#000" stop-opacity=".17"></stop>
-                <stop offset="1" stop-color="#000" stop-opacity=".02"></stop>
+                <stop offset="0" stop-color="#2A1410" stop-opacity=".26"></stop>
+                <stop offset="1" stop-color="#2A1410" stop-opacity=".02"></stop>
               </linearGradient>
             </defs>
+
             <g class="pg-chart__grid">
               <line x1="8" y1="130" x2="592" y2="130"></line>
               <line x1="8" y1="92"  x2="592" y2="92"></line>
               <line x1="8" y1="54"  x2="592" y2="54"></line>
             </g>
+
             <path class="pg-chart__area"
-                  d="M8,86.1 L124.8,77 L241.6,67 L358.4,55.9 L475.2,43.6 L592,29.9 L592,168 L8,168 Z"></path>
+                  d="M8,97.75 L124.8,90.03 L241.6,81.45 L358.4,71.93 L475.2,61.36 L592,49.63 L592,168 L8,168 Z"></path>
             <path class="pg-chart__line"
-                  d="M8,86.1 L124.8,77 L241.6,67 L358.4,55.9 L475.2,43.6 L592,29.9"></path>
+                  d="M8,97.75 L124.8,90.03 L241.6,81.45 L358.4,71.93 L475.2,61.36 L592,49.63"></path>
+
+            <g class="pg-chart__drop">
+              <line x1="8"   y1="97.75" x2="8"   y2="168"></line>
+              <line x1="592" y1="49.63" x2="592" y2="168"></line>
+            </g>
+
             <line class="pg-chart__base" x1="8" y1="168" x2="592" y2="168"></line>
             <g class="pg-chart__tick">
-              <line x1="8"   y1="168" x2="8"   y2="175"></line>
-              <line x1="592" y1="168" x2="592" y2="175"></line>
+              <line x1="124.8" y1="168" x2="124.8" y2="174"></line>
+              <line x1="241.6" y1="168" x2="241.6" y2="174"></line>
+              <line x1="358.4" y1="168" x2="358.4" y2="174"></line>
+              <line x1="475.2" y1="168" x2="475.2" y2="174"></line>
             </g>
-            <rect class="pg-chart__dot pg-chart__dot--a" x="3"   y="81.1" width="10" height="10"></rect>
-            <rect class="pg-chart__dot pg-chart__dot--b" x="587" y="24.9" width="10" height="10"></rect>
+            <g class="pg-chart__tick pg-chart__tick--end">
+              <line x1="8"   y1="168" x2="8"   y2="178"></line>
+              <line x1="592" y1="168" x2="592" y2="178"></line>
+            </g>
+
+            <rect class="pg-chart__ring pg-chart__ring--a" x="-1" y="88.75" width="18" height="18"></rect>
+            <rect class="pg-chart__ring pg-chart__ring--b" x="583" y="40.63" width="18" height="18"></rect>
+            <rect class="pg-chart__dot pg-chart__dot--a" x="3"   y="92.75" width="10" height="10"></rect>
+            <rect class="pg-chart__dot pg-chart__dot--b" x="587" y="44.63" width="10" height="10"></rect>
           </svg>
-          <span class="pg-chart__badge">~11% CAGR</span>
+
+          <div class="pg-chart__pt pg-chart__pt--a">
+            <div class="pg-chart__fig">$12.94B</div>
+            <span class="pg-chart__cap">Market size, 2025</span>
+          </div>
+          <div class="pg-chart__pt pg-chart__pt--b">
+            <div class="pg-chart__fig">$21.85B</div>
+            <span class="pg-chart__cap">Forecast, 2030</span>
+          </div>
+          </div>
+
           <div class="pg-chart__years"><span>2025</span><span>2030</span></div>
         </div>
 
@@ -1226,11 +1266,32 @@
         <div class="pg-rail__foot">
           <div class="pg-rail__bar" aria-hidden="true"><i></i></div>
           <nav class="pg-rail__nav" aria-label="Platform rail">
-            <a class="pg-rail__arrow pg-rail__arrow--prev" href="#pg-plat-1"><span aria-hidden="true">&#8592;</span><span class="pg-sr">Back to the first platform</span></a>
-            <a class="pg-rail__arrow pg-rail__arrow--next" href="#pg-plat-5"><span aria-hidden="true">&#8594;</span><span class="pg-sr">Forward to the last platform</span></a>
+            <a class="pg-rail__arrow pg-rail__arrow--prev" href="#pg-plat-1" data-pg-dir="prev"><span aria-hidden="true">&#8592;</span><span class="pg-sr">Back to the first platform</span></a>
+            <a class="pg-rail__arrow pg-rail__arrow--next" href="#pg-plat-5" data-pg-dir="next"><span aria-hidden="true">&#8594;</span><span class="pg-sr">Forward to the last platform</span></a>
           </nav>
         </div>
       </div>
+
+      <!-- The ONLY script on the page, and nothing depends on it. The arrows
+           above are real anchors that already scroll the rail on their own;
+           this just upgrades them to step one screen at a time instead of
+           jumping to the ends, and stops the page moving with them. If
+           WordPress strips this tag the arrows keep working. -->
+      <script>
+      (function () {
+        var wrap = document.querySelector('.tp-hud-lp .pg-railwrap');
+        if (!wrap) return;
+        var rail = wrap.querySelector('.pg-rail');
+        if (!rail || typeof rail.scrollBy !== 'function') return;
+        Array.prototype.forEach.call(wrap.querySelectorAll('.pg-rail__arrow'), function (a) {
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var dir = a.getAttribute('data-pg-dir') === 'prev' ? -1 : 1;
+            rail.scrollBy({ left: dir * rail.clientWidth * 0.82, behavior: 'smooth' });
+          });
+        });
+      })();
+      </script>
 
     </div>
   </section>
