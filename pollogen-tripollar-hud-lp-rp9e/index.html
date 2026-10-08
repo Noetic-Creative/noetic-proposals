@@ -84,7 +84,7 @@
   --pg-blush:#F5E6DD;          /* the signature Pollogen surface */
   --pg-blush-deep:#EBD6C9;
   --pg-paper:#FAF8F7;          /* warm off-white — the page ground */
-  --pg-noir:#070706;           /* matches the black in the RF photograph */
+  --pg-noir:#06080A;           /* matches the black in the LED render */
   --pg-white:#FFFFFF;
 
   --pg-display:'Codec Warm Trial','TPH Codec Cold','Montserrat',sans-serif;
@@ -103,6 +103,7 @@
   font-size:15px;font-weight:400;line-height:1.9;letter-spacing:.02em;
   color:var(--pg-ink);background:var(--pg-paper);
   -webkit-font-smoothing:antialiased;text-align:left;
+  position:relative;
 }
 
 /* scoped reset — never leaves the wrapper */
@@ -138,6 +139,12 @@
 .tp-hud-lp .pg-center{text-align:center}
 .tp-hud-lp .pg-measure{max-width:640px}
 .tp-hud-lp .pg-center .pg-measure{margin-left:auto;margin-right:auto}
+
+/* reading progress — a hairline across the very top of the page */
+.tp-hud-lp .pg-progress{
+  position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;
+  background:var(--pg-black);transform:scaleX(0);transform-origin:left;pointer-events:none;
+}
 
 /* --------------------------------------------------------------------------
    TYPE — uppercase Codec with wide tracking is the whole signature
@@ -233,43 +240,36 @@
 }
 
 /* --------------------------------------------------------------------------
-   HERO — an editorial split. Copy on paper, the photograph bleeding off the
-   right edge, a blush plane behind the copy and a scroll cue on the baseline.
+   HERO — the full frame of the product photograph, used at its own aspect so
+   nothing is thrown away, with a light veil carrying dark type on the left.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:var(--pg-paper)}
-.tp-hud-lp .pg-hero__pic{
-  position:absolute;top:0;right:0;bottom:0;width:47%;overflow:hidden;background:#DEDCD8;
-}
-.tp-hud-lp .pg-hero__pic picture{display:block;width:100%;height:100%}
-.tp-hud-lp .pg-hero__pic img{width:100%;height:100%;object-fit:cover;object-position:56% 50%}
-/* the photograph's own light wall, carried a little way into the copy column
-   so the two halves read as one plate rather than two blocks */
-.tp-hud-lp .pg-hero__pic::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:22%;z-index:1;
-  background:linear-gradient(90deg, var(--pg-paper) 0%, rgba(250,248,247,0) 100%);
-}
-/* a blush plane bleeding off the left edge, behind the copy */
-.tp-hud-lp .pg-hero__plane{
-  position:absolute;left:0;bottom:0;width:36%;height:46%;background:var(--pg-blush);z-index:0;
+.tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:#E3D2CC}
+.tp-hud-lp .pg-hero__media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.tp-hud-lp .pg-hero__media img{width:100%;height:100%;object-fit:cover;object-position:20% 50%}
+.tp-hud-lp .pg-hero__veil{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(95deg,
+    rgba(250,248,247,.96) 0%, rgba(250,248,247,.93) 22%,
+    rgba(250,248,247,.74) 36%, rgba(250,248,247,.22) 50%, rgba(250,248,247,0) 62%);
 }
 .tp-hud-lp .pg-hero__in{
   position:relative;z-index:2;
-  min-height:clamp(620px,88vh,900px);
+  min-height:clamp(600px,86vh,880px);
   display:flex;flex-direction:column;justify-content:center;
   padding:var(--s8) 0;
 }
-.tp-hud-lp .pg-hero__copy{max-width:54%}
+.tp-hud-lp .pg-hero__copy{max-width:660px}
 .tp-hud-lp .pg-hero__kicker{margin-bottom:var(--s5)}
 .tp-hud-lp .pg-hero__title{
   font-family:var(--pg-display);font-weight:400;color:var(--pg-black);
-  font-size:clamp(27px,3.5vw,46px);line-height:1.24;
+  font-size:clamp(26px,3.2vw,42px);line-height:1.26;
   letter-spacing:var(--pg-track-display);text-transform:uppercase;
 }
 .tp-hud-lp .pg-hero__deck{
   margin-top:var(--s5);font-size:clamp(15px,1.4vw,18px);line-height:1.7;
   letter-spacing:.04em;color:var(--pg-black);max-width:24em;
 }
-.tp-hud-lp .pg-hero__body{margin-top:var(--s4);max-width:32em;color:var(--pg-grey)}
+.tp-hud-lp .pg-hero__body{margin-top:var(--s4);max-width:30em;color:var(--pg-grey)}
 .tp-hud-lp .pg-hero__cta{margin-top:var(--s6)}
 
 /* each hero line sits in a mask and wipes up */
@@ -292,76 +292,94 @@
 .tp-hud-lp .pg-head--center{max-width:880px;margin-left:auto;margin-right:auto;text-align:center}
 .tp-hud-lp .pg-head .pg-label{margin-bottom:var(--s4)}
 .tp-hud-lp .pg-head .pg-lede{margin-top:var(--s4)}
-
-/* a two-column head: label + title left, running copy right */
 .tp-hud-lp .pg-head--split{
   display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s7);align-items:start;
 }
 
 /* --------------------------------------------------------------------------
-   MARKET CHART — two stems whose height carries the value, on a dotted base
+   MARKET CHART — the 11% trajectory from 2025 to 2030, drawn as an area
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-chart{position:relative;background:var(--pg-blush);padding:var(--s7) var(--s7) var(--s6)}
-.tp-hud-lp .pg-plot{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);align-items:end;
-  padding-bottom:var(--s4);
-  border-bottom:1px dashed rgba(0,0,0,.3);
+.tp-hud-lp .pg-chart{background:var(--pg-blush);padding:var(--s7) var(--s7) var(--s6)}
+.tp-hud-lp .pg-chart__head{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);align-items:start;
+  margin-bottom:var(--s6);
 }
-.tp-hud-lp .pg-plot__col{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
-.tp-hud-lp .pg-plot__fig{
+.tp-hud-lp .pg-chart__fig{
   font-family:var(--pg-display);font-weight:400;
   font-size:clamp(28px,3.6vw,46px);line-height:1;letter-spacing:.03em;color:var(--pg-black);
 }
-.tp-hud-lp .pg-plot__label{
-  margin-top:12px;font-size:10px;letter-spacing:var(--pg-track-label);
+.tp-hud-lp .pg-chart__cap{
+  display:block;margin-top:12px;font-size:10px;letter-spacing:var(--pg-track-label);
   text-transform:uppercase;color:var(--pg-grey);
 }
-.tp-hud-lp .pg-plot__stem{
-  margin-top:var(--s4);width:4px;height:var(--h,120px);background:var(--pg-black);
-  transform-origin:bottom;
+.tp-hud-lp .pg-chart__head > *:last-child{text-align:right}
+.tp-hud-lp .pg-chart__plot{position:relative;width:100%}
+.tp-hud-lp .pg-chart__plot svg{width:100%;height:auto;display:block;overflow:visible}
+.tp-hud-lp .pg-chart__grid line{stroke:rgba(0,0,0,.14);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:2 4}
+.tp-hud-lp .pg-chart__base{stroke:rgba(0,0,0,.5);stroke-width:1;vector-effect:non-scaling-stroke}
+.tp-hud-lp .pg-chart__tick{stroke:rgba(0,0,0,.5);stroke-width:1;vector-effect:non-scaling-stroke}
+.tp-hud-lp .pg-chart__area{fill:url(#pgAreaFill)}
+/* the growth rate annotated where it happens, on the slope */
+.tp-hud-lp .pg-chart__badge{
+  position:absolute;left:41%;top:48%;z-index:2;background:var(--pg-blush);
+  padding:9px 16px;border:1px solid rgba(0,0,0,.3);
+  font-family:var(--pg-display);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--pg-black);white-space:nowrap;
 }
-.tp-hud-lp .pg-plot__col--cagr{padding-bottom:2px}
-.tp-hud-lp .pg-plot__col--cagr .pg-plot__fig{color:var(--pg-black)}
+.tp-hud-lp .pg-chart__line{
+  fill:none;stroke:var(--pg-black);stroke-width:2;vector-effect:non-scaling-stroke;
+  stroke-linejoin:round;stroke-linecap:round;
+}
+.tp-hud-lp .pg-chart__dot{fill:var(--pg-black)}
+.tp-hud-lp .pg-chart__years{
+  display:flex;justify-content:space-between;margin-top:var(--s3);padding:0 1.3%;
+  font-size:10px;letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-grey);
+}
 .tp-hud-lp .pg-chart__note{
-  margin-top:var(--s4);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--pg-grey);
+  margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid rgba(0,0,0,.12);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pg-grey);
 }
 
 /* --------------------------------------------------------------------------
-   FULL-BLEED IMAGE BAND — a photograph with the section title over it
+   FULL-BLEED IMAGE BAND — a photograph with a title over it
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-band{position:relative;overflow:hidden;background:var(--pg-noir)}
 .tp-hud-lp .pg-band__media{position:absolute;inset:0;z-index:0;overflow:hidden}
 .tp-hud-lp .pg-band__media img{width:100%;height:100%;object-fit:cover}
 .tp-hud-lp .pg-band__scrim{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg, rgba(7,7,6,.42) 0%, rgba(7,7,6,.62) 60%, rgba(7,7,6,.78) 100%);
+  background:linear-gradient(180deg, rgba(6,8,10,.52) 0%, rgba(6,8,10,.30) 42%, rgba(6,8,10,.72) 100%);
 }
 .tp-hud-lp .pg-band__in{
-  position:relative;z-index:2;min-height:clamp(380px,52vh,560px);
+  position:relative;z-index:2;min-height:clamp(420px,58vh,620px);
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;padding:var(--s8) 0;
 }
 .tp-hud-lp .pg-band__in h2{color:var(--pg-white)}
-.tp-hud-lp .pg-band__in .pg-label{color:rgba(255,255,255,.66)}
-.tp-hud-lp .pg-band__in .pg-lede{color:rgba(255,255,255,.88)}
+.tp-hud-lp .pg-band__in .pg-label{color:rgba(255,255,255,.7)}
+.tp-hud-lp .pg-band__in .pg-lede{color:rgba(255,255,255,.9)}
+.tp-hud-lp .pg-band__in .pg-tick{color:#fff}
+.tp-hud-lp .pg-band--left .pg-band__in{align-items:flex-start;text-align:left}
+.tp-hud-lp .pg-band--left .pg-band__scrim{
+  background:linear-gradient(92deg, rgba(6,8,10,.88) 0%, rgba(6,8,10,.78) 36%, rgba(6,8,10,.42) 62%, rgba(6,8,10,.10) 86%);
+}
 
 /* --------------------------------------------------------------------------
-   NOIR SPLIT — the RF photograph is shot on near-black, so it melts into a
-   black section and the copy sits on the open half.
+   NOIR SPLIT — the LED render is shot on near-black, so it melts into a black
+   section and the copy sits on the open half.
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-noir-split{position:relative;overflow:hidden;background:var(--pg-noir);color:rgba(255,255,255,.84)}
-.tp-hud-lp .pg-noir-split__pic{position:absolute;top:0;right:0;bottom:0;width:46%;overflow:hidden}
-.tp-hud-lp .pg-noir-split__pic img{width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.tp-hud-lp .pg-noir-split__pic{position:absolute;top:0;right:0;bottom:0;width:52%;overflow:hidden}
+.tp-hud-lp .pg-noir-split__pic img{width:100%;height:100%;object-fit:cover;object-position:46% 50%}
 .tp-hud-lp .pg-noir-split__pic::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:38%;z-index:1;
-  background:linear-gradient(90deg, var(--pg-noir) 0%, rgba(7,7,6,0) 100%);
+  content:'';position:absolute;top:0;left:0;bottom:0;width:42%;z-index:1;
+  background:linear-gradient(90deg, var(--pg-noir) 0%, rgba(6,8,10,0) 100%);
 }
 .tp-hud-lp .pg-noir-split__in{
   position:relative;z-index:2;padding:var(--s8) 0;
-  min-height:clamp(440px,60vh,640px);display:flex;flex-direction:column;justify-content:center;
+  min-height:clamp(440px,62vh,660px);display:flex;flex-direction:column;justify-content:center;
 }
-.tp-hud-lp .pg-noir-split__copy{max-width:48%}
+.tp-hud-lp .pg-noir-split__copy{max-width:46%}
 .tp-hud-lp .pg-noir-split h2,
 .tp-hud-lp .pg-noir-split h3{color:var(--pg-white)}
 .tp-hud-lp .pg-noir-split .pg-body{color:rgba(255,255,255,.78)}
@@ -379,7 +397,7 @@
 .tp-hud-lp .pg-grid--lg{gap:var(--s6)}
 .tp-hud-lp .pg-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center}
 .tp-hud-lp .pg-split--top{align-items:start}
-.tp-hud-lp .pg-split--wide-right{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.tp-hud-lp .pg-split--wide-right{grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
 .tp-hud-lp .pg-sticky{position:sticky;top:var(--s5)}
 
 /* --------------------------------------------------------------------------
@@ -410,14 +428,13 @@
 
 /* technology diagrams */
 .tp-hud-lp .pg-diagram{text-align:center}
-.tp-hud-lp .pg-diagram img{width:100%;max-width:156px;margin:0 auto;transition:transform .9s var(--pg-ease)}
+.tp-hud-lp .pg-diagram img{width:100%;max-width:150px;margin:0 auto;transition:transform .9s var(--pg-ease)}
 .tp-hud-lp .pg-diagram:hover img{transform:rotate(10deg) scale(1.07)}
 .tp-hud-lp .pg-diagram figcaption{
   margin-top:var(--s3);font-size:10px;font-weight:500;letter-spacing:var(--pg-track-label);
   text-transform:uppercase;color:var(--pg-grey);
 }
 
-/* a plain framed figure */
 .tp-hud-lp .pg-figure{position:relative;overflow:hidden;background:var(--pg-hair)}
 .tp-hud-lp .pg-figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--pg-ease)}
 .tp-hud-lp .pg-figure:hover img{transform:scale(1.05)}
@@ -428,7 +445,7 @@
   text-transform:uppercase;color:var(--pg-mute);
 }
 
-/* technology marquee — the no-JS answer to the site's carousel */
+/* technology marquee */
 .tp-hud-lp .pg-marquee{
   position:relative;overflow:hidden;padding:var(--s3) 0;
   border-top:1px solid var(--pg-hair);border-bottom:1px solid var(--pg-hair);
@@ -486,6 +503,18 @@
 .tp-hud-lp .pg-card > *:not(.pg-card__ghost){position:relative;z-index:1}
 
 /* --------------------------------------------------------------------------
+   NUMBERED CLAUSES — the regulatory paragraphs, each on its own hairline row
+   -------------------------------------------------------------------------- */
+.tp-hud-lp .pg-clauses{border-top:1px solid var(--pg-line)}
+.tp-hud-lp .pg-clause{
+  display:grid;grid-template-columns:48px 1fr;gap:var(--s4);
+  padding:var(--s5) 0;border-bottom:1px solid var(--pg-hair);
+}
+.tp-hud-lp .pg-clause__n{
+  font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;color:var(--pg-mute);padding-top:4px;
+}
+
+/* --------------------------------------------------------------------------
    PROCESS — a rule that draws itself across the three steps
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6)}
@@ -498,8 +527,8 @@
   content:'';position:absolute;left:0;top:6px;width:11px;height:11px;background:var(--pg-black);
 }
 .tp-hud-lp .pg-step__num{
-  display:block;font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--pg-mute);margin-bottom:var(--s3);
+  display:block;font-family:var(--pg-display);font-size:clamp(34px,3.6vw,48px);line-height:1;
+  letter-spacing:.04em;color:var(--pg-blush-deep);margin-bottom:var(--s4);
 }
 .tp-hud-lp .pg-step__title{
   font-family:var(--pg-display);font-size:clamp(16px,1.5vw,19px);line-height:1.4;
@@ -639,10 +668,12 @@
 @keyframes pg-wipe-up{from{transform:translateY(106%)}to{transform:translateY(0)}}
 @keyframes pg-fade-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
 @keyframes pg-fade{from{opacity:0}to{opacity:1}}
-@keyframes pg-zoom-in{from{transform:scale(1.14)}to{transform:scale(1)}}
+@keyframes pg-zoom-in{from{transform:scale(1.1)}to{transform:scale(1)}}
 @keyframes pg-drift{from{transform:scale(1.02)}to{transform:scale(1.12)}}
-@keyframes pg-bar{from{transform:scaleY(.04)}to{transform:scaleY(1)}}
 @keyframes pg-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pg-draw{to{stroke-dashoffset:0}}
+@keyframes pg-wipe-right{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes pg-pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 @keyframes pg-parallax{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
 @keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes pg-cue{
@@ -654,8 +685,7 @@
 @media (prefers-reduced-motion: no-preference){
 
   /* --- hero, on load ------------------------------------------------- */
-  .tp-hud-lp .pg-hero__pic img{animation:pg-zoom-in 2.4s var(--pg-ease) both}
-  .tp-hud-lp .pg-hero__plane{animation:pg-rule 1.1s var(--pg-ease) .25s both;transform-origin:left}
+  .tp-hud-lp .pg-hero__media img{animation:pg-zoom-in 2.6s var(--pg-ease) both}
   .tp-hud-lp .pg-line > span{animation:pg-wipe-up 1s var(--pg-ease) both}
   .tp-hud-lp .pg-hero__kicker,
   .tp-hud-lp .pg-hero__deck,
@@ -679,6 +709,9 @@
   /* --- scroll-driven, where the browser has it ----------------------- */
   @supports (animation-timeline: view()){
 
+    .tp-hud-lp .pg-progress{
+      animation:pg-rule linear both;animation-timeline:scroll(root block);
+    }
     .tp-hud-lp .pg-reveal{
       animation:pg-fade-up linear both;
       animation-timeline:view();animation-range:entry 4% cover 26%;
@@ -690,16 +723,25 @@
     .tp-hud-lp .pg-stagger > *:nth-child(4){animation-range:entry 17% cover 39%}
     .tp-hud-lp .pg-stagger > *:nth-child(5){animation-range:entry 22% cover 44%}
 
-    .tp-hud-lp .pg-plot__col:nth-child(1) .pg-plot__stem{
-      animation:pg-bar linear both;animation-timeline:view();animation-range:entry 18% cover 46%;
+    /* the chart builds itself: baseline, then the area wipes in under the
+       curve as the curve draws, then the two end points land */
+    .tp-hud-lp .pg-chart__line{
+      stroke-dasharray:900;stroke-dashoffset:900;
+      animation:pg-draw linear both;animation-timeline:view();animation-range:entry 14% cover 52%;
     }
-    .tp-hud-lp .pg-plot__col:nth-child(2) .pg-plot__stem{
-      animation:pg-bar linear both;animation-timeline:view();animation-range:entry 24% cover 56%;
+    .tp-hud-lp .pg-chart__area{
+      animation:pg-wipe-right linear both;animation-timeline:view();animation-range:entry 14% cover 52%;
     }
+    .tp-hud-lp .pg-chart__dot{
+      transform-box:fill-box;transform-origin:center;
+      animation:pg-pop linear both;animation-timeline:view();
+    }
+    .tp-hud-lp .pg-chart__dot--a{animation-range:entry 18% cover 30%}
+    .tp-hud-lp .pg-chart__dot--b{animation-range:entry 40% cover 56%}
+
     .tp-hud-lp .pg-steps__line{
       animation:pg-rule linear both;animation-timeline:view();animation-range:entry 16% cover 48%;
     }
-    /* the band and tile photographs ride against the scroll */
     .tp-hud-lp .pg-band__media img,
     .tp-hud-lp .pg-noir-split__pic img{
       animation:pg-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
@@ -756,15 +798,13 @@
   .tp-hud-lp .pg-steps{grid-template-columns:1fr;gap:var(--s5)}
   .tp-hud-lp .pg-steps__line{display:none}
   .tp-hud-lp .pg-form-grid{grid-template-columns:1fr}
-  .tp-hud-lp .pg-plot{grid-template-columns:1fr 1fr;gap:var(--s5)}
-  .tp-hud-lp .pg-plot__col--cagr{grid-column:1 / -1;margin-top:var(--s5)}
+  .tp-hud-lp .pg-chart__head{gap:var(--s4)}
+  .tp-hud-lp .pg-chart__badge{left:auto;right:0;top:-14%}
 
-  /* hero stacks: photograph first, then the copy */
-  .tp-hud-lp .pg-hero{display:flex;flex-direction:column}
-  .tp-hud-lp .pg-hero__pic{position:relative;width:100%;height:auto;aspect-ratio:1/1;order:-1}
-  .tp-hud-lp .pg-hero__pic img{object-position:42% 50%}
-  .tp-hud-lp .pg-hero__pic::before{display:none}
-  .tp-hud-lp .pg-hero__plane{width:62%;height:30%}
+  .tp-hud-lp .pg-hero{display:flex;flex-direction:column;background:var(--pg-paper)}
+  .tp-hud-lp .pg-hero__media{position:relative;inset:auto;width:100%;aspect-ratio:4/3;order:-1}
+  .tp-hud-lp .pg-hero__media img{object-position:46% 50%}
+  .tp-hud-lp .pg-hero__veil{display:none}
   .tp-hud-lp .pg-hero__in{min-height:0;padding:var(--s7) 0 var(--s8)}
   .tp-hud-lp .pg-hero__copy{max-width:none}
   .tp-hud-lp .pg-cue{display:none}
@@ -780,19 +820,24 @@
 @media (max-width:620px){
   .tp-hud-lp{--pg-gutter:20px}
   .tp-hud-lp .pg-grid--2{grid-template-columns:1fr}
-  .tp-hud-lp .pg-plot{grid-template-columns:1fr}
-  .tp-hud-lp .pg-plot__col--cagr{margin-top:var(--s4)}
+  .tp-hud-lp .pg-chart__head{grid-template-columns:1fr;gap:var(--s4)}
+  .tp-hud-lp .pg-chart__head > *:last-child{text-align:left}
+  .tp-hud-lp .pg-chart__line{stroke-width:3}
+  .tp-hud-lp .pg-chart__dot{transform:scale(1.5);transform-box:fill-box;transform-origin:center}
+  .tp-hud-lp .pg-chart__grid{display:none}
   .tp-hud-lp .pg-logobar__by{display:none}
   .tp-hud-lp .pg-btn{width:100%}
   .tp-hud-lp .pg-card{padding:var(--s5) var(--s4) var(--s6)}
   .tp-hud-lp .pg-card__ghost{font-size:96px;bottom:-26px}
   .tp-hud-lp .pg-index__row{gap:var(--s4);padding:var(--s3) var(--s2)}
+  .tp-hud-lp .pg-clause{grid-template-columns:1fr;gap:var(--s2)}
 }
 </style>
 
 
 <div class="tp-hud-lp pg-annotated">
 
+  <span class="pg-progress" aria-hidden="true"></span>
   <a class="pg-skip" href="#pg-form">Skip to the inquiry form</a>
 
   <!-- ======================================================================
@@ -815,16 +860,16 @@
        ====================================================================== -->
   <section class="pg-hero">
 
-    <div class="pg-hero__plane" aria-hidden="true"></div>
-
-    <figure class="pg-hero__pic">
+    <div class="pg-hero__media">
       <picture>
-        <source media="(max-width: 1000px)" srcset="assets/images/hero-editorial-wide.webp" width="1500" height="791">
-        <img src="assets/images/hero-editorial.webp"
-             alt="A TriPollar home-use device on a studio table beside a model, photographed on a pale set."
-             width="1020" height="1150" fetchpriority="high" decoding="async">
+        <source media="(max-width: 700px)" srcset="assets/images/hero-mob.webp" width="1100" height="791">
+        <source media="(max-width: 1400px)" srcset="assets/images/hero-1280.webp" width="1280" height="575">
+        <img src="assets/images/hero.webp"
+             alt="A TriPollar home-use device photographed against a soft rose-toned field."
+             width="2560" height="1150" fetchpriority="high" decoding="async">
       </picture>
-    </figure>
+    </div>
+    <div class="pg-hero__veil" aria-hidden="true"></div>
 
     <div class="pg-wrap">
       <div class="pg-hero__in">
@@ -872,25 +917,53 @@
         </div>
       </div>
 
-      <div class="pg-chart pg-reveal">
-        <div class="pg-plot">
-          <div class="pg-plot__col">
-            <div class="pg-plot__fig">$12.94B</div>
-            <div class="pg-plot__label">Market size, 2025</div>
-            <div class="pg-plot__stem" style="--h:112px"></div>
+      <figure class="pg-chart pg-reveal">
+
+        <div class="pg-chart__head">
+          <div>
+            <div class="pg-chart__fig">$12.94B</div>
+            <span class="pg-chart__cap">Market size, 2025</span>
           </div>
-          <div class="pg-plot__col">
-            <div class="pg-plot__fig">$21.85B</div>
-            <div class="pg-plot__label">Forecast, 2030</div>
-            <div class="pg-plot__stem" style="--h:189px"></div>
-          </div>
-          <div class="pg-plot__col pg-plot__col--cagr">
-            <div class="pg-plot__fig">~11%</div>
-            <div class="pg-plot__label">CAGR</div>
+          <div>
+            <div class="pg-chart__fig">$21.85B</div>
+            <span class="pg-chart__cap">Forecast, 2030</span>
           </div>
         </div>
-        <p class="pg-chart__note">The Business Research Company &middot; Home-Use Beauty Devices Market Report 2026<a class="pg-ref" href="#pg-ref-1">[1]</a></p>
-      </div>
+
+        <!-- the curve is the stated 11% CAGR applied year on year from the 2025
+             figure; it lands on the 2030 figure. Scale runs 0 to $24B. -->
+        <div class="pg-chart__plot">
+          <svg viewBox="0 0 600 190" preserveAspectRatio="xMidYMid meet" role="img"
+               aria-label="Area chart: the home-use beauty device market growing from 12.94 billion dollars in 2025 to 21.85 billion dollars in 2030 at about 11 percent a year.">
+            <defs>
+              <linearGradient id="pgAreaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#000" stop-opacity=".17"></stop>
+                <stop offset="1" stop-color="#000" stop-opacity=".02"></stop>
+              </linearGradient>
+            </defs>
+            <g class="pg-chart__grid">
+              <line x1="8" y1="130" x2="592" y2="130"></line>
+              <line x1="8" y1="92"  x2="592" y2="92"></line>
+              <line x1="8" y1="54"  x2="592" y2="54"></line>
+            </g>
+            <path class="pg-chart__area"
+                  d="M8,86.1 L124.8,77 L241.6,67 L358.4,55.9 L475.2,43.6 L592,29.9 L592,168 L8,168 Z"></path>
+            <path class="pg-chart__line"
+                  d="M8,86.1 L124.8,77 L241.6,67 L358.4,55.9 L475.2,43.6 L592,29.9"></path>
+            <line class="pg-chart__base" x1="8" y1="168" x2="592" y2="168"></line>
+            <g class="pg-chart__tick">
+              <line x1="8"   y1="168" x2="8"   y2="175"></line>
+              <line x1="592" y1="168" x2="592" y2="175"></line>
+            </g>
+            <rect class="pg-chart__dot pg-chart__dot--a" x="3"   y="81.1" width="10" height="10"></rect>
+            <rect class="pg-chart__dot pg-chart__dot--b" x="587" y="24.9" width="10" height="10"></rect>
+          </svg>
+          <span class="pg-chart__badge">~11% CAGR</span>
+          <div class="pg-chart__years"><span>2025</span><span>2030</span></div>
+        </div>
+
+        <figcaption class="pg-chart__note">The Business Research Company &middot; Home-Use Beauty Devices Market Report 2026<a class="pg-ref" href="#pg-ref-1">[1]</a></figcaption>
+      </figure>
 
     </div>
   </section>
@@ -898,11 +971,14 @@
   <!-- ======================================================================
        TECHNOLOGY — opener band
        ====================================================================== -->
-  <section class="pg-band">
+  <section class="pg-band pg-band--left">
     <div class="pg-band__media">
-      <img src="assets/images/collagen-matrix.webp"
-           alt="A three-dimensional render of a collagen-like matrix with illuminated connection points."
-           width="962" height="510" loading="lazy" decoding="async">
+      <picture>
+        <source media="(max-width: 900px)" srcset="assets/images/tech-band-1200.webp" width="1200" height="576">
+        <img src="assets/images/tech-band.webp"
+             alt="A render of the TriPollar device head delivering radio frequency energy into a cross-section of skin."
+             width="2400" height="1151" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="pg-band__scrim" aria-hidden="true"></div>
     <div class="pg-wrap">
@@ -926,7 +1002,7 @@
             <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
             <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
           </div>
-          <div class="pg-grid pg-grid--2 pg-stagger" style="margin-top:var(--s7);max-width:380px">
+          <div class="pg-grid pg-grid--2 pg-stagger" style="margin-top:var(--s6);max-width:350px">
             <figure class="pg-diagram">
               <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
                    width="396" height="396" loading="lazy" decoding="async">
@@ -953,7 +1029,7 @@
             <div class="pg-figure pg-figure--16x9">
               <img src="assets/images/led-prism.webp"
                    alt="A TriPollar LED eye device lit on a pale studio pedestal."
-                   width="1400" height="788" loading="lazy" decoding="async">
+                   width="1600" height="900" loading="lazy" decoding="async">
             </div>
             <figcaption class="pg-figure__cap">TriPollar PRISM &middot; LED</figcaption>
           </figure>
@@ -983,21 +1059,21 @@
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx3.webp" alt="TriPollar STOP VX3 home-use device."
-                 width="700" height="525" loading="lazy" decoding="async">
+                 width="820" height="615" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX3</p>
         </li>
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-pose-vx.webp" alt="TriPollar POSE VX home-use device and packaging."
-                 width="760" height="570" loading="lazy" decoding="async">
+                 width="820" height="615" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
         </li>
         <li class="pg-plat">
           <div class="pg-plat__pic">
             <img src="assets/images/platform-stop-vx2-gold.webp" alt="TriPollar STOP VX2 Gold home-use device and packaging."
-                 width="760" height="570" loading="lazy" decoding="async">
+                 width="820" height="615" loading="lazy" decoding="async">
           </div>
           <p class="pg-plat__name"><span class="pg-tag">Home</span>TriPollar STOP VX2 Gold</p>
         </li>
@@ -1009,13 +1085,24 @@
   <!-- ======================================================================
        TECHNOLOGY — evidence band
        ====================================================================== -->
-  <section class="pg-section pg-section--tight pg-blush-bg">
-    <div class="pg-wrap pg-center pg-reveal">
-      <h2 class="pg-h2">Published Research. Specific Evidence.</h2>
-      <div class="pg-tick" aria-hidden="true"></div>
-      <a class="pg-link" href="#" data-pg-cta="technology-clinical-overview">Explore the Technology &amp; Clinical Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
-      <!-- CTA 2 of 3 — destination still to be supplied. -->
-      <p class="pg-note">CTA &rarr; <span class="pg-strong">needs a destination.</span> Either a gated PDF (then it should open the form) or a standalone overview page. Currently <code>href="#"</code>.</p>
+  <section class="pg-band pg-band--left">
+    <div class="pg-band__media">
+      <picture>
+        <source media="(max-width: 900px)" srcset="assets/images/macro-head-1200.webp" width="1200" height="576">
+        <img src="assets/images/macro-head.webp"
+             alt="A macro photograph of the TriPollar device's electrode head."
+             width="2400" height="1151" loading="lazy" decoding="async">
+      </picture>
+    </div>
+    <div class="pg-band__scrim" aria-hidden="true"></div>
+    <div class="pg-wrap">
+      <div class="pg-band__in">
+        <h2 class="pg-h2">Published Research. Specific Evidence.</h2>
+        <div class="pg-tick" aria-hidden="true"></div>
+        <a class="pg-link pg-link--light" href="#" data-pg-cta="technology-clinical-overview">Explore the Technology &amp; Clinical Overview<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+        <!-- CTA 2 of 3 — destination still to be supplied. -->
+        <p class="pg-note">CTA &rarr; <span class="pg-strong">needs a destination.</span> Either a gated PDF (then it should open the form) or a standalone overview page. Currently <code>href="#"</code>.</p>
+      </div>
     </div>
   </section>
 
@@ -1024,29 +1111,38 @@
        ====================================================================== -->
   <section class="pg-section pg-paper">
     <div class="pg-wrap">
-      <div class="pg-split pg-split--top">
-        <div class="pg-reveal">
+      <div class="pg-split pg-split--wide-right pg-split--top">
+        <div class="pg-sticky pg-reveal">
           <span class="pg-label">Regulatory</span>
-          <h3 class="pg-h3" style="margin-top:var(--s4)">Regulatory Experience From the Start</h3>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">Regulatory Experience From the Start</h2>
           <div class="pg-tick" aria-hidden="true"></div>
         </div>
-        <div class="pg-stack pg-reveal">
-          <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
-          <p class="pg-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
-          <p class="pg-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
-        </div>
+        <ol class="pg-clauses pg-stagger">
+          <li class="pg-clause">
+            <span class="pg-clause__n">01</span>
+            <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
+          </li>
+          <li class="pg-clause">
+            <span class="pg-clause__n">02</span>
+            <p class="pg-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
+          </li>
+          <li class="pg-clause">
+            <span class="pg-clause__n">03</span>
+            <p class="pg-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       TECHNOLOGY — development, against the RF photograph
+       TECHNOLOGY — development, against the LED render
        ====================================================================== -->
   <section class="pg-noir-split">
     <figure class="pg-noir-split__pic">
-      <img src="assets/images/rf-in-use.webp"
-           alt="A TriPollar home-use device held against the cheek, with the radio frequency field drawn as concentric arcs."
-           width="910" height="500" loading="lazy" decoding="async">
+      <img src="assets/images/led-array.webp"
+           alt="A render of the TriPollar device head emitting an array of light."
+           width="2000" height="604" loading="lazy" decoding="async">
     </figure>
     <div class="pg-wrap">
       <div class="pg-noir-split__in">
@@ -1156,9 +1252,9 @@
           <p class="pg-lede">Connect with our team to explore the technology and partnership model that fit YOUR BRAND</p>
 
           <figure class="pg-figure pg-figure--4x5" style="margin-top:var(--s6)">
-            <img src="assets/images/stilllife-vx3.webp"
-                 alt="A TriPollar home-use device standing on a rose-toned set."
-                 width="900" height="1078" loading="lazy" decoding="async">
+            <img src="assets/images/portrait-form.webp"
+                 alt="A model laughing, photographed on a pale studio set."
+                 width="1100" height="990" loading="lazy" decoding="async">
           </figure>
         </div>
 
@@ -1247,55 +1343,59 @@
        ====================================================================== -->
   <section class="pg-section pg-white">
     <div class="pg-wrap">
+      <div class="pg-split pg-split--wide-right pg-split--top">
 
-      <div class="pg-head pg-head--center pg-reveal">
-        <h2 class="pg-h2">Frequently Asked Questions</h2>
+        <div class="pg-sticky pg-reveal">
+          <span class="pg-label">Questions</span>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">Frequently Asked Questions</h2>
+          <div class="pg-tick" aria-hidden="true"></div>
+        </div>
+
+        <div class="pg-faq pg-reveal">
+
+          <details class="pg-faq__item">
+            <summary class="pg-faq__q">
+              <span>Can a device be developed under our brand?</span>
+              <span class="pg-faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="pg-faq__a">
+              <p class="pg-body">Partner branding and product customization can be explored as part of the development brief. Options depend on the selected platform, project scope, and regulatory requirements.</p>
+            </div>
+          </details>
+
+          <details class="pg-faq__item">
+            <summary class="pg-faq__q">
+              <span>Which technologies can we explore?</span>
+              <span class="pg-faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="pg-faq__a">
+              <p class="pg-body">Home-use capabilities include TriPollar RF, DMA, LED, galvanic current and electroporation. The team will assess which options are appropriate for your intended product.</p>
+            </div>
+          </details>
+
+          <details class="pg-faq__item">
+            <summary class="pg-faq__q">
+              <span>Can you support an international launch?</span>
+              <span class="pg-faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="pg-faq__a">
+              <p class="pg-body">Target markets are considered during project definition, with testing, documentation and regulatory requirements assessed for each intended launch region.</p>
+            </div>
+          </details>
+
+          <details class="pg-faq__item">
+            <summary class="pg-faq__q">
+              <span>Does an existing FDA clearance cover a customized device?</span>
+              <span class="pg-faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="pg-faq__a">
+              <p class="pg-body">Not automatically. Changes to design, technology, intended use, or claims may require additional assessment, testing or a new regulatory submission.</p>
+            </div>
+          </details>
+
+        </div>
+
       </div>
-
-      <div class="pg-faq pg-reveal" style="max-width:900px;margin:0 auto">
-
-        <details class="pg-faq__item">
-          <summary class="pg-faq__q">
-            <span>Can a device be developed under our brand?</span>
-            <span class="pg-faq__icon" aria-hidden="true"></span>
-          </summary>
-          <div class="pg-faq__a">
-            <p class="pg-body">Partner branding and product customization can be explored as part of the development brief. Options depend on the selected platform, project scope, and regulatory requirements.</p>
-          </div>
-        </details>
-
-        <details class="pg-faq__item">
-          <summary class="pg-faq__q">
-            <span>Which technologies can we explore?</span>
-            <span class="pg-faq__icon" aria-hidden="true"></span>
-          </summary>
-          <div class="pg-faq__a">
-            <p class="pg-body">Home-use capabilities include TriPollar RF, DMA, LED, galvanic current and electroporation. The team will assess which options are appropriate for your intended product.</p>
-          </div>
-        </details>
-
-        <details class="pg-faq__item">
-          <summary class="pg-faq__q">
-            <span>Can you support an international launch?</span>
-            <span class="pg-faq__icon" aria-hidden="true"></span>
-          </summary>
-          <div class="pg-faq__a">
-            <p class="pg-body">Target markets are considered during project definition, with testing, documentation and regulatory requirements assessed for each intended launch region.</p>
-          </div>
-        </details>
-
-        <details class="pg-faq__item">
-          <summary class="pg-faq__q">
-            <span>Does an existing FDA clearance cover a customized device?</span>
-            <span class="pg-faq__icon" aria-hidden="true"></span>
-          </summary>
-          <div class="pg-faq__a">
-            <p class="pg-body">Not automatically. Changes to design, technology, intended use, or claims may require additional assessment, testing or a new regulatory submission.</p>
-          </div>
-        </details>
-
-      </div>
-
     </div>
   </section>
 
