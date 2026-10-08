@@ -416,13 +416,35 @@
 .tp-hud-lp .pg-sticky{position:sticky;top:var(--s5)}
 
 /* --------------------------------------------------------------------------
-   TECHNOLOGY INDEX — the five technologies as a numbered editorial list
+   TECHNOLOGY BOARD — the intro, the two brand marks and the numbered index as
+   one object, so nothing floats in white space.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-index{border-top:1px solid var(--pg-line)}
+.tp-hud-lp .pg-board{background:var(--pg-white);border:1px solid var(--pg-hair)}
+.tp-hud-lp .pg-board__head{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7);
+  align-items:center;padding:var(--s6) var(--s6) var(--s6);
+}
+.tp-hud-lp .pg-board__copy{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+.tp-hud-lp .pg-board__marks{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+
+/* the numbered index */
+.tp-hud-lp .pg-index{border-top:1px solid var(--pg-hair)}
 .tp-hud-lp .pg-index__row{
   position:relative;display:flex;align-items:baseline;gap:var(--s5);
-  padding:var(--s4) var(--s3);border-bottom:1px solid var(--pg-hair);overflow:hidden;
+  padding:var(--s4) var(--s6);border-bottom:1px solid var(--pg-hair);overflow:hidden;
 }
+.tp-hud-lp .pg-index__row:last-child{border-bottom:0}
+.tp-hud-lp .pg-index__rule{
+  position:relative;z-index:1;flex:1;height:1px;background:var(--pg-hair);
+  transform-origin:right;transition:background .6s var(--pg-ease);
+}
+.tp-hud-lp .pg-index__row:hover .pg-index__rule{background:rgba(0,0,0,.35)}
+.tp-hud-lp .pg-index__go{
+  position:relative;z-index:1;flex:none;font-size:15px;color:var(--pg-mute);
+  transform:translateX(-10px);opacity:0;
+  transition:transform .55s var(--pg-ease),opacity .55s var(--pg-ease),color .55s var(--pg-ease);
+}
+.tp-hud-lp .pg-index__row:hover .pg-index__go{transform:none;opacity:1;color:var(--pg-black)}
 .tp-hud-lp .pg-index__row::before{
   content:'';position:absolute;inset:0;background:var(--pg-blush);z-index:0;
   transform:scaleX(0);transform-origin:left;transition:transform .6s var(--pg-ease);
@@ -443,7 +465,7 @@
 
 /* technology diagrams */
 .tp-hud-lp .pg-diagram{text-align:center}
-.tp-hud-lp .pg-diagram img{width:100%;max-width:150px;margin:0 auto;transition:transform .9s var(--pg-ease)}
+.tp-hud-lp .pg-diagram img{width:100%;max-width:190px;margin:0 auto;transition:transform .9s var(--pg-ease)}
 .tp-hud-lp .pg-diagram:hover img{transform:rotate(10deg) scale(1.07)}
 .tp-hud-lp .pg-diagram figcaption{
   margin-top:var(--s3);font-size:10px;font-weight:500;letter-spacing:var(--pg-track-label);
@@ -494,7 +516,7 @@
 }
 .tp-hud-lp .pg-rail::-webkit-scrollbar{display:none}
 .tp-hud-lp .pg-rail:focus-visible{outline:2px solid var(--pg-black);outline-offset:6px}
-.tp-hud-lp .pg-rail__item{flex:0 0 clamp(248px,26vw,350px);scroll-snap-align:start}
+.tp-hud-lp .pg-rail__item{position:relative;flex:0 0 clamp(248px,26vw,350px);scroll-snap-align:start}
 .tp-hud-lp .pg-rail__card{
   position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--pg-hair);
 }
@@ -507,7 +529,35 @@
   font-family:var(--pg-ui);font-size:11px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--pg-black);
 }
-.tp-hud-lp .pg-rail__bar{position:relative;height:2px;background:rgba(0,0,0,.1)}
+.tp-hud-lp .pg-rail__foot{
+  display:flex;align-items:center;gap:var(--s4);margin-top:var(--s2);
+}
+.tp-hud-lp .pg-rail__bar{position:relative;flex:1;height:2px;background:rgba(0,0,0,.1)}
+/* Anchor targets for the arrows. A real <a href="#id"> click scrolls the rail
+   horizontally — assigning location.hash does not. The target is 1px wide and
+   FULL height: the browser then only needs to scroll sideways, so the page
+   barely moves. A 1px point, or the whole card, drags the page instead. The
+   target sits on the edge the arrow should reveal. */
+.tp-hud-lp .pg-rail__pt{position:absolute;top:0;bottom:0;width:1px;overflow:hidden;scroll-margin-block:42vh 20vh}
+.tp-hud-lp .pg-rail__pt--start{left:0}
+.tp-hud-lp .pg-rail__pt--end{right:0}
+.tp-hud-lp .pg-rail__nav{display:flex;gap:10px;flex:none}
+.tp-hud-lp .pg-rail__arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;flex:none;
+  border:1px solid rgba(0,0,0,.26);background:transparent;color:var(--pg-black);
+  font-size:15px;line-height:1;overflow:hidden;position:relative;
+  transition:color .4s var(--pg-ease),border-color .4s var(--pg-ease);
+}
+.tp-hud-lp .pg-rail__arrow span{position:relative;z-index:1;transition:transform .45s var(--pg-ease)}
+.tp-hud-lp .pg-rail__arrow::after{
+  content:'';position:absolute;inset:0;background:var(--pg-black);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--pg-ease);
+}
+.tp-hud-lp .pg-rail__arrow:hover{color:var(--pg-white);border-color:var(--pg-black)}
+.tp-hud-lp .pg-rail__arrow:hover::after{transform:scaleY(1)}
+.tp-hud-lp .pg-rail__arrow--prev:hover span{transform:translateX(-4px)}
+.tp-hud-lp .pg-rail__arrow--next:hover span{transform:translateX(4px)}
 .tp-hud-lp .pg-rail__bar i{
   position:absolute;inset:0;background:var(--pg-black);
   transform:scaleX(0);transform-origin:left;
@@ -592,8 +642,13 @@
 /* --------------------------------------------------------------------------
    FORM — underline-only fields, exactly like the contact form on the site
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-form-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s8);align-items:start}
-.tp-hud-lp .pg-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5) var(--s6)}
+.tp-hud-lp .pg-form-head{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7);
+  align-items:center;margin-bottom:var(--s7);
+}
+.tp-hud-lp .pg-form-head__pic{max-width:400px;margin-left:auto;width:100%}
+.tp-hud-lp .pg-formcard{background:var(--pg-white);padding:var(--s7)}
+.tp-hud-lp .pg-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5) var(--s7)}
 .tp-hud-lp .pg-field{display:block;position:relative}
 .tp-hud-lp .pg-field--full{grid-column:1 / -1}
 .tp-hud-lp .pg-field__label{
@@ -604,7 +659,7 @@
 .tp-hud-lp .pg-field select,
 .tp-hud-lp .pg-field textarea{
   width:100%;height:42px;padding:0 0 8px;
-  border:0;border-bottom:1px solid rgba(0,0,0,.22);border-radius:0;background:transparent;
+  border:0;border-bottom:1px solid rgba(0,0,0,.26);border-radius:0;background:transparent;
   font-family:var(--pg-ui);font-size:15px;line-height:1.8;letter-spacing:.02em;color:var(--pg-black);
   -webkit-appearance:none;appearance:none;
 }
@@ -867,7 +922,12 @@
   .tp-hud-lp{--s7:70px;--s8:88px}
   .tp-hud-lp .pg-split,
   .tp-hud-lp .pg-split--wide-right,
-  .tp-hud-lp .pg-form-split{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-board__head,
+  .tp-hud-lp .pg-form-head{grid-template-columns:1fr;gap:var(--s6)}
+  .tp-hud-lp .pg-board__head{padding:var(--s5)}
+  .tp-hud-lp .pg-index__row{padding:var(--s4) var(--s5)}
+  .tp-hud-lp .pg-formcard{padding:var(--s5)}
+  .tp-hud-lp .pg-form-head__pic{max-width:520px;margin-left:0}
   .tp-hud-lp .pg-sticky{position:static}
   .tp-hud-lp .pg-form-split .pg-figure{max-width:520px}
   .tp-hud-lp .pg-grid--3{grid-template-columns:1fr}
@@ -905,7 +965,10 @@
   .tp-hud-lp .pg-btn{width:100%}
   .tp-hud-lp .pg-card{padding:var(--s5) var(--s4) var(--s6)}
   .tp-hud-lp .pg-card__ghost{font-size:96px;bottom:-26px}
-  .tp-hud-lp .pg-index__row{gap:var(--s4);padding:var(--s3) var(--s2)}
+  .tp-hud-lp .pg-index__row{gap:var(--s3);padding:var(--s3) var(--s4)}
+  .tp-hud-lp .pg-index__go{display:none}
+  .tp-hud-lp .pg-board__copy{grid-template-columns:1fr}
+  .tp-hud-lp .pg-formcard{padding:var(--s4)}
   .tp-hud-lp .pg-clause{grid-template-columns:1fr;gap:var(--s2)}
 }
 </style>
@@ -1070,14 +1133,14 @@
   <section class="pg-section pg-white">
     <div class="pg-wrap">
 
-      <div class="pg-split pg-split--wide-right pg-split--top">
+      <div class="pg-board pg-reveal">
 
-        <div class="pg-sticky">
-          <div class="pg-stack pg-reveal">
+        <div class="pg-board__head">
+          <div class="pg-board__copy">
             <p class="pg-body">TriPollar&rsquo;s proprietary RF technology anchors a broader home-use portfolio that includes Dynamic Muscle Activation (DMA), LED, galvanic current and electroporation.<a class="pg-ref" href="#pg-ref-2" id="pg-cite-2">[2]</a></p>
             <p class="pg-body">Explore individual technologies or combinations suited to your product concept, target consumer, and intended use. Technology selection and availability are assessed for each development program.</p>
           </div>
-          <div class="pg-grid pg-grid--2 pg-stagger" style="margin-top:var(--s6);max-width:350px">
+          <div class="pg-board__marks pg-stagger">
             <figure class="pg-diagram">
               <img src="assets/images/tech-rf.webp" alt="Diagram of the TriPollar multi-electrode radio frequency field."
                    width="396" height="396" loading="lazy" decoding="async">
@@ -1091,16 +1154,13 @@
           </div>
         </div>
 
-        <div>
-          <ol class="pg-index pg-reveal">
-            <li class="pg-index__row"><span class="pg-index__n">01</span><span class="pg-index__name">TriPollar RF</span></li>
-            <li class="pg-index__row"><span class="pg-index__n">02</span><span class="pg-index__name">Dynamic Muscle Activation</span></li>
-            <li class="pg-index__row"><span class="pg-index__n">03</span><span class="pg-index__name">LED</span></li>
-            <li class="pg-index__row"><span class="pg-index__n">04</span><span class="pg-index__name">Galvanic Current</span></li>
-            <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__name">Electroporation</span></li>
-          </ol>
-
-        </div>
+        <ol class="pg-index">
+          <li class="pg-index__row"><span class="pg-index__n">01</span><span class="pg-index__name">TriPollar RF</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">02</span><span class="pg-index__name">Dynamic Muscle Activation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">03</span><span class="pg-index__name">LED</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">04</span><span class="pg-index__name">Galvanic Current</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+          <li class="pg-index__row"><span class="pg-index__n">05</span><span class="pg-index__name">Electroporation</span><span class="pg-index__rule" aria-hidden="true"></span><span class="pg-index__go" aria-hidden="true">&#8594;</span></li>
+        </ol>
 
       </div>
 
@@ -1126,6 +1186,7 @@
       <div class="pg-railwrap pg-reveal" style="margin-top:var(--s8)">
         <ul class="pg-rail" tabindex="0" role="region" aria-label="TriPollar home-use platforms. Scroll sideways to see more.">
           <li class="pg-rail__item">
+            <span class="pg-rail__pt pg-rail__pt--start" id="pg-plat-1" aria-hidden="true"></span>
             <figure class="pg-rail__card">
               <img src="assets/images/rail-aura.webp" alt="The TriPollar Aura home-use device on a rose-toned set."
                    width="900" height="1126" loading="lazy" decoding="async">
@@ -1154,6 +1215,7 @@
             <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar POSE VX</p>
           </li>
           <li class="pg-rail__item">
+            <span class="pg-rail__pt pg-rail__pt--end" id="pg-plat-5" aria-hidden="true"></span>
             <figure class="pg-rail__card">
               <img src="assets/images/rail-prism.webp" alt="The TriPollar PRISM LED device, lit."
                    width="864" height="1080" loading="lazy" decoding="async">
@@ -1161,7 +1223,13 @@
             <p class="pg-rail__name"><span class="pg-tag">Home</span>TriPollar PRISM</p>
           </li>
         </ul>
-        <div class="pg-rail__bar" aria-hidden="true"><i></i></div>
+        <div class="pg-rail__foot">
+          <div class="pg-rail__bar" aria-hidden="true"><i></i></div>
+          <nav class="pg-rail__nav" aria-label="Platform rail">
+            <a class="pg-rail__arrow pg-rail__arrow--prev" href="#pg-plat-1"><span aria-hidden="true">&#8592;</span><span class="pg-sr">Back to the first platform</span></a>
+            <a class="pg-rail__arrow pg-rail__arrow--next" href="#pg-plat-5"><span aria-hidden="true">&#8594;</span><span class="pg-sr">Forward to the last platform</span></a>
+          </nav>
+        </div>
       </div>
 
     </div>
@@ -1339,96 +1407,93 @@
        ====================================================================== -->
   <section class="pg-section pg-blush-bg pg-anchor" id="pg-form">
     <div class="pg-wrap">
-      <div class="pg-form-split">
-
-        <div class="pg-reveal">
+      <div class="pg-form-head pg-reveal">
+        <div>
           <span class="pg-label">Get in touch</span>
           <h2 class="pg-h2" style="margin-top:var(--s4)">Let&rsquo;s Develop Your Next Beauty Device</h2>
           <div class="pg-tick" aria-hidden="true"></div>
           <p class="pg-lede">Connect with our team to explore the technology and partnership model that fit YOUR BRAND</p>
-
-          <figure class="pg-figure pg-figure--4x5" style="margin-top:var(--s6)">
-            <img src="assets/images/portrait-form.webp"
-                 alt="A model laughing, photographed on a pale studio set."
-                 width="1200" height="1080" loading="lazy" decoding="async">
-          </figure>
         </div>
+        <figure class="pg-figure pg-figure--4x5 pg-form-head__pic">
+          <img src="assets/images/portrait-form.webp"
+               alt="A model laughing, photographed on a pale studio set."
+               width="1200" height="1080" loading="lazy" decoding="async">
+        </figure>
+      </div>
 
-        <div class="pg-reveal">
+      <div class="pg-formcard pg-reveal">
 
-          <p class="pg-note pg-note--block">FORM EMBED START &mdash; replace this whole form with the WordPress form shortcode or embed. Keep the field list and the submit label. Styling classes: <code>.pg-field</code>, <code>.pg-btn</code>.</p>
+        <p class="pg-note pg-note--block">FORM EMBED START &mdash; replace this whole form with the WordPress form shortcode or embed. Keep the field list and the submit label. Styling classes: <code>.pg-field</code>, <code>.pg-btn</code>.</p>
 
-          <!-- FORM EMBED START -->
-          <form class="pg-form-grid" action="#" method="post" novalidate>
+        <!-- FORM EMBED START -->
+        <form class="pg-form-grid" action="#" method="post" novalidate>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Company</span>
-              <input type="text" name="company" autocomplete="organization" required>
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Company</span>
+            <input type="text" name="company" autocomplete="organization" required>
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Full name</span>
-              <input type="text" name="fullname" autocomplete="name" required>
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Full name</span>
+            <input type="text" name="fullname" autocomplete="name" required>
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Role</span>
-              <input type="text" name="role" autocomplete="organization-title">
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Role</span>
+            <input type="text" name="role" autocomplete="organization-title">
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Business email</span>
-              <input type="email" name="email" autocomplete="email" required>
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Business email</span>
+            <input type="email" name="email" autocomplete="email" required>
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Target market / region</span>
-              <input type="text" name="region">
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Target market / region</span>
+            <input type="text" name="region">
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field">
-              <span class="pg-field__label">Partnership interest</span>
-              <select name="interest">
-                <option value="">Select one</option>
-                <option>Existing platform</option>
-                <option>Customization</option>
-                <option>Co-development</option>
-                <option>Exploring options</option>
-              </select>
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field">
+            <span class="pg-field__label">Partnership interest</span>
+            <select name="interest">
+              <option value="">Select one</option>
+              <option>Existing platform</option>
+              <option>Customization</option>
+              <option>Co-development</option>
+              <option>Exploring options</option>
+            </select>
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <label class="pg-field pg-field--full">
-              <span class="pg-field__label">Product objectives or message</span>
-              <textarea name="message" rows="4"></textarea>
-              <span class="pg-field__bar" aria-hidden="true"></span>
-            </label>
+          <label class="pg-field pg-field--full">
+            <span class="pg-field__label">Product objectives or message</span>
+            <textarea name="message" rows="4"></textarea>
+            <span class="pg-field__bar" aria-hidden="true"></span>
+          </label>
 
-            <div class="pg-consent">
-              <input type="checkbox" id="pg-consent" name="consent" required>
-              <label for="pg-consent">I agree that Pollogen may contact me about this inquiry and store my details in line with the <a href="#" data-pg-link="privacy">Privacy Policy</a>.</label>
-            </div>
+          <div class="pg-consent">
+            <input type="checkbox" id="pg-consent" name="consent" required>
+            <label for="pg-consent">I agree that Pollogen may contact me about this inquiry and store my details in line with the <a href="#" data-pg-link="privacy">Privacy Policy</a>.</label>
+          </div>
 
-            <div class="pg-form-actions">
-              <button class="pg-btn pg-btn--block" type="submit"><span>Request the Partnership Overview</span></button>
-            </div>
+          <div class="pg-form-actions">
+            <button class="pg-btn pg-btn--block" type="submit"><span>Request the Partnership Overview</span></button>
+          </div>
 
-            <div class="pg-form-secondary">
-              <span class="pg-label" style="font-size:10px">Secondary action</span>
-              <a class="pg-link" href="#" data-pg-cta="schedule-conversation">Schedule a Partnership Conversation<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
-            </div>
+          <div class="pg-form-secondary">
+            <span class="pg-label" style="font-size:10px">Secondary action</span>
+            <a class="pg-link" href="#" data-pg-cta="schedule-conversation">Schedule a Partnership Conversation<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+          </div>
 
-          </form>
-          <!-- FORM EMBED END -->
+        </form>
+        <!-- FORM EMBED END -->
 
-          <p class="pg-note">CTA 3 of 3 &mdash; &ldquo;Schedule a Partnership Conversation&rdquo; <span class="pg-strong">needs a destination:</span> a calendar booking link (Calendly / HubSpot Meetings) or a mailto. Currently <code>href="#"</code>. The Privacy Policy link also needs the real URL.</p>
-
-        </div>
+        <p class="pg-note">CTA 3 of 3 &mdash; &ldquo;Schedule a Partnership Conversation&rdquo; <span class="pg-strong">needs a destination:</span> a calendar booking link (Calendly / HubSpot Meetings) or a mailto. Currently <code>href="#"</code>. The Privacy Policy link also needs the real URL.</p>
 
       </div>
     </div>
