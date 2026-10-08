@@ -245,12 +245,14 @@
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-hero{position:relative;overflow:hidden;background:#E3D2CC}
 .tp-hud-lp .pg-hero__media{position:absolute;inset:0;z-index:0;overflow:hidden}
-.tp-hud-lp .pg-hero__media img{width:100%;height:100%;object-fit:cover;object-position:20% 50%}
+.tp-hud-lp .pg-hero__media img{width:100%;height:100%;object-fit:cover;object-position:0% 50%}
 .tp-hud-lp .pg-hero__veil{
   position:absolute;inset:0;z-index:1;
+  /* a solid paper field under the copy with a soft edge past it — a thin wash
+     let the device read right up against the type */
   background:linear-gradient(95deg,
-    rgba(250,248,247,.96) 0%, rgba(250,248,247,.93) 22%,
-    rgba(250,248,247,.74) 36%, rgba(250,248,247,.22) 50%, rgba(250,248,247,0) 62%);
+    rgba(250,248,247,1) 0%, rgba(250,248,247,1) 44%,
+    rgba(250,248,247,.55) 56%, rgba(250,248,247,.12) 68%, rgba(250,248,247,0) 78%);
 }
 .tp-hud-lp .pg-hero__in{
   position:relative;z-index:2;
@@ -369,8 +371,21 @@
    section and the copy sits on the open half.
    -------------------------------------------------------------------------- */
 .tp-hud-lp .pg-noir-split{position:relative;overflow:hidden;background:var(--pg-noir);color:rgba(255,255,255,.84)}
+/* a slow teal bloom on the copy side, picking up the light in the render */
+.tp-hud-lp .pg-noir-split::before{
+  content:'';position:absolute;left:-14%;top:18%;width:62%;height:70%;z-index:0;pointer-events:none;
+  background:radial-gradient(closest-side, rgba(45,190,210,.16), rgba(45,190,210,0) 72%);
+}
+/* and a beam that travels across the device every few seconds */
+.tp-hud-lp .pg-noir-split__pic::after{
+  content:'';position:absolute;inset:-25% -45%;z-index:2;pointer-events:none;
+  mix-blend-mode:screen;opacity:0;
+  background:linear-gradient(104deg,
+    rgba(120,225,235,0) 40%, rgba(120,225,235,.20) 47%,
+    rgba(200,248,252,.34) 50%, rgba(120,225,235,.20) 53%, rgba(120,225,235,0) 60%);
+}
 .tp-hud-lp .pg-noir-split__pic{position:absolute;top:0;right:0;bottom:0;width:52%;overflow:hidden}
-.tp-hud-lp .pg-noir-split__pic img{width:100%;height:100%;object-fit:cover;object-position:46% 50%}
+.tp-hud-lp .pg-noir-split__pic img{width:100%;height:100%;object-fit:cover;object-position:72% 52%}
 .tp-hud-lp .pg-noir-split__pic::before{
   content:'';position:absolute;top:0;left:0;bottom:0;width:42%;z-index:1;
   background:linear-gradient(90deg, var(--pg-noir) 0%, rgba(6,8,10,0) 100%);
@@ -521,16 +536,37 @@
 .tp-hud-lp .pg-card > *:not(.pg-card__ghost){position:relative;z-index:1}
 
 /* --------------------------------------------------------------------------
-   NUMBERED CLAUSES — the regulatory paragraphs, each on its own hairline row
+   REGULATORY BAND — blush, with the device bleeding off the left edge and the
+   clauses on rules that draw themselves in.
    -------------------------------------------------------------------------- */
-.tp-hud-lp .pg-clauses{border-top:1px solid var(--pg-line)}
+.tp-hud-lp .pg-regband{position:relative;overflow:hidden;background:var(--pg-blush)}
+.tp-hud-lp .pg-regband__pic{position:absolute;top:0;left:0;bottom:0;width:36%;overflow:hidden}
+.tp-hud-lp .pg-regband__pic img{width:100%;height:100%;object-fit:cover;object-position:52% 50%}
+.tp-hud-lp .pg-regband__pic::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:30%;z-index:1;
+  background:linear-gradient(270deg, var(--pg-blush) 0%, rgba(245,230,221,0) 100%);
+}
+.tp-hud-lp .pg-regband__in{
+  position:relative;z-index:2;padding:var(--s8) 0;
+  display:grid;grid-template-columns:36% 1fr;gap:var(--s7);align-items:center;
+}
+.tp-hud-lp .pg-regband__copy{grid-column:2}
+
+.tp-hud-lp .pg-clauses{border-top:1px solid rgba(0,0,0,.18)}
 .tp-hud-lp .pg-clause{
-  display:grid;grid-template-columns:48px 1fr;gap:var(--s4);
-  padding:var(--s5) 0;border-bottom:1px solid var(--pg-hair);
+  position:relative;display:grid;grid-template-columns:62px 1fr;gap:var(--s4);
+  padding:var(--s5) 0;
+}
+.tp-hud-lp .pg-clause::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(0,0,0,.18);
+  transform:scaleX(0);transform-origin:left;
 }
 .tp-hud-lp .pg-clause__n{
-  font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;color:var(--pg-mute);padding-top:4px;
+  font-family:var(--pg-display);font-size:clamp(20px,2vw,26px);line-height:1;
+  letter-spacing:.06em;color:rgba(0,0,0,.26);padding-top:2px;
+  transition:color .6s var(--pg-ease);
 }
+.tp-hud-lp .pg-clause:hover .pg-clause__n{color:var(--pg-black)}
 
 /* --------------------------------------------------------------------------
    PROCESS — a rule that draws itself across the three steps
@@ -694,6 +730,14 @@
 @keyframes pg-pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 @keyframes pg-parallax{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
 @keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pg-breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.14)}}
+@keyframes pg-beam{
+  0%{transform:translateX(-72%);opacity:0}
+  10%{opacity:1}
+  42%{transform:translateX(72%);opacity:1}
+  52%{transform:translateX(72%);opacity:0}
+  100%{transform:translateX(72%);opacity:0}
+}
 @keyframes pg-cue{
   0%{transform:translateY(-100%)}
   55%{transform:translateY(240%)}
@@ -704,7 +748,7 @@
 
   /* --- hero, on load ------------------------------------------------- */
   .tp-hud-lp .pg-hero__media img{animation:pg-zoom-in 2.6s var(--pg-ease) both}
-  .tp-hud-lp .pg-line > span{animation:pg-wipe-up 1s var(--pg-ease) both}
+  .tp-hud-lp .pg-hero .pg-line > span{animation:pg-wipe-up 1s var(--pg-ease) both}
   .tp-hud-lp .pg-hero__kicker,
   .tp-hud-lp .pg-hero__deck,
   .tp-hud-lp .pg-hero__body,
@@ -719,6 +763,10 @@
   .tp-hud-lp .pg-hero__deck{animation-delay:.60s}
   .tp-hud-lp .pg-hero__body{animation-delay:.70s}
   .tp-hud-lp .pg-hero__cta{animation-delay:.82s}
+
+  /* --- the noir band is alive even when it is not being scrolled ------ */
+  .tp-hud-lp .pg-noir-split::before{animation:pg-breathe 9s ease-in-out infinite}
+  .tp-hud-lp .pg-noir-split__pic::after{animation:pg-beam 7.5s var(--pg-ease) infinite}
 
   /* --- the marquee never stops --------------------------------------- */
   .tp-hud-lp .pg-marquee__track{animation:pg-marquee 38s linear infinite}
@@ -760,6 +808,18 @@
     .tp-hud-lp .pg-steps__line{
       animation:pg-rule linear both;animation-timeline:view();animation-range:entry 16% cover 48%;
     }
+    /* the regulatory rules draw themselves, one clause after the next */
+    .tp-hud-lp .pg-clause::after{animation:pg-rule linear both;animation-timeline:view()}
+    .tp-hud-lp .pg-clause:nth-child(1)::after{animation-range:entry 12% cover 34%}
+    .tp-hud-lp .pg-clause:nth-child(2)::after{animation-range:entry 20% cover 44%}
+    .tp-hud-lp .pg-clause:nth-child(3)::after{animation-range:entry 28% cover 54%}
+    /* the development heading wipes up line by line as it arrives */
+    .tp-hud-lp .pg-noir-split .pg-line > span{
+      animation:pg-wipe-up linear both;animation-timeline:view();
+    }
+    .tp-hud-lp .pg-noir-split .pg-line:nth-child(1) > span{animation-range:entry 14% entry 62%}
+    .tp-hud-lp .pg-noir-split .pg-line:nth-child(2) > span{animation-range:entry 20% entry 70%}
+    .tp-hud-lp .pg-noir-split .pg-line:nth-child(3) > span{animation-range:entry 26% entry 78%}
     .tp-hud-lp .pg-band__media img,
     .tp-hud-lp .pg-noir-split__pic img{
       animation:pg-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
@@ -1134,28 +1194,35 @@
   <!-- ======================================================================
        TECHNOLOGY — regulatory grounding
        ====================================================================== -->
-  <section class="pg-section pg-paper">
+  <section class="pg-regband">
+    <figure class="pg-regband__pic">
+      <img src="assets/images/regulatory.webp"
+           alt="A TriPollar home-use device photographed on a rose-toned set."
+           width="1000" height="1251" loading="lazy" decoding="async">
+    </figure>
     <div class="pg-wrap">
-      <div class="pg-split pg-split--wide-right pg-split--top">
-        <div class="pg-sticky pg-reveal">
-          <span class="pg-label">Regulatory</span>
-          <h2 class="pg-h2" style="margin-top:var(--s4)">Regulatory Experience From the Start</h2>
-          <div class="pg-tick" aria-hidden="true"></div>
+      <div class="pg-regband__in">
+        <div class="pg-regband__copy">
+          <div class="pg-reveal">
+            <span class="pg-label">Regulatory</span>
+            <h2 class="pg-h2" style="margin-top:var(--s4)">Regulatory Experience From the Start</h2>
+            <div class="pg-tick" aria-hidden="true"></div>
+          </div>
+          <ol class="pg-clauses pg-stagger" style="margin-top:var(--s6)">
+            <li class="pg-clause">
+              <span class="pg-clause__n">01</span>
+              <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
+            </li>
+            <li class="pg-clause">
+              <span class="pg-clause__n">02</span>
+              <p class="pg-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
+            </li>
+            <li class="pg-clause">
+              <span class="pg-clause__n">03</span>
+              <p class="pg-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
+            </li>
+          </ol>
         </div>
-        <ol class="pg-clauses pg-stagger">
-          <li class="pg-clause">
-            <span class="pg-clause__n">01</span>
-            <p class="pg-body">Pollogen, the company behind TriPollar, has experience with FDA-cleared home-use RF devices, including the <span class="pg-strong">STOP U Model UXV</span>.<a class="pg-ref" href="#pg-ref-3" id="pg-cite-3">[3]</a></p>
-          </li>
-          <li class="pg-clause">
-            <span class="pg-clause__n">02</span>
-            <p class="pg-body">That experience supports discussions around safety testing, technical documentation, and market-specific regulatory requirements.</p>
-          </li>
-          <li class="pg-clause">
-            <span class="pg-clause__n">03</span>
-            <p class="pg-body">Each partner product follows the pathway appropriate to its configuration, intended claims and launch markets.</p>
-          </li>
-        </ol>
       </div>
     </div>
   </section>
@@ -1173,7 +1240,11 @@
       <div class="pg-noir-split__in">
         <div class="pg-noir-split__copy pg-reveal">
           <span class="pg-label">Development</span>
-          <h2 class="pg-h2" style="margin-top:var(--s4)">Development Built Around Commercial Priorities</h2>
+          <h2 class="pg-h2" style="margin-top:var(--s4)">
+            <span class="pg-line"><span>Development Built</span></span>
+            <span class="pg-line"><span>Around Commercial</span></span>
+            <span class="pg-line"><span>Priorities</span></span>
+          </h2>
           <div class="pg-tick" aria-hidden="true"></div>
           <div class="pg-stack">
             <p class="pg-lede">Our partnership approach aligns product design, usability, testing, design-to-cost and production planning with your commercial objectives&mdash;from the initial brief through preparation for launch.</p>
