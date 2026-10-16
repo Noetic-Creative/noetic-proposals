@@ -1,0 +1,69 @@
+
+/* ---- The Rectangle — the brand element. Golden ratio 1:1.618. Never tilt, never round, never change proportion. ---- */
+.rect{position:relative;width:100%;aspect-ratio:1 / 1.618;background:var(--soft-white);border:1px solid var(--neutral-lighter);overflow:hidden}
+.rect--outline{background:transparent;border:2px solid var(--mineral-black)}
+.rect--dark{background:var(--mineral-black);border-color:var(--mineral-black)}
+.rect--photo{border:0}
+.rect--photo img{width:100%;height:100%;object-fit:cover}
+.rect__label{position:absolute;left:0;right:0;bottom:0;padding:1rem;font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---- Buttons — exact production values ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--terracota);color:var(--text-alternate);border:0;border-radius:0;padding:.75rem 1.5rem;font-family:var(--font-authority);font-size:1rem;font-weight:600;text-align:center;text-decoration:none;cursor:pointer;transition:background-color .3s,color .3s}
+.btn:hover{background:var(--mineral-black)}
+.btn-primary{display:flex;align-items:center;justify-content:space-between;background:var(--mineral-black);color:var(--soft-white);border-radius:8px;width:100%;max-width:22rem;padding:.75rem 1.5rem;font-weight:400;text-decoration:none;transition:background-color .3s}
+.btn-primary:hover{background:var(--mineral-grey)}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:space-between;gap:.75rem;background:var(--terracota);color:#fff;border-radius:2.5rem;height:46px;padding:12px 24px;font-weight:500;line-height:100%;text-decoration:none;transition:color .3s,background-color .3s}
+.btn-secondary:hover{background:var(--mineral-black)}
+.btn-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+
+/* ---- Icon cards ---- */
+.icon-card{margin:0;text-align:center}
+.icon-card__art{display:flex;align-items:flex-end;justify-content:center;height:120px;margin-bottom:1rem}
+.icon-card__art img,.icon-card__art svg{height:100%;width:auto}
+.icon-card figcaption{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.5;color:var(--mineral-grey)}
+.icon-card--brand .icon-card__art{height:140px}
+
+/* ---- Colour / material swatch card ---- */
+.sw{border:1px solid var(--border-primary);background:var(--white)}
+.sw__chip{height:170px;position:relative}
+.sw__body{padding:1.25rem 1.25rem 1.5rem}
+.sw__name{font-family:var(--font-expression);font-size:1.375rem;font-weight:400;margin-bottom:.75rem}
+.sw__role{font-size:.8125rem;line-height:1.6;color:var(--mineral-grey);margin-bottom:1rem}
+.sw dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .75rem;font-size:.75rem;margin:0}
+.sw dt{color:var(--neutral);letter-spacing:.06em;text-transform:uppercase}
+.sw dd{margin:0;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--mineral-black)}
+.dot{display:inline-block;width:.875rem;height:.875rem;border:1px solid var(--neutral-lighter);vertical-align:-2px;margin-right:.5rem}
+
+/* ---- Rules (do / don't) ---- */
+.rule{border:1px solid var(--border-primary);padding:2rem;background:var(--white)}
+.rule h4{font-family:var(--font-authority);font-size:.8125rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.rule h4::before{content:'';width:.625rem;height:1rem;flex:none;background:var(--mineral-black)}
+.rule--dont h4::before{background:var(--terracota)}
+.rule li{font-size:.875rem;line-height:1.75;color:var(--mineral-grey);padding-left:1.125rem;position:relative;margin-bottom:.625rem}
+.rule li::before{content:'';position:absolute;left:0;top:.6875rem;width:.375rem;height:.375rem;background:var(--neutral-light)}
+.rule--dont li::before{background:var(--terracota)}
+
+/* ---- Callouts ---- */
+.important{border-left:3px solid var(--terracota);background:var(--soft-white);padding:1.5rem 1.75rem}
+.important__tag{display:block;font-size:.6875rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terracota);margin-bottom:.5rem}
+.important p{font-size:.9375rem;line-height:1.7;color:var(--mineral-black)}
+
+/* ---- Tables ---- */
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+th{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:.875rem 1rem;border-bottom:1px solid var(--mineral-black)}
+td{padding:.875rem 1rem;border-bottom:1px solid var(--border-primary);vertical-align:top;color:var(--mineral-grey)}
+td:first-child{color:var(--mineral-black);font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.tscroll{width:100%;overflow-x:auto}
+
+/* ---- Voice / tone tag ---- */
+.tone span{border:1px solid var(--neutral-lighter);padding:.375rem .875rem;font-size:.75rem;letter-spacing:.06em;display:inline-block}
+
+/* ---- Photography ---- */
+.shot{margin:0;background:var(--soft-white)}
+.shot img{width:100%;aspect-ratio:1/1.618;object-fit:cover}
+.shot figcaption{padding:.875rem 0 0;font-size:.75rem;line-height:1.6;color:var(--neutral)}
+
+section{padding:var(--section-l) 0}
+.surface-soft{background:var(--soft-white)}
+.surface-dark{background:var(--mineral-black);color:var(--soft-white)}
+.surface-dark h1,.surface-dark h2,.surface-dark h3,.surface-dark h4{color:var(--soft-white)}

@@ -1,0 +1,15 @@
+:root{
+  --container-small:48rem;
+  --container-medium:64rem;
+  --container-large:80rem;
+  --padding-global:2.5rem;
+  --padding-global-mobile:1.25rem;
+  --section-s:3rem; --section-m:5rem; --section-l:7rem;
+  --phi:1.618; /* @kind other */
+  --radius-primary-btn:8px;
+  --radius-pill:2.5rem;
+}
+.wrap{width:100%;max-width:var(--container-large);margin:0 auto;padding:0 var(--padding-global)}
+.narrow{max-width:var(--container-small);margin-left:auto;margin-right:auto}
+.medium{max-width:var(--container-medium);margin-left:auto;margin-right:auto}
+@media (max-width:60rem){:root{--section-l:4rem;--section-m:3rem;--padding-global:1.25rem}}

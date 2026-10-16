@@ -1,0 +1,36 @@
+:root{
+  /* Brand — the four, verbatim from the Colors page */
+  --mineral-black:#1A1B17;  /* PMS 419C */
+  --mineral-grey:#444541;   /* PMS 416C */
+  --soft-white:#F5F2F0;     /* PMS Warm Gray 1C */
+  --terracota:#DC4405;      /* PMS 1655C — accent only, never a background */
+
+  /* Neutral base (production Webflow tokens) */
+  --white:#FFFFFF;
+  --black:#000000;
+  --neutral-darkest:#111111;
+  --neutral-darker:#222222;
+  --neutral-dark:#444444;
+  --neutral:#666666;
+  --neutral-light:#AAAAAA;
+  --neutral-lighter:#CCCCCC;
+  --neutral-lightest:#EEEEEE;
+
+  /* System colours */
+  --error:#F8E4E4;      --error-dark:#3B0B0B;
+  --success:#CEF5CA;    --success-dark:#114E0B;
+  --warning:#FCF8D8;    --warning-dark:#5E5515;
+  --focus-state:#2D62FF;
+
+  /* Semantic layer, as mapped in production */
+  --text-primary:var(--black);
+  --text-secondary:var(--terracota);
+  --text-alternate:var(--white);
+  --bg-primary:var(--white);
+  --bg-secondary:var(--mineral-grey);
+  --bg-alternate:var(--soft-white);
+  --border-primary:var(--neutral-lightest);
+  --border-secondary:var(--mineral-grey);
+  --link-primary:var(--mineral-grey);
+  --link-secondary:var(--black);
+}
