@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Geneo™ Facial | Find Your OxyPod</title>
+<meta name="description" content="The Geneo™ facial: oxygenation, resurfacing and active ingredients in one professional treatment, personalized to your skin. Find your OxyPod and a Geneo provider near you.">
+<!-- REPLACE before launch: canonical URL and OG image -->
+<meta property="og:title" content="The Geneo™ facial. Real, glowing results.">
+<meta property="og:description" content="A professional facial treatment built on skin technology, personalized to what your skin actually needs, delivered by trained providers.">
+<meta property="og:image" content="assets/img/hero-stack.webp">
+<meta name="theme-color" content="#DDD8D2">
+<link rel="icon" href="https://pollogen.com/wp-content/uploads/2019/10/cropped-favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Libre+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/CodecCold-News.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/img/stack-cut.webp?v=2" as="image">
+<link rel="stylesheet" href="assets/app.css?v=12">
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-motion')</script>
+</head>
+<body>
+<a class="skip" href="#finder">Skip to Find Your OxyPod</a>
+
+<!-- ============ HEADER: logos + one action, no navigation ============ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="hdr__brand" href="#top" aria-label="Geneo by Pollogen, back to top">
+      <img class="geneo" src="assets/logo/geneo-logotype.png" alt="Geneo" width="700" height="165">
+      <span class="by"><img src="assets/logo/pollogen-by-lumenis.png" alt="Pollogen by Lumenis" width="600" height="216"></span>
+    </a>
+    <a class="btn btn--solid" href="#provider" data-provider-link>Find a Provider Near You</a>
+  </div>
+  <i class="progress" id="progress"></i>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <canvas class="hero__bubbles" data-bubbles="hero" aria-hidden="true"></canvas>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow" data-fade><b>Geneo™</b> Professional facial</p>
+      <h1 class="display" id="hero-title" data-split>The Geneo<span class="tm">™</span> facial. Real, glowing results.</h1>
+      <p class="hero__sub" data-fade>A professional facial treatment built on skin technology, personalized to what your skin actually needs, delivered by trained providers.</p>
+      <div class="hero__ctas" data-fade>
+        <a class="btn btn--solid" href="#technology" data-magnet>Discover the Technology <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+        <a class="link" href="#finder">What's Your Skin Need?</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="ring">
+        <div class="ring__disc"></div>
+        <svg viewBox="0 0 400 400"><defs><path id="ringPath" d="M200,200 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/></defs>
+          <text><textPath href="#ringPath" textLength="1098" lengthAdjust="spacing">Exfoliation · Oxygenation · Active ingredients · Exfoliation · Oxygenation · Active ingredients ·</textPath></text></svg>
+      </div>
+      <div class="stack" data-stack="hero">
+        <img class="stack__full" src="assets/img/stack-cut.webp?v=2" alt="" width="412" height="840">
+        <img class="sl" src="assets/img/slice-6.webp?v=2" style="top:76.90%" alt="" width="412" height="172">
+        <img class="sl" src="assets/img/slice-5.webp?v=2" style="top:63.81%" alt="" width="412" height="179">
+        <img class="sl" src="assets/img/slice-4.webp?v=2" style="top:52.26%" alt="" width="412" height="161">
+        <img class="sl" src="assets/img/slice-3.webp?v=2" style="top:40.12%" alt="" width="412" height="154">
+        <img class="sl" src="assets/img/slice-2.webp?v=2" style="top:27.62%" alt="" width="412" height="147">
+        <img class="sl" src="assets/img/slice-1.webp?v=2" style="top:15.12%" alt="" width="412" height="142">
+        <img class="sl" src="assets/img/slice-0.webp?v=2" style="top:1.55%" alt="" width="412" height="138">
+        <span class="stack__shadow"></span>
+      </div>
+    </div>
+  </div>
+  <a class="scrollcue" href="#why"><span class="xbtn"></span>Scroll</a>
+
+  <!-- Benefit band. Wording follows Yael's feedback (point 3); confirm with POL. -->
+  <div class="marquee" aria-label="Benefits">
+    <div class="marquee__track">
+      <span class="marquee__item">Visible glow</span><span class="marquee__item">Smoother, fresher-looking skin</span><span class="marquee__item">Hydration</span><span class="marquee__item">Anti-aging benefits</span><span class="marquee__item">Non-invasive</span><span class="marquee__item">Needle-free</span><span class="marquee__item">No downtime</span>
+      <span class="marquee__item" aria-hidden="true">Visible glow</span><span class="marquee__item" aria-hidden="true">Smoother, fresher-looking skin</span><span class="marquee__item" aria-hidden="true">Hydration</span><span class="marquee__item" aria-hidden="true">Anti-aging benefits</span><span class="marquee__item" aria-hidden="true">Non-invasive</span><span class="marquee__item" aria-hidden="true">Needle-free</span><span class="marquee__item" aria-hidden="true">No downtime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 WHY GENEO ============ -->
+<section class="sec why" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec__num">01 <span>/ Why Geneo?</span></p>
+      <h2 class="h2 why__title scrub" id="why-title" data-scrub>Dull, dehydrated, or uneven? There's a reason, and a treatment for it.</h2>
+    </div>
+    <div class="why__grid">
+      <figure class="reveal-img why__img" data-reveal>
+        <img src="assets/img/portrait-pout.webp" alt="A woman with fresh, glowing skin" width="1800" height="1200" loading="lazy" data-parallax>
+      </figure>
+      <div class="why__copy">
+        <p class="lede" data-fade>Geneo™ combines oxygenation, resurfacing, and active ingredients in one professional treatment, personalized to your skin in every session. No guesswork, no one-size-fits-all routine. Just a treatment built around what your skin is actually asking for, with a glow you can see the moment you leave the chair.</p>
+        <ul class="why__tags" data-fade>
+          <li class="tag"><i></i>Oxygenation</li>
+          <li class="tag"><i></i>Resurfacing</li>
+          <li class="tag"><i></i>Active ingredients</li>
+        </ul>
+        <div data-fade><a class="btn" href="#finder" data-magnet>What's Your Skin Need? <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 THE OXYPOD (pinned story) ============ -->
+<section class="oxy" id="technology" aria-labelledby="oxy-title">
+  <div class="oxy__scroll" id="oxyScroll">
+    <div class="oxy__stage">
+      <canvas class="oxy__canvas" id="oxyCanvas" aria-hidden="true"></canvas>
+      <div class="oxy__copy">
+        <p class="sec__num">02 <span>/ What makes Geneo different</span></p>
+        <h2 class="h2" id="oxy-title" data-split>It all starts with the OxyPod.</h2>
+        <p class="lede">At the heart of every Geneo™ treatment is the OxyPod. In a single step, it combines three skin-renewing actions: exfoliation, oxygenation, and infusion of active ingredients. As the OxyPod gently removes dull surface cells and delivers targeted ingredients, a natural oxygenation process helps revitalize the skin from within.</p>
+        <ol class="steps3" id="steps3">
+          <li class="is-on"><span class="n">01</span><span class="t">Exfoliation</span><span class="d">Gently removes dull surface cells.</span></li>
+          <li><span class="n">02</span><span class="t">Oxygenation</span><span class="d">A natural oxygenation process helps revitalize the skin from within.</span></li>
+          <li><span class="n">03</span><span class="t">Active ingredients</span><span class="d">Delivers targeted ingredients.</span></li>
+        </ol>
+        <div class="oxy__bar"><i id="oxyBar"></i></div>
+      </div>
+      <div class="oxy__visual" aria-hidden="true">
+        <span class="oxy__big">OXYPOD</span>
+        <div class="stack" data-stack="oxy">
+        <img class="stack__full" src="assets/img/stack-cut.webp?v=2" alt="" width="412" height="840" loading="lazy">
+          <img class="sl" src="assets/img/slice-6.webp?v=2" style="top:76.90%" alt="" width="412" height="172" loading="lazy">
+          <img class="sl" src="assets/img/slice-5.webp?v=2" style="top:63.81%" alt="" width="412" height="179" loading="lazy">
+          <img class="sl" src="assets/img/slice-4.webp?v=2" style="top:52.26%" alt="" width="412" height="161" loading="lazy">
+          <img class="sl" src="assets/img/slice-3.webp?v=2" style="top:40.12%" alt="" width="412" height="154" loading="lazy">
+          <img class="sl" src="assets/img/slice-2.webp?v=2" style="top:27.62%" alt="" width="412" height="147" loading="lazy">
+          <img class="sl" src="assets/img/slice-1.webp?v=2" style="top:15.12%" alt="" width="412" height="142" loading="lazy">
+          <img class="sl" src="assets/img/slice-0.webp?v=2" style="top:1.55%" alt="" width="412" height="138" loading="lazy">
+          <span class="stack__shadow"></span>
+        </div>
+      </div>
+      <p class="oxy__label">3 actions · 1 step</p>
+    </div>
+  </div>
+</section>
+
+<section class="tech" aria-label="Professional technologies">
+  <div class="wrap tech__grid">
+    <div>
+      <p class="lede" data-fade>From there, advanced professional technologies build on that first step, so every session can be shaped around what your skin needs.</p>
+      <div class="tech__cta" data-fade><a class="btn" href="#expect" data-magnet>See How It Works <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
+    </div>
+    <!-- The five Geneo X technologies as listed on geneo-official.com/technologies -->
+    <ul class="tech__list" data-stagger>
+      <li class="tech__item"><img src="assets/img/tech-oxygeneo.webp" alt="" width="240" height="240" loading="lazy"><span>OxyGeneo</span></li>
+      <li class="tech__item"><img src="assets/img/tech-tripollar-rf.webp" alt="" width="240" height="240" loading="lazy"><span>TriPollar RF</span></li>
+      <li class="tech__item"><img src="assets/img/tech-ultrasound.webp" alt="" width="240" height="240" loading="lazy"><span>Ultrasound</span></li>
+      <li class="tech__item"><img src="assets/img/tech-esa.webp" alt="" width="240" height="240" loading="lazy"><span>ESA</span></li>
+      <li class="tech__item"><img src="assets/img/tech-massage.webp" alt="" width="240" height="240" loading="lazy"><span>Massage</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 03 ACTIVES ============ -->
+<section class="sec actives on-dark" id="actives" aria-labelledby="act-title">
+  <div class="wrap">
+    <div class="actives__intro">
+      <div>
+        <p class="sec__num">03 <span>/ Actives</span></p>
+        <h2 class="h2" id="act-title" data-split style="margin-top:26px">Ingredients your skin will recognize.</h2>
+      </div>
+      <p class="lede" data-fade>Every Geneo™ treatment is powered by active ingredients chosen for a specific skin goal, including some of the most talked-about names in skin care today.</p>
+    </div>
+    <div class="ing" id="ing">
+      <a class="ing__row" href="#finder" data-pod="exofirm" style="--c:#C8B08A"><span class="ing__n">01</span><span class="ing__name">Exosomes</span><span class="ing__desc">Plant-derived exosomes from Centella asiatica, found in Geneo ExoFirm.</span><span class="ing__pod"><i></i>Geneo ExoFirm</span></a>
+      <a class="ing__row" href="#finder" data-pod="hydrate" style="--c:#A9C2E6"><span class="ing__n">02</span><span class="ing__name">Niacinamide</span><span class="ing__desc">A favorite for moisture and a smooth, even look, found in Geneo Hydrate.</span><span class="ing__pod"><i></i>Geneo Hydrate</span></a>
+      <a class="ing__row" href="#finder" data-pod="hydrate" style="--c:#A9C2E6"><span class="ing__n">03</span><span class="ing__name">Hyaluronic Acid</span><span class="ing__desc">Deep, lasting hydration, found in Geneo Hydrate.</span><span class="ing__pod"><i></i>Geneo Hydrate</span></a>
+      <a class="ing__row" href="#finder" data-pod="clarify" style="--c:#A8B9B6"><span class="ing__n">04</span><span class="ing__name">Bamboo Charcoal</span><span class="ing__desc">Draws out impurities for a clearer look, found in Geneo Clarify.</span><span class="ing__pod"><i></i>Geneo Clarify</span></a>
+      <a class="ing__row" href="#finder" data-pod="illuminate" style="--c:#F4B79F"><span class="ing__n">05</span><span class="ing__name">Kojic Acid and Alpha-Arbutin</span><span class="ing__desc">For a brighter, more even tone, found in Geneo Illuminate.</span><span class="ing__pod"><i></i>Geneo Illuminate</span></a>
+      <a class="ing__row" href="#finder" data-pod="exofirm" style="--c:#C8B08A"><span class="ing__n">06</span><span class="ing__name">Gold, Copper, and Peptides</span><span class="ing__desc">For a firm, radiant finish, found in Geneo ExoFirm.</span><span class="ing__pod"><i></i>Geneo ExoFirm</span></a>
+    </div>
+    <div class="actives__cta" data-fade>
+      <p class="small" style="color:rgba(255,255,255,.55)">Select an ingredient to meet its OxyPod.</p>
+      <a class="btn btn--light" href="#finder" data-magnet>Discover the Ingredients <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+    </div>
+  </div>
+  <div class="ing__float" id="ingFloat" aria-hidden="true">
+    <img src="assets/img/pod-exofirm.webp" data-k="exofirm" alt="" loading="lazy">
+    <img src="assets/img/pod-hydrate.webp" data-k="hydrate" alt="" loading="lazy">
+    <img src="assets/img/pod-clarify.webp" data-k="clarify" alt="" loading="lazy">
+    <img src="assets/img/pod-illuminate.webp" data-k="illuminate" alt="" loading="lazy">
+  </div>
+</section>
+
+<!-- ============ 04 FIND YOUR OXYPOD ============ -->
+<section class="sec finder" id="finder" aria-labelledby="finder-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec__num">04 <span>/ Find your OxyPod</span></p>
+      <h2 class="h2" id="finder-title" data-split>Not sure where to start? Start with what your skin is telling you.</h2>
+    </div>
+
+    <div class="finder__stage">
+      <div>
+        <div class="wheel" id="wheel" data-cursor="Drag">
+          <div class="wheel__track"></div><div class="wheel__track2"></div>
+          <span class="wheel__pointer"></span>
+          <div class="wheel__ring" id="wheelRing"></div>
+          <div class="wheel__core" id="wheelCore"></div>
+          <span class="wheel__name" id="wheelName">Geneo Hydrate</span>
+          <canvas class="wheel__burst" id="wheelBurst"></canvas>
+        </div>
+        <div class="wheel__ctrls">
+          <button type="button" id="wheelPrev" aria-label="Previous OxyPod"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M10 2 4 8l6 6"/></svg></button>
+          <button type="button" id="wheelNext" aria-label="Next OxyPod"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="m6 2 6 6-6 6"/></svg></button>
+        </div>
+        <p class="wheel__hint">Drag the wheel or tap an OxyPod</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel__tabs" role="tablist" aria-label="Find your OxyPod">
+          <button class="panel__tab" role="tab" id="tabQuiz" aria-controls="viewQuiz" aria-selected="true">Find Your Match</button>
+          <button class="panel__tab" role="tab" id="tabExplore" aria-controls="viewExplore" aria-selected="false">Explore Geneo Treatments</button>
+        </div>
+        <div class="panel__body" aria-live="polite">
+          <div class="view is-on" id="viewQuiz" role="tabpanel" aria-labelledby="tabQuiz"></div>
+          <div class="view" id="viewExplore" role="tabpanel" aria-labelledby="tabExplore"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="finder__foot">
+      <p>Every Geneo™ treatment is personalized by your provider, in the room, to your skin that day.</p>
+      <a class="btn btn--solid" href="#provider" data-provider-link data-magnet>Find a Provider Near You <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 RESULTS ============ -->
+<section class="sec results" id="results" aria-labelledby="res-title">
+  <div class="wrap">
+    <div class="results__intro">
+      <div>
+        <p class="sec__num">05 <span>/ Results</span></p>
+        <h2 class="h2" id="res-title" data-split style="margin:26px 0 30px">The glow, verified.</h2>
+        <p class="lede" data-fade>Geneo™ is backed by clinical research and trusted by providers worldwide. In a clinical study, 90% of patients reported softer, more youthful-looking skin.*</p>
+      </div>
+      <div class="stat" data-fade>
+        <span class="stat__fig"><span data-count="90">90</span><sup>%</sup></span>
+        <span class="stat__cap">Reported softer, more youthful-looking skin*</span>
+      </div>
+    </div>
+
+    <!-- Real Geneo before & afters from pollogen.com/products/geneo-x/. Treatment + session labels TBC by POL. -->
+    <div class="ba">
+      <figure class="ba__item" data-fade>
+        <div class="cmp" data-cmp data-cursor="Drag">
+          <img src="assets/img/ba1-after.webp" alt="After Geneo treatment, eye area" width="900" height="654" loading="lazy">
+          <img class="cmp__before" src="assets/img/ba1-before.webp" alt="Before Geneo treatment, eye area" width="900" height="654" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <span class="cmp__line"></span><span class="cmp__knob"><svg viewBox="0 0 22 12" fill="none" stroke="#000"><path d="M6 1 1 6l5 5M16 1l5 5-5 5"/></svg></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after, eye area">
+        </div>
+        <figcaption><span>Geneo treatment</span><span>Sessions: TBC</span></figcaption>
+      </figure>
+      <figure class="ba__item" data-fade>
+        <div class="cmp" data-cmp data-cursor="Drag">
+          <img src="assets/img/ba2-after.webp" alt="After Geneo treatment, full face" width="528" height="700" loading="lazy">
+          <img class="cmp__before" src="assets/img/ba2-before.webp" alt="Before Geneo treatment, full face" width="528" height="700" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <span class="cmp__line"></span><span class="cmp__knob"><svg viewBox="0 0 22 12" fill="none" stroke="#000"><path d="M6 1 1 6l5 5M16 1l5 5-5 5"/></svg></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after, full face">
+        </div>
+        <figcaption><span>Geneo treatment</span><span>Sessions: TBC</span></figcaption>
+      </figure>
+      <figure class="ba__item" data-fade>
+        <div class="cmp" data-cmp data-cursor="Drag">
+          <img src="assets/img/ba8-after.webp" alt="After Geneo treatment, lower face and neck" width="521" height="700" loading="lazy">
+          <img class="cmp__before" src="assets/img/ba8-before.webp" alt="Before Geneo treatment, lower face and neck" width="521" height="700" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <span class="cmp__line"></span><span class="cmp__knob"><svg viewBox="0 0 22 12" fill="none" stroke="#000"><path d="M6 1 1 6l5 5M16 1l5 5-5 5"/></svg></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after, lower face and neck">
+        </div>
+        <figcaption><span>Geneo treatment</span><span>Sessions: TBC</span></figcaption>
+      </figure>
+    </div>
+    <div class="results__foot">
+      <p class="small">*Clinical study reference to be supplied. Results vary by skin and treatment type.</p>
+      <a class="link" href="https://www.geneo-official.com/clinical" target="_blank" rel="noopener">See More Results</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 WHAT TO EXPECT ============ -->
+<section class="sec expect stone" id="expect" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec__num">06 <span>/ What to expect from your treatment</span></p>
+      <h2 class="h2" id="exp-title" data-split>Simple. Relaxing. No downtime.</h2>
+    </div>
+    <div class="expect__grid">
+      <div class="expect__media" id="expectMedia">
+        <figure><img src="assets/img/treat-read.webp" alt="A provider at the Geneo X platform, preparing a personalized treatment" width="1440" height="1760" loading="lazy" style="object-position:30% 40%"></figure>
+        <figure><img src="assets/img/treat-massage.webp" alt="A provider delivering a professional facial treatment" width="1360" height="1700" loading="lazy" style="object-position:40% 50%"></figure>
+        <figure><img src="assets/img/portrait-laugh.webp" alt="A woman glowing and smiling after her treatment" width="1920" height="893" loading="lazy" style="object-position:30% 50%"></figure>
+        <span class="expect__count" id="expectCount">01 / 03</span>
+      </div>
+      <div>
+        <article class="estep" data-step="0">
+          <p class="estep__n">01</p>
+          <h3>Step 1: Your provider reads your skin.</h3>
+          <p class="lede">Every treatment starts with a quick assessment, so the protocol fits your skin that day.</p>
+        </article>
+        <article class="estep" data-step="1">
+          <p class="estep__n">02</p>
+          <h3>Step 2: The treatment begins.</h3>
+          <p class="lede">It starts with the OxyPod, which renews and oxygenates the skin. Then professional technologies like ultrasound and massage help active ingredients absorb and leave skin refreshed. All in one comfortable session, with no downtime.</p>
+        </article>
+        <article class="estep" data-step="2">
+          <p class="estep__n">03</p>
+          <h3>Step 3: You leave glowing.</h3>
+          <p class="lede">Most people see and feel a difference immediately. No redness, no recovery, just radiance.</p>
+        </article>
+        <p class="expect__close" data-fade>Book it as a regular ritual, or the week before an event. Either way, your skin shows up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 BRAND ============ -->
+<section class="brand" aria-labelledby="brand-title">
+  <div class="brand__bg" data-depth><img src="assets/img/clinic.webp" alt="" width="1300" height="1625" loading="lazy"></div>
+  <p class="outline-run" id="outlineRun" aria-hidden="true">Trusted by providers — Loved by skin — Trusted by providers — Loved by skin —</p>
+  <div class="wrap brand__in">
+    <div class="brand__copy on-dark" style="background:none">
+      <p class="sec__num">07 <span>/ Credibility</span></p>
+      <h2 class="h2" id="brand-title" data-split>Trusted by providers. Loved by skin.</h2>
+      <p class="lede" data-fade>Geneo™ comes from decades of professional skincare technology, the kind clinics and med-spas have trusted for years. It's not a trend. It's a treatment built on real technology, refined over time, and delivered by trained professionals who know your skin.</p>
+      <div class="brand__logo" data-fade><img src="assets/logo/pollogen-by-lumenis.png" alt="Pollogen by Lumenis" width="600" height="216" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 FAQ ============ -->
+<section class="sec faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq__grid">
+    <div class="faq__aside">
+      <p class="sec__num">08 <span>/ FAQ</span></p>
+      <h2 class="h2" id="faq-title" data-split>FAQ</h2>
+    </div>
+    <div class="faq__list" id="faqList">
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">W</span><span class="qa__t">What is a Geneo facial?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>A professional skin treatment that uses oxygenation, resurfacing, and active ingredients together in one session, personalized to your skin.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">W</span><span class="qa__t">What's the difference between an oxygenating facial and a hydrating facial?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>An oxygenating facial, like Geneo™, works by drawing oxygen up through the skin to power resurfacing and active ingredients. A hydrating facial focuses mainly on moisture. Geneo™ treatments can be personalized toward either goal, or both, depending on what your skin needs.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">W</span><span class="qa__t">Which Geneo treatment is right for me?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>It depends on your skin goal. Use the <a href="#finder">Find Your Match</a> section above, or talk to your provider, who can personalize your session on the spot.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">H</span><span class="qa__t">How long does a treatment take?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>A typical session fits easily into a lunch break or an afternoon appointment. Ask your provider for exact timing.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">I</span><span class="qa__t">Is it suitable for my skin type?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>Geneo™ treatments are personalized for a wide range of skin types and concerns. Your provider will confirm the right fit for you.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">H</span><span class="qa__t">How often should I get a Geneo treatment?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>Many people treat it as a regular part of their skincare routine, with a series of sessions for longer-term results. Your provider can recommend a schedule based on your goals.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">W</span><span class="qa__t">Where can I get a Geneo treatment?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>Geneo™ is offered by trained providers, including clinics, med-spas, and estheticians. Find one near you below.</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__l">W</span><span class="qa__t">What results can I expect?</span><span class="qa__i"></span></button><div class="qa__a"><div><p>Most people notice a visible glow right after their first session, with continued improvement over a series of treatments. Results vary by skin and treatment type.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 FINAL CTA ============ -->
+<section class="final" id="provider" aria-labelledby="final-title">
+  <canvas class="final__bubbles" data-bubbles="final" aria-hidden="true"></canvas>
+  <div class="wrap final__in">
+    <div class="final__copy">
+      <p class="eyebrow on-dark" data-fade style="color:rgba(255,255,255,.6)"><b style="color:#fff">09</b> Find a provider</p>
+      <h2 class="display" id="final-title" data-split style="margin-top:30px">Ready to reveal your glow?</h2>
+      <p data-fade>Find a Geneo™ provider near you and book your first treatment.</p>
+      <div data-fade>
+        <!-- REPLACE: provider-locator URL (none exists on pollogen.com or geneo-official.com yet) -->
+        <a class="btn btn--white btn--big" href="#" data-provider-link data-magnet>Find a Provider Near You <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      </div>
+    </div>
+    <div class="final__pods" aria-hidden="true">
+      <div class="stack" data-stack="final">
+        <img class="stack__full" src="assets/img/stack-cut.webp?v=2" alt="" width="412" height="840" loading="lazy">
+        <img class="sl" src="assets/img/slice-6.webp?v=2" style="top:76.90%" alt="" width="412" height="172" loading="lazy">
+        <img class="sl" src="assets/img/slice-5.webp?v=2" style="top:63.81%" alt="" width="412" height="179" loading="lazy">
+        <img class="sl" src="assets/img/slice-4.webp?v=2" style="top:52.26%" alt="" width="412" height="161" loading="lazy">
+        <img class="sl" src="assets/img/slice-3.webp?v=2" style="top:40.12%" alt="" width="412" height="154" loading="lazy">
+        <img class="sl" src="assets/img/slice-2.webp?v=2" style="top:27.62%" alt="" width="412" height="147" loading="lazy">
+        <img class="sl" src="assets/img/slice-1.webp?v=2" style="top:15.12%" alt="" width="412" height="142" loading="lazy">
+        <img class="sl" src="assets/img/slice-0.webp?v=2" style="top:1.55%" alt="" width="412" height="138" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <img src="assets/logo/geneo-logotype-white.png" alt="Geneo" width="700" height="165" loading="lazy">
+        <i></i>
+        <img class="pl" src="assets/logo/pollogen-by-lumenis.png" alt="Pollogen by Lumenis" width="600" height="216" loading="lazy">
+      </div>
+      <nav class="ftr__links" aria-label="Legal">
+        <a href="https://pollogen.com/privacy-statement/">Privacy</a>
+        <a href="https://pollogen.com/accessibility-statement/">Accessibility</a>
+        <a href="https://pollogen.com/contact-us/">Contact</a>
+      </nav>
+    </div>
+    <div class="ftr__legal">
+      <p>Geneo™ treatments are performed by trained providers. Results vary by skin and treatment type.</p>
+      <p>© All Rights Reserved to Pollogen 2026</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta"><a class="btn btn--solid" href="#provider" data-provider-link>Find a Provider Near You</a></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__ring" id="cursorRing"></span><span class="cursor__dot"></span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/app.js?v=11"></script>
+</body>
+</html>
