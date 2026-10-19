@@ -319,7 +319,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
 
   <div class="wrap">
     <section class="masthead">
-      <span class="capsule">LinkedIn Outreach &middot; Expandi Bots</span>
+      <span class="capsule">LinkedIn Outreach &middot; Bot Campaigns</span>
       <h1>TSG &middot; LinkedIn Outreach Report</h1>
       <div class="facts">
         <span class="meta-line" id="factBots">&nbsp;</span>
@@ -368,7 +368,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
           <span><i style="background:var(--mint)"></i>New connections</span>
           <span><i style="background:var(--ink)"></i>People who replied</span>
         </div>
-        <p class="card__note">Requests and connections come from the Expandi numbers logged for each bot and are counted on the date they were logged. Before September those numbers were logged every one to five weeks, so a single bar can cover several weeks. Replies are counted on the day they arrived.</p>
+        <p class="card__note">Requests and connections come from the numbers logged for each bot and are counted on the date they were logged. Before September those numbers were logged every one to five weeks, so a single bar can cover several weeks. Replies are counted on the day they arrived.</p>
       </div>
 
       <div class="card span4">
@@ -444,7 +444,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
 /* =====================================================================
    TSG · LinkedIn Outreach Report
    Data: Google Sheet "TSG LinkedIn Bot Master Sheet", four tabs read live as CSV:
-   Sheet1 (replies), Snapshots (Expandi numbers per bot), Bots, Insights.
+   Sheet1 (replies), Snapshots (numbers per bot), Bots, Insights.
    ===================================================================== */
 (function () {
   'use strict';
@@ -1065,7 +1065,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     el('factBots').textContent = state.botNames.length + ' bots · ' + active + ' active now';
     el('factRange').textContent = fmtNice(rg.from) + ' to ' + fmtNice(rg.to);
     var lastSnap = state.snaps.length ? state.snaps[state.snaps.length - 1].date : null;
-    el('factThrough').textContent = lastSnap ? 'Expandi numbers logged through ' + fmtNice(lastSnap) : 'No Expandi numbers logged yet';
+    el('factThrough').textContent = lastSnap ? 'Numbers updated through ' + fmtNice(lastSnap) : 'No numbers logged yet';
     var prev = previousRange();
     el('factCompare').textContent = prev ? 'Compared with ' + prev.label : 'No prior period to compare';
     el('footStamp').textContent = state.generatedAt ? 'Data pulled ' + new Date(state.generatedAt).toLocaleString('en-US') : '';
