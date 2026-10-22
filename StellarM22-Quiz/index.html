@@ -1272,6 +1272,8 @@
     /* ===== v10: Oct 2026 quiz doc — charts, platform table, Final Output page ===== */
     .insight.is-on { max-height: 3000px; }
     .other-field { margin-top: 12px; }
+    .optin.gate-optin { display: flex; width: 100%; margin: 14px 0 0; border-radius: 15px; font-size: clamp(14px, .98vw, 16px); }
+    .insight-more a { color: #8f3334; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
     .tile-grid li:has(.is-none) { grid-column: 1 / -1; }
     .bench-left .rows { margin-top: clamp(28px, 4.2vh, 48px); }
     .other-field[hidden] { display: none; }
@@ -1500,7 +1502,7 @@
                   <span class="insight-star" aria-hidden="true"><svg viewBox="0 0 63 62" fill="none" aria-hidden="true"><path d="M29.969.145 33.676 0C34.285 16.221 45.773 28.527 62.227 28.897c1.556 6.022-2.315 3.857-6.79 5.008-10.317 2.652-18.667 10.789-20.96 21.289-.244 1.118-.709 6.175-1.036 6.652l-3.795-.039c-.659-10.86-5.114-19.296-14.669-24.998-4.689-2.798-8.987-3.339-14.292-3.841.046-1.301.12-2.601.227-3.898 1.303-.134 2.603-.284 3.904-.449 11.957-1.627 22.33-11.665 24.341-23.586.227-1.338.035-3.87.812-4.89Zm-17.829 30.997c8.137 2.936 13.524 7.838 17.823 15.555.436.782 1.075 3.273 1.734 3.685 4.155-10.305 9.162-14.989 19.149-19.243-7.701-3.735-12.075-6.665-16.893-14.343-.476-.756-2.293-4.868-2.588-5.147-2.98 7.268-6.622 12.152-13.445 16.411-2.003 1.25-3.927 2.024-5.88 3.122Z" fill="currentColor"/></svg></span>
                   <p class="insight-kicker">Your market &middot; <span data-state-name></span></p>
                   <div class="insight-body" data-insight-text></div>
-                  <details class="insight-src insight-more"><summary>Sources</summary><p><b>Practice counts:</b> Orbital med-spa directory, state and metro pages (withorbital.com/data/med-spa/[state]), active med spas tracked as of October 5, 2026. Orbital&rsquo;s definition: https://www.withorbital.com/data/how-many-med-spas-in-the-us/. <b>Population: US Census Bureau</b>, Vintage 2024 state population estimates, July 1, 2024: https://www2.census.gov/programs-surveys/popest/tables/2020-2024/state/totals/NST-EST2024-POP.xlsx. Per-capita figures: practices divided by population, times 100,000; states ranked highest to lowest. Laws and rules: Nextech, Qualifications You Need to Perform Laser Hair Removal in Each State (Dec 2024), https://www.nextech.com/blog/laser-hair-removal-by-state; ABACT, Who Can Perform Laser Treatments? (updated Sep 17, 2026), https://abactraining.com/who-can-perform-laser-treatments-a-50-state-legal-guide/; and the state sources in the attached source map. US average: 12 practices per 100k residents (40,739 practices across the 50 states, 339.4 million residents).</p></details>
+                  <details class="insight-src insight-more"><summary>Sources</summary><p>Practice counts: Orbital med-spa directory, state and metro pages (<a href="https://withorbital.com/data/med-spa/" target="_blank" rel="noopener">withorbital.com/data/med-spa/[state]</a>), active med spas tracked as of October 5, 2026 and rechecked October 12, 2026; counts are rounded. Population: US Census Bureau, Vintage 2024 state population estimates, July 1, 2024: <a href="https://www2.census.gov/programs-surveys/popest/tables/2020-2024/state/totals/NST-EST2024-POP.xlsx" target="_blank" rel="noopener">www2.census.gov/programs-surveys/&hellip;/NST-EST2024-POP.xlsx</a>. Per-capita figures are practices divided by population, times 100,000, calculated from the unrounded counts; states are ranked highest to lowest. The national average of 12.0 per 100k is 40,739 practices across the 50 states divided by 339.4 million residents, times 100,000.</p></details>
                 </div>
               </div>
               <div class="q-actions">
@@ -1620,15 +1622,15 @@
               <header class="q-copy">
                 <p class="q-num">Your benchmark is <span data-gate-pct>60%</span> built</p>
                 <h2 id="contact-title">Where should we send the <em>full benchmark?</em></h2>
-                <p class="q-hint">Three questions left. Your details lock in the results you&rsquo;ve built so far and unlock your full benchmark.</p>
+                <p class="q-hint">Your details lock in the results you&rsquo;ve built so far and unlock your full benchmark.</p>
               </header>
               <div class="gate-preview" aria-hidden="true">
                 <ul>
                   <li><span data-gate-state>Your state</span><span data-gate-state-val>#&ndash; per capita</span></li>
                   <li><span>Services in-house</span><span data-gate-svc>&ndash; of 9</span></li>
                   <li><span>Patient demand covered</span><span data-gate-cov>&ndash;%</span></li>
-                  <li class="is-blur"><span>Your platform</span><span>4 technologies</span></li>
-                  <li class="is-blur"><span>Local competition</span><span>#12 of 50</span></li>
+                  <li class="is-blur"><span>Your platform</span><span data-gate-plat>4 technologies</span></li>
+                  <li class="is-blur"><span>Local competition</span><span data-gate-comp>#12 of 50</span></li>
                 </ul>
                 <span class="gate-lock"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6"/></svg>Unlocks with your details</span>
               </div>
@@ -1650,9 +1652,13 @@
                   <input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-0123">
                 </div>
               </div>
+              <button class="optin gate-optin" type="button" data-gate-privacy aria-pressed="false">
+                <span class="optin-box" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.6l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="optin-txt">[Privacy checkbox: wording from the Lumenis privacy team]</span>
+              </button>
               <p class="privacy">We use this to send your benchmark and follow up about it. No spam, ever.</p>
               <div class="q-actions">
-                <button class="next-button" type="button" data-next disabled><span>Unlock &amp; Continue</span></button>
+                <button class="next-button" type="button" data-next disabled><span>See My Benchmark</span></button>
               </div>
             </div>
             <aside class="live q-side" data-live-slot><div class="insight-wait" data-insight-wait><span class="insight-star" aria-hidden="true"><svg viewBox="0 0 63 62" fill="none" aria-hidden="true"><path d="M29.969.145 33.676 0C34.285 16.221 45.773 28.527 62.227 28.897c1.556 6.022-2.315 3.857-6.79 5.008-10.317 2.652-18.667 10.789-20.96 21.289-.244 1.118-.709 6.175-1.036 6.652l-3.795-.039c-.659-10.86-5.114-19.296-14.669-24.998-4.689-2.798-8.987-3.339-14.292-3.841.046-1.301.12-2.601.227-3.898 1.303-.134 2.603-.284 3.904-.449 11.957-1.627 22.33-11.665 24.341-23.586.227-1.338.035-3.87.812-4.89Zm-17.829 30.997c8.137 2.936 13.524 7.838 17.823 15.555.436.782 1.075 3.273 1.734 3.685 4.155-10.305 9.162-14.989 19.149-19.243-7.701-3.735-12.075-6.665-16.893-14.343-.476-.756-2.293-4.868-2.588-5.147-2.98 7.268-6.622 12.152-13.445 16.411-2.003 1.25-3.927 2.024-5.88 3.122Z" fill="currentColor"/></svg></span><p class="insight-kicker">Your insight</p><p>Answer on the left and your benchmark for this question appears here.</p></div></aside>
@@ -1742,7 +1748,7 @@
                 </div>
               </div>
               <div class="q-actions">
-                <button class="next-button" type="button" data-next disabled><span>See My Benchmark</span></button>
+                <button class="next-button" type="button" data-next disabled><span>Continue</span></button>
               </div>
             </div>
             <aside class="live q-side" data-live-slot><div class="insight-wait" data-insight-wait><span class="insight-star" aria-hidden="true"><svg viewBox="0 0 63 62" fill="none" aria-hidden="true"><path d="M29.969.145 33.676 0C34.285 16.221 45.773 28.527 62.227 28.897c1.556 6.022-2.315 3.857-6.79 5.008-10.317 2.652-18.667 10.789-20.96 21.289-.244 1.118-.709 6.175-1.036 6.652l-3.795-.039c-.659-10.86-5.114-19.296-14.669-24.998-4.689-2.798-8.987-3.339-14.292-3.841.046-1.301.12-2.601.227-3.898 1.303-.134 2.603-.284 3.904-.449 11.957-1.627 22.33-11.665 24.341-23.586.227-1.338.035-3.87.812-4.89Zm-17.829 30.997c8.137 2.936 13.524 7.838 17.823 15.555.436.782 1.075 3.273 1.734 3.685 4.155-10.305 9.162-14.989 19.149-19.243-7.701-3.735-12.075-6.665-16.893-14.343-.476-.756-2.293-4.868-2.588-5.147-2.98 7.268-6.622 12.152-13.445 16.411-2.003 1.25-3.927 2.024-5.88 3.122Z" fill="currentColor"/></svg></span><p class="insight-kicker">Your insight</p><p>Answer on the left and your benchmark for this question appears here.</p></div></aside>
@@ -2003,7 +2009,7 @@ function stateFromZip(zip) {
       const SRC_SERVICES = '*According to 2024 medical spa state industry report';
       const DYK_SERVICES = 'Did you know? 5 of the top 9 procedures offered in aesthetic practices by energy-based devices are light- and laser-based. Energy-based devices generate $3.4B+ in annual revenue for US med spas, with about 20% annual growth.';
       const SRC_DEMAND = 'ASDS (American Society for Dermatologic Surgery), ASDS Survey on Dermatologic Procedures — projection estimates 6.6 % YOY growth to 2023';
-      const SRC_COMP = 'Orbital med-spa directory, state pages, as of October 5, 2026 (https://withorbital.com/data/med-spa/[state]); AmSpa, 2024 Medical Spa State of the Industry Executive Report Recap (8,899 medical spas in 2022, 10,488 in 2023): https://www.americanmedspa.org/news/2024-medical-spa-state-of-the-industry-executive-report-recap/';
+      const SRC_COMP = 'Orbital med-spa directory, state pages, as of October 5, 2026 (https://withorbital.com/data/med-spa/[state]); AmSpa, 2024 Medical Spa State of the Industry Executive Report Recap (8,899 medical spas in 2022, 10,488 in 2023): https://www.americanmedspa.org/news/2024-medical-spa-state-of-the-industry-executive-report-recap/ “About 1,600 new locations” is the difference between the two figures (1,589), rounded.';
       const DISCLAIMER = '*Refer to user manual for region-specific approved applications';
       const COMP_LINE = {
         low: 'Low local competition is a head start, not a guarantee. New practices keep opening every year.',
@@ -2029,7 +2035,7 @@ function stateFromZip(zip) {
         services: [], servicesOther: '', demand: [], platform: '', competition: '', bottleneck: ''
       };
       const order = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'];
-      const RAIL = ['q1', 'q2', 'q3', 'contact', 'q4', 'q5', 'q6'];
+      const RAIL = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'contact'];
       const panels = $$('[data-panel]');
       const dots = $$('#step-dots li');
       const stepCount = $('#step-count');
@@ -2169,9 +2175,8 @@ function stateFromZip(zip) {
       };
       const nextOf = (from) => {
         if (from === 'q1') return answers.businessType === 'Patient / Consumer' ? 'exit' : 'q2';
-        if (from === 'q3') return 'contact';
-        if (from === 'contact') return 'q4';
-        if (from === 'q6' || from === 'exit') return null;
+        if (from === 'q6') return 'contact';
+        if (from === 'contact' || from === 'exit') return null;
         return order[order.indexOf(from) + 1] || null;
       };
       $('[data-start-quiz]').addEventListener('click', () => showPanel('q1'));
@@ -2357,15 +2362,12 @@ function stateFromZip(zip) {
       });
 
       /* ---------- Q4-Q6: single-choice lists ---------- */
-      function compHtml(final) {
+      /* Q5 reveal and the results page now share one wording */
+      function compHtml() {
         const s = STATES[answers.stateKey];
         const c = answers.competition;
         let html = '';
-        if (final) {
-          if (s) html += '<p>You’re one of about ' + fmt(s.c) + ' med spas in ' + s.n + (s.r ? ', ranked #' + s.r + ' of 50 for density' : '') + '. Nationally, the number of medical spas grew from 8,899 in 2022 to 10,488 in 2023, about 1,600 new locations.</p>';
-        } else {
-          if (s) html += '<p>You’re one of <em>' + fmt(s.c) + '</em> aesthetic practices in ' + s.n + (s.r ? ', ranked #' + s.r + ' of 50 for density' : '') + '. Nationally, the number of medical spas grew from 8,899 to 10,488 in one year on record, about <em>1,600 new locations</em>.</p>';
-        }
+        if (s) html += '<p>You’re one of about ' + fmt(s.c) + ' med spas in ' + s.n + (s.r ? ', ranked #' + s.r + ' of 50 for density' : '') + '. Nationally, the number of medical spas grew from 8,899 in 2022 to 10,488 in 2023, about 1,600 new locations.</p>';
         html += '<p>' + (c === '6-10' || c === '10+' ? COMP_LINE.high : COMP_LINE.low) + '</p>';
         return html + '<p class="ib-note">' + SRC_COMP + '</p>';
       }
@@ -2373,12 +2375,14 @@ function stateFromZip(zip) {
         q4() {
           const p = answers.platform;
           setLive('platform', p === 'stellar' ? 'Stellar M22' : p === 'other' ? 'Other brand' : 'None', p === 'stellar');
+          $('[data-gate-plat]').textContent = p === 'stellar' ? 'Stellar M22' : p === 'other' ? 'Another brand' : 'No platform yet';
           return platformHtml(p);
         },
         q5() {
           const c = answers.competition;
           setLive('comp', c === '10+' ? '10+ nearby' : c + ' nearby', c === '0-2' || c === '3-5');
-          return compHtml(false);
+          $('[data-gate-comp]').textContent = c === '10+' ? 'More than 10 nearby' : c + ' nearby';
+          return compHtml();
         },
         q6() {
           setLive('bottleneck', BOTTLENECK_SHORT[answers.bottleneck] || '', answers.bottleneck === 'none');
@@ -2410,7 +2414,7 @@ function stateFromZip(zip) {
         lastInput.closest('[data-field]').classList.toggle('is-set', lOk);
         emailInput.closest('[data-field]').classList.toggle('is-set', mOk);
         phoneInput.closest('[data-field]').classList.toggle('is-set', pOk);
-        setReady(contactNext, fOk && lOk && mOk && pOk);
+        setReady(contactNext, fOk && lOk && mOk && pOk && !!answers.privacyConsent);
       }
       [firstInput, lastInput, emailInput, phoneInput].forEach((i) => { i.addEventListener('input', checkContact); i.addEventListener('blur', checkContact); });
 
@@ -2449,7 +2453,7 @@ function stateFromZip(zip) {
           servicesChart() + '<p class="ib-note">' + SRC_SERVICES + '</p>', '#2f7d63'));
         rows.push(resultRow('demand', 'Patient demand', 'The treatments you cover account for ' + demandPct() + '% of the procedures shown.',
           demandChart() + '<p class="ib-note">' + SRC_DEMAND + '</p>', '#c67578'));
-        rows.push(resultRow('comp', 'Local competition', '', compHtml(true), '#8f3334'));
+        rows.push(resultRow('comp', 'Local competition', '', compHtml(), '#8f3334'));
         const plat = platformHtml(answers.platform);
         if (plat) rows.push(resultRow('platform', 'Your platform', '', plat, '#0a0a0a'));
         const bn = BOTTLENECK[answers.bottleneck];
@@ -2469,13 +2473,23 @@ function stateFromZip(zip) {
         return on;
       }
       optin.addEventListener('click', () => { answers.contactOptIn = toggle(optin, '#contact-opt-in'); });
-      privacy.addEventListener('click', () => { answers.privacyConsent = toggle(privacy, '#privacy-consent'); specialist.disabled = !answers.privacyConsent; });
+      /* one consent, two boxes: the contact form and the closing section stay in sync */
+      const gatePrivacy = $('[data-gate-privacy]');
+      function setPrivacy(on) {
+        answers.privacyConsent = on;
+        [gatePrivacy, privacy].forEach((b) => { b.setAttribute('aria-pressed', String(on)); b.classList.toggle('is-on', on); });
+        $('#privacy-consent').value = on ? 'yes' : 'no';
+        if (!specialist.dataset.sent) specialist.disabled = !on;
+        checkContact();
+      }
+      gatePrivacy.addEventListener('click', () => setPrivacy(!answers.privacyConsent));
+      privacy.addEventListener('click', () => setPrivacy(!answers.privacyConsent));
       const note = $('[data-closer-note]');
       specialist.addEventListener('click', () => {
         if (specialist.disabled) return;
         note.textContent = (answers.firstName ? 'Thanks, ' + answers.firstName + '. ' : 'Thanks. ') + 'Someone from our team will be in touch shortly.';
         note.hidden = false;
-        specialist.disabled = true;
+        specialist.disabled = true; specialist.dataset.sent = '1';
       });
       function revealResults() {
         const results = $('#results'); results.classList.add('is-on');
