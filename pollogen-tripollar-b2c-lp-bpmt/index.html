@@ -3,29 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TriPollar — Home-Use Landing Page (preview)</title>
+<title>TriPollar | Firmer, smoother-looking skin with at-home RF</title>
+<meta name="description" content="TriPollar home use devices are FDA-cleared and dermatologist approved, with visible results in 6 to 8 weeks of consistent use. About 9 minutes a session, no clinic visit required.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/logo/tripollar-logo.svg">
 <style>
-  /* Preview shell only. None of this ships to WordPress. */
+  /* Page shell only. In WordPress the theme supplies these. */
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #fff; }
-  .preview-bar {
-    position: sticky; top: 0; z-index: 200;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
-    padding: 9px 20px; background: #2F2C2D; color: #fff;
-    font: 500 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    letter-spacing: .06em; text-transform: uppercase;
-  }
-  .preview-bar b { font-weight: 600; letter-spacing: .14em; }
-  .preview-bar span { color: rgba(255,255,255,.62); text-transform: none; letter-spacing: .02em; }
+  body { margin: 0; background: #FAF8F7; }
 </style>
 </head>
 <body>
-<div class="preview-bar">
-  <b>Preview</b>
-  <span>TriPollar · B2C home-use landing page · the yellow notes are build annotations and do not render on the live page</span>
-</div>
 <!-- ==========================================================================
      TRIPOLLAR — B2C HOME-USE LANDING PAGE
      Paste everything below into a single WordPress Custom HTML block.
@@ -508,41 +496,22 @@
 .tp-b2c-lp .pg-result .pg-figure{aspect-ratio:4/5}
 
 /* --------------------------------------------------------------------------
-   RESULTS — two creator videos and the clinical figures
+   RESULTS — four creator videos from the TriPollar store, the clinical
+   figures in a row beneath. Native controls: nothing depends on script.
    -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-proof{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr);gap:var(--s5);align-items:stretch;
+.tp-b2c-lp .pg-ugc-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.tp-b2c-lp .pg-ugc{position:relative;aspect-ratio:606/1080;overflow:hidden;background:var(--pg-noir)}
+.tp-b2c-lp .pg-ugc video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--pg-noir);
 }
-.tp-b2c-lp .pg-ugc{
-  position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--pg-noir);color:var(--pg-white);
-}
-.tp-b2c-lp .pg-ugc > img{
-  position:absolute;inset:-8%;width:116%;height:116%;max-width:none;object-fit:cover;
-  filter:blur(14px) saturate(.8);opacity:.62;transform:scale(1.04);
-}
-.tp-b2c-lp .pg-ugc::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(20,17,16,.12) 0%, rgba(20,17,16,.2) 50%, rgba(20,17,16,.86) 100%);
-}
-.tp-b2c-lp .pg-ugc__play{
-  position:absolute;left:50%;top:44%;z-index:2;width:66px;height:66px;margin:-33px 0 0 -33px;
-  border:1px solid rgba(255,255,255,.7);border-radius:50%;
-  transition:transform .6s var(--pg-ease),background .6s var(--pg-ease);
-}
-.tp-b2c-lp .pg-ugc__play::after{
-  content:'';position:absolute;left:27px;top:23px;
-  border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #fff;
-}
-.tp-b2c-lp .pg-ugc:hover .pg-ugc__play{transform:scale(1.1);background:rgba(255,255,255,.12)}
-.tp-b2c-lp .pg-ugc__meta{position:absolute;left:var(--s4);right:var(--s4);bottom:var(--s4);z-index:2}
-.tp-b2c-lp .pg-ugc__handle{display:block;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--pg-white)}
-.tp-b2c-lp .pg-ugc__prod{
-  display:block;margin-top:6px;font-size:10px;letter-spacing:var(--pg-track-label);
-  text-transform:uppercase;color:rgba(255,255,255,.64);
-}
+.tp-b2c-lp .pg-ugc__meta{position:absolute;left:var(--s2);top:var(--s2);z-index:2;pointer-events:none}
 
-.tp-b2c-lp .pg-stats{display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid rgba(0,0,0,.16)}
-.tp-b2c-lp .pg-stat{position:relative;padding:var(--s4) 0 var(--s4)}
+.tp-b2c-lp .pg-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:var(--s7);
+  border-top:1px solid rgba(0,0,0,.16);
+}
+.tp-b2c-lp .pg-stat{position:relative;padding:var(--s5) var(--s5) var(--s5) 0}
+.tp-b2c-lp .pg-stat + .pg-stat{padding-left:var(--s5);border-left:1px solid rgba(0,0,0,.1)}
 .tp-b2c-lp .pg-stat::after{
   content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(0,0,0,.16);
   transform-origin:left;
@@ -589,6 +558,14 @@
 }
 .tp-b2c-lp .pg-step .pg-h3{margin-bottom:var(--s2)}
 .tp-b2c-lp .pg-step .pg-body{color:var(--pg-grey)}
+
+/* the how-to films — a poster in an iframe srcdoc, so nothing loads from
+   YouTube until it is clicked, and the page carries no script for it */
+.tp-b2c-lp .pg-howto{margin-top:var(--s8);padding-top:var(--s6);border-top:1px solid var(--pg-hair)}
+.tp-b2c-lp .pg-howto__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.tp-b2c-lp .pg-howto__frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--pg-noir)}
+.tp-b2c-lp .pg-howto__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tp-b2c-lp .pg-howto__item figcaption{margin-top:var(--s3)}
 
 /* --------------------------------------------------------------------------
    BRAND BAND — blush, with the treatment room bleeding off the left edge
@@ -710,7 +687,6 @@
 @keyframes pg-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes pg-plane{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pg-pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.45)}70%{box-shadow:0 0 0 18px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 @keyframes pg-cue{
   0%{transform:translateY(-100%)}
   55%{transform:translateY(240%)}
@@ -734,11 +710,9 @@
   .tp-b2c-lp .pg-hero__deck{animation-delay:.56s}
   .tp-b2c-lp .pg-hero__cta{animation-delay:.72s}
 
-  /* --- the marquee never stops; the play buttons breathe ------------- */
+  /* --- the marquee never stops ------------------------------------- */
   .tp-b2c-lp .pg-marquee__track{animation:pg-marquee 36s linear infinite}
   .tp-b2c-lp .pg-marquee:hover .pg-marquee__track{animation-play-state:paused}
-  .tp-b2c-lp .pg-ugc__play{animation:pg-pulse 2.8s var(--pg-ease) infinite}
-  .tp-b2c-lp .pg-ugc + .pg-ugc .pg-ugc__play{animation-delay:1.4s}
 
   /* --- each new question and the result rise in as they are routed to - */
   .tp-b2c-lp .pg-q--2,
@@ -798,25 +772,11 @@
 }
 
 /* --------------------------------------------------------------------------
-   BUILD NOTES — preview only. The `pg-annotated` class is NOT on the
-   WordPress fragment, so none of this renders on the live page.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-note{display:none}
-.tp-b2c-lp.pg-annotated .pg-note{
-  display:block;margin-top:12px;padding:9px 13px;
-  border:1px dashed #B99A3E;background:#FFFBEF;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11px;line-height:1.65;letter-spacing:0;text-transform:none;color:#6B5411;text-align:left;
-}
-.tp-b2c-lp.pg-annotated .pg-note--block{margin:0 0 var(--s5)}
-
-/* --------------------------------------------------------------------------
    RESPONSIVE
    -------------------------------------------------------------------------- */
 @media (max-width:1100px){
   .tp-b2c-lp .pg-head--split{grid-template-columns:1fr;gap:var(--s4)}
-  .tp-b2c-lp .pg-proof{grid-template-columns:1fr 1fr}
-  .tp-b2c-lp .pg-stats{grid-column:1 / -1}
+  .tp-b2c-lp .pg-ugc-row{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tp-b2c-lp .pg-tech__item{padding:var(--s5) var(--s4)}
 }
 @media (max-width:1000px){
@@ -837,6 +797,7 @@
   .tp-b2c-lp .pg-sticky{position:static}
   .tp-b2c-lp .pg-steps{grid-template-columns:1fr 1fr;gap:var(--s5)}
   .tp-b2c-lp .pg-steps::before{display:none}
+  .tp-b2c-lp .pg-howto__grid{grid-template-columns:1fr 1fr}
 
   .tp-b2c-lp .pg-hero{display:flex;flex-direction:column}
   .tp-b2c-lp .pg-hero__media{position:relative;inset:auto;left:auto;width:100%;aspect-ratio:5/4;order:-1}
@@ -864,10 +825,12 @@
 }
 @media (max-width:620px){
   .tp-b2c-lp{--pg-gutter:20px}
-  .tp-b2c-lp .pg-proof{grid-template-columns:1fr 1fr;gap:var(--s3)}
-  .tp-b2c-lp .pg-ugc__meta{left:var(--s2);right:var(--s2);bottom:var(--s2)}
-  .tp-b2c-lp .pg-ugc__play{width:52px;height:52px;margin:-26px 0 0 -26px}
-  .tp-b2c-lp .pg-ugc__play::after{left:21px;top:17px;border-width:8px 0 8px 13px}
+  .tp-b2c-lp .pg-ugc-row{gap:var(--s2)}
+  .tp-b2c-lp .pg-ugc__meta{left:var(--s1);top:var(--s1)}
+  .tp-b2c-lp .pg-stats{grid-template-columns:1fr}
+  .tp-b2c-lp .pg-stat,
+  .tp-b2c-lp .pg-stat + .pg-stat{padding:var(--s4) 0;border-left:0}
+  .tp-b2c-lp .pg-howto__grid{grid-template-columns:1fr}
   .tp-b2c-lp .pg-expert{grid-template-columns:1fr;padding:var(--s4)}
   .tp-b2c-lp .pg-tech__item{grid-template-columns:56px 1fr;padding:var(--s4) var(--s3)}
   .tp-b2c-lp .pg-tech__mark{width:56px;height:56px}
@@ -886,7 +849,7 @@
 </style>
 
 
-<div class="tp-b2c-lp pg-annotated">
+<div class="tp-b2c-lp">
 
   <span class="pg-progress" aria-hidden="true"></span>
   <a class="pg-skip" href="#pg-main">Skip to main content</a>
@@ -938,7 +901,6 @@
               <a class="pg-btn" href="#pg-match"><span>Find Your Device</span></a>
               <a class="pg-link" href="https://pollogen.com/contact-us/" data-pg-cta="get-in-touch">Get in Touch<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
             </div>
-            <p class="pg-note">Find Your Device &rarr; anchors to the device finder on this page. Get in Touch &rarr; set to pollogen.com/contact-us/ for now; <b>POL to confirm the destination</b> (a TriPollar consumer contact may be preferred).</p>
           </div>
 
         </div>
@@ -1032,7 +994,6 @@
         </ul>
 
       </div>
-      <p class="pg-note">Marks are Pollogen&rsquo;s own icon family from pollogen.com/technologies (Multi-RF, DMA, LED) &mdash; the same files used on the HUD partnership page.</p>
 
     </div>
   </section>
@@ -1048,7 +1009,6 @@
         <p class="pg-lede">Every TriPollar device targets a specific area and goal. Here&rsquo;s a closer look at each one.</p>
       </div>
 
-      <p class="pg-note pg-note--block">Each Learn More points at that device&rsquo;s own page on pollogen.com (STOP Vx2 S lives at /products/tripollar-stop-vx2/). Images: Gold, Pose Vx, Aura and Prism are from their pollogen.com product pages; the STOP Vx2 S frame is the mytripollar.com STOP Vx 2 listing photo &mdash; <b>POL to confirm it is the same device</b>. The chips on the images use the finder&rsquo;s own focus areas.</p>
 
       <div class="pg-railwrap pg-reveal">
         <ul class="pg-rail" tabindex="0" role="region" aria-label="The TriPollar range. Scroll sideways to see more.">
@@ -1175,7 +1135,6 @@
           <h2 class="pg-h2" style="margin-top:var(--s4)">Find Your TriPollar</h2>
           <p class="pg-lede">Three quick questions. One device made for you.</p>
           <div class="pg-tick" aria-hidden="true"></div>
-          <p class="pg-note">Works with no JavaScript (CSS <code>:has()</code>). Change any earlier answer and the questions and result below it re-route on their own. Eye area and Body resolve after one question, per the copy doc&rsquo;s logic.</p>
         </div>
 
         <div class="pg-match__card pg-reveal">
@@ -1281,35 +1240,43 @@
         <h2 class="pg-h2">What People Are Saying</h2>
       </div>
 
-      <p class="pg-note pg-note--block"><b>Video slots &mdash; placeholders.</b> From the copy doc, not for publication: <b>@its.angel.jade</b> (STOP Vx2 Gold routine) &mdash; her video says &ldquo;5 minutes&rdquo;, so it needs a caption or edit, since that conflicts with the 9-minute fact. <b>@srta_palo</b> (STOP Vx2) &mdash; her on-screen facelift comparison should be cut or approved first. Drop the approved MP4s in as &lt;video controls playsinline poster&gt; in place of the blurred backdrops.</p>
 
-      <div class="pg-proof">
-
-        <figure class="pg-ugc pg-reveal">
-          <img src="assets/images/why-portrait.webp" alt="" aria-hidden="true" width="1080" height="1350" loading="lazy" decoding="async">
-          <span class="pg-ugc__play" aria-hidden="true"></span>
-          <figcaption class="pg-ugc__meta">
-            <span class="pg-ugc__handle">@its.angel.jade</span>
-            <span class="pg-ugc__prod">STOP Vx2 Gold</span>
-          </figcaption>
+      <div class="pg-ugc-row pg-stagger">
+        <figure class="pg-ugc">
+          <video controls playsinline preload="none" width="606" height="1080"
+                 poster="assets/video/ugc-gold-roller.webp" aria-label="A creator explains why she swapped her facial roller for the TriPollar STOP Vx2 Gold, and shows how she uses it.">
+            <source src="assets/video/ugc-gold-roller.mp4" type="video/mp4">
+          </video>
+          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2 Gold</span></figcaption>
         </figure>
-
-        <figure class="pg-ugc pg-reveal">
-          <img src="assets/images/range-s.webp" alt="" aria-hidden="true" width="720" height="900" loading="lazy" decoding="async">
-          <span class="pg-ugc__play" aria-hidden="true"></span>
-          <figcaption class="pg-ugc__meta">
-            <span class="pg-ugc__handle">@srta_palo</span>
-            <span class="pg-ugc__prod">STOP Vx2</span>
-          </figcaption>
+        <figure class="pg-ugc">
+          <video controls playsinline preload="none" width="606" height="1080"
+                 poster="assets/video/ugc-gold-routine.webp" aria-label="A creator walks through her TriPollar STOP Vx2 Gold routine: gel, small circles, then DMA along the jawline.">
+            <source src="assets/video/ugc-gold-routine.mp4" type="video/mp4">
+          </video>
+          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2 Gold</span></figcaption>
         </figure>
-
-        <ul class="pg-stats pg-reveal">
-          <li class="pg-stat"><span class="pg-stat__n">31%</span><span class="pg-stat__t">improvement in skin firmness</span></li>
-          <li class="pg-stat"><span class="pg-stat__n">22%</span><span class="pg-stat__t">increase in skin elasticity</span></li>
-          <li class="pg-stat"><span class="pg-stat__n">97%</span><span class="pg-stat__t">satisfied with their skin&rsquo;s elasticity, smoothness, and radiance</span></li>
-        </ul>
-
+        <figure class="pg-ugc">
+          <video controls playsinline preload="none" width="606" height="1080"
+                 poster="assets/video/ugc-vx2-explainer.webp" aria-label="A creator introduces the TriPollar STOP Vx2 and the technology inside it.">
+            <source src="assets/video/ugc-vx2-explainer.mp4" type="video/mp4">
+          </video>
+          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2</span></figcaption>
+        </figure>
+        <figure class="pg-ugc">
+          <video controls playsinline preload="none" width="606" height="1080"
+                 poster="assets/video/ugc-vx2-first-look.webp" aria-label="A creator tries the TriPollar STOP Vx2 at home and talks through how it works.">
+            <source src="assets/video/ugc-vx2-first-look.mp4" type="video/mp4">
+          </video>
+          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2</span></figcaption>
+        </figure>
       </div>
+
+      <ul class="pg-stats pg-stagger">
+        <li class="pg-stat"><span class="pg-stat__n">31%</span><span class="pg-stat__t">improvement in skin firmness</span></li>
+        <li class="pg-stat"><span class="pg-stat__n">22%</span><span class="pg-stat__t">increase in skin elasticity</span></li>
+        <li class="pg-stat"><span class="pg-stat__n">97%</span><span class="pg-stat__t">satisfied with their skin&rsquo;s elasticity, smoothness, and radiance</span></li>
+      </ul>
 
       <div class="pg-expert pg-reveal">
         <figure class="pg-figure">
@@ -1321,7 +1288,6 @@
           <p class="pg-small">Third-party clinical study by SGS, 33 participants, 28 days of use. Individual results may vary.</p>
         </div>
       </div>
-      <p class="pg-note">Dr. Hadley King portrait is the one mytripollar.com already uses on its homepage (600&times;600).</p>
 
     </div>
   </section>
@@ -1336,8 +1302,7 @@
         <div class="pg-routine__copy pg-reveal">
           <h2 class="pg-h2">How TriPollar Fits Into Your Day</h2>
           <div class="pg-tick" aria-hidden="true"></div>
-          <a class="pg-link" href="#" data-pg-cta="how-to-videos">Watch how to use each device<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
-          <p class="pg-note"><b>Needs a destination.</b> A how-to video hub or playlist. Pollogen&rsquo;s media library already holds a Pose Vx How-To (3840&times;2160) and Technology film; the others would need sourcing.</p>
+          <a class="pg-link" href="#pg-howto" data-pg-cta="how-to-videos">Watch how to use each device<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
         </div>
         <div class="pg-routine__pics pg-stagger">
           <figure class="pg-figure pg-figure--1x1">
@@ -1374,6 +1339,42 @@
         </li>
       </ol>
 
+      <!-- the official how-to films from Pollogen's YouTube channel -->
+      <div class="pg-howto pg-anchor" id="pg-howto">
+        <div class="pg-howto__grid pg-stagger">
+          <figure class="pg-howto__item">
+            <div class="pg-howto__frame">
+              <iframe title="How to use TriPollar STOP Vx2 Gold" loading="lazy" width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;rel=0"
+                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/E5h8zN17GkA/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2 Gold'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+            <figcaption class="pg-prod__name">TriPollar STOP Vx2 Gold</figcaption>
+          </figure>
+          <figure class="pg-howto__item">
+            <div class="pg-howto__frame">
+              <iframe title="How to use TriPollar STOP Vx2" loading="lazy" width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;rel=0"
+                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/43a3lc_Y6eg/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+            <figcaption class="pg-prod__name">TriPollar STOP Vx2 S</figcaption>
+          </figure>
+          <figure class="pg-howto__item">
+            <div class="pg-howto__frame">
+              <iframe title="How to use TriPollar Pose Vx" loading="lazy" width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;rel=0"
+                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/rrFXC25_bO8/maxresdefault.jpg' alt='How to use TriPollar Pose Vx'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+            <figcaption class="pg-prod__name">TriPollar Pose Vx</figcaption>
+          </figure>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1399,7 +1400,6 @@
             <img src="assets/images/icon-fda.svg" alt="" aria-hidden="true" width="120" height="120" loading="lazy">
             <p class="pg-h3">Every TriPollar device is FDA-cleared.</p>
           </div>
-          <p class="pg-note">Photo: a professional Pollogen treatment from the pollogen.com library, used for &ldquo;professional treatment rooms&rdquo;. FDA icon: the one on the mytripollar.com homepage. <b>POL to confirm</b> a professional-system image is fine on a consumer page.</p>
         </div>
       </div>
     </div>
@@ -1480,10 +1480,9 @@
         <div class="pg-final__copy">
           <h2 class="pg-h2">Ready to firm and smooth, on your own time?</h2>
           <p class="pg-body">Explore the TriPollar range and find the home use device that fits your goals.</p>
-          <a class="pg-btn" href="#" data-pg-cta="shop-tripollar"><span>Shop TriPollar</span></a>
+          <a class="pg-btn" href="https://mytripollar.com/collections/all" data-pg-cta="shop-tripollar"><span>Shop TriPollar</span></a>
         </div>
       </div>
-      <p class="pg-note"><b>Needs a destination.</b> mytripollar.com is the US store, but today it only sells STOP Vx 2 and the Activator Gel &mdash; POL to say where the full range is bought.</p>
     </div>
   </section>
 
@@ -1500,12 +1499,11 @@
           <img src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy">
         </div>
         <nav class="pg-footer__links" aria-label="Legal">
-          <a href="#" data-pg-link="privacy">Privacy</a>
-          <a href="#" data-pg-link="accessibility">Accessibility</a>
+          <a href="https://pollogen.com/privacy-statement/" data-pg-link="privacy">Privacy</a>
+          <a href="https://pollogen.com/accessibility-statement/" data-pg-link="accessibility">Accessibility</a>
           <a href="https://pollogen.com/contact-us/" data-pg-link="contact">Contact</a>
         </nav>
       </div>
-      <p class="pg-note">Footer links need real URLs before launch: Privacy, Accessibility.</p>
     </div>
   </footer>
 
