@@ -5,8 +5,11 @@
 (() => {
   'use strict';
 
-  // Single place to wire the provider locator once POL supplies it.
-  const PROVIDER_URL = '';
+  // "For Clinics" / "I'm a clinic or physician" target. Placeholder until POL
+  // confirms the B2B page the paid media points at.
+  const CLINIC_URL = 'https://pollogen.com/products/geneo-x/';
+  // Lead form endpoint (HubSpot or POL's CRM). Empty = validate + thank-you only.
+  const FORM_ENDPOINT = '';
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -22,7 +25,7 @@
   // copy doc; ingredients from pollogen.com / geneo-official.com pod pages.
   const PODS = [
     { id: 'hydrate', name: 'Hydrate', goal: 'Dry, dehydrated skin', c: '#2F5597', t: '#DCE6F4',
-      line: 'For dry, thirsty skin. Deep hydration that shows up as softness, not just shine.',
+      line: 'For skin that’s thirsty. Deep hydration that shows up as softness, not just shine.',
       ing: ['Niacinamide', 'Hyaluronic Acid', 'Blue Spirulina'] },
     { id: 'clarify', name: 'Clarify', goal: 'Oily, blemish-prone skin', c: '#3E5A58', t: '#DCE5E3',
       line: 'For oily and acne-prone skin. A clearer, calmer complexion without stripping it.',
@@ -95,19 +98,14 @@
     else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   };
 
+  $$('[data-clinic-link]').forEach(a => { a.href = CLINIC_URL; });
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
     const href = a.getAttribute('href');
-    if (a.hasAttribute('data-provider-link') && href === '#') {
-      e.preventDefault();
-      if (PROVIDER_URL) location.href = PROVIDER_URL;
-      else gsap?.fromTo(a, { x: -6 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' });
-      return;
-    }
-    if (href.length > 1 && $(href)) { e.preventDefault(); scrollToEl(href, href === '#provider' ? 0 : -70); }
+    if (a.dataset.toPod) { e.preventDefault(); showTreatment(a.dataset.toPod); return; }
+    if (href.length > 1 && $(href)) { e.preventDefault(); scrollToEl(href, href === '#contact' ? 0 : -70); }
   });
-  if (PROVIDER_URL) $$('[data-provider-link]').forEach(a => { a.href = PROVIDER_URL; });
 
   /* ------------------------------------------------------------ splitting */
   function splitWords(el) {
@@ -195,7 +193,7 @@
       },
     });
     const finalCanvas = $('[data-bubbles="final"]');
-    if (finalCanvas) new Bubbles(finalCanvas, { rate: 0.45, minR: 2, maxR: 26, speed: 1, top: -40, rim: '255,255,255' });
+    if (finalCanvas) new Bubbles(finalCanvas, { rate: 0.22, minR: 2, maxR: 22, speed: 1, top: -40, rim: '255,255,255' });
   }
 
   /* ------------------------------------------------------------- stacks */
@@ -253,10 +251,10 @@
       opacity: 0, y: 40, duration: 1, ease: 'expo.out', stagger: .08,
       scrollTrigger: { trigger: list, start: 'top 85%', once: true },
     }));
-    // Ingredient rows
-    gsap.from('.ing__row', {
-      opacity: 0, y: 50, duration: 1.1, ease: 'expo.out', stagger: .08,
-      scrollTrigger: { trigger: '#ing', start: 'top 82%', once: true },
+    // Treatment cards rise in (desktop grid only; on phones they're a swipe row)
+    if (desktop()) gsap.from('.tcard', {
+      opacity: 0, y: 60, duration: 1.1, ease: 'expo.out', stagger: .07,
+      scrollTrigger: { trigger: '#tcards', start: 'top 82%', once: true },
     });
 
     /* Hero intro: the OxyPods drop in and build the stack, bottom first */
@@ -380,24 +378,40 @@
   })();
   function hexA(h, a) { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
 
-  /* ------------------------------------------------------ ingredient rows */
-  (() => {
-    const fl = $('#ingFloat'); if (!fl) return;
-    const imgs = $$('img', fl);
-    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
-    const tick = () => { x = lerp(x, tx, .14); y = lerp(y, ty, .14); fl.style.transform = `translate(${x}px,${y}px) rotate(${clamp((tx - x) * .03, -7, 7)}deg)`; raf = requestAnimationFrame(tick); };
-    $$('.ing__row').forEach(row => {
-      row.addEventListener('mouseenter', e => {
-        if (!fine) return;
-        if (!fl.classList.contains('is-on')) { x = tx = e.clientX + 30; y = ty = e.clientY - 160; }
-        imgs.forEach(i => i.classList.toggle('is-on', i.dataset.k === row.dataset.pod));
-        fl.classList.add('is-on'); if (!raf) tick();
-      });
-      row.addEventListener('mouseleave', () => fl.classList.remove('is-on'));
-      row.addEventListener('mousemove', e => { tx = e.clientX + 30; ty = e.clientY - 160; });
-      row.addEventListener('click', e => { e.preventDefault(); finder.show(row.dataset.pod, true); scrollToEl('#finder'); });
+  /* ---------------------------------------------------- treatment cards */
+  // An ingredient's treatment chip lands on that treatment's card; on phones the
+  // cards are a swipe row, so the row is scrolled to the card as well.
+  const row = $('#tcards');
+  function showTreatment(id) {
+    const card = $(`#t-${id}`); if (!card) return;
+    if (desktop()) scrollToEl(card, -110);
+    else { scrollToEl('#treatments', -70); row.scrollTo({ left: card.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: reduce ? 'auto' : 'smooth' }); }
+    card.classList.add('is-flash'); setTimeout(() => card.classList.remove('is-flash'), 1800);
+  }
+  if (row) {
+    const count = $('#tcardsCount'), n = row.children.length;
+    row.addEventListener('scroll', () => {
+      const w = row.children[0].offsetWidth + parseFloat(getComputedStyle(row).columnGap || 14);
+      count.textContent = `${String(Math.min(n, Math.round(row.scrollLeft / w) + 1)).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
+    }, { passive: true });
+  }
+
+  /* ------------------------------------------------------------- videos */
+  // Muted loops only play while on screen; preload="none" keeps the hidden
+  // (desktop vs phone) copies from ever downloading.
+  const playIf = (v, on) => { if (reduce) return; if (on) v.play().catch(() => {}); else v.pause(); };
+  if (reduce) $$('video').forEach(v => { v.controls = true; });
+  const vio = new IntersectionObserver(ens => ens.forEach(en => playIf(en.target, en.isIntersecting)), { threshold: .25 });
+  $$('video[data-autoplay], .evid--m video').forEach(v => vio.observe(v));
+  // Step 2 film: the chip under the playhead lights up
+  $$('[data-chips]').forEach(fig => {
+    const v = $('video', fig), chips = $$('.echips li', fig);
+    v.addEventListener('timeupdate', () => {
+      let k = 0; chips.forEach((c, i) => { if (v.currentTime >= +c.dataset.t) k = i; });
+      chips.forEach((c, i) => c.classList.toggle('is-on', i === k));
     });
-  })();
+    chips[0].classList.add('is-on');
+  });
 
   /* --------------------------------------------------------------- finder */
   const finder = (() => {
@@ -417,7 +431,7 @@
       ring.append(b); return b;
     });
     PODS.forEach((p, i) => {
-      const im = new Image(); im.src = `assets/img/pod-${p.id}.webp`; im.alt = ''; im.loading = 'lazy'; im.dataset.i = i;
+      const im = new Image(); im.src = `assets/img/pack-${p.id}.webp`; im.alt = ''; im.loading = 'lazy'; im.dataset.i = i;
       core.append(im);
     });
     const coreImgs = $$('img', core);
@@ -485,9 +499,9 @@
 
     function renderExplore() {
       const p = PODS[cur];
-      vE.innerHTML = podCard(p, `OxyPod ${String(cur + 1).padStart(2, '0')} / ${String(PODS.length).padStart(2, '0')}`) + `
+      vE.innerHTML = podCard(p, `Treatment ${String(cur + 1).padStart(2, '0')} / ${String(PODS.length).padStart(2, '0')}`) + `
         <div class="res__actions">
-          <a class="btn btn--solid" href="#provider" data-provider-link>Find a Provider Near You ${arrow}</a>
+          <a class="btn btn--solid" href="#contact">Get in Touch ${arrow}</a>
           <a class="link" href="${learnUrl(p.id)}" target="_blank" rel="noopener">Learn More</a>
         </div>`;
       vE.classList.remove('is-on'); void vE.offsetWidth; vE.classList.add('is-on');
@@ -533,7 +547,7 @@
       const p = PODS[byId[result]];
       vQ.innerHTML = podCard(p, 'Your match') + `
         <div class="res__actions">
-          <a class="btn btn--solid" href="#provider" data-provider-link>Find a Provider Near You ${arrow}</a>
+          <a class="btn btn--solid" href="#contact">Get in Touch ${arrow}</a>
           <a class="link" href="${learnUrl(p.id)}" target="_blank" rel="noopener">Learn More</a>
           <button type="button" class="link" id="retake">Retake</button>
         </div>`;
@@ -607,11 +621,42 @@
   });
 
   /* --------------------------------------------------- what to expect */
+  // Desktop: one sticky frame, each step wipes its film in and only that film plays.
   (() => {
-    const figs = $$('#expectMedia figure'), count = $('#expectCount');
-    const set = i => { figs.forEach((f, k) => f.classList.toggle('is-on', k <= i)); count.textContent = `0${i + 1} / 03`; };
+    const media = $('#expectMedia'), figs = $$('#expectMedia figure'), count = $('#expectCount');
+    const vids = figs.map(f => $('video', f));
+    let cur = 0, inView = false;
+    const sync = () => vids.forEach((v, k) => playIf(v, inView && k === cur && desktop()));
+    const set = i => {
+      if (i !== cur && vids[i].readyState) vids[i].currentTime = 0;   // each film starts from its first shot
+      cur = i; figs.forEach((f, k) => f.classList.toggle('is-on', k <= i)); count.textContent = `0${i + 1} / 03`; sync();
+    };
+    new IntersectionObserver(([en]) => { inView = en.isIntersecting; sync(); }).observe(media);
     if (!hasGsap) return;
     $$('.estep').forEach((s, i) => ScrollTrigger.create({ trigger: s, start: 'top 60%', end: 'bottom 60%', onToggle: st => st.isActive && set(i) }));
+  })();
+
+  /* ---------------------------------------------------------- lead form */
+  (() => {
+    const f = $('#lead'); if (!f) return;
+    const err = $('#leadErr'), done = $('#leadDone');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      let bad = null;
+      $$('[required]', f).forEach(el => {
+        const ok = el.type === 'checkbox' ? el.checked : el.value.trim() && el.checkValidity();
+        el.closest('.fld, .chk').classList.toggle('is-bad', !ok);
+        if (!ok && !bad) bad = el;
+      });
+      if (bad) { err.textContent = 'Please complete the highlighted fields.'; bad.focus(); return; }
+      err.textContent = '';
+      if (FORM_ENDPOINT) {
+        try { await fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(f) }); }
+        catch { err.textContent = 'Something went wrong. Please try again.'; return; }
+      }
+      f.classList.add('is-done'); done.focus();
+    });
+    f.addEventListener('input', e => e.target.closest('.fld, .chk')?.classList.remove('is-bad'));
   })();
 
   /* ---------------------------------------------------------------- FAQ */
@@ -623,15 +668,16 @@
 
   /* ------------------------------------------------------ header + bars */
   (() => {
-    const hdr = $('#hdr'), bar = $('#progress'), m = $('#mcta');
-    let last = 0;
+    const hdr = $('#hdr'), bar = $('#progress'), m = $('#mcta'), form = $('#contact');
+    let last = 0, atForm = false;
+    // the sticky "Get in Touch" bar gets out of the way of the form itself
+    new IntersectionObserver(([en]) => { atForm = en.isIntersecting; on(lenis ? lenis.scroll : scrollY); }).observe(form);
     const on = y => {
       const max = document.documentElement.scrollHeight - innerHeight;
       bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
       hdr.classList.toggle('is-scrolled', y > 40);
       hdr.classList.toggle('is-hidden', y > last && y > innerHeight * .8);
-      const nearEnd = y > max - innerHeight * 1.2;
-      m.classList.toggle('is-on', y > innerHeight * .7 && !nearEnd);
+      m.classList.toggle('is-on', y > innerHeight * .7 && !atForm);
       last = y;
     };
     if (lenis) lenis.on('scroll', e => on(e.scroll)); else addEventListener('scroll', () => on(scrollY), { passive: true });
