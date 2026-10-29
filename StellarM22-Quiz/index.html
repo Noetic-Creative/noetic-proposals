@@ -1445,6 +1445,28 @@
       .donut { width: 150px; }
       .dn-list { width: 100%; }
     }
+
+    /* ===== v12 (29 Oct): real consent checkboxes with the Privacy Statement link, legal copy ===== */
+    .optin { position: relative; }
+    .optin input[type="checkbox"] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .optin:has(input:focus-visible) { outline: 2px solid var(--rose-400); outline-offset: 3px; }
+    .optin-txt a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .optin.gate-optin { cursor: pointer; }
+
+    /* start screen footnote */
+    .entry-legal { width: min(100%, 720px); margin: clamp(28px, 4vh, 44px) auto 0; text-align: left; color: rgba(255,255,255,.55); font-size: 11.5px; line-height: 1.55; letter-spacing: .01em; }
+    .entry-legal p { margin: 0 0 8px; }
+    .entry-legal b { font-weight: 700; color: rgba(255,255,255,.78); }
+    .entry-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Q3 donut: say what it measures */
+    :is(.q-side, .rrow) :is(.insight-body, .rrow-body) p.dn-title { grid-column: 1 / -1; margin: 0 0 6px; font-family: var(--sans); font-size: 13px; line-height: 1.2; letter-spacing: .16em; text-transform: uppercase; color: var(--rose-200); }
+
+    /* regulatory disclaimer at the end of the page */
+    .legal { padding: clamp(28px, 4vh, 44px) clamp(20px, 5vw, 80px); background: var(--paper); border-top: 1px solid var(--hairline); color: rgba(10,10,10,.56); font-size: 11px; line-height: 1.55; letter-spacing: .01em; }
+    .legal p { max-width: 120ch; margin: 0 0 8px; }
+    .legal p:last-child { margin-bottom: 0; }
+    .legal-pb, .legal-head { font-weight: 700; letter-spacing: .08em; color: rgba(10,10,10,.72); }
   </style>
 </head>
 <body>
@@ -1522,20 +1544,21 @@
         <p class="entry-trust reveal d4">Your answers are used only to build your benchmark.</p>
         <p class="entry-pill reveal d4">6 questions &middot; about 2 minutes</p>
         <div class="consent reveal d5">
-          <div class="consent-terms" tabindex="0" aria-label="Privacy terms">
-            <p class="consent-label">Privacy terms</p>
-            <p>[Placeholder: full approved privacy terms from Lumenis]</p>
-          </div>
-          <button class="optin consent-check" type="button" data-quiz-consent aria-pressed="false">
+          <label class="optin consent-check">
+            <input type="checkbox" id="quiz-consent" name="quiz_privacy_consent" value="yes">
             <span class="optin-box" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.6l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="optin-txt">[Placeholder: privacy consent checkbox wording from Lumenis]</span>
-          </button>
-          <input type="hidden" id="quiz-consent" name="quiz_privacy_consent" value="no">
+            <span class="optin-txt">By submitting this form you consent to the use of your data in accordance with our <a href="https://lumenis.com/privacy-statement/" target="_blank" rel="noopener">Privacy Statement</a></span>
+          </label>
         </div>
         <button class="pill-button on-dark reveal d5" type="button" data-start-quiz disabled>
           <span>Start Quiz</span>
           <svg class="arrow" viewBox="0 0 36 19" fill="none" aria-hidden="true"><path d="M.9 9.5H33.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M25.4.9 34.5 9.5l-9.1 8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
+        <div class="entry-legal reveal d5">
+          <p><b>Informational Purposes / No Medical Advice:</b> This quiz and its results are for general informational and educational purposes only, do not constitute medical advice, and should not be relied upon to make medical or treatment decisions. Please consult a qualified healthcare professional regarding your individual needs and treatment options.</p>
+          <p><b>Privacy:</b> Any personal information you choose to provide in connection with this quiz will be collected and processed in accordance with our <a href="https://lumenis.com/privacy-statement/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+          <p><b>Product Information:</b> Information regarding our products is provided for general informational purposes only and does not replace the applicable product labelling, instructions for use, or consultation with a qualified healthcare professional.</p>
+        </div>
       </div>
     </section>
 
@@ -1613,12 +1636,12 @@
               <header class="q-copy">
                 <p class="q-num">One moment</p>
                 <h2 id="exit-title">This quiz is built for <em>practices.</em></h2>
-                <p class="q-hint">Looking for a Stellar M22 treatment yourself? Find a provider near you.</p>
+                <p class="q-hint">Looking for a Stellar M22 treatment yourself?</p>
               </header>
               <div class="q-actions">
                 <p class="q-note"><button class="link-back" type="button" data-exit-back>Actually, I run a practice</button></p>
-                <a class="pill-button" href="https://lumenis.com/aesthetics/treatments/" data-provider-link target="_blank" rel="noopener">
-                  <span>Find a provider near you</span>
+                <a class="pill-button" href="https://lumenis.com/aesthetics/homepage/" data-provider-link target="_blank" rel="noopener">
+                  <span>For more info about treatments, click here</span>
                   <svg class="arrow" viewBox="0 0 36 19" fill="none" aria-hidden="true"><path d="M.9 9.5H33.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M25.4.9 34.5 9.5l-9.1 8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
               </div>
@@ -1744,10 +1767,11 @@
                   <input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-0123">
                 </div>
               </div>
-              <button class="optin gate-optin" type="button" data-gate-privacy aria-pressed="false">
+              <label class="optin gate-optin is-on">
+                <input type="checkbox" id="gate-consent" name="privacy_consent" value="yes" checked>
                 <span class="optin-box" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.6l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <span class="optin-txt">[Privacy checkbox: wording from the Lumenis privacy team]</span>
-              </button>
+                <span class="optin-txt">By submitting this form you consent to the use of your data in accordance with our <a href="https://lumenis.com/privacy-statement/" target="_blank" rel="noopener">Privacy Statement</a></span>
+              </label>
               <p class="privacy">We use this to send your benchmark and follow up about it. No spam, ever.</p>
               <div class="q-actions">
                 <button class="next-button" type="button" data-next disabled><span>See My Benchmark</span></button>
@@ -1891,28 +1915,27 @@
             <span class="line"><span>laser and light-based technologies,</span></span>
             <span class="line"><span><em>all in one compact system.</em></span></span>
           </h2>
-          <div class="optins reveal d2">
-            <button class="optin" type="button" data-optin aria-pressed="false">
-              <span class="optin-box" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.6l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="optin-txt">I&rsquo;d like to be contacted about Stellar M22 or other Lumenis devices</span>
-            </button>
-            <button class="optin" type="button" data-privacy aria-pressed="false">
-              <span class="optin-box" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.6l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="optin-txt">[Privacy checkbox: wording from the Lumenis privacy team]</span>
-            </button>
-          </div>
-          <input type="hidden" id="contact-opt-in" name="contact_opt_in" value="no">
-          <input type="hidden" id="privacy-consent" name="privacy_consent" value="no">
-          <button class="pill-button specialist-cta reveal d3" type="button" data-specialist disabled>
+          <button class="pill-button specialist-cta reveal d3" type="button" data-specialist>
             <span>Talk to a Stellar M22 specialist</span>
             <svg class="arrow" viewBox="0 0 36 19" fill="none" aria-hidden="true"><path d="M.9 9.5H33.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M25.4.9 34.5 9.5l-9.1 8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <p class="closer-note" data-closer-note hidden>Someone from our team will be in touch shortly.</p>
+          <p class="closer-note" data-closer-note hidden>Someone from our team will be in touch.</p>
           <p class="closer-src">Source: Lumenis Stellar M22 product page, <a href="https://lumenis.com/aesthetics/products/stellar-m22/" target="_blank" rel="noopener">lumenis.com/aesthetics/products/stellar-m22</a></p>
         </div>
       </section>
     </div>
   </main>
+
+  <!-- Lumenis regulatory disclaimer (client-supplied, verbatim) -->
+  <section class="legal" aria-label="Disclaimer">
+    <p class="legal-pb">PB-00093123</p>
+    <p>Revenue may vary and is not guaranteed.</p>
+    <p>Indication of use: The Stellar M22 has connection capability with the following available treatment modules: XPL, ResurFX, Multi-Spot Nd:YAG and Q-Switched Nd:YAG&ndash; for multi-application treatment options. All modules and handpieces are designed for aesthetic and dermatological skin procedure applications. See the Operator&rsquo;s Manual for a complete regional list of approved indications.</p>
+    <p class="legal-head">WARNINGS AND RISKS</p>
+    <p>As with any laser or pulsed light technologies, appropriate care must be taken to ensure safe and proper use. The Stellar M22 operator&rsquo;s manual should be thoroughly reviewed and understood before operating this instrument. Stellar M22, including the Stellar XPL, Multi-Spot Nd:YAG, Q-Switched Nd:YAG and ResurFX, are contraindicated for patients with active infection, viral, fungal or bacterial diseases. It is also contraindicated for patients with skin disorders or inflammatory skin conditions. Be advised that XPL/Laser can cause epidermal injury. The risk increases with greater fluence/energy and skin pigmentation. The use of Stellar M22 could cause redness, swelling, change of pigmentation and scarring. See the system user manual for a complete list of contraindications and risk.*</p>
+    <p>&copy; 2026 Lumenis Be Ltd., All Rights Reserved. Lumenis, the Lumenis logo, L, Stellar M22, Stellar XPL, OPT, Multiple-Sequential Pulsing, ExpertFilters, SapphireCool lightguides, Photofractional, ResurFX, BrushFX and CoolScan are trademarks or registered trademarks of Lumenis Be Ltd. and/or its subsidiaries. Specifications are subject to change without notice. Lumenis is ISO 13485:2016 certified.*</p>
+    <p>&copy; LUMENIS BE Ltd. 2026</p>
+  </section>
 
   <footer class="site-foot"><img src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjM5Ny41NzciIGhlaWdodD0iNjEuODQ1NiIgdmlld0JveD0iMCAwIDM5Ny41NzcgNjEuODQ1NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IkxPR08gU1RFTExBUiBCWSBMVU0iPgo8cGF0aCBpZD0iVmVjdG9yIiBkPSJNMzY0Ljk2OSAwLjE0NTMzNUwzNjguNjc2IDBDMzY5LjI4NSAxNi4yMjA2IDM4MC43NzMgMjguNTI2NSAzOTcuMjI3IDI4Ljg5NjZDMzk4Ljc4MyAzNC45MTk0IDM5NC45MTIgMzIuNzU0NCAzOTAuNDM3IDMzLjkwNDdDMzgwLjEyIDM2LjU1NyAzNzEuNzcgNDQuNjkzOSAzNjkuNDc3IDU1LjE5NDFDMzY5LjIzMyA1Ni4zMTE4IDM2OC43NjggNjEuMzY5MyAzNjguNDQxIDYxLjg0NTVMMzY0LjY0NiA2MS44MDczQzM2My45ODcgNTAuOTQ2NyAzNTkuNTMyIDQyLjUxMTUgMzQ5Ljk3NyAzNi44MDk1QzM0NS4yODggMzQuMDExNSAzNDAuOTkgMzMuNDY5OCAzMzUuNjg1IDMyLjk2NzhDMzM1LjczMSAzMS42NjY4IDMzNS44MDUgMzAuMzY3MiAzMzUuOTEyIDI5LjA2OTdDMzM3LjIxNSAyOC45MzU5IDMzOC41MTUgMjguNzg2MyAzMzkuODE2IDI4LjYyMDhDMzUxLjc3MyAyNi45OTQzIDM2Mi4xNDYgMTYuOTU2MiAzNjQuMTU3IDUuMDM1MzFDMzY0LjM4NCAzLjY5NjcgMzY0LjE5MiAxLjE2NDgyIDM2NC45NjkgMC4xNDUzMzVaTTM0Ny4xNCAzMS4xNDIxQzM1NS4yNzcgMzQuMDc4NSAzNjAuNjY0IDM4Ljk3OTkgMzY0Ljk2MyA0Ni42OTc1QzM2NS4zOTkgNDcuNDc5MiAzNjYuMDM4IDQ5Ljk3MDYgMzY2LjY5NyA1MC4zODI5QzM3MC44NTIgNDAuMDc3MSAzNzUuODU5IDM1LjM5MzcgMzg1Ljg0NiAzMS4xMzkxTDM4NS45MzggMzEuMDk5OEMzNzguMjM3IDI3LjM2NDYgMzczLjg2MyAyNC40MzQ4IDM2OS4wNDUgMTYuNzU2NEMzNjguNTY5IDE1Ljk5OTggMzY2Ljc1MiAxMS44ODg0IDM2Ni40NTcgMTEuNjA5QzM2My40NzcgMTguODc3MyAzNTkuODM1IDIzLjc2MTIgMzUzLjAxMiAyOC4wMjAxQzM1MS4wMDkgMjkuMjcwNCAzNDkuMDg1IDMwLjA0MzggMzQ3LjE0IDMxLjE0MjFaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBpZD0iVmVjdG9yXzIiIGQ9Ik0yMjcuNiA4Ljk4OTY0QzIzMC4yNDUgOC45MjA5MyAyMzMuMTk3IDguOTM2NTYgMjM1Ljg0NiA4Ljk1MTA0QzI0MS4wOCA5LjAwMzA3IDI0NS43MjEgOC40Mjg2MyAyNTAuNTE1IDExLjAwNjhDMjU1LjkyNCAxMy45MTU2IDI1Ny43NCAyMC43MzcxIDI1NC44NDkgMjYuMDYxN0MyNTIuOTM3IDI5LjU3OTMgMjQ5LjYzOCAzMS4xMzg2IDI0NS44NyAzMi4xODAzQzI0Ni4zNTkgMzIuNzEyOSAyNDYuODIxIDMzLjMyNTggMjQ3LjI4NiAzMy44ODI4QzI1Mi41NDcgNDAuMTgwMSAyNTcuNDk3IDQ2LjgwMzIgMjYyLjgxOSA1My4wNDMyQzI2MC4yMjUgNTMuMDY5NCAyNTcuNjMgNTMuMDcxIDI1NS4wMzYgNTMuMDQ3NkwyNTMuNjA3IDUxLjI3MDlDMjQ4Ljc3NiA0NS4xMTI5IDI0My45IDM4Ljk4OSAyMzguOTgxIDMyLjg5OThDMjM3LjI1MyAzMi44MjczIDIzNS4yMDIgMzIuODcyNyAyMzMuNDUgMzIuODY2OEwyMzMuNDEzIDUzLjA1MjJDMjMxLjU3NCA1Mi45OTEgMjI5LjQ0NCA1My4wNDUgMjI3LjU4MSA1My4wNDYxTDIyNy42IDguOTg5NjRaTTIzMy40MTUgMjcuNTgxQzIzNy43NTcgMjcuNjE3IDI0NC43NTkgMjguMzQ1NiAyNDguMDI2IDI1LjQ3MTJDMjUwLjQ0OCAyMi45MDYzIDI1MC44NDUgMTguNzI5OCAyNDguMTU0IDE2LjI3MDNDMjQ0LjcgMTMuMTExNiAyMzcuOTQ3IDE0LjUyMiAyMzMuNTY2IDE0LjEyNTlDMjMzLjE5NSAxNi42NzYgMjMzLjQ3IDI0LjU2MzMgMjMzLjQxNSAyNy41ODFaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBpZD0iVmVjdG9yXzMiIGQ9Ik0xOTkuODQyIDkuMDA3MjFDMjAyLjI3OSA4Ljk0MzU4IDIwNC44MTcgOC45OTI1NCAyMDcuMjYgOS4wMDQ5NkMyMDcuODY5IDExLjYzODIgMjExLjMzIDE5Ljg0MDYgMjEyLjQ4NCAyMi44Mzg4TDIyNC4xNDQgNTMuMDI2MkwyMTcuNjI1IDUzLjA2NTdDMjE2Ljc4IDUxLjE3MTcgMjEzLjM3OSA0MS45ODk2IDIxMy4wMDggNDAuMzg0MkwyMDcuNTI5IDQwLjM3MjRMMTkzLjcxNSA0MC4zODA1QzE5Mi4xMzEgNDQuMzQ1OCAxOTAuNTI5IDQ5LjAyOTkgMTg5LjA3MiA1My4wODE4TDE4My4wMTMgNTIuOTQ3NkMxODQuNzU2IDQ4LjgzMzggMTg2LjU5NSA0My41OTYgMTg4LjIwOCAzOS4zODMxTDE5OS44NDIgOS4wMDcyMVpNMjAzLjY1NiAzNS4xMzk4TDIxMC45NDYgMzUuMTk0OUMyMDkuOTUzIDMyLjc4MDggMjAzLjk3IDE2LjMzOTMgMjAzLjIwMiAxNS40ODY2QzIwMC42NjcgMjEuNjYyMyAxOTguMDQ2IDI4LjgxMTMgMTk1Ljc3IDM1LjE0MjdDMTk4LjQgMzUuMTExNSAyMDEuMDI3IDM1LjExMDQgMjAzLjY1NiAzNS4xMzk4WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggaWQ9IlZlY3Rvcl80IiBkPSJNNzQuMDA0NiA4Ljk3MTcxQzgzLjU5MzQgOC45MjgxNSA5My4xODI1IDguOTM5ODMgMTAyLjc3MSA5LjAwNjczTDEwMi42NzkgMTQuMzMyM0M5NS4xNjUxIDE0LjQwMzMgODcuNjUwOSAxNC40MjMxIDgwLjEzNjcgMTQuMzkxM0w4MC4xMDczIDI4LjA2NTNMMTAwLjExMiAyOC4xMzM5TDEwMC4xIDMzLjQzNTlDOTUuNTIwNyAzMy41ODUzIDkwLjc5NTEgMzMuNDMyOSA4Ni4yMDQxIDMzLjUwNTJDODQuNDA4NSAzMy41MzMzIDgyLjAzIDMzLjQxNDMgODAuMzAxIDMzLjU1NThMODAuMTM2NSAzMy45MTU5QzgwLjE0NjEgMzguNDcxMSA4MC4xMjc2IDQzLjAyNjQgODAuMDgwNyA0Ny41ODE1TDEwMy4yMDMgNDcuNjQ0OEwxMDMuMTkgNTMuMDI1NEMxMDAuNDM3IDUyLjg3ODkgOTYuMzMwMiA1My4wMDkgOTMuNDkzMyA1My4wMDkzTDc0LjAxNyA1My4wNTA1Qzc0LjE2MTMgNTEuNTQwMiA3NC4wNzQ2IDQ4LjI3OTUgNzQuMDc2IDQ2LjY3MjdMNzQuMDIxMiAzMy4yMDUxQzczLjk4MjMgMjUuNjg3MyA3NC4zMjAxIDE2LjMxOTUgNzQuMDA0NiA4Ljk3MTcxWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggaWQ9IlZlY3Rvcl81IiBkPSJNMTQuNDk5OSA4LjE5OTU5QzE5LjAzNjYgNy45ODEzOSAyMi41MzE4IDguNzkzNTEgMjYuMzI0MiAxMS4yNzY0TDI2LjMyMzQgMTYuNjU2MkMyMi45MTMyIDE0Ljc4OTUgMjEuMTc3IDE0LjAwNjEgMTcuMzMyNSAxMy42NDM5QzEzLjEzNyAxMy4yNDgyIDcuMTE0NjUgMTUuMzQ3NCA3LjI0ODE5IDIwLjM5OUM3LjQ1MTk4IDI4LjEwODggMjAuOTM5OSAyOC40OTc1IDI1LjAwNyAzNC4wMTQyQzI2Ljc5MjUgMzYuNDM1OSAyNy45MzE5IDM4LjA3NDkgMjcuNzA5MSA0MS4zMjk4QzI2LjkyMjEgNTAuMzg1MSAxOC44NDkxIDU0LjA4MTggMTAuOTIzNyA1My42OTY5QzUuNzYxMTkgNTIuOTUxIDQuNDE4ODcgNTIuMzM3NCAwLjAwMzkyODY2IDQ5LjYyNzlMMCA0My44OTQ4QzQuODQ1IDQ2LjkzNTQgOS4wNzUxMyA0OS4wNjYgMTUuMDEwNCA0OC4xMjE1QzE4LjM1NjcgNDcuNTg4OSAyMi41NzAyIDQ0LjA2OCAyMS41ODM4IDQwLjUwODZDMjAuMDY2NCAzNS4wMzQzIDExLjEwNTYgMzMuNzkxIDYuOTY3MzcgMzAuNjcwMUM0LjU5MDU4IDI5LjA0OSAxLjgxMjMyIDI2LjQwMTMgMS40MDg0NCAyMy4zMTFDMC4xNTA3NzIgMTMuNjg4MiA2LjU1NTY0IDkuNzM3NTMgMTQuNDk5OSA4LjE5OTU5WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggaWQ9IlZlY3Rvcl82IiBkPSJNMTE5LjE0OSA5LjAwMDE3TDEzMC41MTQgOC45NzUyOEMxMzEuNzc1IDguOTc4NDkgMTM0Ljk2MSA4LjkxNjkyIDEzNi4wNjYgOS4xMDE0N0wxMzYuMjE4IDkuNjU4ODhDMTM1LjQyMSAxMS43NzAyIDEzMS42NDMgMTAuMzcwMiAxMzAuMjAzIDE0LjYzNTdDMTI2LjMxNSAyNi4xNTU4IDEyMy40NDMgMzguMDUwNyAxMTkuNjYxIDQ5LjYwMjRDMTIzLjk0OCA0OS42MzM3IDEzMC4yMzEgNTAuMTQyOSAxMzQuMzg0IDQ4Ljk4NzFDMTM3LjEyMSA0OC4yMjUzIDEzOS4zNDggNDQuNjkzNSAxMzkuNzk0IDQyLjA0OTZDMTQwLjAyOCA0MC42NjExIDE0MC4wMjggMzguMDI5MSAxNDEuNjAyIDM3LjQzODlDMTQyLjc3NiAzNy44MjE3IDE0Mi41ODcgMzkuNTczMSAxNDIuNTU2IDQwLjU4NzZDMTQyLjU1NyA0NC42OTU5IDE0Mi41MDggNDguOTE3NSAxNDIuNTk0IDUzLjAxNjJMMTE5Ljg4IDUzLjA1MkMxMTYuODgzIDUzLjA0NjcgMTEwLjg3NyA1My4xOTI2IDEwOC4wNyA1Mi44MzIzTDEwNy45MjcgNTIuNjIwM0MxMDguMTcyIDUxLjI5NzMgMTExLjg5NyA0OS44MDA3IDExMi45NjcgNDguNjEzOEMxMTMuNDc5IDQ4LjA0NDkgMTEzLjg5NyA0Ny40MDcxIDExNC4xNjkgNDYuNjkwMUMxMTUuNDcyIDQzLjI1OCAxMjMuMzc4IDE2LjIwODUgMTIzLjI3MyAxNC4zMTVDMTIzLjA5MSAxMS4wNTY5IDEyMS4wNiAxMi4wNjk3IDExOS4zODQgMTAuNDlDMTE5LjAxMiAxMC4xMzk3IDExOS4xNTEgOS40ODc0MyAxMTkuMTQ5IDkuMDAwMTdaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBpZD0iVmVjdG9yXzciIGQ9Ik0xNTYuODg3IDkuMDEzOEMxNjAuNTE1IDguOTE2NjMgMTY0LjMzOSA4Ljk5MzQzIDE2Ny45NzUgOC45NzU5NkMxNjkuMTY1IDguOTcwMjQgMTcyLjU2MyA4LjkzNDIxIDE3My42MDggOS4wNzMyOEMxNzMuODY3IDkuNzYwNzYgMTczLjg2MSA5LjQ5NTQgMTczLjcwMSAxMC4xNjMxQzE3MS43ODQgMTIuMjMxNCAxNjkuMjUyIDkuOTY3MTMgMTY3LjMyMSAxNi4wMjNDMTYzLjc4NyAyNy4xMTExIDE2MC45NDUgMzguNTY0NiAxNTcuMzY1IDQ5LjYxNDdDMTY1Ljc3NiA0OS40ODIgMTc2LjM5NSA1Mi4wODIzIDE3Ny44IDQwLjU0MjJDMTc3LjkzNSAzOS40MTc5IDE3Ny45MzMgMzcuODM5MiAxNzkuMDc0IDM3LjU3MTVDMTgwLjQyNSAzOC4yMjU3IDE4MC4xNjMgMzguODAwNCAxODAuMjA5IDQwLjExMDNDMTgwLjIzMSA0NC40MjE0IDE4MC4yMjQgNDguNzMyOCAxODAuMTg1IDUzLjA0MzlDMTY5LjM0IDUyLjczODUgMTU3LjA0MiA1My4wNjE0IDE0Ni4wMzMgNTMuMDAyNUMxNDUuNjY3IDUyLjYwMDUgMTQ1Ljc1NiA1Mi43ODE5IDE0NS43NzEgNTIuMTQ1OUMxNDYuNjQ4IDUwLjY3NzQgMTUwLjcyMyA1MC4wNTkzIDE1MS43MyA0Ni45MTQ4QzE1My4wOTMgNDIuNjYxMSAxNTQuMzIyIDM4LjM3MzEgMTU1LjU4IDM0LjA4NTdMMTU5LjA4MyAyMi4wNzM3QzE2MC44NDQgMTUuOTgwNiAxNjMuMDQ5IDEyLjUzMiAxNTYuOTI1IDEwLjQyMTNDMTU2LjY1MiAxMC4zMjc1IDE1Ni44NTIgOS4zMjE4MyAxNTYuODg3IDkuMDEzOFoiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGlkPSJWZWN0b3JfOCIgZD0iTTMxLjY5NDEgOS4wMTc1N0M0My41MzA1IDguNzU3NjcgNTYuMTMxNiA4Ljk2MjI0IDY4LjAzNDkgOC45ODMyQzY3Ljk4NjcgMTAuNjAzIDY3Ljg2NDUgMTIuNzU5NCA2OC4wMDMzIDE0LjMyNzZDNjIuOTQ4NCAxNC40MDE5IDU3Ljg5MjggMTQuNDIyMiA1Mi44Mzc1IDE0LjM4ODNMNTIuODQ5NyAzNy43MTU4QzUyLjg4NiA0Mi44Mjk4IDUyLjg1MzIgNDcuOTQ0MyA1Mi43NTE1IDUzLjA1NzRDNTAuNzk0MSA1My4wMjAzIDQ4LjgzNjMgNTMuMDE5NyA0Ni44NzkxIDUzLjA1NTdMNDYuODk3NiAxNC40MjQ2QzQyLjQxODUgMTQuMTQ4MiAzNi4zODA3IDE0LjQ0MDMgMzEuNjIxNiAxNC4zMjQxTDMxLjY5NDEgOS4wMTc1N1oiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGlkPSJWZWN0b3JfOSIgZD0iTTI2NS45NjggOS4wMTYzM0MyNjcuOTM0IDguOTI2ODEgMjcwLjI3MSA4Ljk5MTc5IDI3Mi4yNjUgOC45OTcyN0MyNzQuMDE1IDE0LjcxODQgMjc3LjA3NiAyMy4yMzcyIDI3OS4yNDUgMjguODc2NEMyODEuMDM0IDIyLjg1NTMgMjg0LjEzIDE1LjA5ODEgMjg2LjMyNSA4Ljk4Nzk5QzI4OC4yNzggOC45NjM5NSAyOTAuMjk5IDguOTk3NTEgMjkyLjI1OCA5LjAwMjkzQzI5MS45NjMgMTYuNzg4OCAyOTIuMTcxIDI1LjA5NiAyOTIuMTE4IDMyLjk1MjRDMjkwLjk4MiAzMi44MzUzIDI4OS42NTMgMzIuOTIwNyAyODguNDk5IDMyLjk2MDZDMjg4Ljc5NSAyOC41MzAzIDI4OC41MzEgMjEuMjY5MiAyODguNDk5IDE2LjU5MjNMMjg4LjY0IDEyLjY3MDdDMjg3LjY5OCAxNC40OTc5IDI4Ni40IDE4LjQyNDcgMjg1LjY1MSAyMC41MTY3QzI4NC4xNDMgMjQuNjM4MSAyODIuNjgxIDI4Ljc3NjEgMjgxLjI2NSAzMi45Mjk5TDI3Ny4wMDQgMzIuOTMwMUMyNzQuMjg4IDI2LjQ4NzIgMjcyLjE3MSAxOS4xMjUyIDI2OS42MzYgMTIuNTc3NUMyNjkuNzg4IDE5LjIxNjkgMjY5LjY3OSAyNi4yODcxIDI2OS42MzggMzIuOTUxOUMyNjguNTEgMzIuODQ4IDI2Ny4wODMgMzIuOTE1OSAyNjUuOTI5IDMyLjkzNzNDMjY1Ljg0MSAyNC45NjM3IDI2NS44NTIgMTYuOTg5NSAyNjUuOTY4IDkuMDE2MzNaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBpZD0iVmVjdG9yXzEwIiBkPSJNMzE4LjQ5OCA5LjA1MzI3QzMxOC42NjYgOS4wNDQxMiAzMTguODM2IDkuMDM3ODEgMzE5LjAwNiA5LjAzNDM0QzMyMS42MzggOC45ODA5NyAzMjQuNTY4IDkuMTk1OSAzMjYuNDQ1IDExLjIwOTlDMzMzLjA0OSAxOC4yOTc4IDMyMy4wNiAyNS4wOTI3IDMxOC45MTkgMjkuMjgzNUwzMjguODM2IDI5LjI2MzlMMzI4Ljc3OSAzMi45ODc5QzMyNy4zMzUgMzIuODcwNiAzMjUuMTA5IDMyLjk0MDMgMzIzLjYwOCAzMi45NDM4TDMxNC4yMyAzMi44NzU0TDMxNC4yNjEgMjkuMjYwMkMzMTcuMTUyIDI2LjY2NTMgMzIyLjk5NSAyMS45NDc4IDMyNC4yNzggMTguMzY2MUMzMjQuOTMgMTYuNTQyNyAzMjQuMzc4IDE1LjM3NjcgMzIzLjU2NyAxMy44MTY4QzMyMC40MzEgMTEuOTIzMyAzMTcuODcyIDEyLjAzNCAzMTQuNjAzIDEzLjY0NzNMMzE0LjYwMSAxMC4zNDI0QzMxNi4wMTkgOS43NzIgMzE2Ljk5IDkuMzM4MzcgMzE4LjQ5OCA5LjA1MzI3WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggaWQ9IlZlY3Rvcl8xMSIgZD0iTTMwMC44MjQgOS4wNjI3MUMzMDEuMjc0IDkuMDM1MiAzMDEuNzIzIDkuMDE5NSAzMDIuMTcyIDkuMDE1NTlDMzA2LjUyMyA4Ljk4MzIzIDMxMC44NzYgMTEuMjY1OCAzMTAuODg3IDE2LjE2MDVDMzEwLjkgMjEuNjE1MyAzMDQuNzk1IDI1LjczODcgMzAxLjIzMiAyOS4yNzM0TDMxMS4xMjkgMjkuMzAwN0wzMTEuMDk5IDMyLjkyNzVDMzA5LjU1NiAzMi44NCAzMDcuMzExIDMyLjkwNzYgMzA1LjcxNiAzMi45MDQ4QzMwMi42NDQgMzIuODcyMyAyOTkuNTY5IDMyLjg4MzQgMjk2LjQ5NyAzMi45MzgyTDI5Ni41MzIgMjkuMjQxN0MyOTkuMDExIDI2Ljk4NDYgMzAxLjc2OSAyNC43ODI4IDMwNC4wMzEgMjIuMzI4N0MzMTAuNjU2IDE1LjE0MTIgMzA0Ljk3NiAxMC4yNTkyIDI5Ni45MDMgMTMuNTgyNkwyOTYuODkyIDEwLjM3MzNDMjk4LjE3MSA5LjgzMTQgMjk5LjQ2NSA5LjM0NDggMzAwLjgyNCA5LjA2MjcxWiIgZmlsbD0iYmxhY2siLz4KPC9nPgo8L3N2Zz4K" alt="Stellar M22 by Lumenis"></footer>
 
@@ -2279,10 +2302,11 @@ function stateFromZip(zip) {
         return order[order.indexOf(from) + 1] || null;
       };
       /* privacy consent comes first: Start Quiz stays locked until the box is checked */
-      const startBtn = $('[data-start-quiz]'), quizConsent = $('[data-quiz-consent]');
-      quizConsent.addEventListener('click', () => {
-        answers.quizConsent = toggle(quizConsent, '#quiz-consent');
-        startBtn.disabled = !answers.quizConsent;
+      const startBtn = $('[data-start-quiz]'), quizConsent = $('#quiz-consent');
+      quizConsent.addEventListener('change', () => {
+        answers.quizConsent = quizConsent.checked;
+        quizConsent.closest('.optin').classList.toggle('is-on', quizConsent.checked);
+        startBtn.disabled = !quizConsent.checked;
       });
       startBtn.addEventListener('click', () => { if (!startBtn.disabled) showPanel('q1'); });
       backBtn.addEventListener('click', () => { const prev = trail.pop(); if (prev) showPanel(prev); });
@@ -2329,7 +2353,8 @@ function stateFromZip(zip) {
         const pct = demandPct();
         const list = DEMAND.map((d) => '<li class="' + (answers.demand.indexOf(d[0]) !== -1 ? 'is-on' : 'is-off') + '"><i></i><span>' + d[1] + '</span><b>' +
           fmt(d[2]) + ' (' + d[3] + '%)</b></li>').join('');
-        return '<div class="donut-block"><div class="donut"><svg viewBox="0 0 140 140" aria-hidden="true"><g transform="rotate(-90 70 70)">' + segs + '</g></svg>' +
+        /* "Patient Volume" up top so nobody reads the donut as revenue (Hila, 29 Oct) */
+        return '<div class="donut-block"><p class="dn-title">Patient Volume</p><div class="donut"><svg viewBox="0 0 140 140" aria-hidden="true"><g transform="rotate(-90 70 70)">' + segs + '</g></svg>' +
           '<div class="dn-center"><b>' + pct + '%</b><span>of top-9 volume covered</span></div></div>' +
           '<ul class="dn-list">' + list + '</ul>' +
           '<p class="dn-legend"><span class="on">You cover</span><span class="off">Not covered yet</span></p></div>';
@@ -2618,32 +2643,23 @@ function stateFromZip(zip) {
         setLive('results', 'Ready', true);
       }
 
-      /* ---------- closing: opt-in + privacy, then the specialist CTA ---------- */
-      const optin = $('[data-optin]'), privacy = $('[data-privacy]'), specialist = $('[data-specialist]');
-      function toggle(btn, input) {
-        const on = btn.getAttribute('aria-pressed') !== 'true';
-        btn.setAttribute('aria-pressed', String(on)); btn.classList.toggle('is-on', on);
-        $(input).value = on ? 'yes' : 'no';
-        return on;
-      }
-      optin.addEventListener('click', () => { answers.contactOptIn = toggle(optin, '#contact-opt-in'); });
-      /* one consent, two boxes: the contact form and the closing section stay in sync */
-      const gatePrivacy = $('[data-gate-privacy]');
-      function setPrivacy(on) {
-        answers.privacyConsent = on;
-        [gatePrivacy, privacy].forEach((b) => { b.setAttribute('aria-pressed', String(on)); b.classList.toggle('is-on', on); });
-        $('#privacy-consent').value = on ? 'yes' : 'no';
-        if (!specialist.dataset.sent) specialist.disabled = !on;
+      /* ---------- consent at the contact step: pre-checked, they already agreed before Q1 ---------- */
+      const gateConsent = $('#gate-consent');
+      answers.privacyConsent = gateConsent.checked;
+      gateConsent.addEventListener('change', () => {
+        answers.privacyConsent = gateConsent.checked;
+        gateConsent.closest('.optin').classList.toggle('is-on', gateConsent.checked);
         checkContact();
-      }
-      gatePrivacy.addEventListener('click', () => setPrivacy(!answers.privacyConsent));
-      privacy.addEventListener('click', () => setPrivacy(!answers.privacyConsent));
+      });
+
+      /* ---------- closing: one CTA ---------- */
+      const specialist = $('[data-specialist]');
       const note = $('[data-closer-note]');
       specialist.addEventListener('click', () => {
         if (specialist.disabled) return;
-        note.textContent = (answers.firstName ? 'Thanks, ' + answers.firstName + '. ' : 'Thanks. ') + 'Someone from our team will be in touch shortly.';
+        note.textContent = (answers.firstName ? 'Thanks, ' + answers.firstName + '. ' : 'Thanks. ') + 'Someone from our team will be in touch.';
         note.hidden = false;
-        specialist.disabled = true; specialist.dataset.sent = '1';
+        specialist.disabled = true;
       });
       function revealResults() {
         const results = $('#results'); results.classList.add('is-on');
