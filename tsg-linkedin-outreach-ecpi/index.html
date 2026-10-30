@@ -860,7 +860,8 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       tot.req += req; tot.conn += conn;
       people.forEach(function (p) { tot.people[p.key] = 1; });
       if (remaining != null && /active|setting/i.test(c.status)) tot.remaining += remaining;
-      return { c: c, req: req, conn: conn, people: people.length, remaining: remaining };
+      var noData = !state.snaps.some(function (s) { return s.campaign === c.campaign; }) && !people.length && /active/i.test(c.status);
+      return { c: c, req: req, conn: conn, people: people.length, remaining: remaining, noData: noData };
     });
     var head = '<thead><tr>' + ['Campaign', 'Type', 'Status', 'Dates', 'Requests', 'Connections', 'Acceptance', 'Replied', 'Reply rate', 'Left in list']
       .map(function (h) { return '<th style="cursor:default">' + h + '</th>'; }).join('') + '</tr></thead>';
@@ -870,9 +871,11 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       return '<tr><td style="white-space:nowrap"><span class="co"><i class="dot" style="background:' + state.botColor[c.bot] + '"></i>' + esc(c.campaign) + '</span></td><td style="white-space:nowrap">' + esc([c.type, c.language].filter(Boolean).join(' · ') || '·') + '</td>' +
         '<td><span class="tag ' + (active ? 'tag--mql' : /setting/i.test(c.status) ? 'tag--event' : 'tag--unq') + '">' + esc(c.status || 'Unknown') + '</span></td>' +
         '<td class="num">' + esc(dates) + '</td>' +
-        '<td class="num"><b style="color:var(--ink)">' + intf(r.req) + '</b></td><td class="num">' + intf(r.conn) + '</td>' +
-        '<td class="num">' + pctf(r.conn, r.req) + '</td><td class="num"><b style="color:var(--ink)">' + intf(r.people) + '</b></td>' +
-        '<td class="num">' + pctf(r.people, r.conn) + '</td><td class="num">' + (r.remaining == null ? '·' : intf(r.remaining)) + '</td></tr>';
+        (r.noData
+          ? '<td colspan="6" class="num" style="color:var(--ink-mute)">Just launched &middot; no data yet</td></tr>'
+          : '<td class="num"><b style="color:var(--ink)">' + intf(r.req) + '</b></td><td class="num">' + intf(r.conn) + '</td>' +
+            '<td class="num">' + pctf(r.conn, r.req) + '</td><td class="num"><b style="color:var(--ink)">' + intf(r.people) + '</b></td>' +
+            '<td class="num">' + pctf(r.people, r.conn) + '</td><td class="num">' + (r.remaining == null ? '·' : intf(r.remaining)) + '</td></tr>');
     }).join('');
     var nPeople = Object.keys(tot.people).length;
     body += '<tr class="total"><td colspan="4">All selected bots</td><td class="num">' + intf(tot.req) + '</td><td class="num">' + intf(tot.conn) +
