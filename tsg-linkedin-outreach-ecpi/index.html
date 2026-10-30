@@ -1071,9 +1071,13 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     renderKpis(rg); renderActivity(rg); renderMix(rg); renderBotTable(rg);
     renderWho(rg); renderInsights(rg); renderTable(rg);
     var active = state.bots.filter(function (b) { return /active/i.test(b.status); }).length;
-    el('factBots').textContent = state.botNames.length + ' bots · ' + active + ' active now';
+    el('factBots').textContent = state.botNames.length + ' bots · ' + state.bots.length + ' campaigns · ' + active + ' active now';
     el('factRange').textContent = fmtNice(rg.from) + ' to ' + fmtNice(rg.to);
-    var lastSnap = state.snaps.length ? state.snaps[state.snaps.length - 1].date : null;
+    // "updated through" reflects the active campaigns that already have numbers (the most conservative date)
+    var activeDates = state.bots.filter(function (c) { return /active/i.test(c.status) && state.lastSnap[c.campaign]; })
+      .map(function (c) { return state.lastSnap[c.campaign]; });
+    var lastSnap = activeDates.length ? new Date(Math.min.apply(null, activeDates))
+      : (state.snaps.length ? state.snaps[state.snaps.length - 1].date : null);
     el('factThrough').textContent = lastSnap ? 'Numbers updated through ' + fmtNice(lastSnap) : 'No numbers logged yet';
     var prev = previousRange();
     el('factCompare').textContent = prev ? 'Compared with ' + prev.label : 'No prior period to compare';
