@@ -720,7 +720,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       { label: 'People who replied', val: intf(t.people),
         foot: (p ? 'vs ' + intf(p.people) + ' ' + delta(t.people, p.people) + ' · ' : '') + intf(t.msgs) + ' message' + (t.msgs === 1 ? '' : 's') + ' in total' },
       { label: 'Reply rate', val: pctf(t.peopleRate, t.conn),
-        foot: p && p.conn ? 'vs ' + pctf(p.peopleRate, p.conn) + ' ' + ptDelta(pct(t.peopleRate, t.conn), pct(p.peopleRate, p.conn)) : 'People who replied over new connections, up to the latest numbers' }
+        foot: p && p.conn ? 'vs ' + pctf(p.peopleRate, p.conn) + ' ' + ptDelta(pct(t.peopleRate, t.conn), pct(p.peopleRate, p.conn)) : 'People who replied over new connections' }
     ];
     el('kpis').innerHTML = cards.map(function (c) {
       return '<div class="kpi"><span class="kpi__label">' + esc(c.label) + '</span>' +
