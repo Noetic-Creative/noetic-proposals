@@ -667,6 +667,10 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
   function inRange(d, rg) { return d >= rg.from && d <= rg.to; }
   function snapsIn(rg) { return state.snaps.filter(function (s) { return botOn(s.bot) && inRange(s.date, rg); }); }
   function repliesIn(rg) { return state.replies.filter(function (r) { return botOn(r.bot) && inRange(r.date, rg); }); }
+  function rateEligible(r) {          // replies only count toward rates up to the campaign's latest logged numbers
+    var d = state.lastSnap && state.lastSnap[r.campaign];
+    return !!d && r.date <= d;
+  }
   function uniquePeople(rows) {
     var m = {};
     rows.forEach(function (r) { if (!m[r.key]) m[r.key] = r; });   // rows are newest first
@@ -677,7 +681,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     var ss = snapsIn(rg), rr = repliesIn(rg);
     var req = 0, conn = 0;
     ss.forEach(function (s) { req += s.newReq; conn += s.newConn; });
-    return { req: req, conn: conn, people: uniquePeople(rr).length, msgs: rr.length, snaps: ss.length };
+    return { req: req, conn: conn, people: uniquePeople(rr).length, peopleRate: uniquePeople(rr.filter(rateEligible)).length, msgs: rr.length, snaps: ss.length };
   }
   function previousRange() {
     if (state.f.preset === 'all' && !state.f.from) return null;
@@ -715,8 +719,8 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
         foot: p && p.req ? 'vs ' + pctf(p.conn, p.req) + ' ' + ptDelta(pct(t.conn, t.req), pct(p.conn, p.req)) : 'New connections over requests' },
       { label: 'People who replied', val: intf(t.people),
         foot: (p ? 'vs ' + intf(p.people) + ' ' + delta(t.people, p.people) + ' · ' : '') + intf(t.msgs) + ' message' + (t.msgs === 1 ? '' : 's') + ' in total' },
-      { label: 'Reply rate', val: pctf(t.people, t.conn),
-        foot: p && p.conn ? 'vs ' + pctf(p.people, p.conn) + ' ' + ptDelta(pct(t.people, t.conn), pct(p.people, p.conn)) : 'People who replied over new connections' }
+      { label: 'Reply rate', val: pctf(t.peopleRate, t.conn),
+        foot: p && p.conn ? 'vs ' + pctf(p.peopleRate, p.conn) + ' ' + ptDelta(pct(t.peopleRate, t.conn), pct(p.peopleRate, p.conn)) : 'People who replied over new connections, up to the latest numbers' }
     ];
     el('kpis').innerHTML = cards.map(function (c) {
       return '<div class="kpi"><span class="kpi__label">' + esc(c.label) + '</span>' +
@@ -848,7 +852,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
   function renderBotTable(rg) {
     var ss = snapsIn(rg), rr = repliesIn(rg);
     var camps = state.bots.filter(function (b) { return botOn(b.bot); });
-    var tot = { req: 0, conn: 0, people: {}, remaining: 0 };
+    var tot = { req: 0, conn: 0, people: {}, ratePeople: {}, remaining: 0 };
     var rows = camps.map(function (c) {
       var req = 0, conn = 0;
       ss.forEach(function (s) { if (s.campaign === c.campaign) { req += s.newReq; conn += s.newConn; } });
@@ -858,10 +862,12 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       state.snaps.forEach(function (s) { if (s.campaign === c.campaign && s.date <= rg.to) latest = s; });
       var remaining = latest && latest.list != null ? Math.max(0, latest.list - latest.requests) : null;
       tot.req += req; tot.conn += conn;
+      var ratePeople = uniquePeople(reps.filter(rateEligible));
       people.forEach(function (p) { tot.people[p.key] = 1; });
+      ratePeople.forEach(function (p) { tot.ratePeople[p.key] = 1; });
       if (remaining != null && /active|setting/i.test(c.status)) tot.remaining += remaining;
       var noData = !state.snaps.some(function (s) { return s.campaign === c.campaign; }) && !people.length && /active/i.test(c.status);
-      return { c: c, req: req, conn: conn, people: people.length, remaining: remaining, noData: noData };
+      return { c: c, req: req, conn: conn, people: people.length, ratePeople: ratePeople.length, remaining: remaining, noData: noData };
     });
     var head = '<thead><tr>' + ['Campaign', 'Type', 'Status', 'Dates', 'Requests', 'Connections', 'Acceptance', 'Replied', 'Reply rate', 'Left in list']
       .map(function (h) { return '<th style="cursor:default">' + h + '</th>'; }).join('') + '</tr></thead>';
@@ -875,11 +881,11 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
           ? '<td colspan="6" class="num" style="color:var(--ink-mute)">Just launched &middot; no data yet</td></tr>'
           : '<td class="num"><b style="color:var(--ink)">' + intf(r.req) + '</b></td><td class="num">' + intf(r.conn) + '</td>' +
             '<td class="num">' + pctf(r.conn, r.req) + '</td><td class="num"><b style="color:var(--ink)">' + intf(r.people) + '</b></td>' +
-            '<td class="num">' + pctf(r.people, r.conn) + '</td><td class="num">' + (r.remaining == null ? '·' : intf(r.remaining)) + '</td></tr>');
+            '<td class="num">' + pctf(r.ratePeople, r.conn) + '</td><td class="num">' + (r.remaining == null ? '·' : intf(r.remaining)) + '</td></tr>');
     }).join('');
     var nPeople = Object.keys(tot.people).length;
     body += '<tr class="total"><td colspan="4">All selected bots</td><td class="num">' + intf(tot.req) + '</td><td class="num">' + intf(tot.conn) +
-      '</td><td class="num">' + pctf(tot.conn, tot.req) + '</td><td class="num">' + intf(nPeople) + '</td><td class="num">' + pctf(nPeople, tot.conn) +
+      '</td><td class="num">' + pctf(tot.conn, tot.req) + '</td><td class="num">' + intf(nPeople) + '</td><td class="num">' + pctf(Object.keys(tot.ratePeople).length, tot.conn) +
       '</td><td class="num">' + intf(tot.remaining) + ' active</td></tr>';
     el('botTable').innerHTML = head + '<tbody>' + (rows.length ? body : '<tr><td colspan="10" class="empty">No bots selected.</td></tr>') + '</tbody>';
   }
@@ -1085,6 +1091,8 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       .then(function (res) {
         state.bots = normBots(res[0]);
         state.snaps = normSnaps(res[1]);
+        state.lastSnap = {};
+        state.snaps.forEach(function (s) { state.lastSnap[s.campaign] = s.date; });
         state.replies = normReplies(res[2]);
         state.insights = normInsights(res[3]);
         if (!state.bots.length && !state.replies.length) throw new Error('No data found in the sheet');
