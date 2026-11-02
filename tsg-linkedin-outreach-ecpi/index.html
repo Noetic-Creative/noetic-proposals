@@ -275,7 +275,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
 @media (max-width:1420px){.kpis{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:900px){.kpis{grid-template-columns:1fr}.ins-day{grid-template-columns:1fr}}
 </style>
-  <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 <div class="blobs" aria-hidden="true"></div>
@@ -613,8 +613,11 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     var c = state.bots.filter(function (b) { return b.bot === bot; })
       .sort(function (a, b) { return (a.start ? a.start.getTime() : 0) - (b.start ? b.start.getTime() : 0); });
     if (!c.length) return bot;
+    // A newer campaign only takes replies once it has logged connections; until then, replies
+    // (e.g. from people who connected in the previous campaign) stay with the previous one.
+    function hasConnections(camp) { return state.snaps.some(function (s) { return s.campaign === camp && s.connected > 0; }); }
     var pick = c[0];
-    c.forEach(function (b) { if (!b.start || b.start <= d) pick = b; });
+    c.forEach(function (b) { if ((!b.start || b.start <= d) && (b === c[0] || hasConnections(b.campaign))) pick = b; });
     return pick.campaign;
   }
 
