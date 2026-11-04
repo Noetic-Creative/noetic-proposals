@@ -108,14 +108,18 @@ em.mark{font-style:italic;color:var(--purple)}
 .tag--inv{border-color:var(--hairline-invert);color:var(--paper-3)}
 
 /* ---------- Glass ---------- */
+/* The backdrop is already a soft blur of gradients, so live backdrop-filter on 50+ cards bought nothing
+   visible and made the browser re-blur every card on every frame of the animated canvas, which
+   flickered on scroll (Safari, Macs). Cards are a flat translucent fill; only the hero glass, which sits
+   over the outlined ticker, keeps a real blur. */
 .glass{
-  background:var(--glass-fill);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
+  background:rgba(255,255,255,.42);
   border:1px solid var(--glass-edge);border-radius:var(--r-xl);box-shadow:var(--glass-glow);
 }
 .glass--top{box-shadow:var(--glass-glow-top),var(--shadow-faint)}
+.hero .glass{background:var(--glass-fill);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .glass{background:rgba(255,255,255,.86)}
+  .hero .glass{background:rgba(255,255,255,.86)}
 }
 
 /* Cursor spotlight on cards */
@@ -310,7 +314,8 @@ main,.topbar,.rail{position:relative;z-index:2}
   background:
     radial-gradient(circle 460px at 88% 92%, rgba(33,216,216,.30) 0%, rgba(33,216,216,0) 100%),
     radial-gradient(circle 460px at 6% 6%, rgba(98,82,203,.36) 0%, rgba(98,82,203,0) 100%);
-  filter:blur(20px);
+  /* own layer, no filter: the glow drifts with scroll on the compositor instead of being re-blurred each frame */
+  will-change:transform;
 }
 .onyx h2,.onyx h3{color:var(--paper-3)}
 .onyx .t-lede{color:rgba(242,242,242,.78)}
@@ -319,7 +324,7 @@ main,.topbar,.rail{position:relative;z-index:2}
 /* ---------- 02 Frame ---------- */
 .frame__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(36px,5vh,56px)}
 .frame__bar .t-label{font-size:11px;color:rgba(242,242,242,.6)}
-.seg{display:inline-flex;padding:4px;border-radius:var(--r-pill);background:rgba(255,255,255,.6);border:1px solid var(--hairline);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.seg{display:inline-flex;padding:4px;border-radius:var(--r-pill);background:rgba(255,255,255,.7);border:1px solid var(--hairline)}
 .seg__b{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:12px;line-height:1;text-transform:uppercase;letter-spacing:.05em;
   padding:11px 16px;border:0;border-radius:var(--r-pill);background:transparent;color:var(--ink);cursor:pointer;transition:background var(--t) var(--ease),color var(--t) var(--ease)}
 .seg__b b{font-weight:600;color:var(--purple)}
@@ -1450,10 +1455,15 @@ main,.topbar,.rail{position:relative;z-index:2}
     const seeds = [[0,.2,.15],[0,.5,.5],[0,.85,.5],[0,.35,.85],[0,.65,.3],[0,.1,.45],
                    [1,.82,.16],[1,.62,.08],[1,.25,.72],
                    [2,.12,.82],[2,.3,.95],[2,.92,.9]];
-    let W, H, R, blobs;
+    let W, H, R, blobs, sizedW = 0;
+    // Resizing the bitmap clears it, so only do it when the width changes. Mobile URL bars change the
+    // height on every scroll direction flip; the fixed canvas just stretches a little instead of blanking.
     const size = () => {
-      W = cv.width = Math.round(vw * S); H = cv.height = Math.round(vh * S);
+      if (vw === sizedW) return false;
+      sizedW = vw;
+      W = cv.width = Math.round(vw * S); H = cv.height = Math.round(Math.max(vh, screen.height || vh) * S);
       R = Math.max(vw, vh) * .34 * S;
+      return true;
     };
     size();
     blobs = seeds.map(([c, x, y], i) => ({
@@ -1471,16 +1481,17 @@ main,.topbar,.rail{position:relative;z-index:2}
           if (b.y < -R * .3 || b.y > H + R * .3) b.vy *= -1;
         }
         const r = R * (1 + .06 * Math.sin(t / 2600 + b.ph));
-        const y = b.y - sy * .06 * S * (b.c === 0 ? .5 : 1);
+        // scroll drift is a bounded wave, never a wrap-around (a modulo made the blobs jump every 4 screens)
+        const y = b.y + Math.sin(sy / (vh * 3) + b.ph) * R * (b.c === 0 ? .18 : .32);
         const g = ctx.createRadialGradient(b.x, y, r * .01, b.x, y, r);
         g.addColorStop(0, `rgba(${palette[b.c]},${b.a})`);
         g.addColorStop(1, `rgba(${palette[b.c]},0)`);
         ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
       }
     };
-    const loop = (t) => { sy = scrollY % (vh * 4); draw(t); if (!reduce) requestAnimationFrame(loop); };
+    const loop = (t) => { sy = scrollY; draw(t); if (!reduce) requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
-    addEventListener('resize', () => { size(); if (reduce) draw(0); });
+    addEventListener('resize', () => { if (size()) draw(performance.now()); });
   })();
 
   /* ---------- Reveals, count-ups ---------- */
