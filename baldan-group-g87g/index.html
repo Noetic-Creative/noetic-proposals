@@ -682,6 +682,7 @@ main,.topbar,.rail{position:relative;z-index:2}
   background:rgba(250,250,250,.78);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
   border:1px solid rgba(255,255,255,.75);box-shadow:var(--glass-glow-top),0 20px 60px rgba(26,26,26,.08);
 }
+.chapter__card::after{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;background:var(--ink);opacity:var(--dim,0);pointer-events:none}
 /* while stacking, every card is at least a screen tall, so a short card fully covers a taller one underneath */
 @media (min-width:901px) and (min-height:761px){.chapter__card{min-height:calc(100vh - 116px);align-content:start}}
 .chapter__head{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--hairline-soft)}
@@ -792,7 +793,7 @@ main,.topbar,.rail{position:relative;z-index:2}
   .channel,.channel + .channel{padding:22px 16px 22px 0;border-left:0}
   .channel:nth-child(2n){padding-left:16px;border-left:1px solid var(--hairline)}
   .chapter{position:static;margin-bottom:22px}
-  .chapter__card{grid-template-columns:1fr;transform:none!important;filter:none!important}
+  .chapter__card{grid-template-columns:1fr;transform:none!important;filter:none!important;--dim:0!important}
   .chapter__head{flex-wrap:wrap;align-items:flex-start}
   .hscroll{height:auto!important}
   .hscroll__sticky{position:static;height:auto;overflow:visible}
@@ -880,7 +881,7 @@ main,.topbar,.rail{position:relative;z-index:2}
 }
 @media (max-height:760px) and (min-width:901px){
   .chapter{position:static;margin-bottom:24px}
-  .chapter__card{transform:none!important;filter:none!important}
+  .chapter__card{transform:none!important;filter:none!important;--dim:0!important}
 }
 
 /* ---------- Motion + print safety ---------- */
@@ -904,7 +905,7 @@ main,.topbar,.rail{position:relative;z-index:2}
   .hero__body,.chip-float{transform:none!important}
   .goals__rail,.cap__meta{position:static}
   .chapter{position:static;margin-bottom:16px;break-inside:avoid}
-  .chapter__card{transform:none!important;filter:none!important}
+  .chapter__card{transform:none!important;filter:none!important;--dim:0!important}
   .hscroll{height:auto!important}
   .hscroll__sticky{position:static;height:auto;overflow:visible}
   .hscroll__track{transform:none!important;width:auto;flex-wrap:wrap}
@@ -2268,10 +2269,12 @@ main,.topbar,.rail{position:relative;z-index:2}
     const seeds = [[0,.2,.15],[0,.5,.5],[0,.85,.5],[0,.35,.85],[0,.65,.3],[0,.1,.45],
                    [1,.82,.16],[1,.62,.08],[1,.25,.72],
                    [2,.12,.82],[2,.3,.95],[2,.92,.9]];
-    let W, H, R, blobs;
+    let W, H, R, blobs, cw, ch;
+    // reads the window itself: this resize listener runs before relayout() refreshes vw/vh
     const size = () => {
-      W = cv.width = Math.round(vw * S); H = cv.height = Math.round(vh * S);
-      R = Math.max(vw, vh) * .34 * S;
+      cw = innerWidth; ch = innerHeight;
+      W = cv.width = Math.round(cw * S); H = cv.height = Math.round(ch * S);
+      R = Math.max(cw, ch) * .34 * S;
     };
     size();
     blobs = seeds.map(([c, x, y], i) => ({
@@ -2296,9 +2299,15 @@ main,.topbar,.rail{position:relative;z-index:2}
         ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
       }
     };
-    const loop = (t) => { sy = scrollY % (vh * 4); draw(t); if (!reduce) requestAnimationFrame(loop); };
+    // scroll drift is a smooth wave (0 to 4 screens and back every 8), never a sawtooth:
+    // `scrollY % (vh * 4)` snapped the whole field back every 4 screens, which read as a flicker
+    const loop = (t) => { sy = ch * 2 * (1 - Math.cos(scrollY / (ch * 8) * Math.PI * 2)); draw(t); if (!reduce) requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
-    addEventListener('resize', () => { size(); if (reduce) draw(0); });
+    addEventListener('resize', () => {
+      // phone toolbars change the height a little while scrolling; the canvas just stretches for those
+      if (innerWidth === cw && Math.abs(innerHeight - ch) < 160) return;
+      size(); if (reduce) draw(0);
+    });
   })();
 
   /* ---------- Reveals, count-ups ---------- */
@@ -2483,11 +2492,12 @@ main,.topbar,.rail{position:relative;z-index:2}
       if (desktop() && vh > 760) {
         chapters.forEach((ch, i) => {
           const next = chapters[i + 1], card = ch.firstElementChild;
-          if (!next) { card.style.transform = ''; card.style.filter = ''; return; }
+          if (!next) { card.style.transform = ''; card.style.removeProperty('--dim'); return; }
           const top = next.getBoundingClientRect().top, stick = +ch.dataset.stick;
           const k = clamp((vh - top) / (vh - stick), 0, 1);
           card.style.transform = `scale(${(1 - .06 * k).toFixed(4)}) translateY(${(-16 * k).toFixed(1)}px)`;
-          card.style.filter = `brightness(${(1 - .08 * k).toFixed(3)}) saturate(${(1 - .3 * k).toFixed(3)})`;
+          // a veil, not a filter: filter on top of the card's backdrop blur re-rasterises every frame and flickers in Safari
+          card.style.setProperty('--dim', (.09 * k).toFixed(3));
         });
       }
     }
