@@ -700,28 +700,11 @@ main,.topbar,.rail{position:relative;z-index:2}
 .rfp__meta .is-inv{background:var(--ink);border-color:var(--ink)}
 .rfp__meta .is-inv dt,.rfp__meta .is-inv dd small{color:rgba(242,242,242,.6)}
 .rfp__meta .is-inv dd{color:var(--turq);font-size:clamp(28px,2.6vw,36px)}
-.mfee{display:flex;flex-wrap:wrap;align-items:center;gap:14px 32px;padding:clamp(20px,2.6vw,30px);margin-bottom:24px;border-radius:var(--r-xl);background:var(--ink);color:var(--paper-3)}
-.mfee__big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.mfee__big b{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,3.6vw,48px);line-height:.95;letter-spacing:-.02em;color:var(--turq)}
-.mfee__big span{font-family:var(--font-display);font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:rgba(242,242,242,.78)}
-.mfee__eq{display:flex;flex-direction:column;gap:4px;font-size:15.5px;line-height:1.4;color:rgba(242,242,242,.82)}
-.mfee__eq b{font-family:var(--font-display);font-weight:600;color:var(--paper-3)}
-.chapter--opt .chapter__card{background:rgba(247,246,255,.92);border:1px solid var(--purple)}
-.optbadge{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;padding:11px 16px;border-radius:12px;background:var(--purple);color:#fff;font-family:var(--font-display);font-size:12px;letter-spacing:.07em;text-transform:uppercase}
-.optbadge b{font-weight:600}
-.optbadge span{opacity:.85}
-.chapter--opt .rfp__meta .is-inv{background:var(--purple-tint);border:1px solid var(--purple-tint)}
-.chapter--opt .rfp__meta .is-inv dd{color:var(--purple)}
-.chapter--opt .rfp__meta .is-inv dt,.chapter--opt .rfp__meta .is-inv dd small{color:var(--ink-mute)}
-.mfee--opt{background:var(--purple-tint);color:var(--ink);border:1px solid var(--purple-tint)}
-.mfee--opt .mfee__big b{color:var(--purple)}
-.mfee--opt .mfee__big span{color:var(--ink-mute)}
-.mfee--opt .mfee__eq{color:var(--ink-mute)}
-.mfee--opt .mfee__eq b{color:var(--ink)}
-.msum .msum__t--opt{border:1px solid rgba(167,150,255,.55);background:rgba(120,100,255,.10)}
-.msum .msum__t--opt b{color:var(--paper-3)}
-.msum .msum__t--opt .msum__k{color:#cfc6ff}
 .sm{display:block}
+.optbadge{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:999px;background:var(--purple-tint);color:var(--purple);font-family:var(--font-display);font-size:12px;letter-spacing:.07em;text-transform:uppercase}
+.optbadge b{font-weight:600}
+.sm--next{margin-top:34px}
+.sm__pill{font-style:normal;margin-left:8px;padding:3px 10px;border-radius:999px;background:var(--purple);color:#fff;font-size:11px;letter-spacing:.07em}
 .sm__grp{display:flex;align-items:center;gap:10px;margin:30px 0 2px;font-family:var(--font-display);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(242,242,242,.62)}
 .sm__grp:first-child{margin-top:0}
 .sm__grp span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid rgba(242,242,242,.38);font-size:11px;letter-spacing:0}
@@ -740,10 +723,10 @@ main,.topbar,.rail{position:relative;z-index:2}
 .sm__grand span{display:block;font-family:var(--font-display);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--paper-3)}
 .sm__grand small{display:block;margin-top:8px;font-size:15px;line-height:1.4;color:rgba(242,242,242,.75)}
 .sm__grand b{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,3.6vw,48px);line-height:1;letter-spacing:-.02em;color:var(--turq)}
-.sm--opt{margin-top:40px;padding:clamp(20px,2.6vw,30px);border:1px solid rgba(167,150,255,.45);border-radius:var(--r-lg);background:rgba(120,100,255,.07)}
-.sm__tag{display:inline-block;margin-bottom:8px;padding:6px 14px;border-radius:999px;background:var(--purple-lift);color:#fff;font-family:var(--font-display);font-size:12px;text-transform:uppercase;letter-spacing:.07em}
-.sm__grand--opt{background:rgba(255,255,255,.05);border-color:rgba(167,150,255,.6)}
-.sm__grand--opt b{color:#fff}
+.sm__avg{display:flex;justify-content:space-between;align-items:center;gap:10px 24px;flex-wrap:wrap;margin-top:12px;padding:18px clamp(22px,3vw,34px);border-radius:var(--r-lg);border:1px solid var(--hairline-invert);background:rgba(255,255,255,.04)}
+.sm__avg span{display:block;font-family:var(--font-display);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--paper-3)}
+.sm__avg small{display:block;margin-top:5px;font-size:14px;line-height:1.4;color:rgba(242,242,242,.72)}
+.sm__avg b{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,2.6vw,34px);line-height:1;letter-spacing:-.01em;color:var(--turq)}
 @media (max-width:760px){.sm__row{grid-template-columns:52px minmax(0,1fr)}.sm__t{grid-column:2;margin-top:4px}.sm__a{grid-column:2;text-align:left;margin-top:8px}.sm__sub b{font-size:20px}}
 .msum{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:30px}
 .msum__t{display:flex;flex-direction:column;gap:6px;padding:22px 24px;border-radius:var(--r-lg);border:1px solid var(--hairline-invert);background:rgba(255,255,255,.05)}
@@ -1001,13 +984,12 @@ main,.topbar,.rail{position:relative;z-index:2}
 <header class="topbar" id="topbar">
   <div class="topbar__inner">
     <nav class="nav" aria-label="Sections">
-      <a href="#recap">Recap</a>
-      <a href="#frame">Frame</a>
+      <a href="#funnel">Lead path</a>
+      <a href="#assessment">Assessment</a>
       <a href="#strategy">Strategy</a>
       <a href="#creative">Creative</a>
       <a href="#qualify">Qualify</a>
-      <a href="#why">Team</a>
-      <a href="#work">Work</a>
+      <a href="#measure">Measure</a>
       <a href="#plan">Plan</a>
       <a href="#rfp">Pilot quote</a>
     </nav>
@@ -1029,10 +1011,10 @@ main,.topbar,.rail{position:relative;z-index:2}
       <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
         <path class="sleepers" d="M-20,170 C220,120 380,190 560,150 S900,60 1080,110 S1340,170 1460,90"/>
         <path class="track draw" pathLength="1" d="M-20,170 C220,120 380,190 560,150 S900,60 1080,110 S1340,170 1460,90"/>
-        <g class="stop" style="animation-delay:.9s"><circle cx="232" cy="141" r="5"/><text x="232" y="122" text-anchor="middle">Call · Oct 29</text></g>
-        <g class="stop" style="animation-delay:1.3s"><circle cx="560" cy="150" r="5"/><text x="560" y="131" text-anchor="middle">Call · Nov 5</text></g>
-        <g class="stop" style="animation-delay:1.7s"><circle cx="900" cy="88" r="5"/><text x="900" y="69" text-anchor="middle">Pilot proposal · Nov 6</text></g>
-        <g class="stop" style="animation-delay:2.1s"><circle cx="1215" cy="142" r="5"/><text x="1215" y="123" text-anchor="middle">Start · Dec 1</text></g>
+        <g class="stop" style="animation-delay:.9s"><circle cx="232" cy="141" r="5"/><text x="232" y="122" text-anchor="middle">Week 1 · Start</text></g>
+        <g class="stop" style="animation-delay:1.3s"><circle cx="560" cy="150" r="5"/><text x="560" y="131" text-anchor="middle">Week 3 · Strategy deck</text></g>
+        <g class="stop" style="animation-delay:1.7s"><circle cx="900" cy="88" r="5"/><text x="900" y="69" text-anchor="middle">Week 7 · Campaigns live</text></g>
+        <g class="stop" style="animation-delay:2.1s"><circle cx="1215" cy="142" r="5"/><text x="1215" y="123" text-anchor="middle">Month 3 · Review</text></g>
       </svg>
     </div>
 
@@ -1051,16 +1033,16 @@ main,.topbar,.rail{position:relative;z-index:2}
         <div class="hero__lower">
           <div class="hero__chips">
             <div class="chip-float glass glass--top" data-speed="-0.02">
-              <b><span data-count="600">600</span></b><span>US points of sale for T-Shape2 in just over a year</span>
+              <b><span data-count="4">4</span></b><span>Months. One pilot, built around qualified leads for sales</span>
             </div>
             <div class="chip-float glass glass--top" data-speed="0">
-              <b><span data-count="45">45</span><i>+</i></b><span>Years in professional aesthetics, 29 countries</span>
+              <b>Week 7</b><span>Campaigns go live, after the assessment and the plan</span>
             </div>
             <div class="chip-float glass glass--top" data-speed="0.01">
-              <b><i><span data-count="4">4</span></i></b><span>Months. One pilot, built around qualified leads for sales</span>
+              <b>Month 3</b><span>Results review, and the terms for 2027 agreed together</span>
             </div>
             <div class="chip-float glass glass--top" data-speed="0.02">
-              <b>Dec 1</b><span>Proposed start, with about ten business days of notice so the right team is booked</span>
+              <b>Dec 1</b><span>Proposed start of the pilot</span>
             </div>
           </div>
           <div class="hero__panel glass glass--top reveal in">
@@ -1068,9 +1050,9 @@ main,.topbar,.rail{position:relative;z-index:2}
               <img class="hero__logo" src="assets/baldan-square.png" alt="Baldan Group" width="56" height="56">
               <div><span class="t-label">Prepared for</span><strong>Simona Bianco, CMO</strong></div>
             </div>
-            <p>Baldan has the devices, the FDA clearance, a US footprint of roughly 600 points of sale in a year, and an AI layer (Bcube and Aura) that no competitor bundles with a machine. What the US funnel needs is a way to send sales the right clinics: fewer leads that stop at the first call, more that arrive informed and ready. This file proposes a four-month pilot built around that one goal. A lean assessment, a content strategy with the big idea, key visuals and master pieces from us, and co-management of your campaigns. Success is measured on qualified leads for sales.</p>
+            <p>A four-month pilot to bring sales more of the right clinics. We find where leads are lost, build the path from ad to qualified lead, and test the creative that brings the right clinics in. Success is measured on qualified leads for sales, not on clicks.</p>
             <div class="hero__meta">
-              <span>Following our calls of October 29 and November 5, 2026</span><span>Miami / Milan</span><span>November 2026 · Confidential</span>
+              <span>Pilot proposal</span><span>Miami / Milan</span><span>November 2026 · Confidential</span>
             </div>
           </div>
         </div>
@@ -1080,144 +1062,52 @@ main,.topbar,.rail{position:relative;z-index:2}
     <div class="scrollcue" aria-hidden="true">Scroll<i></i></div>
   </section>
 
-  <!-- ============================== 01 RECAP -->
-  <section class="section" id="recap" data-stop="Recap" data-nav="recap">
-    <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">01</span>
-      <div class="sec-head">
-        <span class="capsule reveal">01 · What we discussed</span>
-        <h2 class="t-section reveal" data-delay="1">A strong product, a proven channel, and a funnel that must send sales the right <em class="mark">clinics</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">Simona, this is our record of our two calls. It is written to be forwarded internally, so it stays factual. Our interpretation starts in the next section.</p>
-      </div>
-
-      <div class="goals">
-        <aside class="goals__rail js-stick" data-top="110">
-          <div class="facts glass glass--top reveal">
-            <span class="t-label">The calls in brief</span>
-            <dl>
-              <div class="fact"><dt>Calls</dt><dd>October 29 and November 5, 2026</dd></div>
-              <div class="fact"><dt>Brief</dt><dd>Content Strategy &amp; Growth Marketing Pitch, USA</dd></div>
-              <div class="fact"><dt>Brands in scope</dt><dd>Infra Baldan, T-Face (direct). T-Shape2 stays with Artemis</dd></div>
-              <div class="fact"><dt>CRM</dt><dd>Zoho</dd></div>
-              <div class="fact"><dt>Live channels</dt><dd>Meta. Google turned on recently</dd></div>
-              <div class="fact"><dt>Your request</dt><dd>A pilot from December, extended to the full year if the results are there</dd></div>
-              <div class="fact"><dt>Success measure</dt><dd>Qualified leads for sales</dd></div>
-            </dl>
-          </div>
-        </aside>
-        <div>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">01</span>
-            <div>
-              <h3>Four decades of devices, now with a US base to build on</h3>
-              <p>Baldan Group is a Milan-based, family-owned company with 45 years in professional aesthetics, operating in 29 countries across non-invasive technologies, dermocosmetics and nutrition. T-Shape2 received FDA clearance and reached roughly 600 US points of sale in just over a year, and RealSelf named it one of the fastest-growing technologies in the US in 2025. The US represents roughly 15 to 20 percent of sales today, most of it through Artemis.</p>
-            </div>
-          </article>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">02</span>
-            <div>
-              <h3>Artemis is a strong channel, not a growth partner</h3>
-              <p>Artemis distributes T-Shape2 in the US on a model built entirely on digital lead generation, with no field sales force. They generate and close leads well, and they will continue to carry T-Shape2. They do not share performance data with Baldan, and the two do not cross into each other's accounts. Baldan's own US effort is focused on Infra Baldan and T-Face, the two higher-end devices. You want to understand why Artemis works as well as it does, and what Baldan should learn from it.</p>
-            </div>
-          </article>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">03</span>
-            <div>
-              <h3>The mandate: better leads, then more of them</h3>
-              <p>You joined as CMO about a month ago. The most common question you hear internally is why sales is no longer receiving the quality of leads it used to. As we understood it, only about 1.5 percent of US leads end in a sale, and roughly 40 percent are lost at the first stage: fake, duplicate or scam leads. US leads in the CRM also do not yet carry a sales status, so Meta cannot be told which ones were good and audiences are built by hand. Your read is that the ad creative and copy do not express the benefit to the clinic. The devices and the offer are strong. The brief puts lead quality first, volume second, and asks for brand awareness work alongside.</p>
-            </div>
-          </article>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">04</span>
-            <div>
-              <h3>What runs today</h3>
-              <p>One performance marketing manager in Italy sets budgets and runs campaigns. Meta is the primary channel; Google was switched on recently. There is no agency producing content; creative comes from the team with AI assistance. Leads land in Zoho, and an export manager picks up each call personally and closes. Every Baldan device ships with Bcube, your partner-clinic app, powered by Aura, which suggests marketing actions, generates Meta creative for the clinic, moves patients to booking and reports in real time.</p>
-            </div>
-          </article>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">05</span>
-            <div>
-              <h3>The customer is a specific kind of clinic</h3>
-              <p>The target is the high-end aesthetic clinic or med spa with physicians or qualified medical staff, premium positioning, and the means to invest in top-tier technology. Devices are financed through leasing, which requires an owner who is financially solid and a business that is more than a year old. Conversations sometimes stop because one of those requirements was not understood up front. All US communication must stay within FDA-validated claims.</p>
-            </div>
-          </article>
-          <article class="goal glass glass--top reveal">
-            <span class="goal__n">06</span>
-            <div>
-              <h3>Your pilot request</h3>
-              <p>After our first call you proposed a pilot instead of a full year: three months, December to February, extended if the results are there. Four parts. A lean assessment of your accounts, Artemis and the funnel. A content strategy with the big idea. Contents, where we make the key visuals and master pieces, your team adapts them and we review before anything goes live. And co-management of the campaigns, with your performance manager running them day to day. We would agree the success criteria together, on qualified-lead rate and cost per qualified lead, and decide the terms for the rest of the year before the pilot ends. This proposal is built on exactly that, with one recommendation: four months, not three. Strategy takes about six weeks, and the test needs roughly ten more to show real results. On Lumenis, Tamir will confirm our position with you separately.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== 02 FRAME -->
-  <section class="section" id="frame" data-stop="Frame" data-nav="frame" style="padding-top:0">
+  <!-- ============================== 01 LEAD PATH -->
+  <section class="section" id="funnel" data-stop="Lead path" data-nav="funnel">
     <div class="wrap">
       <div class="onyx on-ink reveal">
-        <span class="capsule">02 · The frame</span>
-        <h2 class="t-section" style="margin-top:22px;max-width:17ch">The leads did not change. The channel <em class="mark">did</em>.</h2>
-        <p class="t-lede" style="margin-top:20px;max-width:64ch">Everything you described, a fragmented ICP, creative that talks about Baldan instead of the clinic, one channel carrying the whole funnel, and no sales status coming back to Meta, points at the same gap. Meta now rewards fresh, varied, specific creative aimed at a defined buyer, and it learns from what happens after the lead. When creative goes stale or stays generic, the platform widens its targeting to find cheap conversions. When it never hears which leads were good, it cannot tell the difference. Lead quality falls twice. The fix is not a better media buyer. It is a creative engine that keeps the message sharp, a qualification step that protects sales, and a feedback loop that teaches Meta who the good clinics are.</p>
+        <span class="capsule">01 · The lead path</span>
+        <h2 class="t-section" style="margin-top:22px;max-width:19ch">From form fill to informed <em class="mark">conversation</em>.</h2>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="stat__value"><span data-count="2" data-suffix=" wks">2 wks</span></div>
-            <div class="stat__label">Creative refresh cadence</div>
-            <p class="stat__note">New hooks, formats and angles on the live concepts every two weeks, so the algorithm never runs out of fresh signal and the message never goes stale.</p>
-          </div>
-          <div class="stat">
-            <div class="stat__value"><span data-count="1">1</span></div>
-            <div class="stat__label">Feedback loop to Meta</div>
-            <p class="stat__note">Sales outcomes from Zoho go back to Meta, so targeting learns from real sales and not from clicks.</p>
-          </div>
-          <div class="stat">
-            <div class="stat__value"><span data-count="1">1</span></div>
-            <div class="stat__label">Qualification step before sales</div>
-            <p class="stat__note">A landing page with qualifying questions, spam protection and a score, so the export manager starts informed.</p>
-          </div>
+        <div class="flow flow--today">
+          <div class="flow__label"><i></i>Today</div>
+          <ol class="flow__nodes">
+            <li class="flow__line" aria-hidden="true"></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">01</span><h3>Meta ad</h3><p>Single primary channel. Brand-centric creative, limited volume.</p><span class="ftag ftag--warn">Creative scarcity</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Form fill</h3><p>Name, email, phone. No practice data. Fake, duplicate and scam leads get through.</p><span class="ftag ftag--warn">About 40% lost here</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Zoho</h3><p>Lead lands with no score or profile, and no sales status goes back to Meta.</p><span class="ftag ftag--warn">No signal back</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Export manager calls</h3><p>Qualification happens live, on the phone.</p><span class="ftag ftag--warn">Stops on leasing fit</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Close, or not</h3><p>No feedback loop to creative or targeting.</p><span class="ftag ftag--warn">No learning</span></li>
+          </ol>
         </div>
 
-        <div class="lanes">
-          <article class="lane">
-            <span class="tag tag--turq">Road A / Direct B2B</span>
-            <h3>Target the clinic. Speak to the owner.</h3>
-            <p>Define the ideal practice in concrete terms (locations, treatment rooms, staff, treatments offered, competitor devices in use, years in business), then build audiences, creative and offers around that definition. Sales-oriented, measurable, and the fastest route to better-qualified conversations for Infra Baldan and T-Face.</p>
-            <dl class="lane__spec">
-              <div><dt>Channels</dt><dd>Meta, Google, LinkedIn</dd></div>
-              <div><dt>Creative register</dt><dd>Technology as hero + clinic ROI</dd></div>
-              <div><dt>Offer</dt><dd>Qualifying landing page, demo, open day</dd></div>
-            </dl>
-          </article>
-          <article class="lane">
-            <span class="tag tag--inv">Road B / B2C to B2B</span>
-            <h3>Create the demand the clinic cannot ignore.</h3>
-            <p>Organic and creator content aimed at patients, so they walk into a practice asking for the treatment and the device. Slower to compound, but it builds the brand awareness your brief calls out and it strengthens the clinic's own case for buying. It also feeds what clinics publish through Aura, which turns every partner into a distribution point for Baldan's content.</p>
-            <dl class="lane__spec">
-              <div><dt>Channels</dt><dd>Instagram, TikTok, YouTube</dd></div>
-              <div><dt>Creative register</dt><dd>Practitioner and patient voices</dd></div>
-              <div><dt>Compounds through</dt><dd>Clinic-ready content via Aura</dd></div>
-            </dl>
-          </article>
-        </div>
-
-        <div class="marquee" aria-hidden="true">
-          <div class="marquee__track">
-            <span>Meta</span><span>Google</span><span>LinkedIn</span><span>Instagram</span><span>TikTok</span><span>YouTube</span><span>Clinic-ready content via Aura</span>
-            <span>Meta</span><span>Google</span><span>LinkedIn</span><span>Instagram</span><span>TikTok</span><span>YouTube</span><span>Clinic-ready content via Aura</span>
-          </div>
+        <div class="flow flow--next">
+          <div class="flow__label"><i></i>Proposed</div>
+          <ol class="flow__nodes" id="flowNext">
+            <li class="flow__line" aria-hidden="true"><i></i></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">01</span><h3>Multi-channel entry</h3><p>Meta, Google, LinkedIn for B2B. Instagram and TikTok for patient demand. Two creative systems, tested.</p><span class="ftag ftag--good">Fresh every 2 weeks</span></li>
+            <li class="fnode is-hot"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Qualifying landing page</h3><p>The clinic answers a few questions about its practice: rooms, locations, treatments, tenure, financing readiness. Spam and duplicates are filtered out.</p><span class="ftag ftag--good">Qualified at entry</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Scored lead in Zoho</h3><p>Profile card and score, built on the shared qualified-lead definition.</p><span class="ftag ftag--good">Sales-ready</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Informed call</h3><p>Export manager opens with the practice's own numbers and the Bcube and Aura story.</p><span class="ftag ftag--good">Higher close rate</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Learning loop</h3><p>Sales outcomes go back to Meta, to creative and to scoring, so targeting learns who the good clinics are.</p><span class="ftag ftag--good">Compounds</span></li>
+          </ol>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============================== 01 RECAP -->
+  
+
+  <!-- ============================== 02 FRAME -->
+  
+
   <!-- ============================== 03 ASSESSMENT -->
-  <section class="section" id="assessment" data-nav="frame">
+  <section class="section" id="assessment" data-stop="Assessment" data-nav="assessment">
     <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">03</span>
+      <span class="sec-num" aria-hidden="true" data-par="0.22">02</span>
       <div class="sec-head">
-        <span class="capsule reveal">03 · Assessment first</span>
+        <span class="capsule reveal">02 · Assessment first</span>
         <h2 class="t-section reveal" data-delay="1">Understand before we <em class="mark">prescribe</em>.</h2>
         <p class="t-lede reveal" data-delay="2">Your brief opens with assessment, and so do we. The first three weeks of the pilot answer the question nobody inside Baldan can answer today: where do the right clinics get lost between the ad and the sale, and what, specifically, unlocks the breakthrough. Six workstreams, one report, one recommendation, kept lean so the pilot spends its time testing.</p>
       </div>
@@ -1265,40 +1155,11 @@ main,.topbar,.rail{position:relative;z-index:2}
   <!-- ============================== 04 CONTENT STRATEGY -->
   <section class="section" id="strategy" data-stop="Strategy" data-nav="strategy" style="padding-top:clamp(40px,8vh,90px)">
     <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">04</span>
+      <span class="sec-num" aria-hidden="true" data-par="0.22">03</span>
       <div class="sec-head">
-        <span class="capsule reveal">04 · Content strategy</span>
+        <span class="capsule reveal">03 · Content strategy</span>
         <h2 class="t-section reveal" data-delay="1">From what Baldan is to what the clinic <em class="mark">gets</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">Your brief says it plainly: the communication so far has been about Baldan, not about the benefits to the clinic that buys a device. The fix is a content system with the clinic owner as the protagonist, built on four pillars and fed by the people who already use and trust the devices. Here is the strategy we would bring, with the Lumenis work as the reference for how it performs. The big idea that anchors it is presented in the strategy deck at the end of the assessment.</p>
-      </div>
-
-      <div class="flip">
-        <div class="flip__head"><span>What the communication says today</span><span></span><span>What the clinic needs to hear</span></div>
-        <div class="flip__row">
-          <div class="fbox fbox--from"><i>01</i><s>Our heritage: 45 years, 29 countries</s></div>
-          <div class="flip__link" aria-hidden="true"><svg viewBox="0 0 58 22"><line x1="2" y1="11" x2="55" y2="11" pathLength="1"/><polyline points="47,4 55,11 47,18"/></svg></div>
-          <div class="fbox fbox--to"><i>01</i>Results your patients will ask for by name</div>
-        </div>
-        <div class="flip__row">
-          <div class="fbox fbox--from"><i>02</i><s>Device specifications and features</s></div>
-          <div class="flip__link" aria-hidden="true"><svg viewBox="0 0 58 22"><line x1="2" y1="11" x2="55" y2="11" pathLength="1"/><polyline points="47,4 55,11 47,18"/></svg></div>
-          <div class="fbox fbox--to"><i>02</i>What the mechanism does, shown, in plain language</div>
-        </div>
-        <div class="flip__row">
-          <div class="fbox fbox--from"><i>03</i><s>We have FDA clearance</s></div>
-          <div class="flip__link" aria-hidden="true"><svg viewBox="0 0 58 22"><line x1="2" y1="11" x2="55" y2="11" pathLength="1"/><polyline points="47,4 55,11 47,18"/></svg></div>
-          <div class="fbox fbox--to"><i>03</i>Treatments you can add, and the room that pays for itself</div>
-        </div>
-        <div class="flip__row">
-          <div class="fbox fbox--from"><i>04</i><s>Bcube and Aura exist</s></div>
-          <div class="flip__link" aria-hidden="true"><svg viewBox="0 0 58 22"><line x1="2" y1="11" x2="55" y2="11" pathLength="1"/><polyline points="47,4 55,11 47,18"/></svg></div>
-          <div class="fbox fbox--to"><i>04</i>Your schedule, filled: the marketing engine comes in the box</div>
-        </div>
-        <div class="flip__row">
-          <div class="fbox fbox--from"><i>05</i><s>Contact us for a quote</s></div>
-          <div class="flip__link" aria-hidden="true"><svg viewBox="0 0 58 22"><line x1="2" y1="11" x2="55" y2="11" pathLength="1"/><polyline points="47,4 55,11 47,18"/></svg></div>
-          <div class="fbox fbox--to"><i>05</i>See where your practice stands first</div>
-        </div>
+        <p class="t-lede reveal" data-delay="2">The content strategy puts the clinic owner at the center: what the clinic gets, not what Baldan is. Four pillars, fed by the people who already use and trust the devices. The big idea that anchors it is presented in the strategy deck at the end of the assessment.</p>
       </div>
 
       <div class="pillars">
@@ -1307,35 +1168,31 @@ main,.topbar,.rail{position:relative;z-index:2}
           <h3>Educate</h3>
           <span class="pillar__sub">Product and science</span>
           <p>Mechanism of action, exploded views, clinical data and patents, explained for a medical director and then translated for an owner. Technology as hero, in the Dyson and Alma register your brief describes, always inside validated claims.</p>
-          <div class="pillar__ref"><span class="t-label">Lumenis reference</span>AAD 2026 series: leading dermatologists on ULTRApulse Alpha, filmed on the conference floor.</div>
         </article>
         <article class="pillar spot glass glass--top reveal" data-delay="1">
           <span class="pillar__k">Pillar 02</span>
           <h3>Entertain</h3>
           <span class="pillar__sub">Trend-native, clinic humor</span>
           <p>The formats that travel: clinic humor, trend sounds, the "esthetician down" joke, the emergency kit. Light on the surface, with the device and the treatment room always in frame. This is where reach comes from, and where patients start asking.</p>
-          <div class="pillar__ref"><span class="t-label">Lumenis reference</span>"The only emergency kit we carry": 1.3M plays, the top reach of the year. A single trend post reached a 77% engagement rate against a 1.6% industry average.</div>
         </article>
         <article class="pillar spot glass glass--top reveal" data-delay="2">
           <span class="pillar__k">Pillar 03</span>
           <h3>Prove</h3>
           <span class="pillar__sub">Social proof through collaboration</span>
           <p>Practitioners as storytellers, KOLs and creators as co-authors, partner clinics as the set. Doctors becoming patients, estheticians showing their day, a bride's prep story. Proof the buyer trusts because it comes from a peer, not from the brand.</p>
-          <div class="pillar__ref"><span class="t-label">Lumenis reference</span>Doctors positioned as storytellers lifted LinkedIn engagement to 25%, against a 2% benchmark. Creator and KOL posts drove the most-liked content of the year.</div>
         </article>
         <article class="pillar pillar--opp spot glass glass--top reveal" data-delay="3">
           <span class="pillar__k">Pillar 04</span>
           <h3>Support</h3>
           <span class="pillar__sub">The business case and Bcube</span>
           <p>Room utilization, treatment-menu expansion, payback, training, and the fact that every device ships with Bcube and Aura. The answer to the clinic's real question after the purchase: how do I fill the schedule. Also the content that partner clinics publish themselves through Aura.</p>
-          <div class="pillar__ref"><span class="t-label">Baldan opportunity</span>No competitor bundles an AI marketing engine with the machine. This pillar is where Baldan stands apart from Artemis and from the category.</div>
         </article>
       </div>
 
       <div class="channels reveal">
         <div class="channel"><b>B2B</b><p>Educate and Support lead on LinkedIn and Meta, aimed at owners, medical directors and practice managers. Prove runs across both.</p></div>
         <div class="channel"><b>B2C</b><p>Entertain and Prove lead on Instagram and TikTok, aimed at patients, so demand arrives at the clinic already asking for the treatment.</p></div>
-        <div class="channel"><b>Events</b><p>Every conference and launch becomes weeks of content across all four pillars: 30-plus social-ready assets per event on the Lumenis program.</p></div>
+        <div class="channel"><b>Events</b><p>Every conference and launch becomes weeks of content across all four pillars.</p></div>
         <div class="channel"><b>Aura</b><p>A monthly clinic-ready pack lets partner practices publish Baldan content as their own, turning each clinic into a distribution point.</p></div>
       </div>
     </div>
@@ -1370,9 +1227,11 @@ main,.topbar,.rail{position:relative;z-index:2}
                 <div class="ct-node ct-node--core">The treatment room that pays for itself.<small>Infra Baldan · Technology as hero</small></div>
               </div>
               <div class="ctree__col" style="--c:1">
-                <span class="ctree__lab">2 buyers</span>
+                <span class="ctree__lab">4 buyers</span>
                 <div class="ct-node" style="--r:0">Owner: utilization and payback</div>
                 <div class="ct-node" style="--r:1">Medical director: mechanism and results</div>
+                <div class="ct-node" style="--r:2">Practice manager: scheduling and Aura</div>
+                <div class="ct-node" style="--r:3">Patient: the experience and outcome</div>
               </div>
               <div class="ctree__col" style="--c:2">
                 <span class="ctree__lab">2 formats</span>
@@ -1386,9 +1245,9 @@ main,.topbar,.rail{position:relative;z-index:2}
               </div>
             </div>
             <div class="ctree__total">
-              <b><span data-count="8">8</span></b>
-              <span>expressions of one idea per two-week cycle, each measured on its own</span>
-              <span class="ctree__eq" aria-hidden="true">1 × 2 × 2 × 2</span>
+              <b><span data-count="16">16</span></b>
+              <span>expressions of one idea each month, each measured on its own</span>
+              <span class="ctree__eq" aria-hidden="true">1 × 4 × 2 × 2</span>
             </div>
             <p class="ctree__note">The concept carries the quality. The structure carries the reach. Every expression is tracked on qualified-lead rate, so the system tells us which buyer, format and angle to invest in next, and which to retire.</p>
           </div>
@@ -1407,190 +1266,13 @@ main,.topbar,.rail{position:relative;z-index:2}
             </div>
             <p class="cells__foot">Both cells measured on qualified-lead rate and cost per qualified lead, not on clicks. Six-week read, then budget follows the winner by audience.</p>
           </div>
-
-          <article class="case glass glass--top reveal">
-            <div class="case__head"><span class="tag tag--teal">Featured · Medical aesthetics</span><img class="case__logo" src="assets/logos/lum-color.png" alt="Lumenis" width="144" height="24" loading="lazy"></div>
-            <h3 class="case__name">Lumenis</h3>
-            <span class="case__ind">Medical devices · Aesthetics and Vision · Same buyer as Baldan</span>
-            <div class="case__blocks">
-              <div><span class="t-label">Challenge</span><p>A global medical technology company selling to aesthetic practices and med spas needed its expertise to travel on social: organic, paid, event content and community management, under strict regulatory review.</p></div>
-              <div><span class="t-label">Method</span><p>Doctors positioned as storytellers. Trend-native and AI-produced video. Conferences turned into weeks of content, 30-plus social-ready assets per event. Quarterly competitive landscape and social listening.</p></div>
-            </div>
-            <div class="case__results">
-              <div class="res"><b><span data-count="25" data-suffix="%">25%</span></b><span>LinkedIn engagement rate, against a 2% benchmark</span></div>
-              <div class="res res--teal"><b><span data-count="96" data-prefix="-" data-suffix="%">-96%</span></b><span>Cost per engagement, year over year, at best</span></div>
-              <div class="res"><b><span data-count="179" data-prefix="+" data-suffix="%">+179%</span></b><span>TikTok reach, year over year</span></div>
-              <div class="res res--teal"><b><span data-count="2" data-suffix="×">2×</span></b><span>Event leads at 34% lower cost per lead</span></div>
-            </div>
-            <blockquote class="case__quote">"An AI-produced talk show cost 65% less than a traditional shoot, went from concept to feed in five days, and engaged 40% above baseline. The method is the lever."</blockquote>
-            <a class="cta" href="https://noetic.io/cases/lumenis/" target="_blank" rel="noopener">Read the Lumenis case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-          </article>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================== 05 CONTENT THAT PERFORMS -->
-  <section class="section work" id="ugc" data-nav="creative">
-    <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">05</span>
-      <div class="sec-head" style="margin-bottom:0">
-        <span class="capsule reveal">05 · Content that performs</span>
-        <h2 class="t-section reveal" data-delay="1">Real practitioners. Real rooms. Real <em class="mark">reach</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">Eight pieces from the past year, all in your category: creator and UGC content, conference and launch coverage with the device in frame, and the clinic and KOL trend formats that produced the biggest reach. The same engine would produce for Infra Baldan and T-Face, with clinic-ready content that partner practices can publish through Aura.</p>
-      </div>
-    </div>
-
-    <div class="hscroll" id="hscroll">
-      <div class="hscroll__sticky">
-        <div class="hscroll__track" id="track">
-
-          <div class="group-card group-card--teal glass glass--top">
-            <span class="t-label">Creator content</span>
-            <div>
-              <div class="group-card__n">03</div>
-              <h3>Creator and UGC</h3>
-              <p>Creator and UGC content, made in the category Baldan sells into.</p>
-            </div>
-          </div>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DWocHGejsGB/embed/" data-title="Instagram reel: Too busy having a skin moment">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--teal">UGC</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">“Too busy having a skin moment”</h3>
-              <span class="piece__date">Stellar M22 · IG Reel · Apr 2026</span>
-              <p class="piece__stat">450K plays · 6.3K likes</p>
-            </div>
-          </article>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.tiktok.com/player/v1/7619349590373977357?music_info=1&amp;description=1&amp;rel=0" data-title="TikTok: Esthetician down, triLIFT secured">
-              <div class="embed__ph"><i></i><span class="t-label">TikTok</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--teal">UGC</span><span class="tag">TikTok</span></div>
-              <h3 class="piece__title">“Esthetician down… triLIFT secured”</h3>
-              <span class="piece__date">TikTok · Mar 2026</span>
-              <p class="piece__stat">159K views</p>
-            </div>
-          </article>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DWTD4HBDddB/embed/" data-title="Instagram reel: wedding-prep story with Stellar M22 ResurFX">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--teal">Creator</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">Wedding-prep story, Stellar M22 ResurFX</h3>
-              <span class="piece__date">Sarah White Aesthetics, UK · IG Reel · Mar 2026</span>
-              <p class="piece__stat">57K plays · 325 likes · 33 comments</p>
-            </div>
-          </article>
-
-          <div class="group-card glass glass--top">
-            <span class="t-label">Event coverage</span>
-            <div>
-              <div class="group-card__n">03</div>
-              <h3>Events and KOLs</h3>
-              <p>Conference and launch coverage with the device in frame.</p>
-            </div>
-          </div>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DTLaRMklaHL/embed/" data-title="Instagram reel: behind the scenes at the triLIFT 2.0 launch">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--ink">Event</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">Behind the scenes, triLIFT 2.0 launch</h3>
-              <span class="piece__date">IG Reel · 2026</span>
-              <p class="piece__stat">Launch coverage</p>
-            </div>
-          </article>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DZbOMwtDQKp/embed/" data-title="Instagram reel: AAD 2026, four leading dermatologists on ULTRApulse Alpha">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--ink">KOL · Event</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">AAD 2026: four leading dermatologists on ULTRApulse Alpha</h3>
-              <span class="piece__date">Drs. Anderson, Kilmer, Munavalli, Day · IG Reel · Jun 2026</span>
-              <p class="piece__stat">3.7K plays · 67 likes</p>
-            </div>
-          </article>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DY0Hj4xMvwL/embed/" data-title="Instagram reel: AAD 2026, Dr. Marc Avram on the next 60 years">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--ink">KOL · Event</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">AAD 2026: Dr. Marc Avram on “the next 60 years”</h3>
-              <span class="piece__date">IG Reel · May 2026</span>
-              <p class="piece__stat">4.1K plays · 68 likes</p>
-            </div>
-          </article>
-
-          <div class="group-card group-card--teal glass glass--top">
-            <span class="t-label">Trend formats</span>
-            <div>
-              <div class="group-card__n">02</div>
-              <h3>Clinic trends</h3>
-              <p>The clinic trend formats that produced the biggest reach.</p>
-            </div>
-          </div>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.instagram.com/p/DaBN3GKxTeJ/embed/" data-title="Instagram reel: The only emergency kit we carry">
-              <div class="embed__ph"><i></i><span class="t-label">Instagram</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--teal">Clinic trend</span><span class="tag">Instagram</span></div>
-              <h3 class="piece__title">“The only emergency kit we carry”</h3>
-              <span class="piece__date">Slim Secret Med Spa · Stellar M22 · IG Reel · Jun 2026</span>
-              <p class="piece__stat">1.3M plays · 5.3K likes · top reach of the year</p>
-            </div>
-          </article>
-
-          <article class="piece">
-            <div class="embed" data-src="https://www.tiktok.com/player/v1/7696207263815552269?music_info=1&amp;description=1&amp;rel=0" data-title="TikTok: triLIFT 2.0 pro pedal trend">
-              <div class="embed__ph"><i></i><span class="t-label">TikTok</span></div>
-            </div>
-            <div class="piece__meta">
-              <div class="piece__tags"><span class="tag tag--teal">Clinic trend</span><span class="tag">TikTok</span></div>
-              <h3 class="piece__title">“triLIFT 2.0 pro” pedal trend</h3>
-              <span class="piece__date">Sydni Terradot Delahoussaye · TikTok · Oct 2026</span>
-              <p class="piece__stat">102K views · 581 likes · 297K plays on IG</p>
-            </div>
-          </article>
-
-        </div>
-        <div class="hscroll__ui">
-          <span class="t-label hscroll__hint" aria-hidden="true">Keep scrolling</span>
-          <div class="hscroll__bar" aria-hidden="true"><i id="hbar"></i></div>
-          <span class="hscroll__count" id="hcount">01 / 08</span>
-          <div class="hscroll__nav">
-            <button class="hnav" id="hprev" type="button" aria-label="Previous piece" disabled><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2 4 7l5 5"/></svg></button>
-            <button class="hnav" id="hnext" type="button" aria-label="Next piece"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="m5 2 5 5-5 5"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <p class="note reveal">All eight pieces were produced by Noetic for Lumenis Aesthetics in 2026 and play here directly from Instagram and TikTok, with the metrics they reached.</p>
-      <div class="onyx on-ink ugcstats reveal">
-        <div class="ugcstat"><b><span data-count="7" data-suffix="×">7×</span></b><p>More conversions from UGC creative than brand creative, same platform, same month, same budget</p><span class="tag tag--inv">The Squadron</span></div>
-        <div class="ugcstat"><b><span data-count="82" data-suffix="%">82%</span></b><p>Of total organic reach driven by creator content over ten months</p><span class="tag tag--inv">Rail Europe</span></div>
-        <div class="ugcstat"><b><span data-count="60" data-suffix="%">60%</span></b><p>Of conversions attributed to UGC in a regulated-category campaign</p><span class="tag tag--inv">Sorbet</span></div>
-        <div class="ugcstat"><b><span data-count="63" data-prefix="~" data-suffix="%">~63%</span></b><p>Lower acquisition cost than the prior agency across B2C and B2B funnels</p><span class="tag tag--inv">The Squadron</span></div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== CAPABILITY 02 · QUALIFICATION ENGINE -->
   <section class="section" id="qualify" data-stop="Qualify" data-nav="qualify">
@@ -1600,107 +1282,50 @@ main,.topbar,.rail{position:relative;z-index:2}
           <span class="capsule reveal">Capability 02 · The qualification path</span>
           <h2 class="t-section reveal" data-delay="1">The <em class="mark">qualification</em> path.</h2>
           <p class="cap__tag reveal" data-delay="1">Become the clinic's partner before you become its vendor.</p>
-          <p class="cap__desc reveal" data-delay="2">Telling a med spa owner "we have the perfect device for you, leave your details" no longer works, and a form with a name and a phone number tells sales nothing. In the pilot, the ad sends clinics to a landing page that asks a few questions about their practice. Sales receives a scored lead with a profile, and Meta receives the outcome. The benchmark quiz we walked through on our first call is the fuller version of the same idea. It is not part of the pilot, and the landing page is built so it can grow into the quiz if the pilot works.</p>
+          <p class="cap__desc reveal" data-delay="2">A form with a name and a phone number tells sales nothing. In the pilot, the ad sends clinics to a landing page that asks a few questions about their practice. Sales receives a scored lead with a profile, and Meta receives the outcome, so targeting learns who the good clinics are.</p>
           <ul class="ticks reveal" data-delay="2">
             <li>A qualifying landing page: rooms, locations, treatments, tenure and financing readiness, captured before the first call.</li>
             <li>Protection against spam and duplicate leads, so fake and scam submissions do not reach sales.</li>
             <li>Each lead scored on the shared qualified-lead definition, validated with your sales team, and pushed to Zoho with a profile card so the export manager opens the call informed.</li>
             <li>Sales outcomes go back to Meta, so targeting learns who the good clinics are instead of optimizing for clicks.</li>
             <li>Every lead carries the creative that brought it, so the test between technology-hero and clinic-ROI is judged on qualified leads.</li>
-            <li>The benchmark quiz is the next step if the pilot works. The demo on the right shows what it could look like.</li>
           </ul>
         </aside>
 
         <div class="cap__main">
           <div class="quiz glass glass--top reveal" id="quiz">
-            <div class="quiz__top"><span class="t-label">Interactive demo · After the pilot: what the landing page can grow into</span><span class="quiz__step" id="qstep">Step 1 of 3</span></div>
-            <div class="quiz__bar" aria-hidden="true"><i id="qbar"></i></div>
-            <div class="quiz__body" id="qbody">
-              <h3 class="quiz__q" id="qq">What kind of practice do you run?</h3>
-              <div class="quiz__opts" id="qopts" role="group" aria-labelledby="qq">
-                <button class="qopt" type="button">Med spa / aesthetic wellness</button>
-                <button class="qopt" type="button">Dermatology practice</button>
-                <button class="qopt" type="button">Plastic surgery practice</button>
-                <button class="qopt" type="button">Multi-location group</button>
-              </div>
-              <div class="quiz__ins" id="qins" aria-live="polite"><span class="t-label">Your insight</span><p id="qinsp"></p></div>
-              <div class="quiz__actions">
-                <button class="btn btn--ghost" id="qreset" type="button">Restart</button>
-                <button class="btn btn--teal" id="qnext" type="button" disabled><span id="qnextl">Next</span><svg class="chev" viewBox="0 0 14 14" aria-hidden="true"><path d="m5 2 5 5-5 5"/></svg></button>
-              </div>
-            </div>
-            <div class="quiz__res" id="qres" hidden>
+            <div class="quiz__top"><span class="t-label">Example · The lead card sales receives in Zoho</span></div>
+            <div class="quiz__res">
               <h3 class="quiz__q">Here is what sales sees before the first call.</h3>
-              <div class="quiz__profile" id="qprofile"></div>
-              <div class="quiz__score">
-                <div><span class="t-label">Qualification score</span><div class="quiz__track"><i id="qfill"></i></div></div>
-                <b id="qnum">0</b>
+              <div class="quiz__profile">
+                <span class="pchip">Med spa / aesthetic wellness</span>
+                <span class="pchip">6-10 treatment rooms</span>
+                <span class="pchip">Skin tightening and texture</span>
+                <span class="pchip">Open more than 3 years</span>
+                <span class="pchip pchip--m">Financing readiness: to confirm</span>
+                <span class="pchip">Source: Meta · Test cell B</span>
               </div>
-              <div class="quiz__actions"><button class="btn btn--ghost" id="qreset2" type="button"><svg class="chev" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2 4 7l5 5"/></svg>Run it again</button></div>
+              <div class="quiz__score">
+                <div><span class="t-label">Qualification score</span><div class="quiz__track"><i style="width:82%"></i></div></div>
+                <b>82</b>
+              </div>
             </div>
-            <p class="quiz__foot">Demo only, and not part of the pilot scope. Insight copy is illustrative; in production every insight is sourced, legally reviewed and FDA-compliant. Scoring weights are set with your sales team in the assessment phase.</p>
+            <p class="quiz__foot">Example only. The questions and the scoring weights are set with your sales team in the assessment phase.</p>
           </div>
-
-          <article class="case glass glass--top reveal">
-            <div class="case__head"><span class="tag tag--purple">Companion · Lead scoring from zero</span><img class="case__logo" src="assets/logos/nch-color.png" alt="Notch" width="78" height="24" loading="lazy"></div>
-            <h3 class="case__name">Notch</h3>
-            <span class="case__ind">AI SaaS for insurance · US launch · No marketing infrastructure at start</span>
-            <div class="case__blocks case__blocks--1">
-              <div><span class="t-label">Method</span><p>Built the visual language, a 300-account tiered target list, tracking and a lead scoring model, then ran LinkedIn and Google against it for six months.</p></div>
-            </div>
-            <div class="case__results case__results--3">
-              <div class="res"><b><span data-count="15">15</span></b><span>Tier-1 qualified leads in six months</span></div>
-              <div class="res res--teal"><b><span data-count="38.5" data-decimals="1" data-suffix="%">38.5%</span></b><span>Of qualified leads were tier-1</span></div>
-              <div class="res"><b><span data-count="35" data-suffix="%">35%</span></b><span>Under Google Ads budget target</span></div>
-            </div>
-            <blockquote class="case__quote">"Scoring built with sales before launch meant every lead that arrived was already a conversation someone wanted to have."</blockquote>
-            <a class="cta" href="https://noetic.io/cases/notch/" target="_blank" rel="noopener">Read the Notch case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-          </article>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================== 06 FUNNEL -->
-  <section class="section" id="funnel" data-nav="qualify" style="padding-top:0">
-    <div class="wrap">
-      <div class="onyx on-ink reveal">
-        <span class="capsule">06 · How the funnel changes</span>
-        <h2 class="t-section" style="margin-top:22px;max-width:19ch">From form fill to informed <em class="mark">conversation</em>.</h2>
-
-        <div class="flow flow--today">
-          <div class="flow__label"><i></i>Today</div>
-          <ol class="flow__nodes">
-            <li class="flow__line" aria-hidden="true"></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">01</span><h3>Meta ad</h3><p>Single primary channel. Brand-centric creative, limited volume.</p><span class="ftag ftag--warn">Creative scarcity</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Form fill</h3><p>Name, email, phone. No practice data. Fake, duplicate and scam leads get through.</p><span class="ftag ftag--warn">About 40% lost here</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Zoho</h3><p>Lead lands with no score or profile, and no sales status goes back to Meta.</p><span class="ftag ftag--warn">No signal back</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Export manager calls</h3><p>Qualification happens live, on the phone.</p><span class="ftag ftag--warn">Stops on leasing fit</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Close, or not</h3><p>No feedback loop to creative or targeting.</p><span class="ftag ftag--warn">No learning</span></li>
-          </ol>
-        </div>
-
-        <div class="flow flow--next">
-          <div class="flow__label"><i></i>Proposed</div>
-          <ol class="flow__nodes" id="flowNext">
-            <li class="flow__line" aria-hidden="true"><i></i></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">01</span><h3>Multi-channel entry</h3><p>Meta, Google, LinkedIn for B2B. Instagram and TikTok for patient demand. Two creative systems, tested.</p><span class="ftag ftag--good">Fresh every 2 weeks</span></li>
-            <li class="fnode is-hot"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Qualifying landing page</h3><p>The clinic answers a few questions about its practice: rooms, locations, treatments, tenure, financing readiness. Spam and duplicates are filtered out.</p><span class="ftag ftag--good">Qualified at entry</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Scored lead in Zoho</h3><p>Profile card and score, built on the shared qualified-lead definition.</p><span class="ftag ftag--good">Sales-ready</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Informed call</h3><p>Export manager opens with the practice's own numbers and the Bcube and Aura story.</p><span class="ftag ftag--good">Higher close rate</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Learning loop</h3><p>Sales outcomes go back to Meta, to creative and to scoring, so targeting learns who the good clinics are.</p><span class="ftag ftag--good">Compounds</span></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== 07 MEASURE -->
-  <section class="section" id="measure" data-nav="qualify">
+  <section class="section" id="measure" data-nav="measure">
     <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">07</span>
+      <span class="sec-num" aria-hidden="true" data-par="0.22">04</span>
       <div class="sec-head">
-        <span class="capsule reveal">07 · What we would measure</span>
+        <span class="capsule reveal">04 · What we measure</span>
         <h2 class="t-section reveal" data-delay="1">Quality first, then volume, then <em class="mark">pipeline</em>.</h2>
         <p class="t-lede reveal" data-delay="2">Your brief asks for proposed KPIs. For the pilot we propose the framework now and set the targets together at the end of the assessment, once we have seen the accounts, agreed the qualified-lead definition with your sales team and set a baseline in Zoho. Success is judged on qualified leads for sales, not on clicks.</p>
       </div>
@@ -1739,239 +1364,23 @@ main,.topbar,.rail{position:relative;z-index:2}
   </section>
 
   <!-- ============================== 08 WHY -->
-  <section class="section" id="why" data-stop="Team" data-nav="why" style="padding-top:clamp(40px,8vh,90px)">
-    <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">08</span>
-      <div class="sec-head">
-        <span class="capsule reveal">08 · Why Noetic for Baldan</span>
-        <h2 class="t-section reveal" data-delay="1">Six reasons this is a good <em class="mark">fit</em>.</h2>
-      </div>
-      <div class="cards">
-        <article class="why spot glass glass--top reveal">
-          <span class="why__n">01</span>
-          <h3>A US team for a Milan company entering the US</h3>
-          <p>Fifteen years in Miami, most of the team based in the Americas. We know the clinic owner in Beverly Hills and the one in Boca Raton, and we can be in their rooms with a camera within a week.</p>
-        </article>
-        <article class="why spot glass glass--top reveal" data-delay="1">
-          <span class="why__n">02</span>
-          <h3>Specialists, not generalists</h3>
-          <p>The person buying on Meta is never the person buying on Google. We carry the cost of deep specialists because that is where outperformance comes from.</p>
-        </article>
-        <article class="why spot glass glass--top reveal" data-delay="2">
-          <span class="why__n">03</span>
-          <h3>Deep familiarity with your space</h3>
-          <p>Medical and aesthetic technology, clinics and med spas, practice managers and medical directors, and the regulatory review habits that come with FDA-governed claims. We know the buyer, the objections and the calendar.</p>
-        </article>
-        <article class="why spot glass glass--top reveal">
-          <span class="why__n">04</span>
-          <h3>Creative is our performance lever</h3>
-          <p>Eight people in creative and design. We believe the biggest gains come from stronger, fresher creative, not from squeezing another point out of campaign settings.</p>
-        </article>
-        <article class="why spot glass glass--top reveal" data-delay="1">
-          <span class="why__n">05</span>
-          <h3>AI-native, like Brando built Aura</h3>
-          <p>Everything we produce runs through an AI-assisted pipeline with human creative direction. It is why we can keep creative fresh at the pace the channels demand, and why Baldan's content can feed what clinics publish through Aura.</p>
-        </article>
-        <article class="why spot glass glass--top reveal" data-delay="2">
-          <span class="why__n">06</span>
-          <h3>Performance driven</h3>
-          <p>We are a performance agency first. Every piece of creative, every channel and every dollar is tied to a KPI we agreed on, reported on a cadence you can set your calendar by, and kept or cut on the numbers.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== 09 TEAM -->
-  <section class="section" id="team" data-nav="why" style="padding-top:0">
-    <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">09</span>
-      <div class="sec-head">
-        <span class="capsule reveal">09 · The team</span>
-        <h2 class="t-section reveal" data-delay="1">Thirty-five <em class="mark">specialists</em> across the Americas and Europe.</h2>
-        <p class="t-lede reveal" data-delay="2">The full Noetic roster. Account leadership, strategy, creative direction and production, media specialists by channel, social and community, lifecycle, data, development and operations. The fourteen who would form the Baldan pod are listed in the response to item 6 of your brief.</p>
-      </div>
-      <div class="team__bar reveal">
-        <div class="seg" role="group" aria-label="Roster view">
-          <button class="seg__b is-on" type="button" data-pod="0" aria-pressed="true">Full roster <b>35</b></button>
-          <button class="seg__b" type="button" data-pod="1" aria-pressed="false">Baldan pod <b>14</b></button>
-        </div>
-        <span class="team__key"><i aria-hidden="true"></i>Ringed: in the Baldan pod</span>
-      </div>
-      <div class="roster reveal" id="roster">
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/tamir-alush.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Tamir Alush</b><span>Founder & CEO</span><small>Miami, FL<span class="cc">US</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/alex-heilbronn.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Alex Heilbronn</b><span>Copywriter</span><small>Nashville, TN<span class="cc">US</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/ali-caiza.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Ali Caiza</b><span>Executive Assistant</span><small>Guayaquil<span class="cc">EC</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/andrea-martinez.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Andrea Martinez</b><span>Account Manager</span><small>Cali<span class="cc">CO</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/andres-coronel.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Andres Coronel</b><span>Web Developer</span><small>Quito<span class="cc">EC</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/carolina-fallu.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Carolina Fallu</b><span>Strategic Planner</span><small>Quito<span class="cc">EC</span></small></span></div>
-          <div class="person"><span class="person__av">CA</span><span class="person__t"><b>Clemence Arthur</b><span>SEO Specialist</span></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/daniel-rojas.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Daniel Rojas</b><span>Video Editor & Design</span><small>Bogotá<span class="cc">CO</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/daniela-benfele.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Daniela Benfele</b><span>Automations & Email</span><small>Madrid<span class="cc">ES</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/esteban-grijalva.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Esteban Grijalva</b><span>Developer</span><small>Quito<span class="cc">EC</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/flor-hasman.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Flor Hasman</b><span>Talent Acquisition & HR Manager</span><small>Buenos Aires<span class="cc">AR</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/francisco-sica.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Francisco Sica</b><span>Data Analyst</span><small>Buenos Aires<span class="cc">AR</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/gonzalo-mazzoni.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Gonzalo Mazzoni</b><span>Media Buyer</span><small>Córdoba<span class="cc">AR</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/helen-schenck.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Helen Schenck</b><span>Creative Direction</span><small>Paris<span class="cc">FR</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/jackie-frysz.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Jackie Frysz</b><span>Head of Operations</span><small>Bogotá<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av">JA</span><span class="person__t"><b>James Alonso</b><span>Web Designer</span><small>Barranquilla<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/joe-conroy.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Joe Conroy</b><span>SEO</span><small>Philadelphia, PA<span class="cc">US</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/jose-cadenas.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Jose Cadenas</b><span>Senior Designer</span><small>Bogotá<span class="cc">CO</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/kathryn-kudra.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Kathryn Kudra</b><span>Paid Social Specialist</span><small>Highlands Ranch, CO<span class="cc">US</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/laura-gil.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Laura Gil</b><span>Account Manager</span><small>Medellin<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/luna-murgia.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Luna Murgia</b><span>Media Buyer</span><small>Buenos Aires<span class="cc">AR</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/maggie-bernal.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Maggie Bernal</b><span>Graphic Designer</span><small>Bogotá<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/maria-arevalo.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Maria Arevalo</b><span>Executive Assistant / Admin Manager</span><small>Daule<span class="cc">EC</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/monique-johnson.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Monique Johnson</b><span>Webinar Operations</span><small>Atlanta, GA<span class="cc">US</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/natalie-alush.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Natalie Alush</b><span>HR Advisor</span><small>Hollywood, FL<span class="cc">US</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/nicole-luna.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Nicole Luna</b><span>Account Director</span><small>Quito<span class="cc">EC</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/paula-pinzon.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Paula Pinzon</b><span>Social Media and Community Manager</span><small>Medellin<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/rui-kojima.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Rui Kojima</b><span>CRO</span><small>New York, NY<span class="cc">US</span></small></span></div>
-          <div class="person"><span class="person__av">SA</span><span class="person__t"><b>Scott Allen</b><span>SEO/GEO Specialist</span><small>Overland Park<span class="cc">US</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/sebastian-cortes.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Sebastian Cortes</b><span>Graphic Designer</span></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/serge-alarcon.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Serge Alarcon</b><span>Email Marketing Specialist</span><small>Toluca<span class="cc">MX</span></small></span></div>
-          <div class="person is-pod"><span class="person__av"><img src="assets/team/tim-newlin.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Tim Newlin</b><span>Paid Search</span><small>Madrid<span class="cc">ES</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/val-parra.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Val Parra</b><span>Social Media Manager</span><small>Barcelona<span class="cc">ES</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/virginia-mayer.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Virginia Mayer</b><span>Copywriter</span><small>Bogotá<span class="cc">CO</span></small></span></div>
-          <div class="person"><span class="person__av"><img src="assets/team/yoav-chen.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="person__t"><b>Yoav Chen</b><span>Paid Search Specialist</span><small>Round Rock<span class="cc">US</span></small></span></div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== 10 FEATURED WORK -->
-  <section class="section" id="work" data-stop="Work" data-nav="work" style="padding-top:clamp(40px,8vh,90px)">
-    <div class="wrap">
-      <div class="onyx on-ink reveal">
-        <span class="capsule">10 · Featured work</span>
-        <h2 class="t-section" style="margin-top:22px;max-width:16ch">Where the <em class="mark">system</em> showed up.</h2>
-        <p class="t-lede" style="margin-top:20px;max-width:60ch">Four engagements that rhyme with Baldan's situation: a medical aesthetics brand whose expertise had to travel on social, a global manufacturer that moved its message from the company to the customer, a European brand building demand through creator content under strict approvals, and a non-US brand entering the US with a playbook that had to be rewritten.</p>
-
-        <div class="tabs" role="tablist" aria-label="Case studies">
-          <button class="tab" type="button" role="tab" id="tab-lum" aria-controls="case-lum" aria-selected="true"><b>Lumenis</b><small>Medical aesthetics</small><i></i></button>
-          <button class="tab" type="button" role="tab" id="tab-ket" aria-controls="case-ket" aria-selected="false" tabindex="-1"><b>Keter</b><small>Outdoor living</small><i></i></button>
-          <button class="tab" type="button" role="tab" id="tab-rail" aria-controls="case-rail" aria-selected="false" tabindex="-1"><b>Rail Europe</b><small>Creator content</small><i></i></button>
-          <button class="tab" type="button" role="tab" id="tab-anm" aria-controls="case-anm" aria-selected="false" tabindex="-1"><b>Animalia</b><small>US market entry</small><i></i></button>
-        </div>
-
-        <div class="cases">
-          <article class="fcase is-on" role="tabpanel" id="case-lum" aria-labelledby="tab-lum">
-            <div class="fcase__meta">
-              <img class="fcase__logo" src="assets/logos/lum-color.png" alt="Lumenis" width="180" height="30" loading="lazy">
-              <span class="t-label">Medical aesthetics · Organic and paid social · Events</span>
-              <h3>Lumenis</h3>
-              <p>A global medical technology company serving aesthetics and vision needed its expertise to travel on social: organic, paid, event capture and community management, under strict regulatory review.</p>
-              <div class="chips"><span class="tag tag--inv">Organic Social</span><span class="tag tag--inv">Paid Social</span><span class="tag tag--inv">Content Strategy</span><span class="tag tag--inv">Community</span></div>
-              <a class="btn btn--invert" href="https://noetic.io/cases/lumenis/" target="_blank" rel="noopener">Read the full case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-            </div>
-            <div class="fcase__body">
-              <div><h4>Method</h4><p>Doctors positioned as storytellers. Trend-native and AI-produced video. Conferences turned into weeks of content, 30-plus social-ready assets per event. Quarterly competitive landscape and social listening behind every decision.</p></div>
-              <div><h4>Why it matters for Baldan</h4><p>Same buyer, same regulatory constraints, same conference calendar. The content system described in this file is the one that produced these numbers.</p></div>
-              <div class="fcase__res">
-                <div class="fres"><b><span data-count="25" data-suffix="%">25%</span></b><span>LinkedIn engagement rate, against a 2% benchmark</span></div>
-                <div class="fres"><b><span data-count="96" data-prefix="-" data-suffix="%">-96%</span></b><span>Cost per engagement, year over year, at best</span></div>
-                <div class="fres"><b><span data-count="179" data-prefix="+" data-suffix="%">+179%</span></b><span>TikTok reach, year over year</span></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="fcase" role="tabpanel" id="case-ket" aria-labelledby="tab-ket">
-            <div class="fcase__meta">
-              <span class="fcase__wm">Keter</span>
-              <span class="t-label">Outdoor living · $1.4B manufacturer · North America</span>
-              <h3>Keter</h3>
-              <p>A 1948-founded manufacturer selling in more than 100 countries hired Noetic to turn a discount-only email channel into a brand voice with real lifecycle automation and campaigns that do more than announce a sale.</p>
-              <div class="chips"><span class="tag tag--inv">Messaging Strategy</span><span class="tag tag--inv">Lifecycle</span><span class="tag tag--inv">Email</span><span class="tag tag--inv">Klaviyo + HubSpot</span></div>
-              <a class="btn btn--invert" href="https://noetic.io/cases/keter/" target="_blank" rel="noopener">Read the full case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-            </div>
-            <div class="fcase__body">
-              <div><h4>Method</h4><p>Audited cadence, layout and copy, then wrote a voice built on durability and outdoor life. Separated brand content from promotions. Designed and launched five lifecycle flows and a modular campaign system, with subject-line tests of benefit-led copy against pure discount lines.</p></div>
-              <div><h4>Why it matters for Baldan</h4><p>The same shift your brief asks for: from talking about the company to talking about what the customer gets. Same list, same catalogue, a new message system, and the numbers moved.</p></div>
-              <div class="fcase__res">
-                <div class="fres"><b><span data-count="35" data-prefix="+" data-suffix="%">+35%</span></b><span>Click-through rate vs. previous campaigns</span></div>
-                <div class="fres"><b><span data-count="22" data-prefix="+" data-suffix="%">+22%</span></b><span>Open rate</span></div>
-                <div class="fres"><b>0 <svg class="arr-r" viewBox="0 0 32 24" aria-hidden="true"><use href="#arrow-r"/></svg> <span data-count="5">5</span></b><span>Lifecycle flows live, from none</span></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="fcase" role="tabpanel" id="case-rail" aria-labelledby="tab-rail">
-            <div class="fcase__meta">
-              <img class="fcase__logo" src="assets/logos/rail-color.png" alt="Rail Europe" width="91" height="30" loading="lazy">
-              <span class="t-label">Paris-based brand · Creator content · Six carriers</span>
-              <h3>Rail Europe</h3>
-              <p>A Paris-based distributor of European train tickets needed organic reach and creator content that worked for travelers and travel sellers across six co-marketing carriers, with carrier approval on every piece.</p>
-              <div class="chips"><span class="tag tag--inv">Organic Social</span><span class="tag tag--inv">UGC</span><span class="tag tag--inv">Video Editing</span><span class="tag tag--inv">Paid Social</span></div>
-              <a class="btn btn--invert" href="https://noetic.io/cases/rail-europe/" target="_blank" rel="noopener">Read the full case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-            </div>
-            <div class="fcase__body">
-              <div><h4>Method</h4><p>Route-specific creator briefs, creator sourcing and production, in-house editing and paid amplification across Instagram, TikTok and Facebook. Content moved from concept to live in two weeks, approvals included.</p></div>
-              <div><h4>Why it matters for Baldan</h4><p>Regulated approvals, a brand headquartered in Europe, and demand that had to be built one creator at a time. The same operating model applies to practitioners and patients in the US aesthetics market.</p></div>
-              <div class="fcase__res">
-                <div class="fres"><b><span data-count="82" data-suffix="%">82%</span></b><span>Of total organic reach from creator content</span></div>
-                <div class="fres"><b><span data-count="40" data-prefix="+" data-suffix="%">+40%</span></b><span>Follower growth across Instagram and TikTok</span></div>
-                <div class="fres"><b><span data-count="2" data-suffix=" wks">2 wks</span></b><span>Concept to live, carrier approval included</span></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="fcase" role="tabpanel" id="case-anm" aria-labelledby="tab-anm">
-            <div class="fcase__meta">
-              <img class="fcase__logo" src="assets/logos/anm-color.png" alt="Animalia" width="127" height="30" loading="lazy">
-              <span class="t-label">Israeli brand · US market entry · Regulated category</span>
-              <h3>Animalia</h3>
-              <p>A pet insurance brand with a proven home-market playbook expanded into the highly competitive US market and found the playbook did not travel. It had to be rewritten for American buyers.</p>
-              <div class="chips"><span class="tag tag--inv">Paid Acquisition</span><span class="tag tag--inv">UGC</span><span class="tag tag--inv">Inbound</span><span class="tag tag--inv">Automations</span></div>
-              <a class="btn btn--invert" href="https://noetic.io/cases/animalia/" target="_blank" rel="noopener">Read the full case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
-            </div>
-            <div class="fcase__body">
-              <div><h4>Method</h4><p>Adapted the home-market strategy for US buyers, combining inbound, paid acquisition, UGC, zero-touch funnels and marketing automation, with every stage measured on conversion to customer rather than on leads alone.</p></div>
-              <div><h4>Why it matters for Baldan</h4><p>A non-US company, a US buyer who behaves differently, and a category where what you can say is regulated. The result came from rebuilding the creative and the funnel together, not from spending more on the old ones.</p></div>
-              <div class="fcase__res">
-                <div class="fres"><b><span data-count="5" data-suffix="×">5×</span></b><span>Return on investment, from 1× before</span></div>
-                <div class="fres"><b><span data-count="32" data-prefix="-" data-suffix="%">-32%</span></b><span>Customer acquisition cost</span></div>
-                <div class="fres"><b><span data-count="20" data-prefix="+" data-suffix="%">+20%</span></b><span>Lead to MQL to customer conversion</span></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== 11 CLIENTS -->
-  <section class="section" id="clients" data-nav="work">
-    <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">11</span>
-      <div class="sec-head">
-        <span class="capsule reveal">11 · Selected clients</span>
-        <h2 class="t-section reveal" data-delay="1">Companies that trusted us with their <em class="mark">growth</em>.</h2>
-      </div>
-      <div class="logos">
-        <div class="logo-cell glass reveal"><img src="assets/logos/lum-grey.png" alt="Lumenis" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/caesarstone-logo.svg" alt="Caesarstone" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/sap-grey.png" alt="Sapiens" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/wsc-grey.png" alt="WSC Sports" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/nice-grey.png" alt="NICE" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/aud-grey.png" alt="AudioCodes" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/int-grey.png" alt="Interlight" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><span class="logo-wm">DollarDays</span></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/rail-grey.png" alt="Rail Europe" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/oas-grey.png" alt="Oasis Security" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/nch-grey.png" alt="Notch" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/prt-grey.png" alt="Priority Software" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/tab-grey.png" alt="Tabit" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/opm-grey.png" alt="Opmed" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/qua-grey.png" alt="Quantal X" loading="lazy" decoding="async"></div>
-        <div class="logo-cell glass reveal"><img src="assets/logos/anm-grey.png" alt="Animalia" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ============================== 12 PLAN -->
   <section class="section" id="plan" data-stop="Plan" data-nav="plan" style="padding-top:clamp(40px,8vh,90px)">
     <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">12</span>
+      <span class="sec-num" aria-hidden="true" data-par="0.22">05</span>
       <div class="sec-head">
-        <span class="capsule reveal">12 · The four-month pilot</span>
+        <span class="capsule reveal">05 · The four-month pilot</span>
         <h2 class="t-section reveal" data-delay="1">Assess, plan, launch, <em class="mark">learn</em>.</h2>
         <p class="t-lede reveal" data-delay="2">Assuming a December 1 start: assessment and strategy through the first six weeks, the first key visuals and master pieces at the start of month 2, campaigns live in January, and a full test read before the end of March. In month 3 we review the results together and agree the terms for the rest of 2027.</p>
       </div>
@@ -2024,9 +1433,9 @@ main,.topbar,.rail{position:relative;z-index:2}
   <!-- ============================== 13 RFP -->
   <section class="section" id="rfp" data-stop="Quote" data-nav="rfp">
     <div class="wrap">
-      <span class="sec-num" aria-hidden="true" data-par="0.22">13</span>
+      <span class="sec-num" aria-hidden="true" data-par="0.22">06</span>
       <div class="sec-head">
-        <span class="capsule reveal">13 · The pilot quote</span>
+        <span class="capsule reveal">06 · The pilot quote</span>
         <h2 class="t-section reveal" data-delay="1">The pilot, item by item, quoted <em class="mark">separately</em>.</h2>
         <p class="t-lede reveal" data-delay="2">We mapped your pilot request to the six scope items of the brief, so the quote stays comparable. Items 1 to 3 are the strategy and the plan. Items 4 and 5 become one monthly execution of $8,333 per month, where we make the key visuals and masters and co-manage your campaigns. Making the designs ourselves is a separate, optional line. All figures are in USD.</p>
       </div>
@@ -2142,11 +1551,10 @@ main,.topbar,.rail{position:relative;z-index:2}
               <dl class="rfp__meta">
                 <div><dt>Timing</dt><dd>Months 2-4<small>Starts after the strategy phase</small></dd></div>
                 <div><dt>Team</dt><dd>8 people<small>Creative, design, video, copy, paid social, paid search, data, account</small></dd></div>
-                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8333" data-prefix="$" data-suffix=" / mo">$8,333 / mo</span><small>3 months, $25,000 in total. Excludes media spend</small></dd></div>
+                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8333" data-prefix="$" data-suffix=" / mo">$8,333 / mo</span><small>3 months, months 2 to 4. $25,000 in total. Excludes media spend</small></dd></div>
               </dl>
             </div>
             <div class="rfp__main">
-              <div class="mfee"><div class="mfee__big"><b data-count="8333" data-prefix="$">$8,333</b><span>per month</span></div><div class="mfee__eq"><span><b>3 months</b>, months 2 to 4</span><span><b>$25,000</b> in total. Excludes media spend</span></div></div>
               <h4 class="rfp__h">Included</h4>
               <ul class="qlist">
                 <li><span>First key visuals, master pieces and adaptation guide, then new KVs and masters as the strategy needs, through your FDA claims review</span><span class="q">Monthly</span></li>
@@ -2211,24 +1619,23 @@ main,.topbar,.rail{position:relative;z-index:2}
         <span class="anchor" id="item-option"></span>
         <article class="chapter chapter--opt">
           <div class="chapter__card">
-            <div class="optbadge"><b>Optional</b><span>Not included in the pilot total</span><span>Choose it only if you want us to make the designs too</span></div>
+            <div class="optbadge"><b>Optional</b><span>Not included in the pilot total</span></div>
             <div class="chapter__head">
               <div>
-                <div class="chapter__index"><b>Optional add-on</b> · Design execution</div>
+                <div class="chapter__index"><b>Add-on</b> · Design execution</div>
                 <h3 class="chapter__title">Design execution, paid and organic</h3>
               </div>
-              <span class="tag">Optional · Two months of content</span>
+              <span class="tag">Two months of content</span>
             </div>
             <div class="rfp__side">
               <p class="rfp__ask">Only if you prefer us to make the designs too. Design work only. No media buying: on paid media we cover strategy and oversight.</p>
               <dl class="rfp__meta">
                 <div><dt>Timing</dt><dd>Two months of content<small>Within months 2-4</small></dd></div>
                 <div><dt>Team</dt><dd>6 people<small>Design, video, motion, copy, community, account</small></dd></div>
-                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8400" data-prefix="$" data-suffix=" / mo">$8,400 / mo</span><small>Per month of content, for two months: $16,800 in total. Excludes media spend</small></dd></div>
+                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8400" data-prefix="$" data-suffix=" / mo">$8,400 / mo</span><small>Per month of content. Two months of content, $16,800 in total. Excludes media spend</small></dd></div>
               </dl>
             </div>
             <div class="rfp__main">
-              <div class="mfee mfee--opt"><div class="mfee__big"><b data-count="8400" data-prefix="$">$8,400</b><span>per month of content</span></div><div class="mfee__eq"><span><b>2 months</b> of content</span><span><b>$16,800</b> in total. Design only, no media buying</span></div></div>
               <h4 class="rfp__h">Included</h4>
               <ul class="qlist">
                 <li><span>Paid ad variations made from the masters, in the formats each channel needs</span><span class="q">About 16 / mo</span></li>
@@ -2247,7 +1654,7 @@ main,.topbar,.rail{position:relative;z-index:2}
       <div class="onyx on-ink rsum reveal">
         <div class="msum">
           <div class="msum__t"><span class="msum__k">Monthly fee · months 2 to 4</span><b data-count="8333" data-prefix="$">$8,333</b><small>per month, for 3 months. $25,000 in total</small></div>
-          <div class="msum__t msum__t--opt"><span class="msum__k">Optional · design execution</span><b data-count="8400" data-prefix="$">$8,400</b><small>per month of content, for 2 months. $16,800 in total</small></div>
+          <div class="msum__t"><span class="msum__k">Optional · design execution</span><b data-count="8400" data-prefix="$">$8,400</b><small>per month of content, for 2 months. $16,800 in total</small></div>
         </div>
 
         <div class="sm">
@@ -2262,13 +1669,16 @@ main,.topbar,.rail{position:relative;z-index:2}
           <div class="sm__row"><a class="sm__i" href="#item-06">06</a><div class="sm__s"><b>Engagement model and team</b><small>Account leadership, reporting, cadence</small></div><div class="sm__t">4 months</div><div class="sm__a">Included</div></div>
           <div class="sm__sub"><span>Subtotal, monthly execution</span><b>$25,000</b></div>
 
-          <div class="sm__grand"><div><span>Pilot total</span><small>Four months, December to March. Average per month: $17,250, the total divided by four</small></div><b data-count="69000" data-prefix="$">$69,000</b></div>
+          <div class="sm__grand"><div><span>Pilot total</span><small>Four months, December to March</small></div><b data-count="69000" data-prefix="$">$69,000</b></div>
+          <div class="sm__avg"><div><span>Average per month</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="17250" data-prefix="$">$17,250</b></div>
         </div>
 
-        <div class="sm sm--opt">
-          <span class="sm__tag">Optional · not included in the pilot total above</span>
+        <div class="sm sm--next">
+          <div class="sm__grp"><span>C</span>Optional add-on, not included in the pilot total<em class="sm__pill">Optional</em></div>
           <div class="sm__row"><a class="sm__i" href="#item-option">Option</a><div class="sm__s"><b>Design execution, paid and organic</b><small>Design only, no media buying. Two months of content</small></div><div class="sm__t">Two months</div><div class="sm__a"><span class="mo">$8,400 / mo</span><small>2 months · $16,800</small></div></div>
-          <div class="sm__grand sm__grand--opt"><div><span>Pilot total with design execution</span><small>Pilot total plus the option. Average per month: $21,450, the total divided by four</small></div><b data-count="85800" data-prefix="$">$85,800</b></div>
+          <div class="sm__sub"><span>Subtotal, design execution</span><b>$16,800</b></div>
+          <div class="sm__grand"><div><span>Pilot total with design execution</span><small>Pilot total plus the option</small></div><b data-count="85800" data-prefix="$">$85,800</b></div>
+          <div class="sm__avg"><div><span>Average per month with design execution</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="21450" data-prefix="$">$21,450</b></div>
         </div>
       </div>
       <p class="rfine reveal">The pilot runs four months, December to March. All figures are in USD. Excludes media spend, third-party tools and data sources, paid creator fees, and travel for on-site production. Terms for the rest of 2027, for the same package and including a performance-based component, are agreed together in month 3, before the pilot ends. Assumes Baldan provides FDA-validated claims, brand assets and Zoho access at the start, adds the sales-status field to the US leads in the CRM, reviews our work within 48 hours, and that its performance manager runs the campaigns.</p>
@@ -2279,9 +1689,9 @@ main,.topbar,.rail{position:relative;z-index:2}
   <section class="section" id="contact" data-nav="rfp" style="padding-top:clamp(40px,8vh,90px);padding-bottom:40px">
     <div class="wrap">
       <div class="onyx on-ink reveal">
-        <span class="capsule">14 · Next step</span>
+        <span class="capsule">07 · Next step</span>
         <h2 class="t-hero close__title">Simona, <em class="mark">grazie</em>.</h2>
-        <p class="t-lede" style="margin-top:24px;max-width:58ch">Thank you for the clarity on what you need: better leads for sales, and a pilot that shows it. We would be glad to walk Brando through the lead path and the creative engine in person, and to answer anything the team needs before the pilot starts.</p>
+        <p class="t-lede" style="margin-top:24px;max-width:58ch">If this looks right, we can start on December 1. Tamir and the team are happy to walk Brando through the lead path and the creative engine in person, and to answer anything the team needs before the pilot starts.</p>
         <div class="close__row">
           <a class="btn btn--teal" href="mailto:tamir@noetic.io">tamir@noetic.io <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
           <a class="btn btn--invert" href="https://noetic.io" target="_blank" rel="noopener">noetic.io <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a>
@@ -2451,55 +1861,6 @@ main,.topbar,.rail{position:relative;z-index:2}
     el.style.setProperty('--my', Math.round(e.clientY - r.top) + 'px');
   }));
 
-  /* ---------- Horizontal gallery: embeds scale to the screen height ---------- */
-  const hs = $('#hscroll'), track = $('#track'), hbar = $('#hbar'), hcount = $('#hcount');
-  const pieces = $$('.piece', track);
-  let hDist = 0;
-  const sizeH = () => {
-    hs.style.setProperty('--s', (desktop() ? clamp((vh - 330) / 650, .55, 1) : 1).toFixed(3));
-    if (!desktop()) { hs.style.height = ''; track.style.transform = ''; return; }
-    hDist = Math.max(0, track.scrollWidth - vw);
-    hs.style.height = (hDist + vh) + 'px';
-  };
-  // the Instagram and TikTok players load once the gallery is close, not with the page
-  const loadEmbeds = () => $$('.embed[data-src]').forEach(box => {
-    const f = document.createElement('iframe');
-    f.src = box.dataset.src; f.title = box.dataset.title;
-    f.setAttribute('scrolling', 'no');
-    f.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture';
-    f.allowFullscreen = true;
-    box.removeAttribute('data-src');
-    box.appendChild(f);
-  });
-  new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { loadEmbeds(); o.disconnect(); } }, { rootMargin: '900px 0px' }).observe(hs);
-
-  /* gallery arrows: desktop scrolls the page to the next piece, mobile scrolls the track */
-  const hprev = $('#hprev'), hnext = $('#hnext');
-  const hMax = () => desktop() ? hDist : track.scrollWidth - track.clientWidth;
-  const hX = () => desktop() ? clamp(-hs.getBoundingClientRect().top, 0, hDist) : track.scrollLeft;
-  const hStops = () => {
-    const t = track.getBoundingClientRect().left - track.scrollLeft + parseFloat(getComputedStyle(track).paddingLeft);
-    return pieces.map(p => clamp(p.getBoundingClientRect().left - t, 0, hMax()));
-  };
-  function hUI(x) {
-    const st = hStops(), max = hMax();
-    hbar.style.transform = `scaleX(${max > 0 ? clamp(x / max, 0, 1) : 0})`;
-    const n = Math.max(1, st.filter(s => s <= x + 8).length);
-    hcount.textContent = String(n).padStart(2, '0') + ' / ' + String(pieces.length).padStart(2, '0');
-    hprev.disabled = x <= 8;
-    hnext.disabled = !st.some(s => s > x + 8);
-  }
-  const hGo = dir => {
-    const x = hX(), st = hStops();
-    const to = dir > 0 ? st.find(s => s > x + 8) : (st.filter(s => s < x - 8).pop() ?? 0);
-    if (to === undefined) return;
-    const behavior = reduce ? 'auto' : 'smooth';
-    if (desktop()) scrollTo({ top: scrollY + hs.getBoundingClientRect().top + to, behavior });
-    else track.scrollTo({ left: to, behavior });
-  };
-  hprev.addEventListener('click', () => hGo(-1));
-  hnext.addEventListener('click', () => hGo(1));
-  track.addEventListener('scroll', () => { if (!desktop()) hUI(track.scrollLeft); }, { passive: true });
 
   /* ---------- Scroll-scrubbed lines: proposed funnel, 90-day plan ---------- */
   const flowNext = $('#flowNext'), fnodes = $$('.fnode', flowNext);
@@ -2520,9 +1881,6 @@ main,.topbar,.rail{position:relative;z-index:2}
     fill.style.transform = `scaleX(${p})`;
     stops.forEach(s => s.dot.classList.toggle('is-past', p >= s.at - .002));
 
-    // hide the bar while scrolling down through the gallery, show on the way back
-    const hr = hs.getBoundingClientRect();
-    topbar.classList.toggle('is-hidden', y > lastY && y > vh * .6 && hr.top <= 0 && hr.bottom > vh);
     lastY = y;
 
     if (!reduce) {
@@ -2555,80 +1913,23 @@ main,.topbar,.rail{position:relative;z-index:2}
       }
     }
 
-    if (desktop() && hDist > 0) {
-      const hp = clamp(-hr.top / hDist, 0, 1);
-      track.style.transform = `translate3d(${(-hp * hDist).toFixed(1)}px,0,0)`;
-      hUI(hp * hDist);
-    }
-
     const fp = reduce ? 1 : scrub(flowNext, .75);
     flowNext.style.setProperty('--p', fp.toFixed(3));
     fnodes.forEach((n, i) => n.classList.toggle('is-lit', fp >= i / (fnodes.length - 1) - .001));
 
-    const pp = reduce ? 1 : scrub(steps, .7), w = pp * 12;
+    const pp = reduce ? 1 : scrub(steps, .7), w = pp * 17;
     steps.style.setProperty('--p', pp.toFixed(3));
-    [[0, 3], [3, 3], [6, 6]].forEach(([a, len], i) => segs[i].style.setProperty('--f', clamp((w - a) / len, 0, 1).toFixed(3)));
+    [[0, 3], [3, 3], [6, 11]].forEach(([a, len], i) => segs[i].style.setProperty('--f', clamp((w - a) / len, 0, 1).toFixed(3)));
     stepEls.forEach((s, i) => s.classList.toggle('is-lit', w >= [.01, 3, 6][i]));
   };
 
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { frame(); ticking = false; }); } }, { passive: true });
-  const relayout = () => { vw = innerWidth; vh = innerHeight; sizeH(); sizeFlows(); fitSticky(); placeStops(); frame(); if (!desktop()) hUI(track.scrollLeft); };
+  const relayout = () => { vw = innerWidth; vh = innerHeight; sizeFlows(); fitSticky(); placeStops(); frame(); };
   addEventListener('resize', relayout);
   addEventListener('load', relayout);
   relayout();
 
-  /* ---------- Qualification quiz (demo) ---------- */
-  (() => {
-    const Q = [
-      { q: 'What kind of practice do you run?', opts: ['Med spa / aesthetic wellness', 'Dermatology practice', 'Plastic surgery practice', 'Multi-location group'],
-        ins: 'Sample insight: how practices of your type in your state compare to the national average on density per resident, and what that means for competition in your zip code.' },
-      { q: 'How many treatment rooms across your locations?', opts: ['1-2 rooms', '3-5 rooms', '6-10 rooms', 'More than 10'],
-        ins: 'Sample insight: typical room utilization for a practice your size, and the revenue ceiling that sets before adding a new treatment category.' },
-      { q: 'Which treatments are on your menu today?', opts: ['Body contouring', 'Skin tightening and texture', 'Laser and light therapies', 'Injectables only so far'],
-        ins: 'Sample insight: which adjacent treatments practices like yours added last, and how long the payback period ran. This is where a device conversation begins.' }
-    ];
-    const qq = $('#qq'), qopts = $('#qopts'), qins = $('#qins'), qinsp = $('#qinsp'), qnext = $('#qnext'), qnextl = $('#qnextl'),
-          qstep = $('#qstep'), qbar = $('#qbar'), qbody = $('#qbody'), qres = $('#qres'), qfill = $('#qfill'), qnum = $('#qnum');
-    let i = 0, sel = [];
-    const render = () => {
-      const s = Q[i];
-      qq.textContent = s.q;
-      qopts.innerHTML = '';
-      qins.classList.remove('is-on'); qinsp.textContent = '';
-      qnext.disabled = true;
-      qnextl.textContent = i === Q.length - 1 ? 'See the lead profile' : 'Next';
-      qstep.textContent = `Step ${i + 1} of ${Q.length}`;
-      qbar.style.width = (12 + i / Q.length * 76) + '%';
-      s.opts.forEach(o => {
-        const b = document.createElement('button');
-        b.type = 'button'; b.className = 'qopt'; b.textContent = o; b.setAttribute('aria-pressed', 'false');
-        b.addEventListener('click', () => {
-          $$('.qopt', qopts).forEach(x => { x.classList.toggle('is-sel', x === b); x.setAttribute('aria-pressed', x === b); });
-          sel[i] = o; qinsp.textContent = s.ins; qins.classList.add('is-on'); qnext.disabled = false;
-        });
-        qopts.appendChild(b);
-      });
-    };
-    const finish = () => {
-      qbar.style.width = '100%'; qstep.textContent = 'Complete';
-      qbody.hidden = true; qres.hidden = false;
-      const prof = $('#qprofile'); prof.innerHTML = '';
-      [...sel, 'Premium positioning', 'Financing readiness: to confirm', 'Source: Meta · Test cell B'].forEach((t, k) => {
-        const c = document.createElement('span'); c.className = 'pchip' + (k === 1 ? ' pchip--m' : ''); c.textContent = t; prof.appendChild(c);
-      });
-      let score = 62 + (sel[1] && sel[1].includes('3-5') ? 14 : 0) + (sel[1] && (sel[1].includes('6-10') || sel[1].includes('More')) ? 22 : 0) + (sel[0] && sel[0].includes('Multi') ? 8 : 0);
-      score = Math.min(score, 96);
-      qfill.style.width = '0';
-      requestAnimationFrame(() => requestAnimationFrame(() => { qfill.style.width = score + '%'; }));
-      qnum.dataset.count = score; countUp(qnum, true);
-    };
-    const reset = () => { i = 0; sel = []; qbody.hidden = false; qres.hidden = true; qfill.style.width = '0'; qnum.textContent = '0'; render(); };
-    qnext.addEventListener('click', () => { if (i < Q.length - 1) { i++; render(); } else finish(); });
-    $('#qreset').addEventListener('click', reset);
-    $('#qreset2').addEventListener('click', reset);
-    render();
-  })();
 
   /* ---------- Featured work tabs ---------- */
   (() => {
