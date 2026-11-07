@@ -957,6 +957,8 @@ main,.topbar,.rail{position:relative;z-index:2}
   .roster.show-pod .person{opacity:1;filter:none}
   .goal,.card,.why,.pillar,.kcell,.step,.case,.person,.fnode{break-inside:avoid}
 }
+.cpill{display:inline-block;margin-bottom:12px;padding:4px 11px;border-radius:999px;font-family:var(--font-display);font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;background:var(--purple-tint);color:var(--purple)}
+.cpill--next{background:transparent;border:1px solid var(--hairline);color:var(--ink-mute)}
 </style>
   <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -1050,7 +1052,7 @@ main,.topbar,.rail{position:relative;z-index:2}
               <img class="hero__logo" src="assets/baldan-square.png" alt="Baldan Group" width="56" height="56">
               <div><span class="t-label">Prepared for</span><strong>Simona Bianco, CMO</strong></div>
             </div>
-            <p>A four-month pilot to bring sales more of the right clinics. We find where leads are lost, build the path from ad to qualified lead, and test the creative that brings the right clinics in. Success is measured on qualified leads for sales, not on clicks.</p>
+            <p>A four-month pilot to bring sales more of the right clinics. We find where leads are lost, build the path from ad to qualified lead, and test the creative that brings the right clinics in.</p>
             <div class="hero__meta">
               <span>Pilot proposal</span><span>Miami / Milan</span><span>November 2026 · Confidential</span>
             </div>
@@ -1086,10 +1088,10 @@ main,.topbar,.rail{position:relative;z-index:2}
           <ol class="flow__nodes" id="flowNext">
             <li class="flow__line" aria-hidden="true"><i></i></li>
             <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">01</span><h3>Multi-channel entry</h3><p>Meta, Google, LinkedIn for B2B. Instagram and TikTok for patient demand. Two creative systems, tested.</p><span class="ftag ftag--good">Fresh every 2 weeks</span></li>
-            <li class="fnode is-hot"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Qualifying landing page</h3><p>The clinic answers a few questions about its practice: rooms, locations, treatments, tenure, financing readiness. Spam and duplicates are filtered out.</p><span class="ftag ftag--good">Qualified at entry</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Scored lead in Zoho</h3><p>Profile card and score, built on the shared qualified-lead definition.</p><span class="ftag ftag--good">Sales-ready</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Informed call</h3><p>Export manager opens with the practice's own numbers and the Bcube and Aura story.</p><span class="ftag ftag--good">Higher close rate</span></li>
-            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Learning loop</h3><p>Sales outcomes go back to Meta, to creative and to scoring, so targeting learns who the good clinics are.</p><span class="ftag ftag--good">Compounds</span></li>
+            <li class="fnode is-hot"><span class="fnode__dot"></span><span class="fnode__n">02</span><h3>Qualifying landing page</h3><p>The ad sends clinics to one page built for the right profile. It captures practice type, size, treatments and financing readiness before the first call.</p><span class="ftag ftag--good">Qualified at entry</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">03</span><h3>Scored lead in Zoho</h3><p>Profile card and score, built on the shared qualified-lead definition.</p><span class="ftag ftag--good">Scored and profiled</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">04</span><h3>Informed call</h3><p>Export manager opens with the practice's own numbers and the Bcube and Aura story.</p><span class="ftag ftag--good">Informed first call</span></li>
+            <li class="fnode"><span class="fnode__dot"></span><span class="fnode__n">05</span><h3>Learning loop</h3><p>Lead statuses from Zoho go back to Meta, to creative and to scoring, so targeting learns who the good clinics are.</p><span class="ftag ftag--good">Compounds</span></li>
           </ol>
         </div>
       </div>
@@ -1109,7 +1111,7 @@ main,.topbar,.rail{position:relative;z-index:2}
       <div class="sec-head">
         <span class="capsule reveal">02 · Assessment first</span>
         <h2 class="t-section reveal" data-delay="1">Understand before we <em class="mark">prescribe</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">Your brief opens with assessment, and so do we. The first three weeks of the pilot answer the question nobody inside Baldan can answer today: where do the right clinics get lost between the ad and the sale, and what, specifically, unlocks the breakthrough. Six workstreams, one report, one recommendation, kept lean so the pilot spends its time testing.</p>
+        <p class="t-lede reveal" data-delay="2">Your brief opens with assessment, and so do we. The first three weeks of the pilot answer the question nobody inside Baldan can answer today: where do the right clinics get lost between the ad and the sales team, and what, specifically, unlocks the breakthrough. Six workstreams, one report, one recommendation, kept lean so the pilot spends its time testing.</p>
       </div>
       <div class="cards">
         <article class="card spot glass glass--top reveal">
@@ -1132,9 +1134,9 @@ main,.topbar,.rail{position:relative;z-index:2}
         </article>
         <article class="card spot glass glass--top reveal">
           <div class="card__top"><span class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></span><span class="card__n">04</span></div>
-          <h3>The funnel from lead to sale</h3>
-          <p>Where leads are lost between the ad and the closed sale: the form, Zoho, the first call. Which sales status Meta receives today and which it should. Follow-up recommendations for sales, such as speed to first call.</p>
-          <div class="card__out"><span class="tag tag--purple">Output</span><span>Funnel map + follow-up recommendations</span></div>
+          <h3>The funnel from ad to sales team</h3>
+          <p>Where leads are lost between the ad and the sales team: the form, Zoho, the first call. Which sales status Meta receives today and which it should.</p>
+          <div class="card__out"><span class="tag tag--purple">Output</span><span>Funnel map</span></div>
         </article>
         <article class="card spot glass glass--top reveal" data-delay="1">
           <div class="card__top"><span class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6"/></svg></span><span class="card__n">05</span></div>
@@ -1159,7 +1161,7 @@ main,.topbar,.rail{position:relative;z-index:2}
       <div class="sec-head">
         <span class="capsule reveal">03 · Content strategy</span>
         <h2 class="t-section reveal" data-delay="1">From what Baldan is to what the clinic <em class="mark">gets</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">The content strategy puts the clinic owner at the center: what the clinic gets, not what Baldan is. Four pillars, fed by the people who already use and trust the devices. The big idea that anchors it is presented in the strategy deck at the end of the assessment.</p>
+        <p class="t-lede reveal" data-delay="2">The content strategy puts the clinic owner at the center: what the clinic gets, not what Baldan is. Four pillars, fed by the people who already use and trust the devices. The pilot starts on B2B and B2C. Events and Aura content for partner clinics come in the next phase. The big idea that anchors it is presented in the strategy deck at the end of the assessment.</p>
       </div>
 
       <div class="pillars">
@@ -1185,15 +1187,15 @@ main,.topbar,.rail{position:relative;z-index:2}
           <span class="pillar__k">Pillar 04</span>
           <h3>Support</h3>
           <span class="pillar__sub">The business case and Bcube</span>
-          <p>Room utilization, treatment-menu expansion, payback, training, and the fact that every device ships with Bcube and Aura. The answer to the clinic's real question after the purchase: how do I fill the schedule. Also the content that partner clinics publish themselves through Aura.</p>
+          <p>Room utilization, treatment-menu expansion, payback, training, and the fact that every device ships with Bcube and Aura. The answer to the clinic's real question after the purchase: how do I fill the schedule.</p>
         </article>
       </div>
 
       <div class="channels reveal">
-        <div class="channel"><b>B2B</b><p>Educate and Support lead on LinkedIn and Meta, aimed at owners, medical directors and practice managers. Prove runs across both.</p></div>
-        <div class="channel"><b>B2C</b><p>Entertain and Prove lead on Instagram and TikTok, aimed at patients, so demand arrives at the clinic already asking for the treatment.</p></div>
-        <div class="channel"><b>Events</b><p>Every conference and launch becomes weeks of content across all four pillars.</p></div>
-        <div class="channel"><b>Aura</b><p>A monthly clinic-ready pack lets partner practices publish Baldan content as their own, turning each clinic into a distribution point.</p></div>
+        <div class="channel"><span class="cpill">In the pilot</span><b>B2B</b><p>Educate and Support lead on LinkedIn and Meta, aimed at owners, medical directors and practice managers. Prove runs across both.</p></div>
+        <div class="channel"><span class="cpill">In the pilot</span><b>B2C</b><p>Entertain and Prove lead on Instagram and TikTok, aimed at patients, so demand arrives at the clinic already asking for the treatment.</p></div>
+        <div class="channel"><span class="cpill cpill--next">Next phase</span><b>Events</b><p>Once the first channels are running, every conference and launch can become weeks of content across the four pillars.</p></div>
+        <div class="channel"><span class="cpill cpill--next">Next phase</span><b>Aura</b><p>A monthly clinic-ready pack, so partner practices can publish Baldan content as their own and each clinic becomes a distribution point.</p></div>
       </div>
     </div>
   </section>
@@ -1208,13 +1210,12 @@ main,.topbar,.rail{position:relative;z-index:2}
           <p class="cap__tag reveal" data-delay="1">Technology as the hero. The clinic as the protagonist.</p>
           <p class="cap__desc reveal" data-delay="2">Your creative references are Dyson, Alma and LPG: product as hero, mechanism made visible, scientific yet accessible, premium and clean. We agree that is the right register for the brand. The open question in your brief is whether it also wins at lead generation, or mainly at awareness. Our answer is both, if it is paired with clinic-ROI creative and tested against it, and if every concept is expressed with enough range to reach each person in the buying committee.</p>
           <ul class="ticks reveal" data-delay="2">
-            <li>In the pilot, we create the key visuals, the master pieces and the adaptation guide. Your team adapts them into the formats each channel needs, and we review every piece before it goes live. Making the designs ourselves is an option.</li>
-            <li>Eight people in creative and design, plus copy, video and motion. Concept to delivered-final, in every channel format.</li>
+            <li>In the pilot, we create the key visuals, the master pieces and the adaptation guide. Your team adapts them into the formats each channel needs, and we oversee the process. Making the designs ourselves is an option.</li>
             <li>Quality in the concept, discipline in the expression: one strong idea, expressed for each buyer, format and claim angle, with human creative direction on every piece.</li>
             <li>AI-native production handles the expression layer at a fraction of traditional cost, so budget goes to ideas and craft, not resizing.</li>
             <li>Product-as-hero system: macro photography, 3D and exploded views, mechanism-of-action animation for Infra Baldan and T-Face.</li>
             <li>Clinic-ROI system: room utilization, treatment menu expansion, patient demand, and the Bcube and Aura story as the included growth engine.</li>
-            <li>Every piece stays within Baldan's FDA-validated claims, with a claims checklist built into the review flow.</li>
+            <li>Everything is built within Baldan's FDA-validated claims, with a claims checklist in the editorial plan.</li>
           </ul>
         </aside>
 
@@ -1285,7 +1286,6 @@ main,.topbar,.rail{position:relative;z-index:2}
           <p class="cap__desc reveal" data-delay="2">A form with a name and a phone number tells sales nothing. In the pilot, the ad sends clinics to a landing page that asks a few questions about their practice. Sales receives a scored lead with a profile, and Meta receives the outcome, so targeting learns who the good clinics are.</p>
           <ul class="ticks reveal" data-delay="2">
             <li>A qualifying landing page: rooms, locations, treatments, tenure and financing readiness, captured before the first call.</li>
-            <li>Protection against spam and duplicate leads, so fake and scam submissions do not reach sales.</li>
             <li>Each lead scored on the shared qualified-lead definition, validated with your sales team, and pushed to Zoho with a profile card so the export manager opens the call informed.</li>
             <li>Sales outcomes go back to Meta, so targeting learns who the good clinics are instead of optimizing for clicks.</li>
             <li>Every lead carries the creative that brought it, so the test between technology-hero and clinic-ROI is judged on qualified leads.</li>
@@ -1327,7 +1327,7 @@ main,.topbar,.rail{position:relative;z-index:2}
       <div class="sec-head">
         <span class="capsule reveal">04 · What we measure</span>
         <h2 class="t-section reveal" data-delay="1">Quality first, then volume, then <em class="mark">pipeline</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">Your brief asks for proposed KPIs. For the pilot we propose the framework now and set the targets together at the end of the assessment, once we have seen the accounts, agreed the qualified-lead definition with your sales team and set a baseline in Zoho. Success is judged on qualified leads for sales, not on clicks.</p>
+        <p class="t-lede reveal" data-delay="2">Your brief asks for proposed KPIs. For the pilot we propose the framework now and set the targets together at the end of the assessment, once we have seen the accounts, agreed the qualified-lead definition with your sales team and set a baseline in Zoho.</p>
       </div>
       <div class="kpis5">
         <article class="kcell spot glass glass--top reveal">
@@ -1338,7 +1338,7 @@ main,.topbar,.rail{position:relative;z-index:2}
         <article class="kcell spot glass glass--top reveal" data-delay="1">
           <div class="kcell__k"><span>Lead volume</span><span>02</span></div>
           <h3>Are there enough of them?</h3>
-          <ul class="dashlist"><li>Qualified leads per month, by device</li><li>Calls received by sales</li><li>Landing page conversion rate</li></ul>
+          <ul class="dashlist"><li>Qualified leads per month, by device</li><li>Leads per month, by channel</li><li>Landing page conversion rate</li></ul>
         </article>
         <article class="kcell spot glass glass--top reveal" data-delay="2">
           <div class="kcell__k"><span>Efficiency</span><span>03</span></div>
@@ -1346,9 +1346,9 @@ main,.topbar,.rail{position:relative;z-index:2}
           <ul class="dashlist"><li>Cost per lead</li><li>Cost per qualified lead</li><li>Creative velocity: variations live per month</li></ul>
         </article>
         <article class="kcell spot glass glass--top reveal" data-delay="3">
-          <div class="kcell__k"><span>Business impact</span><span>04</span></div>
-          <h3>Does it sell devices?</h3>
-          <ul class="dashlist"><li>Sales from qualified leads</li><li>Lead to close rate, by source</li><li>Time from lead to first call</li></ul>
+          <div class="kcell__k"><span>Sales feedback</span><span>04</span></div>
+          <h3>Do sales see the difference?</h3>
+          <ul class="dashlist"><li>Sales team feedback on lead quality, every month</li><li>Qualified leads by source and creative</li><li>Lead status changes in Zoho over time</li></ul>
         </article>
         <article class="kcell spot glass glass--top reveal" data-delay="4">
           <div class="kcell__k"><span>Content and brand</span><span>05</span></div>
@@ -1398,7 +1398,7 @@ main,.topbar,.rail{position:relative;z-index:2}
           <div class="step__n"><b>01</b><small>Weeks 1-3</small></div>
           <div class="step__body glass glass--top">
             <h3>Assessment and the Artemis benchmark</h3>
-            <p>Account and creative audit, Artemis analysis, the funnel from lead to sale, the competitive landscape and the ICP and qualified-lead sessions with your sales and export team. Ends with the creative strategy deck: the big idea and the breakthrough factor recommendation.</p>
+            <p>Account and creative audit, Artemis analysis, the funnel from ad to sales team, the competitive landscape and the ICP and qualified-lead sessions with your sales and export team. Ends with the creative strategy deck: the big idea and the breakthrough factor recommendation.</p>
             <div class="step__outs"><span class="tag">Audit</span><span class="tag">Benchmark report</span><span class="tag">Funnel map</span><span class="tag">ICP card</span><span class="tag">Strategy deck</span></div>
           </div>
         </article>
@@ -1414,7 +1414,7 @@ main,.topbar,.rail{position:relative;z-index:2}
           <div class="step__n"><b>03</b><small>Weeks 7-17</small></div>
           <div class="step__body glass glass--top">
             <h3>Launch, optimize, learn</h3>
-            <p>From the start of month 2 we produce the key visuals and master pieces with the adaptation guide, through your FDA claims review. Your team adapts them and we review before anything goes live. Weekly optimization with your performance manager, a monthly lead-quality review with sales, and a six-week test read on technology-hero versus clinic-ROI. In month 3 we review the results and agree the terms for the rest of 2027.</p>
+            <p>From the start of month 2 we produce the key visuals and master pieces with the adaptation guide, through your FDA claims review. Your team adapts them and we oversee the process. Weekly optimization with your performance manager, a monthly lead-quality review with sales, and a six-week test read on technology-hero versus clinic-ROI. In month 3 we review the results and agree the terms for the rest of 2027.</p>
             <div class="step__outs"><span class="tag">KVs and masters</span><span class="tag">Live campaigns</span><span class="tag">Test read</span><span class="tag">Lead-quality review</span><span class="tag">Month-3 review</span></div>
           </div>
         </article>
@@ -1437,7 +1437,7 @@ main,.topbar,.rail{position:relative;z-index:2}
       <div class="sec-head">
         <span class="capsule reveal">06 · The pilot quote</span>
         <h2 class="t-section reveal" data-delay="1">The pilot, item by item, quoted <em class="mark">separately</em>.</h2>
-        <p class="t-lede reveal" data-delay="2">We mapped your pilot request to the six scope items of the brief, so the quote stays comparable. Items 1 to 3 are the strategy and the plan. Items 4 and 5 become one monthly execution of $8,333 per month, where we make the key visuals and masters and co-manage your campaigns. Making the designs ourselves is a separate, optional line. All figures are in USD.</p>
+        <p class="t-lede reveal" data-delay="2">We mapped your pilot request to the scope items of our original proposal, so the quote stays comparable. Items 1 to 3 are the strategy and the plan. Items 4 and 5 become one monthly execution of $8,400 per month, where we make the key visuals and masters and co-manage your campaigns. Making the designs ourselves is a separate, optional line. All figures are in USD.</p>
       </div>
 
       <div class="chapters" id="chapters">
@@ -1464,8 +1464,7 @@ main,.topbar,.rail{position:relative;z-index:2}
               <h4 class="rfp__h">Included</h4>
               <ul class="qlist">
                 <li><span>Artemis benchmark analysis: positioning, offer and lead magnets, channel mix and funnel, content strategy, B2C-to-B2B role, why it converts, gaps and opportunities</span><span class="q">1 report</span></li>
-                <li><span>Audit of current Meta and Google accounts, creative and landing pages, and of the funnel from lead to sale, including the Zoho handoff and the sales status Meta receives</span><span class="q">1 audit</span></li>
-                <li><span>Follow-up recommendations for sales: speed to first call and what happens after the lead arrives</span><span class="q">1 set</span></li>
+                <li><span>Audit of current Meta and Google accounts, creative and landing pages, and of the funnel from ad to sales team, including the Zoho handoff and the sales status Meta receives</span><span class="q">1 audit</span></li>
                 <li><span>ICP and qualified-lead definition, built with your sales and export team</span><span class="q">Working sessions</span></li>
                 <li><span>Competitive landscape: positioning and messaging of the key competitors, and the white space</span><span class="q">1 report</span></li>
                 <li><span>Creative strategy deck with the big idea and the breakthrough factor recommendation, presented live</span><span class="q">1 deck + 1 presentation</span></li>
@@ -1496,9 +1495,9 @@ main,.topbar,.rail{position:relative;z-index:2}
               <h4 class="rfp__h">Included</h4>
               <ul class="qlist">
                 <li><span>Messaging architecture for Infra Baldan and T-Face, with Bcube and Aura as a core B2B selling point, mapped to FDA-validated claims</span><span class="q">1 document</span></li>
-                <li><span>Channel plan and media mix recommendation, with budget and publication pace, across Meta, Google, LinkedIn, Instagram, TikTok and conferences</span><span class="q">1 plan</span></li>
+                <li><span>Channel plan and media mix recommendation, with budget and publication pace, across Meta, Google, LinkedIn, Instagram and TikTok</span><span class="q">1 plan</span></li>
                 <li><span>Offer and lead-magnet design: demo, open day, trial</span><span class="q">Concepts</span></li>
-                <li><span>Qualification landing page: qualifying questions (rooms, locations, treatments, tenure, financing readiness), protection against spam and duplicate leads, tracking and QA</span><span class="q">1 landing page</span></li>
+                <li><span>Qualification landing page: qualifying questions (rooms, locations, treatments, tenure, financing readiness), tracking and QA</span><span class="q">1 landing page</span></li>
                 <li><span>Lead scoring model and Zoho handoff specification, validated with sales, including how sales outcomes go back to Meta</span><span class="q">1 model</span></li>
                 <li><span>Creative test plan, technology-hero versus clinic-ROI, with measurement design</span><span class="q">1 plan, 2 cells</span></li>
               </ul>
@@ -1530,7 +1529,7 @@ main,.topbar,.rail{position:relative;z-index:2}
                 <li><span>Editorial strategy: pillars, formats, tone, channels, cadence and FDA claims guardrails for B2B (LinkedIn, Meta) and B2C (Instagram, TikTok, YouTube)</span><span class="q">1 document</span></li>
                 <li><span>60-day editorial calendar</span><span class="q">1 calendar</span></li>
                 <li><span>KOL and physician content program design: selection criteria, brief templates, review flow</span><span class="q">1 program</span></li>
-                <li><span>Aura content feed design: how Baldan content becomes clinic-ready material partner practices publish through Aura</span><span class="q">1 spec</span></li>
+                <li><span>Next-phase roadmap: how events and Aura content for partner clinics plug into the plan</span><span class="q">1 page</span></li>
               </ul>
             </div>
           </div>
@@ -1547,22 +1546,22 @@ main,.topbar,.rail{position:relative;z-index:2}
               <span class="tag">Months 2-4</span>
             </div>
             <div class="rfp__side">
-              <p class="rfp__ask">Items 4 and 5 of your brief, combined for the pilot. We create the key visuals and masters and review your team's work. On paid media we cover strategy and oversight.</p>
+              <p class="rfp__ask">Items 4 and 5 of the original scope, combined for the pilot. We create the key visuals and masters and oversee your team's work. On paid media we cover strategy and oversight.</p>
               <dl class="rfp__meta">
                 <div><dt>Timing</dt><dd>Months 2-4<small>Starts after the strategy phase</small></dd></div>
                 <div><dt>Team</dt><dd>8 people<small>Creative, design, video, copy, paid social, paid search, data, account</small></dd></div>
-                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8333" data-prefix="$" data-suffix=" / mo">$8,333 / mo</span><small>3 months, months 2 to 4. $25,000 in total. Excludes media spend</small></dd></div>
+                <div class="is-inv"><dt>Investment</dt><dd><span data-count="8400" data-prefix="$" data-suffix=" / mo">$8,400 / mo</span><small>3 months, months 2 to 4. $25,200 in total. Excludes media spend</small></dd></div>
               </dl>
             </div>
             <div class="rfp__main">
               <h4 class="rfp__h">Included</h4>
               <ul class="qlist">
                 <li><span>First key visuals, master pieces and adaptation guide, then new KVs and masters as the strategy needs, through your FDA claims review</span><span class="q">Monthly</span></li>
-                <li><span>Review of the variations your team makes, before anything goes live: claims check and brand check</span><span class="q">Monthly</span></li>
+                <li><span>Oversight of the process while your team adapts the masters into variations</span><span class="q">Monthly</span></li>
                 <li><span>Paid media co-management: strategy, media plan, structure and optimization guidance. Your performance manager runs the campaigns day to day. We do not buy media</span><span class="q">Months 2-4</span></li>
                 <li><span>Tracking and conversion feedback to Meta: Zoho sales statuses sent back, so targeting learns who the good clinics are</span><span class="q">1 setup</span></li>
                 <li><span>Weekly optimization session with your performance manager and a monthly lead-quality review with your sales team</span><span class="q">Weekly, monthly</span></li>
-                <li><span>Monthly performance report on qualified leads, cost per qualified lead and calls received by sales</span><span class="q">Monthly</span></li>
+                <li><span>Monthly performance report on qualified leads and cost per qualified lead</span><span class="q">Monthly</span></li>
               </ul>
             </div>
           </div>
@@ -1607,7 +1606,7 @@ main,.topbar,.rail{position:relative;z-index:2}
               </div>
               <h4 class="rfp__h">Cadence and tools</h4>
               <ul class="qlist">
-                <li><span>Weekly 30-minute check-in with the Account Director and Strategic Planner</span><span class="q">Weekly</span></li>
+                <li><span>Weekly 30-minute check-in with the paid media strategist and the account manager</span><span class="q">Weekly</span></li>
                 <li><span>Monthly performance review with the full pod, Tamir attending</span><span class="q">Monthly</span></li>
                 <li><span>Lead-quality review with your sales team</span><span class="q">Monthly</span></li>
                 <li><span>Results review and terms for 2027, including a performance-based component</span><span class="q">Month 3</span></li>
@@ -1642,7 +1641,6 @@ main,.topbar,.rail{position:relative;z-index:2}
                 <li><span>Organic B2B posts, LinkedIn and Meta</span><span class="q">12 / mo, 4 video</span></li>
                 <li><span>Organic B2C posts, Instagram and TikTok</span><span class="q">12 / mo, 6 reels</span></li>
                 <li><span>Long-form articles and newsletter</span><span class="q">2 + 1 / mo</span></li>
-                <li><span>Clinic-ready content pack for partner practices to publish through Aura</span><span class="q">1 / mo</span></li>
                 <li><span>Community management on owned channels and a senior designer check on every piece</span><span class="q">Included</span></li>
               </ul>
             </div>
@@ -1653,7 +1651,7 @@ main,.topbar,.rail{position:relative;z-index:2}
 
       <div class="onyx on-ink rsum reveal">
         <div class="msum">
-          <div class="msum__t"><span class="msum__k">Monthly fee · months 2 to 4</span><b data-count="8333" data-prefix="$">$8,333</b><small>per month, for 3 months. $25,000 in total</small></div>
+          <div class="msum__t"><span class="msum__k">Monthly fee · months 2 to 4</span><b data-count="8400" data-prefix="$">$8,400</b><small>per month, for 3 months. $25,200 in total</small></div>
           <div class="msum__t"><span class="msum__k">Optional · design execution</span><b data-count="8400" data-prefix="$">$8,400</b><small>per month of content, for 2 months. $16,800 in total</small></div>
         </div>
 
@@ -1661,24 +1659,24 @@ main,.topbar,.rail{position:relative;z-index:2}
           <div class="sm__grp"><span>A</span>Strategy and plan, one-time</div>
           <div class="sm__row"><a class="sm__i" href="#item-01">01</a><div class="sm__s"><b>Creative strategy proposal</b><small>Artemis benchmark, audit, funnel and ICP, landscape, strategy deck</small></div><div class="sm__t">Weeks 1-3</div><div class="sm__a">$15,500</div></div>
           <div class="sm__row"><a class="sm__i" href="#item-02">02</a><div class="sm__s"><b>Growth marketing and funnel proposal</b><small>Messaging, media plan, landing page, lead scoring, test plan</small></div><div class="sm__t">Weeks 3-6</div><div class="sm__a">$20,000</div></div>
-          <div class="sm__row"><a class="sm__i" href="#item-03">03</a><div class="sm__s"><b>Organic editorial plan</b><small>Strategy, 60-day calendar, KOL program, Aura feed</small></div><div class="sm__t">Weeks 4-6</div><div class="sm__a">$8,500</div></div>
+          <div class="sm__row"><a class="sm__i" href="#item-03">03</a><div class="sm__s"><b>Organic editorial plan</b><small>Strategy, 60-day calendar, KOL program, next-phase roadmap</small></div><div class="sm__t">Weeks 4-6</div><div class="sm__a">$8,500</div></div>
           <div class="sm__sub"><span>Subtotal, strategy and plan</span><b>$44,000</b></div>
 
           <div class="sm__grp"><span>B</span>Monthly execution, months 2 to 4</div>
-          <div class="sm__row"><a class="sm__i" href="#item-04">04 + 05</a><div class="sm__s"><b>Monthly execution</b><small>KVs, masters, reviews and campaign co-management. Media spend excluded</small></div><div class="sm__t">Months 2-4</div><div class="sm__a"><span class="mo">$8,333 / mo</span><small>3 months · $25,000</small></div></div>
+          <div class="sm__row"><a class="sm__i" href="#item-04">04 + 05</a><div class="sm__s"><b>Monthly execution</b><small>KVs, masters, reviews and campaign co-management. Media spend excluded</small></div><div class="sm__t">Months 2-4</div><div class="sm__a"><span class="mo">$8,400 / mo</span><small>3 months · $25,200</small></div></div>
           <div class="sm__row"><a class="sm__i" href="#item-06">06</a><div class="sm__s"><b>Engagement model and team</b><small>Account leadership, reporting, cadence</small></div><div class="sm__t">4 months</div><div class="sm__a">Included</div></div>
-          <div class="sm__sub"><span>Subtotal, monthly execution</span><b>$25,000</b></div>
+          <div class="sm__sub"><span>Subtotal, monthly execution</span><b>$25,200</b></div>
 
-          <div class="sm__grand"><div><span>Pilot total</span><small>Four months, December to March</small></div><b data-count="69000" data-prefix="$">$69,000</b></div>
-          <div class="sm__avg"><div><span>Average per month</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="17250" data-prefix="$">$17,250</b></div>
+          <div class="sm__grand"><div><span>Pilot total</span><small>Four months, December to March</small></div><b data-count="69200" data-prefix="$">$69,200</b></div>
+          <div class="sm__avg"><div><span>Average per month</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="17300" data-prefix="$">$17,300</b></div>
         </div>
 
         <div class="sm sm--next">
           <div class="sm__grp"><span>C</span>Optional add-on, not included in the pilot total<em class="sm__pill">Optional</em></div>
           <div class="sm__row"><a class="sm__i" href="#item-option">Option</a><div class="sm__s"><b>Design execution, paid and organic</b><small>Design only, no media buying. Two months of content</small></div><div class="sm__t">Two months</div><div class="sm__a"><span class="mo">$8,400 / mo</span><small>2 months · $16,800</small></div></div>
           <div class="sm__sub"><span>Subtotal, design execution</span><b>$16,800</b></div>
-          <div class="sm__grand"><div><span>Pilot total with design execution</span><small>Pilot total plus the option</small></div><b data-count="85800" data-prefix="$">$85,800</b></div>
-          <div class="sm__avg"><div><span>Average per month with design execution</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="21450" data-prefix="$">$21,450</b></div>
+          <div class="sm__grand"><div><span>Pilot total with design execution</span><small>Pilot total plus the option</small></div><b data-count="86000" data-prefix="$">$86,000</b></div>
+          <div class="sm__avg"><div><span>Average per month with design execution</span><small>All items, one-time work included, spread over the four months</small></div><b data-count="21500" data-prefix="$">$21,500</b></div>
         </div>
       </div>
       <p class="rfine reveal">The pilot runs four months, December to March. All figures are in USD. Excludes media spend, third-party tools and data sources, paid creator fees, and travel for on-site production. Terms for the rest of 2027, for the same package and including a performance-based component, are agreed together in month 3, before the pilot ends. Assumes Baldan provides FDA-validated claims, brand assets and Zoho access at the start, adds the sales-status field to the US leads in the CRM, reviews our work within 48 hours, and that its performance manager runs the campaigns.</p>
