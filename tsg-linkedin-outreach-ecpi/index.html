@@ -562,7 +562,8 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
   function normBots(rows) {
     return rows.map(function (o) {
       return { bot: o['Bot'] || '', campaign: o['Campaign'] || '', type: o['Type'] || '', language: o['Language'] || '',
-        start: parseDate(o['Start date']), end: parseDate(o['End date']), status: o['Status'] || '', notes: o['Notes'] || '' };
+        start: parseDate(o['Start date']), end: parseDate(o['End date']), status: o['Status'] || '', notes: o['Notes'] || '',
+        excluded: String(o['Excluded countries'] || '').split(',').map(function (x) { return x.trim().toLowerCase(); }).filter(Boolean) };
     }).filter(function (b) { return b.bot && b.campaign; });
   }
 
@@ -609,7 +610,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     return 'Other';
   }
 
-  function campaignFor(bot, d) {
+  function campaignFor(bot, d, country) {
     var c = state.bots.filter(function (b) { return b.bot === bot; })
       .sort(function (a, b) { return (a.start ? a.start.getTime() : 0) - (b.start ? b.start.getTime() : 0); });
     if (!c.length) return bot;
@@ -617,7 +618,11 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
     // (e.g. from people who connected in the previous campaign) stay with the previous one.
     function hasConnections(camp) { return state.snaps.some(function (s) { return s.campaign === camp && s.connected > 0; }); }
     var pick = c[0];
-    c.forEach(function (b) { if ((!b.start || b.start <= d) && (b === c[0] || hasConnections(b.campaign))) pick = b; });
+    // A newer campaign also skips replies from countries its audience excludes (e.g. US contacts from an earlier list).
+    var ctry = String(country || '').toLowerCase();
+    c.forEach(function (b) {
+      if ((!b.start || b.start <= d) && (b === c[0] || (hasConnections(b.campaign) && b.excluded.indexOf(ctry) < 0))) pick = b;
+    });
     return pick.campaign;
   }
 
@@ -632,7 +637,7 @@ tr.total td{background:var(--paper);font-weight:600;color:var(--ink)}
       var company = o['Company Name'] || '';
       var key = profile ? profile.toLowerCase().replace(/\/+$/, '') : (first + ' ' + last + '|' + company).toLowerCase();
       out.push({
-        date: d, ts: parseStamp(o['Date']), bot: bot, campaign: campaignFor(bot, d), key: key,
+        date: d, ts: parseStamp(o['Date']), bot: bot, campaign: campaignFor(bot, d, countryOf(o['Company Location'] || o['Contact Location'])), key: key,
         first: first, last: last, name: (first + ' ' + last).trim() || 'Unknown',
         company: company || 'Unknown', title: o['Job Title'] || '', seniority: seniorityOf(o['Job Title']),
         country: countryOf(o['Company Location'] || o['Contact Location']),
