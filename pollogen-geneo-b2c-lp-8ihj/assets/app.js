@@ -183,7 +183,7 @@
 
   if (!reduce) {
     const heroCanvas = $('[data-bubbles="hero"]');
-    const heroStack = $('[data-stack="hero"]');
+    const heroStack = $('[data-hero-vis] .hv__device');
     if (heroCanvas && heroStack) new Bubbles(heroCanvas, {
       rate: 0.32, minR: 2, maxR: 16, speed: 1.15, top: -40, rim: '120,110,100',
       source(b) {
@@ -257,25 +257,27 @@
       scrollTrigger: { trigger: '#tcards', start: 'top 82%', once: true },
     });
 
-    /* Hero intro: the OxyPods drop in and build the stack, bottom first */
-    const hs = $('[data-stack="hero"]');
-    const hSlices = stackSlices(hs);
-    const heroAmt = { v: 0 };
-    hs.dataset.lock = '1'; hs.classList.add('is-split');
-    const tl = gsap.timeline({ delay: .15, onComplete: () => { hs.dataset.lock = ''; explode(hSlices, heroAmt.v, hs); } });
-    tl.from('.ring', { scale: .6, opacity: 0, duration: 1.6, ease: 'expo.out' }, 0)
-      .from($$('.sl', hs), { y: () => -innerHeight * 0.9, opacity: 0, duration: 1.05, ease: 'back.out(1.25)', stagger: .085 }, .1)
-      .from('.stack__shadow', { scaleX: .2, opacity: 0, duration: .9, ease: 'expo.out' }, .2)
-      .to($$('.hero .w > span'), { y: 0, duration: 1.2, ease: 'expo.out', stagger: .05 }, .35)
-      .to($$('.hero [data-fade]'), { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: .1 }, .7)
-      .from('.marquee', { yPercent: 100, duration: 1, ease: 'expo.out' }, .9);
-    gsap.to(hs, { y: -10, duration: 3.2, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 2 });
-    // Scrolling out of the hero: the stack lifts and begins to come apart
-    gsap.to(heroAmt, {
-      v: .55, ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .5 },
-      onUpdate: () => explode(hSlices, heroAmt.v, hs),
-    });
+    /* Hero intro: the device rises in, the treatment card slides up beside it */
+    const tl = gsap.timeline({ delay: .15 });
+    tl.from('.hv__disc', { scale: .55, opacity: 0, duration: 1.6, ease: 'expo.out' }, 0)
+      .from('.hv__device', { y: 90, opacity: 0, duration: 1.3, ease: 'expo.out' }, .15)
+      .from('.hv__treat', { y: 140, opacity: 0, rotate: 5, duration: 1.4, ease: 'expo.out' }, .35)
+      .from('.hv__tag', { opacity: 0, x: -14, duration: .9, ease: 'expo.out', stagger: .12 }, 1)
+      .from('.hv__chip', { scale: 0, opacity: 0, duration: .9, ease: 'back.out(2)', stagger: .12 }, 1.1)
+      .to($$('.hero .w > span'), { y: 0, duration: 1.2, ease: 'expo.out', stagger: .05 }, .3)
+      .to($$('.hero [data-fade]'), { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: .1 }, .65)
+      .from('.marquee', { yPercent: 100, duration: 1, ease: 'expo.out' }, .9)
+      .from('.qbtn', { opacity: 0, y: 30, duration: .9, ease: 'expo.out', stagger: .06 }, 1.1);
+    // Pointer parallax on the hero visual
+    if (fine) {
+      const layers = $$('[data-hero-vis] [data-depth]');
+      const movers = layers.map(el => ({ el, k: +el.dataset.depth, x: gsap.quickTo(el, 'x', { duration: 1.1, ease: 'power3.out' }), y: gsap.quickTo(el, 'y', { duration: 1.1, ease: 'power3.out' }) }));
+      $('.hero').addEventListener('pointermove', e => {
+        const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
+        movers.forEach(m => { m.x(nx * -26 * m.k); m.y(ny * -18 * m.k); });
+      });
+      $('.hero').addEventListener('pointerleave', () => movers.forEach(m => { m.x(0); m.y(0); }));
+    }
     if (desktop()) gsap.to('.hero__visual', { yPercent: -16, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     if (desktop()) gsap.to('.hero__copy', { yPercent: -10, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'center center', end: 'bottom top', scrub: true } });
 
@@ -676,13 +678,40 @@
       const max = document.documentElement.scrollHeight - innerHeight;
       bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
       hdr.classList.toggle('is-scrolled', y > 40);
-      hdr.classList.toggle('is-hidden', y > last && y > innerHeight * .8);
       m.classList.toggle('is-on', y > innerHeight * .7 && !atForm);
       last = y;
     };
     if (lenis) lenis.on('scroll', e => on(e.scroll)); else addEventListener('scroll', () => on(scrollY), { passive: true });
     on(scrollY);
   })();
+
+  /* ------------------------------------------------------------ scrollspy */
+  (() => {
+    const ids = [...new Set($$('[data-spy]').map(a => a.dataset.spy))];
+    const secs = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const mark = id => $$('[data-spy]').forEach(a => a.classList.toggle('is-active', a.dataset.spy === id));
+    const pick = () => {
+      let cur = null;
+      secs.forEach(sec => { if (sec.getBoundingClientRect().top < innerHeight * .35) cur = sec.id; });
+      const last = secs[secs.length - 1];
+      if (cur && last && last.getBoundingClientRect().bottom < innerHeight * .2) cur = null;   // past FAQ: nothing lit
+      mark(cur);
+    };
+    if (lenis) lenis.on('scroll', pick); else addEventListener('scroll', pick, { passive: true });
+    addEventListener('resize', pick); pick();
+  })();
+
+  /* ---------------------------------------------- tilt + light on cards */
+  if (fine && !reduce) {
+    $$('[data-tilt], .tcard, .qbtn').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--mx', `${x * 100}%`); el.style.setProperty('--my', `${y * 100}%`);
+        if (el.hasAttribute('data-tilt')) { el.style.setProperty('--ry', `${(x - .5) * 8}deg`); el.style.setProperty('--rx', `${(.5 - y) * 6}deg`); }
+      });
+      el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+    });
+  }
 
   /* ------------------------------------------------------ cursor, magnets */
   if (fine && !reduce) {

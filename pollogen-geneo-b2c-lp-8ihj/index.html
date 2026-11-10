@@ -8,15 +8,16 @@
 <!-- REPLACE before launch: canonical URL and OG image -->
 <meta property="og:title" content="The Geneo™ facial. Healthier-looking skin, layer by layer.">
 <meta property="og:description" content="A comfortable, non-invasive professional treatment, personalized to your skin every session.">
-<meta property="og:image" content="assets/img/hero-stack.webp">
+<meta property="og:image" content="assets/img/hero-treatment.webp">
 <meta name="theme-color" content="#DDD8D2">
 <link rel="icon" href="https://pollogen.com/wp-content/uploads/2019/10/cropped-favicon-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Libre+Bodoni:ital@0;1&display=swap" rel="stylesheet">
 <link rel="preload" href="assets/fonts/CodecCold-News.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="assets/img/stack-cut.webp?v=2" as="image">
-<link rel="stylesheet" href="assets/app.css?v=20">
+<link rel="preload" href="assets/img/hero-device.webp" as="image">
+<link rel="preload" href="assets/img/hero-treatment.webp" as="image">
+<link rel="stylesheet" href="assets/app.css?v=22">
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-motion')</script>
   <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -30,6 +31,15 @@
       <img class="geneo" src="assets/logo/geneo-logotype.png" alt="Geneo" width="700" height="165">
       <span class="by"><img src="assets/logo/pollogen-by-lumenis.png" alt="Pollogen by Lumenis" width="600" height="216"></span>
     </a>
+    <nav class="hdr__links" aria-label="Page sections">
+      <a href="#expect" data-spy="expect">The Treatment</a>
+      <a href="#technology" data-spy="technology">The OxyPod</a>
+      <a href="#treatments" data-spy="treatments">Treatments</a>
+      <a href="#finder" data-spy="finder">Find Yours</a>
+      <a href="#results" data-spy="results">Results</a>
+      <a href="#reviews" data-spy="reviews">Reviews</a>
+      <a href="#faq" data-spy="faq">FAQ</a>
+    </nav>
     <div class="hdr__act">
       <a class="hdr__nav" href="#" data-clinic-link target="_blank" rel="noopener">For Clinics</a>
       <a class="btn btn--solid" href="#contact">Get in Touch</a>
@@ -53,23 +63,21 @@
       </div>
     </div>
 
-    <div class="hero__visual" aria-hidden="true">
-      <div class="ring">
-        <div class="ring__disc"></div>
-        <svg viewBox="0 0 400 400"><defs><path id="ringPath" d="M200,200 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/></defs>
-          <text><textPath href="#ringPath" textLength="1098" lengthAdjust="spacing">Exfoliation · Oxygenation · Active ingredients · Exfoliation · Oxygenation · Active ingredients ·</textPath></text></svg>
-      </div>
-      <div class="stack" data-stack="hero">
-        <img class="stack__full" src="assets/img/stack-cut.webp?v=2" alt="" width="412" height="840">
-        <img class="sl" src="assets/img/slice-6.webp?v=2" style="top:76.90%" alt="" width="412" height="172">
-        <img class="sl" src="assets/img/slice-5.webp?v=2" style="top:63.81%" alt="" width="412" height="179">
-        <img class="sl" src="assets/img/slice-4.webp?v=2" style="top:52.26%" alt="" width="412" height="161">
-        <img class="sl" src="assets/img/slice-3.webp?v=2" style="top:40.12%" alt="" width="412" height="154">
-        <img class="sl" src="assets/img/slice-2.webp?v=2" style="top:27.62%" alt="" width="412" height="147">
-        <img class="sl" src="assets/img/slice-1.webp?v=2" style="top:15.12%" alt="" width="412" height="142">
-        <img class="sl" src="assets/img/slice-0.webp?v=2" style="top:1.55%" alt="" width="412" height="138">
-        <span class="stack__shadow"></span>
-      </div>
+    <!-- Client feedback 3: the device and the treatment, visible on landing.
+         Device: Geneo X front packshot (pollogen.com/products/geneo-x), background removed.
+         Treatment: a frame from Pollogen's Geneo X how-to film (assets/video/exp-treat.mp4). -->
+    <div class="hero__visual" data-hero-vis>
+      <div class="hv__disc" aria-hidden="true"></div>
+      <figure class="hv__device" data-depth="0.6">
+        <img src="assets/img/hero-device.webp" alt="The Geneo X device with its treatment applicators" width="837" height="695" fetchpriority="high">
+        <figcaption class="hv__tag"><i></i>Geneo X</figcaption>
+      </figure>
+      <figure class="hv__treat" data-depth="1.2">
+        <img src="assets/img/hero-treatment.webp" alt="A provider gliding the Geneo applicator across a client's cheek during a Geneo facial" width="720" height="900" fetchpriority="high">
+        <figcaption class="hv__tag hv__tag--l"><i></i>The Geneo facial</figcaption>
+      </figure>
+      <span class="hv__chip hv__chip--a" data-depth="1.6" aria-hidden="true">Non-invasive</span>
+      <span class="hv__chip hv__chip--b" data-depth="1.9" aria-hidden="true">No downtime</span>
     </div>
   </div>
   <a class="scrollcue" href="#what"><span class="xbtn"></span>Scroll</a>
@@ -82,6 +90,22 @@
     </div>
   </div>
 </section>
+
+<!-- ============ QUICK NAVIGATION (client feedback 2) ============ -->
+<nav class="quick" aria-label="Jump to a section">
+  <div class="wrap">
+    <p class="quick__k">Jump to</p>
+    <div class="quick__grid">
+      <a class="qbtn" href="#expect" data-spy="expect"><span class="qbtn__n">01</span><span class="qbtn__t">The Treatment</span><span class="qbtn__s">What to expect</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      <a class="qbtn" href="#technology" data-spy="technology"><span class="qbtn__n">02</span><span class="qbtn__t">The OxyPod</span><span class="qbtn__s">3 actions, 1 step</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      <a class="qbtn" href="#treatments" data-spy="treatments"><span class="qbtn__n">03</span><span class="qbtn__t">Treatments</span><span class="qbtn__s">9 Geneo treatments</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      <a class="qbtn" href="#finder" data-spy="finder"><span class="qbtn__n">04</span><span class="qbtn__t">Find Yours</span><span class="qbtn__s">Match your skin</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      <a class="qbtn" href="#results" data-spy="results"><span class="qbtn__n">05</span><span class="qbtn__t">Results</span><span class="qbtn__s">Before &amp; after</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+      <a class="qbtn" href="#reviews" data-spy="reviews"><span class="qbtn__n">06</span><span class="qbtn__t">Reviews</span><span class="qbtn__s">What people say</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+    </div>
+  </div>
+</nav>
+
 
 <!-- ============ 01 WHAT IS GENEO ============ -->
 <section class="sec what" id="what" aria-labelledby="what-title">
@@ -121,6 +145,49 @@
   </div>
 </section>
 
+<!-- ============ 08 WHAT TO EXPECT ============
+     Client feedback 7: the treatment on film. Clips are cut from Pollogen's
+     Geneo X how-to films and the Geneo X brand film (tools/media.py). -->
+<section class="sec expect stone" id="expect" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec__num">03 <span>/ The treatment</span></p>
+      <h2 class="h2" id="exp-title" data-split>Simple. Relaxing. No downtime.</h2>
+    </div>
+    <div class="expect__grid">
+      <div class="expect__media" id="expectMedia">
+        <figure class="evid"><video muted loop playsinline preload="none" poster="assets/video/exp-room.webp" aria-label="A provider setting up a Geneo X treatment in the clinic"><source src="assets/video/exp-room.mp4" type="video/mp4"></video></figure>
+        <figure class="evid" data-chips><video muted loop playsinline preload="none" poster="assets/video/exp-treat.webp" aria-label="The applicator gliding over the skin, an OxyPod activating, serum, ultrasound and massage"><source src="assets/video/exp-treat.mp4" type="video/mp4"></video>
+          <ol class="echips" aria-hidden="true"><li data-t="0">Glide</li><li data-t="3.9">Fizz</li><li data-t="7.4">Infuse</li><li data-t="12.2">Massage</li></ol></figure>
+        <figure class="evid"><video muted loop playsinline preload="none" poster="assets/video/exp-glow.webp" aria-label="A smiling client with fresh skin after her treatment"><source src="assets/video/exp-glow.mp4" type="video/mp4"></video></figure>
+        <span class="expect__count" id="expectCount">01 / 03</span>
+      </div>
+      <div>
+        <article class="estep" data-step="0">
+          <figure class="evid evid--m"><video muted loop playsinline preload="none" poster="assets/video/exp-room.webp" aria-hidden="true"><source src="assets/video/exp-room.mp4" type="video/mp4"></video></figure>
+          <p class="estep__n">01</p>
+          <h3>Step 1: Your provider reads your skin.</h3>
+          <p class="lede">Every treatment starts with a quick assessment, so the protocol fits your skin that day.</p>
+        </article>
+        <article class="estep" data-step="1">
+          <figure class="evid evid--m" data-chips><video muted loop playsinline preload="none" poster="assets/video/exp-treat.webp" aria-hidden="true"><source src="assets/video/exp-treat.mp4" type="video/mp4"></video>
+            <ol class="echips" aria-hidden="true"><li data-t="0">Glide</li><li data-t="3.9">Fizz</li><li data-t="7.4">Infuse</li><li data-t="12.2">Massage</li></ol></figure>
+          <p class="estep__n">02</p>
+          <h3>Step 2: The treatment begins.</h3>
+          <p class="lede">You’ll feel the applicator glide gently across your skin, with a light fizz as the OxyPod activates. Then a relaxing massage helps active ingredients absorb. All in one comfortable session, with no downtime.</p>
+        </article>
+        <article class="estep" data-step="2">
+          <figure class="evid evid--m"><video muted loop playsinline preload="none" poster="assets/video/exp-glow.webp" aria-hidden="true"><source src="assets/video/exp-glow.mp4" type="video/mp4"></video></figure>
+          <p class="estep__n">03</p>
+          <h3>Step 3: You leave with fresh, renewed-looking skin.</h3>
+          <p class="lede">Most people see and feel a difference immediately. No redness, no recovery, just radiance.</p>
+        </article>
+        <p class="expect__close" data-fade>Book it as a regular ritual, or the week before an event. Either way, your skin shows up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 03 THE OXYPOD (pinned story) ============
      Headline and body keep Roy Weiss's rewrite (his comments on the copy doc's
      "The glow starts with oxygen." version are still open). -->
@@ -129,7 +196,7 @@
     <div class="oxy__stage">
       <canvas class="oxy__canvas" id="oxyCanvas" aria-hidden="true"></canvas>
       <div class="oxy__copy">
-        <p class="sec__num">03 <span>/ What makes Geneo different</span></p>
+        <p class="sec__num">04 <span>/ What makes Geneo different</span></p>
         <h2 class="h2" id="oxy-title" data-split>It all starts with the OxyPod.</h2>
         <p class="lede">At the heart of every Geneo™ treatment is the OxyPod. In a single step, it combines three skin-renewing actions: exfoliation, oxygenation, and infusion of active ingredients. As the OxyPod gently removes dull surface cells and delivers targeted ingredients, a natural oxygenation process helps revitalize the skin from within.</p>
         <ol class="steps3" id="steps3">
@@ -162,7 +229,7 @@
   <div class="wrap tech__grid">
     <div>
       <p class="lede" data-fade>From there, advanced professional technologies build on that first step, so every session can be shaped around what your skin needs.</p>
-      <div class="tech__cta" data-fade><a class="btn" href="#expect" data-magnet>See How It Works <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
+      <div class="tech__cta" data-fade><a class="btn" href="#treatments" data-magnet>Explore Geneo Treatments <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
     </div>
     <!-- The five Geneo X technologies as listed on geneo-official.com/technologies -->
     <ul class="tech__list" data-stagger>
@@ -183,7 +250,7 @@
   <div class="wrap">
     <div class="actives__intro">
       <div>
-        <p class="sec__num">04 <span>/ Actives</span></p>
+        <p class="sec__num">05 <span>/ Actives</span></p>
         <h2 class="h2" id="act-title" data-split style="margin-top:26px">Ingredients your skin will recognize.</h2>
       </div>
       <p class="lede" data-fade>Every Geneo™ treatment is powered by active ingredients chosen for a specific skin goal, including some of the most talked-about names in skin care today.</p>
@@ -231,13 +298,13 @@
 
 <!-- ============ 05 EXPLORE GENEO TREATMENTS ============
      Client feedback 3: a packshot of each OxyPod with its name, main indication
-     and key actives. Packshots are frames from Pollogen's own treatment films.
+     and key actives. Client feedback 5: one uniform packshot per OxyPod (same ground, size and light), built from the real pod surfaces in Pollogen's treatment films. Swap for studio packshots when POL supplies them.
      Lines: copy doc (Hydrate, Illuminate, Revive, ExoFirm, Clarify, Detox);
      Energize, Retouch, Protect from the 13 Oct copy (Roy: "Only six?"). -->
 <section class="sec treatments" id="treatments" aria-labelledby="tr-title">
   <div class="wrap">
     <div class="sec__head">
-      <p class="sec__num">05 <span>/ Explore Geneo treatments</span></p>
+      <p class="sec__num">06 <span>/ Explore Geneo treatments</span></p>
       <h2 class="h2" id="tr-title" data-split>Explore Geneo Treatments</h2>
     </div>
     <ul class="tcards" id="tcards">
@@ -298,7 +365,7 @@
 <section class="sec finder" id="finder" aria-labelledby="finder-title">
   <div class="wrap">
     <div class="sec__head">
-      <p class="sec__num">06 <span>/ Find your Geneo treatment</span></p>
+      <p class="sec__num">07 <span>/ Find your Geneo treatment</span></p>
       <h2 class="h2" id="finder-title" data-split>Not sure where to start? Start with what your skin is telling you.</h2>
     </div>
 
@@ -343,7 +410,7 @@
   <div class="wrap">
     <div class="results__intro">
       <div>
-        <p class="sec__num">07 <span>/ Results</span></p>
+        <p class="sec__num">08 <span>/ Results</span></p>
         <h2 class="h2" id="res-title" data-split style="margin-top:26px">Results you can see.</h2>
       </div>
       <dl class="with" data-fade>
@@ -401,45 +468,42 @@
   </div>
 </section>
 
-<!-- ============ 08 WHAT TO EXPECT ============
-     Client feedback 7: the treatment on film. Clips are cut from Pollogen's
-     Geneo X how-to films and the Geneo X brand film (tools/media.py). -->
-<section class="sec expect stone" id="expect" aria-labelledby="exp-title">
+<!-- ============ 09 WHAT PEOPLE ARE SAYING (client feedback 1) ============
+     Same pattern as the TriPollar page: four vertical slots for client or creator
+     content. No Geneo testimonials were available to us, so every slot is a
+     marked placeholder: POL to supply real quotes or creator videos (with
+     consent). Do not publish invented quotes. -->
+<section class="sec reviews" id="reviews" aria-labelledby="rev-title">
   <div class="wrap">
     <div class="sec__head">
-      <p class="sec__num">08 <span>/ What to expect from your treatment</span></p>
-      <h2 class="h2" id="exp-title" data-split>Simple. Relaxing. No downtime.</h2>
+      <p class="sec__num">09 <span>/ Reviews</span></p>
+      <h2 class="h2" id="rev-title" data-split>What People Are Saying</h2>
     </div>
-    <div class="expect__grid">
-      <div class="expect__media" id="expectMedia">
-        <figure class="evid"><video muted loop playsinline preload="none" poster="assets/video/exp-room.webp" aria-label="A provider setting up a Geneo X treatment in the clinic"><source src="assets/video/exp-room.mp4" type="video/mp4"></video></figure>
-        <figure class="evid" data-chips><video muted loop playsinline preload="none" poster="assets/video/exp-treat.webp" aria-label="The applicator gliding over the skin, an OxyPod activating, serum, ultrasound and massage"><source src="assets/video/exp-treat.mp4" type="video/mp4"></video>
-          <ol class="echips" aria-hidden="true"><li data-t="0">Glide</li><li data-t="3.9">Fizz</li><li data-t="7.4">Infuse</li><li data-t="12.2">Massage</li></ol></figure>
-        <figure class="evid"><video muted loop playsinline preload="none" poster="assets/video/exp-glow.webp" aria-label="A smiling client with fresh skin after her treatment"><source src="assets/video/exp-glow.mp4" type="video/mp4"></video></figure>
-        <span class="expect__count" id="expectCount">01 / 03</span>
-      </div>
-      <div>
-        <article class="estep" data-step="0">
-          <figure class="evid evid--m"><video muted loop playsinline preload="none" poster="assets/video/exp-room.webp" aria-hidden="true"><source src="assets/video/exp-room.mp4" type="video/mp4"></video></figure>
-          <p class="estep__n">01</p>
-          <h3>Step 1: Your provider reads your skin.</h3>
-          <p class="lede">Every treatment starts with a quick assessment, so the protocol fits your skin that day.</p>
-        </article>
-        <article class="estep" data-step="1">
-          <figure class="evid evid--m" data-chips><video muted loop playsinline preload="none" poster="assets/video/exp-treat.webp" aria-hidden="true"><source src="assets/video/exp-treat.mp4" type="video/mp4"></video>
-            <ol class="echips" aria-hidden="true"><li data-t="0">Glide</li><li data-t="3.9">Fizz</li><li data-t="7.4">Infuse</li><li data-t="12.2">Massage</li></ol></figure>
-          <p class="estep__n">02</p>
-          <h3>Step 2: The treatment begins.</h3>
-          <p class="lede">You’ll feel the applicator glide gently across your skin, with a light fizz as the OxyPod activates. Then a relaxing massage helps active ingredients absorb. All in one comfortable session, with no downtime.</p>
-        </article>
-        <article class="estep" data-step="2">
-          <figure class="evid evid--m"><video muted loop playsinline preload="none" poster="assets/video/exp-glow.webp" aria-hidden="true"><source src="assets/video/exp-glow.mp4" type="video/mp4"></video></figure>
-          <p class="estep__n">03</p>
-          <h3>Step 3: You leave with fresh, renewed-looking skin.</h3>
-          <p class="lede">Most people see and feel a difference immediately. No redness, no recovery, just radiance.</p>
-        </article>
-        <p class="expect__close" data-fade>Book it as a regular ritual, or the week before an event. Either way, your skin shows up.</p>
-      </div>
+    <ul class="revs" data-stagger>
+      <li class="rev" style="--c:#2F5597;--t:#DCE6F4" data-tilt>
+        <span class="rev__q" aria-hidden="true">&ldquo;</span>
+        <p class="rev__txt ph">[Client testimonial, supplied by POL]</p>
+        <div class="rev__by"><span class="rev__dot"></span><span><b class="ph">[First name, city]</b><em>Geneo Hydrate</em></span></div>
+      </li>
+      <li class="rev rev--media" style="--c:#E9825F;--t:#FBE3D8" data-tilt>
+        <span class="rev__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <p class="rev__txt ph">[Creator video slot: vertical 9:16 clip, supplied by POL]</p>
+        <div class="rev__by"><span class="rev__dot"></span><span><b class="ph">[Creator handle]</b><em>Geneo Illuminate</em></span></div>
+      </li>
+      <li class="rev" style="--c:#9A7B4F;--t:#F0E7D7" data-tilt>
+        <span class="rev__q" aria-hidden="true">&ldquo;</span>
+        <p class="rev__txt ph">[Client testimonial, supplied by POL]</p>
+        <div class="rev__by"><span class="rev__dot"></span><span><b class="ph">[First name, city]</b><em>Geneo ExoFirm</em></span></div>
+      </li>
+      <li class="rev rev--media" style="--c:#D9789A;--t:#F8E0E8" data-tilt>
+        <span class="rev__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <p class="rev__txt ph">[Creator video slot: vertical 9:16 clip, supplied by POL]</p>
+        <div class="rev__by"><span class="rev__dot"></span><span><b class="ph">[Creator handle]</b><em>Geneo Revive</em></span></div>
+      </li>
+    </ul>
+    <div class="reviews__foot" data-fade>
+      <p class="small">Results vary by skin and treatment type.</p>
+      <a class="btn btn--solid" href="#contact" data-magnet>Try Geneo Near You <svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
     </div>
   </div>
 </section>
@@ -450,7 +514,7 @@
   <p class="outline-run" id="outlineRun" aria-hidden="true">The science behind Geneo — The science behind Geneo — The science behind Geneo —</p>
   <div class="wrap brand__in">
     <div class="brand__copy on-dark" style="background:none">
-      <p class="sec__num">09 <span>/ Credibility</span></p>
+      <p class="sec__num">10 <span>/ Credibility</span></p>
       <h2 class="h2" id="brand-title" data-split>The science behind Geneo</h2>
       <p class="lede" data-fade>Geneo™ is developed by Pollogen, a beauty technology company with roots in professional aesthetics since <span class="ph">[year]</span>.</p>
       <dl class="facts" data-stagger>
@@ -469,7 +533,7 @@
 <section class="sec faq" id="faq" aria-labelledby="faq-title">
   <div class="wrap faq__grid">
     <div class="faq__aside">
-      <p class="sec__num">10 <span>/ FAQ</span></p>
+      <p class="sec__num">11 <span>/ FAQ</span></p>
       <h2 class="h2" id="faq-title" data-split>FAQ</h2>
     </div>
     <div class="faq__list" id="faqList">
@@ -498,7 +562,7 @@
   <canvas class="final__bubbles" data-bubbles="final" aria-hidden="true"></canvas>
   <div class="wrap final__in">
     <div class="final__copy">
-      <p class="eyebrow on-dark" data-fade style="color:rgba(255,255,255,.6)"><b style="color:#fff">11</b> Get in touch</p>
+      <p class="eyebrow on-dark" data-fade style="color:rgba(255,255,255,.6)"><b style="color:#fff">12</b> Get in touch</p>
       <h2 class="display" id="final-title" data-split style="margin-top:30px">Ready to try Geneo?</h2>
       <p data-fade>Leave your details and we’ll connect you with a Geneo clinic near you.</p>
     </div>
@@ -556,6 +620,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/app.js?v=20"></script>
+<script src="assets/app.js?v=22"></script>
 </body>
 </html>
