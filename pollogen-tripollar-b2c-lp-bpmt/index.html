@@ -3,1485 +3,966 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TriPollar | Firmer, smoother-looking skin with at-home RF</title>
-<meta name="description" content="TriPollar home use devices are FDA-cleared and dermatologist approved, with visible results in 6 to 8 weeks of consistent use. About 9 minutes a session, no clinic visit required.">
+<title>TriPollar | Advanced beauty technology for home</title>
+<meta name="description" content="TriPollar brings advanced, professional-inspired aesthetic technologies into the comfort of your home, combining innovative solutions for face and body care.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/logo/tripollar-logo.svg">
 <style>
-  /* Page shell only. In WordPress the theme supplies these. */
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #FAF8F7; }
+  body { margin: 0; background: #FFF8F4; }
 </style>
-  <script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 <!-- ==========================================================================
-     TRIPOLLAR — B2C HOME-USE LANDING PAGE
-     Paste everything below into a single WordPress Custom HTML block.
-     Use a blank / canvas / full-width template so the theme header and footer
-     do not stack on top of this page.
+     TRIPOLLAR — B2C HOME-USE LANDING PAGE · v2 (client round 1)
+     Paste everything below into one WordPress Custom HTML block on a blank /
+     full-width template. Every selector is scoped to .tp-b2c-lp.
 
-     Built in the same pollogen.com design language as the TriPollar HUD
-     partnership page: Codec Cold caps with wide tracking, Montserrat for
-     everything else, the blush #F5E6DD surface, black tag chips, hairline
-     text-link CTAs.
-
-     Every selector is scoped to .tp-b2c-lp. Nothing here touches the theme.
-     The device finder is pure CSS (radio inputs + sibling selectors), the FAQ
-     is <details>, and every animation is CSS. The ONE script only upgrades the
-     range slider arrows, and nothing depends on it.
-
-     Sections, in order:  HERO · WHY · TECHNOLOGY · RANGE · FIND YOUR MATCH ·
-                          RESULTS · ROUTINE · BRAND · FAQ · FINAL CTA · FOOTER
+     v2, mapped to the client feedback:
+       1  Brighter, more colourful, more dynamic visual system
+       2  Hero: the TriPollar range instead of the desert model; new copy, no
+          FDA claim, multi-technology positioning
+       3  Wordmark without the Intelligent Biology icon; anchor nav in the bar
+       4  New product showcase (SKINVITY-style cards + spotlight) before Why;
+          no links out to pollogen.com; benefits/areas checked against the
+          manufacturer's product pages
+       5  Why TriPollar rewritten around RF + DMA + LED; collagen render
+          replaced with an interactive technology map
+       6  Results moved up; new Clinical Results section with before/after
+       7  About Pollogen: new image, multi-technology copy, FDA line removed
+       8  "Shop TriPollar" removed; "Want to learn more?" lead form + sticky CTA
+       9  Visitors stay on the page: no external product or contact links
      ========================================================================== -->
 
 <style>
-/* --------------------------------------------------------------------------
-   FONTS — both faces are already served by pollogen.com, so nothing new needs
-   uploading for the live page.
-     Montserrat    Google Fonts, loaded site-wide by the theme already
-     Codec Cold    the theme's own @font-face, declared as "Codec Warm Trial"
-   The stack names the theme's family FIRST, so on pollogen.com the site's own
-   file is used and the copies below are never downloaded.
-   -------------------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@font-face{font-family:'TPB Codec Cold';font-weight:400;font-style:normal;font-display:swap;src:local('Codec Warm Trial Regular'),local('Codec Cold News'),url('assets/fonts/codec-cold-news.woff2') format('woff2')}
+@font-face{font-family:'TPB Codec Cold';font-weight:700;font-style:normal;font-display:swap;src:local('Codec Warm Trial Bold'),local('Codec Cold Bold'),url('assets/fonts/codec-cold-bold.woff2') format('woff2')}
 
-@font-face{
-  font-family:'TPB Codec Cold';
-  font-weight:400;font-style:normal;font-display:swap;
-  src:local('Codec Warm Trial Regular'),local('Codec Cold News'),
-      url('assets/fonts/codec-cold-news.woff2') format('woff2');
-}
-@font-face{
-  font-family:'TPB Codec Cold';
-  font-weight:700;font-style:normal;font-display:swap;
-  src:local('Codec Warm Trial Bold'),local('Codec Cold Bold'),
-      url('assets/fonts/codec-cold-bold.woff2') format('woff2');
-}
-
-/* --------------------------------------------------------------------------
-   TOKENS — measured off pollogen.com, scoped to this page only
-   -------------------------------------------------------------------------- */
 .tp-b2c-lp{
-  --pg-black:#000000;
-  --pg-ink:#141414;
-  --pg-grey:#6B6B6B;
-  --pg-mute:#8F8F8F;
-  --pg-line:#DEDEDE;
-  --pg-hair:#E8E4E1;
-  --pg-blush:#F5E6DD;          /* the signature Pollogen surface */
-  --pg-blush-deep:#EBD6C9;
-  --pg-paper:#FAF8F7;          /* warm off-white — the page ground */
-  --pg-studio:#F3F1EF;         /* the white set behind the STOP Vx2 Gold campaign */
-  --pg-noir:#141110;
-  --pg-white:#FFFFFF;
-
-  --pg-display:'Codec Warm Trial','TPB Codec Cold','Montserrat',sans-serif;
-  --pg-ui:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
-
-  --pg-track-display:.135em;   /* 4.77px on 35px — the site's own value */
-  --pg-track-label:.2em;
-
-  --pg-container:1240px;
-  --pg-gutter:26px;
-  --s1:8px; --s2:16px; --s3:24px; --s4:32px;
-  --s5:48px; --s6:64px; --s7:96px; --s8:136px;
-  --pg-ease:cubic-bezier(.22,.61,.36,1);
-
-  font-family:var(--pg-ui);
-  font-size:15px;font-weight:400;line-height:1.9;letter-spacing:.02em;
-  color:var(--pg-ink);background:var(--pg-paper);
-  -webkit-font-smoothing:antialiased;text-align:left;
-  position:relative;
+  --ink:#141414; --grey:#6A6260; --mute:#958C89; --hair:#EFE3DD; --line:#E2D4CD;
+  --paper:#FFF8F4; --white:#fff; --blush:#FBE3DA; --peach:#FFD6C2; --rose:#E8837A; --rose-dk:#B85468;
+  --berry:#9C3D63; --lilac:#CDB8EC; --lilac-dk:#7E5BB8; --gold:#D8B068; --plum:#2C1628; --plum-2:#4B2443;
+  --grad:linear-gradient(115deg,#F29A7E 0%,#E0708A 45%,#9A6BD0 100%);
+  --grad-soft:linear-gradient(135deg,#FFE3D4 0%,#FBD3DC 50%,#E6DAF6 100%);
+  --grad-gold:linear-gradient(120deg,#F6DDA9,#D8B068 50%,#B98A3E);
+  --display:'Codec Warm Trial','TPB Codec Cold','Montserrat',sans-serif;
+  --ui:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --container:1280px; --gutter:28px;
+  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px;--s8:128px;
+  --ease:cubic-bezier(.22,.61,.36,1); --spring:cubic-bezier(.34,1.45,.64,1); --bar:74px;
+  font-family:var(--ui);font-size:15px;line-height:1.85;letter-spacing:.015em;color:var(--ink);background:var(--paper);
+  -webkit-font-smoothing:antialiased;position:relative;overflow-x:clip;text-align:left;
 }
-
-/* scoped reset — never leaves the wrapper */
-.tp-b2c-lp,
-.tp-b2c-lp *,
-.tp-b2c-lp *::before,
-.tp-b2c-lp *::after{box-sizing:border-box}
-.tp-b2c-lp img,
-.tp-b2c-lp svg{max-width:100%;display:block;height:auto;border:0}
-.tp-b2c-lp p,.tp-b2c-lp h1,.tp-b2c-lp h2,.tp-b2c-lp h3,.tp-b2c-lp h4,
-.tp-b2c-lp ul,.tp-b2c-lp ol,.tp-b2c-lp li,.tp-b2c-lp figure,.tp-b2c-lp figcaption,
-.tp-b2c-lp fieldset,.tp-b2c-lp legend{margin:0;padding:0}
-.tp-b2c-lp fieldset{border:0;min-width:0}
+.tp-b2c-lp,.tp-b2c-lp *,.tp-b2c-lp *::before,.tp-b2c-lp *::after{box-sizing:border-box}
+.tp-b2c-lp img,.tp-b2c-lp svg,.tp-b2c-lp video{max-width:100%;display:block;height:auto;border:0}
+.tp-b2c-lp p,.tp-b2c-lp h1,.tp-b2c-lp h2,.tp-b2c-lp h3,.tp-b2c-lp h4,.tp-b2c-lp ul,.tp-b2c-lp ol,.tp-b2c-lp li,.tp-b2c-lp figure,.tp-b2c-lp figcaption,.tp-b2c-lp fieldset{margin:0;padding:0}
 .tp-b2c-lp ul,.tp-b2c-lp ol{list-style:none}
-.tp-b2c-lp h1,.tp-b2c-lp h2,.tp-b2c-lp h3,.tp-b2c-lp h4{
-  font-family:var(--pg-display);font-weight:400;color:var(--pg-black);
-}
+.tp-b2c-lp h1,.tp-b2c-lp h2,.tp-b2c-lp h3,.tp-b2c-lp h4{font-family:var(--display);font-weight:400;color:#000}
 .tp-b2c-lp a{color:inherit;text-decoration:none}
-.tp-b2c-lp :focus-visible{outline:2px solid var(--pg-black);outline-offset:4px}
+.tp-b2c-lp button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.tp-b2c-lp :focus-visible{outline:2px solid #000;outline-offset:4px}
+.tp-b2c-lp [id]{scroll-margin-top:calc(var(--bar) + 10px)}
 
-/* --------------------------------------------------------------------------
-   LAYOUT
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-wrap{
-  width:var(--pg-container);
-  max-width:calc(100% - (var(--pg-gutter) * 2));
-  margin-left:auto;margin-right:auto;
-}
-.tp-b2c-lp .pg-section{padding:var(--s8) 0;position:relative}
-.tp-b2c-lp .pg-paper{background:var(--pg-paper)}
-.tp-b2c-lp .pg-white{background:var(--pg-white)}
-.tp-b2c-lp .pg-blush-bg{background:var(--pg-blush)}
-.tp-b2c-lp .pg-anchor{scroll-margin-top:90px}
+.tp-b2c-lp .wrap{width:var(--container);max-width:calc(100% - var(--gutter)*2);margin-inline:auto}
+.tp-b2c-lp .sec{position:relative;padding:var(--s8) 0}
+.tp-b2c-lp .h2{font-family:var(--display);font-size:clamp(28px,3.8vw,52px);line-height:1.15;letter-spacing:.07em;text-transform:uppercase}
+.tp-b2c-lp .h3{font-family:var(--display);font-size:clamp(17px,1.6vw,21px);line-height:1.35;letter-spacing:.08em;text-transform:uppercase}
+.tp-b2c-lp .kick{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-dk)}
+.tp-b2c-lp .kick::before{content:'';width:22px;height:2px;background:var(--grad)}
+.tp-b2c-lp .lede{font-size:clamp(16px,1.3vw,18px);line-height:1.8}
+.tp-b2c-lp .small{font-size:12.5px;line-height:1.8;color:var(--grey)}
+.tp-b2c-lp .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .head{display:grid;grid-template-columns:auto 1fr;gap:var(--s2) var(--s5);align-items:end;margin-bottom:var(--s6)}
+.tp-b2c-lp .head__n{font-family:var(--display);font-size:clamp(70px,9vw,132px);line-height:.78;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .head .kick{margin-bottom:var(--s2)}
+.tp-b2c-lp .head__aside{grid-column:2;max-width:620px;color:var(--grey)}
+.tp-b2c-lp .head--c{display:block;text-align:center;max-width:820px;margin-inline:auto}
+.tp-b2c-lp .head--c .kick{justify-content:center}
+.tp-b2c-lp .head--light .h2{color:#fff}.tp-b2c-lp .head--light .kick{color:#F7C2B6}.tp-b2c-lp .head--light .head__aside{color:rgba(255,255,255,.75)}
 
-/* reading progress — a hairline across the very top of the page */
-.tp-b2c-lp .pg-progress{
-  position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;
-  background:var(--pg-black);transform:scaleX(0);transform-origin:left;pointer-events:none;
-}
+/* buttons */
+.tp-b2c-lp .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 32px;overflow:hidden;isolation:isolate;
+  background:#141414;color:#fff;border:0;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;line-height:1.4;cursor:pointer;
+  transition:transform .45s var(--spring),box-shadow .45s var(--ease)}
+.tp-b2c-lp .btn::after{content:'';position:absolute;inset:0;z-index:-1;background:var(--grad);opacity:0;transition:opacity .45s var(--ease)}
+.tp-b2c-lp .btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px -14px rgba(184,84,104,.6)}
+.tp-b2c-lp .btn:hover::after{opacity:1}
+.tp-b2c-lp .btn--grad{background:var(--grad)}
+.tp-b2c-lp .btn--grad::after{background:#141414}
+.tp-b2c-lp .btn--ghost{background:rgba(255,255,255,.6);color:#141414;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tp-b2c-lp .btn--ghost:hover{color:#fff}
+.tp-b2c-lp .btn--white{background:#fff;color:#141414}
+.tp-b2c-lp .btn--white:hover{color:#fff}
+.tp-b2c-lp .btn--block{width:100%}
+.tp-b2c-lp .arr{display:inline-block;transition:transform .45s var(--ease)}
+.tp-b2c-lp .btn:hover .arr,.tp-b2c-lp .lnk:hover .arr{transform:translateX(5px)}
+.tp-b2c-lp .lnk{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-bottom:2px solid;border-image:var(--grad) 1;padding-bottom:4px}
+.tp-b2c-lp .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.tp-b2c-lp .chip i{width:7px;height:7px;border-radius:50%;background:var(--c,var(--rose))}
 
-/* --------------------------------------------------------------------------
-   TYPE — uppercase Codec with wide tracking is the whole signature
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-h2{
-  font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(23px,2.9vw,38px);line-height:1.34;
-  letter-spacing:var(--pg-track-display);text-transform:uppercase;
-}
-.tp-b2c-lp .pg-h3{
-  font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(16px,1.5vw,19px);line-height:1.45;
-  letter-spacing:.11em;text-transform:uppercase;color:var(--pg-black);
-}
-.tp-b2c-lp .pg-label{
-  display:block;font-family:var(--pg-ui);font-weight:500;font-size:11px;line-height:1.8;
-  letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-grey);
-}
-.tp-b2c-lp .pg-body{font-size:15px;line-height:1.95;color:var(--pg-ink)}
-.tp-b2c-lp .pg-lede{font-size:17px;line-height:1.9;color:var(--pg-ink)}
-.tp-b2c-lp .pg-small{font-size:12px;line-height:1.85;color:var(--pg-grey)}
-.tp-b2c-lp .pg-stack > * + *{margin-top:var(--s3)}
-.tp-b2c-lp .pg-tick{width:48px;height:1px;background:currentColor;opacity:.4;margin:var(--s4) 0}
+/* progress + bar */
+.tp-b2c-lp .prog{position:fixed;left:0;top:0;height:3px;width:100%;z-index:80;background:var(--grad);transform:scaleX(var(--p,0));transform-origin:left;pointer-events:none}
+.tp-b2c-lp .bar{position:sticky;top:0;z-index:70;background:rgba(255,248,244,.75);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid transparent;transition:border-color .4s,box-shadow .4s,background .4s}
+.tp-b2c-lp .bar.is-scrolled{border-color:var(--hair);background:rgba(255,248,244,.92);box-shadow:0 14px 40px -28px rgba(120,40,60,.4)}
+.tp-b2c-lp .bar__in{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);height:var(--bar)}
+.tp-b2c-lp .bar__logo{height:40px;width:auto;filter:brightness(0)}
+.tp-b2c-lp .nav{display:flex;gap:2px}
+.tp-b2c-lp .nav a{position:relative;padding:8px 11px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);white-space:nowrap;transition:color .3s}
+.tp-b2c-lp .nav a::after{content:'';position:absolute;left:11px;right:11px;bottom:2px;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tp-b2c-lp .nav a:hover,.tp-b2c-lp .nav a.is-active{color:#000}
+.tp-b2c-lp .nav a:hover::after,.tp-b2c-lp .nav a.is-active::after{transform:scaleX(1)}
+.tp-b2c-lp .bar .btn{min-height:44px;padding:10px 22px;font-size:10.5px}
+.tp-b2c-lp .navm{display:none}
 
-/* --------------------------------------------------------------------------
-   LINKS + BUTTONS — hairline text links, as on the site; the one filled
-   button is the page's primary action.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-link{
-  position:relative;display:inline-block;padding-bottom:8px;
-  font-family:var(--pg-ui);font-size:12px;font-weight:600;line-height:1.6;
-  letter-spacing:.11em;text-transform:uppercase;color:var(--pg-black);
-}
-.tp-b2c-lp .pg-link::before,
-.tp-b2c-lp .pg-link::after{content:'';position:absolute;left:0;bottom:0;height:1px;background:currentColor}
-.tp-b2c-lp .pg-link::before{width:100%;opacity:.28}
-.tp-b2c-lp .pg-link::after{
-  width:100%;transform:scaleX(0);transform-origin:left;transition:transform .55s var(--pg-ease);
-}
-.tp-b2c-lp .pg-link:hover::after,
-.tp-b2c-lp .pg-link:focus-visible::after{transform:scaleX(1)}
-.tp-b2c-lp .pg-arrow{display:inline-block;margin-left:12px;transition:transform .45s var(--pg-ease)}
-.tp-b2c-lp .pg-link:hover .pg-arrow{transform:translateX(8px)}
+/* HERO */
+.tp-b2c-lp .hero{position:relative;overflow:hidden;isolation:isolate;background:
+  radial-gradient(45% 55% at 80% 35%,rgba(255,196,170,.95),transparent 70%),
+  radial-gradient(40% 50% at 98% 90%,rgba(205,184,236,.9),transparent 70%),
+  radial-gradient(35% 45% at 55% 95%,rgba(246,160,170,.7),transparent 70%),
+  radial-gradient(30% 40% at 10% 10%,rgba(255,226,200,.9),transparent 70%),
+  linear-gradient(180deg,#FFF5EF,#FDE9E4)}
+.tp-b2c-lp .hero__glow{position:absolute;z-index:0;width:640px;height:640px;left:var(--gx,72%);top:var(--gy,45%);translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.8),transparent);pointer-events:none;transition:left .9s var(--ease),top .9s var(--ease)}
+.tp-b2c-lp .hero__in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,10fr) minmax(0,11fr);gap:var(--s4);align-items:center;padding:var(--s5) 0 var(--s4)}
+.tp-b2c-lp .hero__tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:var(--s3)}
+.tp-b2c-lp .hero h1{font-size:clamp(32px,3.6vw,54px);line-height:1.06;letter-spacing:.05em;text-transform:uppercase}
+.tp-b2c-lp .line{display:block;overflow:hidden;padding-bottom:.06em}
+.tp-b2c-lp .line > span{display:block}
+.tp-b2c-lp .hero__p{margin-top:var(--s3);max-width:34em;font-size:15.5px;line-height:1.8}
+.tp-b2c-lp .hero__p + .hero__p{margin-top:var(--s2);color:var(--grey);font-size:14.5px}
+.tp-b2c-lp .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--s4)}
+.tp-b2c-lp .stage{position:relative;width:100%;aspect-ratio:1/.86;max-height:min(580px,64vh);margin-left:auto}
+.tp-b2c-lp .stage__ring{position:absolute;left:50%;top:50%;width:92%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:conic-gradient(from 0deg,rgba(242,154,126,.0),rgba(242,154,126,.55),rgba(154,107,208,.5),rgba(242,154,126,0));-webkit-mask:radial-gradient(closest-side,transparent 96%,#000 97%);mask:radial-gradient(closest-side,transparent 96%,#000 97%)}
+.tp-b2c-lp .stage__disc{position:absolute;left:50%;top:52%;width:74%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0%,rgba(255,255,255,.65) 40%,rgba(255,255,255,0) 72%)}
+.tp-b2c-lp .stage__floor{position:absolute;left:8%;right:8%;bottom:4%;height:18%;border-radius:50%;background:radial-gradient(closest-side,rgba(150,60,70,.22),transparent)}
+.tp-b2c-lp .dev{position:absolute;z-index:var(--z,1);left:var(--x);bottom:var(--y);height:var(--h);transform:translate3d(var(--px,0),var(--py,0),0);transition:transform .9s var(--ease)}
+.tp-b2c-lp .dev--w{height:auto;width:var(--w)}
+.tp-b2c-lp .dev__f{height:100%}
+.tp-b2c-lp .dev img{height:100%;width:auto;max-width:none;filter:drop-shadow(0 24px 26px rgba(110,40,50,.3));transition:transform .6s var(--spring)}
+.tp-b2c-lp .dev--w img{width:100%;height:auto}
+.tp-b2c-lp .dev:hover{z-index:9}
+.tp-b2c-lp .dev:hover img{transform:translateY(-14px) scale(1.05)}
+.tp-b2c-lp .dev__tip{position:absolute;left:50%;top:-12px;translate:-50% -100%;white-space:nowrap;padding:6px 12px;border-radius:999px;background:#141414;color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;pointer-events:none}
+.tp-b2c-lp .dev:hover .dev__tip,.tp-b2c-lp .dev:focus-visible .dev__tip{opacity:1;transform:none}
+.tp-b2c-lp .stage__card{position:absolute;right:-3%;top:-1%;z-index:7;width:clamp(130px,13vw,180px);padding:8px 8px 12px;background:#fff;border-radius:22px;box-shadow:0 30px 60px -30px rgba(110,40,60,.55);rotate:4deg;transition:rotate .6s var(--spring)}
+.tp-b2c-lp .stage__card:hover{rotate:0deg}
+.tp-b2c-lp .stage__card img{border-radius:16px;aspect-ratio:1;object-fit:cover;width:100%}
+.tp-b2c-lp .stage__card span{display:block;margin-top:8px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.tp-b2c-lp .stage__badge{position:absolute;left:-2%;top:62%;z-index:7;display:grid;place-items:center;width:110px;height:110px;border-radius:50%;background:var(--grad);color:#fff;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;box-shadow:0 20px 40px -18px rgba(184,84,104,.7)}
+.tp-b2c-lp .stage__badge b{display:block;font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.02em;line-height:1}
 
-.tp-b2c-lp .pg-btn{
-  position:relative;display:inline-flex;align-items:center;justify-content:center;
-  min-height:56px;padding:16px 40px;overflow:hidden;
-  border:1px solid var(--pg-black);border-radius:0;background:var(--pg-black);
-  font-family:var(--pg-ui);font-size:12px;font-weight:600;line-height:1.6;
-  letter-spacing:.14em;text-transform:uppercase;text-align:center;color:var(--pg-white);
-  cursor:pointer;transition:color .45s var(--pg-ease);
-}
-.tp-b2c-lp .pg-btn > span{position:relative;z-index:1}
-.tp-b2c-lp .pg-btn::after{
-  content:'';position:absolute;inset:0;background:var(--pg-white);
-  transform:scaleY(0);transform-origin:bottom;transition:transform .45s var(--pg-ease);
-}
-.tp-b2c-lp .pg-btn:hover,
-.tp-b2c-lp .pg-btn:focus-visible{color:var(--pg-black)}
-.tp-b2c-lp .pg-btn:hover::after,
-.tp-b2c-lp .pg-btn:focus-visible::after{transform:scaleY(1)}
-.tp-b2c-lp .pg-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5)}
+/* quick nav */
+.tp-b2c-lp .quick{position:relative;z-index:3;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding-bottom:var(--s5)}
+.tp-b2c-lp .qb{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;overflow:hidden;isolation:isolate;background:rgba(255,255,255,.66);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 16px 36px -26px rgba(120,40,60,.55),inset 0 0 0 1px rgba(255,255,255,.9);transition:transform .45s var(--spring),color .35s}
+.tp-b2c-lp .qb::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--grad);clip-path:circle(0% at var(--mx,50%) var(--my,50%));transition:clip-path .55s var(--ease)}
+.tp-b2c-lp .qb:hover,.tp-b2c-lp .qb:focus-visible{transform:translateY(-5px);color:#fff}
+.tp-b2c-lp .qb:hover::before,.tp-b2c-lp .qb:focus-visible::before{clip-path:circle(150% at var(--mx,50%) var(--my,50%))}
+.tp-b2c-lp .qb__i{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:50%;background:var(--blush);color:var(--rose-dk);transition:background .35s,color .35s}
+.tp-b2c-lp .qb:hover .qb__i{background:rgba(255,255,255,.25);color:#fff}
+.tp-b2c-lp .qb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tp-b2c-lp .qb__t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.35}
+.tp-b2c-lp .qb__s{display:block;font-size:11px;font-weight:500;letter-spacing:.02em;text-transform:none;opacity:.7}
+.tp-b2c-lp .qb--cta{background:#141414;color:#fff}
+.tp-b2c-lp .qb--cta .qb__i{background:var(--grad);color:#fff}
 
-.tp-b2c-lp .pg-tag{
-  display:inline-block;padding:4px 9px;background:var(--pg-black);color:var(--pg-white);
-  font-family:var(--pg-ui);font-size:9px;font-weight:500;line-height:1.5;
-  letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
-}
-.tp-b2c-lp .pg-chip{
-  display:inline-block;padding:5px 11px;border:1px solid rgba(0,0,0,.22);
-  font-family:var(--pg-ui);font-size:10px;font-weight:500;line-height:1.5;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--pg-ink);
-}
+/* stats band (moved up) */
+.tp-b2c-lp .stats{position:relative;overflow:hidden;background:var(--plum);color:#fff;isolation:isolate}
+.tp-b2c-lp .stats::before{content:'';position:absolute;inset:-30%;z-index:-1;background:radial-gradient(35% 60% at 10% 30%,rgba(242,154,126,.55),transparent 70%),radial-gradient(35% 60% at 60% 120%,rgba(224,112,138,.5),transparent 70%),radial-gradient(30% 60% at 100% 0%,rgba(154,107,208,.55),transparent 70%)}
+.tp-b2c-lp .stats__in{display:grid;grid-template-columns:1.2fr repeat(3,1fr);align-items:center;padding:var(--s5) 0}
+.tp-b2c-lp .stats__intro .h3{color:#fff}
+.tp-b2c-lp .stats__intro p{margin-top:8px;font-size:12px;line-height:1.7;color:rgba(255,255,255,.65)}
+.tp-b2c-lp .stat{padding:var(--s2) var(--s4);border-left:1px solid rgba(255,255,255,.16)}
+.tp-b2c-lp .stat__n{display:block;font-family:var(--display);font-size:clamp(46px,5vw,74px);line-height:1;letter-spacing:.02em;background:linear-gradient(120deg,#FFE0D2,#F7A7A0 50%,#D9B8F5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .stat__t{display:block;margin-top:8px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82);max-width:16em}
 
-/* --------------------------------------------------------------------------
-   LOGO BAR — the mark, and the primary action. No nav, no search.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-logobar{
-  position:relative;z-index:5;background:var(--pg-paper);border-bottom:1px solid var(--pg-hair);
-}
-.tp-b2c-lp .pg-logobar__in{
-  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:80px;
-}
-.tp-b2c-lp .pg-logobar__mark{height:34px;width:auto;filter:brightness(0)}
+/* PRODUCTS — SKINVITY-style cards + spotlight */
+.tp-b2c-lp .prods{background:#fff}
+.tp-b2c-lp .pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tp-b2c-lp .pc{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:24px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--hair);transition:transform .5s var(--spring),box-shadow .5s var(--ease)}
+.tp-b2c-lp .pc:hover{transform:translateY(-8px);box-shadow:0 30px 60px -36px rgba(120,40,60,.6),inset 0 0 0 1px var(--hair)}
+.tp-b2c-lp .pc[aria-pressed="true"]{box-shadow:0 30px 60px -36px rgba(120,40,60,.6),inset 0 0 0 2px var(--rose)}
+.tp-b2c-lp .pc__pic{position:relative;display:block;aspect-ratio:4/5;background:var(--bg);overflow:hidden}
+.tp-b2c-lp .pc__pic::before{content:'';position:absolute;left:50%;top:52%;width:80%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.85),transparent)}
+.tp-b2c-lp .pc__pic img{position:absolute;left:8%;top:16%;width:84%;height:76%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(80,30,30,.25));transition:transform .7s var(--spring)}
+.tp-b2c-lp .pc:hover .pc__pic img{transform:scale(1.07) rotate(-3deg)}
+.tp-b2c-lp .pc__area{position:absolute;left:12px;top:12px;z-index:1}
+.tp-b2c-lp .pc__body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tp-b2c-lp .pc__name{font-family:var(--display);font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.tp-b2c-lp .pc__sub{font-size:12.5px;line-height:1.5;color:var(--grey)}
+.tp-b2c-lp .pc__tech{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:8px}
+.tp-b2c-lp .pc__tech span{padding:3px 8px;border-radius:999px;font-size:9.5px;font-weight:700;letter-spacing:.08em;background:var(--blush);color:var(--rose-dk)}
+.tp-b2c-lp .pc__more{margin-top:10px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-dk)}
 
-/* --------------------------------------------------------------------------
-   HERO — copy on paper, the campaign photograph opening up on the right with
-   a soft edge. The model looks back toward the headline.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-hero{position:relative;overflow:hidden;background:var(--pg-paper)}
-.tp-b2c-lp .pg-hero__media{position:absolute;top:0;bottom:0;left:47%;right:0;z-index:0;overflow:hidden}
-.tp-b2c-lp .pg-hero__media img{width:100%;height:100%;object-fit:cover;object-position:78% 38%}
-.tp-b2c-lp .pg-hero__media::before{
-  content:'';position:absolute;top:0;bottom:0;left:0;width:22%;z-index:1;pointer-events:none;
-  background:linear-gradient(90deg, var(--pg-paper) 0%, rgba(250,248,247,.6) 45%, rgba(250,248,247,0) 100%);
-}
-/* a blush plane under the copy, sliding in from the left */
-.tp-b2c-lp .pg-hero__plane{
-  position:absolute;left:0;bottom:0;width:27%;height:30%;z-index:0;background:var(--pg-blush);
-}
-.tp-b2c-lp .pg-hero .pg-wrap{position:relative}
-.tp-b2c-lp .pg-hero__in{
-  position:relative;z-index:2;
-  min-height:clamp(620px,86vh,880px);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:var(--s8) 0;
-}
-.tp-b2c-lp .pg-hero__copy{max-width:600px}
-.tp-b2c-lp .pg-hero__title{
-  font-family:var(--pg-display);font-weight:400;color:var(--pg-black);
-  font-size:clamp(28px,3.1vw,46px);line-height:1.24;
-  letter-spacing:var(--pg-track-display);text-transform:uppercase;
-}
-.tp-b2c-lp .pg-hero__deck{
-  margin-top:var(--s5);font-size:clamp(15px,1.25vw,17px);line-height:1.85;
-  letter-spacing:.03em;color:var(--pg-ink);max-width:30em;
-}
-.tp-b2c-lp .pg-hero__cta{margin-top:var(--s6)}
+.tp-b2c-lp .spot{margin-top:var(--s5);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);border-radius:32px;overflow:hidden;background:var(--grad-soft);box-shadow:0 40px 80px -60px rgba(120,40,60,.6)}
+.tp-b2c-lp .spot__stage{position:relative;min-height:480px;display:grid;place-items:center;background:var(--sbg,#FBE3DA);transition:background .6s var(--ease);overflow:hidden}
+.tp-b2c-lp .spot__stage::before{content:'';position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,#fff,transparent);opacity:.9}
+.tp-b2c-lp .spot__stage::after{content:'';position:absolute;width:88%;aspect-ratio:1;border-radius:50%;border:1px dashed rgba(0,0,0,.18)}
+.tp-b2c-lp .spot__img{position:relative;z-index:1;max-height:380px;max-width:78%;width:auto;filter:drop-shadow(0 30px 30px rgba(80,30,30,.3));transition:opacity .35s,transform .7s var(--spring)}
+.tp-b2c-lp .spot__img.is-swap{opacity:0;transform:translateY(30px) scale(.94)}
+.tp-b2c-lp .spot__body{padding:var(--s5)}
+.tp-b2c-lp .spot__name{font-size:clamp(24px,2.6vw,36px);letter-spacing:.06em;text-transform:uppercase;line-height:1.15;margin:var(--s2) 0 8px}
+.tp-b2c-lp .spot__goal{font-size:16px;font-weight:600;color:var(--rose-dk)}
+.tp-b2c-lp .spot__desc{margin-top:var(--s2);color:#3E3533}
+.tp-b2c-lp .spot__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s4)}
+.tp-b2c-lp .spot__h{display:block;margin-bottom:8px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+.tp-b2c-lp .spot__list li{position:relative;padding-left:22px;font-size:13.5px;line-height:1.6}
+.tp-b2c-lp .spot__list li + li{margin-top:6px}
+.tp-b2c-lp .spot__list li::before{content:'';position:absolute;left:0;top:.5em;width:12px;height:12px;border-radius:50%;background:var(--grad)}
+.tp-b2c-lp .spot__tags{display:flex;flex-wrap:wrap;gap:6px}
+.tp-b2c-lp .spot__cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:var(--s4)}
 
-/* each masked heading line wipes up */
-.tp-b2c-lp .pg-line{display:block;overflow:hidden}
-.tp-b2c-lp .pg-line > span{display:block}
+/* WHY / TECHNOLOGY */
+.tp-b2c-lp .why{background:linear-gradient(180deg,#FFF8F4 0%,#FCEDE8 100%)}
+.tp-b2c-lp .why__grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:var(--s6);align-items:center}
+.tp-b2c-lp .why__copy .lede{margin-top:var(--s3)}
+.tp-b2c-lp .why__copy p + p{margin-top:var(--s2)}
+.tp-b2c-lp .tmap{position:relative;aspect-ratio:1;max-width:520px;margin-inline:auto;width:100%}
+.tp-b2c-lp .tmap__ring{position:absolute;inset:6%;border-radius:50%;border:1px dashed rgba(184,84,104,.4)}
+.tp-b2c-lp .tmap__ring--2{inset:20%;border-style:solid;border-color:rgba(154,107,208,.25)}
+.tp-b2c-lp .tmap__core{position:absolute;left:50%;top:50%;width:48%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#FBE3DA 60%,#F6CFD3);display:grid;place-items:center;box-shadow:0 30px 60px -30px rgba(150,60,80,.5)}
+.tp-b2c-lp .tmap__core img{position:absolute;left:50%;top:11%;height:78%;width:auto;max-width:none;translate:-50% 0;filter:drop-shadow(0 16px 16px rgba(80,30,30,.3))}
+.tp-b2c-lp .tmap__orbit{position:absolute;inset:0}
+.tp-b2c-lp .tnode{position:absolute;left:var(--nx);top:var(--ny);translate:-50% -50%;display:flex;flex-direction:column;align-items:center;gap:6px;width:116px;text-align:center}
+.tp-b2c-lp .tnode__dot{display:grid;place-items:center;width:74px;height:74px;border-radius:50%;background:#fff;box-shadow:0 18px 30px -16px rgba(120,40,60,.5),inset 0 0 0 2px var(--c);transition:transform .5s var(--spring),background .4s}
+.tp-b2c-lp .tnode__dot img{width:70%;height:70%;object-fit:contain}
+.tp-b2c-lp .tnode__dot svg{width:34px;height:34px;fill:none;stroke:var(--c);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tp-b2c-lp .tnode b{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+.tp-b2c-lp .tnode:hover .tnode__dot,.tp-b2c-lp .tnode.is-on .tnode__dot{transform:scale(1.15)}
+.tp-b2c-lp .tcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:var(--s6)}
+.tp-b2c-lp .tcard{position:relative;padding:var(--s4) var(--s3);border-radius:24px;background:#fff;overflow:hidden;isolation:isolate;box-shadow:inset 0 0 0 1px var(--hair);transition:transform .5s var(--spring),box-shadow .5s,color .4s}
+.tp-b2c-lp .tcard::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,var(--c) 0%,var(--c2) 100%);opacity:0;transition:opacity .5s}
+.tp-b2c-lp .tcard:hover,.tp-b2c-lp .tcard.is-on{transform:translateY(-6px);color:#fff;box-shadow:0 30px 60px -36px rgba(120,40,60,.7)}
+.tp-b2c-lp .tcard:hover::before,.tp-b2c-lp .tcard.is-on::before{opacity:1}
+.tp-b2c-lp .tcard:hover .h3,.tp-b2c-lp .tcard.is-on .h3{color:#fff}
+.tp-b2c-lp .tcard__n{display:block;font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--c);margin-bottom:var(--s2);transition:color .4s}
+.tp-b2c-lp .tcard:hover .tcard__n,.tp-b2c-lp .tcard.is-on .tcard__n{color:rgba(255,255,255,.8)}
+.tp-b2c-lp .tcard p{margin-top:10px;font-size:13.5px;line-height:1.7}
+.tp-b2c-lp .tcard__in{margin-top:var(--s2);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.tp-b2c-lp .matrix{margin-top:var(--s6);border-radius:24px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.tp-b2c-lp .matrix table{width:100%;border-collapse:collapse;font-size:13px}
+.tp-b2c-lp .matrix th,.tp-b2c-lp .matrix td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--hair)}
+.tp-b2c-lp .matrix th{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);background:#FFF5F0}
+.tp-b2c-lp .matrix td:first-child,.tp-b2c-lp .matrix th:first-child{text-align:left;font-weight:700;letter-spacing:.06em}
+.tp-b2c-lp .matrix tr:last-child td{border-bottom:0}
+.tp-b2c-lp .matrix tbody tr{transition:background .3s}
+.tp-b2c-lp .matrix tbody tr:hover{background:#FFF5F0}
+.tp-b2c-lp .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--grad);transform:scale(var(--ds,1));transition:transform .5s var(--spring)}
+.tp-b2c-lp .nodot{display:inline-block;width:14px;height:2px;background:var(--line);vertical-align:middle}
+.tp-b2c-lp .matrix caption{caption-side:bottom;padding:12px 16px;text-align:left;font-size:11.5px;color:var(--mute)}
 
-/* scroll cue — a hairline with a travelling dot */
-.tp-b2c-lp .pg-cue{
-  position:absolute;left:0;bottom:var(--s6);z-index:3;
-  width:1px;height:72px;background:rgba(0,0,0,.18);overflow:hidden;
-}
-.tp-b2c-lp .pg-cue::after{
-  content:'';position:absolute;left:-1px;top:0;width:3px;height:22px;background:var(--pg-black);
-}
+/* CLINICAL RESULTS */
+.tp-b2c-lp .clin{background:var(--plum);color:#fff;overflow:hidden;isolation:isolate}
+.tp-b2c-lp .clin::before{content:'';position:absolute;inset:-20%;z-index:-1;background:radial-gradient(35% 40% at 85% 15%,rgba(154,107,208,.45),transparent 70%),radial-gradient(40% 40% at 5% 80%,rgba(242,154,126,.4),transparent 70%)}
+.tp-b2c-lp .clin__grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--s6);align-items:center}
+.tp-b2c-lp .ba{position:relative;aspect-ratio:741/1150;max-height:640px;margin-inline:auto;border-radius:28px;overflow:hidden;user-select:none;touch-action:pan-y;box-shadow:0 40px 80px -40px rgba(0,0,0,.7);--pos:50%}
+.tp-b2c-lp .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;pointer-events:none}
+.tp-b2c-lp .ba__after{clip-path:inset(0 0 0 var(--pos))}
+.tp-b2c-lp .ba__handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;translate:-1px 0;background:#fff;z-index:3}
+.tp-b2c-lp .ba__knob{position:absolute;left:50%;top:50%;translate:-50% -50%;width:54px;height:54px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.tp-b2c-lp .ba__lab{position:absolute;bottom:16px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(20,20,20,.7);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.tp-b2c-lp .ba__lab--b{left:16px}.tp-b2c-lp .ba__lab--a{right:16px}
+.tp-b2c-lp .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0}
+.tp-b2c-lp .ba__cap{margin-top:12px;text-align:center;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+.tp-b2c-lp .cstats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:var(--s4)}
+.tp-b2c-lp .cstat{padding:var(--s3) var(--s2);border-radius:20px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);text-align:center;transition:transform .5s var(--spring),background .4s}
+.tp-b2c-lp .cstat:hover{transform:translateY(-5px);background:rgba(255,255,255,.12)}
+.tp-b2c-lp .cstat__ring{position:relative;width:92px;height:92px;margin:0 auto 10px}
+.tp-b2c-lp .cstat__ring svg{width:100%;height:100%;rotate:-90deg}
+.tp-b2c-lp .cstat__ring circle{fill:none;stroke-width:6}
+.tp-b2c-lp .cstat__ring .bg{stroke:rgba(255,255,255,.12)}
+.tp-b2c-lp .cstat__ring .fg{stroke:url(#tpGrad);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--v) * var(--k,1));transition:stroke-dashoffset 1.8s var(--ease)}
+.tp-b2c-lp .cstat__ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em}
+.tp-b2c-lp .cstat p{font-size:12px;line-height:1.5;color:rgba(255,255,255,.8)}
+.tp-b2c-lp .expert{display:flex;gap:var(--s3);align-items:center;margin-top:var(--s4);padding:var(--s3);border-radius:22px;background:rgba(255,255,255,.08)}
+.tp-b2c-lp .expert img{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.tp-b2c-lp .expert .h3{color:#fff;font-size:15px}
+.tp-b2c-lp .expert p.small{color:rgba(255,255,255,.62);margin-top:4px}
+.tp-b2c-lp .studies{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:var(--s6)}
+.tp-b2c-lp .study{padding:var(--s4) var(--s3);border-radius:24px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);transition:transform .5s var(--spring),background .4s}
+.tp-b2c-lp .study:hover{transform:translateY(-6px);background:rgba(255,255,255,.1)}
+.tp-b2c-lp .study__n{display:block;font-family:var(--display);font-size:clamp(38px,3.6vw,52px);line-height:1;background:linear-gradient(120deg,#FFE0D2,#F7A7A0 50%,#D9B8F5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .study__t{margin-top:8px;font-size:14px;line-height:1.55;color:#fff}
+.tp-b2c-lp .study__s{margin-top:var(--s2);padding-top:var(--s2);border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;line-height:1.65;color:rgba(255,255,255,.6)}
 
-/* --------------------------------------------------------------------------
-   SECTION HEADS
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-head{margin-bottom:var(--s7)}
-.tp-b2c-lp .pg-head .pg-label{margin-bottom:var(--s4)}
-.tp-b2c-lp .pg-head--split{
-  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s7);align-items:end;
-}
+/* MATCH quiz */
+.tp-b2c-lp .match{background:var(--grad-soft)}
+.tp-b2c-lp .quiz{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:stretch}
+.tp-b2c-lp .quiz__card{position:relative;padding:var(--s5);border-radius:32px;background:#fff;box-shadow:0 40px 80px -60px rgba(120,40,60,.7);min-height:420px}
+.tp-b2c-lp .quiz__steps{display:flex;gap:6px;margin-bottom:var(--s4)}
+.tp-b2c-lp .quiz__steps i{flex:1;height:4px;border-radius:4px;background:var(--hair);transition:background .4s}
+.tp-b2c-lp .quiz__steps i.on{background:var(--grad)}
+.tp-b2c-lp .q{display:none;animation:tp-in .6s var(--ease) both}
+.tp-b2c-lp .q.on{display:block}
+.tp-b2c-lp .q legend,.tp-b2c-lp .q h3{font-family:var(--display);font-size:clamp(20px,2vw,26px);letter-spacing:.05em;text-transform:uppercase;line-height:1.3;margin-bottom:var(--s3)}
+.tp-b2c-lp .q__n{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--rose-dk);margin-bottom:8px;font-family:var(--ui)}
+.tp-b2c-lp .opts{display:grid;gap:10px}
+.tp-b2c-lp .opt{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);width:100%;padding:18px 22px;border-radius:18px;background:#FFF6F2;box-shadow:inset 0 0 0 1px var(--hair);text-align:left;font-size:14px;font-weight:600;letter-spacing:.02em;transition:transform .4s var(--spring),background .3s,color .3s}
+.tp-b2c-lp .opt:hover,.tp-b2c-lp .opt:focus-visible{background:#141414;color:#fff;transform:translateX(6px)}
+.tp-b2c-lp .back{margin-top:var(--s3);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.tp-b2c-lp .res{display:none;grid-template-columns:auto 1fr;gap:var(--s4);align-items:center;animation:tp-in .7s var(--ease) both}
+.tp-b2c-lp .res.on{display:grid}
+.tp-b2c-lp .res__pic{width:150px;height:220px;display:grid;place-items:center;border-radius:24px;background:var(--grad-soft)}
+.tp-b2c-lp .res__pic img{max-height:86%;max-width:80%;width:auto;filter:drop-shadow(0 14px 14px rgba(80,30,30,.3))}
+.tp-b2c-lp .res__k{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-dk)}
+.tp-b2c-lp .res h3{font-size:clamp(22px,2.4vw,30px);letter-spacing:.05em;text-transform:uppercase;margin:6px 0 8px}
+.tp-b2c-lp .res__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--s3)}
+.tp-b2c-lp .res__cta .btn{min-height:46px;padding:10px 20px;font-size:10.5px}
+@keyframes tp-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* --------------------------------------------------------------------------
-   WHY — the portrait on a blush plane, the case beside it
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-why{
-  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s8);align-items:center;
-}
-.tp-b2c-lp .pg-why__pic{position:relative;margin-left:var(--s6)}
-.tp-b2c-lp .pg-why__pic::before{
-  content:'';position:absolute;left:calc(var(--s6) * -1);top:var(--s7);width:100%;height:100%;
-  background:var(--pg-blush);z-index:0;
-}
-.tp-b2c-lp .pg-why__pic .pg-figure{position:relative;z-index:1}
-.tp-b2c-lp .pg-why__copy .pg-lede{margin-top:var(--s5)}
-.tp-b2c-lp .pg-why__copy .pg-body{margin-top:var(--s3);color:var(--pg-grey)}
+/* REVIEWS */
+.tp-b2c-lp .ugc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tp-b2c-lp .ugc figure{position:relative;border-radius:24px;overflow:hidden;background:#111;aspect-ratio:9/16;box-shadow:0 30px 60px -40px rgba(120,40,60,.7);transition:transform .5s var(--spring)}
+.tp-b2c-lp .ugc figure:hover{transform:translateY(-8px) rotate(-1deg)}
+.tp-b2c-lp .ugc video{width:100%;height:100%;object-fit:cover}
+.tp-b2c-lp .ugc figcaption{position:absolute;left:12px;top:12px;pointer-events:none}
 
-.tp-b2c-lp .pg-figure{position:relative;overflow:hidden;background:var(--pg-hair)}
-.tp-b2c-lp .pg-figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--pg-ease)}
-.tp-b2c-lp .pg-figure:hover img{transform:scale(1.04)}
-.tp-b2c-lp .pg-figure--4x5{aspect-ratio:4/5}
-.tp-b2c-lp .pg-figure--1x1{aspect-ratio:1/1}
+/* ROUTINE */
+.tp-b2c-lp .routine{background:#fff}
+.tp-b2c-lp .rsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.tp-b2c-lp .rstep{position:relative;padding:var(--s4) var(--s3);border-radius:24px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--hair);transition:transform .5s var(--spring),background .4s}
+.tp-b2c-lp .rstep:hover{transform:translateY(-6px);background:var(--blush)}
+.tp-b2c-lp .rstep__n{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--grad);color:#fff;font-family:var(--display);font-size:16px;margin-bottom:var(--s2)}
+.tp-b2c-lp .rstep p{margin-top:6px;font-size:13.5px;line-height:1.65;color:var(--grey)}
+.tp-b2c-lp .rpics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:var(--s5)}
+.tp-b2c-lp .rpics img{border-radius:24px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.tp-b2c-lp .howto{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:var(--s6)}
+.tp-b2c-lp .howto__frame{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#141110}
+.tp-b2c-lp .howto__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tp-b2c-lp .howto figcaption{margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 
-/* the five devices, on a slow loop */
-.tp-b2c-lp .pg-marquee{
-  position:relative;overflow:hidden;padding:var(--s3) 0;margin-top:var(--s8);
-  border-top:1px solid var(--pg-hair);border-bottom:1px solid var(--pg-hair);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-}
-.tp-b2c-lp .pg-marquee__track{display:flex;width:max-content}
-.tp-b2c-lp .pg-marquee__row{display:flex;align-items:center;gap:var(--s6);padding-right:var(--s6);flex:none}
-.tp-b2c-lp .pg-marquee__row li{
-  font-family:var(--pg-display);font-size:13px;letter-spacing:var(--pg-track-display);
-  text-transform:uppercase;color:var(--pg-mute);white-space:nowrap;
-}
-.tp-b2c-lp .pg-marquee__row li::after{
-  content:'';display:inline-block;width:4px;height:4px;margin-left:var(--s6);
-  vertical-align:middle;background:var(--pg-blush-deep);
-}
+/* ABOUT */
+.tp-b2c-lp .about{position:relative;overflow:hidden;background:#120C10;color:rgba(255,255,255,.86);isolation:isolate}
+.tp-b2c-lp .about__pic{position:absolute;inset:0 0 0 38%;z-index:-1}
+.tp-b2c-lp .about__pic img{width:100%;height:100%;object-fit:cover}
+.tp-b2c-lp .about__pic::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#120C10 0%,rgba(18,12,16,.85) 25%,rgba(18,12,16,.2) 60%,rgba(18,12,16,0))}
+.tp-b2c-lp .about__in{padding:var(--s8) 0;max-width:560px}
+.tp-b2c-lp .about__logo{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.tp-b2c-lp .about .h2{color:#fff;margin-top:var(--s4)}
+.tp-b2c-lp .about p{margin-top:var(--s3)}
+.tp-b2c-lp .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s4)}
+.tp-b2c-lp .pill{padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .3s,color .3s}
+.tp-b2c-lp .pill:hover{background:#fff;color:#000}
 
-/* --------------------------------------------------------------------------
-   TECHNOLOGY BOARD — banner, intro and the three technologies as one object
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-board{background:var(--pg-white);border:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-board__banner{position:relative;aspect-ratio:21/8;overflow:hidden;background:#C9C7C2}
-.tp-b2c-lp .pg-board__banner img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
-.tp-b2c-lp .pg-board__head{
-  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--s7);
-  padding:var(--s6);align-items:start;
-}
-.tp-b2c-lp .pg-tech{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-tech__item{
-  position:relative;padding:var(--s6) var(--s5) var(--s6);overflow:hidden;
-}
-.tp-b2c-lp .pg-tech__item + .pg-tech__item{border-left:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-tech__item::before{
-  content:'';position:absolute;inset:0;background:var(--pg-blush);z-index:0;
-  transform:scaleY(0);transform-origin:bottom;transition:transform .7s var(--pg-ease);
-}
-.tp-b2c-lp .pg-tech__item:hover::before{transform:scaleY(1)}
-.tp-b2c-lp .pg-tech__item > *{position:relative;z-index:1}
-.tp-b2c-lp .pg-tech__mark{display:block;width:76px;height:76px;margin-bottom:var(--s5)}
-.tp-b2c-lp .pg-tech__mark img{width:100%;height:100%;object-fit:contain;transition:transform .9s var(--pg-ease)}
-.tp-b2c-lp .pg-tech__item:hover .pg-tech__mark img{transform:rotate(-14deg) scale(1.08)}
-.tp-b2c-lp .pg-tech__n{
-  display:block;font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;
-  color:var(--pg-mute);margin-bottom:var(--s2);
-}
-.tp-b2c-lp .pg-tech__item .pg-body{margin-top:var(--s3);color:var(--pg-grey)}
+/* FAQ */
+.tp-b2c-lp .faqg{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:var(--s7);align-items:start}
+.tp-b2c-lp .faqg > :first-child{position:sticky;top:calc(var(--bar) + 24px)}
+.tp-b2c-lp details{border-radius:18px;transition:background .4s}
+.tp-b2c-lp details + details{margin-top:8px}
+.tp-b2c-lp details[open]{background:#FFF1EC}
+.tp-b2c-lp summary{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:20px 22px;cursor:pointer;list-style:none;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:18px;box-shadow:inset 0 0 0 1px var(--hair)}
+.tp-b2c-lp summary::-webkit-details-marker{display:none}
+.tp-b2c-lp .faq__i{position:relative;width:32px;height:32px;flex:none;border-radius:50%;background:var(--blush);transition:background .4s,rotate .5s var(--ease)}
+.tp-b2c-lp .faq__i::before,.tp-b2c-lp .faq__i::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:currentColor;translate:-50% -50%;transition:rotate .4s}
+.tp-b2c-lp .faq__i::after{rotate:90deg}
+.tp-b2c-lp details[open] .faq__i{background:var(--grad);color:#fff;rotate:180deg}
+.tp-b2c-lp details[open] .faq__i::after{rotate:0deg}
+.tp-b2c-lp .faq__a{padding:0 22px 20px;max-width:760px;font-size:14.5px;line-height:1.8;color:#3E3533}
+.tp-b2c-lp .faq__a a{color:var(--rose-dk);border-bottom:1px solid}
 
-/* --------------------------------------------------------------------------
-   RANGE RAIL — a scroll-snap slider. It is a horizontal scroller, so a
-   trackpad, a touch swipe, a shift-wheel or the arrow keys all drive it, and
-   the progress bar is a scroll-driven animation.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-railwrap{timeline-scope:--pgRail}
-.tp-b2c-lp .pg-rail{
-  display:flex;gap:var(--s4);
-  overflow-x:auto;overscroll-behavior-x:contain;
-  scroll-snap-type:x proximity;
-  scrollbar-width:none;-ms-overflow-style:none;
-  padding-bottom:var(--s4);
-  scroll-timeline:--pgRail inline;
-}
-.tp-b2c-lp .pg-rail::-webkit-scrollbar{display:none}
-.tp-b2c-lp .pg-rail:focus-visible{outline:2px solid var(--pg-black);outline-offset:6px}
-.tp-b2c-lp .pg-rail__item{
-  position:relative;flex:0 0 clamp(268px,27vw,372px);scroll-snap-align:start;
-  display:flex;flex-direction:column;
-}
-.tp-b2c-lp .pg-rail__card{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--pg-hair)}
-.tp-b2c-lp .pg-rail__card img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--pg-ease)}
-.tp-b2c-lp .pg-rail__item:hover .pg-rail__card img{transform:scale(1.06)}
-.tp-b2c-lp .pg-rail__card .pg-tag{position:absolute;left:var(--s3);top:var(--s3);z-index:1}
+/* LEAD FORM */
+.tp-b2c-lp .lead{position:relative;overflow:hidden;background:var(--grad);isolation:isolate}
+.tp-b2c-lp .lead::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(40% 60% at 15% 20%,rgba(255,255,255,.35),transparent 70%),radial-gradient(40% 60% at 90% 90%,rgba(60,20,60,.35),transparent 70%)}
+.tp-b2c-lp .lead__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:center}
+.tp-b2c-lp .lead__copy{color:#fff}
+.tp-b2c-lp .lead__copy .h2{color:#fff;font-size:clamp(34px,4.6vw,64px)}
+.tp-b2c-lp .lead__copy .lede{margin-top:var(--s3);color:rgba(255,255,255,.92)}
+.tp-b2c-lp .lead__pic{margin-top:var(--s4);border-radius:28px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 30px 60px -30px rgba(60,10,40,.6)}
+.tp-b2c-lp .lead__pic img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.tp-b2c-lp .fcard{position:relative;padding:var(--s5);border-radius:32px;background:#fff;box-shadow:0 50px 100px -50px rgba(60,10,40,.6)}
+.tp-b2c-lp .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.tp-b2c-lp .fld{display:block;position:relative}
+.tp-b2c-lp .fld--full{grid-column:1 / -1}
+.tp-b2c-lp .fld__l{display:block;margin-bottom:6px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+.tp-b2c-lp .fld input,.tp-b2c-lp .fld select,.tp-b2c-lp .fld textarea{width:100%;height:50px;padding:0 16px;border:0;border-radius:14px;background:#FFF5F1;box-shadow:inset 0 0 0 1px var(--hair);font:inherit;font-size:15px;color:#000;-webkit-appearance:none;appearance:none;transition:box-shadow .3s,background .3s}
+.tp-b2c-lp .fld textarea{height:96px;padding:12px 16px;resize:vertical}
+.tp-b2c-lp .fld select{background-image:linear-gradient(45deg,transparent 50%,#000 50%),linear-gradient(135deg,#000 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.tp-b2c-lp .fld input:focus,.tp-b2c-lp .fld select:focus,.tp-b2c-lp .fld textarea:focus{outline:0;background:#fff;box-shadow:inset 0 0 0 2px var(--rose)}
+.tp-b2c-lp .fld.err input,.tp-b2c-lp .fld.err select{box-shadow:inset 0 0 0 2px #B3261E}
+.tp-b2c-lp .fld__e{display:none;margin-top:5px;font-size:11px;color:#B3261E}
+.tp-b2c-lp .fld.err .fld__e{display:block}
+.tp-b2c-lp .cons{grid-column:1 / -1;display:flex;gap:12px;align-items:flex-start}
+.tp-b2c-lp .cons input{appearance:none;-webkit-appearance:none;width:20px;height:20px;flex:none;margin:3px 0 0;border-radius:6px;box-shadow:inset 0 0 0 1.5px var(--grey);cursor:pointer;transition:background .3s}
+.tp-b2c-lp .cons input:checked{background:var(--grad);box-shadow:none}
+.tp-b2c-lp .cons.err input{box-shadow:inset 0 0 0 2px #B3261E}
+.tp-b2c-lp .cons label{font-size:12px;line-height:1.75;color:var(--grey)}
+.tp-b2c-lp .cons a{color:#000;border-bottom:1px solid}
+.tp-b2c-lp .fact{grid-column:1 / -1}
+.tp-b2c-lp .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.tp-b2c-lp .ok{display:none;text-align:center;padding:var(--s5) 0}
+.tp-b2c-lp .ok svg{width:72px;height:72px;margin:0 auto var(--s3);fill:none;stroke:var(--rose);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tp-b2c-lp .ok svg path{stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 1s var(--ease) .2s}
+.tp-b2c-lp .sent .ok{display:block}
+.tp-b2c-lp .sent .ok svg path{stroke-dashoffset:0}
+.tp-b2c-lp .sent form{display:none}
+.tp-b2c-lp .ichips{display:flex;flex-wrap:wrap;gap:6px}
+.tp-b2c-lp .ichip{position:relative}
+.tp-b2c-lp .ichip input{position:absolute;opacity:0;pointer-events:none}
+.tp-b2c-lp .ichip span{display:inline-block;padding:9px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:11.5px;font-weight:600;cursor:pointer;transition:background .3s,color .3s}
+.tp-b2c-lp .ichip input:checked + span{background:#141414;color:#fff;box-shadow:none}
+.tp-b2c-lp .ichip input:focus-visible + span{outline:2px solid #000;outline-offset:2px}
 
-.tp-b2c-lp .pg-prod__body{display:flex;flex-direction:column;flex:1;padding-top:var(--s4)}
-.tp-b2c-lp .pg-prod__name{
-  font-family:var(--pg-display);font-size:16px;line-height:1.45;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--pg-black);
-}
-.tp-b2c-lp .pg-prod__goal{margin-top:var(--s1);font-size:14px;font-weight:600;line-height:1.7;color:var(--pg-black)}
-.tp-b2c-lp .pg-prod__desc{margin-top:var(--s1);font-size:13.5px;line-height:1.85;color:var(--pg-grey);flex:1}
-.tp-b2c-lp .pg-prod__tech{margin-top:var(--s3)}
-.tp-b2c-lp .pg-prod__cta{margin-top:var(--s4)}
+/* footer */
+.tp-b2c-lp .foot{background:#1A1216;color:rgba(255,255,255,.75);padding:var(--s6) 0 calc(var(--s5) + 80px)}
+.tp-b2c-lp .foot__in{display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center;justify-content:space-between}
+.tp-b2c-lp .foot__marks{display:flex;align-items:center;gap:var(--s4)}
+.tp-b2c-lp .foot__marks img{height:34px;width:auto;filter:brightness(0) invert(1)}
+.tp-b2c-lp .foot__links{display:flex;gap:var(--s4);flex-wrap:wrap}
+.tp-b2c-lp .foot__links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid transparent}
+.tp-b2c-lp .foot__links a:hover{border-color:currentColor}
+.tp-b2c-lp .foot__legal{width:100%;margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid rgba(255,255,255,.1);font-size:11px;line-height:1.8;color:rgba(255,255,255,.5)}
 
-.tp-b2c-lp .pg-rail__foot{display:flex;align-items:center;gap:var(--s4);margin-top:var(--s2)}
-.tp-b2c-lp .pg-rail__bar{position:relative;flex:1;height:2px;background:rgba(0,0,0,.1)}
-.tp-b2c-lp .pg-rail__bar i{
-  position:absolute;inset:0;background:var(--pg-black);transform:scaleX(0);transform-origin:left;
-}
-/* Anchor targets for the arrows. A real <a href="#id"> click scrolls the rail
-   horizontally. The target is 1px wide and FULL height, sitting on the edge
-   the arrow should reveal, so the page barely moves. */
-.tp-b2c-lp .pg-rail__pt{position:absolute;top:0;bottom:0;width:1px;overflow:hidden;scroll-margin-block:42vh 20vh}
-.tp-b2c-lp .pg-rail__pt--start{left:0}
-.tp-b2c-lp .pg-rail__pt--end{right:0}
-.tp-b2c-lp .pg-rail__nav{display:flex;gap:10px;flex:none}
-.tp-b2c-lp .pg-rail__arrow{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:46px;height:46px;flex:none;
-  border:1px solid rgba(0,0,0,.26);background:transparent;color:var(--pg-black);
-  font-size:15px;line-height:1;overflow:hidden;position:relative;
-  transition:color .4s var(--pg-ease),border-color .4s var(--pg-ease);
-}
-.tp-b2c-lp .pg-rail__arrow span{position:relative;z-index:1;transition:transform .45s var(--pg-ease)}
-.tp-b2c-lp .pg-rail__arrow::after{
-  content:'';position:absolute;inset:0;background:var(--pg-black);
-  transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--pg-ease);
-}
-.tp-b2c-lp .pg-rail__arrow:hover{color:var(--pg-white);border-color:var(--pg-black)}
-.tp-b2c-lp .pg-rail__arrow:hover::after{transform:scaleY(1)}
-.tp-b2c-lp .pg-rail__arrow--prev:hover span{transform:translateX(-4px)}
-.tp-b2c-lp .pg-rail__arrow--next:hover span{transform:translateX(4px)}
+/* sticky CTA + drawer */
+.tp-b2c-lp .dock{position:fixed;left:50%;bottom:18px;z-index:75;display:flex;align-items:center;gap:var(--s3);padding:8px 8px 8px 22px;border-radius:999px;background:rgba(24,14,20,.9);color:#fff;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 24px 50px -20px rgba(40,10,30,.6);transform:translate(-50%,160%);transition:transform .6s var(--spring)}
+.tp-b2c-lp .dock.on{transform:translate(-50%,0)}
+.tp-b2c-lp .dock__t{font-size:12px;line-height:1.4}
+.tp-b2c-lp .dock__t b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(120deg,#FFD9C9,#F7A7A0,#D9B8F5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .dock .btn{min-height:44px;padding:10px 20px;font-size:10.5px;white-space:nowrap}
+.tp-b2c-lp .drawer{position:fixed;inset:0;z-index:90;visibility:hidden;pointer-events:none}
+.tp-b2c-lp .drawer.open{visibility:visible;pointer-events:auto}
+.tp-b2c-lp .drawer__s{position:absolute;inset:0;background:rgba(40,12,30,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transition:opacity .45s}
+.tp-b2c-lp .drawer.open .drawer__s{opacity:1}
+.tp-b2c-lp .drawer__p{position:absolute;top:0;right:0;bottom:0;width:min(470px,100%);overflow-y:auto;background:var(--paper);padding:var(--s5) var(--s4) var(--s4);transform:translateX(100%);transition:transform .6s var(--ease)}
+.tp-b2c-lp .drawer.open .drawer__p{transform:none}
+.tp-b2c-lp .drawer__p::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--grad)}
+.tp-b2c-lp .drawer__x{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;transition:background .3s,color .3s,rotate .5s var(--ease)}
+.tp-b2c-lp .drawer__x:hover{background:#141414;color:#fff;rotate:90deg}
+.tp-b2c-lp .drawer .h2{font-size:clamp(24px,2.4vw,32px);margin-top:var(--s2)}
+.tp-b2c-lp .drawer .fgrid{grid-template-columns:1fr;margin-top:var(--s4)}
 
-/* --------------------------------------------------------------------------
-   FIND YOUR MATCH — three questions, no JavaScript. The radios sit first in
-   the form; every question and result after them is shown with a sibling
-   selector, so changing an earlier answer re-routes everything below it.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-match{
-  display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:var(--s7);align-items:start;
-}
-.tp-b2c-lp .pg-match__intro .pg-lede{margin-top:var(--s4)}
-.tp-b2c-lp .pg-match__card{background:var(--pg-white);padding:var(--s6)}
-.tp-b2c-lp .pg-match__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:var(--s5)}
-.tp-b2c-lp .pg-match__steps i{position:relative;height:2px;background:rgba(0,0,0,.1);overflow:hidden}
-.tp-b2c-lp .pg-match__steps i::after{
-  content:'';position:absolute;inset:0;background:var(--pg-black);
-  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--pg-ease);
-}
+/* misc */
+.tp-b2c-lp .marq{overflow:hidden;padding:18px 0;background:#141414;color:#fff;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tp-b2c-lp .marq__t{display:flex;width:max-content}
+.tp-b2c-lp .marq ul{display:flex;gap:var(--s5);padding-right:var(--s5);flex:none;align-items:center}
+.tp-b2c-lp .marq li{font-family:var(--display);font-size:clamp(16px,1.8vw,24px);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.tp-b2c-lp .marq li:nth-child(odd){background:linear-gradient(120deg,#FFD9C9,#F7A7A0,#D9B8F5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .marq li::after{content:'✦';margin-left:var(--s5);font-size:13px;color:#F7A7A0;-webkit-text-fill-color:#F7A7A0}
+.tp-b2c-lp .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#000;color:#fff;padding:12px 20px;font-size:12px;font-weight:700}
+.tp-b2c-lp .skip:focus{left:0}
+.tp-b2c-lp .sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.tp-b2c-lp .note{display:none}
+.tp-b2c-lp.annotated .note{display:block;margin-top:12px;padding:9px 13px;border:1px dashed #B99A3E;background:#FFFBEF;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.6;color:#6B5411}
 
-.tp-b2c-lp .pg-q + .pg-q{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-q__n{
-  display:block;margin-bottom:var(--s2);
-  font-family:var(--pg-display);font-size:11px;letter-spacing:.24em;color:var(--pg-mute);
+/* MOTION */
+@keyframes tp-wipe{from{transform:translateY(108%)}to{transform:none}}
+@keyframes tp-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes tp-rise{from{opacity:0;transform:translateY(70px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes tp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes tp-spin{to{rotate:360deg}}
+@keyframes tp-spin-r{to{rotate:-360deg}}
+@keyframes tp-marq{to{transform:translateX(-50%)}}
+@keyframes tp-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:no-preference){
+  .tp-b2c-lp .hero .line > span{animation:tp-wipe 1.1s var(--ease) both}
+  .tp-b2c-lp .hero .line:nth-child(2) > span{animation-delay:.12s}
+  .tp-b2c-lp .hero .line:nth-child(3) > span{animation-delay:.24s}
+  .tp-b2c-lp .hero__tags,.tp-b2c-lp .hero__p,.tp-b2c-lp .hero__cta{animation:tp-up .9s var(--ease) .4s both}
+  .tp-b2c-lp .hero__p + .hero__p{animation-delay:.5s}
+  .tp-b2c-lp .hero__cta{animation-delay:.6s}
+  .tp-b2c-lp .dev{animation:tp-rise 1.3s var(--spring) both;animation-delay:var(--ad,.3s)}
+  .tp-b2c-lp .dev__f{animation:tp-bob var(--bd,6s) ease-in-out var(--bl,0s) infinite}
+  .tp-b2c-lp .stage__ring{animation:tp-spin 14s linear infinite}
+  .tp-b2c-lp .stage__badge{animation:tp-pulse 4s ease-in-out infinite}
+  .tp-b2c-lp .stage__card{animation:tp-up 1s var(--ease) 1s both}
+  .tp-b2c-lp .quick > *{animation:tp-up .8s var(--ease) both}
+  .tp-b2c-lp .quick > :nth-child(1){animation-delay:.8s}.tp-b2c-lp .quick > :nth-child(2){animation-delay:.86s}.tp-b2c-lp .quick > :nth-child(3){animation-delay:.92s}
+  .tp-b2c-lp .quick > :nth-child(4){animation-delay:.98s}.tp-b2c-lp .quick > :nth-child(5){animation-delay:1.04s}.tp-b2c-lp .quick > :nth-child(6){animation-delay:1.1s}
+  .tp-b2c-lp .tmap__orbit{animation:tp-spin 60s linear infinite}
+  .tp-b2c-lp .tmap__orbit .tnode{animation:tp-spin-r 60s linear infinite}
+  .tp-b2c-lp .tmap:hover .tmap__orbit,.tp-b2c-lp .tmap:hover .tnode{animation-play-state:paused}
+  .tp-b2c-lp .tmap__ring{animation:tp-spin 40s linear infinite}
+  .tp-b2c-lp .marq__t{animation:tp-marq 32s linear infinite}
+  .tp-b2c-lp.js .rv{opacity:0;transform:translateY(36px);transition:opacity 1s var(--ease) var(--d,0s),transform 1.1s var(--ease) var(--d,0s)}
+  .tp-b2c-lp.js .rv--l{transform:translateX(-44px)}
+  .tp-b2c-lp.js .rv--r{transform:translateX(44px)}
+  .tp-b2c-lp.js .rv--z{transform:scale(.92)}
+  .tp-b2c-lp.js .rv.in{opacity:1;transform:none}
+  .tp-b2c-lp.js .head .h2{clip-path:inset(0 0 100% 0);transform:translateY(.3em);transition:clip-path 1.1s var(--ease) .1s,transform 1.1s var(--ease) .1s}
+  .tp-b2c-lp.js .head.in .h2{clip-path:inset(-10% -2% -25% -2%);transform:none}
+  .tp-b2c-lp.js .head .head__n{opacity:0;transform:translateY(40%);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .tp-b2c-lp.js .head.in .head__n{opacity:1;transform:none}
+  .tp-b2c-lp.js .cstat__ring .fg{--k:0}
+  .tp-b2c-lp.js .clin.in .cstat__ring .fg{--k:1}
+  .tp-b2c-lp.js .matrix .dot{--ds:0}
+  .tp-b2c-lp.js .matrix.in .dot{--ds:1}
 }
-.tp-b2c-lp .pg-q legend{
-  float:left;width:100%;
-  font-family:var(--pg-display);font-size:clamp(16px,1.5vw,19px);line-height:1.45;
-  letter-spacing:.11em;text-transform:uppercase;color:var(--pg-black);
-}
-.tp-b2c-lp .pg-q__opts{clear:both;display:flex;flex-wrap:wrap;gap:12px;padding-top:var(--s4)}
-.tp-b2c-lp .pg-opt{
-  position:relative;display:inline-flex;align-items:center;gap:12px;
-  min-height:52px;padding:12px 22px 12px 18px;cursor:pointer;overflow:hidden;
-  border:1px solid rgba(0,0,0,.22);background:var(--pg-white);
-  font-size:13px;font-weight:600;line-height:1.5;letter-spacing:.04em;color:var(--pg-black);
-  transition:color .4s var(--pg-ease),border-color .4s var(--pg-ease);
-}
-.tp-b2c-lp .pg-opt::before{
-  content:'';flex:none;width:12px;height:12px;border:1px solid currentColor;border-radius:50%;
-  position:relative;z-index:1;transition:background .3s var(--pg-ease),box-shadow .3s var(--pg-ease);
-}
-.tp-b2c-lp .pg-opt::after{
-  content:'';position:absolute;inset:0;background:var(--pg-blush);z-index:0;
-  transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--pg-ease);
-}
-.tp-b2c-lp .pg-opt span{position:relative;z-index:1}
-.tp-b2c-lp .pg-opt:hover::after{transform:scaleY(1)}
+@media (prefers-reduced-motion:reduce){.tp-b2c-lp *,.tp-b2c-lp *::before,.tp-b2c-lp *::after{animation:none!important;transition-duration:.01ms!important}}
+@supports (interpolate-size:allow-keywords){@media (prefers-reduced-motion:no-preference){
+  .tp-b2c-lp{interpolate-size:allow-keywords}
+  .tp-b2c-lp details::details-content{block-size:0;overflow:clip;transition:block-size .45s var(--ease),content-visibility .45s allow-discrete}
+  .tp-b2c-lp details[open]::details-content{block-size:auto}
+}}
 
-/* each radio sits inside its own label, so a click focuses it where it is and
-   the page never jumps */
-.tp-b2c-lp .pg-opt .pg-sr{left:0;top:0}
-
-/* the chosen option fills black */
-.tp-b2c-lp .pg-opt:has(input:checked){background:var(--pg-black);border-color:var(--pg-black);color:var(--pg-white)}
-.tp-b2c-lp .pg-opt:has(input:checked)::before{background:var(--pg-white);box-shadow:inset 0 0 0 3px var(--pg-black)}
-.tp-b2c-lp .pg-opt:has(input:checked)::after{transform:scaleY(0)}
-.tp-b2c-lp .pg-opt:has(input:focus-visible){outline:2px solid var(--pg-black);outline-offset:3px}
-
-.tp-b2c-lp .pg-result{display:grid}
-
-/* Routing. Only where :has() exists — anywhere else every question and every
-   result simply stays on the page, which still reads as a complete guide. */
-@supports selector(:has(*)){
-  .tp-b2c-lp .pg-q--2,
-  .tp-b2c-lp .pg-q--3,
-  .tp-b2c-lp .pg-result{display:none}
-
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked) .pg-q--2{display:block}
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked) .pg-q--3{display:block}
-
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-eye:checked) .pg-result--prism,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-body:checked) .pg-result--pose,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-red:checked) .pg-result--aura,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked):has(#pg-q3-gold:checked) .pg-result--gold,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked):has(#pg-q3-multi:checked) .pg-result--s{display:grid}
-
-  /* the progress segments fill as the route completes */
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked) .pg-match__steps i:nth-child(1)::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-eye:checked) .pg-match__steps i::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-body:checked) .pg-match__steps i::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked) .pg-match__steps i:nth-child(2)::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-red:checked) .pg-match__steps i::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked):has(#pg-q3-gold:checked) .pg-match__steps i::after,
-  .tp-b2c-lp .pg-match__form:has(#pg-q1-face:checked):has(#pg-q2-firm:checked):has(#pg-q3-multi:checked) .pg-match__steps i::after{transform:scaleX(1)}
-}
-
-.tp-b2c-lp .pg-result{
-  grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:var(--s5);align-items:center;
-  margin-top:var(--s5);padding:var(--s4);background:var(--pg-paper);border:1px solid var(--pg-hair);
-}
-.tp-b2c-lp .pg-result .pg-figure{aspect-ratio:4/5}
-
-/* --------------------------------------------------------------------------
-   RESULTS — four creator videos from the TriPollar store, the clinical
-   figures in a row beneath. Native controls: nothing depends on script.
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-ugc-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
-.tp-b2c-lp .pg-ugc{position:relative;aspect-ratio:606/1080;overflow:hidden;background:var(--pg-noir)}
-.tp-b2c-lp .pg-ugc video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--pg-noir);
-}
-.tp-b2c-lp .pg-ugc__meta{position:absolute;left:var(--s2);top:var(--s2);z-index:2;pointer-events:none}
-
-.tp-b2c-lp .pg-stats{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:var(--s7);
-  border-top:1px solid rgba(0,0,0,.16);
-}
-.tp-b2c-lp .pg-stat{position:relative;padding:var(--s5) var(--s5) var(--s5) 0}
-.tp-b2c-lp .pg-stat + .pg-stat{padding-left:var(--s5);border-left:1px solid rgba(0,0,0,.1)}
-.tp-b2c-lp .pg-stat::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(0,0,0,.16);
-  transform-origin:left;
-}
-.tp-b2c-lp .pg-stat__n{
-  display:block;font-family:var(--pg-display);font-weight:400;
-  font-size:clamp(46px,5.4vw,76px);line-height:1;letter-spacing:.02em;color:var(--pg-black);
-}
-.tp-b2c-lp .pg-stat__t{display:block;margin-top:var(--s2);font-size:14px;line-height:1.75;color:var(--pg-grey);max-width:26em}
-
-.tp-b2c-lp .pg-expert{
-  display:grid;grid-template-columns:132px minmax(0,1fr);gap:var(--s5);align-items:center;
-  margin-top:var(--s7);padding:var(--s5);background:var(--pg-blush);
-}
-.tp-b2c-lp .pg-expert .pg-figure{aspect-ratio:1/1}
-.tp-b2c-lp .pg-expert .pg-small{margin-top:var(--s2)}
-
-/* --------------------------------------------------------------------------
-   ROUTINE — four steps on a rule that draws itself
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-routine{
-  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s7);align-items:start;
-  margin-bottom:var(--s8);
-}
-.tp-b2c-lp .pg-routine__copy .pg-link{margin-top:var(--s5)}
-.tp-b2c-lp .pg-routine__pics{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
-.tp-b2c-lp .pg-routine__pics .pg-figure:nth-child(2){margin-top:var(--s7)}
-.tp-b2c-lp .pg-routine__pics figcaption{
-  margin-top:var(--s2);font-size:10px;letter-spacing:var(--pg-track-label);text-transform:uppercase;color:var(--pg-mute);
-}
-
-.tp-b2c-lp .pg-steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5)}
-.tp-b2c-lp .pg-steps::before{
-  content:'';position:absolute;left:0;right:0;top:11px;height:1px;background:var(--pg-line);
-  transform-origin:left;
-}
-.tp-b2c-lp .pg-step{position:relative;padding-top:var(--s6)}
-.tp-b2c-lp .pg-step::before{
-  content:'';position:absolute;left:0;top:6px;width:11px;height:11px;background:var(--pg-black);
-}
-.tp-b2c-lp .pg-step__num{
-  display:block;font-family:var(--pg-display);font-size:clamp(34px,3.4vw,46px);line-height:1;
-  letter-spacing:.04em;color:var(--pg-blush-deep);margin-bottom:var(--s3);
-}
-.tp-b2c-lp .pg-step .pg-h3{margin-bottom:var(--s2)}
-.tp-b2c-lp .pg-step .pg-body{color:var(--pg-grey)}
-
-/* the how-to films — a poster in an iframe srcdoc, so nothing loads from
-   YouTube until it is clicked, and the page carries no script for it */
-.tp-b2c-lp .pg-howto{margin-top:var(--s8);padding-top:var(--s6);border-top:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-howto__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
-.tp-b2c-lp .pg-howto__frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--pg-noir)}
-.tp-b2c-lp .pg-howto__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.tp-b2c-lp .pg-howto__item figcaption{margin-top:var(--s3)}
-
-/* --------------------------------------------------------------------------
-   BRAND BAND — blush, with the treatment room bleeding off the left edge
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-brandband{position:relative;overflow:hidden;background:var(--pg-blush)}
-.tp-b2c-lp .pg-brandband__pic{position:absolute;top:0;left:0;bottom:0;width:40%;overflow:hidden}
-.tp-b2c-lp .pg-brandband__pic img{width:100%;height:100%;object-fit:cover;object-position:46% 50%}
-.tp-b2c-lp .pg-brandband__pic::after{
-  content:'';position:absolute;top:0;right:0;bottom:0;width:26%;z-index:1;
-  background:linear-gradient(270deg, var(--pg-blush) 0%, rgba(245,230,221,0) 100%);
-}
-.tp-b2c-lp .pg-brandband__in{
-  position:relative;z-index:2;padding:var(--s8) 0;min-height:clamp(560px,72vh,760px);
-  display:grid;grid-template-columns:40% 1fr;gap:var(--s7);align-items:center;
-}
-.tp-b2c-lp .pg-brandband__copy{grid-column:2;max-width:560px}
-.tp-b2c-lp .pg-brandband__logo{height:30px;width:auto}
-.tp-b2c-lp .pg-brandband__copy .pg-body{margin-top:var(--s4)}
-.tp-b2c-lp .pg-fda{
-  display:flex;align-items:center;gap:var(--s3);margin-top:var(--s6);
-  padding-top:var(--s4);border-top:1px solid rgba(0,0,0,.18);
-}
-.tp-b2c-lp .pg-fda img{width:64px;height:64px;flex:none}
-
-/* --------------------------------------------------------------------------
-   FAQ — <details>, no JavaScript
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:var(--s7);align-items:start}
-.tp-b2c-lp .pg-sticky{position:sticky;top:var(--s5)}
-.tp-b2c-lp .pg-faq{border-top:1px solid var(--pg-line)}
-.tp-b2c-lp .pg-faq__item{border-bottom:1px solid var(--pg-hair)}
-.tp-b2c-lp .pg-faq__q{
-  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
-  padding:var(--s4) 0;cursor:pointer;list-style:none;
-  font-family:var(--pg-ui);font-size:13px;font-weight:600;line-height:1.6;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--pg-black);
-  transition:opacity .3s var(--pg-ease);
-}
-.tp-b2c-lp .pg-faq__q:hover{opacity:.56}
-.tp-b2c-lp .pg-faq__q::-webkit-details-marker{display:none}
-.tp-b2c-lp .pg-faq__q::marker{content:''}
-.tp-b2c-lp .pg-faq__icon{position:relative;width:16px;height:16px;flex:none}
-.tp-b2c-lp .pg-faq__icon::before,
-.tp-b2c-lp .pg-faq__icon::after{
-  content:'';position:absolute;top:50%;left:50%;background:var(--pg-black);
-  transform:translate(-50%,-50%);transition:transform .4s var(--pg-ease),opacity .4s var(--pg-ease);
-}
-.tp-b2c-lp .pg-faq__icon::before{width:16px;height:1px}
-.tp-b2c-lp .pg-faq__icon::after{width:1px;height:16px}
-.tp-b2c-lp .pg-faq__item[open] .pg-faq__icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
-.tp-b2c-lp .pg-faq__a{padding:0 0 var(--s5);max-width:760px}
-.tp-b2c-lp .pg-faq__a .pg-link{margin-top:var(--s1)}
-.tp-b2c-lp .pg-inline{color:var(--pg-black);border-bottom:1px solid rgba(0,0,0,.35);transition:border-color .3s var(--pg-ease)}
-.tp-b2c-lp .pg-inline:hover{border-color:var(--pg-black)}
-
-/* --------------------------------------------------------------------------
-   FINAL CTA — a plate on the white campaign set, copy on the open side
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-final{position:relative;overflow:hidden;background:var(--pg-studio);min-height:clamp(440px,36vw,520px)}
-.tp-b2c-lp .pg-final__media{position:absolute;top:0;bottom:0;left:40%;right:0;overflow:hidden}
-.tp-b2c-lp .pg-final__media img{width:100%;height:100%;object-fit:cover;object-position:56% 24%}
-.tp-b2c-lp .pg-final__media::before{
-  content:'';position:absolute;top:0;bottom:0;left:0;width:20%;z-index:1;
-  background:linear-gradient(90deg, var(--pg-studio) 0%, rgba(243,241,239,0) 100%);
-}
-.tp-b2c-lp .pg-final__copy{
-  position:relative;z-index:2;max-width:540px;padding:var(--s6);
-  display:flex;flex-direction:column;justify-content:center;min-height:inherit;
-}
-.tp-b2c-lp .pg-final__copy .pg-body{margin-top:var(--s4);color:var(--pg-grey)}
-.tp-b2c-lp .pg-final__copy .pg-btn{margin-top:var(--s5);align-self:flex-start}
-
-/* --------------------------------------------------------------------------
-   FOOTER
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-footer{background:var(--pg-blush);padding:var(--s7) 0 var(--s6)}
-.tp-b2c-lp .pg-footer__in{
-  display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);align-items:center;justify-content:space-between;
-}
-.tp-b2c-lp .pg-footer__marks{display:flex;align-items:center;gap:var(--s5)}
-.tp-b2c-lp .pg-footer__marks img{height:28px;width:auto}
-.tp-b2c-lp .pg-footer__marks img:first-child{filter:brightness(0)}
-.tp-b2c-lp .pg-footer__links{display:flex;flex-wrap:wrap;gap:var(--s5)}
-.tp-b2c-lp .pg-footer__links a{
-  position:relative;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pg-ink);
-}
-.tp-b2c-lp .pg-footer__links a::after{
-  content:'';position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;
-  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--pg-ease);
-}
-.tp-b2c-lp .pg-footer__links a:hover::after{transform:scaleX(1)}
-
-/* --------------------------------------------------------------------------
-   SKIP LINK + SR-ONLY
-   -------------------------------------------------------------------------- */
-.tp-b2c-lp .pg-skip{
-  position:absolute;left:-9999px;top:0;z-index:100;
-  background:var(--pg-black);color:#fff;padding:14px 22px;
-  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-}
-.tp-b2c-lp .pg-skip:focus{left:0}
-.tp-b2c-lp .pg-sr{
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;
-}
-
-/* ==========================================================================
-   MOTION
-   Progressive throughout. Nothing is hidden by default, so a browser without
-   support — or a visitor who asks for reduced motion — gets the whole page,
-   static and complete.
-   ========================================================================== */
-@keyframes pg-wipe-up{from{transform:translateY(106%)}to{transform:translateY(0)}}
-@keyframes pg-fade-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
-@keyframes pg-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes pg-fade{from{opacity:0}to{opacity:1}}
-@keyframes pg-zoom-in{from{transform:scale(1.1)}to{transform:scale(1)}}
-@keyframes pg-drift{from{transform:scale(1.02)}to{transform:scale(1.12)}}
-@keyframes pg-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes pg-plane{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes pg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pg-cue{
-  0%{transform:translateY(-100%)}
-  55%{transform:translateY(240%)}
-  100%{transform:translateY(240%)}
-}
-
-@media (prefers-reduced-motion: no-preference){
-
-  /* --- hero, on load ------------------------------------------------- */
-  .tp-b2c-lp .pg-hero__media img{animation:pg-zoom-in 2.6s var(--pg-ease) both}
-  .tp-b2c-lp .pg-hero .pg-line > span{animation:pg-wipe-up 1s var(--pg-ease) both}
-  .tp-b2c-lp .pg-hero__deck,
-  .tp-b2c-lp .pg-hero__cta{animation:pg-fade-up .9s var(--pg-ease) both}
-  .tp-b2c-lp .pg-hero__plane{transform-origin:left;animation:pg-plane 1.4s var(--pg-ease) .3s both}
-  .tp-b2c-lp .pg-cue{animation:pg-fade 1s var(--pg-ease) 1.2s both}
-  .tp-b2c-lp .pg-cue::after{animation:pg-cue 2.6s var(--pg-ease) 1.4s infinite}
-
-  .tp-b2c-lp .pg-hero__title .pg-line:nth-child(1) > span{animation-delay:.18s}
-  .tp-b2c-lp .pg-hero__title .pg-line:nth-child(2) > span{animation-delay:.28s}
-  .tp-b2c-lp .pg-hero__title .pg-line:nth-child(3) > span{animation-delay:.38s}
-  .tp-b2c-lp .pg-hero__deck{animation-delay:.56s}
-  .tp-b2c-lp .pg-hero__cta{animation-delay:.72s}
-
-  /* --- the marquee never stops ------------------------------------- */
-  .tp-b2c-lp .pg-marquee__track{animation:pg-marquee 36s linear infinite}
-  .tp-b2c-lp .pg-marquee:hover .pg-marquee__track{animation-play-state:paused}
-
-  /* --- each new question and the result rise in as they are routed to - */
-  .tp-b2c-lp .pg-q--2,
-  .tp-b2c-lp .pg-q--3,
-  .tp-b2c-lp .pg-result{animation:pg-rise .6s var(--pg-ease) both}
-
-  /* --- scroll-driven, where the browser has it ----------------------- */
-  @supports (animation-timeline: view()){
-
-    .tp-b2c-lp .pg-progress{
-      animation:pg-rule linear both;animation-timeline:scroll(root block);
-    }
-    .tp-b2c-lp .pg-reveal{
-      animation:pg-fade-up linear both;
-      animation-timeline:view();animation-range:entry 4% cover 26%;
-    }
-    .tp-b2c-lp .pg-stagger > *{animation:pg-fade-up linear both;animation-timeline:view()}
-    .tp-b2c-lp .pg-stagger > *:nth-child(1){animation-range:entry 2% cover 24%}
-    .tp-b2c-lp .pg-stagger > *:nth-child(2){animation-range:entry 7% cover 29%}
-    .tp-b2c-lp .pg-stagger > *:nth-child(3){animation-range:entry 12% cover 34%}
-    .tp-b2c-lp .pg-stagger > *:nth-child(4){animation-range:entry 17% cover 39%}
-    .tp-b2c-lp .pg-stagger > *:nth-child(5){animation-range:entry 22% cover 44%}
-
-    .tp-b2c-lp .pg-why__pic::before{
-      transform-origin:left;animation:pg-plane linear both;animation-timeline:view();animation-range:entry 5% entry 70%;
-    }
-    .tp-b2c-lp .pg-steps::before{
-      animation:pg-rule linear both;animation-timeline:view();animation-range:entry 10% entry 100%;
-    }
-    /* the figures' rules draw themselves, one after the next, and are done
-       by the time each figure is fully on screen */
-    .tp-b2c-lp .pg-stat::after{animation:pg-rule linear both;animation-timeline:view()}
-    .tp-b2c-lp .pg-stat:nth-child(1)::after{animation-range:entry 0% entry 60%}
-    .tp-b2c-lp .pg-stat:nth-child(2)::after{animation-range:entry 20% entry 80%}
-    .tp-b2c-lp .pg-stat:nth-child(3)::after{animation-range:entry 40% entry 100%}
-    .tp-b2c-lp .pg-board__banner img,
-    .tp-b2c-lp .pg-brandband__pic img,
-    .tp-b2c-lp .pg-final__media img{
-      animation:pg-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;
-    }
-    .tp-b2c-lp .pg-rail__bar i{
-      animation:pg-rule linear both;animation-timeline:--pgRail;
-    }
-  }
-}
-
-/* a height transition on <details> where the browser can interpolate to auto */
-@supports (interpolate-size: allow-keywords){
-  @media (prefers-reduced-motion: no-preference){
-    .tp-b2c-lp{interpolate-size:allow-keywords}
-    .tp-b2c-lp .pg-faq__item::details-content{
-      block-size:0;overflow:clip;
-      transition:block-size .45s var(--pg-ease),content-visibility .45s allow-discrete;
-    }
-    .tp-b2c-lp .pg-faq__item[open]::details-content{block-size:auto}
-  }
-}
-
-/* --------------------------------------------------------------------------
-   RESPONSIVE
-   -------------------------------------------------------------------------- */
+/* RESPONSIVE */
+@media (max-width:1240px){.tp-b2c-lp .nav{display:none}}
 @media (max-width:1100px){
-  .tp-b2c-lp .pg-head--split{grid-template-columns:1fr;gap:var(--s4)}
-  .tp-b2c-lp .pg-ugc-row{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tp-b2c-lp .pg-tech__item{padding:var(--s5) var(--s4)}
+  .tp-b2c-lp .pgrid{grid-template-columns:repeat(5,minmax(220px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+  .tp-b2c-lp .pgrid::-webkit-scrollbar{display:none}
+  .tp-b2c-lp .pc{scroll-snap-align:start}
+  .tp-b2c-lp .quick{grid-template-columns:repeat(3,1fr)}
+  .tp-b2c-lp .tcards{grid-template-columns:1fr 1fr}
+  .tp-b2c-lp .stats__in{grid-template-columns:repeat(3,1fr);row-gap:var(--s3)}
+  .tp-b2c-lp .stats__intro{grid-column:1 / -1}
+  .tp-b2c-lp .stat:nth-child(2){border-left:0;padding-left:0}
 }
 @media (max-width:1000px){
-  .tp-b2c-lp{--s7:70px;--s8:88px}
-  .tp-b2c-lp .pg-why,
-  .tp-b2c-lp .pg-board__head,
-  .tp-b2c-lp .pg-match,
-  .tp-b2c-lp .pg-routine,
-  .tp-b2c-lp .pg-split{grid-template-columns:1fr;gap:var(--s6)}
-  .tp-b2c-lp .pg-why__pic{max-width:480px;margin-left:var(--s5)}
-  .tp-b2c-lp .pg-why__pic::before{left:calc(var(--s5) * -1);top:var(--s5)}
-  .tp-b2c-lp .pg-board__head{padding:var(--s5)}
-  .tp-b2c-lp .pg-tech{grid-template-columns:1fr}
-  .tp-b2c-lp .pg-tech__item + .pg-tech__item{border-left:0;border-top:1px solid var(--pg-hair)}
-  .tp-b2c-lp .pg-tech__item{display:grid;grid-template-columns:76px 1fr;gap:0 var(--s4);align-items:start}
-  .tp-b2c-lp .pg-tech__mark{grid-row:span 3;margin-bottom:0}
-  .tp-b2c-lp .pg-match__card{padding:var(--s5)}
-  .tp-b2c-lp .pg-sticky{position:static}
-  .tp-b2c-lp .pg-steps{grid-template-columns:1fr 1fr;gap:var(--s5)}
-  .tp-b2c-lp .pg-steps::before{display:none}
-  .tp-b2c-lp .pg-howto__grid{grid-template-columns:1fr 1fr}
-
-  .tp-b2c-lp .pg-hero{display:flex;flex-direction:column}
-  .tp-b2c-lp .pg-hero__media{position:relative;inset:auto;left:auto;width:100%;aspect-ratio:5/4;order:-1}
-  .tp-b2c-lp .pg-hero__media img{object-position:62% 40%}
-  .tp-b2c-lp .pg-hero__media::before{display:none}
-  .tp-b2c-lp .pg-hero__plane{display:none}
-  .tp-b2c-lp .pg-hero__in{min-height:0;padding:var(--s6) 0 var(--s7)}
-  .tp-b2c-lp .pg-hero__copy{max-width:none}
-  .tp-b2c-lp .pg-cue{display:none}
-
-  .tp-b2c-lp .pg-brandband__pic{position:relative;width:100%;aspect-ratio:4/3}
-  .tp-b2c-lp .pg-brandband__pic img{object-position:50% 40%}
-  .tp-b2c-lp .pg-brandband__pic::after{display:none}
-  .tp-b2c-lp .pg-brandband__in{grid-template-columns:1fr;min-height:0;padding:var(--s7) 0}
-  .tp-b2c-lp .pg-brandband__copy{grid-column:1;max-width:none}
-
-  .tp-b2c-lp .pg-final{min-height:0}
-  .tp-b2c-lp .pg-final__media{position:relative;inset:auto;left:auto;width:100%;aspect-ratio:16/10}
-  .tp-b2c-lp .pg-final__media img{object-position:58% 30%}
-  .tp-b2c-lp .pg-final__media::before{display:none}
-  .tp-b2c-lp .pg-final__copy{max-width:none;padding:var(--s6) var(--s5)}
-
-  .tp-b2c-lp .pg-logobar__in{height:66px}
-  .tp-b2c-lp .pg-logobar__mark{height:28px}
+  .tp-b2c-lp{--s7:70px;--s8:88px;--bar:62px}
+  .tp-b2c-lp .hero__in{grid-template-columns:1fr;padding-top:var(--s3)}
+  .tp-b2c-lp .stage{order:-1;max-width:540px;margin-inline:auto;max-height:none}
+  .tp-b2c-lp .spot,.tp-b2c-lp .why__grid,.tp-b2c-lp .clin__grid,.tp-b2c-lp .quiz,.tp-b2c-lp .faqg,.tp-b2c-lp .lead__grid{grid-template-columns:1fr;gap:var(--s5)}
+  .tp-b2c-lp .spot__stage{min-height:360px}
+  .tp-b2c-lp .faqg > :first-child{position:static}
+  .tp-b2c-lp .ugc{grid-template-columns:repeat(4,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:10px}
+  .tp-b2c-lp .ugc figure{scroll-snap-align:start}
+  .tp-b2c-lp .rsteps{grid-template-columns:1fr 1fr}
+  .tp-b2c-lp .howto,.tp-b2c-lp .studies{grid-template-columns:1fr}
+  .tp-b2c-lp .about__pic{position:relative;inset:auto;height:300px}
+  .tp-b2c-lp .about__pic::before{background:linear-gradient(0deg,#120C10,transparent 60%)}
+  .tp-b2c-lp .about__in{padding:var(--s4) 0 var(--s7)}
+  .tp-b2c-lp .head{grid-template-columns:1fr;gap:var(--s2)}
+  .tp-b2c-lp .head__aside{grid-column:1}
+  .tp-b2c-lp .navm{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 var(--gutter) 10px;margin-top:-4px}
+  .tp-b2c-lp .navm::-webkit-scrollbar{display:none}
+  .tp-b2c-lp .navm a{flex:none;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .tp-b2c-lp .navm a.is-active{background:#141414;color:#fff;box-shadow:none}
 }
-@media (max-width:620px){
-  .tp-b2c-lp{--pg-gutter:20px}
-  .tp-b2c-lp .pg-ugc-row{gap:var(--s2)}
-  .tp-b2c-lp .pg-ugc__meta{left:var(--s1);top:var(--s1)}
-  .tp-b2c-lp .pg-stats{grid-template-columns:1fr}
-  .tp-b2c-lp .pg-stat,
-  .tp-b2c-lp .pg-stat + .pg-stat{padding:var(--s4) 0;border-left:0}
-  .tp-b2c-lp .pg-howto__grid{grid-template-columns:1fr}
-  .tp-b2c-lp .pg-expert{grid-template-columns:1fr;padding:var(--s4)}
-  .tp-b2c-lp .pg-tech__item{grid-template-columns:56px 1fr;padding:var(--s4) var(--s3)}
-  .tp-b2c-lp .pg-tech__mark{width:56px;height:56px}
-  .tp-b2c-lp .pg-expert .pg-figure{max-width:132px}
-  .tp-b2c-lp .pg-steps{grid-template-columns:1fr}
-  .tp-b2c-lp .pg-routine__pics .pg-figure:nth-child(2){margin-top:var(--s5)}
-  .tp-b2c-lp .pg-match__card{padding:var(--s4)}
-  .tp-b2c-lp .pg-opt{width:100%}
-  .tp-b2c-lp .pg-result{grid-template-columns:1fr;gap:var(--s3)}
-  .tp-b2c-lp .pg-result .pg-figure{max-width:260px}
-  .tp-b2c-lp .pg-actions .pg-btn{width:100%}
-  .tp-b2c-lp .pg-final__copy{padding:var(--s5) var(--s4)}
-  .tp-b2c-lp .pg-final__copy .pg-btn{align-self:stretch}
-  .tp-b2c-lp .pg-logobar .pg-link{font-size:11px}
+@media (max-width:700px){
+  .tp-b2c-lp{--gutter:18px}
+  .tp-b2c-lp .bar .btn{display:none}
+  .tp-b2c-lp .quick{grid-template-columns:1fr 1fr}
+  .tp-b2c-lp .qb{padding:12px}
+  .tp-b2c-lp .stage__card{width:110px;right:0}
+  .tp-b2c-lp .stage__badge{width:88px;height:88px;font-size:8px}.tp-b2c-lp .stage__badge b{font-size:22px}
+  .tp-b2c-lp .stats__in{grid-template-columns:1fr}
+  .tp-b2c-lp .stat{border-left:0;padding:var(--s2) 0;border-top:1px solid rgba(255,255,255,.14)}
+  .tp-b2c-lp .spot__body{padding:var(--s4) var(--s3)}
+  .tp-b2c-lp .spot__stage{min-height:300px}
+  .tp-b2c-lp .spot__img{max-height:250px}
+  .tp-b2c-lp .spot__grid,.tp-b2c-lp .fgrid,.tp-b2c-lp .tcards{grid-template-columns:1fr}
+  .tp-b2c-lp .cstats{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .tp-b2c-lp .cstat{padding:var(--s2) 6px}.tp-b2c-lp .cstat__ring{width:70px;height:70px}.tp-b2c-lp .cstat__ring b{font-size:18px}.tp-b2c-lp .cstat p{font-size:10.5px}
+  .tp-b2c-lp .quiz__card,.tp-b2c-lp .fcard{padding:var(--s4) var(--s3)}
+  .tp-b2c-lp .res{grid-template-columns:1fr}.tp-b2c-lp .res__pic{width:100%;height:200px}
+  .tp-b2c-lp .rpics{grid-template-columns:1fr}
+  .tp-b2c-lp .matrix{overflow-x:auto}.tp-b2c-lp .matrix table{min-width:520px}
+  .tp-b2c-lp .dock{left:12px;right:12px;bottom:12px;transform:translateY(160%);justify-content:space-between;padding:8px 8px 8px 16px}
+  .tp-b2c-lp .dock.on{transform:none}
+  .tp-b2c-lp .dock__t span{display:none}
+  .tp-b2c-lp .hero__cta .btn{flex:1 1 100%}
 }
 </style>
 
-
 <div class="tp-b2c-lp">
+  <script>document.currentScript.parentElement.classList.add('js');</script>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="tpGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD0BE"/><stop offset=".5" stop-color="#F28EA0"/><stop offset="1" stop-color="#C9A6F2"/></linearGradient></defs></svg>
+  <span class="prog" aria-hidden="true"></span>
+  <a class="skip" href="#learn-more">Skip to the contact form</a>
 
-  <span class="pg-progress" aria-hidden="true"></span>
-  <a class="pg-skip" href="#pg-main">Skip to main content</a>
-
-  <!-- ======================================================================
-       LOGO BAR — the mark and the primary action. No nav, no search.
-       ====================================================================== -->
-  <header class="pg-logobar">
-    <div class="pg-wrap">
-      <div class="pg-logobar__in">
-        <img class="pg-logobar__mark" src="assets/logo/tripollar-logo.svg"
-             alt="TriPollar — Intelligent Biology" width="159" height="53">
-        <a class="pg-link" href="#pg-match">Find Your Device<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+  <!-- BAR — wordmark only (no Intelligent Biology icon) + anchor nav -->
+  <header class="bar">
+    <div class="wrap">
+      <div class="bar__in">
+        <a href="#top" aria-label="TriPollar, back to top"><img class="bar__logo" src="assets/logo/tripollar-wordmark.svg" alt="TriPollar" width="97" height="53"></a>
+        <nav class="nav" aria-label="Page sections">
+          <a href="#products">Devices</a>
+          <a href="#technology">Technology</a>
+          <a href="#results">Clinical Results</a>
+          <a href="#match">Find Yours</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#routine">How to Use</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="btn" href="#learn-more" data-open><span>Want to learn more?</span></a>
       </div>
     </div>
+    <nav class="navm" aria-label="Page sections">
+      <a href="#products">Devices</a><a href="#technology">Technology</a><a href="#results">Results</a><a href="#match">Find yours</a><a href="#reviews">Reviews</a><a href="#routine">How to</a><a href="#faq">FAQ</a><a href="#learn-more">Learn more</a>
+    </nav>
   </header>
 
-  <main id="pg-main">
+  <main>
 
-  <!-- ======================================================================
-       HERO
-       ====================================================================== -->
-  <section class="pg-hero">
-
-    <div class="pg-hero__media">
-      <picture>
-        <source media="(max-width: 700px)" srcset="assets/images/hero-mob.webp" width="1100" height="880">
-        <img src="assets/images/hero.webp"
-             alt="A woman in a cream bodysuit stretching against pale sandstone in warm sunlight."
-             width="2560" height="1707" fetchpriority="high" decoding="async">
-      </picture>
-    </div>
-    <span class="pg-hero__plane" aria-hidden="true"></span>
-
-    <div class="pg-wrap">
-      <div class="pg-hero__in">
-        <div class="pg-hero__copy">
-
-          <h1 class="pg-hero__title">
-            <span class="pg-line"><span>Firmer, smoother-</span></span>
-            <span class="pg-line"><span>looking skin</span></span>
-            <span class="pg-line"><span>with at-home RF.</span></span>
-          </h1>
-
-          <p class="pg-hero__deck">TriPollar home use devices are FDA-cleared and dermatologist approved, with visible results in 6 to 8 weeks of consistent use. About 9 minutes a session, no clinic visit required.</p>
-
-          <div class="pg-hero__cta">
-            <div class="pg-actions">
-              <a class="pg-btn" href="#pg-match"><span>Find Your Device</span></a>
-              <a class="pg-link" href="https://pollogen.com/contact-us/" data-pg-cta="get-in-touch">Get in Touch<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <span class="pg-cue" aria-hidden="true"></span>
-    </div>
-
-  </section>
-
-  <!-- ======================================================================
-       WHY TRIPOLLAR
-       ====================================================================== -->
-  <section class="pg-section pg-paper">
-    <div class="pg-wrap">
-
-      <div class="pg-why">
-        <div class="pg-why__pic pg-reveal">
-          <figure class="pg-figure pg-figure--4x5">
-            <img src="assets/images/why-portrait.webp"
-                 alt="A woman holding the gold TriPollar STOP Vx2 Gold against her jawline, photographed on black."
-                 width="1080" height="1350" loading="lazy" decoding="async">
-          </figure>
-        </div>
-
-        <div class="pg-why__copy pg-reveal">
-          <h2 class="pg-h2">Why TriPollar?</h2>
-          <p class="pg-lede">TriPollar brings professional-inspired beauty technology into everyday life. Every device is built for home use, so firming and smoothing your skin fits around your schedule, not the other way around.</p>
-          <p class="pg-body">TriPollar home use devices for face and body are built on the same RF technology used in professional treatment rooms, adapted to be simple and comfortable at home.</p>
-          <div class="pg-tick" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <!-- the five devices in the range, on a slow loop -->
-      <div class="pg-marquee" aria-hidden="true">
-        <div class="pg-marquee__track">
-          <ul class="pg-marquee__row">
-            <li>TriPollar STOP Vx2 Gold</li><li>TriPollar STOP Vx2 S</li><li>TriPollar Pose Vx</li>
-            <li>TriPollar Aura</li><li>TriPollar Prism</li>
-          </ul>
-          <ul class="pg-marquee__row">
-            <li>TriPollar STOP Vx2 Gold</li><li>TriPollar STOP Vx2 S</li><li>TriPollar Pose Vx</li>
-            <li>TriPollar Aura</li><li>TriPollar Prism</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       THE TECHNOLOGY
-       ====================================================================== -->
-  <section class="pg-section pg-white">
-    <div class="pg-wrap">
-
-      <div class="pg-board pg-reveal">
-
-        <div class="pg-board__banner">
-          <img src="assets/images/tech-collagen.webp"
-               alt="A render of a collagen-like matrix with points of warm light travelling through it."
-               width="2171" height="1200" loading="lazy" decoding="async">
-        </div>
-
-        <div class="pg-board__head">
-          <div>
-            <span class="pg-label">The Technology</span>
-            <h2 class="pg-h2" style="margin-top:var(--s4)">The Technology Behind TriPollar</h2>
-          </div>
-          <p class="pg-body">TriPollar devices use RF (radiofrequency) energy, a gentle warmth that works beneath the surface to support the skin&rsquo;s natural firming process. Some devices add DMA, a muscle toning technology, or LED light, which works alongside RF for an extra layer of care. Each technology plays a different role, so you can choose what fits your goal.</p>
-        </div>
-
-        <ul class="pg-tech pg-stagger">
-          <li class="pg-tech__item">
-            <span class="pg-tech__mark"><img src="assets/images/mark-rf.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span>
-            <span class="pg-tech__n">01</span>
-            <h3 class="pg-h3">RF (Radiofrequency)</h3>
-            <p class="pg-body">Gentle warmth that works beneath the surface to help firm and smooth skin over time.</p>
-          </li>
-          <li class="pg-tech__item">
-            <span class="pg-tech__mark"><img src="assets/images/mark-dma.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span>
-            <span class="pg-tech__n">02</span>
-            <h3 class="pg-h3">DMA</h3>
-            <p class="pg-body">Works with the muscle layer beneath the skin for a toning effect.</p>
-          </li>
-          <li class="pg-tech__item">
-            <span class="pg-tech__mark"><img src="assets/images/mark-led.webp" alt="" aria-hidden="true" width="240" height="240" loading="lazy" decoding="async"></span>
-            <span class="pg-tech__n">03</span>
-            <h3 class="pg-h3">Red LED</h3>
-            <p class="pg-body">630nm red light that works alongside RF in Aura, for a more radiant look.</p>
-          </li>
-        </ul>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       EXPLORE THE TRIPOLLAR RANGE
-       ====================================================================== -->
-  <section class="pg-section pg-paper">
-    <div class="pg-wrap">
-
-      <div class="pg-head pg-head--split pg-reveal">
-        <h2 class="pg-h2">Explore the TriPollar Range</h2>
-        <p class="pg-lede">Every TriPollar device targets a specific area and goal. Here&rsquo;s a closer look at each one.</p>
-      </div>
-
-
-      <div class="pg-railwrap pg-reveal">
-        <ul class="pg-rail" tabindex="0" role="region" aria-label="The TriPollar range. Scroll sideways to see more.">
-
-          <li class="pg-rail__item">
-            <span class="pg-rail__pt pg-rail__pt--start" id="pg-prod-1" aria-hidden="true"></span>
-            <figure class="pg-rail__card">
-              <img src="assets/images/range-gold.webp" alt="The gold TriPollar STOP Vx2 Gold, floating against a pale warm studio set."
-                   width="900" height="1125" loading="lazy" decoding="async">
-              <span class="pg-tag">Face and jawline</span>
-            </figure>
-            <div class="pg-prod__body">
-              <h3 class="pg-prod__name">TriPollar STOP Vx2 Gold</h3>
-              <p class="pg-prod__goal">Face and jawline firming.</p>
-              <p class="pg-prod__desc">RF and dynamic muscle activation, with 24K gold-plated electrodes.</p>
-              <p class="pg-prod__tech"><span class="pg-chip">RF + DMA &middot; About 9 minutes</span></p>
-              <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-stop-vx2-gold/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar STOP Vx2 Gold</span></a></p>
-            </div>
-          </li>
-
-          <li class="pg-rail__item">
-            <figure class="pg-rail__card">
-              <img src="assets/images/range-s.webp" alt="The black TriPollar STOP Vx2 S with its rose-gold head, standing in soft window shadow."
-                   width="720" height="900" loading="lazy" decoding="async">
-              <span class="pg-tag">Face and jawline</span>
-            </figure>
-            <div class="pg-prod__body">
-              <h3 class="pg-prod__name">TriPollar STOP Vx2 S</h3>
-              <p class="pg-prod__goal">Face and jawline firming.</p>
-              <p class="pg-prod__desc">Multi-RF and Adaptive DMA, with a built-in light for easier use.</p>
-              <p class="pg-prod__tech"><span class="pg-chip">Multi-RF + DMA &middot; About 9 minutes</span></p>
-              <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-stop-vx2/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar STOP Vx2 S</span></a></p>
-            </div>
-          </li>
-
-          <li class="pg-rail__item">
-            <figure class="pg-rail__card">
-              <img src="assets/images/rail-pose-vx.webp" alt="The TriPollar Pose Vx body device on an oak tray."
-                   width="750" height="937" loading="lazy" decoding="async">
-              <span class="pg-tag">Body</span>
-            </figure>
-            <div class="pg-prod__body">
-              <h3 class="pg-prod__name">TriPollar Pose Vx</h3>
-              <p class="pg-prod__goal">Body firming and smoothing.</p>
-              <p class="pg-prod__desc">Designed for the abdomen, thighs, and under-arms, to help firm and smooth skin with regular use.</p>
-              <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-pose-vx/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Pose Vx</span></a></p>
-            </div>
-          </li>
-
-          <li class="pg-rail__item">
-            <figure class="pg-rail__card">
-              <img src="assets/images/rail-aura.webp" alt="The rose-toned TriPollar Aura, its head glowing red."
-                   width="900" height="1126" loading="lazy" decoding="async">
-              <span class="pg-tag">Face and jawline</span>
-            </figure>
-            <div class="pg-prod__body">
-              <h3 class="pg-prod__name">TriPollar Aura</h3>
-              <p class="pg-prod__goal">Full face, all in one.</p>
-              <p class="pg-prod__desc">Aura combines RF, DMA and red LED light for a complete at home facial routine in one device.</p>
-              <p class="pg-prod__tech"><span class="pg-chip">RF + DMA + Red LED &middot; About 9 minutes</span></p>
-              <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-aura/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Aura</span></a></p>
-            </div>
-          </li>
-
-          <li class="pg-rail__item">
-            <span class="pg-rail__pt pg-rail__pt--end" id="pg-prod-5" aria-hidden="true"></span>
-            <figure class="pg-rail__card">
-              <img src="assets/images/rail-prism.webp" alt="The TriPollar Prism eye mask with its LEDs lit, on a pale plinth."
-                   width="864" height="1080" loading="lazy" decoding="async">
-              <span class="pg-tag">Eye area</span>
-            </figure>
-            <div class="pg-prod__body">
-              <h3 class="pg-prod__name">TriPollar Prism</h3>
-              <p class="pg-prod__goal">Eye area, hands-free.</p>
-              <p class="pg-prod__desc">Made for the delicate eye area, with multi-spectral LED, hands-free in about 3 minutes.</p>
-              <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-prism/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Prism</span></a></p>
-            </div>
-          </li>
-
-        </ul>
-        <div class="pg-rail__foot">
-          <div class="pg-rail__bar" aria-hidden="true"><i></i></div>
-          <nav class="pg-rail__nav" aria-label="Range slider">
-            <a class="pg-rail__arrow pg-rail__arrow--prev" href="#pg-prod-1" data-pg-dir="prev"><span aria-hidden="true">&#8592;</span><span class="pg-sr">Back to the first device</span></a>
-            <a class="pg-rail__arrow pg-rail__arrow--next" href="#pg-prod-5" data-pg-dir="next"><span aria-hidden="true">&#8594;</span><span class="pg-sr">Forward to the last device</span></a>
-          </nav>
-        </div>
-
-        <!-- The ONLY script on the page, and nothing depends on it. The arrows
-             above are real anchors that already scroll the rail on their own;
-             this upgrades them to step one screen at a time and stops the page
-             moving with them. If WordPress strips this tag the arrows keep
-             working. -->
-        <script>
-        (function () {
-          var wrap = document.querySelector('.tp-b2c-lp .pg-railwrap');
-          if (!wrap) return;
-          var rail = wrap.querySelector('.pg-rail');
-          if (!rail || typeof rail.scrollBy !== 'function') return;
-          Array.prototype.forEach.call(wrap.querySelectorAll('.pg-rail__arrow'), function (a) {
-            a.addEventListener('click', function (e) {
-              e.preventDefault();
-              var dir = a.getAttribute('data-pg-dir') === 'prev' ? -1 : 1;
-              rail.scrollBy({ left: dir * rail.clientWidth * 0.82, behavior: 'smooth' });
-            });
-          });
-        })();
-        </script>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       FIND YOUR MATCH — the device finder. Pure CSS: the radios come first,
-       and every question and result after them is routed with ~ selectors.
-       ====================================================================== -->
-  <section class="pg-section pg-blush-bg pg-anchor" id="pg-match">
-    <div class="pg-wrap">
-      <div class="pg-match">
-
-        <div class="pg-match__intro pg-reveal">
-          <span class="pg-label">Find Your Match</span>
-          <h2 class="pg-h2" style="margin-top:var(--s4)">Find Your TriPollar</h2>
-          <p class="pg-lede">Three quick questions. One device made for you.</p>
-          <div class="pg-tick" aria-hidden="true"></div>
-        </div>
-
-        <div class="pg-match__card pg-reveal">
-          <div class="pg-match__form">
-
-
-            <div class="pg-match__steps" aria-hidden="true"><i></i><i></i><i></i></div>
-
-            <fieldset class="pg-q pg-q--1">
-              <legend><span class="pg-q__n" aria-hidden="true">01</span>Where do you want to focus?</legend>
-              <div class="pg-q__opts">
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q1" id="pg-q1-face"><span>Face and jawline</span></label>
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q1" id="pg-q1-eye"><span>Eye area</span></label>
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q1" id="pg-q1-body"><span>Body</span></label>
-              </div>
-            </fieldset>
-
-            <fieldset class="pg-q pg-q--2">
-              <legend><span class="pg-q__n" aria-hidden="true">02</span>What does your ideal routine look like?</legend>
-              <div class="pg-q__opts">
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q2" id="pg-q2-firm"><span>Focused firming</span></label>
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q2" id="pg-q2-red"><span>RF, DMA, and red light in one device</span></label>
-              </div>
-            </fieldset>
-
-            <fieldset class="pg-q pg-q--3">
-              <legend><span class="pg-q__n" aria-hidden="true">03</span>Which style fits your routine?</legend>
-              <div class="pg-q__opts">
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q3" id="pg-q3-gold"><span>24K gold finish</span></label>
-                <label class="pg-opt"><input class="pg-sr" type="radio" name="pg-q3" id="pg-q3-multi"><span>Multi-RF with built-in light</span></label>
-              </div>
-            </fieldset>
-
-            <!-- RESULTS — one per route. Copy is the device's own entry from the range. -->
-            <div class="pg-result pg-result--prism" aria-live="polite">
-              <figure class="pg-figure"><img src="assets/images/rail-prism.webp" alt="" aria-hidden="true" width="864" height="1080" loading="lazy" decoding="async"></figure>
-              <div>
-                <h3 class="pg-prod__name">TriPollar Prism</h3>
-                <p class="pg-prod__goal">Eye area, hands-free.</p>
-                <p class="pg-prod__desc">Made for the delicate eye area, with multi-spectral LED, hands-free in about 3 minutes.</p>
-                <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-prism/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Prism</span></a></p>
-              </div>
-            </div>
-
-            <div class="pg-result pg-result--pose" aria-live="polite">
-              <figure class="pg-figure"><img src="assets/images/rail-pose-vx.webp" alt="" aria-hidden="true" width="750" height="937" loading="lazy" decoding="async"></figure>
-              <div>
-                <h3 class="pg-prod__name">TriPollar Pose Vx</h3>
-                <p class="pg-prod__goal">Body firming and smoothing.</p>
-                <p class="pg-prod__desc">Designed for the abdomen, thighs, and under-arms, to help firm and smooth skin with regular use.</p>
-                <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-pose-vx/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Pose Vx</span></a></p>
-              </div>
-            </div>
-
-            <div class="pg-result pg-result--aura" aria-live="polite">
-              <figure class="pg-figure"><img src="assets/images/rail-aura.webp" alt="" aria-hidden="true" width="900" height="1126" loading="lazy" decoding="async"></figure>
-              <div>
-                <h3 class="pg-prod__name">TriPollar Aura</h3>
-                <p class="pg-prod__goal">Full face, all in one.</p>
-                <p class="pg-prod__desc">Aura combines RF, DMA and red LED light for a complete at home facial routine in one device.</p>
-                <p class="pg-prod__tech"><span class="pg-chip">RF + DMA + Red LED &middot; About 9 minutes</span></p>
-                <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-aura/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar Aura</span></a></p>
-              </div>
-            </div>
-
-            <div class="pg-result pg-result--gold" aria-live="polite">
-              <figure class="pg-figure"><img src="assets/images/range-gold.webp" alt="" aria-hidden="true" width="900" height="1125" loading="lazy" decoding="async"></figure>
-              <div>
-                <h3 class="pg-prod__name">TriPollar STOP Vx2 Gold</h3>
-                <p class="pg-prod__goal">Face and jawline firming.</p>
-                <p class="pg-prod__desc">RF and dynamic muscle activation, with 24K gold-plated electrodes.</p>
-                <p class="pg-prod__tech"><span class="pg-chip">RF + DMA &middot; About 9 minutes</span></p>
-                <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-stop-vx2-gold/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar STOP Vx2 Gold</span></a></p>
-              </div>
-            </div>
-
-            <div class="pg-result pg-result--s" aria-live="polite">
-              <figure class="pg-figure"><img src="assets/images/range-s.webp" alt="" aria-hidden="true" width="720" height="900" loading="lazy" decoding="async"></figure>
-              <div>
-                <h3 class="pg-prod__name">TriPollar STOP Vx2 S</h3>
-                <p class="pg-prod__goal">Face and jawline firming.</p>
-                <p class="pg-prod__desc">Multi-RF and Adaptive DMA, with a built-in light for easier use.</p>
-                <p class="pg-prod__tech"><span class="pg-chip">Multi-RF + DMA &middot; About 9 minutes</span></p>
-                <p class="pg-prod__cta"><a class="pg-link" href="https://pollogen.com/products/tripollar-stop-vx2/">Learn More<span class="pg-arrow" aria-hidden="true">&#8594;</span><span class="pg-sr"> about TriPollar STOP Vx2 S</span></a></p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       RESULTS / SOCIAL PROOF
-       ====================================================================== -->
-  <section class="pg-section pg-white">
-    <div class="pg-wrap">
-
-      <div class="pg-head pg-reveal">
-        <span class="pg-label">Results</span>
-        <h2 class="pg-h2">What People Are Saying</h2>
-      </div>
-
-
-      <div class="pg-ugc-row pg-stagger">
-        <figure class="pg-ugc">
-          <video controls playsinline preload="none" width="606" height="1080"
-                 poster="assets/video/ugc-gold-roller.webp" aria-label="A creator explains why she swapped her facial roller for the TriPollar STOP Vx2 Gold, and shows how she uses it.">
-            <source src="assets/video/ugc-gold-roller.mp4" type="video/mp4">
-          </video>
-          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2 Gold</span></figcaption>
-        </figure>
-        <figure class="pg-ugc">
-          <video controls playsinline preload="none" width="606" height="1080"
-                 poster="assets/video/ugc-gold-routine.webp" aria-label="A creator walks through her TriPollar STOP Vx2 Gold routine: gel, small circles, then DMA along the jawline.">
-            <source src="assets/video/ugc-gold-routine.mp4" type="video/mp4">
-          </video>
-          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2 Gold</span></figcaption>
-        </figure>
-        <figure class="pg-ugc">
-          <video controls playsinline preload="none" width="606" height="1080"
-                 poster="assets/video/ugc-vx2-explainer.webp" aria-label="A creator introduces the TriPollar STOP Vx2 and the technology inside it.">
-            <source src="assets/video/ugc-vx2-explainer.mp4" type="video/mp4">
-          </video>
-          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2</span></figcaption>
-        </figure>
-        <figure class="pg-ugc">
-          <video controls playsinline preload="none" width="606" height="1080"
-                 poster="assets/video/ugc-vx2-first-look.webp" aria-label="A creator tries the TriPollar STOP Vx2 at home and talks through how it works.">
-            <source src="assets/video/ugc-vx2-first-look.mp4" type="video/mp4">
-          </video>
-          <figcaption class="pg-ugc__meta"><span class="pg-tag">TriPollar STOP Vx2</span></figcaption>
-        </figure>
-      </div>
-
-      <ul class="pg-stats pg-stagger">
-        <li class="pg-stat"><span class="pg-stat__n">31%</span><span class="pg-stat__t">improvement in skin firmness</span></li>
-        <li class="pg-stat"><span class="pg-stat__n">22%</span><span class="pg-stat__t">increase in skin elasticity</span></li>
-        <li class="pg-stat"><span class="pg-stat__n">97%</span><span class="pg-stat__t">satisfied with their skin&rsquo;s elasticity, smoothness, and radiance</span></li>
-      </ul>
-
-      <div class="pg-expert pg-reveal">
-        <figure class="pg-figure">
-          <img src="assets/images/dr-king.webp" alt="Dr. Hadley King, dermatologist, in a white coat."
-               width="600" height="600" loading="lazy" decoding="async">
-        </figure>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <span class="hero__glow" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="hero__in">
         <div>
-          <p class="pg-h3">FDA-cleared and dermatologist approved by Dr. Hadley King.</p>
-          <p class="pg-small">Third-party clinical study by SGS, 33 participants, 28 days of use. Individual results may vary.</p>
+          <div class="hero__tags">
+            <span class="chip"><i style="--c:#F29A7E"></i>Multi-RF</span>
+            <span class="chip"><i style="--c:#E0708A"></i>DMA</span>
+            <span class="chip"><i style="--c:#9A6BD0"></i>LED</span>
+          </div>
+          <h1>
+            <span class="line"><span>Advanced beauty</span></span>
+            <span class="line"><span class="gt">technology,</span></span>
+            <span class="line"><span>made for home.</span></span>
+          </h1>
+          <p class="hero__p">TriPollar brings advanced, professional-inspired aesthetic technologies into the comfort of your home, combining innovative solutions for face and body care.</p>
+          <p class="hero__p">Powered by multiple cutting-edge technologies, TriPollar devices are designed to deliver visible results, helping you achieve firmer, smoother, and more youthful-looking skin.</p>
+          <div class="hero__cta">
+            <a class="btn btn--grad" href="#products"><span>Explore the devices</span><span class="arr" aria-hidden="true">&#8595;</span></a>
+            <a class="btn btn--ghost" href="#learn-more" data-open><span>Want to learn more?</span><span class="arr" aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+
+        <div class="stage" data-stage>
+          <span class="stage__ring" aria-hidden="true"></span>
+          <span class="stage__disc" aria-hidden="true"></span>
+          <span class="stage__floor" aria-hidden="true"></span>
+          <span class="stage__badge" aria-hidden="true"><span><b>05</b>Devices<br>Face · Eyes<br>· Body</span></span>
+          <figure class="stage__card"><img src="assets/images/life-vx2.webp" alt="A woman holding the TriPollar STOP Vx2 against her cheek, smiling." width="900" height="900"><span>At home, your time</span></figure>
+
+          <div class="dev" tabindex="0" data-depth=".6" style="--x:10%;--y:32%;--h:50%;--z:2;--ad:.3s;--bd:6.4s;--bl:-1s"><div class="dev__f"><img src="assets/images/dev-stop-vx2-gold.webp" alt="TriPollar STOP Vx2 Gold" width="205" height="505"></div><span class="dev__tip">STOP Vx2 Gold</span></div>
+          <div class="dev" tabindex="0" data-depth="1" style="--x:29%;--y:25%;--h:60%;--z:4;--ad:.2s;--bd:7s;--bl:-3s"><div class="dev__f"><img src="assets/images/dev-aura.webp" alt="TriPollar Aura" width="386" height="1000"></div><span class="dev__tip">Aura</span></div>
+          <div class="dev" tabindex="0" data-depth=".5" style="--x:53%;--y:33%;--h:49%;--z:3;--ad:.4s;--bd:5.8s;--bl:-2s"><div class="dev__f"><img src="assets/images/dev-stop-vx2-s.webp" alt="TriPollar STOP Vx2 S" width="269" height="697"></div><span class="dev__tip">STOP Vx2 S</span></div>
+          <div class="dev" tabindex="0" data-depth="1.2" style="--x:69%;--y:20%;--h:41%;--z:5;--ad:.5s;--bd:6.8s;--bl:-4s"><div class="dev__f"><img src="assets/images/dev-pose-vx.webp" alt="TriPollar Pose Vx" width="383" height="907"></div><span class="dev__tip">Pose Vx</span></div>
+          <div class="dev dev--w" tabindex="0" data-depth="1.6" style="--x:25%;--y:2%;--w:36%;--z:6;--ad:.65s;--bd:7.6s;--bl:-2.5s"><div class="dev__f"><img src="assets/images/dev-prism.webp" alt="TriPollar Prism LED eye mask" width="864" height="678"></div><span class="dev__tip">Prism</span></div>
         </div>
       </div>
 
+      <nav class="quick" aria-label="Jump to a section">
+        <a class="qb" href="#products"><span class="qb__i"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="6" height="18" rx="3"/><rect x="14" y="7" width="6" height="14" rx="3"/></svg></span><span class="qb__t">Devices<span class="qb__s">Face, eyes &amp; body</span></span></a>
+        <a class="qb" href="#technology"><span class="qb__i"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span><span class="qb__t">Technology<span class="qb__s">RF · DMA · LED</span></span></a>
+        <a class="qb" href="#results"><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 4 3 6-7"/></svg></span><span class="qb__t">Clinical Results<span class="qb__s">Before &amp; after</span></span></a>
+        <a class="qb" href="#match"><span class="qb__i"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><span class="qb__t">Find Yours<span class="qb__s">3 quick questions</span></span></a>
+        <a class="qb" href="#reviews"><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span class="qb__t">Reviews<span class="qb__s">Real routines</span></span></a>
+        <a class="qb qb--cta" href="#learn-more" data-open><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span><span class="qb__t">Learn More<span class="qb__s">Leave your details</span></span></a>
+      </nav>
     </div>
   </section>
 
-  <!-- ======================================================================
-       HOW TRIPOLLAR FITS INTO YOUR DAY
-       ====================================================================== -->
-  <section class="pg-section pg-paper">
-    <div class="pg-wrap">
-
-      <div class="pg-routine">
-        <div class="pg-routine__copy pg-reveal">
-          <h2 class="pg-h2">How TriPollar Fits Into Your Day</h2>
-          <div class="pg-tick" aria-hidden="true"></div>
-          <a class="pg-link" href="#pg-howto" data-pg-cta="how-to-videos">Watch how to use each device<span class="pg-arrow" aria-hidden="true">&#8594;</span></a>
+  <!-- RESULTS — moved up for visibility (comment 6) -->
+  <section class="stats" aria-label="Clinical results at a glance">
+    <div class="wrap">
+      <div class="stats__in">
+        <div class="stats__intro rv">
+          <span class="h3">Visible, measured results</span>
+          <p>Third-party clinical study by SGS · 33 participants · 28 days of use with TriPollar STOP Vx2. Individual results may vary.</p>
         </div>
-        <div class="pg-routine__pics pg-stagger">
-          <figure class="pg-figure pg-figure--1x1">
-            <img src="assets/images/routine-gel.webp" alt="A woman smoothing TriPollar conductive gel onto her cheek."
-                 width="900" height="900" loading="lazy" decoding="async">
-          </figure>
-          <figure class="pg-figure pg-figure--1x1">
-            <img src="assets/images/routine-treat.webp" alt="A woman treating her cheek with a TriPollar STOP device at home."
-                 width="900" height="900" loading="lazy" decoding="async">
-          </figure>
-        </div>
+        <div class="stat rv" style="--d:.1s"><span class="stat__n"><span data-count="31">31</span>%</span><span class="stat__t">improvement in skin firmness</span></div>
+        <div class="stat rv" style="--d:.2s"><span class="stat__n"><span data-count="22">22</span>%</span><span class="stat__t">increase in skin elasticity</span></div>
+        <div class="stat rv" style="--d:.3s"><span class="stat__n"><span data-count="97">97</span>%</span><span class="stat__t">satisfied with their skin&rsquo;s elasticity, smoothness and radiance</span></div>
       </div>
-
-      <ol class="pg-steps pg-stagger">
-        <li class="pg-step">
-          <span class="pg-step__num" aria-hidden="true">01</span>
-          <h3 class="pg-h3">Cleanse</h3>
-          <p class="pg-body">Start with clean, dry skin.</p>
-        </li>
-        <li class="pg-step">
-          <span class="pg-step__num" aria-hidden="true">02</span>
-          <h3 class="pg-h3">Apply gel</h3>
-          <p class="pg-body">Apply the TriPollar conductive gel to the treatment area.</p>
-        </li>
-        <li class="pg-step">
-          <span class="pg-step__num" aria-hidden="true">03</span>
-          <h3 class="pg-h3">Treat</h3>
-          <p class="pg-body">Treat for about 9 minutes, right at home.</p>
-        </li>
-        <li class="pg-step">
-          <span class="pg-step__num" aria-hidden="true">04</span>
-          <h3 class="pg-h3">Go</h3>
-          <p class="pg-body">Continue your day. No downtime, no clinic visit.</p>
-        </li>
-      </ol>
-
-      <!-- the official how-to films from Pollogen's YouTube channel -->
-      <div class="pg-howto pg-anchor" id="pg-howto">
-        <div class="pg-howto__grid pg-stagger">
-          <figure class="pg-howto__item">
-            <div class="pg-howto__frame">
-              <iframe title="How to use TriPollar STOP Vx2 Gold" loading="lazy" width="560" height="315"
-                      src="https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;rel=0"
-                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/E5h8zN17GkA/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2 Gold'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
-            </div>
-            <figcaption class="pg-prod__name">TriPollar STOP Vx2 Gold</figcaption>
-          </figure>
-          <figure class="pg-howto__item">
-            <div class="pg-howto__frame">
-              <iframe title="How to use TriPollar STOP Vx2" loading="lazy" width="560" height="315"
-                      src="https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;rel=0"
-                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/43a3lc_Y6eg/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
-            </div>
-            <figcaption class="pg-prod__name">TriPollar STOP Vx2 S</figcaption>
-          </figure>
-          <figure class="pg-howto__item">
-            <div class="pg-howto__frame">
-              <iframe title="How to use TriPollar Pose Vx" loading="lazy" width="560" height="315"
-                      src="https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;rel=0"
-                      srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .4s}a:hover img{opacity:1}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.2);transition:transform .5s}a:hover span{transform:scale(1.08)}span::after{content:'';position:absolute;left:28px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/rrFXC25_bO8/maxresdefault.jpg' alt='How to use TriPollar Pose Vx'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
-            </div>
-            <figcaption class="pg-prod__name">TriPollar Pose Vx</figcaption>
-          </figure>
-        </div>
-      </div>
-
+      <p class="note">Stats carried over from the previous version. The study device (STOP Vx2) is named here from SKINVITY&rsquo;s description of the same SGS study &mdash; client to confirm.</p>
     </div>
   </section>
 
-  <!-- ======================================================================
-       THE TECHNOLOGY BEHIND THE BRAND
-       ====================================================================== -->
-  <section class="pg-brandband">
-    <div class="pg-brandband__pic">
-      <picture>
-        <source media="(max-width: 1000px)" srcset="assets/images/brand-clinic-wide.webp" width="1600" height="1200">
-        <img src="assets/images/brand-clinic.webp"
-           alt="A Pollogen practitioner giving a professional facial treatment in a clinic."
-           width="1088" height="1360" loading="lazy" decoding="async">
-      </picture>
+  <!-- PRODUCTS — new showcase before Why (comment 4) -->
+  <section class="sec prods" id="products">
+    <div class="wrap">
+      <header class="head rv">
+        <span class="head__n" aria-hidden="true">01</span>
+        <div><span class="kick">The TriPollar Range</span><h2 class="h2">Meet Your Device</h2></div>
+        <p class="head__aside">Five devices, each built around a specific area and goal. Tap a device to see what it does, which technologies it uses and where to use it.</p>
+      </header>
+
+      <div class="pgrid" role="list" data-pgrid>
+        <button class="pc rv" role="listitem" style="--d:0s;--bg:linear-gradient(160deg,#FFF3D9,#F2D9A4)" data-p="gold" aria-pressed="true">
+          <span class="pc__pic"><span class="chip pc__area">Face &amp; jawline</span><img src="assets/images/dev-stop-vx2-gold.webp" alt="" width="205" height="505" loading="lazy"></span>
+          <span class="pc__body"><span class="pc__name">STOP Vx2 Gold</span><span class="pc__sub">Multi-RF and DMA with 24K gold-plated electrodes.</span><span class="pc__tech"><span>MULTI-RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
+        </button>
+        <button class="pc rv" role="listitem" style="--d:.08s;--bg:linear-gradient(160deg,#FFE6E0,#F4BFC0)" data-p="s" aria-pressed="false">
+          <span class="pc__pic"><span class="chip pc__area">Face &amp; jawline</span><img src="assets/images/dev-stop-vx2-s.webp" alt="" width="269" height="697" loading="lazy"></span>
+          <span class="pc__body"><span class="pc__name">STOP Vx2 S</span><span class="pc__sub">Triple-wave Multi-RF with Adaptive DMA.</span><span class="pc__tech"><span>MULTI-RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
+        </button>
+        <button class="pc rv" role="listitem" style="--d:.16s;--bg:linear-gradient(160deg,#FFE9E4,#F7C6C9)" data-p="aura" aria-pressed="false">
+          <span class="pc__pic"><span class="chip pc__area">Face</span><img src="assets/images/dev-aura.webp" alt="" width="386" height="1000" loading="lazy"></span>
+          <span class="pc__body"><span class="pc__name">Aura</span><span class="pc__sub">RF, DMA and red LED light in one device.</span><span class="pc__tech"><span>RF</span><span>DMA</span><span>LED</span></span><span class="pc__more">See details &#8594;</span></span>
+        </button>
+        <button class="pc rv" role="listitem" style="--d:.24s;--bg:linear-gradient(160deg,#F7EEE6,#E3CDB8)" data-p="pose" aria-pressed="false">
+          <span class="pc__pic"><span class="chip pc__area">Body</span><img src="assets/images/dev-pose-vx.webp" alt="" width="383" height="907" loading="lazy"></span>
+          <span class="pc__body"><span class="pc__name">Pose Vx</span><span class="pc__sub">RF and DMA for thighs, abdomen, buttocks and arms.</span><span class="pc__tech"><span>RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
+        </button>
+        <button class="pc rv" role="listitem" style="--d:.32s;--bg:linear-gradient(160deg,#FFEBDD,#F6C3A6)" data-p="prism" aria-pressed="false">
+          <span class="pc__pic"><span class="chip pc__area">Eye area</span><img src="assets/images/dev-prism.webp" alt="" width="864" height="678" loading="lazy"></span>
+          <span class="pc__body"><span class="pc__name">Prism</span><span class="pc__sub">Hands-free multi-LED eye mask, 3 to 10 minutes.</span><span class="pc__tech"><span>LED</span></span><span class="pc__more">See details &#8594;</span></span>
+        </button>
+      </div>
+
+      <article class="spot rv" aria-live="polite" data-spot>
+        <div class="spot__stage" data-sbg><img class="spot__img" data-s-img src="assets/images/dev-stop-vx2-gold.webp" alt="TriPollar STOP Vx2 Gold" width="205" height="505"></div>
+        <div class="spot__body">
+          <div class="spot__tags" data-s-tags></div>
+          <h3 class="spot__name" data-s-name>TriPollar STOP Vx2 Gold</h3>
+          <p class="spot__goal" data-s-goal></p>
+          <p class="spot__desc" data-s-desc></p>
+          <div class="spot__grid">
+            <div><span class="spot__h">Key benefits</span><ul class="spot__list" data-s-ben></ul></div>
+            <div><span class="spot__h">Where to use it</span><ul class="spot__list" data-s-area></ul><span class="spot__h" style="margin-top:var(--s3)">Session</span><p style="font-size:13.5px" data-s-time></p></div>
+          </div>
+          <div class="spot__cta">
+            <a class="btn" href="#learn-more" data-open data-s-ask><span>Ask about this device</span><span class="arr" aria-hidden="true">&#8594;</span></a>
+            <a class="lnk" href="#match">Not sure? Find yours<span class="arr" aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+      </article>
+      <p class="note">Benefits, areas and session times are taken from each device&rsquo;s manufacturer page on pollogen.com. The STOP Vx2 S is sold in the US with a VIB mode (mytripollar.com) while pollogen.com lists Adaptive DMA &mdash; client to confirm which applies to this market. No session time is stated for the STOP and Pose devices; the previous &ldquo;about 9 minutes&rdquo; was removed pending confirmation.</p>
     </div>
-    <div class="pg-wrap">
-      <div class="pg-brandband__in">
-        <div class="pg-brandband__copy pg-reveal">
-          <img class="pg-brandband__logo" src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy">
-          <h2 class="pg-h2" style="margin-top:var(--s5)">The Technology Behind the Brand</h2>
-          <p class="pg-body">TriPollar is part of Pollogen, a beauty technology company with a professional heritage spanning clinics and homes around the world. The same RF technology used in professional treatment rooms is built into every TriPollar device, adapted for home use.</p>
-          <div class="pg-fda">
-            <img src="assets/images/icon-fda.svg" alt="" aria-hidden="true" width="120" height="120" loading="lazy">
-            <p class="pg-h3">Every TriPollar device is FDA-cleared.</p>
+  </section>
+
+  <div class="marq" aria-hidden="true"><div class="marq__t">
+    <ul><li>Multi-RF</li><li>Dynamic Muscle Activation</li><li>Red LED</li><li>Multi-spectral LED</li><li>Thermal Mapping</li><li>SensiMotion</li></ul>
+    <ul><li>Multi-RF</li><li>Dynamic Muscle Activation</li><li>Red LED</li><li>Multi-spectral LED</li><li>Thermal Mapping</li><li>SensiMotion</li></ul>
+  </div></div>
+
+  <!-- WHY TRIPOLLAR — multi-technology (comment 5) -->
+  <section class="sec why" id="technology">
+    <div class="wrap">
+      <header class="head rv">
+        <span class="head__n" aria-hidden="true">02</span>
+        <div><span class="kick">Why TriPollar</span><h2 class="h2">More Than One Technology</h2></div>
+      </header>
+      <div class="why__grid">
+        <div class="why__copy rv rv--l">
+          <p class="lede">TriPollar brings professional-inspired beauty technology into everyday life. Instead of relying on a single technology, TriPollar devices combine several &mdash; each with its own role &mdash; so your routine works on the skin, the contour and the glow at once.</p>
+          <p class="small" style="font-size:14px;margin-top:var(--s3)">Multi-frequency RF warms the deeper layers of the skin, Dynamic Muscle Activation works with the muscle layer beneath it, and LED light adds another layer of care. Smart sensors on the STOP and Aura devices keep every session comfortable and consistent.</p>
+          <div class="pills" style="margin-top:var(--s4)">
+            <a class="btn" href="#products"><span>Compare the devices</span><span class="arr" aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+        <div class="tmap rv rv--z" data-tmap>
+          <span class="tmap__ring" aria-hidden="true"></span>
+          <span class="tmap__ring tmap__ring--2" aria-hidden="true"></span>
+          <div class="tmap__core"><img src="assets/images/dev-aura.webp" alt="TriPollar Aura, which combines RF, DMA and LED" width="386" height="1000" loading="lazy"></div>
+          <div class="tmap__orbit">
+            <button class="tnode" style="--nx:50%;--ny:6%;--c:#F29A7E" data-t="0"><span class="tnode__dot"><img src="assets/images/mark-rf.webp" alt="" loading="lazy"></span><b>Multi-RF</b></button>
+            <button class="tnode" style="--nx:91%;--ny:68%;--c:#E0708A" data-t="1"><span class="tnode__dot"><img src="assets/images/mark-dma.webp" alt="" loading="lazy"></span><b>DMA</b></button>
+            <button class="tnode" style="--nx:9%;--ny:68%;--c:#9A6BD0" data-t="2"><span class="tnode__dot"><img src="assets/images/mark-led.webp" alt="" loading="lazy"></span><b>LED</b></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcards">
+        <article class="tcard rv" style="--d:0s;--c:#F29A7E;--c2:#C9586E" data-tc="0"><span class="tcard__n">01</span><h3 class="h3">Multi-RF</h3><p>Radiofrequency at several frequencies delivers gentle, even warmth into the dermis to support collagen and elastin over time.</p><p class="tcard__in">In: STOP Vx2 Gold · STOP Vx2 S · Aura · Pose Vx</p></article>
+        <article class="tcard rv" style="--d:.08s;--c:#E0708A;--c2:#8E3A6A" data-tc="1"><span class="tcard__n">02</span><h3 class="h3">DMA</h3><p>Dynamic Muscle Activation induces a gentle contraction of the muscle layer for a toned, more defined contour.</p><p class="tcard__in">In: STOP Vx2 Gold · STOP Vx2 S · Aura · Pose Vx</p></article>
+        <article class="tcard rv" style="--d:.16s;--c:#9A6BD0;--c2:#5A3A9A" data-tc="2"><span class="tcard__n">03</span><h3 class="h3">LED light</h3><p>Red light at 630nm in Aura; five wavelengths, from amber to near-infrared, across 88 LEDs in Prism for the eye area.</p><p class="tcard__in">In: Aura · Prism</p></article>
+        <article class="tcard rv" style="--d:.24s;--c:#D8B068;--c2:#9A6A2E" data-tc="3"><span class="tcard__n">04</span><h3 class="h3">Smart sensors</h3><p>Thermal Mapping and SensiMotion read temperature and movement in real time, adapting energy to your pace for a comfortable session.</p><p class="tcard__in">In: STOP Vx2 Gold · STOP Vx2 S · Aura</p></article>
+      </div>
+
+      <div class="matrix rv" data-matrix>
+        <table>
+          <caption>Technologies per device, as described by the manufacturer.</caption>
+          <thead><tr><th scope="col">Device</th><th scope="col">Multi-RF</th><th scope="col">DMA</th><th scope="col">LED</th><th scope="col">Area</th></tr></thead>
+          <tbody>
+            <tr><td>STOP Vx2 Gold</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Face &amp; jawline</td></tr>
+            <tr><td>STOP Vx2 S</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Face &amp; jawline</td></tr>
+            <tr><td>Aura</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td>Face</td></tr>
+            <tr><td>Pose Vx</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Body</td></tr>
+            <tr><td>Prism</td><td><span class="nodot" aria-label="No"></span></td><td><span class="nodot" aria-label="No"></span></td><td><span class="dot" aria-label="Yes"></span></td><td>Eye area</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">The collagen render was replaced by this interactive technology map until the client&rsquo;s new technology images arrive.</p>
+    </div>
+  </section>
+
+  <!-- CLINICAL RESULTS — dedicated section (comment 6) -->
+  <section class="sec clin" id="results" data-clin>
+    <div class="wrap">
+      <header class="head head--light rv">
+        <span class="head__n" aria-hidden="true">03</span>
+        <div><span class="kick">Clinical Results</span><h2 class="h2">Proof You Can See</h2></div>
+        <p class="head__aside">Drag the slider to compare. Every result below comes from a named study with its own size and timeframe.</p>
+      </header>
+      <div class="clin__grid">
+        <div class="rv rv--l">
+          <div class="ba" data-ba>
+            <img src="assets/images/ba-vx2-before.webp" alt="Before treatment: a woman's face in three-quarter view, natural light." width="741" height="1350" loading="lazy">
+            <img class="ba__after" src="assets/images/ba-vx2-after.webp" alt="After treatment with TriPollar STOP Vx2: the same face, same angle and light." width="741" height="1350" loading="lazy">
+            <span class="ba__lab ba__lab--b">Before</span><span class="ba__lab ba__lab--a">After</span>
+            <span class="ba__handle" aria-hidden="true"><span class="ba__knob">&#8596;</span></span>
+            <label class="sr" for="tp-ba">Compare before and after</label>
+            <input id="tp-ba" type="range" min="0" max="100" value="50">
+          </div>
+          <p class="ba__cap">TriPollar STOP Vx2 · Before / after · Individual results vary.</p>
+        </div>
+        <div class="rv rv--r">
+          <p class="lede" style="color:rgba(255,255,255,.88)">In a third-party study by SGS, 33 participants used TriPollar at home for 28 days. Here is what was measured.</p>
+          <div class="cstats">
+            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:31"/></svg><b>31%</b></div><p>Improvement in skin firmness</p></div>
+            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:22"/></svg><b>22%</b></div><p>Increase in skin elasticity</p></div>
+            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:97"/></svg><b>97%</b></div><p>Satisfied with elasticity, smoothness &amp; radiance</p></div>
+          </div>
+          <div class="expert">
+            <img src="assets/images/dr-king.webp" alt="Dr. Hadley King, dermatologist." width="600" height="600" loading="lazy">
+            <div><p class="h3">Dermatologist approved by Dr. Hadley King</p><p class="small">Third-party clinical study by SGS, 33 participants, 28 days of use. Individual results may vary.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="studies">
+        <article class="study rv" style="--d:0s"><span class="study__n">&minus;<span data-count="41">41</span>%</span><p class="study__t">Wrinkle volume around the eyes after 12 weeks of home use</p><p class="study__s">Beilin G., <em>Journal of Cosmetic and Laser Therapy</em>, 2011 · 23 women aged 37&ndash;64 · TriPollar STOP</p></article>
+        <article class="study rv" style="--d:.1s"><span class="study__n">+<span data-count="41">41</span>%</span><p class="study__t">New collagen synthesis measured in human skin samples</p><p class="study__s">Boisnic S., Branchet M.C., <em>Journal of Dermatological Treatment</em>, 2010 · ex vivo, 8 donors · TriPollar STOP</p></article>
+        <article class="study rv" style="--d:.2s"><span class="study__n"><span data-count="28">28</span></span><p class="study__t">Days of at-home use in the SGS study behind the results above</p><p class="study__s">SGS third-party evaluation · 33 participants · Individual results may vary</p></article>
+      </div>
+      <p class="note">Before/after image: official STOP Vx2 asset from mytripollar.com &mdash; client to confirm the elapsed time and protocol so it can be labelled. Published-study figures as cited on skinvity.com&rsquo;s TriPollar page &mdash; client to confirm before launch.</p>
+    </div>
+  </section>
+
+  <!-- FIND YOUR MATCH -->
+  <section class="sec match" id="match">
+    <div class="wrap">
+      <div class="quiz">
+        <div class="rv rv--l">
+          <header class="head" style="display:block;margin-bottom:var(--s4)">
+            <span class="head__n" aria-hidden="true">04</span>
+            <span class="kick" style="margin-top:var(--s2)">Find Your Match</span>
+            <h2 class="h2">Find Your TriPollar</h2>
+          </header>
+          <p class="lede">Three quick questions. One device made for you.</p>
+        </div>
+        <div class="quiz__card rv rv--r" data-quiz>
+          <div class="quiz__steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+          <div class="q on" data-q="1">
+            <h3><span class="q__n">01 / 03</span>Where do you want to focus?</h3>
+            <div class="opts">
+              <button class="opt" data-go="2">Face and jawline <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="prism">Eye area <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="pose">Body <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </div>
+          <div class="q" data-q="2">
+            <h3><span class="q__n">02 / 03</span>What does your ideal routine look like?</h3>
+            <div class="opts">
+              <button class="opt" data-go="3">Focused firming and contouring <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="aura">RF, DMA and red light in one device <span aria-hidden="true">&#8594;</span></button>
+            </div>
+            <button class="back" data-go="1">&#8592; Back</button>
+          </div>
+          <div class="q" data-q="3">
+            <h3><span class="q__n">03 / 03</span>Which style fits you?</h3>
+            <div class="opts">
+              <button class="opt" data-r="gold">24K gold-plated electrodes <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="s">Triple-wave Multi-RF, classic black <span aria-hidden="true">&#8594;</span></button>
+            </div>
+            <button class="back" data-go="2">&#8592; Back</button>
+          </div>
+          <div class="res" data-res aria-live="polite">
+            <div class="res__pic"><img data-r-img src="" alt="" width="200" height="500"></div>
+            <div>
+              <span class="res__k">Your match</span>
+              <h3 data-r-name></h3>
+              <p data-r-desc style="color:var(--grey)"></p>
+              <div class="res__cta">
+                <a class="btn" href="#products" data-r-see><span>See details</span></a>
+                <a class="btn btn--grad" href="#learn-more" data-open data-r-ask><span>Ask about it</span></a>
+              </div>
+              <button class="back" data-go="1">&#8634; Start again</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================================================================
-       FAQ — <details> elements, no JavaScript
-       ====================================================================== -->
-  <section class="pg-section pg-white">
-    <div class="pg-wrap">
-      <div class="pg-split">
-
-        <div class="pg-sticky pg-reveal">
-          <span class="pg-label">FAQ</span>
-          <h2 class="pg-h2" style="margin-top:var(--s4)">Frequently Asked Questions</h2>
-          <div class="pg-tick" aria-hidden="true"></div>
-        </div>
-
-        <div class="pg-faq pg-reveal">
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>How does TriPollar work?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">TriPollar devices use RF energy, and in some devices DMA or LED, to work beneath the skin&rsquo;s surface and support its natural firming process over time.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>Which TriPollar device is right for me?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">It depends on your goal. STOP Vx2 is built for full face firming, Aura combines RF, DMA and LED for an all-in-one routine, Prism focuses on the eye area, and Pose Vx is designed for the body. Not sure which is the best fit for you? Use the <a class="pg-inline" href="#pg-match">Find Your Match guide</a> above.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>How often should I use it?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">Each device has its own recommended schedule, which you&rsquo;ll find in its user guide.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>How long does a treatment take?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">Most treatments take about 9 minutes, so it fits easily into a home use routine.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>Is it easy to use at home?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">Yes. TriPollar devices are designed for home use, with simple steps you can do yourself, no professional needed.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>What can I expect?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">Many people begin to notice firmer, smoother skin within 6 to 8 weeks of consistent use. Results vary by person and consistency of use.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>Is TriPollar safe?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><p class="pg-body">TriPollar devices are FDA-cleared and designed for comfortable use at home.</p></div>
-          </details>
-
-          <details class="pg-faq__item">
-            <summary class="pg-faq__q"><span>Where can I find TriPollar reviews or buy TriPollar?</span><span class="pg-faq__icon" aria-hidden="true"></span></summary>
-            <div class="pg-faq__a"><a class="pg-link" href="https://pollogen.com/contact-us/" data-pg-cta="get-in-touch">Get in Touch<span class="pg-arrow" aria-hidden="true">&#8594;</span></a></div>
-          </details>
-
-        </div>
-
+  <!-- WHAT PEOPLE ARE SAYING -->
+  <section class="sec" id="reviews" style="background:#fff">
+    <div class="wrap">
+      <header class="head rv">
+        <span class="head__n" aria-hidden="true">05</span>
+        <div><span class="kick">Reviews</span><h2 class="h2">What People Are Saying</h2></div>
+      </header>
+      <div class="ugc">
+        <figure class="rv" style="--d:0s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-gold-roller.webp" aria-label="A creator explains why she swapped her facial roller for the TriPollar STOP Vx2 Gold, and shows how she uses it."><source src="assets/video/ugc-gold-roller.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2 Gold</span></figcaption></figure>
+        <figure class="rv" style="--d:.08s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-gold-routine.webp" aria-label="A creator walks through her TriPollar STOP Vx2 Gold routine: gel, small circles, then DMA along the jawline."><source src="assets/video/ugc-gold-routine.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2 Gold</span></figcaption></figure>
+        <figure class="rv" style="--d:.16s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-vx2-explainer.webp" aria-label="A creator introduces the TriPollar STOP Vx2 and the technology inside it."><source src="assets/video/ugc-vx2-explainer.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2</span></figcaption></figure>
+        <figure class="rv" style="--d:.24s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-vx2-first-look.webp" aria-label="A creator tries the TriPollar STOP Vx2 at home and talks through how it works."><source src="assets/video/ugc-vx2-first-look.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- ======================================================================
-       FINAL CTA
-       ====================================================================== -->
-  <section class="pg-section pg-paper">
-    <div class="pg-wrap">
-      <div class="pg-final pg-reveal">
-        <div class="pg-final__media">
-          <img src="assets/images/final.webp"
-               alt="A woman in a black blazer holding the gold TriPollar STOP Vx2 Gold beside her face, on a white set."
-               width="1920" height="800" loading="lazy" decoding="async">
+  <!-- ROUTINE -->
+  <section class="sec routine" id="routine" style="background:var(--paper)">
+    <div class="wrap">
+      <header class="head rv">
+        <span class="head__n" aria-hidden="true">06</span>
+        <div><span class="kick">How to Use</span><h2 class="h2">How TriPollar Fits Into Your Day</h2></div>
+      </header>
+      <div class="rpics">
+        <img class="rv" src="assets/images/routine-gel.webp" alt="A woman smoothing TriPollar gel onto her cheek." width="900" height="900" loading="lazy">
+        <img class="rv" style="--d:.1s" src="assets/images/routine-treat.webp" alt="A woman treating her cheek with a TriPollar STOP device at home." width="900" height="900" loading="lazy">
+      </div>
+      <ol class="rsteps">
+        <li class="rstep rv" style="--d:0s"><span class="rstep__n">01</span><h3 class="h3">Cleanse</h3><p>Start with clean, dry skin.</p></li>
+        <li class="rstep rv" style="--d:.08s"><span class="rstep__n">02</span><h3 class="h3">Apply gel</h3><p>Apply the TriPollar gel to the treatment area (RF devices).</p></li>
+        <li class="rstep rv" style="--d:.16s"><span class="rstep__n">03</span><h3 class="h3">Treat</h3><p>Follow your device&rsquo;s routine, right at home.</p></li>
+        <li class="rstep rv" style="--d:.24s"><span class="rstep__n">04</span><h3 class="h3">Go</h3><p>Continue your day. No downtime, no clinic visit.</p></li>
+      </ol>
+      <div class="howto">
+        <figure class="rv"><div class="howto__frame"><iframe title="How to use TriPollar STOP Vx2 Gold" loading="lazy" src="https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;rel=0" srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:linear-gradient(115deg,#F29A7E,#E0708A,#9A6BD0)}span::after{content:'';position:absolute;left:27px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/E5h8zN17GkA?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/E5h8zN17GkA/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2 Gold'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption>STOP Vx2 Gold</figcaption></figure>
+        <figure class="rv" style="--d:.08s"><div class="howto__frame"><iframe title="How to use TriPollar STOP Vx2" loading="lazy" src="https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;rel=0" srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:linear-gradient(115deg,#F29A7E,#E0708A,#9A6BD0)}span::after{content:'';position:absolute;left:27px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/43a3lc_Y6eg?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/43a3lc_Y6eg/maxresdefault.jpg' alt='How to use TriPollar STOP Vx2'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption>STOP Vx2 S</figcaption></figure>
+        <figure class="rv" style="--d:.16s"><div class="howto__frame"><iframe title="How to use TriPollar Pose Vx" loading="lazy" src="https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;rel=0" srcdoc="&lt;style&gt;*{margin:0;padding:0}html,body{height:100%;overflow:hidden;background:#141110}a{position:absolute;inset:0;display:block}img{width:100%;height:100%;object-fit:cover;opacity:.9}span{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:linear-gradient(115deg,#F29A7E,#E0708A,#9A6BD0)}span::after{content:'';position:absolute;left:27px;top:23px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}&lt;/style&gt;&lt;a href='https://www.youtube-nocookie.com/embed/rrFXC25_bO8?autoplay=1&amp;amp;rel=0'&gt;&lt;img src='https://i.ytimg.com/vi/rrFXC25_bO8/maxresdefault.jpg' alt='How to use TriPollar Pose Vx'&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption>Pose Vx</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT POLLOGEN (comment 7) -->
+  <section class="about" id="about">
+    <div class="about__pic"><picture><source media="(max-width:1000px)" srcset="assets/images/macro-head-sm.webp"><img src="assets/images/macro-head.webp" alt="A macro view of a TriPollar device head and its electrodes." width="2560" height="1228" loading="lazy"></picture></div>
+    <div class="wrap">
+      <div class="about__in rv rv--l">
+        <img class="about__logo" src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy">
+        <h2 class="h2">The Technology Behind the Brand</h2>
+        <p>TriPollar is developed by Pollogen, a Lumenis company, with a professional heritage spanning clinics and homes around the world.</p>
+        <p>The technologies inside TriPollar &mdash; multi-frequency RF, Dynamic Muscle Activation and LED light, guided by smart temperature and motion sensors &mdash; are adapted from professional aesthetic treatments and made simple and comfortable to use at home.</p>
+        <div class="pills"><span class="pill">Multi-RF</span><span class="pill">DMA</span><span class="pill">LED</span><span class="pill">Thermal Mapping</span><span class="pill">SensiMotion</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq" style="background:#fff">
+    <div class="wrap">
+      <div class="faqg">
+        <div class="rv rv--l">
+          <header class="head" style="display:block;margin-bottom:var(--s3)">
+            <span class="head__n" aria-hidden="true">07</span>
+            <span class="kick" style="margin-top:var(--s2)">FAQ</span>
+            <h2 class="h2">Frequently Asked Questions</h2>
+          </header>
+          <p class="small">Still curious? <a href="#learn-more" data-open style="color:#000;border-bottom:1px solid">Leave your details</a> and we&rsquo;ll get back to you.</p>
         </div>
-        <div class="pg-final__copy">
-          <h2 class="pg-h2">Ready to firm and smooth, on your own time?</h2>
-          <p class="pg-body">Explore the TriPollar range and find the home use device that fits your goals.</p>
-          <a class="pg-btn" href="https://mytripollar.com/collections/all" data-pg-cta="shop-tripollar"><span>Shop TriPollar</span></a>
+        <div class="rv">
+          <details><summary>How does TriPollar work?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">TriPollar devices combine several technologies. Multi-frequency RF warms the deeper layers of the skin to support its natural firming process; DMA works with the muscle layer for a toned contour; LED light adds another layer of care. Each device uses the combination that suits its area &mdash; see <a href="#technology">the technology map</a>.</div></details>
+          <details><summary>Which TriPollar device is right for me?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">It depends on your goal. STOP Vx2 Gold and STOP Vx2 S are built for face and jawline firming, Aura combines RF, DMA and red LED in one device, Prism focuses on the eye area, and Pose Vx is designed for the body. Try the <a href="#match">Find Your TriPollar quiz</a>.</div></details>
+          <details><summary>How often should I use it?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">Each device has its own recommended schedule, which you&rsquo;ll find in its user guide.</div></details>
+          <details><summary>How long does a treatment take?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">It depends on the device. Prism sessions take 3 to 10 minutes depending on the mode, and Aura delivers an immediate lifting effect in about 6 minutes. Your device&rsquo;s user guide gives the recommended time for each area.</div></details>
+          <details><summary>Is it easy to use at home?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">Yes. TriPollar devices are designed for home use, with simple steps you can do yourself &mdash; no professional needed. Watch the <a href="#routine">how-to videos</a>.</div></details>
+          <details><summary>What can I expect?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">Many people begin to notice firmer, smoother-looking skin within 6 to 8 weeks of consistent use. Results vary by person and consistency of use.</div></details>
+          <details><summary>Is TriPollar comfortable and safe to use?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">TriPollar devices are designed for comfortable home use. The STOP and Aura devices continuously monitor skin temperature and movement and stop RF when no motion is detected. Always follow the user guide and its contraindications.</div></details>
+          <details><summary>How can I find out more?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a"><a href="#learn-more" data-open>Leave your details</a> and the TriPollar team will get back to you.</div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WANT TO LEARN MORE — lead form replaces Shop TriPollar (comment 8) -->
+  <section class="sec lead" id="learn-more">
+    <div class="wrap">
+      <div class="lead__grid">
+        <div class="lead__copy rv rv--l">
+          <span class="kick" style="color:#fff">Get in touch</span>
+          <h2 class="h2" style="margin-top:var(--s2)">Want to learn more?</h2>
+          <p class="lede">Leave your details and the TriPollar team will get back to you with everything you need to choose your device.</p>
+          <div class="lead__pic"><img src="assets/images/final.webp" alt="A woman in a black blazer holding the gold TriPollar STOP Vx2 Gold beside her face." width="1920" height="800" loading="lazy"></div>
+        </div>
+        <div class="fcard rv rv--r" data-fw>
+          <form class="fgrid" action="#" method="post" novalidate data-form>
+            <label class="fld"><span class="fld__l">First name</span><input type="text" name="first_name" autocomplete="given-name" required><span class="fld__e">Please add your first name.</span></label>
+            <label class="fld"><span class="fld__l">Last name</span><input type="text" name="last_name" autocomplete="family-name"></label>
+            <label class="fld"><span class="fld__l">Email</span><input type="email" name="email" autocomplete="email" required><span class="fld__e">Please add a valid email.</span></label>
+            <label class="fld"><span class="fld__l">Phone (optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+            <label class="fld"><span class="fld__l">Country</span><input type="text" name="country" autocomplete="country-name"></label>
+            <label class="fld"><span class="fld__l">Device of interest</span>
+              <select name="device"><option value="">Not sure yet</option><option>STOP Vx2 Gold</option><option>STOP Vx2 S</option><option>Aura</option><option>Pose Vx</option><option>Prism</option></select></label>
+            <label class="fld fld--full"><span class="fld__l">Your question (optional)</span><textarea name="message" rows="3"></textarea></label>
+            <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="cons"><input type="checkbox" id="tp-cons" name="consent" required><label for="tp-cons">I agree that Pollogen may contact me about TriPollar and store my details in line with the <a href="https://pollogen.com/privacy-statement/" target="_blank" rel="noopener">Privacy Policy</a>.</label></div>
+            <div class="fact"><button class="btn btn--grad btn--block" type="submit"><span>Send my details</span><span class="arr" aria-hidden="true">&#8594;</span></button></div>
+          </form>
+          <div class="ok" role="status"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M20 33l8 8 16-17"/></svg><h3 class="h3">Thank you</h3><p class="small" style="margin-top:6px">The TriPollar team will be in touch soon.</p></div>
+          <p class="note">Preview only: submitting shows the thank-you state. Connect the form to the CRM / email tool chosen for lead follow-up.</p>
         </div>
       </div>
     </div>
@@ -1489,26 +970,226 @@
 
   </main>
 
-  <!-- ======================================================================
-       FOOTER
-       ====================================================================== -->
-  <footer class="pg-footer">
-    <div class="pg-wrap">
-      <div class="pg-footer__in">
-        <div class="pg-footer__marks">
-          <img src="assets/logo/tripollar-logo.svg" alt="TriPollar" width="159" height="53" loading="lazy">
-          <img src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy">
-        </div>
-        <nav class="pg-footer__links" aria-label="Legal">
-          <a href="https://pollogen.com/privacy-statement/" data-pg-link="privacy">Privacy</a>
-          <a href="https://pollogen.com/accessibility-statement/" data-pg-link="accessibility">Accessibility</a>
-          <a href="https://pollogen.com/contact-us/" data-pg-link="contact">Contact</a>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__in">
+        <div class="foot__marks"><img src="assets/logo/tripollar-wordmark.svg" alt="TriPollar" width="97" height="53" loading="lazy"><img src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy"></div>
+        <nav class="foot__links" aria-label="Legal">
+          <a href="https://pollogen.com/privacy-statement/" target="_blank" rel="noopener">Privacy</a>
+          <a href="https://pollogen.com/accessibility-statement/" target="_blank" rel="noopener">Accessibility</a>
+          <a href="#learn-more" data-open>Contact</a>
         </nav>
+        <p class="foot__legal">TriPollar is developed by Pollogen Ltd., a Lumenis company. Results vary by person and consistency of use. Always follow your device&rsquo;s user guide.</p>
       </div>
     </div>
   </footer>
 
-</div>
+  <div class="dock" data-dock>
+    <span class="dock__t"><b>Want to learn more?</b><span>Leave your details in under a minute</span></span>
+    <a class="btn btn--grad" href="#learn-more" data-open><span>Get in touch</span><span class="arr" aria-hidden="true">&#8594;</span></a>
+  </div>
 
+  <div class="drawer" data-drawer aria-hidden="true">
+    <div class="drawer__s" data-close></div>
+    <div class="drawer__p" role="dialog" aria-modal="true" aria-labelledby="tp-dt" data-fw>
+      <button class="drawer__x" type="button" data-close aria-label="Close"><span aria-hidden="true">&#10005;</span></button>
+      <span class="kick">Want to learn more?</span>
+      <h2 class="h2" id="tp-dt">Tell us what you&rsquo;re looking for</h2>
+      <form class="fgrid" action="#" method="post" novalidate data-form>
+        <label class="fld"><span class="fld__l">First name</span><input type="text" name="first_name" autocomplete="given-name" required><span class="fld__e">Please add your first name.</span></label>
+        <label class="fld"><span class="fld__l">Email</span><input type="email" name="email" autocomplete="email" required><span class="fld__e">Please add a valid email.</span></label>
+        <fieldset class="fld" style="border:0"><legend class="fld__l">I&rsquo;m interested in</legend>
+          <div class="ichips">
+            <label class="ichip"><input type="radio" name="device" value="STOP Vx2 Gold"><span>STOP Vx2 Gold</span></label>
+            <label class="ichip"><input type="radio" name="device" value="STOP Vx2 S"><span>STOP Vx2 S</span></label>
+            <label class="ichip"><input type="radio" name="device" value="Aura"><span>Aura</span></label>
+            <label class="ichip"><input type="radio" name="device" value="Pose Vx"><span>Pose Vx</span></label>
+            <label class="ichip"><input type="radio" name="device" value="Prism"><span>Prism</span></label>
+            <label class="ichip"><input type="radio" name="device" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="cons"><input type="checkbox" id="tp-cons-d" name="consent" required><label for="tp-cons-d">I agree that Pollogen may contact me about TriPollar and store my details in line with the <a href="https://pollogen.com/privacy-statement/" target="_blank" rel="noopener">Privacy Policy</a>.</label></div>
+        <div class="fact"><button class="btn btn--grad btn--block" type="submit"><span>Send my details</span><span class="arr" aria-hidden="true">&#8594;</span></button></div>
+      </form>
+      <div class="ok" role="status"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M20 33l8 8 16-17"/></svg><h3 class="h3">Thank you</h3><p class="small" style="margin-top:6px">The TriPollar team will be in touch soon.</p></div>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var root = document.querySelector('.tp-b2c-lp'); if (!root) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (s, c) { return (c || root).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || root).querySelectorAll(s)); };
+
+  /* product data — checked against each device's manufacturer page */
+  var P = {
+    gold: { name: 'TriPollar STOP Vx2 Gold', img: 'assets/images/dev-stop-vx2-gold.webp', bg: 'linear-gradient(160deg,#FFF3D9,#EBCB86)',
+      goal: 'Face and jawline firming, with a gold touch.',
+      desc: 'TriPollar’s most powerful RF face device for home use, pairing Multi-RF at 6 frequencies with 3rd-generation Adaptive DMA and 24K gold-plated, medical-grade stainless steel electrodes.',
+      tags: ['Multi-RF', 'Adaptive DMA', 'Turbo RF', 'Thermal Mapping', 'SensiMotion'],
+      ben: ['Supports collagen production', 'Firmer, tighter-looking skin', 'A more toned, defined jawline', 'Adapts energy to your own pace'],
+      area: ['Face', 'Jawline'], time: 'See the user guide for the recommended routine.' },
+    s: { name: 'TriPollar STOP Vx2 S', img: 'assets/images/dev-stop-vx2-s.webp', bg: 'linear-gradient(160deg,#FFE6E0,#F0B3B7)',
+      goal: 'Face and jawline firming and contouring.',
+      desc: 'The flagship of the line: triple-wave Multi-RF with three interchanging RF waves for even heating, 2nd-generation Thermal Mapping and 3rd-generation Adaptive DMA.',
+      tags: ['Triple-wave Multi-RF', 'Adaptive DMA', 'Thermal Mapping'],
+      ben: ['Tight, lifted-looking skin', 'An enhanced V-shape contour', 'Short, comfortable sessions', 'Personalised temperature control'],
+      area: ['Face', 'Jawline'], time: 'See the user guide for the recommended routine.' },
+    aura: { name: 'TriPollar Aura', img: 'assets/images/dev-aura.webp', bg: 'linear-gradient(160deg,#FFE9E4,#F2B6BD)',
+      goal: 'Full face, all in one.',
+      desc: 'Combines TriPollar RF at 6 frequencies, Turbo RF that reaches the optimal temperature in 20 seconds, 3rd-generation Adaptive DMA and red LED light at 630nm, with 24K gold-plated electrodes.',
+      tags: ['RF', 'Turbo RF', 'DMA', 'Red LED 630nm', 'SensiMotion Gen2'],
+      ben: ['Immediate lifting and V-shape effect', 'Supports collagen and elasticity', 'Smoother-looking texture and fewer visible wrinkles', 'Adapts to your movements'],
+      area: ['Face', 'Jawline'], time: 'Immediate lifting effect in about 6 minutes.' },
+    pose: { name: 'TriPollar Pose Vx', img: 'assets/images/dev-pose-vx.webp', bg: 'linear-gradient(160deg,#F7EEE6,#DDC1A7)',
+      goal: 'Body firming and smoothing.',
+      desc: 'RF and DMA work simultaneously for a two-way effect on the skin, designed for areas shaped by large muscles.',
+      tags: ['RF', 'DMA'],
+      ben: ['Smoother-looking skin texture, including the look of cellulite', 'Tighter-looking skin', 'Supports lymphatic drainage', 'Immediate and long-lasting results'],
+      area: ['Thighs', 'Abdomen', 'Buttocks', 'Upper arms'], time: 'See the user guide for the recommended routine.' },
+    prism: { name: 'TriPollar Prism', img: 'assets/images/dev-prism.webp', bg: 'linear-gradient(160deg,#FFEBDD,#F3B892)',
+      goal: 'Eye area, hands-free.',
+      desc: 'A cordless multi-LED eye mask with 88 high-density LEDs in five wavelengths: amber 605nm, red 630nm, deep red 660nm, near-infrared 830nm and white.',
+      tags: ['Multi-spectral LED', '88 LEDs', '3 modes'],
+      ben: ['Smoother-looking fine lines and wrinkles', 'Less visible puffiness', 'Firmer, more radiant eye area', 'Hands-free and travel friendly'],
+      area: ['Eye area'], time: '3 to 10 minutes: TotalGlo, BoostGlo or MorningGlo.' }
+  };
+
+  /* reveal */
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .16, rootMargin: '0px 0px -6% 0px' });
+  $$('.rv, .head, [data-clin], [data-matrix]').forEach(function (el) { io.observe(el); });
+
+  /* counters */
+  function count(el) {
+    var to = parseFloat(el.getAttribute('data-count')); if (reduce) return;
+    var t0 = null, d = 1500;
+    (function st(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / d); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(st); })(performance.now());
+    setTimeout(function () { el.textContent = to; }, d + 400);
+  }
+  var cio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { count(e.target); cio.unobserve(e.target); } }); }, { threshold: .6 });
+  $$('[data-count]').forEach(function (el) { cio.observe(el); });
+
+  /* scroll state */
+  var bar = $('.bar'), prog = $('.prog'), dock = $('[data-dock]'), hero = $('.hero'), lead = $('#learn-more'), drawer = $('[data-drawer]');
+  var links = $$('.nav a, .navm a'), ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY, vh = innerHeight, dh = document.documentElement.scrollHeight - vh;
+    prog.style.setProperty('--p', dh > 0 ? (y / dh).toFixed(4) : 0);
+    bar.classList.toggle('is-scrolled', y > 20);
+    var lr = lead.getBoundingClientRect();
+    dock.classList.toggle('on', y > hero.offsetHeight * .7 && !(lr.top < vh * .85 && lr.bottom > 0) && !drawer.classList.contains('open'));
+    var cur = null;
+    links.forEach(function (a) { var s = document.getElementById(a.getAttribute('href').slice(1)); if (s && s.getBoundingClientRect().top < vh * .35) cur = a.getAttribute('href'); });
+    links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === cur); });
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll); onScroll();
+
+  /* hero parallax + glow */
+  var glow = $('.hero__glow');
+  if (!reduce && matchMedia('(pointer:fine)').matches) {
+    var devs = $$('.dev');
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
+      devs.forEach(function (d) { var k = +d.getAttribute('data-depth'); d.style.setProperty('--px', (nx * -30 * k).toFixed(1) + 'px'); d.style.setProperty('--py', (ny * -18 * k).toFixed(1) + 'px'); });
+      glow.style.setProperty('--gx', (e.clientX - r.left) + 'px'); glow.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+    });
+    hero.addEventListener('pointerleave', function () { devs.forEach(function (d) { d.style.setProperty('--px', '0px'); d.style.setProperty('--py', '0px'); }); });
+  }
+  $$('.qb').forEach(function (el) { el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) / r.width * 100 + '%'); el.style.setProperty('--my', (e.clientY - r.top) / r.height * 100 + '%'); }); });
+
+  /* product spotlight */
+  var cards = $$('.pc'), cur = 'gold';
+  function li(arr) { return arr.map(function (t) { return '<li>' + t + '</li>'; }).join(''); }
+  function setP(k, scroll) {
+    var p = P[k]; if (!p) return; cur = k;
+    cards.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-p') === k ? 'true' : 'false'); });
+    var img = $('[data-s-img]');
+    img.classList.add('is-swap');
+    setTimeout(function () { img.src = p.img; img.alt = p.name; img.classList.remove('is-swap'); }, reduce ? 0 : 260);
+    $('[data-sbg]').style.setProperty('--sbg', p.bg);
+    $('[data-s-name]').textContent = p.name; $('[data-s-goal]').textContent = p.goal; $('[data-s-desc]').textContent = p.desc;
+    $('[data-s-tags]').innerHTML = p.tags.map(function (t) { return '<span class="chip"><i></i>' + t + '</span>'; }).join(' ');
+    $('[data-s-ben]').innerHTML = li(p.ben); $('[data-s-area]').innerHTML = li(p.area); $('[data-s-time]').textContent = p.time;
+    $('[data-s-ask]').setAttribute('data-open', p.name.replace('TriPollar ', ''));
+    if (scroll) $('[data-spot]').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  }
+  cards.forEach(function (c) { c.addEventListener('click', function () { setP(c.getAttribute('data-p'), innerWidth < 1000); }); });
+  setP('gold', false);
+
+  /* technology map <-> cards */
+  var nodes = $$('.tnode'), tcs = $$('.tcard');
+  function tOn(i) { nodes.forEach(function (n) { n.classList.toggle('is-on', +n.getAttribute('data-t') === i); }); tcs.forEach(function (c) { c.classList.toggle('is-on', +c.getAttribute('data-tc') === i); }); }
+  nodes.forEach(function (n) { var i = +n.getAttribute('data-t'); n.addEventListener('mouseenter', function () { tOn(i); }); n.addEventListener('focus', function () { tOn(i); }); n.addEventListener('click', function () { tOn(i); tcs[i].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }); });
+  tcs.forEach(function (c) { c.addEventListener('mouseenter', function () { tOn(+c.getAttribute('data-tc')); }); c.addEventListener('mouseleave', function () { tOn(-1); }); });
+  $('[data-tmap]').addEventListener('mouseleave', function () { tOn(-1); });
+
+  /* before / after */
+  var ba = $('[data-ba]'), rng = ba.querySelector('input');
+  rng.addEventListener('input', function () { ba.style.setProperty('--pos', rng.value + '%'); });
+
+  /* quiz */
+  var quiz = $('[data-quiz]'), steps = $$('.quiz__steps i', quiz), res = $('[data-res]', quiz);
+  function goQ(n) {
+    $$('.q', quiz).forEach(function (q) { q.classList.toggle('on', q.getAttribute('data-q') === String(n)); });
+    res.classList.remove('on'); steps.forEach(function (s, i) { s.classList.toggle('on', i < n); });
+  }
+  function showR(k) {
+    var p = P[k]; $$('.q', quiz).forEach(function (q) { q.classList.remove('on'); }); steps.forEach(function (s) { s.classList.add('on'); });
+    $('[data-r-img]', quiz).src = p.img; $('[data-r-img]', quiz).alt = p.name;
+    $('[data-r-name]', quiz).textContent = p.name; $('[data-r-desc]', quiz).textContent = p.goal + ' ' + p.desc;
+    $('[data-r-ask]', quiz).setAttribute('data-open', p.name.replace('TriPollar ', ''));
+    $('[data-r-see]', quiz).onclick = function (e) { e.preventDefault(); setP(k, false); $('[data-spot]').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); };
+    res.classList.add('on');
+  }
+  $$('[data-go]', quiz).forEach(function (b) { b.addEventListener('click', function () { goQ(+b.getAttribute('data-go')); }); });
+  $$('[data-r]', quiz).forEach(function (b) { b.addEventListener('click', function () { showR(b.getAttribute('data-r')); }); });
+
+  /* drawer */
+  var last = null;
+  function openD(dev) {
+    last = document.activeElement; drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); dock.classList.remove('on');
+    document.documentElement.style.overflow = 'hidden';
+    if (dev) { var r = drawer.querySelector('input[name="device"][value="' + dev + '"]'); if (r) r.checked = true; var sel = lead.querySelector('select[name="device"]'); if (sel) sel.value = dev; }
+    setTimeout(function () { var f = drawer.querySelector('input[name="first_name"]'); if (f) f.focus(); }, 350);
+  }
+  function closeD() { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); document.documentElement.style.overflow = ''; if (last) last.focus(); onScroll(); }
+  root.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-open]');
+    if (o && root.contains(o) && !drawer.contains(o)) { e.preventDefault(); openD(o.getAttribute('data-open')); return; }
+    var c = e.target.closest('[data-close]');
+    if (c) { e.preventDefault(); closeD(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!drawer.classList.contains('open')) return;
+    if (e.key === 'Escape') closeD();
+    if (e.key === 'Tab') {
+      var f = $$('a[href], button, input:not([tabindex="-1"]), select, textarea', drawer).filter(function (x) { return x.offsetParent !== null; });
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
+  /* forms */
+  $$('[data-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); var ok = true;
+      $$('[required]', form).forEach(function (i) {
+        var w = i.closest('.fld') || i.closest('.cons');
+        var bad = i.type === 'checkbox' ? !i.checked : !i.value.trim() || (i.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));
+        if (w) w.classList.toggle('err', bad); if (bad && ok) { i.focus(); ok = false; }
+      });
+      if (!ok || form.querySelector('[name="website"]').value) return;
+      // WIRE: send to the CRM / email tool chosen for lead follow-up
+      form.closest('[data-fw]').classList.add('sent');
+    });
+    $$('input, select', form).forEach(function (i) { i.addEventListener('input', function () { var w = i.closest('.fld') || i.closest('.cons'); if (w) w.classList.remove('err'); }); });
+  });
+})();
+</script>
+</div>
 </body>
 </html>
