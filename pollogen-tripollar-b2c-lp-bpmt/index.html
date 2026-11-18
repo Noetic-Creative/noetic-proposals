@@ -550,6 +550,50 @@
   .tp-b2c-lp .dock__t span{display:none}
   .tp-b2c-lp .hero__cta .btn{flex:1 1 100%}
 }
+
+/* v3 (18 Nov 2026) */
+.tp-b2c-lp .bar__logo{height:46px;width:auto;filter:none}
+.tp-b2c-lp .foot__marks img[src*="tripollar-main"]{height:46px}
+.tp-b2c-lp .bag{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s4);align-items:stretch}
+.tp-b2c-lp .bacard{display:flex;flex-direction:column;margin:0}
+.tp-b2c-lp .bacard .ba{width:100%;max-height:none;aspect-ratio:741/900;flex:1}
+.tp-b2c-lp .bapair{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:6px;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.tp-b2c-lp .bapair>div{position:relative;min-height:100%}
+.tp-b2c-lp .bapair img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.tp-b2c-lp .bacard__cap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-top:14px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+.tp-b2c-lp .bacard__cap b{font-family:var(--display);font-weight:400;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.tp-b2c-lp .cnums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:var(--s6);border-top:1px solid rgba(255,255,255,.16)}
+.tp-b2c-lp .cnum{padding:var(--s4) var(--s4) 0 0}
+.tp-b2c-lp .cnum+.cnum{padding-left:var(--s4);border-left:1px solid rgba(255,255,255,.16)}
+.tp-b2c-lp .cnum__n{display:block;font-family:var(--display);font-size:clamp(64px,8vw,124px);line-height:.95;letter-spacing:.01em;background:linear-gradient(120deg,#FFE0D2,#F7A7A0 50%,#D9B8F5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tp-b2c-lp .cnum p{margin-top:10px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);max-width:18em}
+.tp-b2c-lp .cnote{margin-top:var(--s3);font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.55)}
+.tp-b2c-lp .studies--2{grid-template-columns:repeat(2,1fr)}
+.tp-b2c-lp figure.expert{margin:var(--s5) 0 0;align-items:flex-start;padding:var(--s4)}
+.tp-b2c-lp .expert img{width:96px;height:96px}
+.tp-b2c-lp .expert__k{display:block;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#F7A7A0}
+.tp-b2c-lp .expert blockquote{margin:8px 0 10px;font-size:15px;line-height:1.65;color:#fff;max-width:62em}
+.tp-b2c-lp .expert figcaption{font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.65)}
+.tp-b2c-lp .expert figcaption b{color:#fff;font-weight:700}
+.tp-b2c-lp .res.on{display:block}
+.tp-b2c-lp .res__list{display:grid;gap:var(--s3);margin:10px 0 0}
+.tp-b2c-lp .res__item{display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:center}
+.tp-b2c-lp .res__item .res__pic{width:120px;height:180px;overflow:hidden}
+.tp-b2c-lp .res__item .res__pic img{height:84%;width:auto;max-width:80%;max-height:none;object-fit:contain}
+.tp-b2c-lp .res__item h3{font-size:clamp(18px,1.8vw,24px);letter-spacing:.05em;text-transform:uppercase;margin:0 0 6px}
+.tp-b2c-lp .res__d{color:var(--grey);font-size:13.5px;line-height:1.6}
+@media (max-width:1000px){
+  .tp-b2c-lp .bag{grid-template-columns:1fr}
+  .tp-b2c-lp .bapair{aspect-ratio:950/634}
+}
+@media (max-width:640px){
+  .tp-b2c-lp .cnums{grid-template-columns:1fr}
+  .tp-b2c-lp .cnum,.tp-b2c-lp .cnum+.cnum{padding:var(--s3) 0;border-left:0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .tp-b2c-lp .studies--2{grid-template-columns:1fr}
+  .tp-b2c-lp figure.expert{flex-direction:column}
+  .tp-b2c-lp .res__item{grid-template-columns:1fr}.tp-b2c-lp .res__item .res__pic{width:100%;height:170px}
+  .tp-b2c-lp .bar__logo{height:38px}
+}
 </style>
 
 <div class="tp-b2c-lp">
@@ -562,7 +606,7 @@
   <header class="bar">
     <div class="wrap">
       <div class="bar__in">
-        <a href="#top" aria-label="TriPollar, back to top"><img class="bar__logo" src="assets/logo/tripollar-wordmark.svg" alt="TriPollar" width="97" height="53"></a>
+        <a href="#top" aria-label="TriPollar, back to top"><img class="bar__logo" src="assets/logo/tripollar-main.png" alt="TriPollar" width="360" height="267"></a>
         <nav class="nav" aria-label="Page sections">
           <a href="#products">Devices</a>
           <a href="#technology">Technology</a>
@@ -572,11 +616,11 @@
           <a href="#routine">How to Use</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a class="btn" href="#learn-more" data-open><span>Want to learn more?</span></a>
+        <a class="btn" href="#learn-more" data-open><span>Contact us</span></a>
       </div>
     </div>
     <nav class="navm" aria-label="Page sections">
-      <a href="#products">Devices</a><a href="#technology">Technology</a><a href="#results">Results</a><a href="#match">Find yours</a><a href="#reviews">Reviews</a><a href="#routine">How to</a><a href="#faq">FAQ</a><a href="#learn-more">Learn more</a>
+      <a href="#products">Devices</a><a href="#technology">Technology</a><a href="#results">Results</a><a href="#match">Find yours</a><a href="#reviews">Reviews</a><a href="#routine">How to</a><a href="#faq">FAQ</a><a href="#learn-more">Contact</a>
     </nav>
   </header>
 
@@ -602,7 +646,7 @@
           <p class="hero__p">Powered by multiple cutting-edge technologies, TriPollar devices are designed to deliver visible results, helping you achieve firmer, smoother, and more youthful-looking skin.</p>
           <div class="hero__cta">
             <a class="btn btn--grad" href="#products"><span>Explore the devices</span><span class="arr" aria-hidden="true">&#8595;</span></a>
-            <a class="btn btn--ghost" href="#learn-more" data-open><span>Want to learn more?</span><span class="arr" aria-hidden="true">&#8594;</span></a>
+            <a class="btn btn--ghost" href="#learn-more" data-open><span>Ask the TriPollar team</span><span class="arr" aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
 
@@ -611,13 +655,13 @@
           <span class="stage__disc" aria-hidden="true"></span>
           <span class="stage__floor" aria-hidden="true"></span>
           <span class="stage__badge" aria-hidden="true"><span><b>05</b>Devices<br>Face · Eyes<br>· Body</span></span>
-          <figure class="stage__card"><img src="assets/images/life-vx2.webp" alt="A woman holding the TriPollar STOP Vx2 against her cheek, smiling." width="900" height="900"><span>At home, your time</span></figure>
+          <figure class="stage__card"><img src="assets/images/life-model.webp" alt="A woman holding the TriPollar STOP Vx2 beside her face." width="581" height="581"><span>At home, your time</span></figure>
 
           <div class="dev" tabindex="0" data-depth=".6" style="--x:10%;--y:32%;--h:50%;--z:2;--ad:.3s;--bd:6.4s;--bl:-1s"><div class="dev__f"><img src="assets/images/dev-stop-vx2-gold.webp" alt="TriPollar STOP Vx2 Gold" width="205" height="505"></div><span class="dev__tip">STOP Vx2 Gold</span></div>
           <div class="dev" tabindex="0" data-depth="1" style="--x:29%;--y:25%;--h:60%;--z:4;--ad:.2s;--bd:7s;--bl:-3s"><div class="dev__f"><img src="assets/images/dev-aura.webp" alt="TriPollar Aura" width="386" height="1000"></div><span class="dev__tip">Aura</span></div>
           <div class="dev" tabindex="0" data-depth=".5" style="--x:53%;--y:33%;--h:49%;--z:3;--ad:.4s;--bd:5.8s;--bl:-2s"><div class="dev__f"><img src="assets/images/dev-stop-vx2-s.webp" alt="TriPollar STOP Vx2 S" width="269" height="697"></div><span class="dev__tip">STOP Vx2 S</span></div>
           <div class="dev" tabindex="0" data-depth="1.2" style="--x:69%;--y:20%;--h:41%;--z:5;--ad:.5s;--bd:6.8s;--bl:-4s"><div class="dev__f"><img src="assets/images/dev-pose-vx.webp" alt="TriPollar Pose Vx" width="383" height="907"></div><span class="dev__tip">Pose Vx</span></div>
-          <div class="dev dev--w" tabindex="0" data-depth="1.6" style="--x:25%;--y:2%;--w:36%;--z:6;--ad:.65s;--bd:7.6s;--bl:-2.5s"><div class="dev__f"><img src="assets/images/dev-prism.webp" alt="TriPollar Prism LED eye mask" width="864" height="678"></div><span class="dev__tip">Prism</span></div>
+          <div class="dev dev--w" tabindex="0" data-depth="1.6" style="--x:24%;--y:4%;--w:38%;--z:6;--ad:.65s;--bd:7.6s;--bl:-2.5s"><div class="dev__f"><img src="assets/images/dev-prism-front.webp" alt="TriPollar Prism LED eye mask" width="1100" height="551"></div><span class="dev__tip">Prism</span></div>
         </div>
       </div>
 
@@ -625,9 +669,9 @@
         <a class="qb" href="#products"><span class="qb__i"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="6" height="18" rx="3"/><rect x="14" y="7" width="6" height="14" rx="3"/></svg></span><span class="qb__t">Devices<span class="qb__s">Face, eyes &amp; body</span></span></a>
         <a class="qb" href="#technology"><span class="qb__i"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span><span class="qb__t">Technology<span class="qb__s">RF · DMA · LED</span></span></a>
         <a class="qb" href="#results"><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 4 3 6-7"/></svg></span><span class="qb__t">Clinical Results<span class="qb__s">Before &amp; after</span></span></a>
-        <a class="qb" href="#match"><span class="qb__i"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><span class="qb__t">Find Yours<span class="qb__s">3 quick questions</span></span></a>
+        <a class="qb" href="#match"><span class="qb__i"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><span class="qb__t">Find Yours<span class="qb__s">One quick question</span></span></a>
         <a class="qb" href="#reviews"><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span class="qb__t">Reviews<span class="qb__s">Real routines</span></span></a>
-        <a class="qb qb--cta" href="#learn-more" data-open><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span><span class="qb__t">Learn More<span class="qb__s">Leave your details</span></span></a>
+        <a class="qb qb--cta" href="#learn-more" data-open><span class="qb__i"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span><span class="qb__t">Contact Us<span class="qb__s">Ask the TriPollar team</span></span></a>
       </nav>
     </div>
   </section>
@@ -659,15 +703,15 @@
 
       <div class="pgrid" role="list" data-pgrid>
         <button class="pc rv" role="listitem" style="--d:0s;--bg:linear-gradient(160deg,#FFF3D9,#F2D9A4)" data-p="gold" aria-pressed="true">
-          <span class="pc__pic"><span class="chip pc__area">Face &amp; jawline</span><img src="assets/images/dev-stop-vx2-gold.webp" alt="" width="205" height="505" loading="lazy"></span>
+          <span class="pc__pic"><span class="chip pc__area">Face</span><img src="assets/images/dev-stop-vx2-gold.webp" alt="" width="205" height="505" loading="lazy"></span>
           <span class="pc__body"><span class="pc__name">STOP Vx2 Gold</span><span class="pc__sub">Multi-RF and DMA with 24K gold-plated electrodes.</span><span class="pc__tech"><span>MULTI-RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
         </button>
         <button class="pc rv" role="listitem" style="--d:.08s;--bg:linear-gradient(160deg,#FFE6E0,#F4BFC0)" data-p="s" aria-pressed="false">
-          <span class="pc__pic"><span class="chip pc__area">Face &amp; jawline</span><img src="assets/images/dev-stop-vx2-s.webp" alt="" width="269" height="697" loading="lazy"></span>
+          <span class="pc__pic"><span class="chip pc__area">Face</span><img src="assets/images/dev-stop-vx2-s.webp" alt="" width="269" height="697" loading="lazy"></span>
           <span class="pc__body"><span class="pc__name">STOP Vx2 S</span><span class="pc__sub">Triple-wave Multi-RF with Adaptive DMA.</span><span class="pc__tech"><span>MULTI-RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
         </button>
         <button class="pc rv" role="listitem" style="--d:.16s;--bg:linear-gradient(160deg,#FFE9E4,#F7C6C9)" data-p="aura" aria-pressed="false">
-          <span class="pc__pic"><span class="chip pc__area">Face</span><img src="assets/images/dev-aura.webp" alt="" width="386" height="1000" loading="lazy"></span>
+          <span class="pc__pic"><span class="chip pc__area">Face &amp; jawline</span><img src="assets/images/dev-aura.webp" alt="" width="386" height="1000" loading="lazy"></span>
           <span class="pc__body"><span class="pc__name">Aura</span><span class="pc__sub">RF, DMA and red LED light in one device.</span><span class="pc__tech"><span>RF</span><span>DMA</span><span>LED</span></span><span class="pc__more">See details &#8594;</span></span>
         </button>
         <button class="pc rv" role="listitem" style="--d:.24s;--bg:linear-gradient(160deg,#F7EEE6,#E3CDB8)" data-p="pose" aria-pressed="false">
@@ -675,7 +719,7 @@
           <span class="pc__body"><span class="pc__name">Pose Vx</span><span class="pc__sub">RF and DMA for thighs, abdomen, buttocks and arms.</span><span class="pc__tech"><span>RF</span><span>DMA</span></span><span class="pc__more">See details &#8594;</span></span>
         </button>
         <button class="pc rv" role="listitem" style="--d:.32s;--bg:linear-gradient(160deg,#FFEBDD,#F6C3A6)" data-p="prism" aria-pressed="false">
-          <span class="pc__pic"><span class="chip pc__area">Eye area</span><img src="assets/images/dev-prism.webp" alt="" width="864" height="678" loading="lazy"></span>
+          <span class="pc__pic"><span class="chip pc__area">Eye area</span><img src="assets/images/dev-prism-front.webp" alt="" width="1100" height="551" loading="lazy"></span>
           <span class="pc__body"><span class="pc__name">Prism</span><span class="pc__sub">Hands-free multi-LED eye mask, 3 to 10 minutes.</span><span class="pc__tech"><span>LED</span></span><span class="pc__more">See details &#8594;</span></span>
         </button>
       </div>
@@ -715,11 +759,8 @@
       </header>
       <div class="why__grid">
         <div class="why__copy rv rv--l">
-          <p class="lede">TriPollar brings professional-inspired beauty technology into everyday life. Instead of relying on a single technology, TriPollar devices combine several &mdash; each with its own role &mdash; so your routine works on the skin, the contour and the glow at once.</p>
+          <p class="lede">TriPollar brings professional-inspired beauty technology into everyday life. Instead of relying on a single technology, TriPollar devices combine several &mdash; each with its own role &mdash; so each routine works on several layers of the skin at once.</p>
           <p class="small" style="font-size:14px;margin-top:var(--s3)">Multi-frequency RF warms the deeper layers of the skin, Dynamic Muscle Activation works with the muscle layer beneath it, and LED light adds another layer of care. Smart sensors on the STOP and Aura devices keep every session comfortable and consistent.</p>
-          <div class="pills" style="margin-top:var(--s4)">
-            <a class="btn" href="#products"><span>Compare the devices</span><span class="arr" aria-hidden="true">&#8594;</span></a>
-          </div>
         </div>
         <div class="tmap rv rv--z" data-tmap>
           <span class="tmap__ring" aria-hidden="true"></span>
@@ -739,20 +780,6 @@
         <article class="tcard rv" style="--d:.16s;--c:#9A6BD0;--c2:#5A3A9A" data-tc="2"><span class="tcard__n">03</span><h3 class="h3">LED light</h3><p>Red light at 630nm in Aura; five wavelengths, from amber to near-infrared, across 88 LEDs in Prism for the eye area.</p><p class="tcard__in">In: Aura · Prism</p></article>
         <article class="tcard rv" style="--d:.24s;--c:#D8B068;--c2:#9A6A2E" data-tc="3"><span class="tcard__n">04</span><h3 class="h3">Smart sensors</h3><p>Thermal Mapping and SensiMotion read temperature and movement in real time, adapting energy to your pace for a comfortable session.</p><p class="tcard__in">In: STOP Vx2 Gold · STOP Vx2 S · Aura</p></article>
       </div>
-
-      <div class="matrix rv" data-matrix>
-        <table>
-          <caption>Technologies per device, as described by the manufacturer.</caption>
-          <thead><tr><th scope="col">Device</th><th scope="col">Multi-RF</th><th scope="col">DMA</th><th scope="col">LED</th><th scope="col">Area</th></tr></thead>
-          <tbody>
-            <tr><td>STOP Vx2 Gold</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Face &amp; jawline</td></tr>
-            <tr><td>STOP Vx2 S</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Face &amp; jawline</td></tr>
-            <tr><td>Aura</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td>Face</td></tr>
-            <tr><td>Pose Vx</td><td><span class="dot" aria-label="Yes"></span></td><td><span class="dot" aria-label="Yes"></span></td><td><span class="nodot" aria-label="No"></span></td><td>Body</td></tr>
-            <tr><td>Prism</td><td><span class="nodot" aria-label="No"></span></td><td><span class="nodot" aria-label="No"></span></td><td><span class="dot" aria-label="Yes"></span></td><td>Eye area</td></tr>
-          </tbody>
-        </table>
-      </div>
       <p class="note">The collagen render was replaced by this interactive technology map until the client&rsquo;s new technology images arrive.</p>
     </div>
   </section>
@@ -763,40 +790,50 @@
       <header class="head head--light rv">
         <span class="head__n" aria-hidden="true">03</span>
         <div><span class="kick">Clinical Results</span><h2 class="h2">Proof You Can See</h2></div>
-        <p class="head__aside">Drag the slider to compare. Every result below comes from a named study with its own size and timeframe.</p>
+        <p class="head__aside">Real before-and-after photos from TriPollar users, and the measured results behind them. Every figure comes from a named study.</p>
       </header>
-      <div class="clin__grid">
-        <div class="rv rv--l">
+      <div class="bag">
+        <figure class="bacard rv rv--l">
           <div class="ba" data-ba>
-            <img src="assets/images/ba-vx2-before.webp" alt="Before treatment: a woman's face in three-quarter view, natural light." width="741" height="1350" loading="lazy">
-            <img class="ba__after" src="assets/images/ba-vx2-after.webp" alt="After treatment with TriPollar STOP Vx2: the same face, same angle and light." width="741" height="1350" loading="lazy">
+            <img src="assets/images/ba-vx2-before.webp" alt="Before: a woman's face in three-quarter view, natural light." width="741" height="1350" loading="lazy">
+            <img class="ba__after" src="assets/images/ba-vx2-after.webp" alt="After using TriPollar STOP Vx2: the same face, same angle and light." width="741" height="1350" loading="lazy">
             <span class="ba__lab ba__lab--b">Before</span><span class="ba__lab ba__lab--a">After</span>
             <span class="ba__handle" aria-hidden="true"><span class="ba__knob">&#8596;</span></span>
             <label class="sr" for="tp-ba">Compare before and after</label>
             <input id="tp-ba" type="range" min="0" max="100" value="50">
           </div>
-          <p class="ba__cap">TriPollar STOP Vx2 · Before / after · Individual results vary.</p>
-        </div>
-        <div class="rv rv--r">
-          <p class="lede" style="color:rgba(255,255,255,.88)">In a third-party study by SGS, 33 participants used TriPollar at home for 28 days. Here is what was measured.</p>
-          <div class="cstats">
-            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:31"/></svg><b>31%</b></div><p>Improvement in skin firmness</p></div>
-            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:22"/></svg><b>22%</b></div><p>Increase in skin elasticity</p></div>
-            <div class="cstat"><div class="cstat__ring"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15.9155" pathLength="100"/><circle class="fg" cx="18" cy="18" r="15.9155" pathLength="100" style="--v:97"/></svg><b>97%</b></div><p>Satisfied with elasticity, smoothness &amp; radiance</p></div>
+          <figcaption class="bacard__cap"><b>TriPollar STOP Vx2</b><span>Drag to compare &middot; Individual results may vary</span></figcaption>
+        </figure>
+        <figure class="bacard rv rv--r" style="--d:.1s">
+          <div class="bapair">
+            <div><img src="assets/images/ba-gold-before.webp" alt="Before: a woman's face in three-quarter view against a blue backdrop." width="475" height="634" loading="lazy"><span class="ba__lab ba__lab--b">Before</span></div>
+            <div><img src="assets/images/ba-gold-after.webp" alt="Immediately after one session with TriPollar STOP Vx2 Gold: the same woman against the same backdrop." width="475" height="634" loading="lazy"><span class="ba__lab ba__lab--a">After</span></div>
           </div>
-          <div class="expert">
-            <img src="assets/images/dr-king.webp" alt="Dr. Hadley King, dermatologist." width="600" height="600" loading="lazy">
-            <div><p class="h3">Dermatologist approved by Dr. Hadley King</p><p class="small">Third-party clinical study by SGS, 33 participants, 28 days of use. Individual results may vary.</p></div>
-          </div>
-        </div>
+          <figcaption class="bacard__cap"><b>TriPollar STOP Vx2 Gold</b><span>Before / immediately after one session &middot; Individual results may vary</span></figcaption>
+        </figure>
       </div>
 
-      <div class="studies">
-        <article class="study rv" style="--d:0s"><span class="study__n">&minus;<span data-count="41">41</span>%</span><p class="study__t">Wrinkle volume around the eyes after 12 weeks of home use</p><p class="study__s">Beilin G., <em>Journal of Cosmetic and Laser Therapy</em>, 2011 · 23 women aged 37&ndash;64 · TriPollar STOP</p></article>
-        <article class="study rv" style="--d:.1s"><span class="study__n">+<span data-count="41">41</span>%</span><p class="study__t">New collagen synthesis measured in human skin samples</p><p class="study__s">Boisnic S., Branchet M.C., <em>Journal of Dermatological Treatment</em>, 2010 · ex vivo, 8 donors · TriPollar STOP</p></article>
-        <article class="study rv" style="--d:.2s"><span class="study__n"><span data-count="28">28</span></span><p class="study__t">Days of at-home use in the SGS study behind the results above</p><p class="study__s">SGS third-party evaluation · 33 participants · Individual results may vary</p></article>
+      <div class="cnums rv">
+        <div class="cnum"><span class="cnum__n">31%</span><p>Improvement in skin firmness</p></div>
+        <div class="cnum"><span class="cnum__n">22%</span><p>Increase in skin elasticity</p></div>
+        <div class="cnum"><span class="cnum__n">97%</span><p>Satisfied with their skin&rsquo;s elasticity, smoothness and radiance</p></div>
       </div>
-      <p class="note">Before/after image: official STOP Vx2 asset from mytripollar.com &mdash; client to confirm the elapsed time and protocol so it can be labelled. Published-study figures as cited on skinvity.com&rsquo;s TriPollar page &mdash; client to confirm before launch.</p>
+      <p class="cnote">Third-party clinical study by SGS &middot; 33 participants &middot; after 28 days of at-home use with TriPollar STOP Vx2. Individual results may vary.</p>
+
+      <div class="studies studies--2">
+        <article class="study rv" style="--d:0s"><span class="study__n">&minus;<span data-count="41">41</span>%</span><p class="study__t">Wrinkle volume around the eyes after 12 weeks of home use</p><p class="study__s">Beilin G., <em>Journal of Cosmetic and Laser Therapy</em>, 2011 &middot; 23 women aged 37&ndash;64 &middot; TriPollar STOP</p></article>
+        <article class="study rv" style="--d:.1s"><span class="study__n">+<span data-count="41">41</span>%</span><p class="study__t">New collagen synthesis measured in human skin samples</p><p class="study__s">Boisnic S., Branchet M.C., <em>Journal of Dermatological Treatment</em>, 2010 &middot; ex vivo, 8 donors &middot; TriPollar STOP</p></article>
+      </div>
+
+      <figure class="expert rv">
+        <img src="assets/images/dr-king.webp" alt="Dr. Hadley King, board-certified dermatologist." width="600" height="600" loading="lazy">
+        <div>
+          <span class="expert__k">Dermatologist recommended</span>
+          <blockquote>&ldquo;TriPollar offers a safe and effective at-home option for delivering targeted radiofrequency energy to the skin to stimulate collagen production and produce anti-aging results. And because it uses radiofrequency, it&rsquo;s safe for all skin types and colors!&rdquo;</blockquote>
+          <figcaption><b>Dr. Hadley King</b> &middot; Board-certified dermatologist</figcaption>
+        </div>
+      </figure>
+      <p class="note">v3: quote and portrait as published on the mytripollar.com homepage (&ldquo;Dermatologist recommended&rdquo; block). Second before/after pair = the STOP Vx2 Gold product page on pollogen.com (&ldquo;After Tx &hellip; immediate effect&rdquo;). These are the only home-use before/afters published on either site &mdash; client to supply more.</p>
     </div>
   </section>
 
@@ -810,46 +847,22 @@
             <span class="kick" style="margin-top:var(--s2)">Find Your Match</span>
             <h2 class="h2">Find Your TriPollar</h2>
           </header>
-          <p class="lede">Three quick questions. One device made for you.</p>
+          <p class="lede">One quick question. Tell us where you want to focus and we&rsquo;ll show you the device made for it.</p>
         </div>
         <div class="quiz__card rv rv--r" data-quiz>
-          <div class="quiz__steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
           <div class="q on" data-q="1">
-            <h3><span class="q__n">01 / 03</span>Where do you want to focus?</h3>
+            <h3>Where do you want to focus?</h3>
             <div class="opts">
-              <button class="opt" data-go="2">Face and jawline <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="aura">Face &amp; jawline <span aria-hidden="true">&#8594;</span></button>
+              <button class="opt" data-r="gold,s">Face <span aria-hidden="true">&#8594;</span></button>
               <button class="opt" data-r="prism">Eye area <span aria-hidden="true">&#8594;</span></button>
               <button class="opt" data-r="pose">Body <span aria-hidden="true">&#8594;</span></button>
             </div>
           </div>
-          <div class="q" data-q="2">
-            <h3><span class="q__n">02 / 03</span>What does your ideal routine look like?</h3>
-            <div class="opts">
-              <button class="opt" data-go="3">Focused firming and contouring <span aria-hidden="true">&#8594;</span></button>
-              <button class="opt" data-r="aura">RF, DMA and red light in one device <span aria-hidden="true">&#8594;</span></button>
-            </div>
-            <button class="back" data-go="1">&#8592; Back</button>
-          </div>
-          <div class="q" data-q="3">
-            <h3><span class="q__n">03 / 03</span>Which style fits you?</h3>
-            <div class="opts">
-              <button class="opt" data-r="gold">24K gold-plated electrodes <span aria-hidden="true">&#8594;</span></button>
-              <button class="opt" data-r="s">Triple-wave Multi-RF, classic black <span aria-hidden="true">&#8594;</span></button>
-            </div>
-            <button class="back" data-go="2">&#8592; Back</button>
-          </div>
           <div class="res" data-res aria-live="polite">
-            <div class="res__pic"><img data-r-img src="" alt="" width="200" height="500"></div>
-            <div>
-              <span class="res__k">Your match</span>
-              <h3 data-r-name></h3>
-              <p data-r-desc style="color:var(--grey)"></p>
-              <div class="res__cta">
-                <a class="btn" href="#products" data-r-see><span>See details</span></a>
-                <a class="btn btn--grad" href="#learn-more" data-open data-r-ask><span>Ask about it</span></a>
-              </div>
-              <button class="back" data-go="1">&#8634; Start again</button>
-            </div>
+            <span class="res__k" data-r-k>Your match</span>
+            <div class="res__list" data-r-list></div>
+            <button class="back" data-go="1">&#8634; Start again</button>
           </div>
         </div>
       </div>
@@ -865,7 +878,7 @@
       </header>
       <div class="ugc">
         <figure class="rv" style="--d:0s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-gold-roller.webp" aria-label="A creator explains why she swapped her facial roller for the TriPollar STOP Vx2 Gold, and shows how she uses it."><source src="assets/video/ugc-gold-roller.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2 Gold</span></figcaption></figure>
-        <figure class="rv" style="--d:.08s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-gold-routine.webp" aria-label="A creator walks through her TriPollar STOP Vx2 Gold routine: gel, small circles, then DMA along the jawline."><source src="assets/video/ugc-gold-routine.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2 Gold</span></figcaption></figure>
+        <figure class="rv" style="--d:.08s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-gold-routine.webp" aria-label="A creator walks through her TriPollar STOP Vx2 Gold routine: gel, small circles, then DMA."><source src="assets/video/ugc-gold-routine.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2 Gold</span></figcaption></figure>
         <figure class="rv" style="--d:.16s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-vx2-explainer.webp" aria-label="A creator introduces the TriPollar STOP Vx2 and the technology inside it."><source src="assets/video/ugc-vx2-explainer.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2</span></figcaption></figure>
         <figure class="rv" style="--d:.24s"><video controls playsinline preload="none" width="606" height="1080" poster="assets/video/ugc-vx2-first-look.webp" aria-label="A creator tries the TriPollar STOP Vx2 at home and talks through how it works."><source src="assets/video/ugc-vx2-first-look.mp4" type="video/mp4"></video><figcaption><span class="chip">STOP Vx2</span></figcaption></figure>
       </div>
@@ -881,7 +894,7 @@
       </header>
       <div class="rpics">
         <img class="rv" src="assets/images/routine-gel.webp" alt="A woman smoothing TriPollar gel onto her cheek." width="900" height="900" loading="lazy">
-        <img class="rv" style="--d:.1s" src="assets/images/routine-treat.webp" alt="A woman treating her cheek with a TriPollar STOP device at home." width="900" height="900" loading="lazy">
+        <img class="rv" style="--d:.1s" src="assets/images/routine-treat-v3.webp" alt="A woman gliding the TriPollar STOP Vx2 over her cheek at home." width="900" height="900" loading="lazy">
       </div>
       <ol class="rsteps">
         <li class="rstep rv" style="--d:0s"><span class="rstep__n">01</span><h3 class="h3">Cleanse</h3><p>Start with clean, dry skin.</p></li>
@@ -925,7 +938,7 @@
         </div>
         <div class="rv">
           <details><summary>How does TriPollar work?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">TriPollar devices combine several technologies. Multi-frequency RF warms the deeper layers of the skin to support its natural firming process; DMA works with the muscle layer for a toned contour; LED light adds another layer of care. Each device uses the combination that suits its area &mdash; see <a href="#technology">the technology map</a>.</div></details>
-          <details><summary>Which TriPollar device is right for me?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">It depends on your goal. STOP Vx2 Gold and STOP Vx2 S are built for face and jawline firming, Aura combines RF, DMA and red LED in one device, Prism focuses on the eye area, and Pose Vx is designed for the body. Try the <a href="#match">Find Your TriPollar quiz</a>.</div></details>
+          <details><summary>Which TriPollar device is right for me?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">It depends on your goal. STOP Vx2 Gold and STOP Vx2 S are built for face firming, Aura combines RF, DMA and red LED for the face and jawline, Prism focuses on the eye area, and Pose Vx is designed for the body. Try the <a href="#match">Find Your TriPollar quiz</a>.</div></details>
           <details><summary>How often should I use it?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">Each device has its own recommended schedule, which you&rsquo;ll find in its user guide.</div></details>
           <details><summary>How long does a treatment take?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">It depends on the device. Prism sessions take 3 to 10 minutes depending on the mode, and Aura delivers an immediate lifting effect in about 6 minutes. Your device&rsquo;s user guide gives the recommended time for each area.</div></details>
           <details><summary>Is it easy to use at home?<span class="faq__i" aria-hidden="true"></span></summary><div class="faq__a">Yes. TriPollar devices are designed for home use, with simple steps you can do yourself &mdash; no professional needed. Watch the <a href="#routine">how-to videos</a>.</div></details>
@@ -943,8 +956,8 @@
       <div class="lead__grid">
         <div class="lead__copy rv rv--l">
           <span class="kick" style="color:#fff">Get in touch</span>
-          <h2 class="h2" style="margin-top:var(--s2)">Want to learn more?</h2>
-          <p class="lede">Leave your details and the TriPollar team will get back to you with everything you need to choose your device.</p>
+          <h2 class="h2" style="margin-top:var(--s2)">Talk to the TriPollar team</h2>
+          <p class="lede">Questions about a device, how it works or where to get it? Leave your details and the TriPollar team will get back to you.</p>
           <div class="lead__pic"><img src="assets/images/final.webp" alt="A woman in a black blazer holding the gold TriPollar STOP Vx2 Gold beside her face." width="1920" height="800" loading="lazy"></div>
         </div>
         <div class="fcard rv rv--r" data-fw>
@@ -973,7 +986,7 @@
   <footer class="foot">
     <div class="wrap">
       <div class="foot__in">
-        <div class="foot__marks"><img src="assets/logo/tripollar-wordmark.svg" alt="TriPollar" width="97" height="53" loading="lazy"><img src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy"></div>
+        <div class="foot__marks"><img src="assets/logo/tripollar-main.png" alt="TriPollar" width="360" height="267" loading="lazy"><img src="assets/logo/pollogen-logo.png" alt="Pollogen" width="333" height="120" loading="lazy"></div>
         <nav class="foot__links" aria-label="Legal">
           <a href="https://pollogen.com/privacy-statement/" target="_blank" rel="noopener">Privacy</a>
           <a href="https://pollogen.com/accessibility-statement/" target="_blank" rel="noopener">Accessibility</a>
@@ -985,7 +998,7 @@
   </footer>
 
   <div class="dock" data-dock>
-    <span class="dock__t"><b>Want to learn more?</b><span>Leave your details in under a minute</span></span>
+    <span class="dock__t"><b>Questions about TriPollar?</b><span>Leave your details and our team will reply</span></span>
     <a class="btn btn--grad" href="#learn-more" data-open><span>Get in touch</span><span class="arr" aria-hidden="true">&#8594;</span></a>
   </div>
 
@@ -993,7 +1006,7 @@
     <div class="drawer__s" data-close></div>
     <div class="drawer__p" role="dialog" aria-modal="true" aria-labelledby="tp-dt" data-fw>
       <button class="drawer__x" type="button" data-close aria-label="Close"><span aria-hidden="true">&#10005;</span></button>
-      <span class="kick">Want to learn more?</span>
+      <span class="kick">Contact the TriPollar team</span>
       <h2 class="h2" id="tp-dt">Tell us what you&rsquo;re looking for</h2>
       <form class="fgrid" action="#" method="post" novalidate data-form>
         <label class="fld"><span class="fld__l">First name</span><input type="text" name="first_name" autocomplete="given-name" required><span class="fld__e">Please add your first name.</span></label>
@@ -1026,19 +1039,19 @@
   /* product data — checked against each device's manufacturer page */
   var P = {
     gold: { name: 'TriPollar STOP Vx2 Gold', img: 'assets/images/dev-stop-vx2-gold.webp', bg: 'linear-gradient(160deg,#FFF3D9,#EBCB86)',
-      goal: 'Face and jawline firming, with a gold touch.',
+      goal: 'Face firming, with a gold touch.',
       desc: 'TriPollar’s most powerful RF face device for home use, pairing Multi-RF at 6 frequencies with 3rd-generation Adaptive DMA and 24K gold-plated, medical-grade stainless steel electrodes.',
       tags: ['Multi-RF', 'Adaptive DMA', 'Turbo RF', 'Thermal Mapping', 'SensiMotion'],
-      ben: ['Supports collagen production', 'Firmer, tighter-looking skin', 'A more toned, defined jawline', 'Adapts energy to your own pace'],
-      area: ['Face', 'Jawline'], time: 'See the user guide for the recommended routine.' },
+      ben: ['Supports collagen production', 'Firmer, tighter-looking skin', 'Smoother-looking texture', 'Adapts energy to your own pace'],
+      area: ['Face'], time: 'See the user guide for the recommended routine.' },
     s: { name: 'TriPollar STOP Vx2 S', img: 'assets/images/dev-stop-vx2-s.webp', bg: 'linear-gradient(160deg,#FFE6E0,#F0B3B7)',
-      goal: 'Face and jawline firming and contouring.',
+      goal: 'Face firming and smoothing.',
       desc: 'The flagship of the line: triple-wave Multi-RF with three interchanging RF waves for even heating, 2nd-generation Thermal Mapping and 3rd-generation Adaptive DMA.',
       tags: ['Triple-wave Multi-RF', 'Adaptive DMA', 'Thermal Mapping'],
-      ben: ['Tight, lifted-looking skin', 'An enhanced V-shape contour', 'Short, comfortable sessions', 'Personalised temperature control'],
-      area: ['Face', 'Jawline'], time: 'See the user guide for the recommended routine.' },
+      ben: ['Tight, lifted-looking skin', 'Firmer, smoother-looking skin', 'Short, comfortable sessions', 'Personalised temperature control'],
+      area: ['Face'], time: 'See the user guide for the recommended routine.' },
     aura: { name: 'TriPollar Aura', img: 'assets/images/dev-aura.webp', bg: 'linear-gradient(160deg,#FFE9E4,#F2B6BD)',
-      goal: 'Full face, all in one.',
+      goal: 'Face and jawline, all in one.',
       desc: 'Combines TriPollar RF at 6 frequencies, Turbo RF that reaches the optimal temperature in 20 seconds, 3rd-generation Adaptive DMA and red LED light at 630nm, with 24K gold-plated electrodes.',
       tags: ['RF', 'Turbo RF', 'DMA', 'Red LED 630nm', 'SensiMotion Gen2'],
       ben: ['Immediate lifting and V-shape effect', 'Supports collagen and elasticity', 'Smoother-looking texture and fewer visible wrinkles', 'Adapts to your movements'],
@@ -1049,7 +1062,7 @@
       tags: ['RF', 'DMA'],
       ben: ['Smoother-looking skin texture, including the look of cellulite', 'Tighter-looking skin', 'Supports lymphatic drainage', 'Immediate and long-lasting results'],
       area: ['Thighs', 'Abdomen', 'Buttocks', 'Upper arms'], time: 'See the user guide for the recommended routine.' },
-    prism: { name: 'TriPollar Prism', img: 'assets/images/dev-prism.webp', bg: 'linear-gradient(160deg,#FFEBDD,#F3B892)',
+    prism: { name: 'TriPollar Prism', img: 'assets/images/dev-prism-front.webp', bg: 'linear-gradient(160deg,#FFEBDD,#F3B892)',
       goal: 'Eye area, hands-free.',
       desc: 'A cordless multi-LED eye mask with 88 high-density LEDs in five wavelengths: amber 605nm, red 630nm, deep red 660nm, near-infrared 830nm and white.',
       tags: ['Multi-spectral LED', '88 LEDs', '3 modes'],
@@ -1131,22 +1144,27 @@
   var ba = $('[data-ba]'), rng = ba.querySelector('input');
   rng.addEventListener('input', function () { ba.style.setProperty('--pos', rng.value + '%'); });
 
-  /* quiz */
-  var quiz = $('[data-quiz]'), steps = $$('.quiz__steps i', quiz), res = $('[data-res]', quiz);
-  function goQ(n) {
-    $$('.q', quiz).forEach(function (q) { q.classList.toggle('on', q.getAttribute('data-q') === String(n)); });
-    res.classList.remove('on'); steps.forEach(function (s, i) { s.classList.toggle('on', i < n); });
-  }
-  function showR(k) {
-    var p = P[k]; $$('.q', quiz).forEach(function (q) { q.classList.remove('on'); }); steps.forEach(function (s) { s.classList.add('on'); });
-    $('[data-r-img]', quiz).src = p.img; $('[data-r-img]', quiz).alt = p.name;
-    $('[data-r-name]', quiz).textContent = p.name; $('[data-r-desc]', quiz).textContent = p.goal + ' ' + p.desc;
-    $('[data-r-ask]', quiz).setAttribute('data-open', p.name.replace('TriPollar ', ''));
-    $('[data-r-see]', quiz).onclick = function (e) { e.preventDefault(); setP(k, false); $('[data-spot]').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); };
+  /* quiz: one question, one or two devices */
+  var quiz = $('[data-quiz]'), res = $('[data-res]', quiz), list = $('[data-r-list]', quiz);
+  function goQ() { $('.q', quiz).classList.add('on'); res.classList.remove('on'); }
+  function showR(keys) {
+    $('.q', quiz).classList.remove('on');
+    $('[data-r-k]', quiz).textContent = keys.length > 1 ? 'Your matches' : 'Your match';
+    list.innerHTML = '';
+    keys.forEach(function (k) {
+      var p = P[k], d = document.createElement('div'); d.className = 'res__item';
+      d.innerHTML = '<div class="res__pic"><img alt="" width="200" height="500"></div><div><h3></h3><p class="res__d"></p><div class="res__cta"><a class="btn" href="#products"><span>See details</span></a><a class="btn btn--grad" href="#learn-more"><span>Ask about it</span></a></div></div>';
+      var im = d.querySelector('img'); im.src = p.img; im.alt = p.name;
+      d.querySelector('h3').textContent = p.name;
+      d.querySelector('.res__d').textContent = p.goal + ' ' + p.desc;
+      d.querySelector('.btn--grad').setAttribute('data-open', p.name.replace('TriPollar ', ''));
+      d.querySelector('.btn:not(.btn--grad)').addEventListener('click', function (e) { e.preventDefault(); setP(k, false); $('[data-spot]').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); });
+      list.appendChild(d);
+    });
     res.classList.add('on');
   }
-  $$('[data-go]', quiz).forEach(function (b) { b.addEventListener('click', function () { goQ(+b.getAttribute('data-go')); }); });
-  $$('[data-r]', quiz).forEach(function (b) { b.addEventListener('click', function () { showR(b.getAttribute('data-r')); }); });
+  $$('[data-go]', quiz).forEach(function (b) { b.addEventListener('click', goQ); });
+  $$('[data-r]', quiz).forEach(function (b) { b.addEventListener('click', function () { showR(b.getAttribute('data-r').split(',')); }); });
 
   /* drawer */
   var last = null;
