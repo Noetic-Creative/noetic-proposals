@@ -1,5 +1,5 @@
 /* Geneo B2C landing page — interactions.
-   GSAP + ScrollTrigger drive the scroll story, Lenis smooths the wheel.
+   GSAP + ScrollTrigger drive the reveals; scrolling itself is native.
    Everything degrades: without JS the page is a complete static document,
    and prefers-reduced-motion removes smoothing, pinning and particles. */
 (() => {
@@ -77,25 +77,15 @@
       ] },
   ];
 
-  /* ------------------------------------------------------- smooth scroll */
-  let lenis = null;
+  /* -------------------------------------------------------------- scroll */
+  // 17 Nov: native scrolling only (no wheel smoothing, no pinned sections), so
+  // the page never feels stuck under the visitor's finger.
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
-  if (!reduce && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true });
-    if (hasGsap) {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(t => lenis.raf(t * 1000));
-      gsap.ticker.lagSmoothing(0);
-    } else {
-      const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-    }
-  }
   const scrollToEl = (target, offset = -70) => {
     const el = typeof target === 'string' ? $(target) : target;
     if (!el) return;
-    if (lenis) lenis.scrollTo(el, { offset, duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) });
-    else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    const top = el.getBoundingClientRect().top + scrollY + offset;
+    scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
   };
 
   $$('[data-clinic-link]').forEach(a => { a.href = CLINIC_URL; });
@@ -251,19 +241,11 @@
       opacity: 0, y: 40, duration: 1, ease: 'expo.out', stagger: .08,
       scrollTrigger: { trigger: list, start: 'top 85%', once: true },
     }));
-    // Treatment cards rise in (desktop grid only; on phones they're a swipe row)
-    if (desktop()) gsap.from('.tcard', {
-      opacity: 0, y: 60, duration: 1.1, ease: 'expo.out', stagger: .07,
-      scrollTrigger: { trigger: '#tcards', start: 'top 82%', once: true },
-    });
-
     /* Hero intro: the device rises in, the treatment card slides up beside it */
     const tl = gsap.timeline({ delay: .15 });
     tl.from('.hv__disc', { scale: .55, opacity: 0, duration: 1.6, ease: 'expo.out' }, 0)
       .from('.hv__device', { y: 90, opacity: 0, duration: 1.3, ease: 'expo.out' }, .15)
       .from('.hv__treat', { y: 140, opacity: 0, rotate: 5, duration: 1.4, ease: 'expo.out' }, .35)
-      .from('.hv__tag', { opacity: 0, x: -14, duration: .9, ease: 'expo.out', stagger: .12 }, 1)
-      .from('.hv__chip', { scale: 0, opacity: 0, duration: .9, ease: 'back.out(2)', stagger: .12 }, 1.1)
       .to($$('.hero .w > span'), { y: 0, duration: 1.2, ease: 'expo.out', stagger: .05 }, .3)
       .to($$('.hero [data-fade]'), { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: .1 }, .65)
       .from('.marquee', { yPercent: 100, duration: 1, ease: 'expo.out' }, .9)
@@ -281,9 +263,8 @@
     if (desktop()) gsap.to('.hero__visual', { yPercent: -16, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     if (desktop()) gsap.to('.hero__copy', { yPercent: -10, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'center center', end: 'bottom top', scrub: true } });
 
-    /* Brand band */
-    gsap.fromTo('#outlineRun', { xPercent: 0 }, { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.brand', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.fromTo('.brand__bg', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.brand', start: 'top bottom', end: 'bottom top', scrub: true } });
+    /* About band */
+    gsap.fromTo('#outlineRun', { xPercent: 0 }, { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     /* Final stack floats apart and back */
     const fs = $('[data-stack="final"]');
@@ -297,7 +278,9 @@
     $$('.wd').forEach(el => { el.style.opacity = 1; });
   }
 
-  /* ------------------------------------------------- OxyPod pinned story */
+  /* ----------------------------------------------------- OxyPod story */
+  // 17 Nov: no longer pinned to the scroll. While the section is on screen the
+  // stack opens, cycles through its three actions and closes again on a timer.
   (() => {
     const scroll = $('#oxyScroll'), stack = $('[data-stack="oxy"]'), canvas = $('#oxyCanvas');
     if (!scroll || !stack || !hasGsap) return;
@@ -309,26 +292,29 @@
     size(); addEventListener('resize', size);
 
     const setStage = s => { if (s === stage) return; stage = s; steps.forEach((li, i) => li.classList.toggle('is-on', i === s)); };
-    const amtFor = p => p < .12 ? 0 : p < .3 ? (p - .12) / .18 : p < .82 ? 1 : p < .96 ? 1 - (p - .82) / .14 : 0;
+    const amtFor = p => p < .08 ? 0 : p < .2 ? (p - .08) / .12 : p < .86 ? 1 : p < .98 ? 1 - (p - .86) / .12 : 0;
     const update = p => {
       P = p; bar.style.transform = `scaleX(${p})`;
-      setStage(p < .4 ? 0 : p < .66 ? 1 : 2);
-      explode(slices, desktop() ? gsap.parseEase('power2.inOut')(amtFor(p)) : .45, stack);
+      setStage(p < .36 ? 0 : p < .64 ? 1 : 2);
+      explode(slices, gsap.parseEase('power2.inOut')(amtFor(p)) * (desktop() ? 1 : .7), stack);
     };
-    if (reduce) { explode(slices, .45, stack); return; }
+    if (reduce) { explode(slices, .45, stack); steps.forEach(li => li.classList.add('is-on')); return; }
 
-    ScrollTrigger.create({
-      trigger: scroll, start: 'top top', end: 'bottom bottom', scrub: true,
-      onUpdate: st => desktop() && update(st.progress),
-      onToggle: st => { on = st.isActive || !desktop(); if (on) loop(); },
-    });
-    ScrollTrigger.create({ trigger: scroll, start: 'top bottom', end: 'bottom top', onToggle: st => { on = st.isActive; if (on) loop(); } });
-    if (!desktop()) explode(slices, .45, stack);
+    const CYCLE = 10;   // seconds: open, three actions, close
+    const prog = { v: 0 };
+    const tw = gsap.to(prog, { v: 1, duration: CYCLE, ease: 'none', repeat: -1, paused: true, onUpdate: () => update(prog.v) });
+    // the visitor can also jump straight to an action
+    steps.forEach((li, i) => { li.style.cursor = 'pointer'; li.addEventListener('click', () => { tw.progress([.25, .5, .76][i]); }); });
+    new IntersectionObserver(([en]) => {
+      on = en.isIntersecting;
+      if (on) { tw.play(); loop(); } else tw.pause();
+    }, { threshold: .2 }).observe(scroll);
+    update(0);
 
     function spawn() {
       const sr = stack.getBoundingClientRect(), cr = canvas.getBoundingClientRect();
       const cx = sr.left - cr.left + sr.width / 2, cy = sr.top - cr.top + sr.height / 2;
-      const mode = desktop() ? stage : 1;
+      const mode = stage;
       if (mode === 0) {          // exfoliation: fine specks shed off the pod edges
         const side = Math.random() < .5 ? -1 : 1;
         parts.push({ k: 0, x: cx + side * sr.width * (.3 + Math.random() * .25), y: cy + (Math.random() - .5) * sr.height * 1.1,
@@ -348,7 +334,7 @@
     function loop() {
       if (!on) return;
       ctx.clearRect(0, 0, W, H);
-      const rate = desktop() ? [3, 1.1, 1.5][stage] * (P > .08 && P < .97 ? 1 : .25) : .5;
+      const rate = [3, 1.1, 1.5][stage] * (P > .08 && P < .97 ? 1 : .25) * (desktop() ? 1 : .5);
       acc += rate; while (acc > 1) { spawn(); acc--; }
       for (let i = parts.length - 1; i >= 0; i--) {
         const q = parts[i]; q.life++;
@@ -380,22 +366,12 @@
   })();
   function hexA(h, a) { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
 
-  /* ---------------------------------------------------- treatment cards */
-  // An ingredient's treatment chip lands on that treatment's card; on phones the
-  // cards are a swipe row, so the row is scrolled to the card as well.
-  const row = $('#tcards');
+  /* ------------------------------------------- ingredient → its treatment */
+  // 17 Nov: the packshot grid is gone, so an ingredient's treatment chip turns
+  // the OxyPod wheel to that treatment and opens it in the finder.
   function showTreatment(id) {
-    const card = $(`#t-${id}`); if (!card) return;
-    if (desktop()) scrollToEl(card, -110);
-    else { scrollToEl('#treatments', -70); row.scrollTo({ left: card.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: reduce ? 'auto' : 'smooth' }); }
-    card.classList.add('is-flash'); setTimeout(() => card.classList.remove('is-flash'), 1800);
-  }
-  if (row) {
-    const count = $('#tcardsCount'), n = row.children.length;
-    row.addEventListener('scroll', () => {
-      const w = row.children[0].offsetWidth + parseFloat(getComputedStyle(row).columnGap || 14);
-      count.textContent = `${String(Math.min(n, Math.round(row.scrollLeft / w) + 1)).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
-    }, { passive: true });
+    scrollToEl('#finder', -70);
+    setTimeout(() => finder.show(id, true), reduce ? 0 : 450);
   }
 
   /* ------------------------------------------------------------- videos */
@@ -594,7 +570,7 @@
     wheel.tabIndex = -1;
 
     show(0); renderQuiz();
-    return { show: (id, explore) => show(id, explore) };
+    return { show: (id, explore) => { idle = false; show(id, explore); } };
   })();
 
   /* ------------------------------------------------------ before & after */
@@ -638,16 +614,16 @@
     $$('.estep').forEach((s, i) => ScrollTrigger.create({ trigger: s, start: 'top 60%', end: 'bottom 60%', onToggle: st => st.isActive && set(i) }));
   })();
 
-  /* ---------------------------------------------------------- lead form */
-  (() => {
-    const f = $('#lead'); if (!f) return;
-    const err = $('#leadErr'), done = $('#leadDone');
+  /* ---------------------------------------------------------- lead forms */
+  // The full form at #contact and the sticky one share validation and endpoint.
+  function wireLead(f, err, done, wrapSel) {
+    if (!f) return;
     f.addEventListener('submit', async e => {
       e.preventDefault();
       let bad = null;
       $$('[required]', f).forEach(el => {
         const ok = el.type === 'checkbox' ? el.checked : el.value.trim() && el.checkValidity();
-        el.closest('.fld, .chk').classList.toggle('is-bad', !ok);
+        el.closest(wrapSel).classList.toggle('is-bad', !ok);
         if (!ok && !bad) bad = el;
       });
       if (bad) { err.textContent = 'Please complete the highlighted fields.'; bad.focus(); return; }
@@ -658,8 +634,10 @@
       }
       f.classList.add('is-done'); done.focus();
     });
-    f.addEventListener('input', e => e.target.closest('.fld, .chk')?.classList.remove('is-bad'));
-  })();
+    f.addEventListener('input', e => e.target.closest(wrapSel)?.classList.remove('is-bad'));
+  }
+  wireLead($('#lead'), $('#leadErr'), $('#leadDone'), '.fld, .chk');
+  wireLead($('#dockForm'), $('#dockErr'), $('#dockDone'), '.dfld, .dchk');
 
   /* ---------------------------------------------------------------- FAQ */
   $$('.qa__q').forEach(b => b.addEventListener('click', () => {
@@ -670,19 +648,40 @@
 
   /* ------------------------------------------------------ header + bars */
   (() => {
-    const hdr = $('#hdr'), bar = $('#progress'), m = $('#mcta'), form = $('#contact');
-    let last = 0, atForm = false;
-    // the sticky "Get in Touch" bar gets out of the way of the form itself
-    new IntersectionObserver(([en]) => { atForm = en.isIntersecting; on(lenis ? lenis.scroll : scrollY); }).observe(form);
+    const hdr = $('#hdr'), bar = $('#progress');
     const on = y => {
       const max = document.documentElement.scrollHeight - innerHeight;
       bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
       hdr.classList.toggle('is-scrolled', y > 40);
-      m.classList.toggle('is-on', y > innerHeight * .7 && !atForm);
-      last = y;
     };
-    if (lenis) lenis.on('scroll', e => on(e.scroll)); else addEventListener('scroll', () => on(scrollY), { passive: true });
+    addEventListener('scroll', () => on(scrollY), { passive: true });
     on(scrollY);
+  })();
+
+  /* --------------------------------------------------- sticky lead form */
+  // 17 Nov feedback 8: the form travels with the visitor. It appears once the hero
+  // is behind them, opens by itself on wide screens (a tab on phones), and steps
+  // aside while the full form at #contact is on screen.
+  (() => {
+    const dock = $('#dock'), tab = $('#dockTab'); if (!dock) return;
+    const KEY = 'geneo-dock';
+    let pref = null; try { pref = sessionStorage.getItem(KEY); } catch {}
+    const wide = () => innerWidth > 1100;
+    const setOpen = (o, remember) => {
+      dock.classList.toggle('is-open', o); tab.setAttribute('aria-expanded', o);
+      if (remember) try { sessionStorage.setItem(KEY, o ? 'open' : 'closed'); } catch {}
+    };
+    setOpen(pref === 'open');
+    tab.addEventListener('click', () => setOpen(!dock.classList.contains('is-open'), true));
+    let past = false, atForm = false, first = true;
+    const sync = () => {
+      const show = past && !atForm;
+      dock.classList.toggle('is-on', show);
+      if (show && first) { first = false; if (!pref && wide()) setOpen(true); }
+    };
+    new IntersectionObserver(([en]) => { past = !en.isIntersecting && en.boundingClientRect.top < 0; sync(); }).observe($('.hero'));
+    new IntersectionObserver(([en]) => { atForm = en.isIntersecting; sync(); }, { threshold: .15 }).observe($('#contact'));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && dock.classList.contains('is-open') && !wide()) setOpen(false, true); });
   })();
 
   /* ------------------------------------------------------------ scrollspy */
@@ -697,7 +696,7 @@
       if (cur && last && last.getBoundingClientRect().bottom < innerHeight * .2) cur = null;   // past FAQ: nothing lit
       mark(cur);
     };
-    if (lenis) lenis.on('scroll', pick); else addEventListener('scroll', pick, { passive: true });
+    addEventListener('scroll', pick, { passive: true });
     addEventListener('resize', pick); pick();
   })();
 
