@@ -563,15 +563,15 @@ main,.topbar,.rail{position:relative;z-index:2}
    ============================================================ */
 .crew{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:26px 14px}
 .tm{display:flex;flex-direction:column;gap:4px}
-.tm__ph{position:relative;display:block;aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--paper-3);margin-bottom:8px;transition:transform .6s var(--ease-out),box-shadow .45s var(--ease)}
-.tm__ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease),transform .8s var(--ease-out)}
-.tm__ini{display:grid;place-items:center;width:100%;height:100%;color:#fff;font-family:var(--font-display);font-weight:600;font-size:26px;filter:grayscale(.5);transition:filter .5s}
+.tm{align-items:center;text-align:center}
+.tm__ph{position:relative;display:block;width:100%;max-width:132px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--paper-3);margin-bottom:8px;transition:transform .6s var(--ease-out),box-shadow .45s var(--ease)}
+/* a few source portraits are already cut as circles on white: a slight zoom keeps that white edge out of the round frame */
+.tm__ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease),transform .8s var(--ease-out)}
 .tm b{display:block;font-family:var(--font-display);font-weight:600;font-size:14.5px;line-height:1.2;color:var(--ink)}
 .tm > span:last-child{font-size:12.5px;line-height:1.3;color:var(--ink-mute)}
 .tm:hover .tm__ph{transform:translateY(-4px);box-shadow:0 0 0 3px var(--purple)}
-.tm:hover .tm__ph img{filter:none;transform:scale(1.05)}
-.tm:hover .tm__ini{filter:none}
-@media (hover:none){.tm__ph img{filter:none}.tm__ini{filter:none}}
+.tm:hover .tm__ph img{filter:none;transform:scale(1.14)}
+@media (hover:none){.tm__ph img{filter:none}}
 .js .crew .tm{opacity:0;transform:translate3d(0,20px,0);transition:opacity .7s var(--ease) calc(var(--k) * 22ms),transform .9s var(--ease-out) calc(var(--k) * 22ms)}
 .js .crew.in .tm{opacity:1;transform:none}
 
@@ -1139,37 +1139,34 @@ main,.topbar,.rail{position:relative;z-index:2}
         <li class="tm" style="--k:3"><span class="tm__ph"><img src="assets/team/laura-gil.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Laura Gil</b><span>Account Manager</span></li>
         <li class="tm" style="--k:4"><span class="tm__ph"><img src="assets/team/nicole-luna.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Nicole Luna</b><span>Account Director</span></li>
         <li class="tm" style="--k:5"><span class="tm__ph"><img src="assets/team/alan-muther.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Alan Muther</b><span>SEO Specialist</span></li>
-        <li class="tm" style="--k:6"><span class="tm__ph"><span class="tm__ini" style="background:#008181">CA</span></span><b>Clemence Arthur</b><span>SEO Specialist</span></li>
-        <li class="tm" style="--k:7"><span class="tm__ph"><img src="assets/team/gonzalo-mazzoni.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Gonzalo Mazzoni</b><span>Media Buyer</span></li>
-        <li class="tm" style="--k:8"><span class="tm__ph"><img src="assets/team/kathryn-kudra.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Kathryn Kudra</b><span>Paid Social Specialist</span></li>
-        <li class="tm" style="--k:9"><span class="tm__ph"><img src="assets/team/luna-murgia.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Luna Murgia</b><span>Media Buyer</span></li>
-        <li class="tm" style="--k:10"><span class="tm__ph"><span class="tm__ini" style="background:#5443BE">SA</span></span><b>Scott Allen</b><span>SEO/GEO Specialist</span></li>
-        <li class="tm" style="--k:11"><span class="tm__ph"><img src="assets/team/tim-newlin.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Tim Newlin</b><span>Paid Search</span></li>
-        <li class="tm" style="--k:12"><span class="tm__ph"><img src="assets/team/yoav-chen.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Yoav Chen</b><span>Paid Search Specialist</span></li>
-        <li class="tm" style="--k:13"><span class="tm__ph"><img src="assets/team/alex-heilbronn.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Alex Heilbronn</b><span>Copywriter</span></li>
-        <li class="tm" style="--k:14"><span class="tm__ph"><img src="assets/team/carolina-fallu.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Carolina Fallu</b><span>Strategic Planner</span></li>
-        <li class="tm" style="--k:15"><span class="tm__ph"><img src="assets/team/helen-schenck.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Helen Schenck</b><span>Creative Direction</span></li>
-        <li class="tm" style="--k:16"><span class="tm__ph"><img src="assets/team/virginia-mayer.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Virginia Mayer</b><span>Copywriter</span></li>
-        <li class="tm" style="--k:17"><span class="tm__ph"><img src="assets/team/daniel-rojas.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Daniel Rojas</b><span>Video Editor &amp; Design</span></li>
-        <li class="tm" style="--k:18"><span class="tm__ph"><img src="assets/team/jose-cadenas.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Jose Cadenas</b><span>Senior Designer</span></li>
-        <li class="tm" style="--k:19"><span class="tm__ph"><img src="assets/team/maggie-bernal.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Maggie Bernal</b><span>Graphic Designer</span></li>
-        <li class="tm" style="--k:20"><span class="tm__ph"><img src="assets/team/sebastian-cortes.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Sebastian Cortes</b><span>Graphic Designer</span></li>
-        <li class="tm" style="--k:21"><span class="tm__ph"><img src="assets/team/paula-pinzon.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Paula Pinzon</b><span>Social Media and Community Manager</span></li>
-        <li class="tm" style="--k:22"><span class="tm__ph"><img src="assets/team/val-parra.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Val Parra</b><span>Social Media Manager</span></li>
-        <li class="tm" style="--k:23"><span class="tm__ph"><img src="assets/team/daniela-benfele.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Daniela Benfele</b><span>Automations &amp; Email</span></li>
-        <li class="tm" style="--k:24"><span class="tm__ph"><img src="assets/team/francisco-sica.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Francisco Sica</b><span>Data Analyst</span></li>
-        <li class="tm" style="--k:25"><span class="tm__ph"><img src="assets/team/joe-conroy.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Joe Conroy</b><span>SEO</span></li>
-        <li class="tm" style="--k:26"><span class="tm__ph"><img src="assets/team/monique-johnson.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Monique Johnson</b><span>Webinar Operations</span></li>
-        <li class="tm" style="--k:27"><span class="tm__ph"><img src="assets/team/rui-kojima.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Rui Kojima</b><span>CRO</span></li>
-        <li class="tm" style="--k:28"><span class="tm__ph"><img src="assets/team/serge-alarcon.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Serge Alarcon</b><span>Email Marketing Specialist</span></li>
-        <li class="tm" style="--k:29"><span class="tm__ph"><img src="assets/team/andres-coronel.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Andres Coronel</b><span>Web Developer</span></li>
-        <li class="tm" style="--k:30"><span class="tm__ph"><img src="assets/team/esteban-grijalva.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Esteban Grijalva</b><span>Developer</span></li>
-        <li class="tm" style="--k:31"><span class="tm__ph"><span class="tm__ini" style="background:#008181">JA</span></span><b>James Alonso</b><span>Web Designer</span></li>
-        <li class="tm" style="--k:32"><span class="tm__ph"><img src="assets/team/ali-caiza.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Ali Caiza</b><span>Executive Assistant &amp; Admin Coordinator</span></li>
-        <li class="tm" style="--k:33"><span class="tm__ph"><img src="assets/team/flor-hasman.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Flor Hasman</b><span>Talent Acquisition &amp; HR Manager</span></li>
-        <li class="tm" style="--k:34"><span class="tm__ph"><img src="assets/team/jackie-frysz.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Jackie Frysz</b><span>Head of Operations</span></li>
-        <li class="tm" style="--k:35"><span class="tm__ph"><img src="assets/team/maria-arevalo.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Maria Arevalo</b><span>Executive Assistant / Admin Manager</span></li>
-        <li class="tm" style="--k:36"><span class="tm__ph"><img src="assets/team/natalie-alush.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Natalie Alush</b><span>HR Advisor</span></li>
+        <li class="tm" style="--k:6"><span class="tm__ph"><img src="assets/team/gonzalo-mazzoni.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Gonzalo Mazzoni</b><span>Media Buyer</span></li>
+        <li class="tm" style="--k:7"><span class="tm__ph"><img src="assets/team/kathryn-kudra.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Kathryn Kudra</b><span>Paid Social Specialist</span></li>
+        <li class="tm" style="--k:8"><span class="tm__ph"><img src="assets/team/luna-murgia.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Luna Murgia</b><span>Media Buyer</span></li>
+        <li class="tm" style="--k:9"><span class="tm__ph"><img src="assets/team/tim-newlin.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Tim Newlin</b><span>Paid Search</span></li>
+        <li class="tm" style="--k:10"><span class="tm__ph"><img src="assets/team/yoav-chen.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Yoav Chen</b><span>Paid Search Specialist</span></li>
+        <li class="tm" style="--k:11"><span class="tm__ph"><img src="assets/team/alex-heilbronn.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Alex Heilbronn</b><span>Copywriter</span></li>
+        <li class="tm" style="--k:12"><span class="tm__ph"><img src="assets/team/carolina-fallu.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Carolina Fallu</b><span>Strategic Planner</span></li>
+        <li class="tm" style="--k:13"><span class="tm__ph"><img src="assets/team/helen-schenck.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Helen Schenck</b><span>Creative Direction</span></li>
+        <li class="tm" style="--k:14"><span class="tm__ph"><img src="assets/team/virginia-mayer.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Virginia Mayer</b><span>Copywriter</span></li>
+        <li class="tm" style="--k:15"><span class="tm__ph"><img src="assets/team/daniel-rojas.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Daniel Rojas</b><span>Video Editor &amp; Design</span></li>
+        <li class="tm" style="--k:16"><span class="tm__ph"><img src="assets/team/jose-cadenas.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Jose Cadenas</b><span>Senior Designer</span></li>
+        <li class="tm" style="--k:17"><span class="tm__ph"><img src="assets/team/maggie-bernal.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Maggie Bernal</b><span>Graphic Designer</span></li>
+        <li class="tm" style="--k:18"><span class="tm__ph"><img src="assets/team/sebastian-cortes.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Sebastian Cortes</b><span>Graphic Designer</span></li>
+        <li class="tm" style="--k:19"><span class="tm__ph"><img src="assets/team/paula-pinzon.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Paula Pinzon</b><span>Social Media and Community Manager</span></li>
+        <li class="tm" style="--k:20"><span class="tm__ph"><img src="assets/team/val-parra.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Val Parra</b><span>Social Media Manager</span></li>
+        <li class="tm" style="--k:21"><span class="tm__ph"><img src="assets/team/daniela-benfele.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Daniela Benfele</b><span>Automations &amp; Email</span></li>
+        <li class="tm" style="--k:22"><span class="tm__ph"><img src="assets/team/francisco-sica.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Francisco Sica</b><span>Data Analyst</span></li>
+        <li class="tm" style="--k:23"><span class="tm__ph"><img src="assets/team/joe-conroy.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Joe Conroy</b><span>SEO</span></li>
+        <li class="tm" style="--k:24"><span class="tm__ph"><img src="assets/team/monique-johnson.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Monique Johnson</b><span>Webinar Operations</span></li>
+        <li class="tm" style="--k:25"><span class="tm__ph"><img src="assets/team/rui-kojima.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Rui Kojima</b><span>CRO</span></li>
+        <li class="tm" style="--k:26"><span class="tm__ph"><img src="assets/team/serge-alarcon.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Serge Alarcon</b><span>Email Marketing Specialist</span></li>
+        <li class="tm" style="--k:27"><span class="tm__ph"><img src="assets/team/andres-coronel.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Andres Coronel</b><span>Web Developer</span></li>
+        <li class="tm" style="--k:28"><span class="tm__ph"><img src="assets/team/esteban-grijalva.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Esteban Grijalva</b><span>Developer</span></li>
+        <li class="tm" style="--k:29"><span class="tm__ph"><img src="assets/team/ali-caiza.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Ali Caiza</b><span>Executive Assistant &amp; Admin Coordinator</span></li>
+        <li class="tm" style="--k:30"><span class="tm__ph"><img src="assets/team/flor-hasman.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Flor Hasman</b><span>Talent Acquisition &amp; HR Manager</span></li>
+        <li class="tm" style="--k:31"><span class="tm__ph"><img src="assets/team/jackie-frysz.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Jackie Frysz</b><span>Head of Operations</span></li>
+        <li class="tm" style="--k:32"><span class="tm__ph"><img src="assets/team/maria-arevalo.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Maria Arevalo</b><span>Executive Assistant / Admin Manager</span></li>
+        <li class="tm" style="--k:33"><span class="tm__ph"><img src="assets/team/natalie-alush.webp" alt="" width="360" height="360" loading="lazy" decoding="async"></span><b>Natalie Alush</b><span>HR Advisor</span></li>
       </ul>
     </div>
   </section>
