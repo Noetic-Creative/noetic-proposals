@@ -350,6 +350,15 @@ main,.topbar,.rail{position:relative;z-index:2}
 .cc--ink .cc__res b{color:var(--paper-3)}
 .cc--ink .cc__res li.is-t b{color:var(--turq)}
 .cc--ink .cc__aha{color:var(--paper-3)}
+.cc__link{display:inline-flex;align-items:center;gap:10px;width:fit-content;padding-bottom:5px;font-family:var(--font-display);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--purple);border-bottom:1px solid rgba(84,67,190,.45);transition:color .3s,border-color .3s}
+.cc__link .cta__arrow{width:9px;height:13px}
+.cc__link:hover{color:var(--ink);border-color:var(--ink)}
+.cc__link:hover .cta__arrow{transform:translate(3px,-3px)}
+.cc--ink .cc__link{color:var(--turq);border-color:rgba(33,216,216,.5)}
+.cc--ink .cc__link:hover{color:#fff;border-color:#fff}
+.tag--link{gap:7px;border-color:var(--purple);color:var(--purple);transition:background .3s,color .3s}
+.tag--link .cta__arrow{width:7px;height:10px}
+.tag--link:hover{background:var(--purple);color:#fff}
 /* bar charts */
 .chart{display:flex;flex-direction:column;gap:10px;padding:18px 18px 16px;border-radius:var(--r-lg);background:rgba(255,255,255,.6);border:1px solid var(--hairline-soft)}
 .chart .t-label{font-size:10.5px;color:var(--ink-mute);margin-bottom:2px}
@@ -418,45 +427,47 @@ main,.topbar,.rail{position:relative;z-index:2}
 .dn p b{color:var(--ink);font-weight:600}
 
 /* ============================================================
-   03 UGC: a feed of phones. Hover or tap to play.
+   03 UGC: the work itself, no panel around it. Real creator videos on three columns that drift at their own speed.
    ============================================================ */
-.ughead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,48px)}
-.ughead .sec-head{margin-bottom:0}
-.rbtns{display:flex;gap:10px}
-.phs{display:flex;gap:18px;overflow-x:auto;padding:6px 0 20px;margin:0 calc(clamp(28px,6vw,80px) * -1);padding-left:clamp(28px,6vw,80px);padding-right:clamp(28px,6vw,80px);
-  scroll-padding:0 clamp(28px,6vw,80px);scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
-.phs::-webkit-scrollbar{display:none}
-.phs.is-drag{cursor:grabbing;user-select:none;-webkit-user-select:none}
-.phs.is-drag *{pointer-events:none}
-@media (pointer:coarse){.phs{scroll-snap-type:x mandatory}.ph{scroll-snap-align:start}}
-.ph{flex:0 0 clamp(220px,21vw,270px);display:flex;flex-direction:column;gap:10px}
-.ph__f{position:relative;aspect-ratio:9/16;border-radius:26px;overflow:hidden;background:#111;box-shadow:0 0 0 1px rgba(242,242,242,.16),0 24px 50px rgba(0,0,0,.35);transform:translateZ(0)}
-.ph__v{width:100%;height:100%;object-fit:cover;background:#111}
-.ph__n{position:absolute;left:12px;top:12px;font-family:var(--font-display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:var(--r-pill);background:rgba(0,0,0,.55);color:#fff;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.ph__client{position:absolute;right:12px;top:12px;font-family:var(--font-display);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:var(--r-pill);background:var(--teal);color:var(--ink)}
-.ph__play{position:absolute;inset:0;border:0;background:transparent;cursor:pointer}
-.ph__play i{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(255,255,255,.9);transition:opacity .35s,transform .45s var(--ease-out)}
-.ph__play i::after{content:"";position:absolute;left:23px;top:18px;border-left:16px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent}
-.ph.is-playing .ph__play i{opacity:0;transform:scale(.7)}
-.ph__snd{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.55);cursor:pointer;display:grid;place-items:center;opacity:0;transition:opacity .35s}
-.ph.is-playing .ph__snd,.ph__snd[aria-pressed="true"]{opacity:1}
-.ph__snd i{position:relative;width:16px;height:12px}
-.ph__snd i::before{content:"";position:absolute;left:0;top:3px;width:5px;height:6px;background:#fff;box-shadow:4px 0 0 -0px #fff;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
-.ph__snd i::after{content:"";position:absolute;left:5px;top:0;border-right:7px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
-.ph__snd[aria-pressed="false"]{background:rgba(0,0,0,.55)}
-.ph__snd[aria-pressed="false"] i{opacity:.55}
-.ph__snd[aria-pressed="true"]{background:var(--teal)}
-.ph h3{font-size:19px;line-height:1.15;margin-top:4px}
-.ph p{font-size:14.5px;line-height:1.45;color:rgba(242,242,242,.72)}
-.ph.is-slot .ph__f{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1.5px rgba(33,216,216,.6)}
-.ph__slot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;
-  background:repeating-linear-gradient(135deg,rgba(33,216,216,.07) 0 12px,transparent 12px 24px)}
-.ph__slot b{font-weight:600;font-size:20px;color:var(--turq)}
-.ph__slot span{font-size:11px;color:rgba(242,242,242,.6)}
-.phbar{height:2px;margin-top:4px;border-radius:2px;background:var(--hairline-invert)}
-.phbar i{display:block;height:100%;border-radius:2px;transform-origin:0 50%;transform:scaleX(var(--p,.2));background:linear-gradient(90deg,var(--purple-lift),var(--turq))}
-.ugnote{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:15px;color:rgba(242,242,242,.72)}
-.ugnote i{width:28px;height:2px;background:var(--turq);flex:0 0 auto}
+.ug{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,84px);align-items:start}
+.ug__side{position:sticky;top:120px;display:flex;flex-direction:column;gap:22px}
+.ug__side h2{max-width:11ch}
+.fmts{display:flex;flex-direction:column;margin-top:4px;border-top:1px solid var(--ink)}
+.fmts li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 8px;padding:11px 0;border-bottom:1px solid var(--hairline-soft)}
+.fmts b{font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:.04em;color:var(--purple);padding-top:3px}
+.fmts h3{font-size:17px;line-height:1.25}
+.fmts p{grid-column:2;font-size:14.5px;line-height:1.45;color:var(--ink-mute)}
+.fmts__t{font-size:10.5px;color:var(--ink-mute)}
+.ugnote{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink)}
+.ugnote i{width:28px;height:2px;background:var(--teal);flex:0 0 auto}
+.uw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.4vw,20px);align-items:start}
+.uw__col{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px);will-change:transform}
+.uw__col:nth-child(2){margin-top:clamp(90px,16vh,170px)}
+.uw__col:nth-child(3){margin-top:clamp(36px,7vh,80px)}
+.uv{position:relative;margin:0}
+.js .uv{opacity:0;transform:translate3d(0,48px,0);transition:opacity .9s var(--ease-out),transform 1.1s var(--ease-out);transition-delay:calc(var(--k) * 70ms)}
+.js .uv.in{opacity:1;transform:none}
+.uv__f{position:relative;display:block;width:100%;aspect-ratio:9/16;padding:0;border:0;border-radius:22px;overflow:hidden;background:#151515;cursor:pointer;
+  box-shadow:0 34px 60px -34px rgba(38,38,38,.55),0 0 0 1px rgba(255,255,255,.5);transform:translateZ(0);transition:box-shadow .45s var(--ease)}
+.uv video{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.uv__f:hover video{transform:scale(1.035)}
+.uv__tag{position:absolute;left:12px;top:12px;font-family:var(--font-display);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;padding:6px 10px;border-radius:var(--r-pill);background:rgba(255,255,255,.92);color:var(--ink)}
+.uv--animalia .uv__tag{background:var(--teal)}
+.uv__dur{position:absolute;right:12px;top:12px;font-family:var(--font-display);font-weight:600;font-size:11px;padding:5px 7px;border-radius:6px;background:rgba(0,0,0,.5);color:#fff}
+.uv__snd{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:flex-end;gap:2px;padding:9px 12px 9px 11px;border-radius:var(--r-pill);background:rgba(0,0,0,.55);color:#fff;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--font-display);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;line-height:1;transition:background .3s,color .3s}
+.uv__snd i{width:2.5px;height:4px;border-radius:2px;background:currentColor;margin-right:1px}
+.uv__snd i:nth-child(2){height:8px}.uv__snd i:nth-child(3){height:6px;margin-right:8px}
+.uv__on{display:none}
+.uv.is-loud .uv__f{box-shadow:0 34px 60px -30px rgba(0,129,129,.55),0 0 0 3px var(--teal)}
+.uv.is-loud .uv__snd{background:var(--teal);color:var(--ink)}
+.uv.is-loud .uv__on{display:inline}.uv.is-loud .uv__off{display:none}
+.uv.is-loud .uv__snd i{animation:eq .9s var(--ease) infinite alternate}
+.uv.is-loud .uv__snd i:nth-child(2){animation-delay:-.3s}.uv.is-loud .uv__snd i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{from{transform:scaleY(.5)}to{transform:scaleY(1.6)}}
+.uv figcaption{display:flex;flex-direction:column;gap:3px;padding:12px 4px 0}
+.uv figcaption b{font-family:var(--font-display);font-weight:600;font-size:16px;line-height:1.22;color:var(--ink)}
+.uv figcaption span{font-size:13px;color:var(--ink-mute)}
 
 /* ============================================================
    04 Testing: creative as a supply chain
@@ -667,6 +678,12 @@ main,.topbar,.rail{position:relative;z-index:2}
   .sv{grid-template-columns:1fr}
   .sv__meta{position:static}
   .beast{grid-template-columns:1fr}
+  .ug{grid-template-columns:1fr}
+  .ug__side{position:static}
+  .ug__side h2{max-width:14ch}
+  .uw{grid-template-columns:repeat(2,minmax(0,1fr));padding-bottom:70px}
+  .uw__col{display:contents}
+  .uv:nth-child(even){top:70px}
   .twin{grid-template-columns:1fr}
   .tw{padding-right:0}
   .tw + .tw{padding-left:0;border-left:0;border-top:1px solid var(--hairline-invert);margin-top:36px}
@@ -741,7 +758,6 @@ main,.topbar,.rail{position:relative;z-index:2}
   .lp__txt b{font-size:36px}
   .lp__txt span{font-size:16px}
   .lp__txt p{font-size:12.5px}
-  .ph{flex-basis:72vw}
   .cy{grid-template-columns:1fr}
   .crew{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 10px}
   .tm b{font-size:13px}
@@ -768,6 +784,8 @@ main,.topbar,.rail{position:relative;z-index:2}
   .ad{display:none}
   .pn,.pn__b,.pn__p,.rd__b-wrap,.ln--new,.svnav__pill,.score i,.kshare i,.ktwo span,.kdays i,.ck path,.br__b,.donut__v,.roas__line,.wire--p,.tm,.wy__c{transition:none!important}
   .js .crew .tm{opacity:1;transform:none}
+  .js .uv{opacity:1;transform:none;transition:none}
+  .uv.is-loud .uv__snd i{animation:none}
 }
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -804,8 +822,11 @@ main,.topbar,.rail{position:relative;z-index:2}
   .js .tw .br.is-after .br__b span{opacity:1!important}
   .js .cc:not(.in) .donut__v{stroke-dasharray:82 100}
   .js .cc:not(.in) .roas__line{stroke-dashoffset:0}
-  .phs{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
-  .ph{flex-basis:30%}
+  .ug{grid-template-columns:1fr}
+  .ug__side{position:static}
+  .uw__col{transform:none!important}
+  .uv video{display:none}
+  .uv__f{background-size:cover;background-position:center}
   .wy{position:static}
   .wy__c{transform:none!important;filter:none!important;min-height:0}
   .js .crew .tm{opacity:1!important;transform:none!important}
@@ -976,7 +997,7 @@ main,.topbar,.rail{position:relative;z-index:2}
             <p class="sv__desc reveal">In a restricted category, targeting options are narrow, so the ad itself does the targeting. Real people, plain language and a strong first two seconds bring the right applicant in and keep the wrong one scrolling.</p>
             <ul class="ticks reveal"><li>Campaign structure built for the credit special category, consolidated so the algorithm has enough signal to learn</li><li>UGC that opens on the problem (the payment, the rate, the lease ending), not on the offer</li><li>Separate creative tracks for refinance and lease buyout</li><li>On-site application flows in place of restricted lead forms</li><li>Monthly goals agreed up front, reported against every month</li></ul>
           </div>
-          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Consumer lending</span><img class="cc__logo" src="assets/logos/sorbet.svg" alt="" width="100" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Sorbet</h4><span class="cc__ind">Fintech · Personal loans · Credit special category</span><div class="cc__story"><div class="cc__blk"><span class="t-label">Challenge</span><p>Sorbet could generate leads from paid media but could not scale them predictably. Spend was split across eight state-level campaigns, so none gathered enough data to learn, and there was no agreed definition of a conversion.</p></div><div class="cc__blk"><span class="t-label">Method</span><p>We consolidated the campaigns, defined the true conversion as a completed application, fed it back to the platform, and let UGC carry the creative: problem-first hooks, application walkthroughs, no category jargon.</p></div></div><div class="chart"><span class="t-label">Cost per qualified application, as shared on our call</span><div class="br"><span class="br__l">Starting point</span><div class="br__t"><i class="br__b" style="--w:100%"><span>~$350</span></i></div></div><div class="br"><span class="br__l">After, upper range</span><div class="br__t"><i class="br__b is-win" style="--w:43%"><span>$150</span></i></div></div><div class="br"><span class="br__l">At its best</span><div class="br__t"><i class="br__b is-win" style="--w:34%"><span>$120</span></i></div></div><p class="chart__note">Approximate figures from the engagement, quoted by Tamir on November 18. The published case study metrics are shown above.</p></div><ul class="cc__res"><li><b><span data-count="20" data-prefix="−" data-suffix="%">−20%</span></b><span>Client acquisition cost after consolidation</span></li><li><b><span data-count="2.6" data-suffix="x" data-decimals="1">2.6x</span></b><span>Approved applications</span></li><li><b><span data-count="8.7" data-suffix="x" data-decimals="1">8.7x</span></b><span>Booked applications</span></li><li class="is-t"><b><span data-count="60" data-suffix="%">60%</span></b><span>Of all conversions came from UGC</span></li></ul><blockquote class="cc__q"><p>&ldquo;We were able to hit our KPIs and systematically increase performance goals, as well as media spend.&rdquo;</p><cite>Cullen Bray, CMO, Sorbet</cite></blockquote></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · B2C + B2B funnels</span><img class="cc__logo is-inv" src="assets/logos/squadron.webp" alt="" width="156" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">The Squadron</h4><span class="cc__ind">Experiential entertainment · New York</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>We split paid media into separate consumer and corporate funnels, built a UGC creator program, and ran every campaign against pre-agreed monthly goals.</p></div></div><div class="chart"><span class="t-label">Purchases in one month. Same platform, same budget.</span><div class="br"><span class="br__l">UGC creative</span><div class="br__t"><i class="br__b is-win" style="--w:100%"><span>58</span></i></div></div><div class="br"><span class="br__l">Brand creative</span><div class="br__t"><i class="br__b" style="--w:14%"><span>8</span></i></div></div></div><ul class="cc__res"><li><b><span data-count="63" data-prefix="~" data-suffix="%">~63%</span></b><span>Lower acquisition costs vs. the prior agency</span></li><li><b><span data-count="7" data-suffix="x">7x</span></b><span>More purchases from UGC than brand creative</span></li><li class="is-t"><b>6 of 6</b><span>Monthly goals exceeded, March 2026</span></li></ul><p class="cc__aha">The creative format mattered more than the budget. One creator's videos drove 31 purchases in a single month.</p></article></div>
+          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Consumer lending</span><img class="cc__logo" src="assets/logos/sorbet.svg" alt="" width="100" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Sorbet</h4><span class="cc__ind">Fintech · Personal loans · Credit special category</span><div class="cc__story"><div class="cc__blk"><span class="t-label">Challenge</span><p>Sorbet could generate leads from paid media but could not scale them predictably. Spend was split across eight state-level campaigns, so none gathered enough data to learn, and there was no agreed definition of a conversion.</p></div><div class="cc__blk"><span class="t-label">Method</span><p>We consolidated the campaigns, defined the true conversion as a completed application, fed it back to the platform, and let UGC carry the creative: problem-first hooks, application walkthroughs, no category jargon.</p></div></div><div class="chart"><span class="t-label">Cost per qualified application, as shared on our call</span><div class="br"><span class="br__l">Starting point</span><div class="br__t"><i class="br__b" style="--w:100%"><span>~$350</span></i></div></div><div class="br"><span class="br__l">After, upper range</span><div class="br__t"><i class="br__b is-win" style="--w:43%"><span>$150</span></i></div></div><div class="br"><span class="br__l">At its best</span><div class="br__t"><i class="br__b is-win" style="--w:34%"><span>$120</span></i></div></div><p class="chart__note">Approximate figures from the engagement, quoted by Tamir on November 18. The published case study metrics are shown above.</p></div><ul class="cc__res"><li><b><span data-count="20" data-prefix="−" data-suffix="%">−20%</span></b><span>Client acquisition cost after consolidation</span></li><li><b><span data-count="2.6" data-suffix="x" data-decimals="1">2.6x</span></b><span>Approved applications</span></li><li><b><span data-count="8.7" data-suffix="x" data-decimals="1">8.7x</span></b><span>Booked applications</span></li><li class="is-t"><b><span data-count="60" data-suffix="%">60%</span></b><span>Of all conversions came from UGC</span></li></ul><blockquote class="cc__q"><p>&ldquo;We were able to hit our KPIs and systematically increase performance goals, as well as media spend.&rdquo;</p><cite>Cullen Bray, CMO, Sorbet</cite></blockquote><a class="cc__link" href="https://noetic.io/cases/sorbet/" target="_blank" rel="noopener">Read the Sorbet case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · B2C + B2B funnels</span><img class="cc__logo is-inv" src="assets/logos/squadron.webp" alt="" width="156" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">The Squadron</h4><span class="cc__ind">Experiential entertainment · New York</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>We split paid media into separate consumer and corporate funnels, built a UGC creator program, and ran every campaign against pre-agreed monthly goals.</p></div></div><div class="chart"><span class="t-label">Purchases in one month. Same platform, same budget.</span><div class="br"><span class="br__l">UGC creative</span><div class="br__t"><i class="br__b is-win" style="--w:100%"><span>58</span></i></div></div><div class="br"><span class="br__l">Brand creative</span><div class="br__t"><i class="br__b" style="--w:14%"><span>8</span></i></div></div></div><ul class="cc__res"><li><b><span data-count="63" data-prefix="~" data-suffix="%">~63%</span></b><span>Lower acquisition costs vs. the prior agency</span></li><li><b><span data-count="7" data-suffix="x">7x</span></b><span>More purchases from UGC than brand creative</span></li><li class="is-t"><b>6 of 6</b><span>Monthly goals exceeded, March 2026</span></li></ul><p class="cc__aha">The creative format mattered more than the budget. One creator's videos drove 31 purchases in a single month.</p><a class="cc__link" href="https://noetic.io/cases/squadron/" target="_blank" rel="noopener">Read the The Squadron case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article></div>
         </article>
         <article class="sv" id="svc-data" data-i="1">
           <div class="sv__meta">
@@ -986,7 +1007,7 @@ main,.topbar,.rail{position:relative;z-index:2}
             <p class="sv__desc reveal">This is the piece Tamir walked through on the call. Out of the box, Meta optimizes for whoever fills in a form. What you want is the person who gets funded. The gap between those two is where CPA is won or lost.</p>
             <ul class="ticks reveal"><li>Conversion tracking audited end to end: GA4, tag manager, server-side events</li><li>A custom conversion defined around a completed, qualified application</li><li>A lead score built with your risk and operations teams</li><li>That score sent back to the ad platforms as a value, so they bid for quality</li><li>One dashboard that both teams trust</li></ul>
           </div>
-          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · The Sorbet scoring loop</span></div><h4 class="cc__name">From a form fill to a signal</h4><span class="cc__ind">How the loop worked, step by step</span><div class="lp" id="lp"><ol class="lp__ring" aria-label="The scoring loop, five steps"><li class="lp__s" style="--a:-90.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>01</b><span>Application</span></button><p>Applicant answers a short set of questions.</p></li><li class="lp__s" style="--a:-18.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>02</b><span>Score</span></button><p>Answers are scored on a model built with the Chief Risk Officer.</p></li><li class="lp__s" style="--a:54.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>03</b><span>Value</span></button><p>Each score is given a dollar value.</p></li><li class="lp__s is-hot is-on" style="--a:126.0deg"><button type="button" aria-pressed="true" aria-controls="lpCore"><b>04</b><span>Send back</span></button><p>The value is reported to the ad platform.</p></li><li class="lp__s" style="--a:198.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>05</b><span>Learn</span></button><p>The platform looks for more people like the best applicants.</p></li></ol><div class="lp__core" id="lpCore" aria-live="polite"><svg class="lp__orbit" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92"/><circle class="lp__dot" cx="100" cy="8" r="5"/></svg><div class="lp__txt"><b>04</b><span>Send back</span><p>The value is reported to the ad platform.</p></div></div></div><p class="lp__back"><i aria-hidden="true"></i>At Sorbet, the platforms adjusted within two to three weeks</p><ul class="cc__res"><li><b><span data-count="27" data-prefix="+" data-suffix="%">+27%</span></b><span>Approved applications from the custom event alone</span></li><li><b><span data-count="8">8</span></b><span>State-level campaigns consolidated so the signal could pool</span></li></ul><p class="cc__aha">The lead score was nothing fancy. Sending it back to the platform as a dollar value was the game changer.</p></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · Tracking rebuild</span><img class="cc__logo is-inv" src="assets/logos/noemie.svg" alt="" width="106" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">No&eacute;mie</h4><span class="cc__ind">DTC fine jewelry · Six-month engagement</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>ROAS sat below the profitability line and the data could not be trusted after the iOS changes. We cleaned up GA4, validated events, improved server-side tracking and Meta's Conversions API, and built Looker Studio dashboards, alongside a new creative system.</p></div></div><div class="chart"><span class="t-label">Return on ad spend, against a 3.0x profitability floor</span><svg class="roas" viewBox="0 0 520 176" role="img" aria-label="Chart: ROAS rose from about 2.5x at the start to 3.7x at the end of the engagement, crossing the 3.0x floor."><line class="roas__floor" x1="40" y1="92" x2="500" y2="92"/><text x="500" y="108" text-anchor="end" class="roas__fl">3.0x floor</text><path class="roas__area" d="M70 122 C200 118 330 70 450 50 L450 140 L70 140Z"/><path class="roas__line" d="M70 122 C200 118 330 70 450 50" pathLength="1"/><circle class="roas__a" cx="70" cy="122" r="6"/><circle class="roas__b" cx="450" cy="50" r="6"/><text x="70" y="113" text-anchor="middle" class="roas__v roas__v--a">~2.5x</text><text x="450" y="34" text-anchor="middle" class="roas__v">3.7x</text><line class="roas__axis" x1="40" y1="140" x2="500" y2="140"/><text x="70" y="162" text-anchor="middle" class="roas__t">Start</text><text x="450" y="162" text-anchor="middle" class="roas__t">Month six</text></svg></div><ul class="cc__res"><li><b><span data-count="3.7" data-suffix="x" data-decimals="1">3.7x</span></b><span>ROAS, up from about 2.5x</span></li><li><b><span data-count="48" data-prefix="+" data-suffix="%">+48%</span></b><span>Revenue over six months</span></li><li class="is-t"><b>2x+</b><span>Monthly media spend, with ROAS held</span></li></ul></article></div>
+          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · The Sorbet scoring loop</span></div><h4 class="cc__name">From a form fill to a signal</h4><span class="cc__ind">How the loop worked, step by step</span><div class="lp" id="lp"><ol class="lp__ring" aria-label="The scoring loop, five steps"><li class="lp__s" style="--a:-90.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>01</b><span>Application</span></button><p>Applicant answers a short set of questions.</p></li><li class="lp__s" style="--a:-18.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>02</b><span>Score</span></button><p>Answers are scored on a model built with the Chief Risk Officer.</p></li><li class="lp__s" style="--a:54.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>03</b><span>Value</span></button><p>Each score is given a dollar value.</p></li><li class="lp__s is-hot is-on" style="--a:126.0deg"><button type="button" aria-pressed="true" aria-controls="lpCore"><b>04</b><span>Send back</span></button><p>The value is reported to the ad platform.</p></li><li class="lp__s" style="--a:198.0deg"><button type="button" aria-pressed="false" aria-controls="lpCore"><b>05</b><span>Learn</span></button><p>The platform looks for more people like the best applicants.</p></li></ol><div class="lp__core" id="lpCore" aria-live="polite"><svg class="lp__orbit" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92"/><circle class="lp__dot" cx="100" cy="8" r="5"/></svg><div class="lp__txt"><b>04</b><span>Send back</span><p>The value is reported to the ad platform.</p></div></div></div><p class="lp__back"><i aria-hidden="true"></i>At Sorbet, the platforms adjusted within two to three weeks</p><ul class="cc__res"><li><b><span data-count="27" data-prefix="+" data-suffix="%">+27%</span></b><span>Approved applications from the custom event alone</span></li><li><b><span data-count="8">8</span></b><span>State-level campaigns consolidated so the signal could pool</span></li></ul><p class="cc__aha">The lead score was nothing fancy. Sending it back to the platform as a dollar value was the game changer.</p><a class="cc__link" href="https://noetic.io/cases/sorbet/" target="_blank" rel="noopener">Read the Sorbet case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · Tracking rebuild</span><img class="cc__logo is-inv" src="assets/logos/noemie.svg" alt="" width="106" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">No&eacute;mie</h4><span class="cc__ind">DTC fine jewelry · Six-month engagement</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>ROAS sat below the profitability line and the data could not be trusted after the iOS changes. We cleaned up GA4, validated events, improved server-side tracking and Meta's Conversions API, and built Looker Studio dashboards, alongside a new creative system.</p></div></div><div class="chart"><span class="t-label">Return on ad spend, against a 3.0x profitability floor</span><svg class="roas" viewBox="0 0 520 176" role="img" aria-label="Chart: ROAS rose from about 2.5x at the start to 3.7x at the end of the engagement, crossing the 3.0x floor."><line class="roas__floor" x1="40" y1="92" x2="500" y2="92"/><text x="500" y="108" text-anchor="end" class="roas__fl">3.0x floor</text><path class="roas__area" d="M70 122 C200 118 330 70 450 50 L450 140 L70 140Z"/><path class="roas__line" d="M70 122 C200 118 330 70 450 50" pathLength="1"/><circle class="roas__a" cx="70" cy="122" r="6"/><circle class="roas__b" cx="450" cy="50" r="6"/><text x="70" y="113" text-anchor="middle" class="roas__v roas__v--a">~2.5x</text><text x="450" y="34" text-anchor="middle" class="roas__v">3.7x</text><line class="roas__axis" x1="40" y1="140" x2="500" y2="140"/><text x="70" y="162" text-anchor="middle" class="roas__t">Start</text><text x="450" y="162" text-anchor="middle" class="roas__t">Month six</text></svg></div><ul class="cc__res"><li><b><span data-count="3.7" data-suffix="x" data-decimals="1">3.7x</span></b><span>ROAS, up from about 2.5x</span></li><li><b><span data-count="48" data-prefix="+" data-suffix="%">+48%</span></b><span>Revenue over six months</span></li><li class="is-t"><b>2x+</b><span>Monthly media spend, with ROAS held</span></li></ul><a class="cc__link" href="https://noetic.io/cases/noemie/" target="_blank" rel="noopener">Read the No&eacute;mie case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article></div>
         </article>
         <article class="sv" id="svc-organic" data-i="2">
           <div class="sv__meta">
@@ -996,7 +1017,7 @@ main,.topbar,.rail{position:relative;z-index:2}
             <p class="sv__desc reveal">Before someone hands over their loan details, they look you up. An active, human social presence is what they should find. It is also where the best paid creative is discovered for free.</p>
             <ul class="ticks reveal"><li>Content pillars for each business line, built around real customer moments</li><li>Creator sourcing and briefing that plugs into the influencer network you already have</li><li>Community management, so questions and comments get answered</li><li>Top organic posts promoted into paid, with proof already attached</li></ul>
           </div>
-          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Creator-led organic</span><img class="cc__logo" src="assets/logos/rail.svg" alt="" width="72" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Rail Europe</h4><span class="cc__ind">Travel eCommerce · Instagram, TikTok, Facebook</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>We run organic social, creator sourcing and production, video editing and paid amplification from one content operation, built around specific creator briefs.</p></div></div><div class="dn"><svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Donut chart: 82 percent of organic reach came from creator content, 18 percent from brand-produced posts."><circle cx="60" cy="60" r="46" class="donut__bg"/><circle cx="60" cy="60" r="46" class="donut__v" pathLength="100" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle">82%</text></svg><p><b>82% of total organic reach</b> came from creator content. Brand-produced posts accounted for the other 18%.</p></div><ul class="cc__res"><li><b><span data-count="40" data-prefix="+" data-suffix="%">+40%</span></b><span>Follower growth</span></li><li><b><span data-count="27" data-prefix="+" data-suffix="%">+27%</span></b><span>Engagement</span></li><li class="is-t"><b>2 weeks</b><span>From concept to live</span></li></ul></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · Expertise, made social</span><img class="cc__logo is-inv" src="assets/logos/lumenis.svg" alt="" width="146" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Lumenis</h4><span class="cc__ind">Medical technology · Regulated category</span><ul class="cc__res"><li><b><span data-count="25" data-suffix="%">25%</span></b><span>LinkedIn engagement rate, 12x the 2% benchmark</span></li><li><b><span data-count="179" data-prefix="+" data-suffix="%">+179%</span></b><span>TikTok reach, year over year</span></li><li class="is-t"><b><span data-count="95" data-suffix="%">95%</span></b><span>Positive sentiment, held through community management</span></li></ul><p class="cc__aha">In a regulated category, the most credible voice is rarely the brand. It is the practitioner or the customer.</p></article></div>
+          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Creator-led organic</span><img class="cc__logo" src="assets/logos/rail.svg" alt="" width="72" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Rail Europe</h4><span class="cc__ind">Travel eCommerce · Instagram, TikTok, Facebook</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>We run organic social, creator sourcing and production, video editing and paid amplification from one content operation, built around specific creator briefs.</p></div></div><div class="dn"><svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Donut chart: 82 percent of organic reach came from creator content, 18 percent from brand-produced posts."><circle cx="60" cy="60" r="46" class="donut__bg"/><circle cx="60" cy="60" r="46" class="donut__v" pathLength="100" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle">82%</text></svg><p><b>82% of total organic reach</b> came from creator content. Brand-produced posts accounted for the other 18%.</p></div><ul class="cc__res"><li><b><span data-count="40" data-prefix="+" data-suffix="%">+40%</span></b><span>Follower growth</span></li><li><b><span data-count="27" data-prefix="+" data-suffix="%">+27%</span></b><span>Engagement</span></li><li class="is-t"><b>2 weeks</b><span>From concept to live</span></li></ul><a class="cc__link" href="https://noetic.io/cases/rail-europe/" target="_blank" rel="noopener">Read the Rail Europe case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · Expertise, made social</span><img class="cc__logo is-inv" src="assets/logos/lumenis.svg" alt="" width="146" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Lumenis</h4><span class="cc__ind">Medical technology · Regulated category</span><ul class="cc__res"><li><b><span data-count="25" data-suffix="%">25%</span></b><span>LinkedIn engagement rate, 12x the 2% benchmark</span></li><li><b><span data-count="179" data-prefix="+" data-suffix="%">+179%</span></b><span>TikTok reach, year over year</span></li><li class="is-t"><b><span data-count="95" data-suffix="%">95%</span></b><span>Positive sentiment, held through community management</span></li></ul><p class="cc__aha">In a regulated category, the most credible voice is rarely the brand. It is the practitioner or the customer.</p><a class="cc__link" href="https://noetic.io/cases/lumenis/" target="_blank" rel="noopener">Read the Lumenis case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article></div>
         </article>
         <article class="sv" id="svc-email" data-i="3">
           <div class="sv__meta">
@@ -1006,37 +1027,24 @@ main,.topbar,.rail{position:relative;z-index:2}
             <p class="sv__desc reveal">Every channel sends people into an application. Not all of them finish. Email and SMS automations recover that spend, and they lower blended CPA without a dollar more in media.</p>
             <ul class="ticks reveal"><li>Started-but-not-finished application flows</li><li>Timing-based journeys, such as a lease approaching its end date</li><li>Segmentation by product, stage and behavior</li><li>A/B testing on subject lines, send times and offers</li><li>Referral and review requests after funding</li></ul>
           </div>
-          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Behavior-triggered email</span><img class="cc__logo" src="assets/logos/interlight.webp" alt="" width="168" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Interlight</h4><span class="cc__ind">eCommerce · First six months of the program</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>Interlight had never used email as a revenue channel. We launched a program built on A/B testing, behavior analysis, tight segmentation and behavior-triggered automations.</p></div></div><div class="chart"><span class="t-label">Average click rate</span><div class="br"><span class="br__l">Before</span><div class="br__t"><i class="br__b" style="--w:20%"><span>1%</span></i></div></div><div class="br"><span class="br__l">After six months</span><div class="br__t"><i class="br__b is-win" style="--w:100%"><span>5%</span></i></div></div></div><ul class="cc__res"><li><b>50%+</b><span>Open rate, held consistently</span></li><li><b><span data-count="25.6" data-prefix="+" data-suffix="%" data-decimals="1">+25.6%</span></b><span>Conversion rate</span></li><li class="is-t"><b><span data-count="3" data-suffix="x">3x</span></b><span>Click rate of automations vs. scheduled campaigns</span></li></ul></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · US consumer insurance</span><img class="cc__logo is-inv" src="assets/logos/animalia.webp" alt="" width="102" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Animalia</h4><span class="cc__ind">Pet insurance · B2C · US market</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>Paid acquisition, UGC, zero-touch funnels and marketing automation working as one system for a regulated consumer product.</p></div></div><ul class="cc__res"><li><b><span data-count="32" data-prefix="−" data-suffix="%">−32%</span></b><span>Customer acquisition cost</span></li><li><b><span data-count="5" data-suffix="x">5x</span></b><span>Return on investment, up from 1x</span></li><li class="is-t"><b><span data-count="20" data-prefix="+" data-suffix="%">+20%</span></b><span>Lead to customer conversion rate</span></li></ul></article></div>
+          <div class="sv__cards"><article class="cc glass glass--top reveal"><div class="cc__top"><span class="tag tag--fill">Featured · Behavior-triggered email</span><img class="cc__logo" src="assets/logos/interlight.webp" alt="" width="168" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Interlight</h4><span class="cc__ind">eCommerce · First six months of the program</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>Interlight had never used email as a revenue channel. We launched a program built on A/B testing, behavior analysis, tight segmentation and behavior-triggered automations.</p></div></div><div class="chart"><span class="t-label">Average click rate</span><div class="br"><span class="br__l">Before</span><div class="br__t"><i class="br__b" style="--w:20%"><span>1%</span></i></div></div><div class="br"><span class="br__l">After six months</span><div class="br__t"><i class="br__b is-win" style="--w:100%"><span>5%</span></i></div></div></div><ul class="cc__res"><li><b>50%+</b><span>Open rate, held consistently</span></li><li><b><span data-count="25.6" data-prefix="+" data-suffix="%" data-decimals="1">+25.6%</span></b><span>Conversion rate</span></li><li class="is-t"><b><span data-count="3" data-suffix="x">3x</span></b><span>Click rate of automations vs. scheduled campaigns</span></li></ul><a class="cc__link" href="https://noetic.io/cases/interlight/" target="_blank" rel="noopener">Read the Interlight case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article><article class="cc cc--ink reveal"><div class="cc__top"><span class="tag tag--inv">Companion · US consumer insurance</span><img class="cc__logo is-inv" src="assets/logos/animalia.webp" alt="" width="102" height="24" decoding="async" loading="lazy"></div><h4 class="cc__name">Animalia</h4><span class="cc__ind">Pet insurance · B2C · US market</span><div class="cc__story is-one"><div class="cc__blk"><span class="t-label">Method</span><p>Paid acquisition, UGC, zero-touch funnels and marketing automation working as one system for a regulated consumer product.</p></div></div><ul class="cc__res"><li><b><span data-count="32" data-prefix="−" data-suffix="%">−32%</span></b><span>Customer acquisition cost</span></li><li><b><span data-count="5" data-suffix="x">5x</span></b><span>Return on investment, up from 1x</span></li><li class="is-t"><b><span data-count="20" data-prefix="+" data-suffix="%">+20%</span></b><span>Lead to customer conversion rate</span></li></ul><a class="cc__link" href="https://noetic.io/cases/animalia/" target="_blank" rel="noopener">Read the Animalia case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></article></div>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ============================== 03 UGC -->
-  <section class="section" id="ugc" data-nav="ugc" style="padding-top:0">
+  <section class="section" id="ugc" data-nav="ugc" style="padding-top:clamp(40px,8vh,90px)">
     <div class="wrap">
-      <div class="onyx on-ink">
-        <div class="ughead">
-          <div class="sec-head reveal">
-            <span class="capsule">03 · UGC in practice</span>
-            <h2 class="t-section" style="max-width:15ch">What it actually <em class="mark">looks</em> like.</h2>
-            <p class="t-lede">Numbers are easier to trust once you have seen the work. These are the formats we would brief for RefiJet, with examples from our creator programs.</p>
-          </div>
-          <div class="rbtns reveal">
-            <button class="rbtn rbtn--prev" id="uPrev" type="button" aria-label="Scroll back"><svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></button>
-            <button class="rbtn rbtn--next" id="uNext" type="button" aria-label="Scroll on"><svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></button>
-          </div>
+      <div class="ug">
+        <div class="ug__side">
+          <span class="capsule reveal">03 · UGC in practice</span>
+          <h2 class="t-section reveal" data-delay="1">What it actually <em class="mark">looks</em> like.</h2>
+          <p class="t-lede reveal" data-delay="2">Numbers are easier to trust once you have seen the work. These are the formats we would brief for RefiJet, with examples from our creator programs.</p>
+          <div class="reveal" data-delay="2"><span class="t-label fmts__t">The formats</span><ol class="fmts"><li><b>01</b><h3>Problem-first hook</h3><p>Opens on the monthly payment, not the offer.</p></li><li><b>02</b><h3>Customer testimonial</h3><p>A real saving, told by the person who got it.</p></li><li><b>03</b><h3>Application walkthrough</h3><p>Screen in hand, start to finish.</p></li><li><b>04</b><h3>Creator explainer</h3><p>How refinancing works, in plain language.</p></li><li><b>05</b><h3>Lease-end story</h3><p>&ldquo;My lease was up. Here is what I did.&rdquo;</p></li><li><b>06</b><h3>Trend-native cut</h3><p>Built for the feed it runs in.</p></li></ol></div>
+          <p class="ugnote reveal"><i aria-hidden="true"></i>Example reel to follow.</p>
         </div>
-        <ul class="phs reveal" id="phs" tabindex="0" aria-label="Six UGC formats, scrollable">
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 01</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 01</span></div><h3>Problem-first hook</h3><p>Opens on the monthly payment, not the offer.</p></li>
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 02</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 02</span></div><h3>Customer testimonial</h3><p>A real saving, told by the person who got it.</p></li>
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 03</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 03</span></div><h3>Application walkthrough</h3><p>Screen in hand, start to finish.</p></li>
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 04</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 04</span></div><h3>Creator explainer</h3><p>How refinancing works, in plain language.</p></li>
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 05</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 05</span></div><h3>Lease-end story</h3><p>&ldquo;My lease was up. Here is what I did.&rdquo;</p></li>
-          <li class="ph is-slot"><div class="ph__f"><span class="ph__slot"><b>Slot 06</b><span>Awaiting the pick</span></span><span class="ph__n">UGC / 06</span></div><h3>Trend-native cut</h3><p>Built for the feed it runs in.</p></li>
-        </ul>
-        <div class="phbar" aria-hidden="true"><i id="phbar"></i></div>
-        <p class="ugnote"><i aria-hidden="true"></i>Example reel to follow.</p>
+        <div class="uw" id="uw" aria-label="Examples from our creator programs"><div class="uw__col"><figure class="uv uv--sorbet" style="--k:0"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: Why Sorbet beats unlimited PTO"><video src="assets/ugc/ugc-01.mp4" poster="assets/ugc/ugc-01.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Sorbet</span><span class="uv__dur">0:48</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>Why Sorbet beats unlimited PTO</b><span>Sorbet creator program</span></figcaption></figure><figure class="uv uv--animalia" style="--k:5"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: “Started to cry seeing my vet bill”"><video src="assets/ugc/ugc-09.mp4" poster="assets/ugc/ugc-09.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Animalia</span><span class="uv__dur">0:11</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>&ldquo;Started to cry seeing my vet bill&rdquo;</b><span>Animalia creator program</span></figcaption></figure><figure class="uv uv--sorbet" style="--k:6"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: Come shopping with me"><video src="assets/ugc/ugc-13.mp4" poster="assets/ugc/ugc-13.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Sorbet</span><span class="uv__dur">0:34</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>Come shopping with me</b><span>Sorbet creator program</span></figcaption></figure></div><div class="uw__col"><figure class="uv uv--animalia" style="--k:3"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: A dog trainer on why insurance pays off later"><video src="assets/ugc/ugc-05.mp4" poster="assets/ugc/ugc-05.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Animalia</span><span class="uv__dur">0:59</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>A dog trainer on why insurance pays off later</b><span>Animalia creator program</span></figcaption></figure><figure class="uv uv--sorbet" style="--k:1"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: “What do you do for a living?”"><video src="assets/ugc/ugc-02.mp4" poster="assets/ugc/ugc-02.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Sorbet</span><span class="uv__dur">0:25</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>&ldquo;What do you do for a living?&rdquo;</b><span>Sorbet creator program</span></figcaption></figure><figure class="uv uv--animalia" style="--k:4"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: Three warning signs every dog owner should know"><video src="assets/ugc/ugc-08.mp4" poster="assets/ugc/ugc-08.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Animalia</span><span class="uv__dur">0:14</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>Three warning signs every dog owner should know</b><span>Animalia creator program</span></figcaption></figure></div><div class="uw__col"><figure class="uv uv--sorbet" style="--k:2"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: “Short on cash? Try Sorbet.”"><video src="assets/ugc/ugc-03.mp4" poster="assets/ugc/ugc-03.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Sorbet</span><span class="uv__dur">0:18</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>&ldquo;Short on cash? Try Sorbet.&rdquo;</b><span>Sorbet creator program</span></figcaption></figure><figure class="uv uv--sorbet" style="--k:7"><button class="uv__f" type="button" aria-pressed="false" aria-label="Play with sound: The look I paid for with unused PTO"><video src="assets/ugc/ugc-14.mp4" poster="assets/ugc/ugc-14.jpg" muted playsinline loop preload="none"></video><span class="uv__tag">Sorbet</span><span class="uv__dur">0:29</span><span class="uv__snd" aria-hidden="true"><i></i><i></i><i></i><span class="uv__off">Tap for sound</span><span class="uv__on">Sound on</span></span></button><figcaption><b>The look I paid for with unused PTO</b><span>Sorbet creator program</span></figcaption></figure></div></div>
       </div>
     </div>
   </section>
@@ -1074,7 +1082,7 @@ main,.topbar,.rail{position:relative;z-index:2}
             <rect class="bx bx--ret" x="404" y="186" width="156" height="58" rx="10"/><text x="482" y="212" text-anchor="middle" class="tx tx--m">Control, B, C</text><text x="482" y="230" text-anchor="middle" class="mo">RETIRED</text>
           </svg>
         </div>
-        <ul class="sps"><li class="sp reveal" data-delay="0"><b><span class="from">$73</span><svg class="cta__arrow sp__arr" viewBox="0 0 42 59" aria-label="to"><use href="#arrow"/></svg><span>$27</span></b><p>Cost per sales-qualified lead in one week, after a fresh creative batch went live.</p><span class="tag">Telemedica</span></li><li class="sp reveal" data-delay="1"><b>5 days</b><p>From concept to feed for an AI-produced video series, at 65% lower production cost than a traditional shoot.</p><span class="tag">Lumenis</span></li><li class="sp reveal" data-delay="2"><b>7x</b><p>More purchases from creator content than from brand creative in the same month.</p><span class="tag">The Squadron</span></li><li class="sp reveal" data-delay="3"><b>2x+</b><p>Monthly spend more than doubled with ROAS held, using AI for hooks, scripts and variant production.</p><span class="tag">No&eacute;mie</span></li></ul>
+        <ul class="sps"><li class="sp reveal" data-delay="0"><b><span class="from">$73</span><svg class="cta__arrow sp__arr" viewBox="0 0 42 59" aria-label="to"><use href="#arrow"/></svg><span>$27</span></b><p>Cost per sales-qualified lead in one week, after a fresh creative batch went live.</p><span class="tag">Telemedica</span></li><li class="sp reveal" data-delay="1"><b>5 days</b><p>From concept to feed for an AI-produced video series, at 65% lower production cost than a traditional shoot.</p><a class="tag tag--link" href="https://noetic.io/cases/lumenis/" target="_blank" rel="noopener">Lumenis case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></li><li class="sp reveal" data-delay="2"><b>7x</b><p>More purchases from creator content than from brand creative in the same month.</p><a class="tag tag--link" href="https://noetic.io/cases/squadron/" target="_blank" rel="noopener">The Squadron case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></li><li class="sp reveal" data-delay="3"><b>2x+</b><p>Monthly spend more than doubled with ROAS held, using AI for hooks, scripts and variant production.</p><a class="tag tag--link" href="https://noetic.io/cases/noemie/" target="_blank" rel="noopener">No&eacute;mie case study <svg class="cta__arrow" viewBox="0 0 42 59" aria-hidden="true"><use href="#arrow"/></svg></a></li></ul>
       </div>
     </div>
   </section>
@@ -1315,7 +1323,7 @@ main,.topbar,.rail{position:relative;z-index:2}
     };
     requestAnimationFrame(step);
   };
-  const watched = '.reveal, [data-count], #kpis, .cc, .tw, #crew, #ab, #ag';
+  const watched = '.reveal, [data-count], #kpis, .cc, .tw, #crew, #ab, #ag, .uv';
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
@@ -1428,50 +1436,26 @@ main,.topbar,.rail{position:relative;z-index:2}
     addEventListener('resize', place);
   }
 
-  /* ---------- UGC: a feed you can drag, swipe or step through; videos play on hover or tap ---------- */
-  const phs = $('#phs'), phbar = $('#phbar'), cards = $$('.ph', phs);
-  const syncP = () => { const m = phs.scrollWidth - phs.clientWidth; const p = m > 0 ? phs.scrollLeft / m : 1; phbar.style.setProperty('--p', (.18 + p * .82).toFixed(3)); $('#uPrev').disabled = phs.scrollLeft < 4; $('#uNext').disabled = phs.scrollLeft > m - 4; };
-  const stepP = (k) => { const w = cards[0].offsetWidth + 18; phs.scrollBy({ left: k * w, behavior: reduce ? 'auto' : 'smooth' }); };
-  $('#uPrev').addEventListener('click', () => stepP(-1));
-  $('#uNext').addEventListener('click', () => stepP(1));
-  phs.addEventListener('scroll', () => requestAnimationFrame(syncP), { passive: true });
-  phs.addEventListener('keydown', e => { const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (k) { e.preventDefault(); stepP(k); } });
-  let pd = null, pv = 0, praf = null;
-  phs.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0) return; cancelAnimationFrame(praf); pd = { x: e.clientX, s: phs.scrollLeft, lx: e.clientX, lt: performance.now(), moved: false }; });
-  addEventListener('pointermove', e => {
-    if (!pd) return;
-    const dxp = e.clientX - pd.x;
-    if (!pd.moved && Math.abs(dxp) > 5) { pd.moved = true; phs.classList.add('is-drag'); }
-    if (!pd.moved) return;
-    const now = performance.now(); pv = (e.clientX - pd.lx) / Math.max(1, now - pd.lt); pd.lx = e.clientX; pd.lt = now;
-    phs.scrollLeft = pd.s - dxp;
-  });
-  addEventListener('pointerup', () => {
-    if (!pd) return;
-    const moved = pd.moved; pd = null; setTimeout(() => phs.classList.remove('is-drag'), 0);
-    if (!moved || reduce) return;
-    let v = -pv * 16;
-    const glide = () => { if (Math.abs(v) < .4) return; phs.scrollLeft += v; v *= .92; praf = requestAnimationFrame(glide); };
-    praf = requestAnimationFrame(glide);
-  });
-  const vids = [];
-  cards.forEach(c => {
-    const v = $('video', c); if (!v) return;
-    vids.push(v);
-    const play = () => { v.play().then(() => c.classList.add('is-playing')).catch(() => {}); };
-    const stop = () => { v.pause(); c.classList.remove('is-playing'); };
-    v.addEventListener('pause', () => c.classList.remove('is-playing'));
-    $('.ph__play', c).addEventListener('click', () => { if (v.paused) { vids.forEach(o => o !== v && o.pause()); play(); } else stop(); });
-    c.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && fine() && !reduce) play(); });
-    c.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && v.muted) stop(); });
-    const snd = $('.ph__snd', c);
-    snd.addEventListener('click', () => {
-      const on = v.muted; vids.forEach(o => { o.muted = true; const b = $('.ph__snd', o.closest('.ph')); b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Sound on'); });
-      v.muted = !on; snd.setAttribute('aria-pressed', on); snd.setAttribute('aria-label', on ? 'Sound off' : 'Sound on'); if (on && v.paused) play();
+  /* ---------- UGC: every video plays muted while it is on screen; tap one for its sound ---------- */
+  const uvs = $$('.uv'), uCols = $$('.uw__col');
+  let loud = null;
+  const quiet = (u) => { const v = $('video', u); v.muted = true; u.classList.remove('is-loud'); const b = $('.uv__f', u); b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', b.getAttribute('aria-label').replace(/^Mute: /, 'Play with sound: ')); if (reduce) v.pause(); };
+  const vio = new IntersectionObserver(es => es.forEach(e => {
+    const v = $('video', e.target);
+    if (e.isIntersecting && e.intersectionRatio >= .35) { if (!reduce || e.target === loud) v.play().catch(() => {}); }
+    else { v.pause(); if (e.target === loud) { quiet(loud); loud = null; } }
+  }), { threshold: [0, .35, .7] });
+  uvs.forEach(u => {
+    vio.observe(u);
+    const b = $('.uv__f', u), v = $('video', u);
+    b.addEventListener('click', () => {
+      if (loud === u) { quiet(u); loud = null; return; }
+      if (loud) quiet(loud);
+      loud = u; v.muted = false; v.currentTime = 0; v.play().catch(() => {});
+      u.classList.add('is-loud'); b.setAttribute('aria-pressed', 'true'); b.setAttribute('aria-label', b.getAttribute('aria-label').replace(/^Play with sound: /, 'Mute: '));
     });
   });
-  new IntersectionObserver(es => { if (!es[0].isIntersecting) vids.forEach(v => v.pause()); }).observe(phs);
-  syncP();
+  addEventListener('beforeprint', () => uvs.forEach(u => $('video', u).pause()));
 
   /* ---------- Testing: pick a station; the belt keeps moving ---------- */
   const cy = $('#cy'), cys = $$('.cy__s', cy), belt = $('#belt');
@@ -1512,6 +1496,11 @@ main,.topbar,.rail{position:relative;z-index:2}
         el.style.setProperty('--gy', clamp((vh * .5 - r.top - r.height * .5) * .12, -90, 90).toFixed(1) + 'px');
       });
     }
+    // the UGC wall: three columns at three speeds (desktop only)
+    if (!reduce && vw >= 1001) uCols.forEach((c, i) => {
+      const r = c.parentElement.getBoundingClientRect(); if (r.bottom < -200 || r.top > vh + 200) return;
+      c.style.transform = `translate3d(0,${clamp((vh * .5 - r.top - r.height * .5) * [-.07, .1, -.03][i], -110, 110).toFixed(1)}px,0)`;
+    }); else uCols.forEach(c => { c.style.transform = ''; });
     // stacked reasons: a card settles back as the next one slides over it
     if (!reduce) wys.forEach((c, i) => {
       const nx = wys[i + 1]; if (!nx) return;
@@ -1531,7 +1520,7 @@ main,.topbar,.rail{position:relative;z-index:2}
   function relayout(force) {
     const nw = document.documentElement.clientWidth;
     if (force === true || nw !== lastW || Math.abs(innerHeight - vh) > 160 || !lastW) { vw = nw; vh = innerHeight; lastW = nw; sizeBelt(); }
-    movePill(); syncP(); fitBars(); frame();
+    movePill(); fitBars(); frame();
   }
   addEventListener('resize', () => relayout());
   addEventListener('load', () => relayout(true));
