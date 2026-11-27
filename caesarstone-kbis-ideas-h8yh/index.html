@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caesarstone at KBIS 2027 · Seven Ideas</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{font-family:'Frutiger LT Std';font-weight:300;font-display:swap;src:url('https://cdn.prod.website-files.com/66d5a0b53b7ffde732f73c12/66d5a0b53b7ffde732f73c4b_FrutigerLTStd-Light.woff') format('woff')}
+@font-face{font-family:'Frutiger LT Std';font-weight:400;font-display:swap;src:url('https://cdn.prod.website-files.com/66d5a0b53b7ffde732f73c12/66d5a0b53b7ffde732f73c4c_FrutigerLTStd-Roman.woff') format('woff')}
+@font-face{font-family:'Frutiger LT Std';font-weight:700;font-display:swap;src:url('https://cdn.prod.website-files.com/66d5a0b53b7ffde732f73c12/66d5a0b53b7ffde732f73c4a_FrutigerLTStd-Bold.woff') format('woff')}
+@font-face{font-family:'Publico Banner';font-weight:300;font-display:swap;src:url('https://cdn.prod.website-files.com/66d5a0b53b7ffde732f73c12/66d5a0b53b7ffde732f73c4e_Publico-Banner-Light.woff') format('woff')}
+@font-face{font-family:'Publico Banner';font-style:italic;font-weight:300;font-display:swap;src:url('https://cdn.prod.website-files.com/66d5a0b53b7ffde732f73c12/66d5a0b53b7ffde732f73c4f_Publico-Banner-Light-Italic.woff') format('woff')}
+
+:root{
+  --black:#1A1B17; --grey:#444541; --white:#F5F2F0; --terra:#DC4405;
+  --stone:#ECE7E2; --line:#D6CFC8; --mute:#77746E; --mute-d:#A9A59E;
+  --fa:'Frutiger LT Std',Tahoma,sans-serif; --fe:'Publico Banner','Times New Roman',serif;
+  --ease:cubic-bezier(.2,.75,.1,1); --slow:cubic-bezier(.65,0,.15,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0E0F0C;color:var(--black);font-family:var(--fa);overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+img{display:block}
+
+/* ---------- stage ---------- */
+#viewport{position:fixed;inset:0 0 54px 0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center}
+.slide{position:absolute;inset:0;background:var(--white);overflow:hidden;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s}
+.slide.is-active{opacity:1;visibility:visible;transition:opacity .6s var(--ease),visibility 0s}
+.slide--dark{background:var(--black);color:var(--white)}
+
+.s-logo{position:absolute;z-index:6;top:58px;left:120px;width:206px;height:32px;color:var(--black);transition:color .6s}
+.on-photo .s-logo,.slide--dark .s-logo{color:var(--white)}
+.s-tag{position:absolute;z-index:6;top:66px;right:120px;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);transition:color .6s}
+.on-photo .s-tag,.slide--dark .s-tag{color:rgba(245,242,240,.72)}
+.s-num{position:absolute;z-index:6;bottom:46px;right:120px;font-size:15px;letter-spacing:.12em;color:var(--mute);transition:color .6s}
+.on-photo .s-num,.slide--dark .s-num{color:rgba(245,242,240,.72)}
+
+/* type */
+.kicker{font-size:18px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--terra)}
+h2{font-family:var(--fe);font-weight:300;font-size:84px;line-height:1.02;letter-spacing:-.015em;margin-top:18px}
+h2 em{font-style:italic}
+.lede{font-weight:300;font-size:28px;line-height:1.4;margin-top:24px}
+.label{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.body{font-weight:300;font-size:20px;line-height:1.45;color:var(--grey);margin-top:10px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px)}
+.is-active .rv{animation:rise .9s var(--ease) both;animation-delay:calc(var(--i,0) * 80ms + 150ms)}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.kb{animation:none}
+.is-active .kb{animation:kb 16s linear both}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.is-active .wipe{animation:wipe 1.3s var(--slow) both;animation-delay:.1s}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+
+/* golden rectangle */
+.gr{position:relative;aspect-ratio:1.618/1}
+.gr__img{position:absolute;inset:0;overflow:hidden;background:#2a2a26}
+.gr__img img{width:100%;height:100%;object-fit:cover}
+.gr__out{position:absolute;inset:0;border:1.5px solid currentColor;transform:translate(26px,26px);opacity:.4;pointer-events:none}
+
+/* dots meter */
+.dots{display:inline-flex;gap:6px;vertical-align:middle}
+.dot{width:13px;height:13px;border-radius:50%;border:1.5px solid currentColor}
+.dot.f{background:currentColor}
+
+/* ===== COVER ===== */
+.full{position:absolute;inset:0;overflow:hidden}
+.full img{width:100%;height:100%;object-fit:cover}
+.scrim-l{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,27,23,.94) 0%,rgba(26,27,23,.82) 34%,rgba(26,27,23,.25) 66%,rgba(26,27,23,.05) 100%)}
+.scrim-b{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,27,23,.85) 0%,rgba(26,27,23,0) 42%)}
+.cover__t{position:absolute;left:120px;top:196px;width:1240px;z-index:2}
+.cover__t h2{font-size:132px;line-height:.98;margin-top:28px}
+.cover__t .lede{color:#E2DDD7;max-width:760px;margin-top:30px}
+.strip{position:absolute;left:120px;right:120px;bottom:108px;z-index:2;display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+.strip button{position:relative;display:block}
+.strip .gr__img img{transition:transform .6s var(--ease),filter .4s;filter:brightness(.82)}
+.strip button:hover .gr__img img{transform:scale(1.07);filter:none}
+.strip .n{position:absolute;left:12px;top:10px;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--white)}
+.strip p{font-size:15px;color:#D9D4CE;margin-top:10px;letter-spacing:.02em;transition:color .3s}
+.strip button:hover p{color:var(--white)}
+.strip-lab{position:absolute;left:120px;bottom:300px;z-index:2;font-size:14px;letter-spacing:.17em;text-transform:uppercase;color:rgba(245,242,240,.6);display:flex;align-items:center;gap:14px}
+.strip-lab:after{content:"";width:60px;height:1px;background:rgba(245,242,240,.4)}
+.cover__by{position:absolute;left:120px;bottom:46px;z-index:2;font-size:15px;color:rgba(245,242,240,.7);letter-spacing:.04em}
+
+/* ===== BRIEF ===== */
+.brief__l{position:absolute;left:120px;top:190px;width:640px}
+.brief__l h2{font-size:96px}
+.brief__l .lede{font-size:24px;color:var(--grey);max-width:560px}
+.brief__r{position:absolute;left:880px;right:120px;top:190px}
+.brow{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:26px 0 28px;border-top:1px solid var(--line)}
+.brow:last-child{border-bottom:1px solid var(--line)}
+.brow__n{font-size:62px;font-weight:300;line-height:1;color:var(--terra)}
+.brow h3{font-size:32px;font-weight:400;line-height:1.15}
+.marq{position:absolute;left:0;right:0;bottom:112px;height:190px;overflow:hidden}
+.marq__t{display:flex;gap:18px;width:max-content;animation:marq 70s linear infinite}
+.marq__t img{height:190px;width:307px;object-fit:cover;filter:saturate(.9)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ===== GLANCE accordion ===== */
+.acc{position:absolute;left:120px;right:120px;top:330px;bottom:120px;display:flex;gap:10px}
+.acc__p{position:relative;flex:1 1 0;overflow:hidden;transition:flex-grow .75s var(--slow);color:var(--white);min-width:0}
+.acc__p.open{flex-grow:5.6}
+.acc__p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.acc__p:not(.open) img{filter:brightness(.62) saturate(.8)}
+.acc__p.open img{transform:scale(1.03)}
+.acc__p:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(26,27,23,.88) 0%,rgba(26,27,23,.2) 45%,rgba(26,27,23,0) 70%)}
+.acc__n{position:absolute;z-index:2;left:24px;top:22px;font-size:15px;font-weight:700;letter-spacing:.14em}
+.acc__v{position:absolute;z-index:2;left:26px;bottom:28px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:24px;font-weight:400;white-space:nowrap;transition:opacity .3s}
+.acc__p.open .acc__v{opacity:0}
+.acc__o{position:absolute;z-index:2;left:40px;right:40px;bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .4s,transform .5s var(--ease)}
+.acc__p.open .acc__o{opacity:1;transform:none;transition-delay:.3s}
+.acc__o .k{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F0A27F}
+.acc__o h3{font-size:46px;font-weight:300;margin:10px 0 10px;line-height:1.05}
+.acc__o p{font-size:19px;font-weight:300;color:#DAD5CF;max-width:560px;line-height:1.4}
+.acc__o .go{display:inline-flex;gap:10px;margin-top:20px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1.5px solid var(--white);padding-bottom:6px}
+.glance__h{position:absolute;left:120px;top:150px;right:120px;display:flex;justify-content:space-between;align-items:flex-end}
+.glance__h p{font-size:17px;color:var(--mute);letter-spacing:.04em;padding-bottom:10px}
+
+/* ===== IDEA ===== */
+.idea .ph{position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:1;overflow:hidden;transition:left .9s var(--slow),top .9s var(--slow),width .9s var(--slow),height .9s var(--slow)}
+.idea .ph img{width:100%;height:100%;object-fit:cover;transition:opacity .45s}
+.idea .ph .scr{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,27,23,.55) 0%,rgba(26,27,23,.12) 45%,rgba(26,27,23,0) 70%),linear-gradient(0deg,rgba(26,27,23,.45),rgba(26,27,23,0) 40%);transition:opacity .6s}
+.idea .out{position:absolute;z-index:0;left:1206px;top:176px;width:620px;height:383px;border:1.5px solid var(--grey);opacity:0;transition:opacity .5s}
+.idea .tagr{position:absolute;right:16px;bottom:14px;transition:all .9s var(--slow);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,240,.85);background:rgba(26,27,23,.45);padding:6px 10px;z-index:2}
+/* state A */
+.stA{position:absolute;inset:0;z-index:3;pointer-events:none;transition:opacity .45s var(--ease),transform .6s var(--ease)}
+.stA > *{pointer-events:auto}
+.panelA{position:absolute;left:120px;bottom:120px;width:860px;height:531px;background:var(--white);padding:56px 60px 0;display:flex;flex-direction:column}
+.panelA h2{font-size:80px;margin-top:16px}
+.panelA .lede{font-size:25px;color:var(--grey);margin-top:20px}
+.panelA__f{margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:22px 0 26px}
+.mm{display:flex;gap:36px}
+.mm div{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;flex-direction:column;gap:8px}
+.mm b{font-weight:400;letter-spacing:.02em;text-transform:none;font-size:17px;color:var(--black);display:flex;align-items:center;gap:10px}
+.more{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:10px;padding:12px 0}
+.more span{display:inline-block;width:34px;height:34px;border-radius:50%;background:var(--terra);color:var(--white);display:grid;place-items:center;font-size:16px;transition:transform .3s}
+.more:hover span{transform:translateX(5px)}
+.bignum{position:absolute;right:120px;bottom:110px;font-size:300px;font-weight:300;line-height:.8;color:var(--white);opacity:.9;letter-spacing:-.04em;transition:opacity .4s}
+.shots{position:absolute;z-index:3;right:120px;top:130px;display:flex;gap:8px;transition:opacity .4s}
+.shot{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;color:var(--white);background:rgba(26,27,23,.4);border:1.5px solid rgba(245,242,240,.5);backdrop-filter:blur(6px)}
+.shot[aria-pressed=true]{background:var(--white);color:var(--black);border-color:var(--white)}
+/* state B */
+.B{position:absolute;z-index:2;inset:0;pointer-events:none;opacity:0;transition:opacity .4s}
+.B > *{opacity:0;transform:translateY(22px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.idea[data-pane="1"] .B{opacity:1;pointer-events:auto}
+.idea[data-pane="1"] .B > *{opacity:1;transform:none}
+.idea[data-pane="1"] .B > *:nth-child(2){transition-delay:.25s}
+.idea[data-pane="1"] .B > *:nth-child(3){transition-delay:.33s}
+.idea[data-pane="1"] .B > *:nth-child(4){transition-delay:.41s}
+.idea[data-pane="1"] .B > *:nth-child(5){transition-delay:.49s}
+.idea[data-pane="1"] .B > *:nth-child(6){transition-delay:.57s}
+.idea[data-pane="1"] .ph{left:1180px;top:150px;width:620px;height:383px}
+.idea[data-pane="1"] .ph .scr{opacity:0}
+.idea[data-pane="0"] .tagr{right:auto;left:120px;bottom:auto;top:108px}
+.idea[data-pane="1"] .out{opacity:.5;transition-delay:.6s}
+.idea[data-pane="1"] .stA{opacity:0;transform:translateY(40px)}
+.idea[data-pane="1"] .stA > *{pointer-events:none}
+.idea[data-pane="1"] .shots{right:120px;top:560px}
+.idea[data-pane="1"] .shot{background:transparent;color:var(--mute);border-color:var(--line);backdrop-filter:none}
+.idea[data-pane="1"] .shot[aria-pressed=true]{background:var(--black);color:var(--white);border-color:var(--black)}
+.idea[data-pane="1"].on-photo .s-logo{color:var(--black)}
+.idea[data-pane="1"].on-photo .s-tag,.idea[data-pane="1"].on-photo .s-num{color:var(--mute)}
+.B__h{position:absolute;left:120px;top:150px;width:980px}
+.B__h h2{font-size:68px;margin-top:14px}
+.back{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-left:18px}
+.back:hover{color:var(--black)}
+.B__three{position:absolute;left:120px;top:330px;width:1000px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.B__three > div{border-top:1.5px solid var(--black);padding-top:16px}
+.B__meters{position:absolute;left:120px;top:604px;width:1000px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mt{background:var(--stone);padding:18px 22px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center}
+.mt .label{grid-column:1/-1}
+.mt .v{font-size:22px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.mt p{font-size:16px;font-weight:300;color:var(--grey);line-height:1.38}
+.B__cap{position:absolute;left:1180px;top:614px;width:620px;font-size:17px;font-weight:300;line-height:1.45;color:var(--grey)}
+.B__cap b{font-weight:700;color:var(--black)}
+.B__four{position:absolute;left:120px;right:120px;top:752px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.B__four > div{border-top:1px solid var(--line);padding-top:14px}
+.B__four ul{list-style:none;margin-top:10px}
+.B__four li{font-size:19px;font-weight:300;line-height:1.38;color:var(--grey);padding-left:18px;position:relative;margin-bottom:6px}
+.B__four li:before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1.5px;background:var(--black)}
+.B__four .cons li:before{background:var(--mute-d)}
+.steps{position:absolute;z-index:6;left:50%;bottom:48px;transform:translateX(-50%);display:flex;gap:8px}
+.steps i{width:28px;height:3px;background:rgba(245,242,240,.45);transition:background .4s}
+.idea[data-pane="1"] .steps i{background:var(--line)}
+.idea[data-pane="0"] .steps i:first-child{background:var(--white)}
+.idea[data-pane="1"] .steps i:last-child{background:var(--black)}
+
+/* ===== COMPARE ===== */
+.cmp__h{position:absolute;left:120px;top:150px;right:120px;display:flex;justify-content:space-between;align-items:flex-end}
+.seg{display:flex;border:1.5px solid var(--black);margin-bottom:10px}
+.seg button{font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:12px 22px}
+.seg button[aria-pressed=true]{background:var(--black);color:var(--white)}
+.view{position:absolute;left:120px;right:120px;top:330px;bottom:110px;opacity:0;visibility:hidden;transition:opacity .45s,visibility 0s .45s}
+.view.on{opacity:1;visibility:visible;transition:opacity .45s}
+.map{position:absolute;left:90px;top:0;width:1000px;height:600px;border-left:1.5px solid var(--black);border-bottom:1.5px solid var(--black)}
+.map .sweet{position:absolute;left:0;top:0;width:44%;height:56%;background:var(--stone)}
+.map .sweet span{position:absolute;left:22px;top:18px;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--terra)}
+.map .gl{position:absolute;background:var(--line)}
+.ax{position:absolute;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mute)}
+.ax--x{left:90px;width:1000px;top:620px;display:flex;justify-content:space-between}
+.ax--y{left:-40px;top:300px;transform:rotate(-90deg);transform-origin:center;width:140px;text-align:center}
+.bub{position:absolute;width:118px;height:118px;margin:-59px 0 0 -59px;border-radius:50%;overflow:visible;transition:transform .35s var(--ease);z-index:2}
+.bub img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--white);box-shadow:0 10px 30px rgba(26,27,23,.18)}
+.bub b{position:absolute;right:-2px;top:-2px;width:36px;height:36px;border-radius:50%;background:var(--black);color:var(--white);font-size:14px;font-weight:700;display:grid;place-items:center;transition:background .3s}
+.bub:hover,.bub.hot{transform:scale(1.12);z-index:3}
+.bub.hot b{background:var(--terra)}
+.det{position:absolute;right:0;top:0;width:520px}
+.det .gr__img img{transition:opacity .3s}
+.det .label{margin-top:26px}
+.det h3{font-size:40px;font-weight:300;margin:8px 0 10px}
+.det p{font-size:19px;font-weight:300;color:var(--grey);line-height:1.45}
+.det .row{display:flex;gap:28px;margin-top:16px;font-size:15px;color:var(--mute)}
+.det .row b{display:block;color:var(--black);font-weight:400;font-size:17px;margin-top:4px}
+.det .go{display:inline-flex;gap:10px;margin-top:22px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1.5px solid var(--black);padding-bottom:6px}
+table.cmp{width:100%;border-collapse:collapse;font-size:19px}
+.cmp th{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);text-align:left;padding:0 14px 14px;border-bottom:1.5px solid var(--black);white-space:nowrap}
+.cmp th button{font-weight:inherit;letter-spacing:inherit;text-transform:inherit}
+.cmp th button:hover,.cmp th button.on{color:var(--black)}
+.cmp th button i{font-style:normal;color:var(--terra);margin-left:6px}
+.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);font-weight:300;color:var(--grey);vertical-align:middle}
+.cmp td:nth-child(2){font-weight:400;color:var(--black);font-size:21px}
+.cmp tr.r{cursor:pointer;transition:background .2s,opacity .3s}
+.cmp tr.r:hover{background:#fff}
+.cmp tr.dim{opacity:.2}
+.cmp .thumb{width:104px;height:64px;object-fit:cover}
+.cmp .rt{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.cmp .rt em{font-style:normal;font-size:15px;color:var(--mute)}
+.filters{display:flex;gap:8px;margin:0 0 20px;align-items:center}
+.filters span{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-right:10px}
+.chip{font-size:15px;padding:8px 15px;border:1.5px solid var(--line);color:var(--grey);transition:.2s}
+.chip[aria-pressed=true]{background:var(--black);border-color:var(--black);color:var(--white)}
+
+/* ===== BUILDER ===== */
+.bld__h{position:absolute;left:120px;top:150px}
+.tiles{position:absolute;left:120px;top:330px;width:1000px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px 20px}
+.tile{position:relative;text-align:left}
+.tile .gr__img img{filter:grayscale(1) brightness(.9);opacity:.55;transition:filter .5s,opacity .5s,transform .8s var(--ease)}
+.tile[aria-pressed=true] .gr__img img{filter:none;opacity:1}
+.tile:hover .gr__img img{transform:scale(1.06)}
+.tile .ck{position:absolute;z-index:2;right:10px;top:10px;width:30px;height:30px;border-radius:50%;border:2px solid var(--white);background:rgba(26,27,23,.25);transition:.3s}
+.tile[aria-pressed=true] .ck{background:var(--terra);border-color:var(--terra)}
+.tile[aria-pressed=true] .ck:after{content:"";position:absolute;left:9px;top:4px;width:7px;height:13px;border:solid var(--white);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.tile .frame{position:absolute;inset:-5px;border:2px solid var(--black);opacity:0;transition:opacity .3s;pointer-events:none}
+.tile[aria-pressed=true] .frame{opacity:1}
+.tile b{display:block;font-size:19px;font-weight:400;margin-top:12px;transition:color .3s}
+.tile:not([aria-pressed=true]) b{color:var(--mute)}
+.tile small{font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.tile.reset{border:1.5px dashed var(--line);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:22px;gap:12px;aspect-ratio:auto}
+.tile.reset .btn2{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-bottom:1.5px solid var(--black);padding-bottom:4px}
+.tile.reset .btn2.t{color:var(--terra);border-color:var(--terra)}
+.sum{position:absolute;left:1180px;right:120px;top:150px;bottom:120px;background:var(--black);color:var(--white);padding:44px 46px;display:flex;flex-direction:column;gap:26px}
+.sum .label{color:#F0A27F}
+.sum__top{display:flex;align-items:flex-end;gap:22px}
+.sum__top strong{font-size:150px;font-weight:300;line-height:.8;letter-spacing:-.04em}
+.sum__top span{font-size:22px;font-weight:300;color:#CFCAC3;line-height:1.3;padding-bottom:6px}
+.sum__m{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bar{height:6px;background:#34342f;margin-top:12px;position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--white);transition:width .6s var(--ease)}
+.sum__m em{font-style:normal;font-size:17px;color:#CFCAC3;display:block;margin-top:10px}
+.aud{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.aud span{font-size:15px;padding:7px 12px;border:1.5px solid #45453f;color:#6f6d67;transition:.35s}
+.aud span.on{border-color:var(--white);color:var(--white)}
+.sum ul{list-style:none;margin-top:12px}
+.sum li{font-size:17px;font-weight:300;color:#D9D4CE;line-height:1.35;padding:0 0 8px 18px;position:relative}
+.sum li:before{content:"";position:absolute;left:0;top:.6em;width:8px;height:1.5px;background:var(--terra)}
+.reco{position:absolute;left:120px;width:1000px;bottom:110px;font-size:20px;font-weight:300;color:var(--grey);line-height:1.5;border-top:1.5px solid var(--black);padding-top:18px}
+.reco b{font-weight:700;color:var(--black)}
+
+/* ===== TIMELINE ===== */
+.tl__h{position:absolute;left:120px;top:150px}
+.count{position:absolute;right:120px;top:140px;text-align:right}
+.count strong{display:block;font-size:200px;font-weight:300;line-height:.85;letter-spacing:-.05em;color:var(--white)}
+.count span{font-size:15px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#F0A27F}
+.track{position:absolute;left:120px;right:120px;top:560px;height:2px;background:#3a3a35}
+.track i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--terra);transition:width 1.6s var(--slow) .5s}
+.now{position:absolute;top:-9px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--terra);transition:left 1.6s var(--slow) .5s;left:0}
+.now:after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid var(--terra);animation:pulse 2s infinite}
+@keyframes pulse{from{transform:scale(.5);opacity:1}to{transform:scale(1.5);opacity:0}}
+.now em{position:absolute;bottom:34px;left:0;font-style:normal;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--terra);white-space:nowrap}
+.phases{position:absolute;left:120px;right:120px;top:560px;display:grid;grid-template-columns:repeat(4,1fr)}
+.phase{position:relative;padding:44px 40px 0 0}
+.phase:before{content:"";position:absolute;left:0;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--black);border:2px solid #8d8983;transition:.3s}
+.phase.past:before{background:var(--terra);border-color:var(--terra)}
+.phase .when{font-size:15px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8d8983}
+.phase h3{font-size:46px;font-weight:300;margin:12px 0 14px}
+.phase p{font-size:20px;font-weight:300;color:#CFCAC3;line-height:1.45}
+.phase:hover h3{color:#F0A27F}
+.tl__foot{position:absolute;left:120px;bottom:110px;font-size:20px;font-weight:300;color:var(--mute-d)}
+
+/* ===== CLOSE ===== */
+.close__t{position:absolute;z-index:2;left:120px;top:220px;width:900px}
+.close__t h2{font-size:104px}
+.close__t ol{list-style:none;margin-top:46px;counter-reset:s}
+.close__t li{counter-increment:s;display:grid;grid-template-columns:60px 1fr;padding:18px 0;border-top:1px solid rgba(245,242,240,.22);font-size:22px;font-weight:300;color:#E2DDD7;line-height:1.4}
+.close__t li:before{content:counter(s,decimal-leading-zero);color:#F0A27F;font-weight:700;font-size:16px;letter-spacing:.1em;padding-top:5px}
+.ctas{display:flex;gap:14px;margin-top:40px}
+.cta{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border:1.5px solid var(--white);color:var(--white);transition:.25s}
+.cta--p{background:var(--terra);border-color:var(--terra)}
+.cta:hover{transform:translateY(-2px)}
+.credit{position:absolute;z-index:2;left:120px;bottom:50px;display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,240,.6)}
+.credit svg{width:70px;height:19px}
+
+/* ===== bar / overview / lightbox ===== */
+#bar{position:fixed;left:0;right:0;bottom:0;height:54px;background:#0E0F0C;color:#BDB8B1;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:13px;letter-spacing:.08em;z-index:5}
+#bar .ttl{text-transform:uppercase;letter-spacing:.16em;white-space:nowrap;color:#8d8983}
+#prog{flex:1;display:flex;gap:4px;height:22px;align-items:center}
+#prog button{flex:1;height:22px;position:relative}
+#prog button:before{content:"";position:absolute;left:0;right:0;top:10px;height:2px;background:#33332e;transition:background .3s}
+#prog button.done:before{background:#7d7a74}
+#prog button.cur:before{background:var(--terra);height:3px;top:9px}
+#prog button:hover:before{background:#cfcac3}
+#bar .ctl{display:flex;gap:4px}
+#bar .ctl button{width:38px;height:38px;display:grid;place-items:center;border:1px solid #2c2c28;text-align:center}
+#bar .ctl button:hover{border-color:#8d8983;color:#fff}
+#cnt{min-width:58px;text-align:right;font-variant-numeric:tabular-nums}
+#tip{position:fixed;bottom:60px;padding:8px 12px;background:var(--white);color:var(--black);font-size:13px;pointer-events:none;opacity:0;transition:opacity .15s;white-space:nowrap;z-index:6}
+#ov,#lb{position:fixed;inset:0;z-index:10;background:rgba(14,15,12,.97);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s}
+#ov.on,#lb.on{opacity:1;visibility:visible;transition:opacity .35s}
+#ov{overflow:auto;padding:56px 64px}
+#ov h4{color:#8d8983;font-weight:400;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:28px}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.ovc{color:var(--white);border:1px solid #2c2c28;transition:border-color .2s}
+.ovc:hover,.ovc.cur{border-color:var(--terra)}
+.ovc .im{aspect-ratio:1.618/1;background:#24241f center/cover no-repeat;position:relative}
+.ovc .im i{position:absolute;left:12px;top:10px;font-style:normal;font-size:12px;letter-spacing:.14em;color:var(--white);background:rgba(14,15,12,.6);padding:3px 7px}
+.ovc p{padding:12px 14px;font-size:15px}
+#lb{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;cursor:zoom-out}
+#lb img{max-width:92vw;max-height:84vh}
+#lb p{color:#CFCAC3;font-size:14px;letter-spacing:.06em}
+.zoomable{cursor:zoom-in}
+
+@media print{
+  @page{size:13.333in 7.5in;margin:0}
+  html,body{overflow:visible;background:#fff}
+  #bar,#ov,#lb,#tip{display:none}
+  #viewport{position:static;display:block}
+  #stage{transform:none!important;width:auto;height:auto}
+  .slide{position:relative;opacity:1;visibility:visible;width:1920px;height:1080px;zoom:.5;page-break-after:always}
+  .rv{opacity:1;transform:none;animation:none!important}
+}
+</style>
+<script defer data-domain="proposals.noetic.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="cslogo" viewBox="0 0 178 28"><g><path d="M17.9316 1.86H29.3116C35.0216 1.86 37.3816 0 37.3716 0H17.8916C4.50157 0 -1.23843 9.17 0.221575 17.11C1.26157 22.74 6.42157 27.52 13.9416 27.98C16.9916 28.17 19.9316 27.27 19.9316 27.27C10.8016 27.44 4.37157 22.69 3.66158 16.12C2.79157 8.11 8.63158 1.86 17.9316 1.86Z" fill="currentColor"/><path d="M14.51 5.08914C23.9 4.26914 28.63 10.4491 27.92 16.6391C27.41 21.0891 23.07 24.6291 18.29 24.3991C16.31 24.2991 14.55 23.4691 14.55 23.4691C19.95 23.6691 24.06 19.9591 24.56 15.5091C25.27 9.31914 20.16 5.74914 14.5 5.08914" fill="currentColor"/><path d="M17.6292 8.34118C11.2792 7.05118 7.91924 11.3812 8.34924 15.4912C8.64924 18.4412 11.5192 20.8112 14.7092 20.6812C16.0192 20.6312 17.1992 20.0912 17.1992 20.0912C13.6092 20.1912 11.5492 17.9512 11.2392 15.0012C10.8092 10.8912 13.7892 8.72118 17.6292 8.34118Z" fill="currentColor"/><path d="M175.522 8.75H175.952C176.232 8.75 176.412 8.69 176.412 8.4C176.412 8.15 176.182 8.07 175.952 8.07H175.522V8.75ZM175.162 7.79H176.012C176.522 7.79 176.782 8 176.782 8.42C176.782 8.78 176.562 9.03 176.202 9.03L176.832 10.02H176.442L175.822 9.03H175.512V10.02H175.142V7.79H175.162ZM175.902 10.52C176.772 10.52 177.432 9.81 177.432 8.9C177.432 7.99 176.772 7.28 175.902 7.28C175.032 7.28 174.352 7.99 174.352 8.9C174.352 9.81 175.012 10.52 175.902 10.52ZM175.892 7C176.932 7 177.792 7.85 177.792 8.9C177.792 9.95 176.932 10.8 175.892 10.8C174.852 10.8 173.992 9.95 173.992 8.9C173.992 7.85 174.842 7 175.892 7Z" fill="currentColor"/><path d="M108.018 7.29781C107.338 7.09781 106.588 7.00781 105.938 7.00781C104.408 7.00781 102.828 8.09781 102.108 9.62781H102.048V7.34781H99.5078V22.0578H102.218V15.3678C102.218 11.6778 103.808 9.37781 106.228 9.37781C106.328 9.37781 106.618 9.39781 106.668 9.39781L108.018 7.30781V7.29781Z" fill="currentColor"/><path d="M44.1381 9.83C43.0981 9.4 42.0581 9.2 41.1981 9.2C38.1681 9.2 36.4681 11.91 36.4681 14.71C36.4681 17.33 37.8781 20.22 41.3681 20.22C42.2881 20.22 43.4481 19.93 44.2781 19.38L44.4781 21.8C43.3481 22.32 42.0581 22.4 41.0781 22.4C36.6381 22.4 33.5781 18.91 33.5781 14.7C33.5781 10.23 36.5781 7 41.0781 7C42.1781 7 43.5881 7.26 44.3681 7.58L44.1381 9.83Z" fill="currentColor"/><path d="M74.5503 19.1678C75.6203 19.8578 77.1503 20.2078 77.9303 20.2078C79.1603 20.2078 80.6903 19.6878 80.6903 18.1078C80.6903 15.4278 74.3203 15.6578 74.3203 11.5378C74.3203 8.48781 76.6003 7.00781 79.5103 7.00781C80.7803 7.00781 81.8203 7.26781 82.8803 7.58781L82.6503 9.95781C82.0403 9.57781 80.4303 9.20781 79.7903 9.20781C78.4103 9.20781 77.2003 9.78781 77.2003 10.9978C77.2003 13.9978 83.5703 13.1278 83.5703 17.8278C83.5703 20.9778 81.0603 22.4078 78.4403 22.4078C77.0603 22.4078 75.6403 22.2678 74.4003 21.6078L74.5503 19.1878V19.1678Z" fill="currentColor"/><path d="M94.5481 15.0478C93.9781 15.0478 93.3981 14.9878 92.8181 14.9878C91.3581 14.9878 87.7181 15.2178 87.7181 17.8078C87.7181 19.3678 89.2181 20.1978 90.4581 20.1978C93.1381 20.1978 94.5481 18.5278 94.5481 16.3378V15.0378V15.0478ZM86.4981 8.38781C87.8481 7.57781 89.4681 7.00781 91.3481 7.00781C95.5581 7.00781 97.2581 9.07781 97.2581 13.0878V19.1678C97.2581 20.8378 97.3181 21.6178 97.3781 22.0478H94.8381V20.1478H94.7781C94.1381 21.0378 92.6981 22.3978 90.2181 22.3978C87.0481 22.3978 84.8281 21.0178 84.8281 17.8178C84.8281 14.1278 88.8681 12.9778 91.6681 12.9778C92.7381 12.9778 93.4881 12.9778 94.5481 13.0378C94.5481 10.4978 93.6281 9.20781 90.9181 9.20781C89.3881 9.20781 87.7481 9.78781 86.6481 10.7078L86.4981 8.39781V8.38781Z" fill="currentColor"/><path d="M55.5013 15.0478C54.9313 15.0478 54.3513 14.9878 53.7713 14.9878C52.3013 14.9878 48.6712 15.2178 48.6712 17.8078C48.6712 19.3678 50.1713 20.1978 51.4113 20.1978C54.0913 20.1978 55.5013 18.5278 55.5013 16.3378V15.0378V15.0478ZM47.4613 8.38781C48.8213 7.57781 50.4313 7.00781 52.3113 7.00781C56.5213 7.00781 58.2213 9.07781 58.2213 13.0878V19.1678C58.2213 20.8378 58.2813 21.6178 58.3313 22.0478H55.7913V20.1478H55.7313C55.0913 21.0378 53.6512 22.3978 51.1712 22.3978C47.9912 22.3978 45.7812 21.0178 45.7812 17.8178C45.7812 14.1278 49.8213 12.9778 52.6113 12.9778C53.6813 12.9778 54.4313 12.9778 55.4913 13.0378C55.4913 10.4978 54.5713 9.20781 51.8613 9.20781C50.3313 9.20781 48.6912 9.78781 47.6012 10.7078L47.4513 8.39781L47.4613 8.38781Z" fill="currentColor"/><path d="M135.467 20.21C138.637 20.21 140.047 17.33 140.047 14.7C140.047 11.9 138.347 9.19 135.467 9.19C132.587 9.19 130.857 11.9 130.857 14.7C130.857 17.32 132.267 20.21 135.467 20.21ZM135.467 7C139.937 7 142.937 10.23 142.937 14.7C142.937 18.91 139.877 22.4 135.467 22.4C131.057 22.4 127.977 18.91 127.977 14.7C127.977 10.23 130.977 7 135.467 7Z" fill="currentColor"/><path d="M144.398 7.34781H147.018V9.68781H147.078C147.888 8.01781 149.848 7.00781 151.898 7.00781C155.708 7.00781 157.408 9.36781 157.408 13.3278V22.0678H154.698V14.4578C154.698 11.0278 153.948 9.35781 151.588 9.20781C148.498 9.20781 147.118 11.6878 147.118 15.2578V22.0578H144.408V7.34781H144.398Z" fill="currentColor"/><path d="M169.498 13.29C169.498 11.04 168.168 9.2 165.838 9.2C163.188 9.2 162.088 11.39 161.888 13.29H169.498ZM171.258 21.45C170.218 21.83 169.038 22.4 166.618 22.4C161.398 22.4 159.008 19.23 159.008 14.44C159.008 10.09 161.748 7 165.898 7C170.798 7 172.388 10.57 172.388 15.3H161.898C161.898 18.21 164.178 20.2 166.738 20.2C168.528 20.2 170.598 19.28 171.268 18.73V21.44L171.258 21.45Z" fill="currentColor"/><path d="M70.2734 13.29C70.2734 11.04 68.9534 9.2 66.6134 9.2C63.9534 9.2 62.8634 11.39 62.6634 13.29H70.2734ZM72.0234 21.45C70.9834 21.83 69.8034 22.4 67.3834 22.4C62.1634 22.4 59.7734 19.23 59.7734 14.44C59.7734 10.09 62.5134 7 66.6634 7C71.5634 7 73.1534 10.57 73.1534 15.3H62.6534C62.6534 18.21 64.9334 20.2 67.4934 20.2C69.2834 20.2 71.3634 19.28 72.0234 18.73V21.44V21.45Z" fill="currentColor"/><path d="M126.104 20.2091C124.864 20.2091 123.824 19.2891 123.824 17.5891V9.54906H127.714V7.34906H123.824V5.03906L121.114 5.54906V7.34906H113.424C112.884 7.37906 108.354 6.94906 108.344 11.5391C108.344 15.6591 114.714 15.4291 114.714 18.1091C114.714 19.6991 113.194 20.2191 111.954 20.2191C111.174 20.2191 109.654 19.8691 108.584 19.1791L108.434 21.5991C109.674 22.2591 111.084 22.4091 112.474 22.4091C115.094 22.4091 117.594 20.9691 117.604 17.8291C117.614 13.1191 111.124 13.9491 111.244 10.9291C111.294 9.61906 112.704 9.57906 113.714 9.55906H121.124V18.1391C121.124 21.0791 122.854 22.4091 125.654 22.4091C126.524 22.4091 127.354 22.1791 127.954 21.9991V19.6991C127.554 19.9591 126.944 20.2191 126.104 20.2191" fill="currentColor"/></g></symbol><symbol id="noeticlogo" viewBox="0 0 423.25 114.13"><path d="m61.31,38.93c-.18-.11-.36-.2-.55-.29-1.12-.53-2.38-.82-3.69-.82s-2.59.29-3.71.82c-.18.09-.36.18-.53.29-3.11,1.7-5.01,5.28-4.32,9.17.62,3.51,3.44,6.34,6.95,6.97,5.51.99,10.3-3.22,10.3-8.56,0-3.25-1.79-6.11-4.45-7.58Z"/><path d="m0,9.97v94.19C0,109.67,4.46,114.13,9.97,114.13h94.19c5.51,0,9.97-4.46,9.97-9.97V9.97c0-5.51-4.46-9.97-9.97-9.97H9.97C4.46,0,0,4.46,0,9.97Zm12.66,34.81c0-.51.01-1,.06-1.5,0,0,0-.01.02-.03,0-.06.01-.14.01-.2v-.05c.33-2.39,2.39-4.25,4.87-4.25.92,0,1.8.27,2.54.73l18.47,11c.08,1.59.36,3.12.82,4.56.12.39.26.77.41,1.15l.42.98.59,1.36h-14.38c-7.61,0-13.81-6.15-13.83-13.76Zm30.76,19.78c-.15.29-.3.58-.47.85-.15.27-.32.53-.5.79-.18.27-.36.53-.56.77-.39.5-.82.97-1.27,1.41-.18.18-.36.35-.56.51-1.24,1.08-2.68,1.94-4.25,2.53-.2.08-.39.15-.61.21-.73.23-1.47.41-2.24.51-.29.05-.58.08-.86.11-.38.03-.76.05-1.15.05-.24,0-.5-.01-.74-.03h-.01c-.11,0-.23,0-.33-.02h-.06c-.11,0-.18-.01-.27-.03-.03,0-.06,0-.09-.01-.15-.02-.29-.03-.44-.06-2.59-.55-4.51-2.83-4.51-5.57,0-3.16,2.54-5.72,5.69-5.72l11.65-.06,1.59,3.75h0Zm13.65,24.7l-4.51-10.59c1.48-.12,3-.17,4.51-.17s3.03.05,4.51.17l-4.51,10.59Zm5.71-13.43c-1.88-.15-3.78-.23-5.71-.23s-3.83.08-5.72.24l-1.89-4.45c2.5.26,5.04.38,7.61.38s5.1-.12,7.6-.38l-1.89,4.43Zm3.19-7.49c-2.92.36-5.89.54-8.9.54s-5.99-.18-8.91-.54l-1.74-4.12c3.47.56,7.02.83,10.65.83s7.17-.27,10.64-.82l-1.74,4.1Zm-1.35-6.58c-1.48.17-3,.29-4.51.36-1,.05-2.03.06-3.04.06-4.09,0-8.1-.38-11.99-1.09l-2.27-5.31c-.45-1.03-.8-2.1-1.01-3.24-.35-1.45-.53-2.98-.53-4.56,0-1.77.23-3.5.65-5.13.26-.92.56-1.82.92-2.68.06-.14.12-.27.18-.41,1.39-2.89,3.65-5.28,6.45-6.84l-3.77-6.74s-.04-.08-.06-.11c-.06-.11-.09-.24-.09-.38,0-.45.36-.82.83-.82.33,0,.62.21.74.5l3.31,7.04c2.01-.95,4.25-1.48,6.63-1.48s4.6.53,6.61,1.48l3.31-7.04c.12-.29.41-.5.76-.5.45,0,.82.36.82.82,0,.14-.03.27-.09.38-.01.03-.03.08-.06.11l-3.77,6.74c2.8,1.56,5.05,3.95,6.45,6.84.08.14.12.27.18.41.36.86.68,1.76.92,2.68.42,1.63.65,3.36.65,5.13,0,1.57-.18,3.1-.51,4.56-.23,1.14-.57,2.21-1.03,3.24l-2.27,5.33c-1.45.27-2.94.48-4.42.65Zm20.51,10.4c-.15.03-.29.05-.44.06-.03.01-.06.01-.09.01-.09.02-.17.03-.27.03h-.06c-.11.02-.23.02-.33.02h-.01c-.24.01-.5.03-.74.03-.39,0-.77-.01-1.15-.05-.29-.03-.58-.06-.86-.11-.77-.11-1.51-.29-2.24-.51-.21-.06-.41-.14-.61-.21-1.57-.59-3.01-1.45-4.25-2.53-.2-.17-.38-.33-.56-.51-.45-.44-.88-.91-1.27-1.41-.2-.24-.38-.5-.56-.77-.18-.26-.35-.51-.5-.79-.17-.27-.32-.56-.47-.85h0s1.59-3.77,1.59-3.77l11.65.06c3.15,0,5.69,2.56,5.69,5.72,0,2.74-1.92,5.02-4.51,5.57Zm2.5-13.61h-14.38s.59-1.36.59-1.36l.42-.98c.15-.38.29-.76.41-1.15.45-1.44.74-2.97.82-4.56l18.47-11c.74-.45,1.62-.73,2.54-.73,2.48,0,4.54,1.86,4.87,4.25v.05c0,.06.01.14.01.2.02.01.02.03.02.03.05.49.06.99.06,1.5-.02,7.61-6.22,13.76-13.83,13.76Z"/><path d="m377.13,56.86c0-4.12.67-8.01,2.01-11.67,1.34-3.65,3.27-6.84,5.81-9.55,2.53-2.71,5.61-4.87,9.22-6.46,3.62-1.59,7.74-2.39,12.37-2.39,3.04,0,5.82.27,8.36.81,2.53.54,4.99,1.32,7.38,2.33l-3.36,12.91c-1.52-.58-3.19-1.08-4.99-1.52-1.81-.43-3.84-.65-6.08-.65-4.78,0-8.34,1.48-10.69,4.45-2.35,2.97-3.53,6.88-3.53,11.72,0,5.14,1.1,9.12,3.31,11.94,2.21,2.82,6.06,4.23,11.56,4.23,1.95,0,4.05-.18,6.29-.54,2.24-.36,4.3-.94,6.19-1.74l2.28,13.24c-1.88.8-4.23,1.48-7.05,2.06-2.82.58-5.93.87-9.33.87-5.21,0-9.7-.78-13.46-2.33-3.76-1.56-6.86-3.67-9.28-6.35-2.42-2.68-4.2-5.84-5.32-9.5-1.12-3.65-1.68-7.61-1.68-11.88Z"/><path d="m128.39,30.48c2.75-.79,6.29-1.54,10.64-2.23,4.34-.69,8.9-1.03,13.67-1.03s8.88.63,12.1,1.9c3.22,1.27,5.77,3.06,7.65,5.37,1.88,2.32,3.22,5.06,4.02,8.25.8,3.18,1.19,6.73,1.19,10.64v32.23h-16.17v-30.28c0-5.21-.69-8.9-2.06-11.07-1.38-2.17-3.94-3.26-7.71-3.26-1.16,0-2.39.05-3.69.16-1.3.11-2.46.23-3.47.38v44.06h-16.17V30.48Z"/><path d="m240.67,56.96c0,4.45-.65,8.53-1.94,12.23-1.29,3.7-3.16,6.86-5.6,9.48-2.44,2.62-5.37,4.65-8.78,6.09-3.41,1.44-7.24,2.16-11.48,2.16s-7.96-.72-11.37-2.16c-3.41-1.44-6.34-3.46-8.78-6.09-2.44-2.62-4.35-5.78-5.71-9.48-1.37-3.7-2.05-7.77-2.05-12.23s.7-8.51,2.1-12.18c1.4-3.66,3.34-6.79,5.82-9.37,2.48-2.59,5.42-4.6,8.84-6.03,3.41-1.44,7.13-2.16,11.15-2.16s7.85.72,11.26,2.16c3.41,1.44,6.34,3.45,8.78,6.03,2.44,2.59,4.35,5.71,5.71,9.37,1.36,3.66,2.05,7.72,2.05,12.18Zm-16.38,0c0-4.96-.99-8.85-2.96-11.69-1.98-2.84-4.8-4.26-8.46-4.26s-6.5,1.42-8.51,4.26c-2.01,2.84-3.02,6.73-3.02,11.69s1.01,8.89,3.02,11.8c2.01,2.91,4.85,4.36,8.51,4.36s6.48-1.46,8.46-4.36c1.97-2.91,2.96-6.84,2.96-11.8Z"/><path d="m246.66,57.5c0-5.03.77-9.43,2.32-13.2,1.54-3.77,3.57-6.91,6.09-9.43,2.51-2.51,5.4-4.42,8.67-5.71,3.27-1.29,6.63-1.94,10.07-1.94,8.04,0,14.4,2.46,19.07,7.38,4.67,4.92,7,12.16,7,21.71,0,.93-.04,1.96-.11,3.07-.07,1.12-.14,2.1-.22,2.96h-36.42c.36,3.3,1.9,5.92,4.63,7.86,2.73,1.94,6.39,2.91,10.99,2.91,2.94,0,5.83-.27,8.67-.81,2.84-.54,5.15-1.2,6.95-1.99l2.15,13.04c-.86.43-2.01.86-3.45,1.29-1.44.43-3.04.81-4.79,1.13-1.76.32-3.65.59-5.66.81-2.01.22-4.02.32-6.03.32-5.1,0-9.53-.75-13.31-2.26-3.77-1.51-6.9-3.57-9.37-6.2-2.48-2.62-4.31-5.73-5.49-9.32-1.18-3.59-1.78-7.47-1.78-11.64Zm37.71-6.14c-.07-1.36-.31-2.69-.7-3.99-.4-1.29-1.01-2.44-1.83-3.45-.83-1-1.87-1.83-3.12-2.48-1.26-.65-2.82-.97-4.69-.97s-3.34.31-4.63.92c-1.29.61-2.37,1.42-3.23,2.42-.86,1.01-1.53,2.17-1.99,3.5-.47,1.33-.81,2.68-1.02,4.04h21.22Z"/><path d="m307.18,14.31l16.17-2.61v16.82h19.43v13.46h-19.43v20.08c0,3.4.6,6.11,1.79,8.14,1.19,2.03,3.6,3.04,7.22,3.04,1.74,0,3.53-.16,5.37-.49,1.84-.33,3.53-.78,5.05-1.36l2.28,12.59c-1.95.8-4.12,1.48-6.51,2.06-2.39.58-5.32.87-8.79.87-4.41,0-8.07-.6-10.96-1.79-2.89-1.19-5.21-2.86-6.95-4.99-1.74-2.13-2.95-4.72-3.64-7.76-.69-3.04-1.03-6.4-1.03-10.09V14.31Z"/><path d="m371.14,11.95c0,2.88-.93,5.15-2.8,6.81-1.86,1.65-4.06,2.48-6.6,2.48s-4.73-.82-6.6-2.48c-1.86-1.65-2.8-3.92-2.8-6.81s.93-5.15,2.8-6.81c1.86-1.65,4.06-2.48,6.6-2.48s4.73.83,6.6,2.48c1.86,1.65,2.8,3.92,2.8,6.81Zm-1.3,73.66h-16.17V28.53h16.17v57.08Z"/></symbol></svg>
+
+<div id="viewport"><div id="stage">
+
+<!-- COVER -->
+<section class="slide slide--dark on-photo" data-title="Cover" data-img="assets/booth.jpg">
+  <div class="full"><img class="kb" src="assets/booth.jpg" alt="Concept render of a calm, gallery-like Caesarstone booth"></div>
+  <div class="scrim-l"></div><div class="scrim-b"></div>
+  <p class="cover__by rv" style="--i:0">Prepared by Noetic Creative</p>
+  <div class="cover__t">
+    <div class="kicker rv" style="--i:1;color:#F0A27F">KBIS 2027 · Las Vegas · February 2–4</div>
+    <h2 class="rv" style="--i:2"><em>Seven</em> ideas for the Caesarstone booth</h2>
+    <p class="lede rv" style="--i:3">Ways to draw designers in, put ICON and Porcelain in their hands, and turn every visit into content.</p>
+  </div>
+  <div class="strip-lab rv" style="--i:4">The seven · click to jump</div>
+  <div class="strip" id="strip"></div>
+</section>
+
+<!-- BRIEF -->
+<section class="slide" data-title="The brief">
+  <div class="brief__l">
+    <div class="kicker rv" style="--i:0">The brief</div>
+    <h2 class="rv" style="--i:1">What the booth has to do</h2>
+    <p class="lede rv" style="--i:2">Each idea notes what Caesarstone would build. Noetic handles the capture, editing, and posting.</p>
+  </div>
+  <div class="brief__r">
+    <div class="brow rv" style="--i:2"><div class="brow__n">01</div><div><h3>Draw the right people in</h3><p class="body">Designers, architects, kitchen and bath pros, and showroom owners need a reason to stop and stay.</p></div></div>
+    <div class="brow rv" style="--i:3"><div class="brow__n">02</div><div><h3>Turn visits into content</h3><p class="body">Two Noetic leads and a videographer are on site. Every idea here gives them something worth filming.</p></div></div>
+    <div class="brow rv" style="--i:4"><div class="brow__n">03</div><div><h3>Put the surfaces in the spotlight</h3><p class="body">Recycled materials, depth, durability and texture are easier to believe when visitors touch and test them.</p></div></div>
+  </div>
+  <div class="marq rv" style="--i:5"><div class="marq__t" id="marq"></div></div>
+</section>
+
+<!-- GLANCE -->
+<section class="slide" data-title="The seven at a glance" id="s-glance">
+  <div class="glance__h">
+    <div><div class="kicker rv" style="--i:0">At a glance</div><h2 class="rv" style="--i:1">Seven ways in</h2></div>
+    <p class="rv" style="--i:2">Hover to preview · click to open</p>
+  </div>
+  <div class="acc rv" style="--i:3" id="acc"></div>
+</section>
+
+<template id="idea-anchor"></template>
+
+<!-- COMPARE -->
+<section class="slide" data-title="How the seven compare" id="s-compare">
+  <div class="cmp__h">
+    <div><div class="kicker rv" style="--i:0">Side by side</div><h2 class="rv" style="--i:1">Effort against payoff</h2></div>
+    <div class="seg rv" style="--i:2"><button aria-pressed="true" data-v="map">The map</button><button aria-pressed="false" data-v="table">The table</button></div>
+  </div>
+  <div class="view on rv" style="--i:3" data-view="map">
+    <div class="map" id="map">
+      <div class="sweet"><span>Sweet spot · easy to build, big payoff</span></div>
+    </div>
+    <div class="ax ax--x"><span>Easier to build</span><span>Difficulty to create →</span><span>Harder</span></div>
+    <div class="ax ax--y">Social payoff →</div>
+    <div class="det" id="det"></div>
+  </div>
+  <div class="view" data-view="table">
+    <div class="filters" id="filters"><span>Show ideas for</span></div>
+    <table class="cmp">
+      <thead><tr>
+        <th></th>
+        <th><button data-sort="n" class="on">Idea<i>↑</i></button></th>
+        <th>Best for</th><th>Surface</th><th>Content we get</th>
+        <th><button data-sort="diff">Difficulty<i></i></button></th>
+        <th><button data-sort="pay">Social payoff<i></i></button></th>
+      </tr></thead>
+      <tbody id="cmp"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section class="slide" data-title="Build the booth" id="s-build">
+  <div class="bld__h"><div class="kicker rv" style="--i:0">Build the booth</div><h2 class="rv" style="--i:1">Mix your three days</h2></div>
+  <div class="tiles rv" style="--i:2" id="tiles"></div>
+  <p class="reco rv" style="--i:3"><b>Our recommendation:</b> make the Mood Board Studio the centerpiece, then add the Designer Studio and ICON of the Show for a steady flow of content across all three days. The Headshot Lounge can share the Designer Studio’s ICON set, so it adds a big draw for little extra build.</p>
+  <div class="sum rv" style="--i:3">
+    <div class="sum__top"><strong id="b-n">0</strong><span id="b-nl">ideas<br>in the mix</span></div>
+    <div class="sum__m">
+      <div><div class="label">Effort to build</div><div class="bar"><i id="b-diff"></i></div><em id="b-diffl">—</em></div>
+      <div><div class="label">Social payoff</div><div class="bar"><i id="b-pay"></i></div><em id="b-payl">—</em></div>
+    </div>
+    <div><div class="label">Who it reaches</div><div class="aud" id="b-aud"></div></div>
+    <div><div class="label">Surfaces in play</div><div class="aud" id="b-surf"></div></div>
+    <div><div class="label">What we post</div><ul id="b-content"></ul></div>
+    <div><div class="label">People on the floor</div><ul id="b-staff"></ul></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="slide slide--dark" data-title="What happens next" id="s-time">
+  <div class="tl__h"><div class="kicker rv" style="--i:0;color:#F0A27F">Timeline</div><h2 class="rv" style="--i:1">What happens next</h2></div>
+  <div class="count rv" style="--i:2"><strong id="days">—</strong><span id="days-l">days to the show</span></div>
+  <div class="track rv" style="--i:3"><i id="fill"></i><div class="now" id="now"><em id="now-l">Today</em></div></div>
+  <div class="phases">
+    <div class="phase rv" style="--i:4" data-d="2026-12-15"><div class="when">By mid-December</div><h3>Choose</h3><p>Pick the ideas to run and approve what needs building.</p></div>
+    <div class="phase rv" style="--i:5" data-d="2027-01-15"><div class="when">January</div><h3>Build</h3><p>Produce the stations, pre-test the stain bar and markers, pick the Porcelain textures, and lock contest rules and claims wording.</p></div>
+    <div class="phase rv" style="--i:6" data-d="2027-02-02"><div class="when">February 2–4</div><h3>Capture</h3><p>Two Noetic leads and a videographer film, edit, and post from the show floor.</p></div>
+    <div class="phase rv" style="--i:7" data-d="2027-02-20"><div class="when">After the show</div><h3>Extend</h3><p>Deliver designer clips and headshots, send signer keepsakes, announce winners, and publish the trend report.</p></div>
+  </div>
+  <p class="tl__foot rv" style="--i:8">The first decision is the one that matters most.</p>
+</section>
+
+<!-- CLOSE -->
+<section class="slide slide--dark on-photo" data-title="Next step" data-img="assets/headshot-lounge.jpg">
+  <div class="full"><img class="kb" src="assets/headshot-lounge.jpg" alt="Concept render of the Headshot Lounge"></div>
+  <div class="scrim-l"></div>
+  <div class="close__t">
+    <div class="kicker rv" style="--i:0;color:#F0A27F">Next step</div>
+    <h2 class="rv" style="--i:1">Pick the mix by mid&#8209;December</h2>
+    <ol>
+      <li class="rv" style="--i:2">Choose the ideas on the Build the booth slide.</li>
+      <li class="rv" style="--i:3">Confirm floor space and what Caesarstone builds.</li>
+      <li class="rv" style="--i:4">Technical team pre-tests the markers, the stains and the backdrop light.</li>
+    </ol>
+    <div class="ctas rv" style="--i:5"><button class="cta cta--p" data-go="s-build">Build the booth</button><button class="cta" data-go="s-glance">See all seven</button></div>
+  </div>
+  <p class="credit">Designed by <svg viewBox="0 0 423.25 114.13" aria-label="Noetic" fill="currentColor"><use href="#noeticlogo"/></svg></p>
+</section>
+
+</div></div>
+
+<div id="bar">
+  <span class="ttl">Caesarstone · KBIS 2027</span>
+  <div id="prog"></div>
+  <span id="cnt">1 / 1</span>
+  <div class="ctl">
+    <button id="b-prev" aria-label="Previous">←</button>
+    <button id="b-next" aria-label="Next">→</button>
+    <button id="b-grid" aria-label="All slides (G)">▦</button>
+    <button id="b-fs" aria-label="Full screen (F)">⤢</button>
+  </div>
+</div>
+<div id="tip"></div>
+<div id="ov"><h4>All slides · press G or Esc to close</h4><div id="ovg"></div></div>
+<div id="lb"><img alt=""><p></p></div>
+
+<script>
+const IDEAS=[
+ {key:'designer',name:'The Designer Studio',for:'For designers and architects',aud:['Designers','Architects'],surf:'ICON',
+  lede:'A small filming set built from ICON slabs. Every designer who sits down answers three quick questions on camera.',
+  why:'Designers need content for their own channels. We send each one a polished clip within 24 hours.',
+  content:'Dozens of clips they post and tag, plus a post-show designer trend report.',
+  builds:'The set, lighting, and a simple release form.',
+  diff:3,diffL:'Medium',diffN:'The set is simple. The effort is in hosting, scheduling, and editing every clip fast.',
+  pay:5,payL:'Very high',payN:'Dozens of clips, and each designer shares theirs with their own followers.',
+  needs:['ICON slab backdrop and a lounge chair','Two soft lights and a clip-on mic','About 8 × 8 ft in a quieter corner'],
+  ai:['Transcribes and rough-cuts clips the same day','Writes captions and titles','Finds the themes for the trend report'],
+  pros:['Gives designers something they want','Builds a contact list with consent','Footage stays useful all year'],
+  cons:['Show-floor noise makes audio hard','24-hour turnaround is demanding','Some visitors are camera-shy'],
+  get:'Interview clips',post:'Designer interview clips',staff:'A host for the interviews',
+  shots:[{img:'designer-studio',lab:'On set',cap:'<b>Shares a set:</b> the same ICON backdrop can run the Headshot Lounge (idea 7) between interviews.'}]},
+ {key:'mood',name:'The Mood Board Studio',for:'The visitor takes center stage',aud:['Designers'],surf:'ICON',
+  lede:'Each visitor builds a room mood board around an ICON slab, adding flooring, cabinetry, fabrics, and paint.',
+  why:'Designers love showing their taste. The stone anchors every board, so it is in every post.',
+  content:'Time-lapses, designer walk-throughs, board photos, and a most-likes contest.',
+  builds:'A sample table with overhead camera, or a touchscreen app. Plus the prize and contest rules.',
+  diff:3,diffL:'Medium',diffN:'That is for physical boards. A touchscreen app is a 5 of 5 on this timeline.',
+  pay:5,payL:'Very high',payN:'Every visitor posts their own board, so the reach comes from their networks.',
+  needs:['ICON samples plus flooring, wood, fabric, and paint','Board table, overhead camera, light','About 10 × 10 ft, or one touchscreen'],
+  ai:['Turns each board into a rendered room image','Drafts a caption for each visitor’s post','Tracks the hashtag and tallies likes'],
+  pros:['The visitor is the star','ICON appears in every post','Extends the Mimosas & Mood Boards panel'],
+  cons:['Needs samples from other material brands','The table needs a staffer to reset it','Most-likes favors large followings'],
+  get:'Boards and a contest',post:'Mood board photos and time-lapses',staff:'A staffer to reset the board table',
+  shots:[{img:'mood-board',lab:'The table',cap:'Every board starts with the stone, then visitors layer flooring, cabinetry, fabric and paint around it.'}]},
+ {key:'vote',name:'ICON of the Show',for:'For every visitor',aud:['Every visitor'],surf:'ICON',
+  lede:'Every ICON slab gets a clear tube. Visitors drop a recycled-glass pebble into their favorite.',
+  why:'It takes five seconds, starts a conversation, and shows the sales team what designers prefer.',
+  content:'A daily leaderboard, designers defending their pick, and a day-three winner.',
+  builds:'Tubes, pebbles, and signage. The lightest build of the seven.',
+  diff:1,diffL:'Low',diffN:'Tubes, pebbles, and signs. Nothing technical and nothing to staff.',
+  pay:3,payL:'Medium',payN:'A dependable daily post and a winner story, but visitors rarely share it themselves.',
+  needs:['One clear acrylic tube per slab','A few thousand recycled-glass pebbles','Counter space at the slab display; no extra floor'],
+  ai:['Counts the pebbles from a daily photo','Drafts the daily leaderboard post','Summarizes why designers chose each slab'],
+  pros:['Cheapest and fastest to build','Real preference data for sales','Runs without a dedicated staffer'],
+  cons:['Less visual drama than the others','Slabs near the aisle get more votes','Little posting by visitors'],
+  get:'Daily leaderboard',post:'Daily ICON leaderboard',staff:null,
+  shots:[{img:'icon-of-the-show',lab:'The vote',cap:'One pebble, one vote. The recycled glass is a quiet nod to what ICON is made of.'}]},
+ {key:'ruin',name:'Try to Ruin It',for:'For kitchen and bath pros',aud:['K&B pros','Showroom owners'],surf:'ICON',
+  lede:'A stain bar with red wine, coffee, turmeric, and beet juice. Pros stain a slab, then wipe it clean.',
+  why:'Pros and showroom owners worry about callbacks. This lets them test durability themselves.',
+  content:'Wipe-clean clips and “worst kitchen disaster” stories told on camera.',
+  builds:'The bar and test slabs, with every substance pre-tested by the technical team.',
+  diff:2,diffL:'Low to medium',diffN:'Easy to build, but it needs testing beforehand and constant cleanup during the show.',
+  pay:4,payL:'High',payN:'Wipe-clean moments suit short video and can be reused in paid ads.',
+  needs:['Test slabs on a bar-height counter','Stain agents, cloths, cleaner, waste bin','About 6 × 3 ft and one staffer'],
+  ai:['Finds the best wipe moments in raw footage','Cuts a version for each platform','Captions the disaster stories'],
+  pros:['Proof instead of claims','Speaks to pros and showroom owners','Dealers can repeat it in showrooms'],
+  cons:['A failed wipe on camera is a real risk','Messy, and needs constant resetting','Venue rules on liquids may apply'],
+  get:'Wipe-clean clips',post:'Wipe-clean clips',staff:'One staffer at the stain bar',
+  shots:[{img:'try-to-ruin-it',lab:'The stain bar',cap:'Pick your worst offender. One wipe, gone.'}]},
+ {key:'sign',name:'Sign the Slab',for:'For every visitor',aud:['Every visitor','Designers'],surf:'ICON',
+  lede:'An ICON slab becomes the show’s guest book. Designers sign their name and studio.',
+  why:'Designers want to see themselves in Caesarstone’s story. Every signer is credited in that day’s recap, so they share it and tag themselves.',
+  content:'Signing moments, a nightly wipe reel, daily recaps with signer credits, and a final wipe on day three.',
+  builds:'An ICON slab or large piece at counter height, with markers the technical team has pre-tested.',
+  diff:2,diffL:'Low',diffN:'The build is just a slab and markers. The real work is pre-testing the markers on the exact color and finish.',
+  pay:4,payL:'High',payN:'A daily reveal, plus signers sharing their own names in the recap.',
+  needs:['An ICON slab or large piece on a counter','Markers pre-tested on that color and finish','Cleaner, cloths, and a QR code to collect Instagram handles'],
+  ai:['Reads names from the daily slab photo to build the credit list','Drafts the recap captions'],
+  pros:['Anyone can join in seconds','A built-in daily content beat','Shows ICON’s durability without a sales pitch'],
+  cons:['Little lasting value without a follow-up','Markers must suit the exact finish','Needs a wipe and reset every night'],
+  get:'Daily signer recaps',post:'Signer recaps and the nightly wipe',staff:null,
+  shots:[{img:'sign-the-slab',lab:'At the booth',cap:'The nightly wipe is the content beat: a full slab, then clean ICON again by morning.'},
+         {img:'keepsake',lab:'After the show',cap:'<b>The follow-up:</b> a week later, each signer receives a small ICON sample with their name on it, a reason to post again.'}]},
+ {key:'touch',name:'The Touch Test',for:'For designers',aud:['Designers'],surf:'Porcelain',
+  lede:'Blindfolded, designers identify Caesarstone Porcelain looks by touch alone. A daily leaderboard crowns “the best hands at KBIS.”',
+  why:'It challenges their expertise, which designers love. The reveal reactions make the content, and Porcelain’s textures do the selling.',
+  content:'Reaction clips, daily leaderboard posts, and day-winner features.',
+  builds:'A covered sample tray, blindfolds, a leaderboard sign, and daily prizes.',
+  diff:2,diffL:'Low',diffN:'A small table, a few samples, and a host.',
+  pay:4,payL:'High',payN:'Fast, funny, and competitive, so people come back to check the board.',
+  needs:['Four or five Porcelain textures, such as 603 Birchhaven Wood, 230 Creamy Leather and 411 Concrita','No marble-looks, to avoid natural-stone comparisons','Sleep-mask blindfolds, a leaderboard and a small table'],
+  ai:['Finds the best reactions in the raw footage','Drafts the daily leaderboard post','Captions each clip'],
+  pros:['Takes under a minute per person','Gives Porcelain its own moment','The competition brings people back'],
+  cons:['Textures must feel clearly different','The tray stays covered until the mask is on','Needs a host on every shift'],
+  get:'Reactions and a leaderboard',post:'Touch Test reactions and leaderboard',staff:'A host for the Touch Test',
+  shots:[{img:'touch-test',lab:'The guess',cap:'Wood, leather or concrete? The mask goes on first, then the cover comes off the tray.'}]},
+ {key:'headshot',name:'The Headshot Lounge',for:'For every visitor',aud:['Every visitor','Designers','Architects'],surf:'ICON',
+  lede:'Free professional headshots in front of an ICON backdrop, delivered by email after the show.',
+  why:'Every designer needs updated photos, and they’ll use them for years. It’s one of the most dependable draws at any trade show.',
+  content:'A “Faces of KBIS” series of real designers alongside ICON, plus behind-the-scenes clips.',
+  builds:'A vertical ICON slab backdrop, simple lighting, and a release form.',
+  diff:3,diffL:'Medium',diffN:'The set is simple. The effort is the photographer’s time, light retouching, and delivery.',
+  pay:4,payL:'High',payN:'Designers post their new photo, and many tag where it was taken.',
+  needs:['An ICON slab backdrop, two soft lights, and a stool','A photographer','A QR sign-up for time slots, and a release form'],
+  ai:['Picks the best frame from each session','Light, natural retouching, nothing artificial','Sends delivery emails in batches'],
+  pros:['Appeals to everyone','Captures contacts with consent','The content stays useful all year'],
+  cons:['A photographer for all three days','Peak hours need a slot queue','Retouching and delivery run after the show'],
+  get:'“Faces of KBIS” series',post:'“Faces of KBIS” portraits',staff:'A photographer',
+  shots:[{img:'headshot-lounge',lab:'The set',cap:'<b>For the technical team:</b> can the ICON backdrop be lit from behind or around its edges for a glowing frame?'}]}
+];
+
+const RECO=['mood','designer','vote','headshot'];
+const AUDS=['Designers','Architects','K&B pros','Showroom owners','Every visitor'];
+const LV=['','Low','Low to medium','Medium','High','Very high'];
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const dots=n=>`<span class="dots">${[1,2,3,4,5].map(i=>`<span class="dot ${i<=n?'f':''}"></span>`).join('')}</span>`;
+const li=a=>a.map(x=>`<li>${x}</li>`).join('');
+const pad=n=>String(n).padStart(2,'0');
+const img=d=>'assets/'+d.shots[0].img+'.jpg';
+const LOGO='<svg class="s-logo" viewBox="0 0 178 28" aria-label="Caesarstone"><use href="#cslogo"/></svg>';
+
+/* cover strip + brief marquee */
+$('#strip').innerHTML=IDEAS.map((d,i)=>`<button class="rv" style="--i:${i+5}" data-go="idea-${d.key}"><div class="gr"><div class="gr__img"><img src="${img(d)}" alt=""></div><span class="n">${pad(i+1)}</span></div><p>${d.name}</p></button>`).join('');
+const mq=['booth',...IDEAS.map(d=>d.shots[0].img),'keepsake'];
+$('#marq').innerHTML=[...mq,...mq].map(x=>`<img src="assets/${x}.jpg" alt="">`).join('');
+
+/* glance accordion */
+$('#acc').innerHTML=IDEAS.map((d,i)=>`<button class="acc__p ${i==0?'open':''}" data-go="idea-${d.key}">
+  <img src="${img(d)}" alt=""><span class="acc__n">${pad(i+1)}</span><span class="acc__v">${d.name}</span>
+  <div class="acc__o"><div class="k">${d.aud.join(' · ')} · ${d.surf}</div><h3>${d.name}</h3><p>${d.lede}</p><span class="go">Open the idea →</span></div></button>`).join('');
+$$('.acc__p').forEach(p=>{p.addEventListener('mouseenter',()=>{$$('.acc__p').forEach(o=>o.classList.toggle('open',o==p))});p.addEventListener('focus',()=>p.dispatchEvent(new Event('mouseenter')))});
+
+/* idea slides */
+const anchor=$('#idea-anchor');
+IDEAS.forEach((d,i)=>{
+  const n=i+1,s=document.createElement('section');
+  s.className='slide idea on-photo'; s.dataset.title=d.name; s.dataset.img=img(d); s.dataset.idea=n; s.id='idea-'+d.key; s.dataset.pane=0;
+  const sb=d.shots.length>1?d.shots.map((x,k)=>`<button class="shot" aria-pressed="${k==0}" data-k="${k}">${x.lab}</button>`).join(''):'';
+  s.innerHTML=`
+  <div class="out"></div>
+  <div class="ph zoomable"><img class="kb" src="${img(d)}" alt="Concept render: ${d.name}"><div class="scr"></div><span class="tagr">Concept render</span></div>
+  <div class="shots">${sb}</div>
+  <div class="stA"><div class="bignum rv" style="--i:2">${pad(n)}</div>
+  <div class="panelA rv" style="--i:1">
+    <div class="kicker">Idea ${n} · ${d.for}</div>
+    <h2>${d.name}</h2>
+    <p class="lede">${d.lede}</p>
+    <div class="panelA__f">
+      <div class="mm"><div>Difficulty<b>${dots(d.diff)}${d.diffL}</b></div><div>Social payoff<b>${dots(d.pay)}${d.payL}</b></div></div>
+      <button class="more" data-pane="1">In practice <span>→</span></button>
+    </div>
+  </div></div>
+  <div class="B">
+    <div class="B__h"><div class="kicker">Idea ${n} · In practice<button class="back" data-pane="0">← Back</button></div><h2>${d.name}</h2></div>
+    <div class="B__three">
+      <div><div class="label">Why it works</div><p class="body">${d.why}</p></div>
+      <div><div class="label">Content we capture</div><p class="body">${d.content}</p></div>
+      <div><div class="label">Caesarstone builds</div><p class="body">${d.builds}</p></div>
+    </div>
+    <div class="B__meters">
+      <div class="mt"><div class="label">Difficulty to create</div><div class="v">${dots(d.diff)} ${d.diff} of 5</div><p>${d.diffN}</p></div>
+      <div class="mt"><div class="label">Social content payoff</div><div class="v">${dots(d.pay)} ${d.pay} of 5</div><p>${d.payN}</p></div>
+    </div>
+    <p class="B__cap">${d.shots[0].cap}</p>
+    <div class="B__four">
+      <div><div class="label">What it needs</div><ul>${li(d.needs)}</ul></div>
+      <div><div class="label">How AI helps</div><ul>${li(d.ai)}</ul></div>
+      <div><div class="label">Pros</div><ul>${li(d.pros)}</ul></div>
+      <div class="cons"><div class="label">Cons</div><ul>${li(d.cons)}</ul></div>
+    </div>
+  </div>
+  <div class="steps"><i></i><i></i></div>`;
+  if(d.shots.length>1) $('.B__cap',s).style.top='640px';
+  anchor.parentNode.insertBefore(s,anchor);
+  $$('[data-pane]',s).forEach(b=>{if(b.tagName=='BUTTON')b.onclick=e=>{e.stopPropagation();setPane(s,+b.dataset.pane)}});
+  $$('.shot',s).forEach(b=>b.onclick=e=>{e.stopPropagation();
+    const x=d.shots[b.dataset.k],im=$('.ph img',s);
+    $$('.shot',s).forEach(o=>o.setAttribute('aria-pressed',o==b));
+    im.style.opacity=0;setTimeout(()=>{im.src='assets/'+x.img+'.jpg';im.onload=()=>im.style.opacity=1},300);
+    $('.B__cap',s).innerHTML=x.cap;});
+  $('.ph',s).onclick=()=>openLb($('.ph img',s).src,'Concept render · '+d.name);
+});
+anchor.remove();
+function setPane(s,p){s.dataset.pane=p}
+
+/* compare: map */
+const POS={designer:[3,5,-62,0],mood:[3,5,62,0],vote:[1,3,0,0],ruin:[2,4,-66,-34],sign:[2,4,66,-34],touch:[2,4,0,60],headshot:[3,4,30,30]};
+const X=v=>(v-.5)/5*1000, Y=v=>600-(v-2)/3.6*600;
+$('#map').insertAdjacentHTML('beforeend',[1,2,3,4,5].map(v=>`<div class="gl" style="left:${X(v)}px;top:0;bottom:0;width:1px"></div>`).join('')+[3,4,5].map(v=>`<div class="gl" style="top:${Y(v)}px;left:0;right:0;height:1px"></div>`).join('')+
+  IDEAS.map((d,i)=>{const p=POS[d.key];return `<button class="bub" data-k="${d.key}" style="left:${X(p[0])+p[2]}px;top:${Y(p[1])+p[3]}px"><img src="${img(d)}" alt="${d.name}"><b>${i+1}</b></button>`}).join(''));
+function showDet(k){const i=IDEAS.findIndex(d=>d.key==k),d=IDEAS[i];
+  $$('.bub').forEach(b=>b.classList.toggle('hot',b.dataset.k==k));
+  $('#det').innerHTML=`<div class="gr"><div class="gr__img"><img src="${img(d)}" alt=""></div></div><div class="label">Idea ${i+1} · ${d.aud.join(' · ')}</div><h3>${d.name}</h3><p>${d.lede}</p>
+  <div class="row"><div>Difficulty<b>${d.diffL}</b></div><div>Social payoff<b>${d.payL}</b></div><div>Surface<b>${d.surf}</b></div></div>
+  <button class="go" data-go="idea-${d.key}">Open the idea →</button>`;}
+$$('.bub').forEach(b=>{b.onmouseenter=()=>showDet(b.dataset.k);b.onclick=()=>go(byId('idea-'+b.dataset.k))});
+showDet('mood');
+$$('.seg button').forEach(b=>b.onclick=()=>{$$('.seg button').forEach(o=>o.setAttribute('aria-pressed',o==b));$$('#s-compare .view').forEach(v=>v.classList.toggle('on',v.dataset.view==b.dataset.v))});
+
+/* compare: table */
+let sortKey='n',sortDir=1,aud=null;
+$('#filters').insertAdjacentHTML('beforeend',['All',...AUDS].map(a=>`<button class="chip" aria-pressed="${a=='All'}" data-a="${a}">${a}</button>`).join(''));
+function drawTable(){
+  const rows=IDEAS.map((d,i)=>({...d,n:i+1})).sort((a,b)=>sortKey=='n'?(a.n-b.n)*sortDir:((a[sortKey]-b[sortKey])*sortDir||a.n-b.n));
+  $('#cmp').innerHTML=rows.map(d=>`<tr class="r ${aud&&!d.aud.includes(aud)?'dim':''}" data-go="idea-${d.key}">
+    <td><img class="thumb" src="${img(d)}" alt=""></td><td>${d.name}</td><td>${d.aud.join(', ')}</td><td>${d.surf}</td><td>${d.get}</td>
+    <td><div class="rt">${dots(d.diff)}<em>${d.diffL}</em></div></td><td><div class="rt">${dots(d.pay)}<em>${d.payL}</em></div></td></tr>`).join('');
+  $$('.cmp th button').forEach(b=>{const on=b.dataset.sort==sortKey;b.classList.toggle('on',on);b.querySelector('i').textContent=on?(sortDir>0?'↑':'↓'):''});
+}
+$$('.cmp th button').forEach(b=>b.onclick=()=>{const k=b.dataset.sort;if(k==sortKey)sortDir*=-1;else{sortKey=k;sortDir=k=='n'?1:-1}drawTable()});
+$$('#filters .chip').forEach(c=>c.onclick=()=>{aud=c.dataset.a=='All'?null:c.dataset.a;$$('#filters .chip').forEach(x=>x.setAttribute('aria-pressed',x==c));drawTable()});
+drawTable();
+
+/* builder */
+let sel=new Set(RECO);
+$('#tiles').innerHTML=IDEAS.map((d,i)=>`<button class="tile" data-k="${d.key}" aria-pressed="false"><span class="frame"></span>
+  <div class="gr"><div class="gr__img"><img src="${img(d)}" alt=""></div><span class="ck"></span></div><b>${d.name}</b><small>${d.aud[0]} · ${d.surf}</small></button>`).join('')+
+  `<div class="tile reset"><button class="btn2 t" id="b-reco">Our recommendation</button><button class="btn2" id="b-all">Select all</button><button class="btn2" id="b-clear">Clear</button></div>`;
+function drawBuild(){
+  const L=IDEAS.filter(d=>sel.has(d.key));
+  $$('.tile[data-k]').forEach(p=>p.setAttribute('aria-pressed',sel.has(p.dataset.k)));
+  $('#b-n').textContent=L.length; $('#b-nl').innerHTML=(L.length==1?'idea':'ideas')+'<br>in the mix';
+  const avg=k=>L.length?L.reduce((a,d)=>a+d[k],0)/L.length:0;
+  const ad=avg('diff'),ap=avg('pay');
+  $('#b-diff').style.width=(ad/5*100)+'%'; $('#b-pay').style.width=(ap/5*100)+'%';
+  $('#b-diffl').textContent=L.length?`${LV[Math.round(ad)]} on average · ${ad.toFixed(1)} of 5`:'—';
+  $('#b-payl').textContent=L.length?`${LV[Math.round(ap)]} on average · ${ap.toFixed(1)} of 5`:'—';
+  const A=new Set(L.flatMap(d=>d.aud));
+  $('#b-aud').innerHTML=AUDS.map(a=>`<span class="${A.has(a)?'on':''}">${a}</span>`).join('');
+  const S=new Set(L.map(d=>d.surf));
+  $('#b-surf').innerHTML=['ICON','Porcelain'].map(a=>`<span class="${S.has(a)?'on':''}">${a}</span>`).join('');
+  $('#b-content').innerHTML=L.length?li(L.map(d=>d.post)):'<li>Pick at least one idea</li>';
+  const st=[...new Set(L.map(d=>d.staff).filter(Boolean))];
+  $('#b-staff').innerHTML=L.length?li(st.length?st:['No extra staff; the Noetic crew covers it']):'<li>—</li>';
+}
+$$('.tile[data-k]').forEach(p=>p.onclick=()=>{const k=p.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);drawBuild()});
+$('#b-reco').onclick=()=>{sel=new Set(RECO);drawBuild()};
+$('#b-all').onclick=()=>{sel=new Set(IDEAS.map(d=>d.key));drawBuild()};
+$('#b-clear').onclick=()=>{sel=new Set();drawBuild()};
+drawBuild();
+
+/* timeline (live) */
+function drawTime(){
+  const now=new Date(), show=new Date('2027-02-02T09:00:00-08:00');
+  const days=Math.ceil((show-now)/864e5);
+  if(days>0){$('#days').textContent=days;$('#days-l').textContent=days==1?'day to the show':'days to the show'}
+  else{$('#days').textContent='Live';$('#days-l').textContent=days>-3?'the show is on':'after the show'}
+  const A=[['2026-11-15',0],['2026-12-15',12],['2027-01-15',37],['2027-02-02',50],['2027-02-20',75],['2027-03-20',100]].map(([d,p])=>[new Date(d+'T12:00:00'),p]);
+  let pct=0; for(let k=0;k<A.length-1;k++){const[a,pa]=A[k],[b,pb]=A[k+1];if(now>=a&&now<b){pct=pa+(pb-pa)*(now-a)/(b-a);break} if(now>=b)pct=pb}
+  $('#fill').style.width=pct+'%'; $('#now').style.left=pct+'%';
+  $('#now-l').textContent='Today · '+now.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  $$('.phase').forEach(p=>p.classList.toggle('past',now>=new Date(p.dataset.d+'T12:00:00')));
+}
+
+/* navigation */
+const slides=$$('.slide'),N=slides.length;let cur=-1;
+$('#prog').innerHTML=slides.map((s,i)=>`<button data-i="${i}" aria-label="${s.dataset.title}"></button>`).join('');
+function go(i,o={}){
+  i=Math.max(0,Math.min(N-1,i)); if(i===cur&&!o.force)return;
+  if(slides[cur])slides[cur].classList.remove('is-active');
+  cur=i;const s=slides[cur];void s.offsetWidth;s.classList.add('is-active');
+  if(s.classList.contains('idea'))setPane(s,o.pane??0);
+  if(s.id=='s-time'){$('#fill').style.width=0;$('#now').style.left=0;setTimeout(drawTime,60)}
+  $$('#prog button').forEach((b,k)=>{b.classList.toggle('cur',k==cur);b.classList.toggle('done',k<cur)});
+  $('#cnt').textContent=(cur+1)+' / '+N;
+  if(location.hash!='#'+(cur+1))history.replaceState(null,'','#'+(cur+1));
+  $$('.ovc').forEach((c,k)=>c.classList.toggle('cur',k==cur));
+}
+const isIdea=s=>s&&s.classList.contains('idea');
+function next(){const s=slides[cur];if(isIdea(s)&&s.dataset.pane=='0'){setPane(s,1);return}go(cur+1)}
+function prev(){const s=slides[cur];if(isIdea(s)&&s.dataset.pane=='1'){setPane(s,0);return}go(cur-1,{pane:isIdea(slides[cur-1])?1:0})}
+const byId=id=>slides.findIndex(s=>s.id==id);
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(byId(g.dataset.go));}});
+$('#b-next').onclick=next;$('#b-prev').onclick=prev;
+$$('#prog button').forEach(b=>{b.onclick=()=>go(+b.dataset.i);
+  b.onmouseenter=()=>{const t=$('#tip');t.textContent=(+b.dataset.i+1)+' · '+slides[b.dataset.i].dataset.title;const r=b.getBoundingClientRect();t.style.left=Math.min(innerWidth-t.offsetWidth-10,Math.max(10,r.left+r.width/2-t.offsetWidth/2))+'px';t.style.opacity=1};
+  b.onmouseleave=()=>$('#tip').style.opacity=0});
+document.addEventListener('keydown',e=>{
+  if($('#lb').classList.contains('on')){if(['Escape',' ','Enter'].includes(e.key))closeLb();return}
+  if(e.key=='g'||e.key=='G'){$('#ov').classList.toggle('on');return}
+  if(e.key=='Escape'){$('#ov').classList.remove('on');return}
+  if($('#ov').classList.contains('on'))return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key=='Home')go(0);else if(e.key=='End')go(N-1);
+  else if(e.key=='f'||e.key=='F')toggleFs();
+});
+addEventListener('hashchange',()=>{const n=parseInt(location.hash.slice(1));if(n&&n-1!=cur)go(n-1)});
+let tx=null;addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)(dx<0?next:prev)();tx=null});
+function toggleFs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}
+$('#b-fs').onclick=toggleFs;$('#b-grid').onclick=()=>$('#ov').classList.toggle('on');
+$('#ovg').innerHTML=slides.map((s,i)=>`<button class="ovc" data-i="${i}"><div class="im" style="${s.dataset.img?`background-image:url(${s.dataset.img})`:'background:'+(s.classList.contains('slide--dark')?'#1A1B17':'#F5F2F0')}"><i>${pad(i+1)}</i></div><p>${s.dataset.title}</p></button>`).join('');
+$$('.ovc').forEach(c=>c.onclick=()=>{$('#ov').classList.remove('on');go(+c.dataset.i)});
+function openLb(src,cap){$('#lb img').src=src;$('#lb p').textContent=cap||'';$('#lb').classList.add('on')}
+function closeLb(){$('#lb').classList.remove('on')}
+$('#lb').onclick=closeLb;
+slides.forEach((s,i)=>{s.insertAdjacentHTML('beforeend',LOGO+'<span class="s-tag">KBIS 2027 · Las Vegas</span>'+`<span class="s-num">${pad(i+1)} / ${pad(N)}</span>`)});
+function fit(){const v=$('#viewport');$('#stage').style.transform=`scale(${Math.min(v.clientWidth/1920,v.clientHeight/1080)})`}
+addEventListener('resize',fit);fit();
+go(Math.max(0,Math.min(N-1,(parseInt(location.hash.slice(1))||1)-1)),{force:true});
+</script>
+</body>
+</html>
